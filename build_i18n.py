@@ -37,6 +37,9 @@ html_code = f"""<!DOCTYPE html>
     <title>OmniTools - Calcolo Pendenza Rampa | Normativa DM 236/89 & ADA Compliance</title>
     <meta name="description" content="OmniTools: Suite professionale di calcolo. Calcolatore di pendenza rampa con verifica conformità disabili e garage in 6 lingue.">
     
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
+
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/">
     <meta name="robots" content="index, follow">
