@@ -71,44 +71,28 @@
             
             <!-- OmniTools Master Brand + Tool Indicator -->
             <div class="flex items-center gap-2.5 min-w-0">
-                <!-- OmniTools SVG Emblem -->
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-900 p-1 flex items-center justify-center shrink-0 shadow-md shadow-slate-900/20 border border-slate-700/80">
-                    <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="omniGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#3b82f6" />
-                                <stop offset="100%" stop-color="#1d4ed8" />
-                            </linearGradient>
-                            <linearGradient id="omniGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#06b6d4" />
-                                <stop offset="100%" stop-color="#0284c7" />
-                            </linearGradient>
-                            <linearGradient id="omniGrad3" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#4f46e5" />
-                                <stop offset="100%" stop-color="#6366f1" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Hexagonal O Ribbon (Omni) -->
-                        <path d="M 24,7 L 40,16 L 40,25 L 32,20 L 32,16 L 24,12 Z" fill="url(#omniGrad1)" />
-                        <path d="M 40,25 L 40,34 L 24,42 L 16,37 L 24,33 L 32,29 Z" fill="url(#omniGrad2)" />
-                        <path d="M 24,42 L 8,33 L 8,16 L 24,7 L 24,12 L 16,16 L 16,29 L 24,33 Z" fill="url(#omniGrad3)" />
-                        <!-- Central Precision T-Square Nexus (Tools) -->
-                        <path d="M 17,17 L 31,17 L 31,21 L 26,21 L 26,29 L 22,29 L 22,21 L 17,21 Z" fill="#ffffff" />
-                        <!-- Caliper Amber Pivot Pin -->
-                        <circle cx="24" cy="24" r="2.2" fill="#f59e0b" />
+                <!-- Vibrant High-Contrast Modern Logo -->
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/25 shrink-0">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Bold Outer Ring O (Omni) -->
+                        <circle cx="18" cy="18" r="11" stroke="#ffffff" stroke-width="3.2" />
+                        <!-- Sharp Minimalist T-Square (Tools) -->
+                        <path d="M 11 13.5 H 25 M 18 13.5 V 23.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                        <!-- Precision Cyan Accent -->
+                        <circle cx="18" cy="13.5" r="1.8" fill="#38bdf8" />
                     </svg>
                 </div>
 
                 <!-- Brand Name & Module Indicator -->
                 <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-black text-sm sm:text-base text-slate-900 tracking-tight">OMNI<span class="text-blue-600">TOOLS</span></span>
-                        <span class="px-1.5 py-0.2 text-[9px] font-black bg-blue-50 text-blue-700 rounded border border-blue-200 tracking-widest uppercase hidden sm:inline-block">HUB</span>
+                    <div class="flex items-center gap-2 leading-none">
+                        <span class="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight">OMNI<span class="text-blue-600">TOOLS</span></span>
+                        <span class="h-3.5 w-px bg-slate-300 hidden sm:inline-block"></span>
+                        <span id="brandTitle" class="font-bold text-xs sm:text-sm text-slate-600 hidden sm:inline-block">RampaFacile</span>
+                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-blue-50 text-blue-700 rounded-full border border-blue-200 shrink-0">DM 236/89</span>
                     </div>
-                    <div class="flex items-center gap-1 mt-0.5 leading-none truncate">
-                        <span class="text-[11px] sm:text-xs text-slate-400 font-bold">/</span>
-                        <span id="brandTitle" class="font-bold text-xs sm:text-sm text-slate-700 truncate">RampaFacile</span>
-                        <span id="brandBadge" class="px-1.5 py-0.2 text-[9px] font-bold bg-slate-100 text-slate-600 rounded-full border border-slate-200 shrink-0">DM 236/89</span>
+                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
+                        <span id="brandTitleMobile" class="font-semibold text-xs text-slate-600">RampaFacile</span>
                     </div>
                 </div>
             </div>
@@ -508,6 +492,8 @@
         function applyTranslations() {
             const t = TRANSLATIONS[currentLang];
             document.getElementById('brandTitle').textContent = t.title;
+            const btm = document.getElementById('brandTitleMobile');
+            if (btm) btm.textContent = t.title;
             document.getElementById('brandBadge').textContent = t.badge;
             document.getElementById('heroTitle').textContent = t.hero_title;
             document.getElementById('heroDesc').textContent = t.hero_desc;
