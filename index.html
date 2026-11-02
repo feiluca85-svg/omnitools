@@ -6,7 +6,34 @@
     <title>OmniTools - Calcolo Pendenza Rampa | Normativa DM 236/89 & ADA Compliance</title>
     <meta name="description" content="OmniTools: Suite professionale di calcolo. Calcolatore di pendenza rampa con verifica conformità disabili e garage in 6 lingue.">
     
-    <!-- PWA & Mobile Web App Meta Tags -->
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OmniTools - Calcolo Pendenza Rampa & Dislivello">
+    <meta property="og:description" content="Calcolatore professionale di pendenza rampa e dislivello con verifica conformità DM 236/89 e ADA in 6 lingue.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/">
+    <meta property="og:site_name" content="OmniTools">
+    <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Schema.org JSON-LD Structured Data for Googlebot -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OmniTools - Calcolo Pendenza Rampa",
+      "url": "https://www.omnitoolslab.com/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "description": "Calcolatore professionale di pendenza rampa con verifica conformità disabili (DM 236/89, ADA, CTE, PMR, DIN) e veicoli in 6 lingue.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
     <link rel="alternate icon" type="image/png" href="favicon.png?v=6">
@@ -57,11 +84,42 @@
         }
         input[type=range]::-webkit-slider-thumb:active { transform: scale(1.15); }
         
+        @page {
+            size: A4 portrait;
+            margin: 10mm 12mm;
+        }
         @media print {
-            header, footer, .no-print, button, input[type=range], #installBanner, #iosModal { display: none !important; }
-            body { background: white !important; color: black !important; padding: 0 !important; }
-            main { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
-            .print-border { border: 1px solid #cbd5e1 !important; }
+            header, footer, .no-print, button, input[type=range], #installBanner, #iosModal, #suggestModal, #suggestBanner, #faqSection, #heroContainer, #modeSelectorBar, #controlsColumn { 
+                display: none !important; 
+            }
+            body { 
+                background: white !important; 
+                color: #0f172a !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                font-size: 11pt !important; 
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            main { 
+                max-width: 100% !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+            }
+            #resultsColumn {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .print-border { 
+                border: 1px solid #94a3b8 !important; 
+                box-shadow: none !important;
+            }
+            #rampSvg {
+                max-height: 170px !important;
+            }
         }
     </style>
 </head>
@@ -131,7 +189,7 @@
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
         
         <!-- Hero Header -->
-        <div class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
+        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
             <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2">
                 Calcolo Pendenza Rampa & Dislivello
             </h1>
@@ -141,7 +199,7 @@
         </div>
 
         <!-- Mode Selector -->
-        <div class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
+        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
             <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center">
                 📏 Calcola Pendenza
             </button>
@@ -154,7 +212,45 @@
         <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
             
             <!-- RESULTS & VISUAL COLUMN (IN CIMA SU MOBILE) -->
-            <div class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
+            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
+                
+                <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
+                <div id="printHeader" class="hidden print:block mb-3 pb-2.5 border-b-2 border-slate-900">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-sm">
+                                O/T
+                            </div>
+                            <div>
+                                <h1 class="text-base font-black tracking-tight text-slate-900">OMNITOOLS — RELAZIONE TECNICA DI CALCOLO</h1>
+                                <p class="text-[10px] text-slate-600 font-medium">Verifica di Conformità Pendenza Rampa & Barriere Architettoniche</p>
+                            </div>
+                        </div>
+                        <div class="text-right text-[10px] text-slate-600 leading-tight">
+                            <div id="printReportDate" class="font-bold text-slate-900">Data: 03/11/2026</div>
+                            <div>DM 236/89 • ADA • CTE • DIN</div>
+                            <div class="text-[9px] text-slate-500">omnitoolslab.com</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
+                <div id="printInputsSummary" class="hidden print:block mb-2 p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs">
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Dislivello (h):</span>
+                            <span id="printHeightVal" class="text-xs font-extrabold text-slate-900">30 cm</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Spazio a terra (L):</span>
+                            <span id="printLengthVal" class="text-xs font-extrabold text-slate-900">500 cm</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Tipo di Verifica:</span>
+                            <span id="printModeVal" class="text-xs font-extrabold text-slate-900">Verifica Pendenza da Quota</span>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Compliance Badge (Semaforo Normativa) -->
                 <div id="complianceCard" class="p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border">
@@ -247,19 +343,41 @@
                     </div>
                 </div>
 
+                <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
+                <div id="printFooterBox" class="hidden print:block mt-4 pt-3 border-t border-slate-300 text-xs">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Note di Cantiere / Prescrizioni:</span>
+                            <div class="border border-dashed border-slate-400 h-16 rounded-lg p-2 text-[9px] text-slate-600 leading-tight">
+                                • Verificare la presenza di pianerottolo orizzontale (min. 150×150 cm) ogni 10m.<br>
+                                • Prevedere cordolo di protezione laterale h ≥ 10 cm e superficie antisdrucciolo.
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Timbro e Firma del Progettista / Tecnico:</span>
+                            <div class="border border-slate-300 h-16 rounded-lg flex items-end justify-center pb-1 text-[9px] text-slate-400">
+                                Data e Firma Professionale
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
+                        Documento tecnico generato da <strong>OmniTools</strong> (https://www.omnitoolslab.com) — Valori a scopo matematico ed orientativo.
+                    </div>
+                </div>
+
             </div>
 
             <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
-            <div class="w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4 print-border">
+            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4">
                 
                 <!-- Unit Switcher (Metric + Imperial for USA/UK) -->
                 <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
                     <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
-                    <div class="grid grid-cols-4 p-0.5 bg-slate-100 rounded-xl text-xs font-bold gap-0.5">
-                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="px-2 py-1 rounded-lg bg-white text-blue-600 shadow-2xs transition active:scale-95 text-center">cm</button>
-                        <button type="button" id="unitM" onclick="setUnit('m')" class="px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center">m</button>
-                        <button type="button" id="unitIn" onclick="setUnit('in')" class="px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center" title="Inches (pollici)">in</button>
-                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center" title="Feet (piedi)">ft</button>
+                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
+                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                        <button type="button" id="unitM" onclick="setUnit('m')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
+                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
+                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
                     </div>
                 </div>
 
@@ -348,7 +466,7 @@
         </div>
 
         <!-- FAQ Section -->
-        <section class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
+        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
             <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2">
                 <span>Domande Frequenti sulle Rampe</span>
                 <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
@@ -362,7 +480,7 @@
     </main>
 
     <!-- Footer with OmniTools Suite & Ironclad Legal Disclaimer -->
-    <footer class="bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
         <div class="max-w-4xl mx-auto px-4 space-y-6">
             
             <!-- Suggestion Prompt Strip (Zero Distraction / High Utility) -->
@@ -570,8 +688,6 @@
             document.getElementById('modeDirectBtn').textContent = t.mode_direct;
             document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
             document.getElementById('unitLabelText').textContent = t.unit_label;
-            document.getElementById('unitCm').textContent = t.unit_cm;
-            document.getElementById('unitM').textContent = t.unit_m;
             document.getElementById('heightLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span> ${t.height_label}`;
             document.getElementById('lengthLabelInput').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> ${t.length_label}`;
             document.getElementById('targetSlopeLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span> ${t.target_slope_label}`;
@@ -709,9 +825,9 @@
                 const btn = document.getElementById('unit' + u.charAt(0).toUpperCase() + u.slice(1));
                 if (btn) {
                     if (u === newUnit) {
-                        btn.className = "px-2 py-1 rounded-lg bg-white text-blue-600 shadow-2xs font-extrabold transition active:scale-95 text-center";
+                        btn.className = "w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center";
                     } else {
-                        btn.className = "px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                        btn.className = "w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                     }
                 }
             });
@@ -832,6 +948,14 @@
                     .replace(/{u}/g, u);
                 ruleTip.innerHTML = tip;
             }
+
+            // Sync Print-only technical report summary
+            const printHeightVal = document.getElementById('printHeightVal');
+            const printLengthVal = document.getElementById('printLengthVal');
+            const printModeVal = document.getElementById('printModeVal');
+            if (printHeightVal) printHeightVal.textContent = `${hFmt} ${u}`;
+            if (printLengthVal) printLengthVal.textContent = `${lFmt} ${u}`;
+            if (printModeVal) printModeVal.textContent = (currentMode === 'direct') ? 'Verifica Pendenza da Quota' : `Progetto Sviluppo al ${slope.toFixed(1)}%`;
 
             updateCompliance(slope, t);
             updateSvgDiagram(h, l, slope, hypotenuse, u);
@@ -1018,6 +1142,12 @@
         }
 
         // Initial setup
+        const prd = document.getElementById('printReportDate');
+        if (prd) {
+            const now = new Date();
+            const dStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
+            prd.textContent = 'Data: ' + dStr;
+        }
         applyTranslations();
         updateCalculations();
     </script>
