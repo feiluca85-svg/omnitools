@@ -39,13 +39,15 @@ html_code = f"""<!DOCTYPE html>
     
     <!-- PWA & Mobile Web App Meta Tags -->
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
+    <link rel="alternate icon" type="image/png" href="favicon.png?v=6">
+    <link rel="shortcut icon" href="favicon.svg?v=6">
+    <meta name="theme-color" content="#2563eb">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OmniTools">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png?v=6">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -281,12 +283,14 @@ html_code = f"""<!DOCTYPE html>
             <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
             <div class="w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4 print-border">
                 
-                <!-- Unit Switcher -->
+                <!-- Unit Switcher (Metric + Imperial for USA/UK) -->
                 <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
                     <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
-                    <div class="inline-flex p-1 bg-slate-100 rounded-lg text-xs font-bold">
-                        <button id="unitCm" onclick="setUnit('cm')" class="px-2.5 py-1 rounded-md bg-white text-blue-600 shadow-2xs transition active:scale-95">Centimetri (cm)</button>
-                        <button id="unitM" onclick="setUnit('m')" class="px-2.5 py-1 rounded-md text-slate-700 hover:text-slate-900 transition active:scale-95">Metri (m)</button>
+                    <div class="grid grid-cols-4 p-0.5 bg-slate-100 rounded-xl text-xs font-bold gap-0.5">
+                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="px-2 py-1 rounded-lg bg-white text-blue-600 shadow-2xs transition active:scale-95 text-center">cm</button>
+                        <button type="button" id="unitM" onclick="setUnit('m')" class="px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center">m</button>
+                        <button type="button" id="unitIn" onclick="setUnit('in')" class="px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center" title="Inches (pollici)">in</button>
+                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center" title="Feet (piedi)">ft</button>
                     </div>
                 </div>
 
@@ -711,36 +715,65 @@ html_code = f"""<!DOCTYPE html>
             updateCalculations();
         }}
 
-        function setUnit(unit) {{
-            if (unit === currentUnit) return;
-            currentUnit = unit;
-            
-            const btnCm = document.getElementById('unitCm');
-            const btnM = document.getElementById('unitM');
-            const hBadge = document.getElementById('heightUnitBadge');
-            const lBadge = document.getElementById('lengthUnitBadge');
+        const UNIT_FACTORS_CM = {{
+            'cm': 1.0,
+            'm': 100.0,
+            'in': 2.54,
+            'ft': 30.48
+        }};
 
-            if (unit === 'cm') {{
-                btnCm.className = "px-2.5 py-1 rounded-md bg-white text-blue-600 shadow-2xs transition active:scale-95";
-                btnM.className = "px-2.5 py-1 rounded-md text-slate-700 hover:text-slate-900 transition active:scale-95";
-                hBadge.textContent = 'cm';
-                lBadge.textContent = 'cm';
-                
-                heightInput.value = (parseFloat(heightInput.value) * 100).toFixed(0);
-                lengthInput.value = (parseFloat(lengthInput.value) * 100).toFixed(0);
-                heightRange.min = 5; heightRange.max = 200;
-                lengthRange.min = 50; lengthRange.max = 1500;
-            }} else {{
-                btnM.className = "px-2.5 py-1 rounded-md bg-white text-blue-600 shadow-2xs transition active:scale-95";
-                btnCm.className = "px-2.5 py-1 rounded-md text-slate-700 hover:text-slate-900 transition active:scale-95";
-                hBadge.textContent = 'm';
-                lBadge.textContent = 'm';
+        function setUnit(newUnit) {{
+            if (newUnit === currentUnit) return;
+            const prevUnit = currentUnit;
+            currentUnit = newUnit;
 
-                heightInput.value = (parseFloat(heightInput.value) / 100).toFixed(2);
-                lengthInput.value = (parseFloat(lengthInput.value) / 100).toFixed(2);
-                heightRange.min = 0.05; heightRange.max = 2.0;
-                lengthRange.min = 0.5; lengthRange.max = 15.0;
+            let h = parseFloat(heightInput.value) || 0;
+            let l = parseFloat(lengthInput.value) || 0;
+
+            let h_cm = h * (UNIT_FACTORS_CM[prevUnit] || 1.0);
+            let l_cm = l * (UNIT_FACTORS_CM[prevUnit] || 1.0);
+
+            let h_new = h_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
+            let l_new = l_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
+
+            ['cm', 'm', 'in', 'ft'].forEach(u => {{
+                const btn = document.getElementById('unit' + u.charAt(0).toUpperCase() + u.slice(1));
+                if (btn) {{
+                    if (u === newUnit) {{
+                        btn.className = "px-2 py-1 rounded-lg bg-white text-blue-600 shadow-2xs font-extrabold transition active:scale-95 text-center";
+                    }} else {{
+                        btn.className = "px-2 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                    }}
+                }}
+            }});
+
+            document.getElementById('heightUnitBadge').textContent = newUnit;
+            document.getElementById('lengthUnitBadge').textContent = newUnit;
+
+            if (newUnit === 'cm') {{
+                heightInput.value = Math.round(h_new);
+                lengthInput.value = Math.round(l_new);
+                heightRange.min = 5; heightRange.max = 200; heightRange.step = 1;
+                lengthRange.min = 50; lengthRange.max = 1500; lengthRange.step = 5;
+            }} else if (newUnit === 'm') {{
+                heightInput.value = h_new.toFixed(2);
+                lengthInput.value = l_new.toFixed(2);
+                heightRange.min = 0.05; heightRange.max = 2.0; heightRange.step = 0.01;
+                lengthRange.min = 0.5; lengthRange.max = 15.0; lengthRange.step = 0.05;
+            }} else if (newUnit === 'in') {{
+                heightInput.value = h_new.toFixed(1);
+                lengthInput.value = l_new.toFixed(1);
+                heightRange.min = 2; heightRange.max = 80; heightRange.step = 0.5;
+                lengthRange.min = 20; lengthRange.max = 600; lengthRange.step = 1;
+            }} else if (newUnit === 'ft') {{
+                heightInput.value = h_new.toFixed(2);
+                lengthInput.value = l_new.toFixed(2);
+                heightRange.min = 0.2; heightRange.max = 7.0; heightRange.step = 0.05;
+                lengthRange.min = 2.0; lengthRange.max = 50.0; lengthRange.step = 0.2;
             }}
+
+            syncSliderWithInput(heightRange, heightInput);
+            syncSliderWithInput(lengthRange, lengthInput);
             updateCalculations();
         }}
 
@@ -757,12 +790,19 @@ html_code = f"""<!DOCTYPE html>
             if (currentMode === 'reverse') {{
                 switchMode('direct');
             }}
+            const factor = UNIT_FACTORS_CM[currentUnit] || 1.0;
+            const hVal = hCm / factor;
+            const lVal = lCm / factor;
+
             if (currentUnit === 'cm') {{
-                heightInput.value = hCm;
-                lengthInput.value = lCm;
+                heightInput.value = Math.round(hVal);
+                lengthInput.value = Math.round(lVal);
+            }} else if (currentUnit === 'in') {{
+                heightInput.value = hVal.toFixed(1);
+                lengthInput.value = lVal.toFixed(1);
             }} else {{
-                heightInput.value = (hCm / 100).toFixed(2);
-                lengthInput.value = (lCm / 100).toFixed(2);
+                heightInput.value = hVal.toFixed(2);
+                lengthInput.value = lVal.toFixed(2);
             }}
             syncSliderWithInput(heightRange, heightInput);
             syncSliderWithInput(lengthRange, lengthInput);
@@ -806,16 +846,20 @@ html_code = f"""<!DOCTYPE html>
             slopeDegreesElem.textContent = angleDeg.toFixed(1) + '°';
 
             const u = currentUnit;
+            const hFmt = (u === 'cm' ? h.toFixed(0) : (u === 'in' ? h.toFixed(1) : h.toFixed(2)));
+            const lFmt = (u === 'cm' ? l.toFixed(0) : (u === 'in' ? l.toFixed(1) : l.toFixed(2)));
+            const hypFmt = (u === 'cm' || u === 'in' ? hypotenuse.toFixed(1) : hypotenuse.toFixed(2));
+
             if (currentMode === 'direct') {{
-                rampLengthElem.textContent = `${{hypotenuse.toFixed(1)}} ${{u}}`;
+                rampLengthElem.textContent = `${{hypFmt}} ${{u}}`;
                 ruleTip.innerHTML = t.rule_tip_direct;
             }} else {{
-                rampLengthElem.textContent = `${{l.toFixed(1)}} ${{u}}`;
+                rampLengthElem.textContent = `${{lFmt}} ${{u}}`;
                 let tip = t.rule_tip_reverse
-                    .replace('{{h}}', h.toFixed(u === 'cm' ? 0 : 2))
+                    .replace('{{h}}', hFmt)
                     .replace('{{s}}', slope.toFixed(1))
-                    .replace('{{l}}', l.toFixed(1))
-                    .replace('{{hyp}}', hypotenuse.toFixed(1))
+                    .replace('{{l}}', lFmt)
+                    .replace('{{hyp}}', hypFmt)
                     .replace(/{{u}}/g, u);
                 ruleTip.innerHTML = tip;
             }}
@@ -891,14 +935,18 @@ html_code = f"""<!DOCTYPE html>
             heightDim.setAttribute('y1', groundY);
             heightDim.setAttribute('y2', endY);
 
+            const hFmt = (u === 'cm' ? h.toFixed(0) : (u === 'in' ? h.toFixed(1) : h.toFixed(2)));
+            const lFmt = (u === 'cm' ? l.toFixed(0) : (u === 'in' ? l.toFixed(1) : l.toFixed(2)));
+            const hypFmt = (u === 'cm' || u === 'in' ? hypotenuse.toFixed(1) : hypotenuse.toFixed(2));
+
             heightText.setAttribute('x', maxX + 22);
             heightText.setAttribute('y', endY + (visualHeight / 2) + 5);
-            heightText.textContent = `h: ${{h.toFixed(u === 'cm' ? 0 : 2)}} ${{u}}`;
+            heightText.textContent = `h: ${{hFmt}} ${{u}}`;
 
             lengthDim.setAttribute('x1', startX);
             lengthDim.setAttribute('x2', maxX);
             lengthText.setAttribute('x', startX + (availableW / 2) - 40);
-            lengthText.textContent = `L: ${{l.toFixed(u === 'cm' ? 0 : 2)}} ${{u}}`;
+            lengthText.textContent = `L: ${{lFmt}} ${{u}}`;
 
             const hypMidX = startX + (availableW / 2) - 20;
             const hypMidY = groundY - (visualHeight / 2) - 14;
@@ -907,7 +955,7 @@ html_code = f"""<!DOCTYPE html>
             hypotenuseText.setAttribute('x', hypMidX);
             hypotenuseText.setAttribute('y', hypMidY);
             hypotenuseText.setAttribute('transform', `rotate(${{-angleDeg}} ${{hypMidX}} ${{hypMidY}})`);
-            hypotenuseText.textContent = `Rampa: ${{hypotenuse.toFixed(1)}} ${{u}} (${{slope.toFixed(1)}}%)`;
+            hypotenuseText.textContent = `Rampa: ${{hypFmt}} ${{u}} (${{slope.toFixed(1)}}%)`;
         }}
 
         // PWA Install Prompt Logic

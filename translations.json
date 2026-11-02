@@ -63,7 +63,9 @@
     "suggest_send": "Invia Suggerimento",
     "suggest_sending": "Invio...",
     "suggest_thanks": "🎉 Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.",
-    "suggest_close": "Chiudi"
+    "suggest_close": "Chiudi",
+    "unit_in": "Pollici (in)",
+    "unit_ft": "Piedi (ft)"
   },
   "en": {
     "title": "EasyRamp",
@@ -129,7 +131,9 @@
     "suggest_send": "Submit Suggestion",
     "suggest_sending": "Submitting...",
     "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will guide upcoming OmniTools modules.",
-    "suggest_close": "Close"
+    "suggest_close": "Close",
+    "unit_in": "Inches (in)",
+    "unit_ft": "Feet (ft)"
   },
   "es": {
     "title": "RampaFacil",
@@ -195,7 +199,9 @@
     "suggest_send": "Enviar Sugerencia",
     "suggest_sending": "Enviando...",
     "suggest_thanks": "🎉 ¡Muchas gracias! Tu sugerencia guiarà el desarrollo de las próximas herramientas.",
-    "suggest_close": "Cerrar"
+    "suggest_close": "Cerrar",
+    "unit_in": "Pulgadas (in)",
+    "unit_ft": "Pies (ft)"
   },
   "fr": {
     "title": "RampeFacile",
@@ -261,7 +267,9 @@
     "suggest_send": "Envoyer la suggestion",
     "suggest_sending": "Envoi en cours...",
     "suggest_thanks": "🎉 Merci beaucoup ! Votre suggestion orientera les prochains modules d'OmniTools.",
-    "suggest_close": "Fermer"
+    "suggest_close": "Fermer",
+    "unit_in": "Pouces (in)",
+    "unit_ft": "Pieds (ft)"
   },
   "de": {
     "title": "RampeProfi",
@@ -327,7 +335,9 @@
     "suggest_send": "Vorschlag einreichen",
     "suggest_sending": "Wird gesendet...",
     "suggest_thanks": "🎉 Vielen Dank! Ihr Vorschlag fließt direkt in die Weiterentwicklung von OmniTools ein.",
-    "suggest_close": "Schließen"
+    "suggest_close": "Schließen",
+    "unit_in": "Zoll (in)",
+    "unit_ft": "Fuß (ft)"
   },
   "pt": {
     "title": "RampaFacil",
@@ -393,6 +403,8 @@
     "suggest_send": "Enviar Sugestão",
     "suggest_sending": "A enviar...",
     "suggest_thanks": "🎉 Muito obrigado! A sua sugestão guiará os próximos módulos do OmniTools.",
-    "suggest_close": "Fechar"
+    "suggest_close": "Fechar",
+    "unit_in": "Polegadas (in)",
+    "unit_ft": "Pés (ft)"
   }
 }
