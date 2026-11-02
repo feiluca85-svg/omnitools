@@ -5,23 +5,11 @@ def create_modern_logo(size=512):
     scale = 2
     dim = size * scale
     img = Image.new('RGBA', (dim, dim), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
     
-    # 1. Vibrant Electric Cobalt Blue rounded background (Apple / Figma style)
-    # Gradient from #2563eb (electric blue) to #1d4ed8 (deep cobalt)
-    bg_margin = int(12 * scale)
-    corner_radius = int(112 * scale)
+    # 1. Vibrant Electric Cobalt Blue rounded background
+    bg_margin = int(10 * scale)
+    corner_radius = int(105 * scale)
     
-    # Draw gradient rounded rect
-    for i in range(dim):
-        ratio = i / dim
-        # Linear blend from #3b82f6 to #1e40af
-        r = int(59 * (1 - ratio) + 30 * ratio)
-        g = int(130 * (1 - ratio) + 64 * ratio)
-        b = int(246 * (1 - ratio) + 175 * ratio)
-        # We can draw line by line or use a mask
-    
-    # Simpler and perfectly crisp with mask:
     mask = Image.new('L', (dim, dim), 0)
     mask_draw = ImageDraw.Draw(mask)
     mask_draw.rounded_rectangle(
@@ -30,7 +18,6 @@ def create_modern_logo(size=512):
         fill=255
     )
     
-    # Gradient canvas
     grad = Image.new('RGBA', (dim, dim))
     for y in range(dim):
         ratio = y / dim
@@ -43,12 +30,11 @@ def create_modern_logo(size=512):
     img.paste(grad, (0, 0), mask)
     draw = ImageDraw.Draw(img)
 
-    # 2. Modern Swiss Icon: Bold Geometric "Omni-Ring" + "Precision Drafting T"
     center = dim / 2
     
-    # Outer Ring 'O' - Bold, pure white
-    ring_radius = 160 * scale
-    ring_width = int(34 * scale)
+    # 2. BOLD & LARGE: White symbol fills ~78% of the squircle
+    ring_radius = 210 * scale
+    ring_width = int(46 * scale)
     draw.ellipse(
         [center - ring_radius, center - ring_radius, center + ring_radius, center + ring_radius],
         outline=(255, 255, 255, 255),
@@ -56,30 +42,30 @@ def create_modern_logo(size=512):
     )
     
     # Horizontal bar of T
-    bar_w = 210 * scale
-    bar_h = 34 * scale
-    bar_y = center - 65 * scale
+    bar_w = 270 * scale
+    bar_h = 46 * scale
+    bar_y = center - 75 * scale
     draw.rounded_rectangle(
         [center - bar_w/2, bar_y - bar_h/2, center + bar_w/2, bar_y + bar_h/2],
-        radius=int(17 * scale),
+        radius=int(23 * scale),
         fill=(255, 255, 255, 255)
     )
     
     # Vertical stem of T
-    stem_w = 34 * scale
+    stem_w = 46 * scale
     stem_top = bar_y
-    stem_bottom = center + 95 * scale
+    stem_bottom = center + 130 * scale
     draw.rounded_rectangle(
         [center - stem_w/2, stem_top, center + stem_w/2, stem_bottom],
-        radius=int(17 * scale),
+        radius=int(23 * scale),
         fill=(255, 255, 255, 255)
     )
     
     # Central Cyan/Sky Blue Precision Focus Point
-    dot_r = 22 * scale
+    dot_r = 28 * scale
     draw.ellipse(
         [center - dot_r, bar_y - dot_r, center + dot_r, bar_y + dot_r],
-        fill=(56, 189, 248, 255) # cyan-400
+        fill=(56, 189, 248, 255)
     )
 
     final = img.resize((size, size), Image.Resampling.LANCZOS)
@@ -94,4 +80,4 @@ icon_192.save("/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/i
 icon_64 = create_modern_logo(64)
 icon_64.save("/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/favicon.png")
 
-print("Generated modern high-contrast logos successfully!")
+print("Re-generated larger, bold high-impact logo icons successfully!")
