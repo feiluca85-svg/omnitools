@@ -392,6 +392,20 @@ html_code = f"""<!DOCTYPE html>
     <footer class="bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
         <div class="max-w-4xl mx-auto px-4 space-y-6">
             
+            <!-- Suggestion Prompt Strip (Zero Distraction / High Utility) -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore o un miglioramento?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
             <!-- OmniTools Network Ecosystem Bar -->
             <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
@@ -468,6 +482,58 @@ html_code = f"""<!DOCTYPE html>
                 <li>Conferma premendo <strong>"Aggiungi"</strong> in alto a destra.</li>
             </ol>
             <button onclick="closeIosModal()" class="w-full py-2 bg-blue-600 text-white rounded-xl text-xs font-bold">Ho capito</button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="hidden no-print fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-slate-800 shadow-2xl border border-slate-100 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-lg font-bold">
+                        💡
+                    </div>
+                    <div>
+                        <h4 id="modalSuggestTitle" class="font-extrabold text-base text-slate-900 leading-tight">Suggerisci uno Strumento</h4>
+                        <span class="text-[10px] text-slate-700 font-medium">OmniTools User Feedback</span>
+                    </div>
+                </div>
+                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 rounded-lg transition">✕</button>
+            </div>
+            
+            <p id="modalSuggestDesc" class="text-xs text-slate-700 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-700">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
         </div>
     </div>
 
@@ -559,6 +625,19 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('installBannerBtn').textContent = t.install_btn;
             document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
             document.getElementById('faqTitle').firstElementChild.textContent = t.faq_title;
+
+            // Suggestion text bindings
+            if (document.getElementById('suggestBannerText')) {{
+                document.getElementById('suggestBannerText').textContent = t.suggest_banner;
+                document.getElementById('suggestBtnText').textContent = t.suggest_btn;
+                document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
+                document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
+                document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
+                document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
+                document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
+                document.getElementById('modalCloseBtn').textContent = t.suggest_close;
+                document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
+            }}
 
             renderFaqs();
         }}
@@ -867,6 +946,42 @@ html_code = f"""<!DOCTYPE html>
 
         function closeIosModal() {{
             document.getElementById('iosModal').classList.add('hidden');
+        }}
+
+        // Suggestion Popup Logic
+        function openSuggestModal() {{
+            document.getElementById('suggestModal').classList.remove('hidden');
+            document.getElementById('suggestFormContainer').classList.remove('hidden');
+            document.getElementById('suggestSuccessContainer').classList.add('hidden');
+            document.getElementById('suggestMessage').value = '';
+        }}
+
+        function closeSuggestModal() {{
+            document.getElementById('suggestModal').classList.add('hidden');
+        }}
+
+        async function submitSuggestion() {{
+            const msg = document.getElementById('suggestMessage').value.trim();
+            if (!msg) return;
+            const btn = document.getElementById('modalSubmitBtn');
+            const t = TRANSLATIONS[currentLang];
+            btn.textContent = t.suggest_sending || "Invio...";
+            btn.disabled = true;
+
+            try {{
+                await fetch('/api/suggest', {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify({{ message: msg, lang: currentLang }})
+                }});
+            }} catch (e) {{
+                console.log("Feedback logged", e);
+            }}
+
+            btn.textContent = t.suggest_send || "Invia";
+            btn.disabled = false;
+            document.getElementById('suggestFormContainer').classList.add('hidden');
+            document.getElementById('suggestSuccessContainer').classList.remove('hidden');
         }}
 
         if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {{

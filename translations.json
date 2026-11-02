@@ -53,7 +53,17 @@
     "install_banner_sub": "I tuoi calcolatori di cantiere pronti anche offline",
     "install_btn": "Installa",
     "legal_disclaimer": "<strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (DM 236/89, D.M. 01/02/1986) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi del D.P.R. 380/2001 e successive modifiche. Lo sviluppatore e il gestore del sito declinano espressamente ogni responsabilità per errori, inesattezze, o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato (geometra, architetto o ingegnere).",
-    "faq_title": "Domande Frequenti sulle Rampe (FAQ)"
+    "faq_title": "Domande Frequenti sulle Rampe (FAQ)",
+    "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore o un miglioramento?",
+    "suggest_btn": "Suggerisci",
+    "suggest_modal_title": "Suggerisci uno Strumento",
+    "suggest_modal_desc": "Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?",
+    "suggest_placeholder": "Scrivi qui la tua idea (es. calcolo armatura solette, corrimano scale, pendenza scoli...)",
+    "suggest_privacy_note": "🔒 Invio 100% anonimo. Non serve inserire dati personali.",
+    "suggest_send": "Invia Suggerimento",
+    "suggest_sending": "Invio...",
+    "suggest_thanks": "🎉 Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.",
+    "suggest_close": "Chiudi"
   },
   "en": {
     "title": "EasyRamp",
@@ -109,7 +119,17 @@
     "install_banner_sub": "Field & engineering calculators ready offline",
     "install_btn": "Install",
     "legal_disclaimer": "<strong>Legal Disclaimer & Limitation of Liability:</strong> Calculations, diagrams and regulatory standards (ADA, Building Regulations Part M) provided by this online tool are strictly for educational, informational and preliminary estimation purposes. They do not constitute formal architectural engineering drawings or certified technical advice. The website developer and operator expressly disclaim any liability for errors or damages resulting from construction without certified licensed professionals.",
-    "faq_title": "Frequently Asked Questions (FAQ)"
+    "faq_title": "Frequently Asked Questions (FAQ)",
+    "suggest_banner": "💡 Have an idea for a new calculator or an improvement?",
+    "suggest_btn": "Suggest Tool",
+    "suggest_modal_title": "Suggest a Calculator",
+    "suggest_modal_desc": "What calculation tool, formula, or feature would you like to see next on OmniTools?",
+    "suggest_placeholder": "Type your idea here (e.g. rebar calculator, handrail slope, drainage ditches...)",
+    "suggest_privacy_note": "🔒 100% anonymous submission. No personal data needed.",
+    "suggest_send": "Submit Suggestion",
+    "suggest_sending": "Submitting...",
+    "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will guide upcoming OmniTools modules.",
+    "suggest_close": "Close"
   },
   "es": {
     "title": "RampaFacil",
@@ -165,7 +185,17 @@
     "install_banner_sub": "Tus herramientas de obra listas sin conexión",
     "install_btn": "Instalar",
     "legal_disclaimer": "<strong>Aviso Legal y Limitación de Responsabilidad:</strong> Los cálculos y normativas (CTE DB-SUA) facilitados por esta herramienta tienen carácter estrictamente orientativo y docente. No constituyen proyecto técnico ni sustituyen la labor de un arquitecto o aparejador colegiado.",
-    "faq_title": "Preguntas Frecuentes (FAQ)"
+    "faq_title": "Preguntas Frecuentes (FAQ)",
+    "suggest_banner": "💡 ¿Tienes una idea para un nuevo cálculo o una mejora?",
+    "suggest_btn": "Sugerir herramienta",
+    "suggest_modal_title": "Sugerir una Herramienta",
+    "suggest_modal_desc": "¿Qué calculadora o función técnica te gustaría ver próximamente en OmniTools?",
+    "suggest_placeholder": "Escribe tu idea aquí (ej. cálculo de armaduras, pasamanos, pendientes de drenaje...)",
+    "suggest_privacy_note": "🔒 Envío 100% anónimo. Sin registro ni datos personales.",
+    "suggest_send": "Enviar Sugerencia",
+    "suggest_sending": "Enviando...",
+    "suggest_thanks": "🎉 ¡Muchas gracias! Tu sugerencia guiarà el desarrollo de las próximas herramientas.",
+    "suggest_close": "Cerrar"
   },
   "fr": {
     "title": "RampeFacile",
@@ -221,7 +251,17 @@
     "install_banner_sub": "Vos outils de chantier utilisables hors-ligne",
     "install_btn": "Installer",
     "legal_disclaimer": "<strong>Clause de Non-Responsabilité Légale :</strong> Les calculs et normes (accessibilité PMR) sont fournis à titre strictement indicatif et pédagogique. Ils ne remplacent en aucun cas un plan ou diagnostic établi par un maître d'œuvre ou architecte habilité.",
-    "faq_title": "Foire Aux Questions (FAQ)"
+    "faq_title": "Foire Aux Questions (FAQ)",
+    "suggest_banner": "💡 Une idée de nouveau calculateur ou d'amélioration ?",
+    "suggest_btn": "Suggérer un outil",
+    "suggest_modal_title": "Suggérer un Outil",
+    "suggest_modal_desc": "Quel calculateur ou fonction technique aimeriez-vous voir prochainement sur OmniTools ?",
+    "suggest_placeholder": "Décrivez votre idée (ex. calcul d'armatures, garde-corps, caniveaux...)",
+    "suggest_privacy_note": "🔒 Envoi 100% anonyme. Aucune inscription requise.",
+    "suggest_send": "Envoyer la suggestion",
+    "suggest_sending": "Envoi en cours...",
+    "suggest_thanks": "🎉 Merci beaucoup ! Votre suggestion orientera les prochains modules d'OmniTools.",
+    "suggest_close": "Fermer"
   },
   "de": {
     "title": "RampeProfi",
@@ -277,7 +317,17 @@
     "install_banner_sub": "Praktische Baurechner jederzeit auch offline",
     "install_btn": "Installieren",
     "legal_disclaimer": "<strong>Haftungsausschluss:</strong> Die Berechnungen und Normenhinweise (DIN 18040) dienen ausschließlich der unverbindlichen Orientierung und stellen keine statische oder baurechtliche Fachplanung dar.",
-    "faq_title": "Häufig gestellte Fragen (FAQ)"
+    "faq_title": "Häufig gestellte Fragen (FAQ)",
+    "suggest_banner": "💡 Haben Sie eine Idee für einen neuen Rechner oder eine Verbesserung?",
+    "suggest_btn": "Vorschlag senden",
+    "suggest_modal_title": "Neues Tool vorschlagen",
+    "suggest_modal_desc": "Welchen Baurechner oder welche Funktion wünschen Sie sich als Nächstes auf OmniTools?",
+    "suggest_placeholder": "Beschreiben Sie Ihre Idee (z. B. Bewehrungsrechner, Treppengeländer, Drainagegefälle...)",
+    "suggest_privacy_note": "🔒 100% anonyme Übermittlung. Keine Registrierung erforderlich.",
+    "suggest_send": "Vorschlag einreichen",
+    "suggest_sending": "Wird gesendet...",
+    "suggest_thanks": "🎉 Vielen Dank! Ihr Vorschlag fließt direkt in die Weiterentwicklung von OmniTools ein.",
+    "suggest_close": "Schließen"
   },
   "pt": {
     "title": "RampaFacil",
@@ -333,6 +383,16 @@
     "install_banner_sub": "Ferramentas de obra disponíveis sem internet",
     "install_btn": "Instalar",
     "legal_disclaimer": "<strong>Aviso Legal e Limitação de Responsabilidade:</strong> Os cálculos e referências normativas (NBR 9050 / DL 163) têm caráter puramente informativo e não substituem o projeto assinado por engenheiro ou arquiteto habilitado.",
-    "faq_title": "Perguntas Frequentes (FAQ)"
+    "faq_title": "Perguntas Frequentes (FAQ)",
+    "suggest_banner": "💡 Tem alguma ideia de nova calculadora ou sugestão de melhoria?",
+    "suggest_btn": "Sugerir ferramenta",
+    "suggest_modal_title": "Sugerir uma Ferramenta",
+    "suggest_modal_desc": "Qual calculadora ou função técnica gostaria de ver no OmniTools?",
+    "suggest_placeholder": "Escreva a sua ideia (ex. cálculo de armaduras, corrimões, drenagem...)",
+    "suggest_privacy_note": "🔒 Envio 100% anónimo. Sem necessidade de registo.",
+    "suggest_send": "Enviar Sugestão",
+    "suggest_sending": "A enviar...",
+    "suggest_thanks": "🎉 Muito obrigado! A sua sugestão guiará os próximos módulos do OmniTools.",
+    "suggest_close": "Fechar"
   }
 }
