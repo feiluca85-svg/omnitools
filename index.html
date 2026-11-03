@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools - Calcolo Pendenza Rampa | Normativa DM 236/89 & ADA Compliance</title>
-    <meta name="description" content="OmniTools: Suite professionale di calcolo. Calcolatore di pendenza rampa con verifica conformità disabili e garage in 6 lingue.">
+    <title>OmniTools Lab — Suite Professionale di Calcolatori & Utility di Precisione</title>
+    <meta name="description" content="OmniTools Lab: La suite gratuita e senza registrazione di calcolatori tecnici per cantiere, architettura, grafica e prestampa. 100% offline e conforme alle normative.">
     
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
-
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="OmniTools - Calcolo Pendenza Rampa & Dislivello">
-    <meta property="og:description" content="Calcolatore professionale di pendenza rampa e dislivello con verifica conformità DM 236/89 e ADA in 6 lingue.">
+    <meta property="og:title" content="OmniTools Lab — Suite Professionale di Calcolatori & Utility">
+    <meta property="og:description" content="Precisione millimetrica per cantiere, grafica e ingegneria. Strumenti gratuiti, senza registrazione, funzionanti offline.">
     <meta property="og:url" content="https://www.omnitoolslab.com/">
-    <meta property="og:site_name" content="OmniTools">
+    <meta property="og:site_name" content="OmniTools Lab">
     <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Schema.org JSON-LD Structured Data for Googlebot -->
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
+
+    <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "OmniTools - Calcolo Pendenza Rampa",
+      "name": "OmniTools Lab",
       "url": "https://www.omnitoolslab.com/",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
-      "description": "Calcolatore professionale di pendenza rampa con verifica conformità disabili (DM 236/89, ADA, CTE, PMR, DIN) e veicoli in 6 lingue.",
+      "description": "Suite professionale di strumenti di calcolo tecnico e utility di precisione per edilizia, cantiere, grafica e prestampa.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -52,133 +52,59 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
                     }
                 }
             }
         }
     </script>
     <style>
-        * { -webkit-tap-highlight-color: transparent; }
-        input[type="number"] { font-size: 17px !important; }
-        input[type=range] {
-            -webkit-appearance: none;
-            height: 7px;
-            background: #e2e8f0;
-            border-radius: 9999px;
-            outline: none;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            background: #2563eb;
-            cursor: pointer;
-            box-shadow: 0 3px 8px rgba(37,99,235,0.45);
-            border: 2px solid #ffffff;
-            transition: transform 0.1s ease;
-        }
-        input[type=range]::-webkit-slider-thumb:active { transform: scale(1.15); }
-        
-        @page {
-            size: A4 portrait;
-            margin: 10mm 12mm;
-        }
-        @media print {
-            header, footer, .no-print, button, input[type=range], #installBanner, #iosModal, #suggestModal, #suggestBanner, #faqSection, #heroContainer, #modeSelectorBar, #controlsColumn { 
-                display: none !important; 
-            }
-            body { 
-                background: white !important; 
-                color: #0f172a !important; 
-                padding: 0 !important; 
-                margin: 0 !important;
-                font-size: 11pt !important; 
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            main { 
-                max-width: 100% !important; 
-                margin: 0 !important; 
-                padding: 0 !important; 
-            }
-            #resultsColumn {
-                width: 100% !important;
-                max-width: 100% !important;
-                display: block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .print-border { 
-                border: 1px solid #94a3b8 !important; 
-                box-shadow: none !important;
-            }
-            #rampSvg {
-                max-height: 170px !important;
-            }
+        .hero-pattern {
+            background-color: #0b1329;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.28) 0%, transparent 60%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
-    <!-- Top Navigation Header with safe area padding -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-1 flex items-center justify-between gap-3">
             
-            <!-- OmniTools Master Brand + Tool Indicator -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+            <!-- Brand Identity -->
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                         <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
                         <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
                     </svg>
-                </a>
-
-                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
-                        <span id="brandTitle" class="font-bold text-xs text-slate-600 hidden sm:inline-block">RampaFacile</span>
-                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-blue-50 text-blue-700 rounded-md border border-blue-200 shrink-0 hidden sm:inline-block">DM 236/89</span>
-                    </div>
-                    <!-- Row 2 on mobile: Tool Name + Standard Badge -->
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-600">RampaFacile</span>
-                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-blue-50 text-blue-700 rounded border border-blue-200">DM 236/89</span>
-                    </div>
                 </div>
-            </div>
-            
-            <!-- Quick Actions: Language Selector + App + Print (Clean icon buttons on mobile) -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Suite Quick Switcher (Scale, Dorso, DPI) -->
-                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale & Gradini">
-                    <span>🪜</span>
-                    <span class="hidden md:inline">Scale</span>
-                </a>
-                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Dorso & Copertina Libro">
-                    <span>🎨</span>
-                    <span class="hidden md:inline">Dorso</span>
-                </a>
-                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Calcolo Risoluzione & DPI">
-                    <span>🖼️</span>
-                    <span class="hidden md:inline">DPI</span>
-                </a>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <span class="font-jakarta font-black text-base sm:text-lg text-white tracking-tight leading-none">Omni<span class="text-blue-500">Tools</span></span>
+                        <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded-full border border-blue-500/30">Lab</span>
+                    </div>
+                    <span id="taglineText" class="text-[10px] text-slate-400 font-medium hidden sm:inline leading-tight mt-0.5">Suite di Calcolo Tecnico ad Alta Precisione</span>
+                </div>
+            </a>
 
-                <!-- Language Selector Dropdown -->
+            <!-- Right Controls: Language Selector + App Install -->
+            <div class="flex items-center gap-2 shrink-0">
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-700 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -188,987 +114,546 @@
                     </select>
                 </div>
 
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 active:scale-95 rounded-xl shadow-xs transition">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
-                </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
-                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                    <span id="headerInstallText" class="hidden sm:inline">Installa App</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <!-- Main Content Area -->
+    <main class="flex-1 space-y-8 sm:space-y-12">
         
-        <!-- Hero Header -->
-        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
-            <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2">
-                Calcolo Pendenza Rampa & Dislivello
-            </h1>
-            <p id="heroDesc" class="text-slate-600 text-xs sm:text-base leading-relaxed px-2">
-                Calcola istantaneamente pendenza percentuale, gradi e spazio necessario a terra con verifica conformità normativa barriere architettoniche.
-            </p>
-        </div>
+        <!-- Hero Section with Central Search -->
+        <section class="hero-pattern border-b border-slate-800/80 pt-10 sm:pt-16 pb-12 sm:pb-16 px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center space-y-4 sm:space-y-5">
+                
+                <!-- Pill Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold">
+                    <span id="heroBadge">⚡ Gratuito • Zero Registrazione • Funziona Offline</span>
+                </div>
 
-        <!-- Mode Selector -->
-        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
-            <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center">
-                📏 Calcola Pendenza
-            </button>
-            <button id="modeReverseBtn" onclick="switchMode('reverse')" class="flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center">
-                📐 Calcola Spazio
-            </button>
-        </div>
+                <!-- Main Punchy Title -->
+                <h1 id="heroTitle" class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                    Tutti gli strumenti di calcolo tecnico, a portata di click.
+                </h1>
 
-        <!-- Calculator Layout -->
-        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
+                <!-- Subtitle -->
+                <p id="heroSubtitle" class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Precisione millimetrica per cantiere, grafica, editoria e ingegneria. Calcola, verifica le normative e genera schede tecniche di livello professionale.
+                </p>
+
+                <!-- Instant Search Bar -->
+                <div class="pt-2 sm:pt-4 max-w-xl mx-auto">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca uno strumento (es. pendenza, rampa, scala, gradini, dorso libro, dpi, pixel)..." class="w-full bg-slate-800/90 hover:bg-slate-800 focus:bg-slate-800 border border-slate-700 focus:border-blue-500 rounded-2xl pl-12 pr-4 py-3 sm:py-3.5 text-sm sm:text-base text-white placeholder-slate-400 outline-none shadow-xl transition">
+                        <button type="button" id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white">
+                            ✕
+                        </button>
+                    </div>
+
+                    <!-- Category Filter Pills -->
+                    <div class="flex items-center justify-center gap-1.5 sm:gap-2 pt-3 flex-wrap text-xs font-bold">
+                        <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="px-3 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs transition">
+                            Tutti i Tool
+                        </button>
+                        <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
+                            🏗️ OmniBuilding
+                        </button>
+                        <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
+                            🎨 OmniGraph
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tools Showcase Grid -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
             
-            <!-- RESULTS & VISUAL COLUMN (IN CIMA SU MOBILE) -->
-            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
-                
-                <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
-                <div id="printHeader" class="hidden print:block mb-3 pb-2.5 border-b-2 border-slate-900">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-sm">
-                                O/T
-                            </div>
-                            <div>
-                                <h1 class="text-base font-black tracking-tight text-slate-900">OMNITOOLS — RELAZIONE TECNICA DI CALCOLO</h1>
-                                <p class="text-[10px] text-slate-600 font-medium">Verifica di Conformità Pendenza Rampa & Barriere Architettoniche</p>
-                            </div>
+            <!-- SECTION 1: OmniBuilding -->
+            <div id="sectionBuilding" class="space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm font-bold border border-blue-500/30">
+                            🏗️
                         </div>
-                        <div class="text-right text-[10px] text-slate-600 leading-tight">
-                            <div id="printReportDate" class="font-bold text-slate-900">Data: 03/11/2026</div>
-                            <div>DM 236/89 • ADA • CTE • DIN</div>
-                            <div class="text-[9px] text-slate-500">omnitoolslab.com</div>
+                        <div>
+                            <h2 id="divBuildingTitle" class="text-base sm:text-lg font-black text-white tracking-tight">OmniBuilding — Edilizia & Progettazione</h2>
+                            <p id="divBuildingDesc" class="text-xs text-slate-400">Soluzioni matematiche e normative per cantieri, architetti, ingegneri e artigiani.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
-                <div id="printInputsSummary" class="hidden print:block mb-2 p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div>
-                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Dislivello (h):</span>
-                            <span id="printHeightVal" class="text-xs font-extrabold text-slate-900">30 cm</span>
-                        </div>
-                        <div>
-                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Spazio a terra (L):</span>
-                            <span id="printLengthVal" class="text-xs font-extrabold text-slate-900">500 cm</span>
-                        </div>
-                        <div>
-                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Tipo di Verifica:</span>
-                            <span id="printModeVal" class="text-xs font-extrabold text-slate-900">Verifica Pendenza da Quota</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Compliance Badge (Semaforo Normativa) -->
-                <div id="complianceCard" class="p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border">
-                    <div class="flex items-start gap-2.5 sm:gap-3">
-                        <div id="statusIcon" class="w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold">
-                            ✓
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center justify-between gap-1">
-                                <h3 id="statusTitle" class="font-bold text-sm sm:text-base tracking-tight">Pendenza a Norma</h3>
-                                <span id="statusTag" class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Accessibile</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Tool Card 1: RampaFacile -->
+                    <a href="/rampe" class="tool-card group p-5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/50 shadow-lg transition-all duration-200 flex flex-col justify-between space-y-4 hover:-translate-y-0.5" data-tags="rampa rampe pendenza pendenze dislivello disabili dm 236 garage handicap accessibilita">
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-xl font-bold border border-blue-500/30 group-hover:bg-blue-600 group-hover:text-white transition">
+                                        📐
+                                    </div>
+                                    <div>
+                                        <h3 id="toolRampeTitle" class="text-base font-black text-white group-hover:text-blue-400 transition">RampaFacile</h3>
+                                        <span id="toolRampeBadge" class="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md border border-blue-500/20">DM 236/89 & ADA</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">Attivo</span>
                             </div>
-                            <p id="statusDesc" class="text-[11px] sm:text-xs mt-0.5 leading-snug">
-                                Conforme per disabili e carrozzine secondo le linee guida.
+                            <p id="toolRampeDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Calcolo pendenza percentuale, gradi e ingombro a terra di rampe con verifica conformità per disabili e veicoli.
                             </p>
                         </div>
-                    </div>
-                </div>
 
-                <!-- 3 Numerical Output Cards -->
-                <div class="grid grid-cols-3 gap-2 sm:gap-3">
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colSlopeLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Pendenza</span>
-                        <div id="slopePercent" class="text-xl sm:text-3xl font-extrabold text-blue-600 tracking-tight">6.0%</div>
-                        <span id="slopeRatio" class="text-[10px] sm:text-xs font-semibold text-slate-700 block mt-0.5">1 : 16.7</span>
-                    </div>
-
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colAngleLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Angolo</span>
-                        <div id="slopeDegrees" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">3.4°</div>
-                        <span id="colAngleSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-700 block mt-0.5">Inclinazione</span>
-                    </div>
-
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="lengthLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Lunghezza</span>
-                        <div id="rampLength" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">500.9 cm</div>
-                        <span id="lengthSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-700 block mt-0.5">Piano inclinato</span>
-                    </div>
-                </div>
-
-                <!-- DYNAMIC SVG DIAGRAM -->
-                <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 shadow-xs print-border">
-                    <div class="flex items-center justify-between mb-2">
-                        <span id="schemaTitle" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Schema Visivo Dinamico</span>
-                        <span id="schemaScaleText" class="text-[10px] text-blue-600 font-bold flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In scala
-                        </span>
-                    </div>
-
-                    <div class="bg-slate-50/80 rounded-xl p-2 sm:p-4 border border-slate-100 flex items-center justify-center overflow-hidden">
-                        <svg id="rampSvg" class="w-full h-36 sm:h-48 transition-all duration-200" viewBox="0 0 520 220">
-                            <defs>
-                                <linearGradient id="rampGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
-                                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.65" />
-                                </linearGradient>
-                                <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feFlood flood-color="#ffffff" result="glowColor"/>
-                                    <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="dilated"/>
-                                    <feComposite in="glowColor" in2="dilated" operator="in" result="glow"/>
-                                    <feMerge>
-                                        <feMergeNode in="glow"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-                            
-                            <!-- Ground Base Line -->
-                            <line x1="30" y1="165" x2="490" y2="165" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
-                            
-                            <!-- The Ramp Triangle -->
-                            <polygon id="rampPolygon" points="40,165 430,165 430,65" fill="url(#rampGrad)" stroke="#2563eb" stroke-width="3.5" stroke-linejoin="round" />
-                            
-                            <!-- Height Dimension Line & Bold Label -->
-                            <line id="heightDim" x1="445" y1="165" x2="445" y2="65" stroke="#dc2626" stroke-width="2.5" />
-                            <text id="heightText" x="452" y="115" fill="#dc2626" font-size="14" font-weight="800" font-family="system-ui, sans-serif">h: 30 cm</text>
-                            
-                            <!-- Length Dimension Line & Bold Label -->
-                            <line id="lengthDim" x1="40" y1="185" x2="430" y2="185" stroke="#334155" stroke-width="2.5" />
-                            <text id="lengthText" x="200" y="202" fill="#334155" font-size="14" font-weight="800" font-family="system-ui, sans-serif">L: 500 cm</text>
-                            
-                            <!-- Hypotenuse / Ramp Length Tag -->
-                            <text id="hypotenuseText" x="190" y="105" fill="#1e3a8a" font-size="15" font-weight="900" filter="url(#textGlow)" font-family="system-ui, sans-serif" transform="rotate(-14 235 115)">Rampa: 500.9 cm (6%)</text>
-                        </svg>
-                    </div>
-
-                    <!-- Rule tip banner -->
-                    <div class="mt-2 flex items-center text-[11px] sm:text-xs text-slate-700 bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100">
-                        <span id="ruleTip">💡 <strong>Regola del cantiere:</strong> ogni 10 cm di gradino richiedono almeno 125 cm a terra per non superare l'8%.</span>
-                    </div>
-                </div>
-
-                <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
-                <div id="printFooterBox" class="hidden print:block mt-4 pt-3 border-t border-slate-300 text-xs">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Note di Cantiere / Prescrizioni:</span>
-                            <div class="border border-dashed border-slate-400 h-16 rounded-lg p-2 text-[9px] text-slate-600 leading-tight">
-                                • Verificare la presenza di pianerottolo orizzontale (min. 150×150 cm) ogni 10m.<br>
-                                • Prevedere cordolo di protezione laterale h ≥ 10 cm e superficie antisdrucciolo.
-                            </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-700/60 text-xs">
+                            <span class="text-slate-400 font-mono text-[11px]">📏 Pendenza • Gradi • Spazio a terra</span>
+                            <span class="font-bold text-blue-400 group-hover:translate-x-1 transition inline-flex items-center gap-1">
+                                <span>Apri</span> <span>→</span>
+                            </span>
                         </div>
-                        <div>
-                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Timbro e Firma del Progettista / Tecnico:</span>
-                            <div class="border border-slate-300 h-16 rounded-lg flex items-end justify-center pb-1 text-[9px] text-slate-400">
-                                Data e Firma Professionale
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
-                        Documento tecnico generato da <strong>OmniTools</strong> (https://www.omnitoolslab.com) — Valori a scopo matematico ed orientativo.
-                    </div>
-                </div>
+                    </a>
 
+                    <!-- Tool Card 2: ScalaFacile -->
+                    <a href="/scale" class="tool-card group p-5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-indigo-500/50 shadow-lg transition-all duration-200 flex flex-col justify-between space-y-4 hover:-translate-y-0.5" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065">
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-xl font-bold border border-indigo-500/30 group-hover:bg-indigo-600 group-hover:text-white transition">
+                                        🪜
+                                    </div>
+                                    <div>
+                                        <h3 id="toolScaleTitle" class="text-base font-black text-white group-hover:text-indigo-400 transition">ScalaFacile</h3>
+                                        <span id="toolScaleBadge" class="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-md border border-indigo-500/20">Legge di Blondel</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">Attivo</span>
+                            </div>
+                            <p id="toolScaleDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Dimensionamento ergonomico del numero di gradini, altezza alzata e pedata secondo la formula di Blondel 2a + p.
+                            </p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-700/60 text-xs">
+                            <span class="text-slate-400 font-mono text-[11px]">🪜 Gradini • Alzata • Pedata (2a + p)</span>
+                            <span class="font-bold text-indigo-400 group-hover:translate-x-1 transition inline-flex items-center gap-1">
+                                <span>Apri</span> <span>→</span>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
             </div>
 
-            <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
-            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4">
-                
-                <!-- Unit Switcher (Metric + Imperial for USA/UK) -->
-                <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
-                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
-                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
-                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
-                        <button type="button" id="unitM" onclick="setUnit('m')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
-                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
-                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
+            <!-- SECTION 2: OmniGraph -->
+            <div id="sectionGraph" class="space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-sm font-bold border border-purple-500/30">
+                            🎨
+                        </div>
+                        <div>
+                            <h2 id="divGraphTitle" class="text-base sm:text-lg font-black text-white tracking-tight">OmniGraph — Grafica & Tipografia</h2>
+                            <p id="divGraphDesc" class="text-xs text-slate-400">Utility di prestampa e conversione geometrico-ottica per grafici, editori e tipografi.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Input: Dislivello (Altezza) -->
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="heightInput" id="heightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
-                            Dislivello da superare (h)
-                        </label>
-                        <span id="heightUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
-                        <input type="number" id="heightInput" value="30" min="1" max="1000" step="any"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-                    </div>
-                    <div class="pt-1.5 px-0.5">
-                        <input type="range" id="heightRange" min="5" max="200" value="30" class="w-full">
-                    </div>
-                </div>
-
-                <!-- FIELD A: Spazio a terra (Attivo in modalità Diretta) -->
-                <div id="lengthContainer">
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="lengthInput" id="lengthLabelInput" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
-                            Spazio a terra disponibile (L)
-                        </label>
-                        <span id="lengthUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
-                        <input type="number" id="lengthInput" value="500" min="1" max="5000" step="any"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-                    </div>
-                    <div class="pt-1.5 px-0.5">
-                        <input type="range" id="lengthRange" min="50" max="1500" value="500" class="w-full">
-                    </div>
-                </div>
-
-                <!-- FIELD B: Pendenza desiderata (Attivo in modalità Inversa) -->
-                <div id="targetSlopeContainer" class="hidden">
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="targetSlopeInput" id="targetSlopeLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>
-                            Pendenza richiesta (%)
-                        </label>
-                        <span class="text-[10px] font-bold px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded">%</span>
-                    </div>
-                    <div class="relative">
-                        <input type="number" id="targetSlopeInput" value="8" min="1" max="30" step="0.5"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     
-                    <div class="grid grid-cols-3 gap-1.5 mt-2">
-                        <button type="button" id="targetBtn5" onclick="setTargetSlope(5)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">5% Ideale</button>
-                        <button type="button" id="targetBtn8" onclick="setTargetSlope(8)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">8% Limite DM</button>
-                        <button type="button" id="targetBtn20" onclick="setTargetSlope(20)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">20% Garage</button>
-                    </div>
-                </div>
+                    <!-- Tool Card 3: DorsoFacile -->
+                    <a href="/dorso" class="tool-card group p-5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-purple-500/50 shadow-lg transition-all duration-200 flex flex-col justify-between space-y-4 hover:-translate-y-0.5" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella">
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-xl font-bold border border-purple-500/30 group-hover:bg-purple-600 group-hover:text-white transition">
+                                        🎨
+                                    </div>
+                                    <div>
+                                        <h3 id="toolDorsoTitle" class="text-base font-black text-white group-hover:text-purple-400 transition">DorsoFacile</h3>
+                                        <span id="toolDorsoBadge" class="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md border border-purple-500/20">Copertina Stesa & Refili</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">Attivo</span>
+                            </div>
+                            <p id="toolDorsoDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Spessore esatto del dorso libro in base a pagine, grammatura e mano della carta con quote InDesign e KDP.
+                            </p>
+                        </div>
 
-                <!-- Quick Presets -->
-                <div class="pt-2 border-t border-slate-100 no-print">
-                    <span id="presetsTitleText" class="text-[10px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Preset rapidi:</span>
-                    <div class="grid grid-cols-2 gap-1.5 text-xs">
-                        <button onclick="applyPreset(15, 250)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset1Title" class="font-bold text-slate-800 block text-[11px]">1 Gradino (15 cm)</span>
-                            <span id="preset1Sub" class="text-[10px] text-slate-700">Disabili max 6%</span>
-                        </button>
-                        <button onclick="applyPreset(45, 600)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset2Title" class="font-bold text-slate-800 block text-[11px]">3 Gradini (45 cm)</span>
-                            <span id="preset2Sub" class="text-[10px] text-slate-700">Ingresso a norma</span>
-                        </button>
-                        <button onclick="applyPreset(120, 1500)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset3Title" class="font-bold text-slate-800 block text-[11px]">Mezzo piano (120 cm)</span>
-                            <span id="preset3Sub" class="text-[10px] text-slate-700">Con sosta</span>
-                        </button>
-                        <button onclick="applyPreset(250, 1500)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset4Title" class="font-bold text-slate-800 block text-[11px]">Garage Auto (250 cm)</span>
-                            <span id="preset4Sub" class="text-[10px] text-slate-700">Carrabile 20%</span>
-                        </button>
-                    </div>
-                </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-700/60 text-xs">
+                            <span class="text-slate-400 font-mono text-[11px]">📖 Pagine • Mano carta • Refilo 3 mm</span>
+                            <span class="font-bold text-purple-400 group-hover:translate-x-1 transition inline-flex items-center gap-1">
+                                <span>Apri</span> <span>→</span>
+                            </span>
+                        </div>
+                    </a>
 
+                    <!-- Tool Card 4: RisoluzioneFacile -->
+                    <a href="/dpi" class="tool-card group p-5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-emerald-500/50 shadow-lg transition-all duration-200 flex flex-col justify-between space-y-4 hover:-translate-y-0.5" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop">
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center text-xl font-bold border border-emerald-500/30 group-hover:bg-emerald-600 group-hover:text-white transition">
+                                        🖼️
+                                    </div>
+                                    <div>
+                                        <h3 id="toolDpiTitle" class="text-base font-black text-white group-hover:text-emerald-400 transition">RisoluzioneFacile</h3>
+                                        <span id="toolDpiBadge" class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">Pixel, cm & Acuità Ottica</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">Attivo</span>
+                            </div>
+                            <p id="toolDpiDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                Conversione istantanea Pixel ↔ Centimetri ↔ DPI per offset, digitale e grande formato con distanza dell'occhio.
+                            </p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-700/60 text-xs">
+                            <span class="text-slate-400 font-mono text-[11px]">🖼️ Pixel ↔ cm ↔ DPI • Occhio Umano</span>
+                            <span class="font-bold text-emerald-400 group-hover:translate-x-1 transition inline-flex items-center gap-1">
+                                <span>Apri</span> <span>→</span>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
             </div>
 
-        </div>
+            <!-- SECTION 3: Roadmap (Coming Soon) -->
+            <div id="sectionRoadmap" class="pt-4 border-t border-slate-800 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span id="roadmapTitle" class="text-xs font-bold uppercase tracking-wider text-slate-400">Prossimi Moduli in Arrivo:</span>
+                </div>
 
-        <!-- FAQ Section -->
-        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
-            <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2">
-                <span>Domande Frequenti sulle Rampe</span>
-                <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
-            </h2>
-            
-            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                <!-- Localized FAQs -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800 opacity-80 flex flex-col justify-between space-y-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span id="toolScarichiTitle" class="font-bold text-slate-300">💧 ScaricoFacile</span>
+                                <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In sviluppo</span>
+                            </div>
+                            <p id="toolScarichiDesc" class="text-[11px] text-slate-400 leading-snug">Pendenza tubazioni fognarie e reflue con diametri commerciali.</p>
+                        </div>
+                        <span class="text-[10px] text-blue-400 font-medium">OmniBuilding</span>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800 opacity-80 flex flex-col justify-between space-y-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span id="toolCalceTitle" class="font-bold text-slate-300">🧱 CalceFacile</span>
+                                <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In sviluppo</span>
+                            </div>
+                            <p id="toolCalceDesc" class="text-[11px] text-slate-400 leading-snug">Dosaggio sacchi cemento, sabbia e acqua per mc di massetto.</p>
+                        </div>
+                        <span class="text-[10px] text-blue-400 font-medium">OmniBuilding</span>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800 opacity-80 flex flex-col justify-between space-y-2">
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <span id="toolResaTitle" class="font-bold text-slate-300">📄 ResaCarta</span>
+                                <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In sviluppo</span>
+                            </div>
+                            <p id="toolResaDesc" class="text-[11px] text-slate-400 leading-snug">Calcolo tagli ottimali su foglio macchina e scarto carta.</p>
+                        </div>
+                        <span class="text-[10px] text-purple-400 font-medium">OmniGraph</span>
+                    </div>
+                </div>
             </div>
+
+            <!-- Features / Value Pillars Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-slate-800 text-left">
+                <div class="p-4 rounded-2xl bg-slate-800/40 border border-slate-800/80 space-y-1.5">
+                    <span class="text-xl">⚡</span>
+                    <h3 id="feat1Title" class="text-xs sm:text-sm font-bold text-white">Nessuna Registrazione</h3>
+                    <p id="feat1Desc" class="text-[11px] text-slate-400 leading-snug">Accedi e calcoli all'istante, senza account o abbonamenti.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-800/40 border border-slate-800/80 space-y-1.5">
+                    <span class="text-xl">📐</span>
+                    <h3 id="feat2Title" class="text-xs sm:text-sm font-bold text-white">Precisione Normativa</h3>
+                    <p id="feat2Desc" class="text-[11px] text-slate-400 leading-snug">Formule rigorose allineate a standard tecnici italiani ed esteri.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-800/40 border border-slate-800/80 space-y-1.5">
+                    <span class="text-xl">📱</span>
+                    <h3 id="feat3Title" class="text-xs sm:text-sm font-bold text-white">Funziona Offline</h3>
+                    <p id="feat3Desc" class="text-[11px] text-slate-400 leading-snug">PWA installabile su smartphone per lavorare anche in cantiere senza rete.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-800/40 border border-slate-800/80 space-y-1.5">
+                    <span class="text-xl">📄</span>
+                    <h3 id="feat4Title" class="text-xs sm:text-sm font-bold text-white">Schede Tecniche A4</h3>
+                    <p id="feat4Desc" class="text-[11px] text-slate-400 leading-snug">Stampa o esporta relazioni tecniche pulite pronte da allegare al fascicolo.</p>
+                </div>
+            </div>
+
         </section>
 
     </main>
 
-    <!-- Footer with OmniTools Suite & Ironclad Legal Disclaimer -->
-    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto px-4 space-y-6">
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 pt-10 pb-12 mt-12 text-xs text-slate-500">
+        <div class="max-w-5xl mx-auto px-4 space-y-6">
             
-            <!-- Suggestion Prompt Strip (Zero Distraction / High Utility) -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+            <!-- Suggestion Bar -->
+            <div class="bg-gradient-to-r from-blue-900/30 to-indigo-900/30 border border-blue-500/20 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <div class="flex items-center gap-2.5">
                     <span class="text-xl">💡</span>
-                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
-                        Hai un'idea per un nuovo calcolatore o un miglioramento?
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-200">
+                        Hai un'idea per un nuovo calcolatore tecnico?
                     </span>
                 </div>
-                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
-                    <span id="suggestBtnText">Suggerisci</span>
-                    <span>→</span>
+                <button type="button" onclick="openSuggestModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition">
+                    <span id="suggestBtnText">Suggerisci Tool</span>
                 </button>
             </div>
 
-            <!-- OmniTools Network Ecosystem Bar -->
-            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-                    <div class="flex items-center gap-2">
-                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                            ⌘
-                        </div>
-                        <span class="font-black text-sm tracking-tight">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
-                    </div>
-                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Cantiere ad Alta Precisione</span>
-                </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 text-[11px]">
-                    <div class="p-2 rounded-xl bg-slate-800/80 border border-blue-500/30 flex items-center justify-between">
-                        <span class="font-bold text-white">📐 Rampe & Pendenze</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </div>
-                    <a href="/scale" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-indigo-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🪜 Scale & Blondel</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-purple-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎨 Dorso Libro</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-emerald-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🖼️ Risoluzione & DPI</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Disclaimer and Copyright -->
+            <!-- Disclaimer and Rights -->
             <div class="text-center space-y-2">
-                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
-                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
-                    <strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (DM 236/89, D.M. 01/02/1986, ADA, CTE, PMR, DIN 18040, NBR 9050) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi di legge (D.P.R. 380/2001 e standard esteri). Lo sviluppatore e il gestore della piattaforma declinano espressamente ogni responsabilità per errori, inesattezze o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato.
+                <p id="rightsText" class="font-bold text-slate-400">© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed max-w-3xl mx-auto">
+                    <strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab sono concepiti a scopo didattico, orientativo e di verifica preliminare. Non sostituiscono il calcolo esecutivo, l'asseverazione o il progetto firmato da un tecnico abilitato (ingegnere, architetto, geometra o perito).
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- Smart Floating PWA Install Banner -->
-    <div id="installBanner" class="no-print fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700/60 z-50 flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-0">
+    <!-- Floating PWA Install Banner -->
+    <div id="installBanner" class="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-800 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700 z-50 flex items-center justify-between gap-3 transition-all duration-300">
         <div class="flex items-center gap-2.5 min-w-0">
             <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md">
                 📱
             </div>
             <div class="min-w-0">
-                <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools come App</span>
-                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">Sempre pronta in cantiere anche offline</span>
+                <span class="text-xs font-bold block text-white truncate">Installa OmniTools Lab</span>
+                <span class="text-[10px] text-slate-400 block truncate">Sempre pronta anche senza connessione</span>
             </div>
         </div>
         <div class="flex items-center gap-1.5 shrink-0">
-            <button id="installBannerBtn" onclick="triggerInstall()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-sm">
+            <button onclick="triggerInstall()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition shadow-xs">
                 Installa
             </button>
-            <button onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg text-xs" title="Chiudi">
+            <button onclick="dismissInstallBanner()" class="p-1.5 text-slate-400 hover:text-white rounded-lg transition">
                 ✕
             </button>
         </div>
     </div>
 
-    <!-- iOS Install Helper Modal -->
-    <div id="iosModal" class="hidden no-print fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center p-3 backdrop-blur-xs">
-        <div class="bg-white rounded-2xl p-5 max-w-sm w-full text-slate-800 shadow-2xl space-y-3">
-            <div class="flex justify-between items-center">
-                <h4 class="font-extrabold text-base text-slate-900">Come installare su iPhone:</h4>
-                <button onclick="closeIosModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
-            </div>
-            <ol class="text-xs space-y-2 text-slate-600 list-decimal list-inside leading-relaxed">
-                <li>Tocca l'icona di <strong>Condivisione</strong> in basso su Safari (il quadrato con la freccia ⎋).</li>
-                <li>Scorri il menu e tocca <strong>"Aggiungi alla schermata Home"</strong> ➕.</li>
-                <li>Conferma premendo <strong>"Aggiungi"</strong> in alto a destra.</li>
-            </ol>
-            <button onclick="closeIosModal()" class="w-full py-2 bg-blue-600 text-white rounded-xl text-xs font-bold">Ho capito</button>
-        </div>
-    </div>
-
-    <!-- Suggestion Modal Pop-up -->
-    <div id="suggestModal" class="hidden no-print fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
-        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-slate-800 shadow-2xl border border-slate-100 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
-            <div class="flex justify-between items-start">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-lg font-bold">
-                        💡
-                    </div>
-                    <div>
-                        <h4 id="modalSuggestTitle" class="font-extrabold text-base text-slate-900 leading-tight">Suggerisci uno Strumento</h4>
-                        <span class="text-[10px] text-slate-700 font-medium">OmniTools User Feedback</span>
-                    </div>
+    <!-- Suggestion Modal -->
+    <div id="suggestModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-700 space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">💡</span>
+                    <h3 class="text-sm sm:text-base font-bold text-white">Suggerisci uno Strumento</h3>
                 </div>
-                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 rounded-lg transition">✕</button>
+                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">✕</button>
             </div>
-            
-            <p id="modalSuggestDesc" class="text-xs text-slate-700 leading-relaxed">
-                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            <p class="text-xs text-slate-300">
+                Quale calcolatore tecnico o funzione vorresti vedere su OmniTools Lab?
             </p>
-
-            <div id="suggestFormContainer" class="space-y-3">
-                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
-                
-                <div class="flex items-center justify-between text-[10px] text-slate-700">
-                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
-                </div>
-
-                <div class="flex gap-2 pt-1">
-                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
-                        Annulla
-                    </button>
-                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
-                        Invia
-                    </button>
-                </div>
-            </div>
-
-            <!-- Success State -->
-            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
-                    ✓
-                </div>
-                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
-                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
-                </p>
-                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
-                    Fatto
+            <textarea id="suggestIdeaInput" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:bg-slate-800 focus:border-blue-500 outline-none transition" placeholder="Es. Calcolo peso putrelle in acciaio, scarichi acque meteoriche, etc."></textarea>
+            <div class="flex items-center justify-between pt-1">
+                <span class="text-[10px] text-slate-500">🔒 Invio 100% anonimo</span>
+                <button type="button" onclick="sendSuggestion()" id="suggestSendBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition shadow-xs">
+                    Invia Suggerimento
                 </button>
             </div>
+            <div id="suggestFeedback" class="hidden text-xs font-bold text-emerald-400 bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/20 text-center">
+                🎉 Grazie mille! La tua idea guiderà i prossimi moduli di OmniTools Lab.
+            </div>
         </div>
     </div>
 
-    <!-- Script & Multi-Language Logic -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        const TRANSLATIONS = {"it": {"title": "RampaFacile", "badge": "DM 236/89", "hero_title": "Calcolo Pendenza Rampa & Dislivello", "hero_desc": "Calcola istantaneamente pendenza percentuale, gradi e spazio necessario a terra con verifica conformità normativa barriere architettoniche.", "mode_direct": "📏 Calcola Pendenza", "mode_reverse": "📐 Calcola Spazio", "unit_label": "Imposta Misure", "unit_cm": "Centimetri (cm)", "unit_m": "Metri (m)", "height_label": "Dislivello da superare (h)", "length_label": "Spazio a terra disponibile (L)", "target_slope_label": "Pendenza richiesta (%)", "target_5": "5% Ideale", "target_8": "8% Limite DM", "target_20": "20% Garage", "presets_title": "Preset rapidi:", "preset_1": "1 Gradino (15 cm)", "preset_1_sub": "Disabili max 6%", "preset_2": "3 Gradini (45 cm)", "preset_2_sub": "Ingresso a norma", "preset_3": "Mezzo piano (120 cm)", "preset_3_sub": "Con sosta", "preset_4": "Garage Auto (250 cm)", "preset_4_sub": "Carrabile 20%", "col_slope": "Pendenza", "col_angle": "Angolo", "col_angle_sub": "Inclinazione", "col_length": "Lunghezza", "col_length_sub": "Piano inclinato", "col_space_min": "Spazio Minimo", "col_space_min_sub": "Spazio a terra (L)", "schema_title": "Schema Visivo Dinamico", "schema_scale": "In scala", "rule_tip_direct": "💡 <strong>Regola del cantiere:</strong> ogni 10 cm di gradino richiedono almeno 125 cm a terra per non superare l'8%.", "rule_tip_reverse": "📐 <strong>Risultato:</strong> per superare <strong>{h} {u}</strong> con pendenza al <strong>{s}%</strong> serve uno spazio a terra di <strong>{l} {u}</strong> (rampa lunga {hyp} {u}).", "status_opt_title": "Pendenza Ottimale (DM 236/89)", "status_opt_desc": "Pendenza ideale per sedie a rotelle e passeggini senza accompagnatore. Accessibilità autonoma garantita secondo legge.", "status_opt_tag": "Accessibile 100%", "status_warn_title": "Conforme con Riserva (Tratti Brevi)", "status_warn_desc": "Pendenza massima consentita dal DM 236/89. È obbligatorio inserire un pianerottolo orizzontale di riposo (min. 150x150 cm) ogni 10 metri.", "status_warn_tag": "Limite Massimo", "status_car_title": "Non adatta a disabili — Idonea per Auto", "status_car_desc": "Troppo ripida per carrozzine. Rispetta la normativa antincendio per autorimesse (max 20% rettilinea, 16% curvilinea).", "status_car_tag": "Solo Garage / Auto", "status_danger_title": "Pendenza Eccessiva (> 20%)", "status_danger_desc": "Non conforme per disabili e oltre i limiti di legge anche per auto. Rischio di ribaltamento o di toccare il fondo della vettura.", "status_danger_tag": "Fuori Norma", "app_btn": "App", "print_btn": "Stampa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "I tuoi calcolatori di cantiere pronti anche offline", "install_btn": "Installa", "legal_disclaimer": "<strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (DM 236/89, D.M. 01/02/1986) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi del D.P.R. 380/2001 e successive modifiche. Lo sviluppatore e il gestore del sito declinano espressamente ogni responsabilità per errori, inesattezze, o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato (geometra, architetto o ingegnere).", "faq_title": "Domande Frequenti sulle Rampe (FAQ)", "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore o un miglioramento?", "suggest_btn": "Suggerisci", "suggest_modal_title": "Suggerisci uno Strumento", "suggest_modal_desc": "Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?", "suggest_placeholder": "Scrivi qui la tua idea (es. calcolo armatura solette, corrimano scale, pendenza scoli...)", "suggest_privacy_note": "🔒 Invio 100% anonimo. Non serve inserire dati personali.", "suggest_send": "Invia Suggerimento", "suggest_sending": "Invio...", "suggest_thanks": "🎉 Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.", "suggest_close": "Chiudi", "unit_in": "Pollici (in)", "unit_ft": "Piedi (ft)"}, "en": {"title": "EasyRamp", "badge": "ADA / Part M", "hero_title": "Ramp Slope & Length Calculator", "hero_desc": "Instantly calculate ramp slope percentage, angle and required horizontal space with wheelchair accessibility compliance check (ADA & Building Regs).", "mode_direct": "📏 Calculate Slope", "mode_reverse": "📐 Calculate Space Needed", "unit_label": "Units", "unit_cm": "Centimeters (cm)", "unit_m": "Meters (m)", "height_label": "Rise / Height to climb (h)", "length_label": "Available horizontal run (L)", "target_slope_label": "Required Slope (%)", "target_5": "5% (1:20) Ideal", "target_8": "8.3% (1:12) ADA Max", "target_20": "20% Vehicle", "presets_title": "Quick Presets:", "preset_1": "1 Step (15 cm / 6 in)", "preset_1_sub": "Wheelchair accessible", "preset_2": "3 Steps (45 cm / 18 in)", "preset_2_sub": "Entrance threshold", "preset_3": "Half landing (120 cm)", "preset_3_sub": "With rest platforms", "preset_4": "Driveway (250 cm)", "preset_4_sub": "Car garage ramp", "col_slope": "Slope", "col_angle": "Angle", "col_angle_sub": "Inclination", "col_length": "Ramp Length", "col_length_sub": "Inclined run (hypotenuse)", "col_space_min": "Min Space Needed", "col_space_min_sub": "Horizontal run (L)", "schema_title": "Dynamic Visual Diagram", "schema_scale": "Scaled", "rule_tip_direct": "💡 <strong>Rule of thumb:</strong> for every 10 cm of rise you need at least 120 cm of run to stay under ADA 1:12 (8.3%).", "rule_tip_reverse": "📐 <strong>Result:</strong> to climb <strong>{h} {u}</strong> at <strong>{s}%</strong> slope you need a run of <strong>{l} {u}</strong> (ramp length {hyp} {u}).", "status_opt_title": "Optimal Slope (ADA / 1:20)", "status_opt_desc": "Ideal slope for manual wheelchairs and strollers without assistance. Guaranteed independent accessibility.", "status_opt_tag": "100% Accessible", "status_warn_title": "Compliant with Limits (1:12 ADA Max)", "status_warn_desc": "Maximum legal slope under ADA guidelines (8.3% / 1:12). Level landing platforms (min 150x150 cm) are required every 9-10 meters.", "status_warn_tag": "Max Legal Limit", "status_car_title": "Vehicle / Driveway Ramp Only", "status_car_desc": "Too steep for pedestrian or wheelchair access. Suitable for garage and car ramps (up to 20%).", "status_car_tag": "Vehicles Only", "status_danger_title": "Excessive Slope (> 20%)", "status_danger_desc": "Non-compliant for disabled access and exceeds safety standards for vehicles. High risk of bottoming out or tipping over.", "status_danger_tag": "Not Compliant", "app_btn": "App", "print_btn": "Print", "install_banner_title": "Install OmniTools as App", "install_banner_sub": "Field & engineering calculators ready offline", "install_btn": "Install", "legal_disclaimer": "<strong>Legal Disclaimer & Limitation of Liability:</strong> Calculations, diagrams and regulatory standards (ADA, Building Regulations Part M) provided by this online tool are strictly for educational, informational and preliminary estimation purposes. They do not constitute formal architectural engineering drawings or certified technical advice. The website developer and operator expressly disclaim any liability for errors or damages resulting from construction without certified licensed professionals.", "faq_title": "Frequently Asked Questions (FAQ)", "suggest_banner": "💡 Have an idea for a new calculator or an improvement?", "suggest_btn": "Suggest Tool", "suggest_modal_title": "Suggest a Calculator", "suggest_modal_desc": "What calculation tool, formula, or feature would you like to see next on OmniTools?", "suggest_placeholder": "Type your idea here (e.g. rebar calculator, handrail slope, drainage ditches...)", "suggest_privacy_note": "🔒 100% anonymous submission. No personal data needed.", "suggest_send": "Submit Suggestion", "suggest_sending": "Submitting...", "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will guide upcoming OmniTools modules.", "suggest_close": "Close", "unit_in": "Inches (in)", "unit_ft": "Feet (ft)"}, "es": {"title": "RampaFacil", "badge": "CTE DB-SUA", "hero_title": "Cálculo de Pendiente de Rampa y Longitud", "hero_desc": "Calcula al instante el porcentaje de pendiente, grados y espacio necesario con verificación de accesibilidad y normativa CTE.", "mode_direct": "📏 Calcular Pendiente", "mode_reverse": "📐 Calcular Espacio", "unit_label": "Unidades", "unit_cm": "Centímetros (cm)", "unit_m": "Metros (m)", "height_label": "Desnivel a salvar (h)", "length_label": "Espacio horizontal disponible (L)", "target_slope_label": "Pendiente deseada (%)", "target_5": "5% Ideal", "target_8": "8% Límite Accesible", "target_20": "20% Garaje", "presets_title": "Valores rápidos:", "preset_1": "1 Escalón (15 cm)", "preset_1_sub": "Accesible max 6%", "preset_2": "3 Escalones (45 cm)", "preset_2_sub": "Acceso portal", "preset_3": "Medio piso (120 cm)", "preset_3_sub": "Con descansillo", "preset_4": "Rampa Garaje (250 cm)", "preset_4_sub": "Vehicular 20%", "col_slope": "Pendiente", "col_angle": "Ángulo", "col_angle_sub": "Inclinación", "col_length": "Longitud Rampa", "col_length_sub": "Plano inclinado", "col_space_min": "Espacio Mínimo", "col_space_min_sub": "Longitud en suelo (L)", "schema_title": "Esquema Visual a Escala", "schema_scale": "En tiempo real", "rule_tip_direct": "💡 <strong>Regla práctica:</strong> cada 10 cm de altura requieren al menos 125 cm en el suelo para no superar el 8%.", "rule_tip_reverse": "📐 <strong>Resultado:</strong> para salvar <strong>{h} {u}</strong> con pendiente del <strong>{s}%</strong> se necesita un suelo de <strong>{l} {u}</strong>.", "status_opt_title": "Pendiente Óptima (Accesible)", "status_opt_desc": "Pendiente perfecta para sillas de ruedas sin ayuda. Máxima comodidad según el Código Técnico de la Edificación (CTE).", "status_opt_tag": "100% Accesible", "status_warn_title": "Límite Máximo Accesible (Tramos Cortos)", "status_warn_desc": "Pendiente máxima permitida para tramos cortos. Es obligatorio incluir mesetas horizontales de descanso cada 9-10 metros.", "status_warn_tag": "Límite Máximo", "status_car_title": "Solo para Vehículos / Garaje", "status_car_desc": "Demasiado inclinada para peatones. Apta para rampas de aparcamiento y vehículos (hasta 20% recta, 16% curva).", "status_car_tag": "Solo Vehículos", "status_danger_title": "Pendiente Excesiva (> 20%)", "status_danger_desc": "Fuera de normativa para peatones y coches. Riesgo de vuelco o roce con los bajos del vehículo.", "status_danger_tag": "No Conforme", "app_btn": "App", "print_btn": "Imprimir", "install_banner_title": "Instala OmniTools como App", "install_banner_sub": "Tus herramientas de obra listas sin conexión", "install_btn": "Instalar", "legal_disclaimer": "<strong>Aviso Legal y Limitación de Responsabilidad:</strong> Los cálculos y normativas (CTE DB-SUA) facilitados por esta herramienta tienen carácter estrictamente orientativo y docente. No constituyen proyecto técnico ni sustituyen la labor de un arquitecto o aparejador colegiado.", "faq_title": "Preguntas Frecuentes (FAQ)", "suggest_banner": "💡 ¿Tienes una idea para un nuevo cálculo o una mejora?", "suggest_btn": "Sugerir herramienta", "suggest_modal_title": "Sugerir una Herramienta", "suggest_modal_desc": "¿Qué calculadora o función técnica te gustaría ver próximamente en OmniTools?", "suggest_placeholder": "Escribe tu idea aquí (ej. cálculo de armaduras, pasamanos, pendientes de drenaje...)", "suggest_privacy_note": "🔒 Envío 100% anónimo. Sin registro ni datos personales.", "suggest_send": "Enviar Sugerencia", "suggest_sending": "Enviando...", "suggest_thanks": "🎉 ¡Muchas gracias! Tu sugerencia guiarà el desarrollo de las próximas herramientas.", "suggest_close": "Cerrar", "unit_in": "Pulgadas (in)", "unit_ft": "Pies (ft)"}, "fr": {"title": "RampeFacile", "badge": "Norme PMR", "hero_title": "Calcul Pente de Rampe & Dénivelé", "hero_desc": "Calculez instantanément le pourcentage de pente, l'angle et l'espace au sol requis avec vérification de conformité accessibilité PMR.", "mode_direct": "📏 Calculer la Pente", "mode_reverse": "📐 Calculer l'Espace Requis", "unit_label": "Unités", "unit_cm": "Centimètres (cm)", "unit_m": "Mètres (m)", "height_label": "Dénivelé à franchir (h)", "length_label": "Longueur au sol disponible (L)", "target_slope_label": "Pente souhaitée (%)", "target_5": "5% Idéal PMR", "target_8": "8% Tolérance max", "target_20": "20% Garage", "presets_title": "Cas fréquents:", "preset_1": "1 Marche (15 cm)", "preset_1_sub": "PMR max 6%", "preset_2": "3 Marches (45 cm)", "preset_2_sub": "Accès entrée", "preset_3": "Demi-étage (120 cm)", "preset_3_sub": "Avec paliers", "preset_4": "Rampe Garage (250 cm)", "preset_4_sub": "Voitures 20%", "col_slope": "Pente", "col_angle": "Angle", "col_angle_sub": "Inclinaison", "col_length": "Longueur Rampe", "col_length_sub": "Plan incliné", "col_space_min": "Espace Requis", "col_space_min_sub": "Longueur au sol (L)", "schema_title": "Schéma Visuel à l'Échelle", "schema_scale": "En direct", "rule_tip_direct": "💡 <strong>Règle de chantier :</strong> chaque 10 cm de marche nécessite au moins 125 cm au sol pour ne pas dépasser 8%.", "rule_tip_reverse": "📐 <strong>Résultat :</strong> pour franchir <strong>{h} {u}</strong> à <strong>{s}%</strong> il faut une longueur au sol de <strong>{l} {u}</strong>.", "status_opt_title": "Pente Optimale (Norme PMR 5%)", "status_opt_desc": "Pente recommandée pour les fauteuils roulants en toute autonomie sans effort selon la réglementation française.", "status_opt_tag": "100% Accessible", "status_warn_title": "Tolérance Maximale (Courtes Distances)", "status_warn_desc": "Pente maximale autorisée (8% jusqu'à 2m). Un palier de repos horizontal de 140x140 cm minimum est requis tous les 10 mètres.", "status_warn_tag": "Limite Légale", "status_car_title": "Réservé aux Véhicules / Parking", "status_car_desc": "Trop raide pour les piétons. Conforme pour les rampes de parking et garages automobiles (max 20%).", "status_car_tag": "Véhicules Seuls", "status_danger_title": "Pente Excessive (> 20%)", "status_danger_desc": "Non conforme pour piétons et voitures. Risque de basculement ou d'accrochage du bas de caisse.", "status_danger_tag": "Non Conforme", "app_btn": "App", "print_btn": "Imprimer", "install_banner_title": "Installer OmniTools sur Smartphone", "install_banner_sub": "Vos outils de chantier utilisables hors-ligne", "install_btn": "Installer", "legal_disclaimer": "<strong>Clause de Non-Responsabilité Légale :</strong> Les calculs et normes (accessibilité PMR) sont fournis à titre strictement indicatif et pédagogique. Ils ne remplacent en aucun cas un plan ou diagnostic établi par un maître d'œuvre ou architecte habilité.", "faq_title": "Foire Aux Questions (FAQ)", "suggest_banner": "💡 Une idée de nouveau calculateur ou d'amélioration ?", "suggest_btn": "Suggérer un outil", "suggest_modal_title": "Suggérer un Outil", "suggest_modal_desc": "Quel calculateur ou fonction technique aimeriez-vous voir prochainement sur OmniTools ?", "suggest_placeholder": "Décrivez votre idée (ex. calcul d'armatures, garde-corps, caniveaux...)", "suggest_privacy_note": "🔒 Envoi 100% anonyme. Aucune inscription requise.", "suggest_send": "Envoyer la suggestion", "suggest_sending": "Envoi en cours...", "suggest_thanks": "🎉 Merci beaucoup ! Votre suggestion orientera les prochains modules d'OmniTools.", "suggest_close": "Fermer", "unit_in": "Pouces (in)", "unit_ft": "Pieds (ft)"}, "de": {"title": "RampeProfi", "badge": "DIN 18040", "hero_title": "Rampenneigung & Längenrechner", "hero_desc": "Berechnen Sie Neigung in Prozent, Grad und die benötigte Bodenlänge nach DIN 18040 für barrierefreies Bauen.", "mode_direct": "📏 Neigung berechnen", "mode_reverse": "📐 Länge berechnen", "unit_label": "Maßeinheit", "unit_cm": "Zentimeter (cm)", "unit_m": "Meter (m)", "height_label": "Höhenunterschied (h)", "length_label": "Verfügbare Bodenlänge (L)", "target_slope_label": "Gewünschte Neigung (%)", "target_5": "5% Sehr leicht", "target_8": "6% DIN 18040 Max", "target_20": "15-20% Tiefgarage", "presets_title": "Schnellwahl:", "preset_1": "1 Stufe (15 cm)", "preset_1_sub": "Barrierefrei", "preset_2": "3 Stufen (45 cm)", "preset_2_sub": "Hauseingang", "preset_3": "Halbe Etage (120 cm)", "preset_3_sub": "Mit Ruhepodest", "preset_4": "Tiefgarage (250 cm)", "preset_4_sub": "PKW Rampe", "col_slope": "Neigung", "col_angle": "Winkel", "col_angle_sub": "Steigung", "col_length": "Rampenlänge", "col_length_sub": "Schräge Bahn", "col_space_min": "Min. Bodenlänge", "col_space_min_sub": "Horizontale Länge (L)", "schema_title": "Maßstabsgetreue Skizze", "schema_scale": "Echtzeit", "rule_tip_direct": "💡 <strong>Praxistipp:</strong> Für DIN 18040 (max. 6%) werden pro 10 cm Stufenhöhe ca. 167 cm Bodenlänge benötigt.", "rule_tip_reverse": "📐 <strong>Ergebnis:</strong> Für <strong>{h} {u}</strong> bei <strong>{s}%</strong> Neigung sind <strong>{l} {u}</strong> Bodenlänge erforderlich.", "status_opt_title": "Optimal barrierefrei (DIN 18040)", "status_opt_desc": "Ideal für Rollstuhlfahrer ohne Begleitperson. Entspricht vollständig den Anforderungen für Barrierefreiheit.", "status_opt_tag": "Barrierefrei", "status_warn_title": "Grenzbereich / Steil", "status_warn_desc": "Übersteigt die empfohlene DIN-Norm von 6%. Nur mit Zwischenpodesten (mind. 150x150 cm) nach maximal 6m Länge zulässig.", "status_warn_tag": "Erhöhter Kraftaufwand", "status_car_title": "Nur für PKW / Tiefgarage", "status_car_desc": "Zu steil für Rollstühle. Geeignet für Kfz-Rampen und Tiefgaragen (bis 15-20%).", "status_car_tag": "Nur Fahrzeuge", "status_danger_title": "Unzulässige Neigung (> 20%)", "status_danger_desc": "Nicht zulässig für Fußgänger und Fahrzeuge. Hohe Aufsetz- und Kippgefahr.", "status_danger_tag": "Nicht zulässig", "app_btn": "App", "print_btn": "Drucken", "install_banner_title": "OmniTools als App nutzen", "install_banner_sub": "Praktische Baurechner jederzeit auch offline", "install_btn": "Installieren", "legal_disclaimer": "<strong>Haftungsausschluss:</strong> Die Berechnungen und Normenhinweise (DIN 18040) dienen ausschließlich der unverbindlichen Orientierung und stellen keine statische oder baurechtliche Fachplanung dar.", "faq_title": "Häufig gestellte Fragen (FAQ)", "suggest_banner": "💡 Haben Sie eine Idee für einen neuen Rechner oder eine Verbesserung?", "suggest_btn": "Vorschlag senden", "suggest_modal_title": "Neues Tool vorschlagen", "suggest_modal_desc": "Welchen Baurechner oder welche Funktion wünschen Sie sich als Nächstes auf OmniTools?", "suggest_placeholder": "Beschreiben Sie Ihre Idee (z. B. Bewehrungsrechner, Treppengeländer, Drainagegefälle...)", "suggest_privacy_note": "🔒 100% anonyme Übermittlung. Keine Registrierung erforderlich.", "suggest_send": "Vorschlag einreichen", "suggest_sending": "Wird gesendet...", "suggest_thanks": "🎉 Vielen Dank! Ihr Vorschlag fließt direkt in die Weiterentwicklung von OmniTools ein.", "suggest_close": "Schließen", "unit_in": "Zoll (in)", "unit_ft": "Fuß (ft)"}, "pt": {"title": "RampaFacil", "badge": "NBR 9050", "hero_title": "Cálculo de Inclinação de Rampa & Comprimento", "hero_desc": "Calcule a inclinação percentual, graus e o comprimento necessário com verificação de normas de acessibilidade (NBR 9050).", "mode_direct": "📏 Calcular Inclinação", "mode_reverse": "📐 Calcular Espaço", "unit_label": "Unidades", "unit_cm": "Centímetros (cm)", "unit_m": "Metros (m)", "height_label": "Desnível a vencer (h)", "length_label": "Espaço horizontal disponível (L)", "target_slope_label": "Inclinação pretendida (%)", "target_5": "5% Ideal Acessível", "target_8": "8.3% Limite Norma", "target_20": "20% Garagem", "presets_title": "Casos comuns:", "preset_1": "1 Degrau (15 cm)", "preset_1_sub": "Acessível", "preset_2": "3 Degraus (45 cm)", "preset_2_sub": "Entrada principal", "preset_3": "Meio piso (120 cm)", "preset_3_sub": "Com patamar", "preset_4": "Garagem (250 cm)", "preset_4_sub": "Carros 20%", "col_slope": "Inclinação", "col_angle": "Ângulo", "col_angle_sub": "Graus", "col_length": "Comprimento Rampa", "col_length_sub": "Plano inclinado", "col_space_min": "Espaço Mínimo", "col_space_min_sub": "Comprimento no chão (L)", "schema_title": "Desenho Visual em Escala", "schema_scale": "Tempo real", "rule_tip_direct": "💡 <strong>Regra prática:</strong> para cada 10 cm de desnível são necessários pelo menos 120 cm no chão para ficar dentro de 8,33%.", "rule_tip_reverse": "📐 <strong>Resultado:</strong> para vencer <strong>{h} {u}</strong> a <strong>{s}%</strong> é necessário um espaço de <strong>{l} {u}</strong>.", "status_opt_title": "Inclinação Ideal (Acessível)", "status_opt_desc": "Inclinação excelente para cadeiras de rodas sem ajuda, garantindo total autonomia e conforto.", "status_opt_tag": "100% Acessível", "status_warn_title": "Limite Máximo por Norma (Trechos Curtos)", "status_warn_desc": "Inclinação máxima permitida pela norma (até 8.33%). É obrigatório patamar de descanso a cada trecho longo.", "status_warn_tag": "Limite Máximo", "status_car_title": "Apenas Veículos / Garagem", "status_car_desc": "Muito inclinada para pessoas. Adequada para rampas de garagem e estacionamentos (até 20%).", "status_car_tag": "Apenas Carros", "status_danger_title": "Inclinação Excessiva (> 20%)", "status_danger_desc": "Fora de qualquer norma. Risco sério de acidentes e danos no fundo dos veículos.", "status_danger_tag": "Não Conforme", "app_btn": "App", "print_btn": "Imprimir", "install_banner_title": "Instale OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de obra disponíveis sem internet", "install_btn": "Instalar", "legal_disclaimer": "<strong>Aviso Legal e Limitação de Responsabilidade:</strong> Os cálculos e referências normativas (NBR 9050 / DL 163) têm caráter puramente informativo e não substituem o projeto assinado por engenheiro ou arquiteto habilitado.", "faq_title": "Perguntas Frequentes (FAQ)", "suggest_banner": "💡 Tem alguma ideia de nova calculadora ou sugestão de melhoria?", "suggest_btn": "Sugerir ferramenta", "suggest_modal_title": "Sugerir uma Ferramenta", "suggest_modal_desc": "Qual calculadora ou função técnica gostaria de ver no OmniTools?", "suggest_placeholder": "Escreva a sua ideia (ex. cálculo de armaduras, corrimões, drenagem...)", "suggest_privacy_note": "🔒 Envio 100% anónimo. Sem necessidade de registo.", "suggest_send": "Enviar Sugestão", "suggest_sending": "A enviar...", "suggest_thanks": "🎉 Muito obrigado! A sua sugestão guiará os próximos módulos do OmniTools.", "suggest_close": "Fechar", "unit_in": "Polegadas (in)", "unit_ft": "Pés (ft)"}};
+        const TRANSLATIONS = {"it": {"title": "OmniTools Lab — Suite Professionale di Calcolatori & Utility di Precisione", "tagline": "Suite di Calcolo Tecnico ad Alta Precisione", "hero_badge": "⚡ Gratuito • Zero Registrazione • Funziona Offline", "hero_title": "Tutti gli strumenti di calcolo tecnico, a portata di click.", "hero_subtitle": "Precisione millimetrica per cantiere, grafica, editoria e ingegneria. Calcola, verifica le normative e genera schede tecniche di livello professionale.", "search_placeholder": "Cerca uno strumento (es. pendenza, rampa, scala, gradini, dorso libro, dpi, pixel)...", "filter_all": "Tutti i Tool", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Apri Strumento", "status_active": "Attivo", "status_dev": "In Sviluppo", "division_building_title": "OmniBuilding — Edilizia & Progettazione", "division_building_desc": "Soluzioni matematiche e normative per cantieri, architetti, ingegneri e artigiani.", "division_graph_title": "OmniGraph — Grafica & Tipografia", "division_graph_desc": "Utility di prestampa e conversione geometrico-ottica per grafici, editori e tipografi.", "tool_rampe_title": "RampaFacile", "tool_rampe_badge": "DM 236/89 & ADA", "tool_rampe_desc": "Calcolo pendenza percentuale, gradi e ingombro a terra di rampe con verifica conformità per disabili e veicoli.", "tool_scale_title": "ScalaFacile", "tool_scale_badge": "Legge di Blondel", "tool_scale_desc": "Dimensionamento ergonomico del numero di gradini, altezza alzata e pedata secondo la formula di Blondel 2a + p.", "tool_dorso_title": "DorsoFacile", "tool_dorso_badge": "Copertina Stesa & Refili", "tool_dorso_desc": "Spessore esatto del dorso libro in base a pagine, grammatura e mano della carta con quote InDesign e KDP.", "tool_dpi_title": "RisoluzioneFacile", "tool_dpi_badge": "Pixel, cm & Acuità Ottica", "tool_dpi_desc": "Conversione istantanea Pixel ↔ Centimetri ↔ DPI per offset, digitale e grande formato con distanza dell'occhio.", "coming_soon_title": "Prossimi Moduli in Arrivo", "tool_scarichi_title": "ScaricoFacile", "tool_scarichi_desc": "Pendenza tubazioni fognarie e reflue con diametri commerciali.", "tool_calce_title": "CalceFacile", "tool_calce_desc": "Dosaggio sacchi cemento, sabbia e acqua per mc di massetto.", "tool_resa_title": "ResaCarta", "tool_resa_desc": "Calcolo tagli ottimali su foglio macchina e scarto carta.", "feature_1_title": "Nessuna Registrazione", "feature_1_desc": "Accedi e calcoli all'istante, senza account o abbonamenti.", "feature_2_title": "Precisione Normativa", "feature_2_desc": "Formule rigorose allineate a standard tecnici italiani ed esteri.", "feature_3_title": "Funziona Offline", "feature_3_desc": "PWA installabile su smartphone per lavorare anche in cantiere senza rete.", "feature_4_title": "Schede Tecniche A4", "feature_4_desc": "Stampa o esporta relazioni tecniche pulite pronte da allegare al fascicolo.", "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore tecnico?", "suggest_btn": "Suggerisci Tool", "legal_disclaimer": "<strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab sono concepiti a scopo didattico, orientativo e di verifica preliminare. Non sostituiscono il calcolo esecutivo, l'asseverazione o il progetto firmato da un tecnico abilitato (ingegnere, architetto, geometra o perito).", "rights_reserved": "© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati."}, "en": {"title": "OmniTools Lab — Professional Precision Calculators & Technical Utilities", "tagline": "Precision Technical Engineering Suite", "hero_badge": "⚡ Free • No Sign-Up • Works Offline", "hero_title": "All your professional calculation tools, just one click away.", "hero_subtitle": "Millimeter precision for construction, architecture, graphic design, and prepress. Calculate, verify regulations, and print spec sheets in 1 click.", "search_placeholder": "Search any tool (e.g., ramp slope, stair blondel, book spine, dpi, pixel resolution)...", "filter_all": "All Tools", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Open Calculator", "status_active": "Active", "status_dev": "In Development", "division_building_title": "OmniBuilding — Construction & Architecture", "division_building_desc": "Mathematical and regulatory solutions for job sites, engineers, and architects.", "division_graph_title": "OmniGraph — Graphic Design & Prepress", "division_graph_desc": "Print production and optical conversion utilities for designers and book publishers.", "tool_rampe_title": "RampFast", "tool_rampe_badge": "ADA & DM 236/89", "tool_rampe_desc": "Slope percentage, angle, and ground run calculation with disabled accessibility compliance verification.", "tool_scale_title": "StairFast", "tool_scale_badge": "Blondel's Rule", "tool_scale_desc": "Ergonomic stair riser and tread dimensioning based on Blondel's 2R + T formula.", "tool_dorso_title": "SpineFast", "tool_dorso_badge": "Spine & Wrap Bleed", "tool_dorso_desc": "Exact book spine width calculation based on pages, paper weight, and bulk with InDesign and KDP layout.", "tool_dpi_title": "ResolutionFast", "tool_dpi_badge": "Pixel, cm & Visual Acuity", "tool_dpi_desc": "Instant conversion between Pixels, Centimeters, and DPI with human eye viewing distance calculation.", "coming_soon_title": "Upcoming Modules", "tool_scarichi_title": "DrainFast", "tool_scarichi_desc": "Sewer pipe slope and drainage sizing for standard diameters.", "tool_calce_title": "ConcreteFast", "tool_calce_desc": "Cement, sand, and water batching for screeds and concrete.", "tool_resa_title": "SheetFast", "tool_resa_desc": "Optimal press sheet grain and cutting yield optimization.", "feature_1_title": "Zero Login Required", "feature_1_desc": "Instant access without accounts, paywalls, or trackers.", "feature_2_title": "Rigorous Standards", "feature_2_desc": "Formulas aligned with ISO, ADA, DIN, and European standards.", "feature_3_title": "Offline PWA", "feature_3_desc": "Installable web app ready for field job sites without internet.", "feature_4_title": "1-Page A4 Spec Sheets", "feature_4_desc": "Generate clean certified printable technical reports in 1 click.", "suggest_banner": "💡 Have an idea for a new professional tool?", "suggest_btn": "Suggest Tool", "legal_disclaimer": "<strong>Legal Disclaimer:</strong> Tools provided by OmniTools Lab are for preliminary estimation, guidance, and educational purposes. They do not replace formal certified engineering or architectural design.", "rights_reserved": "© 2026 OmniTools Lab — Precision Utilities Suite. All rights reserved."}, "es": {"title": "OmniTools Lab — Suite Profesional de Calculadoras de Precisión", "tagline": "Suite de Cálculo Técnico de Alta Precisión", "hero_badge": "⚡ Gratis • Sin Registro • Funciona Offline", "hero_title": "Todas las herramientas de cálculo técnico a un solo clic.", "hero_subtitle": "Precisión milimétrica para construcción, arquitectura, diseño gráfico e imprenta. Calcula, verifica normativas e imprime informes certificados.", "search_placeholder": "Buscar herramienta (ej. pendiente rampa, escaleras blondel, lomo libro, resolución dpi)...", "filter_all": "Todas", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Abrir Herramienta", "status_active": "Activo", "status_dev": "En Desarrollo", "division_building_title": "OmniBuilding — Edificación y Obra", "division_building_desc": "Soluciones técnicas para arquitectos, ingenieros y constructores.", "division_graph_title": "OmniGraph — Gráfica y Preimpresión", "division_graph_desc": "Herramientas de conversión geométrica y óptica para imprentas y diseñadores.", "tool_rampe_title": "RampaFacil", "tool_rampe_badge": "CTE & Accesibilidad", "tool_rampe_desc": "Cálculo de pendiente y desarrollo en planta con verificación para personas con discapacidad.", "tool_scale_title": "EscaleraFacil", "tool_scale_badge": "Ley de Blondel", "tool_scale_desc": "Dimensionamiento de contrahuella y huella según la fórmula ergonómica de Blondel.", "tool_dorso_title": "LomoFacil", "tool_dorso_badge": "Lomo y Cubierta Abierta", "tool_dorso_desc": "Grosor exacto del lomo según páginas y gramaje con cotas para InDesign y Amazon KDP.", "tool_dpi_title": "ResolucionFacil", "tool_dpi_badge": "Píxeles, cm y Agudeza Visual", "tool_dpi_desc": "Conversión entre Píxeles, Centímetros y DPI con distancia de visión humana.", "coming_soon_title": "Próximos Módulos", "tool_scarichi_title": "DesagueFacil", "tool_scarichi_desc": "Pendiente de tuberías de saneamiento y pluviales.", "tool_calce_title": "HormigonFacil", "tool_calce_desc": "Dosificación de cemento, arena y agua por m3.", "tool_resa_title": "RendimientoPapel", "tool_resa_desc": "Cálculo de cortes óptimos en pliego de máquina.", "feature_1_title": "Sin Registro", "feature_1_desc": "Acceso inmediato sin cuentas ni publicidad intrusiva.", "feature_2_title": "Precisión Normativa", "feature_2_desc": "Fórmulas alineadas con normativas internacionales.", "feature_3_title": "Funciona Sin Red", "feature_3_desc": "Instalable en el móvil para su uso en obra.", "feature_4_title": "Fichas Técnicas A4", "feature_4_desc": "Imprime informes limpios listos para adjuntar al expediente.", "suggest_banner": "💡 ¿Tienes una sugerencia para una nueva calculadora?", "suggest_btn": "Sugerir Herramienta", "legal_disclaimer": "<strong>Aviso Legal:</strong> Las herramientas de OmniTools Lab tienen fines didácticos e informativos. No sustituyen un proyecto suscrito por técnico competente.", "rights_reserved": "© 2026 OmniTools Lab — Todos los derechos reservados."}, "fr": {"title": "OmniTools Lab — Suite Professionnelle d'Utilitaires de Précision", "tagline": "Suite de Calcul Technique Haute Précision", "hero_badge": "⚡ Gratuit • Sans Inscription • Hors-Ligne", "hero_title": "Tous vos outils de calcul technique en un clic.", "hero_subtitle": "Précision millimétrique pour le bâtiment, le graphisme et l'édition. Calculez, validez les normes et imprimez vos fiches techniques.", "search_placeholder": "Rechercher un outil (ex. pente rampe, escalier blondel, dos de livre, dpi)...", "filter_all": "Tous les outils", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Ouvrir l'Outil", "status_active": "Actif", "status_dev": "En Développement", "division_building_title": "OmniBuilding — Bâtiment & Architecture", "division_building_desc": "Calculs de chantier et normes d'accessibilité PMR.", "division_graph_title": "OmniGraph — Graphisme & Prépresse", "division_graph_desc": "Outils de fabrication pour éditeurs et imprimeurs.", "tool_rampe_title": "RampeFacile", "tool_rampe_badge": "Norme PMR & Garages", "tool_rampe_desc": "Calcul pente pourcentage et longueur avec validation PMR.", "tool_scale_title": "EscalierFacile", "tool_scale_badge": "Loi de Blondel", "tool_scale_desc": "Dimensionnement marches, hauteur et giron avec la formule 2h + g.", "tool_dorso_title": "DosLivreFacile", "tool_dorso_badge": "Dos & Couverture Ouverte", "tool_dorso_desc": "Épaisseur du dos de livre selon pages, grammage et main.", "tool_dpi_title": "ResolutionFacile", "tool_dpi_badge": "Pixels, cm & Acuité Visuelle", "tool_dpi_desc": "Conversion Pixels ↔ Centimètres ↔ DPI avec distance d'observation.", "coming_soon_title": "Outils en Arrivée", "tool_scarichi_title": "EvacuationFacile", "tool_scarichi_desc": "Pente de tuyaux d'assainissement.", "tool_calce_title": "BetonFacile", "tool_calce_desc": "Dosage ciment, sable et eau pour mortiers.", "tool_resa_title": "ImpositionPapier", "tool_resa_desc": "Optimisation des poses d'impression sur feuille.", "feature_1_title": "Sans Inscription", "feature_1_desc": "Accès direct sans création de compte.", "feature_2_title": "Rigueur Normative", "feature_2_desc": "Conforme aux normes ISO et européennes.", "feature_3_title": "Mode Hors-Ligne", "feature_3_desc": "PWA installable sur smartphone pour le chantier.", "feature_4_title": "Fiches A4 Imprimables", "feature_4_desc": "Rapports techniques clairs en 1 page.", "suggest_banner": "💡 Une idée pour un nouvel outil de calcul ?", "suggest_btn": "Suggérer un outil", "legal_disclaimer": "<strong>Mentions Légales :</strong> Outils indicatifs ne remplaçant pas l'étude d'un professionnel habilité.", "rights_reserved": "© 2026 OmniTools Lab — Tous droits réservés."}, "de": {"title": "OmniTools Lab — Professionelle Präzisionsrechner & Utilities", "tagline": "Präzisions-Berechnungssuite für Profis", "hero_badge": "⚡ Kostenlos • Ohne Registrierung • Funktioniert Offline", "hero_title": "Alle technischen Berechnungswerkzeuge auf einen Klick.", "hero_subtitle": "Millimetergenau für Baustelle, Architektur, Grafikdesign und Druckvorstufe. Berechnen, Normen prüfen und Datenblätter drucken.", "search_placeholder": "Werkzeug suchen (z.B. Rampenneigung, Treppe Blondel, Buchrücken, DPI)...", "filter_all": "Alle Tools", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Tool öffnen", "status_active": "Aktiv", "status_dev": "In Entwicklung", "division_building_title": "OmniBuilding — Bau & Architektur", "division_building_desc": "Berechnungslösungen für Bauleiter, Ingenieure und Planer.", "division_graph_title": "OmniGraph — Grafik & Druckvorstufe", "division_graph_desc": "Optische und geometrische Rechner für Designer und Verlage.", "tool_rampe_title": "RampeRechner", "tool_rampe_badge": "DIN 18040 Barrierefrei", "tool_rampe_desc": "Steigung in Prozent, Grad und Grundrisslänge mit Barrierefreiheitsprüfung.", "tool_scale_title": "TreppenRechner", "tool_scale_badge": "Blondel-Schrittmaß", "tool_scale_desc": "Treppenstufen, Steigung und Auftritt nach 2s + a = 62-64 cm.", "tool_dorso_title": "BuchrueckenRechner", "tool_dorso_badge": "Rückenbreite & Beschnitt", "tool_dorso_desc": "Exakte Rückenbreite nach Seitenanzahl, Grammatur und Papiervolumen.", "tool_dpi_title": "AufloesungRechner", "tool_dpi_badge": "Pixel, cm & Betrachtungsabstand", "tool_dpi_desc": "Umrechnung Pixel ↔ cm ↔ DPI mit Sehschärfenberechnung des Auges.", "coming_soon_title": "Demnächst verfügbar", "tool_scarichi_title": "AbwasserGefaelle", "tool_scarichi_desc": "Rohrleitungsgefälle für Entwässerung.", "tool_calce_title": "BetonRechner", "tool_calce_desc": "Zement- und Sanddosierung pro Kubikmeter.", "tool_resa_title": "BogenNutzen", "tool_resa_desc": "Optimale Nutzenaufteilung auf Druckbogen.", "feature_1_title": "Kein Login erforderlich", "feature_1_desc": "Sofortiger Zugriff ohne Kontozwang.", "feature_2_title": "Normgerecht", "feature_2_desc": "Formeln nach DIN- und ISO-Standards.", "feature_3_title": "Offline fähig", "feature_3_desc": "PWA fürs Smartphone auf der Baustelle.", "feature_4_title": "A4 Datenblätter", "feature_4_desc": "Saubere technische Berichte auf Knopfdruck.", "suggest_banner": "💡 Idee für einen neuen technischen Rechner?", "suggest_btn": "Tool vorschlagen", "legal_disclaimer": "<strong>Rechtlicher Hinweis:</strong> Orientierungshilfe; ersetzt keine statische oder architektonische Fachplanung.", "rights_reserved": "© 2026 OmniTools Lab — Alle Rechte vorbehalten."}, "pt": {"title": "OmniTools Lab — Suite Profissional de Calculadoras de Precisão", "tagline": "Suite de Cálculo Técnico de Alta Precisão", "hero_badge": "⚡ Grátis • Sem Registo • Funciona Offline", "hero_title": "Todas as ferramentas de cálculo técnico a um clique.", "hero_subtitle": "Precisão milimétrica para construção civil, arquitetura, design gráfico e pré-impressão. Calcule, valide normas e imprima relatórios certificados.", "search_placeholder": "Pesquise uma ferramenta (ex. rampa, escada blondel, lombada livro, dpi)...", "filter_all": "Todas", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Abrir Ferramenta", "status_active": "Ativo", "status_dev": "Em Desenvolvimento", "division_building_title": "OmniBuilding — Construção & Obra", "division_building_desc": "Cálculos normativos para engenheiros, arquitetos e mestres de obras.", "division_graph_title": "OmniGraph — Gráfica & Pré-impressão", "division_graph_desc": "Ferramentas geométricas e ópticas para designers e gráficas.", "tool_rampe_title": "RampaFacil", "tool_rampe_badge": "Acessibilidade & Garagens", "tool_rampe_desc": "Cálculo de inclinação percentual e espaço com verificação de acessibilidade.", "tool_scale_title": "EscadaFacil", "tool_scale_badge": "Lei de Blondel", "tool_scale_desc": "Dimensionamento de degraus, espelho e piso pela fórmula 2e + p.", "tool_dorso_title": "LombadaFacil", "tool_dorso_badge": "Lombada & Capa Aberta", "tool_dorso_desc": "Espessura da lombada segundo páginas, gramagem e mão do papel.", "tool_dpi_title": "ResolucaoFacil", "tool_dpi_badge": "Pixels, cm & Acuidade Visual", "tool_dpi_desc": "Conversão entre Pixels, Centímetros e DPI com distância de visão humana.", "coming_soon_title": "Novos Módulos", "tool_scarichi_title": "EsgotoFacil", "tool_scarichi_desc": "Inclinação de tubagens de esgoto e águas pluviais.", "tool_calce_title": "BetaoFacil", "tool_calce_desc": "Dosagem de cimento, areia e água por m3.", "tool_resa_title": "AproveitamentoPapel", "tool_resa_desc": "Otimização de cortes em folha de máquina.", "feature_1_title": "Sem Registo", "feature_1_desc": "Acesso imediato sem anúncios invasivos.", "feature_2_title": "Rigor Normativo", "feature_2_desc": "Fórmulas alinhadas com normas internacionais.", "feature_3_title": "Funciona Offline", "feature_3_desc": "PWA no telemóvel para utilizar em obra.", "feature_4_title": "Relatórios A4", "feature_4_desc": "Impressão de fichas técnicas em 1 página.", "suggest_banner": "💡 Tem alguma sugestão de nova calculadora?", "suggest_btn": "Sugerir Ferramenta", "legal_disclaimer": "<strong>Aviso Legal:</strong> Ferramentas meramente informativas; não substituem projeto assinado por técnico habilitado.", "rights_reserved": "© 2026 OmniTools Lab — Todos os direitos reservados."}};
 
         let currentLang = localStorage.getItem('omnitools_lang') || 'it';
-        let currentUnit = 'cm';
-        let currentMode = 'direct';
-
-        const heightInput = document.getElementById('heightInput');
-        const heightRange = document.getElementById('heightRange');
-        const lengthInput = document.getElementById('lengthInput');
-        const lengthRange = document.getElementById('lengthRange');
-        const targetSlopeInput = document.getElementById('targetSlopeInput');
-
-        const lengthContainer = document.getElementById('lengthContainer');
-        const targetSlopeContainer = document.getElementById('targetSlopeContainer');
-        const modeDirectBtn = document.getElementById('modeDirectBtn');
-        const modeReverseBtn = document.getElementById('modeReverseBtn');
-
-        const slopePercentElem = document.getElementById('slopePercent');
-        const slopeRatioElem = document.getElementById('slopeRatio');
-        const slopeDegreesElem = document.getElementById('slopeDegrees');
-        const rampLengthElem = document.getElementById('rampLength');
-        const lengthLabel = document.getElementById('lengthLabel');
-        const lengthSubLabel = document.getElementById('lengthSubLabel');
-
-        const complianceCard = document.getElementById('complianceCard');
-        const statusIcon = document.getElementById('statusIcon');
-        const statusTitle = document.getElementById('statusTitle');
-        const statusTag = document.getElementById('statusTag');
-        const statusDesc = document.getElementById('statusDesc');
-
-        const rampPolygon = document.getElementById('rampPolygon');
-        const heightDim = document.getElementById('heightDim');
-        const heightText = document.getElementById('heightText');
-        const lengthText = document.getElementById('lengthText');
-        const hypotenuseText = document.getElementById('hypotenuseText');
-        const ruleTip = document.getElementById('ruleTip');
+        let currentFilter = 'all';
 
         function changeLanguage(lang) {
             if (!TRANSLATIONS[lang]) return;
             currentLang = lang;
             localStorage.setItem('omnitools_lang', lang);
-            document.getElementById('langSelect').value = lang;
             document.documentElement.lang = lang;
+            document.getElementById('langSelect').value = lang;
             applyTranslations();
-            updateCalculations();
         }
 
         function applyTranslations() {
             const t = TRANSLATIONS[currentLang];
-            document.getElementById('brandTitle').textContent = t.title;
-            const btm = document.getElementById('brandTitleMobile');
-            if (btm) btm.textContent = t.title;
-            document.getElementById('brandBadge').textContent = t.badge;
-            const bbm = document.getElementById('brandBadgeMobile');
-            if (bbm) bbm.textContent = t.badge;
+            if (!t) return;
+
+            document.title = t.title;
+            document.getElementById('taglineText').textContent = t.tagline;
+            document.getElementById('heroBadge').textContent = t.hero_badge;
             document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('modeDirectBtn').textContent = t.mode_direct;
-            document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
-            document.getElementById('unitLabelText').textContent = t.unit_label;
-            document.getElementById('heightLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span> ${t.height_label}`;
-            document.getElementById('lengthLabelInput').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> ${t.length_label}`;
-            document.getElementById('targetSlopeLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span> ${t.target_slope_label}`;
-            document.getElementById('targetBtn5').textContent = t.target_5;
-            document.getElementById('targetBtn8').textContent = t.target_8;
-            document.getElementById('targetBtn20').textContent = t.target_20;
-            document.getElementById('presetsTitleText').textContent = t.presets_title;
-            document.getElementById('preset1Title').textContent = t.preset_1;
-            document.getElementById('preset1Sub').textContent = t.preset_1_sub;
-            document.getElementById('preset2Title').textContent = t.preset_2;
-            document.getElementById('preset2Sub').textContent = t.preset_2_sub;
-            document.getElementById('preset3Title').textContent = t.preset_3;
-            document.getElementById('preset3Sub').textContent = t.preset_3_sub;
-            document.getElementById('preset4Title').textContent = t.preset_4;
-            document.getElementById('preset4Sub').textContent = t.preset_4_sub;
-            document.getElementById('colSlopeLabel').textContent = t.col_slope;
-            document.getElementById('colAngleLabel').textContent = t.col_angle;
-            document.getElementById('colAngleSubLabel').textContent = t.col_angle_sub;
-            document.getElementById('schemaTitle').textContent = t.schema_title;
-            document.getElementById('schemaScaleText').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> ${t.schema_scale}`;
-            document.getElementById('printBtnText').textContent = t.print_btn;
-            document.getElementById('installBannerTitle').textContent = t.install_banner_title;
-            document.getElementById('installBannerSub').textContent = t.install_banner_sub;
-            document.getElementById('installBannerBtn').textContent = t.install_btn;
+            document.getElementById('heroSubtitle').textContent = t.hero_subtitle;
+            document.getElementById('searchInput').placeholder = t.search_placeholder;
+            document.getElementById('filterAllBtn').textContent = t.filter_all;
+            document.getElementById('filterBuildingBtn').textContent = t.filter_building;
+            document.getElementById('filterGraphBtn').textContent = t.filter_graph;
+            document.getElementById('divBuildingTitle').textContent = t.division_building_title;
+            document.getElementById('divBuildingDesc').textContent = t.division_building_desc;
+            document.getElementById('divGraphTitle').textContent = t.division_graph_title;
+            document.getElementById('divGraphDesc').textContent = t.division_graph_desc;
+            document.getElementById('toolRampeTitle').textContent = t.tool_rampe_title;
+            document.getElementById('toolRampeBadge').textContent = t.tool_rampe_badge;
+            document.getElementById('toolRampeDesc').textContent = t.tool_rampe_desc;
+            document.getElementById('toolScaleTitle').textContent = t.tool_scale_title;
+            document.getElementById('toolScaleBadge').textContent = t.tool_scale_badge;
+            document.getElementById('toolScaleDesc').textContent = t.tool_scale_desc;
+            document.getElementById('toolDorsoTitle').textContent = t.tool_dorso_title;
+            document.getElementById('toolDorsoBadge').textContent = t.tool_dorso_badge;
+            document.getElementById('toolDorsoDesc').textContent = t.tool_dorso_desc;
+            document.getElementById('toolDpiTitle').textContent = t.tool_dpi_title;
+            document.getElementById('toolDpiBadge').textContent = t.tool_dpi_badge;
+            document.getElementById('toolDpiDesc').textContent = t.tool_dpi_desc;
+            document.getElementById('roadmapTitle').textContent = t.coming_soon_title;
+            document.getElementById('toolScarichiTitle').textContent = t.tool_scarichi_title;
+            document.getElementById('toolScarichiDesc').textContent = t.tool_scarichi_desc;
+            document.getElementById('toolCalceTitle').textContent = t.tool_calce_title;
+            document.getElementById('toolCalceDesc').textContent = t.tool_calce_desc;
+            document.getElementById('toolResaTitle').textContent = t.tool_resa_title;
+            document.getElementById('toolResaDesc').textContent = t.tool_resa_desc;
+            document.getElementById('feat1Title').textContent = t.feature_1_title;
+            document.getElementById('feat1Desc').textContent = t.feature_1_desc;
+            document.getElementById('feat2Title').textContent = t.feature_2_title;
+            document.getElementById('feat2Desc').textContent = t.feature_2_desc;
+            document.getElementById('feat3Title').textContent = t.feature_3_title;
+            document.getElementById('feat3Desc').textContent = t.feature_3_desc;
+            document.getElementById('feat4Title').textContent = t.feature_4_title;
+            document.getElementById('feat4Desc').textContent = t.feature_4_desc;
+            document.getElementById('suggestBannerText').textContent = t.suggest_banner;
+            document.getElementById('suggestBtnText').textContent = t.suggest_btn;
+            document.getElementById('rightsText').textContent = t.rights_reserved;
             document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
-            document.getElementById('faqTitle').firstElementChild.textContent = t.faq_title;
+        }
 
-            // Suggestion text bindings
-            if (document.getElementById('suggestBannerText')) {
-                document.getElementById('suggestBannerText').textContent = t.suggest_banner;
-                document.getElementById('suggestBtnText').textContent = t.suggest_btn;
-                document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
-                document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
-                document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
-                document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
-                document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
-                document.getElementById('modalCloseBtn').textContent = t.suggest_close;
-                document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
+        function setFilter(filter) {
+            currentFilter = filter;
+            const btnAll = document.getElementById('filterAllBtn');
+            const btnBuilding = document.getElementById('filterBuildingBtn');
+            const btnGraph = document.getElementById('filterGraphBtn');
+
+            const activeClass = "px-3 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs transition font-bold";
+            const inactiveClass = "px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition font-bold";
+
+            btnAll.className = filter === 'all' ? activeClass : inactiveClass;
+            btnBuilding.className = filter === 'building' ? activeClass : inactiveClass;
+            btnGraph.className = filter === 'graph' ? activeClass : inactiveClass;
+
+            const secBuilding = document.getElementById('sectionBuilding');
+            const secGraph = document.getElementById('sectionGraph');
+            const secRoadmap = document.getElementById('sectionRoadmap');
+
+            if (filter === 'all') {
+                secBuilding.classList.remove('hidden');
+                secGraph.classList.remove('hidden');
+                secRoadmap.classList.remove('hidden');
+            } else if (filter === 'building') {
+                secBuilding.classList.remove('hidden');
+                secGraph.classList.add('hidden');
+                secRoadmap.classList.remove('hidden');
+            } else if (filter === 'graph') {
+                secBuilding.classList.add('hidden');
+                secGraph.classList.remove('hidden');
+                secRoadmap.classList.remove('hidden');
             }
-
-            renderFaqs();
         }
 
-        function renderFaqs() {
-            const container = document.getElementById('faqContainer');
-            const faqs = {
-                'it': [
-                    ['Qual è la pendenza massima per legge di una rampa per disabili?', 'In Italia, secondo il DM 236/1989, la pendenza consigliata è fino al 5%. Il limite massimo consentito per brevi tratti è dell\'8%, con obbligo di pianerottolo ogni 10 metri.'],
-                    ['Come calcolo lo spazio a terra conoscendo l\'altezza del gradino?', 'Usa il Calcolo Spazio di OmniTools: dividi il dislivello per la pendenza desiderata. Esempio per 45 cm all\'8%: 45 / 0.08 = 562.5 cm (circa 5.6 metri).'],
-                    ['Quando è obbligatorio il pianerottolo di sosta?', 'Il pianerottolo orizzontale (minimo 150 × 150 cm) è obbligatorio per legge ogni 10 metri di rampa e davanti a porte o cambi di direzione.']
-                ],
-                'en': [
-                    ['What is the maximum ADA compliant ramp slope?', 'Under the Americans with Disabilities Act (ADA) and UK Part M regulations, the maximum slope for commercial ramps is 1:12 (8.33%). The recommended slope for easier unassisted access is 1:20 (5%).'],
-                    ['How much horizontal space do I need for a ramp?', 'For an 8.3% slope (1:12), every 1 inch (or cm) of rise requires 12 inches (or cm) of ramp run. A 40 cm rise requires at least 480 cm of horizontal space.'],
-                    ['Are landing platforms required?', 'Yes, level rest landings (at least 150 x 150 cm / 5 x 5 ft) are required at the top and bottom of ramps and every 9 meters (30 feet) of horizontal run.']
-                ],
-                'es': [
-                    ['¿Cuál es la pendiente máxima accesible según el CTE?', 'En España, según el CTE DB-SUA, la pendiente máxima es del 10% para tramos menores de 3m, 8% para tramos de hasta 6m y 6% para el resto. La óptima recomendada es del 5%.'],
-                    ['¿Cuánto espacio en suelo se necesita para una rampa?', 'Divida la altura entre la pendiente: para salvar 40 cm al 8%, se requieren 40 / 0.08 = 500 cm (5 metros) de longitud en el suelo.']
-                ],
-                'fr': [
-                    ['Quelle est la pente maximale pour une rampe PMR ?', 'En France, la norme d\'accessibilité PMR impose une pente de 5% maximum. Des tolérances existent : jusqu\'à 8% sur 2 mètres et 10% sur 0,5 mètre.'],
-                    ['Comment calculer la longueur nécessaire pour une rampe ?', 'Pour une pente de 5%, il faut multiplier la hauteur par 20. Pour franchir 20 cm, il faut donc 20 × 20 = 400 cm (4 mètres) de rampe.']
-                ],
-                'de': [
-                    ['Welche Neigung gilt nach DIN 18040 als barrierefrei?', 'Nach DIN 18040 darf die Neigung einer barrierefreien Rampe maximal 6% betragen. Quergefälle sind unzulässig.'],
-                    ['Wann sind Zwischenpodeste vorgeschrieben?', 'Nach jeweils 600 cm Rampenlänge ist ein Zwischenpodest mit einer Mindestlänge von 150 cm erforderlich.']
-                ],
-                'pt': [
-                    ['Qual a inclinação máxima de rampa segundo a NBR 9050?', 'A norma NBR 9050 recomenda inclinações entre 5% e 6,25% para total autonomia. A inclinação máxima admissível para reformas é de 8,33% (1:12).'],
-                    ['Como calcular o espaço necessário?', 'Para desnível de 40 cm a 8,33%, divida 40 por 0,0833 = 480 cm (4,8 metros) de comprimento no piso.']
-                ]
-            };
-
-            const list = faqs[currentLang] || faqs['it'];
-            container.innerHTML = list.map(item => `
-                <details class="py-3 group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex justify-between items-center list-none select-none">
-                        <span>${item[0]}</span>
-                        <span class="transition group-open:rotate-180 text-blue-600">▼</span>
-                    </summary>
-                    <p class="mt-1.5 text-slate-600 leading-relaxed pl-1">${item[1]}</p>
-                </details>
-            `).join('');
-        }
-
-        function switchMode(mode) {
-            currentMode = mode;
-            const t = TRANSLATIONS[currentLang];
-            if (mode === 'direct') {
-                modeDirectBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center";
-                modeReverseBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center";
-                lengthContainer.classList.remove('hidden');
-                targetSlopeContainer.classList.add('hidden');
-                lengthLabel.textContent = t.col_length;
-                lengthSubLabel.textContent = t.col_length_sub;
+        function filterTools() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
             } else {
-                modeReverseBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-purple-600 shadow-sm transition active:scale-95 text-center";
-                modeDirectBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center";
-                lengthContainer.classList.add('hidden');
-                targetSlopeContainer.classList.remove('hidden');
-                lengthLabel.textContent = t.col_space_min;
-                lengthSubLabel.textContent = t.col_space_min_sub;
+                clearBtn.classList.add('hidden');
             }
-            updateCalculations();
-        }
 
-        function setTargetSlope(val) {
-            targetSlopeInput.value = val;
-            updateCalculations();
-        }
-
-        const UNIT_FACTORS_CM = {
-            'cm': 1.0,
-            'm': 100.0,
-            'in': 2.54,
-            'ft': 30.48
-        };
-
-        function setUnit(newUnit) {
-            if (newUnit === currentUnit) return;
-            const prevUnit = currentUnit;
-            currentUnit = newUnit;
-
-            let h = parseFloat(heightInput.value) || 0;
-            let l = parseFloat(lengthInput.value) || 0;
-
-            let h_cm = h * (UNIT_FACTORS_CM[prevUnit] || 1.0);
-            let l_cm = l * (UNIT_FACTORS_CM[prevUnit] || 1.0);
-
-            let h_new = h_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
-            let l_new = l_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
-
-            ['cm', 'm', 'in', 'ft'].forEach(u => {
-                const btn = document.getElementById('unit' + u.charAt(0).toUpperCase() + u.slice(1));
-                if (btn) {
-                    if (u === newUnit) {
-                        btn.className = "w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center";
-                    } else {
-                        btn.className = "w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
-                    }
+            const cards = document.querySelectorAll('.tool-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+                if (text.includes(query) || tags.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
                 }
             });
-
-            document.getElementById('heightUnitBadge').textContent = newUnit;
-            document.getElementById('lengthUnitBadge').textContent = newUnit;
-
-            if (newUnit === 'cm') {
-                heightInput.value = Math.round(h_new);
-                lengthInput.value = Math.round(l_new);
-                heightRange.min = 5; heightRange.max = 200; heightRange.step = 1;
-                lengthRange.min = 50; lengthRange.max = 1500; lengthRange.step = 5;
-            } else if (newUnit === 'm') {
-                heightInput.value = h_new.toFixed(2);
-                lengthInput.value = l_new.toFixed(2);
-                heightRange.min = 0.05; heightRange.max = 2.0; heightRange.step = 0.01;
-                lengthRange.min = 0.5; lengthRange.max = 15.0; lengthRange.step = 0.05;
-            } else if (newUnit === 'in') {
-                heightInput.value = h_new.toFixed(1);
-                lengthInput.value = l_new.toFixed(1);
-                heightRange.min = 2; heightRange.max = 80; heightRange.step = 0.5;
-                lengthRange.min = 20; lengthRange.max = 600; lengthRange.step = 1;
-            } else if (newUnit === 'ft') {
-                heightInput.value = h_new.toFixed(2);
-                lengthInput.value = l_new.toFixed(2);
-                heightRange.min = 0.2; heightRange.max = 7.0; heightRange.step = 0.05;
-                lengthRange.min = 2.0; lengthRange.max = 50.0; lengthRange.step = 0.2;
-            }
-
-            syncSliderWithInput(heightRange, heightInput);
-            syncSliderWithInput(lengthRange, lengthInput);
-            updateCalculations();
         }
 
-        function syncSliderWithInput(slider, input) { slider.value = input.value; }
-        function syncInputWithSlider(input, slider) { input.value = slider.value; }
-
-        heightInput.addEventListener('input', () => { syncSliderWithInput(heightRange, heightInput); updateCalculations(); });
-        heightRange.addEventListener('input', () => { syncInputWithSlider(heightInput, heightRange); updateCalculations(); });
-        lengthInput.addEventListener('input', () => { syncSliderWithInput(lengthRange, lengthInput); updateCalculations(); });
-        lengthRange.addEventListener('input', () => { syncInputWithSlider(lengthInput, lengthRange); updateCalculations(); });
-        targetSlopeInput.addEventListener('input', updateCalculations);
-
-        function applyPreset(hCm, lCm) {
-            if (currentMode === 'reverse') {
-                switchMode('direct');
-            }
-            const factor = UNIT_FACTORS_CM[currentUnit] || 1.0;
-            const hVal = hCm / factor;
-            const lVal = lCm / factor;
-
-            if (currentUnit === 'cm') {
-                heightInput.value = Math.round(hVal);
-                lengthInput.value = Math.round(lVal);
-            } else if (currentUnit === 'in') {
-                heightInput.value = hVal.toFixed(1);
-                lengthInput.value = lVal.toFixed(1);
-            } else {
-                heightInput.value = hVal.toFixed(2);
-                lengthInput.value = lVal.toFixed(2);
-            }
-            syncSliderWithInput(heightRange, heightInput);
-            syncSliderWithInput(lengthRange, lengthInput);
-            updateCalculations();
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            filterTools();
         }
 
-        function updateCalculations() {
-            const t = TRANSLATIONS[currentLang];
-            let h = parseFloat(heightInput.value);
-            
-            if (isNaN(h) || h <= 0) return;
-
-            let l, slope, hypotenuse, angleDeg;
-
-            if (currentMode === 'direct') {
-                l = parseFloat(lengthInput.value);
-                if (isNaN(l) || l <= 0) return;
-
-                slope = (h / l) * 100;
-                hypotenuse = Math.sqrt((h * h) + (l * l));
-                angleDeg = Math.atan(h / l) * (180 / Math.PI);
-            } else {
-                let targetSlope = parseFloat(targetSlopeInput.value);
-                if (isNaN(targetSlope) || targetSlope <= 0) return;
-
-                slope = targetSlope;
-                l = h / (slope / 100);
-                hypotenuse = Math.sqrt((h * h) + (l * l));
-                angleDeg = Math.atan(slope / 100) * (180 / Math.PI);
-            }
-
-            slopePercentElem.textContent = slope.toFixed(1) + '%';
-            
-            if (slope > 0) {
-                const ratio = (100 / slope).toFixed(1);
-                slopeRatioElem.textContent = `1 : ${ratio}`;
-            } else {
-                slopeRatioElem.textContent = '-';
-            }
-
-            slopeDegreesElem.textContent = angleDeg.toFixed(1) + '°';
-
-            const u = currentUnit;
-            const hFmt = (u === 'cm' ? h.toFixed(0) : (u === 'in' ? h.toFixed(1) : h.toFixed(2)));
-            const lFmt = (u === 'cm' ? l.toFixed(0) : (u === 'in' ? l.toFixed(1) : l.toFixed(2)));
-            const hypFmt = (u === 'cm' || u === 'in' ? hypotenuse.toFixed(1) : hypotenuse.toFixed(2));
-
-            if (currentMode === 'direct') {
-                rampLengthElem.textContent = `${hypFmt} ${u}`;
-                ruleTip.innerHTML = t.rule_tip_direct;
-            } else {
-                rampLengthElem.textContent = `${lFmt} ${u}`;
-                let tip = t.rule_tip_reverse
-                    .replace('{h}', hFmt)
-                    .replace('{s}', slope.toFixed(1))
-                    .replace('{l}', lFmt)
-                    .replace('{hyp}', hypFmt)
-                    .replace(/{u}/g, u);
-                ruleTip.innerHTML = tip;
-            }
-
-            // Sync Print-only technical report summary
-            const printHeightVal = document.getElementById('printHeightVal');
-            const printLengthVal = document.getElementById('printLengthVal');
-            const printModeVal = document.getElementById('printModeVal');
-            if (printHeightVal) printHeightVal.textContent = `${hFmt} ${u}`;
-            if (printLengthVal) printLengthVal.textContent = `${lFmt} ${u}`;
-            if (printModeVal) printModeVal.textContent = (currentMode === 'direct') ? 'Verifica Pendenza da Quota' : `Progetto Sviluppo al ${slope.toFixed(1)}%`;
-
-            updateCompliance(slope, t);
-            updateSvgDiagram(h, l, slope, hypotenuse, u);
-        }
-
-        function updateCompliance(slope, t) {
-            complianceCard.className = "p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border ";
-            statusTag.className = "text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ";
-
-            // Germany has a rigid 6% max threshold under DIN 18040
-            const optThreshold = (currentLang === 'de') ? 5.0 : 5.0;
-            const maxDisabilityLimit = (currentLang === 'de') ? 6.0 : (currentLang === 'en' || currentLang === 'pt' ? 8.33 : 8.0);
-
-            if (slope <= optThreshold) {
-                complianceCard.classList.add('bg-emerald-50/90', 'border-emerald-200');
-                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
-                statusIcon.textContent = "✓";
-                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-emerald-950";
-                statusTitle.textContent = t.status_opt_title;
-                statusTag.classList.add('bg-emerald-100', 'text-emerald-800');
-                statusTag.textContent = t.status_opt_tag;
-                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800";
-                statusDesc.textContent = t.status_opt_desc;
-            } else if (slope <= maxDisabilityLimit) {
-                complianceCard.classList.add('bg-amber-50/90', 'border-amber-200');
-                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-amber-500 text-white shadow-md shadow-amber-500/20";
-                statusIcon.textContent = "!";
-                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-amber-950";
-                statusTitle.textContent = t.status_warn_title;
-                statusTag.classList.add('bg-amber-100', 'text-amber-800');
-                statusTag.textContent = t.status_warn_tag;
-                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-amber-800";
-                statusDesc.textContent = t.status_warn_desc;
-            } else if (slope <= 20.0) {
-                complianceCard.classList.add('bg-blue-50/90', 'border-blue-200');
-                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-blue-600 text-white shadow-md shadow-blue-600/20";
-                statusIcon.textContent = "🚗";
-                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-blue-950";
-                statusTitle.textContent = t.status_car_title;
-                statusTag.classList.add('bg-blue-100', 'text-blue-800');
-                statusTag.textContent = t.status_car_tag;
-                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-blue-800";
-                statusDesc.textContent = t.status_car_desc;
-            } else {
-                complianceCard.classList.add('bg-rose-50/90', 'border-rose-200');
-                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-rose-600 text-white shadow-md shadow-rose-600/20";
-                statusIcon.textContent = "✕";
-                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-rose-950";
-                statusTitle.textContent = t.status_danger_title;
-                statusTag.classList.add('bg-rose-100', 'text-rose-800');
-                statusTag.textContent = t.status_danger_tag;
-                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-rose-800";
-                statusDesc.textContent = t.status_danger_desc;
-            }
-        }
-
-        function updateSvgDiagram(h, l, slope, hypotenuse, u) {
-            const groundY = 165;
-            const startX = 50;
-            const maxX = 450;
-            const availableW = maxX - startX;
-
-            const ratio = h / l;
-            const visualHeight = Math.min(Math.max(ratio * availableW * 2.5, 20), 125);
-            const endY = groundY - visualHeight;
-
-            rampPolygon.setAttribute('points', `${startX},${groundY} ${maxX},${groundY} ${maxX},${endY}`);
-            heightDim.setAttribute('x1', maxX + 15);
-            heightDim.setAttribute('x2', maxX + 15);
-            heightDim.setAttribute('y1', groundY);
-            heightDim.setAttribute('y2', endY);
-
-            const hFmt = (u === 'cm' ? h.toFixed(0) : (u === 'in' ? h.toFixed(1) : h.toFixed(2)));
-            const lFmt = (u === 'cm' ? l.toFixed(0) : (u === 'in' ? l.toFixed(1) : l.toFixed(2)));
-            const hypFmt = (u === 'cm' || u === 'in' ? hypotenuse.toFixed(1) : hypotenuse.toFixed(2));
-
-            heightText.setAttribute('x', maxX + 22);
-            heightText.setAttribute('y', endY + (visualHeight / 2) + 5);
-            heightText.textContent = `h: ${hFmt} ${u}`;
-
-            lengthDim.setAttribute('x1', startX);
-            lengthDim.setAttribute('x2', maxX);
-            lengthText.setAttribute('x', startX + (availableW / 2) - 40);
-            lengthText.textContent = `L: ${lFmt} ${u}`;
-
-            const hypMidX = startX + (availableW / 2) - 20;
-            const hypMidY = groundY - (visualHeight / 2) - 14;
-            const angleDeg = Math.atan(visualHeight / availableW) * (180 / Math.PI);
-            
-            hypotenuseText.setAttribute('x', hypMidX);
-            hypotenuseText.setAttribute('y', hypMidY);
-            hypotenuseText.setAttribute('transform', `rotate(${-angleDeg} ${hypMidX} ${hypMidY})`);
-            hypotenuseText.textContent = `Rampa: ${hypFmt} ${u} (${slope.toFixed(1)}%)`;
-        }
-
-        // PWA Install Prompt Logic
-        let deferredPrompt = null;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            if (!localStorage.getItem('omnitools_install_dismissed')) {
-                document.getElementById('installBanner').classList.remove('hidden');
-            }
-        });
-
-        function triggerInstall() {
-            const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            if (isIos) {
-                document.getElementById('iosModal').classList.remove('hidden');
-                return;
-            }
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        dismissInstallBanner();
-                    }
-                    deferredPrompt = null;
-                });
-            } else {
-                alert("Per installare: apri le impostazioni del browser ⋮ e tocca 'Aggiungi a schermata Home'");
-            }
-        }
-
-        function dismissInstallBanner() {
-            document.getElementById('installBanner').classList.add('hidden');
-            localStorage.setItem('omnitools_install_dismissed', 'true');
-        }
-
-        function closeIosModal() {
-            document.getElementById('iosModal').classList.add('hidden');
-        }
-
-        // Suggestion Popup Logic
+        // Feedback / Suggest Modal
         function openSuggestModal() {
             document.getElementById('suggestModal').classList.remove('hidden');
-            document.getElementById('suggestFormContainer').classList.remove('hidden');
-            document.getElementById('suggestSuccessContainer').classList.add('hidden');
-            document.getElementById('suggestMessage').value = '';
         }
-
         function closeSuggestModal() {
             document.getElementById('suggestModal').classList.add('hidden');
+            document.getElementById('suggestFeedback').classList.add('hidden');
         }
-
-        async function submitSuggestion() {
-            const msg = document.getElementById('suggestMessage').value.trim();
-            if (!msg) return;
-            const btn = document.getElementById('modalSubmitBtn');
-            const t = TRANSLATIONS[currentLang];
-            btn.textContent = t.suggest_sending || "Invio...";
+        async function sendSuggestion() {
+            const input = document.getElementById('suggestIdeaInput');
+            const val = input.value.trim();
+            if (!val) return;
+            const btn = document.getElementById('suggestSendBtn');
             btn.disabled = true;
-
+            btn.textContent = '...';
             try {
                 await fetch('/api/suggest', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: msg, lang: currentLang })
+                    body: JSON.stringify({ idea: val, tool: 'Hub', lang: currentLang })
                 });
-            } catch (e) {
-                console.log("Feedback logged", e);
-            }
-
-            btn.textContent = t.suggest_send || "Invia";
+            } catch(e) {}
+            document.getElementById('suggestFeedback').classList.remove('hidden');
+            input.value = '';
+            setTimeout(() => closeSuggestModal(), 2000);
             btn.disabled = false;
-            document.getElementById('suggestFormContainer').classList.add('hidden');
-            document.getElementById('suggestSuccessContainer').classList.remove('hidden');
+            btn.textContent = 'Invia Suggerimento';
         }
 
-        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
             const banner = document.getElementById('installBanner');
-            if (banner) banner.classList.add('hidden');
-            const hBtn = document.getElementById('headerInstallBtn');
-            if (hBtn) hBtn.classList.add('hidden');
+            if (banner && !sessionStorage.getItem('omnitools_install_dismissed')) {
+                banner.classList.remove('hidden');
+            }
+        });
+        function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                    dismissInstallBanner();
+                });
+            }
+        }
+        function dismissInstallBanner() {
+            document.getElementById('installBanner').classList.add('hidden');
+            sessionStorage.setItem('omnitools_install_dismissed', '1');
         }
 
-        // Initialize Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js?v=2').then(reg => {
-                    reg.update();
-                }).catch(() => {});
-            });
-        }
-
-        // Initial setup
-        const prd = document.getElementById('printReportDate');
-        if (prd) {
-            const now = new Date();
-            const dStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
-            prd.textContent = 'Data: ' + dStr;
-        }
-        applyTranslations();
-        updateCalculations();
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations();
+        });
     </script>
 </body>
 </html>

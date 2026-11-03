@@ -169,7 +169,7 @@ html_code = f"""<!DOCTYPE html>
             <!-- Quick Actions: Switcher + Language Selector + App + Print -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <!-- Suite Quick Switcher -->
-                <a href="/" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
+                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
                     <span>📐</span>
                     <span class="hidden md:inline">Rampe</span>
                 </a>
@@ -582,7 +582,7 @@ html_code = f"""<!DOCTYPE html>
                 </div>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 text-[11px]">
-                    <a href="/" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
+                    <a href="/rampe" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
                         <span class="font-bold text-slate-300 group-hover:text-white">📐 Rampe</span>
                         <span class="text-[9px] px-1.5 py-0.2 bg-blue-500/20 text-blue-400 font-bold rounded">Attivo</span>
                     </a>
