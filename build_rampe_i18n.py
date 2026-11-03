@@ -135,6 +135,7 @@ html_code = f"""<!DOCTYPE html>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -694,8 +695,8 @@ html_code = f"""<!DOCTYPE html>
                     <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Cantiere ad Alta Precisione</span>
                 </div>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 text-[11px]">
-                    <div class="p-2 rounded-xl bg-slate-800/80 border border-blue-500/30 flex items-center justify-between">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 pt-3 text-[11px]">
+<div class="p-2 rounded-xl bg-slate-800/80 border border-blue-500/30 flex items-center justify-between">
                         <span class="font-bold text-white">📐 Rampe & Pendenze</span>
                         <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
                     </div>
@@ -710,6 +711,15 @@ html_code = f"""<!DOCTYPE html>
                     <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-emerald-500/30 flex items-center justify-between transition group">
                         <span class="font-bold text-slate-300 group-hover:text-white">🖼️ Risoluzione & DPI</span>
                         <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/tubi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">🚰 ScaricoFacile</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-cyan-500/20 text-cyan-400 font-bold rounded">Attivo</span>
+                    </a>
+                </div>
+                <div class="pt-2.5 text-center">
+                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
                     </a>
                 </div>
             </div>

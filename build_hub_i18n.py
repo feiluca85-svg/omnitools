@@ -61,6 +61,7 @@ html_code = f"""<!DOCTYPE html>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -188,7 +189,7 @@ html_code = f"""<!DOCTYPE html>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                     
                     <!-- Tool Card 1: RampaFacile -->
                     <a href="/rampe" class="tool-card group p-4 sm:p-5 rounded-2xl bg-white hover:bg-blue-50/20 border border-slate-200/90 hover:border-blue-400 shadow-xs hover:shadow-md transition-all duration-150 flex flex-col justify-between space-y-3.5" data-tags="rampa rampe pendenza pendenze dislivello disabili dm 236 garage handicap accessibilita">
@@ -241,6 +242,34 @@ html_code = f"""<!DOCTYPE html>
                         <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 text-xs">
                             <span class="text-slate-600 font-mono text-[11px]">🪜 Gradini • Alzata • Pedata</span>
                             <span class="font-bold text-indigo-600 group-hover:translate-x-1 transition inline-flex items-center gap-1 text-xs">
+                                <span class="btnOpenText">Apri</span> <span>→</span>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Tool Card 3: ScaricoFacile -->
+                    <a href="/tubi" class="tool-card group p-4 sm:p-5 rounded-2xl bg-white hover:bg-cyan-50/20 border border-slate-200/90 hover:border-cyan-400 shadow-xs hover:shadow-md transition-all duration-150 flex flex-col justify-between space-y-3.5" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-lg font-bold border border-cyan-200 group-hover:bg-cyan-600 group-hover:text-white transition">
+                                        🚰
+                                    </div>
+                                    <div>
+                                        <h3 id="toolTubiTitle" class="text-sm sm:text-base font-black text-slate-900 group-hover:text-cyan-600 transition">ScaricoFacile</h3>
+                                        <span id="toolTubiBadge" class="text-[9px] font-bold text-cyan-700 bg-cyan-50 px-1.5 py-0.2 rounded border border-cyan-200">UNI EN 12056</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Attivo</span>
+                            </div>
+                            <p id="toolTubiDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Pendenza tubazioni, dislivello caduta per metro e verifica autopulizia scarichi fognari.
+                            </p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 text-xs">
+                            <span class="text-slate-600 font-mono text-[11px]">🚰 Pendenza • Ø 40-200 mm • Autopulizia</span>
+                            <span class="font-bold text-cyan-600 group-hover:translate-x-1 transition inline-flex items-center gap-1 text-xs">
                                 <span class="btnOpenText">Apri</span> <span>→</span>
                             </span>
                         </div>
@@ -367,6 +396,21 @@ html_code = f"""<!DOCTYPE html>
                 </button>
             </div>
 
+            <!-- Suite Navigation & Partner Hook -->
+            <div class="flex items-center justify-center gap-3 text-xs font-bold text-slate-600 flex-wrap pb-1">
+                <a href="/rampe" class="hover:text-blue-600 transition">RampaFacile</a>
+                <span>•</span>
+                <a href="/scale" class="hover:text-blue-600 transition">ScalaFacile</a>
+                <span>•</span>
+                <a href="/tubi" class="hover:text-blue-600 transition">ScaricoFacile</a>
+                <span>•</span>
+                <a href="/dorso" class="hover:text-blue-600 transition">DorsoFacile</a>
+                <span>•</span>
+                <a href="/dpi" class="hover:text-blue-600 transition">RisoluzioneFacile</a>
+                <span>•</span>
+                <a href="/partnership" class="text-indigo-600 hover:underline" id="navPartnerText">🤝 Diventa Partner / Sponsor</a>
+            </div>
+
             <!-- Disclaimer and Rights -->
             <div class="text-center space-y-1.5">
                 <p id="rightsText" class="font-bold text-slate-600">© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.</p>
@@ -463,6 +507,14 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('toolScaleTitle').textContent = t.tool_scale_title;
             document.getElementById('toolScaleBadge').textContent = t.tool_scale_badge;
             document.getElementById('toolScaleDesc').textContent = t.tool_scale_desc;
+            if (document.getElementById('toolTubiTitle')) {{
+                document.getElementById('toolTubiTitle').textContent = t.tool_tubi_title;
+                document.getElementById('toolTubiBadge').textContent = t.tool_tubi_badge;
+                document.getElementById('toolTubiDesc').textContent = t.tool_tubi_desc;
+            }}
+            if (document.getElementById('navPartnerText')) {{
+                document.getElementById('navPartnerText').textContent = '🤝 ' + (t.nav_partner || 'Diventa Partner / Sponsor');
+            }}
             document.getElementById('toolDorsoTitle').textContent = t.tool_dorso_title;
             document.getElementById('toolDorsoBadge').textContent = t.tool_dorso_badge;
             document.getElementById('toolDorsoDesc').textContent = t.tool_dorso_desc;

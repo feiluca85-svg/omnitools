@@ -1,0 +1,673 @@
+#!/usr/bin/env python3
+import json
+
+translations = {
+    "it": {
+        "title": "Diventa Partner o Sponsor — OmniTools Lab",
+        "nav_back": "← Torna alla Suite",
+        "hero_badge": "🤝 Opportunità Commerciali & Sponsorizzazioni B2B",
+        "hero_title": "Fai conoscere i tuoi prodotti a chi progetta, stampa e costruisce.",
+        "hero_sub": "OmniTools Lab è il punto di riferimento quotidiano per geometri, architetti, impiantisti, grafici editoriali e tipografi in 6 lingue europee. Raggiungi decision-maker tecnici nel momento esatto in cui calcolano.",
+        "stats_badge": "Perché OmniTools Lab?",
+        "stat_1_val": "100%",
+        "stat_1_label": "Target Tecnico Qualificato",
+        "stat_1_sub": "Zero traffico casuale: solo professionisti del settore e studi tecnici",
+        "stat_2_val": "6 Lingue",
+        "stat_2_label": "Portata Europea",
+        "stat_2_sub": "IT, EN, ES, FR, DE, PT con localizzazione normativa nativa",
+        "stat_3_val": "0 Banner Fastidiosi",
+        "stat_3_label": "Massima Brand Reputation",
+        "stat_3_sub": "Integrazioni pulite, native e ad alta fiducia degli utenti",
+        "solutions_title": "Formati di Collaborazione & Sponsorship",
+        "sol_1_tag": "Sponsor Ufficiale",
+        "sol_1_title": "Sponsor Esclusivo di Categoria",
+        "sol_1_desc": "Associa il tuo brand in esclusiva a uno strumento (es. 'ScaricoFacile powered by [Produttore Tubi]'). Logo ben visibile nell'intestazione e nella scheda PDF A4 scaricata dal professionista.",
+        "sol_2_tag": "Affiliazione & E-commerce",
+        "sol_2_title": "Link Tecnico ai Tuoi Prodotti",
+        "sol_2_desc": "Inserisci il link diretto al tuo catalogo o e-commerce per acquistare il materiale calcolato (es. raccordi per tubi, campionari carte speciali, distanziometri laser).",
+        "sol_3_tag": "Strumento Su Misura",
+        "sol_3_title": "White-Label & Calcolatore Personalizzato",
+        "sol_3_desc": "Vuoi un calcolatore personalizzato con le formule e il catalogo della tua azienda da incorporare nel tuo sito web o distribuire ai tuoi installatori? Lo sviluppiamo noi.",
+        "sol_4_tag": "Lead Generation",
+        "sol_4_title": "Media Placement & Richieste Preventivo",
+        "sol_4_desc": "Raccogli richieste di fornitura e preventivo qualificate direttamente dai professionisti alla ricerca di soluzioni idrauliche, edili o di stampa.",
+        "form_title": "Richiedi Informazioni o un Media Kit",
+        "form_sub": "Compila il modulo o scrivici direttamente a info@omnitoolslab.com. Rispondiamo entro 24 ore lavorative.",
+        "label_company": "Azienda / Studio Tecnico *",
+        "label_name": "Nome e Cognome",
+        "label_email": "Email Aziendale *",
+        "label_phone": "Telefono (opzionale)",
+        "label_type": "Tipologia di Collaborazione Interessata *",
+        "opt_sponsor": "Sponsorizzazione Esclusiva di uno Strumento",
+        "opt_affiliate": "Integrazione Prodotti / Affiliazione Commerciale",
+        "opt_whitelabel": "Sviluppo Calcolatore Personalizzato (White-Label)",
+        "opt_other": "Altra proposta commerciale",
+        "label_msg": "Breve descrizione del tuo brand o proposta *",
+        "btn_submit": "Invia Richiesta di Collaborazione",
+        "btn_submitting": "Invio in corso...",
+        "success_title": "Richiesta Inviata con Successo!",
+        "success_desc": "Grazie per l'interesse. Abbiamo ricevuto la tua richiesta e il nostro team ti contatterà al più presto con il Media Kit e le opzioni su misura.",
+        "direct_contact_title": "Preferisci un contatto diretto?",
+        "direct_contact_desc": "Scrivici una email a",
+        "footer_disclaimer": "OmniTools Lab è una suite indipendente di calcolatori tecnici. Valutiamo solo collaborazioni con marchi, produttori e distributori che rispettano standard etici e qualitativi di eccellenza.",
+        "footer_rights": "© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati."
+    },
+    "en": {
+        "title": "Partner or Advertise with Us — OmniTools Lab",
+        "nav_back": "← Back to Suite",
+        "hero_badge": "🤝 B2B Commercial Opportunities & Sponsorships",
+        "hero_title": "Put your brand in front of engineers, printers, and builders.",
+        "hero_sub": "OmniTools Lab is the daily utility suite for architects, surveyors, plumbers, prepress operators, and print shops across 6 European languages. Reach technical decision-makers right when they size projects.",
+        "stats_badge": "Why OmniTools Lab?",
+        "stat_1_val": "100%",
+        "stat_1_label": "Qualified B2B Target",
+        "stat_1_sub": "Zero casual clicks: strictly technical professionals and engineering firms",
+        "stat_2_val": "6 Languages",
+        "stat_2_label": "European Reach",
+        "stat_2_sub": "EN, IT, ES, FR, DE, PT with native regulatory compliance tables",
+        "stat_3_val": "0 Annoying Ads",
+        "stat_3_label": "Maximum Brand Integrity",
+        "stat_3_sub": "Clean, contextual, native partnerships that earn user trust",
+        "solutions_title": "Partnership & Sponsorship Formats",
+        "sol_1_tag": "Official Sponsor",
+        "sol_1_title": "Exclusive Category Sponsorship",
+        "sol_1_desc": "Own an entire tool category (e.g., 'SewerSlope powered by [Pipe Manufacturer]'). Your logo in the header and on every downloadable A4 engineering PDF.",
+        "sol_2_tag": "Affiliate & Commerce",
+        "sol_2_title": "Contextual Product Links",
+        "sol_2_desc": "Direct link to your catalog or online store to purchase calculated materials (e.g. pipe fittings, specialty paper stocks, laser distance meters).",
+        "sol_3_tag": "Custom Utility",
+        "sol_3_title": "White-Label & Custom Calculator",
+        "sol_3_desc": "Need a branded calculator featuring your product specs to embed on your website or distribute to installers? We build it for you.",
+        "sol_4_tag": "Lead Generation",
+        "sol_4_title": "Native RFQ Placement",
+        "sol_4_desc": "Capture qualified quote requests directly from specifiers and installers looking for building, plumbing, or print materials.",
+        "form_title": "Request Media Kit or Proposal",
+        "form_sub": "Fill in the form or email us at info@omnitoolslab.com. We reply within 24 business hours.",
+        "label_company": "Company / Engineering Firm *",
+        "label_name": "Full Name",
+        "label_email": "Work Email *",
+        "label_phone": "Phone (optional)",
+        "label_type": "Interested Partnership Type *",
+        "opt_sponsor": "Exclusive Tool Sponsorship",
+        "opt_affiliate": "Product Integration / Affiliate Program",
+        "opt_whitelabel": "Custom Branded Calculator (White-Label)",
+        "opt_other": "Other commercial inquiry",
+        "label_msg": "Brief description of your brand or proposal *",
+        "btn_submit": "Send Partnership Request",
+        "btn_submitting": "Submitting...",
+        "success_title": "Request Successfully Received!",
+        "success_desc": "Thank you for reaching out. We have logged your request and our team will get in touch with our Media Kit and custom proposals.",
+        "direct_contact_title": "Prefer direct email?",
+        "direct_contact_desc": "Reach out directly to",
+        "footer_disclaimer": "OmniTools Lab is an independent technical calculator suite. We partner exclusively with quality-verified manufacturers and distributors.",
+        "footer_rights": "© 2026 OmniTools Lab — Precision Utilities Suite. All rights reserved."
+    },
+    "es": {
+        "title": "Colabora o Patrocina — OmniTools Lab",
+        "nav_back": "← Volver a la Suite",
+        "hero_badge": "🤝 Oportunidades Comerciales B2B y Patrocinios",
+        "hero_title": "Presenta tu marca a quienes diseñan, imprimen y construyen.",
+        "hero_sub": "OmniTools Lab es la suite de cálculo de referencia para arquitectos, fontaneros, diseñadores e imprentas en 6 idiomas europeos. Conecta con prescriptores técnicos en el momento exacto del cálculo.",
+        "stats_badge": "¿Por qué OmniTools Lab?",
+        "stat_1_val": "100%",
+        "stat_1_label": "Audiencia B2B Cualificada",
+        "stat_1_sub": "Cero tráfico irrelevante: solo profesionales de obra, arquitectura y gráfica",
+        "stat_2_val": "6 Idiomas",
+        "stat_2_label": "Alcance Europeo",
+        "stat_2_sub": "ES, IT, EN, FR, DE, PT con tablas normativas locales",
+        "stat_3_val": "0 Anuncios Invasivos",
+        "stat_3_label": "Prestigio de Marca",
+        "stat_3_sub": "Integraciones nativas y limpias de máxima confianza",
+        "solutions_title": "Formatos de Colaboración",
+        "sol_1_tag": "Patrocinador Oficial",
+        "sol_1_title": "Patrocinio Exclusivo de Herramienta",
+        "sol_1_desc": "Asocia tu marca en exclusiva a una calculadora con tu logotipo en el encabezado y en el PDF técnico A4 descargable.",
+        "sol_2_tag": "Afiliación y Comercio",
+        "sol_2_title": "Enlace Técnico a tus Productos",
+        "sol_2_desc": "Enlace directo a tu catálogo para comprar los materiales calculados (tuberías, papeles especiales, medidores).",
+        "sol_3_tag": "A Medida",
+        "sol_3_title": "Calculadora Marca Blanca",
+        "sol_3_desc": "Desarrollamos calculadoras personalizadas con el catálogo y fórmulas de tu empresa para tu web o clientes.",
+        "sol_4_tag": "Presupuestos",
+        "sol_4_title": "Captación de Leads Técnicos",
+        "sol_4_desc": "Recibe solicitudes de presupuesto de profesionales que dimensionan sus proyectos de fontanería, construcción o gráfica.",
+        "form_title": "Solicitar Información o Media Kit",
+        "form_sub": "Rellena el formulario o escríbenos a info@omnitoolslab.com.",
+        "label_company": "Empresa / Estudio Técnico *",
+        "label_name": "Nombre y Apellidos",
+        "label_email": "Email Corporativo *",
+        "label_phone": "Teléfono (opcional)",
+        "label_type": "Tipo de Colaboración *",
+        "opt_sponsor": "Patrocinio Exclusivo de Herramienta",
+        "opt_affiliate": "Integración de Catálogo / Afiliación",
+        "opt_whitelabel": "Calculadora Personalizada Marca Blanca",
+        "opt_other": "Otra propuesta comercial",
+        "label_msg": "Breve descripción de tu marca o propuesta *",
+        "btn_submit": "Enviar Solicitud de Colaboración",
+        "btn_submitting": "Enviando...",
+        "success_title": "¡Solicitud Recibida con Éxito!",
+        "success_desc": "Gracias por tu interés. Nos pondremos en contacto contigo a la brevedad.",
+        "direct_contact_title": "¿Prefieres contacto directo?",
+        "direct_contact_desc": "Escríbenos a",
+        "footer_disclaimer": "OmniTools Lab es una suite técnica independiente.",
+        "footer_rights": "© 2026 OmniTools Lab. Todos los derechos reservados."
+    },
+    "fr": {
+        "title": "Devenez Partenaire ou Sponsor — OmniTools Lab",
+        "nav_back": "← Retour à la Suite",
+        "hero_badge": "🤝 Opportunités Commerciales & Sponsoring B2B",
+        "hero_title": "Faites connaître vos produits aux prescripteurs du bâtiment et de l'imprimerie.",
+        "hero_sub": "OmniTools Lab est la référence pour architectes, métreurs, plombiers et imprimeurs en 6 langues européennes. Atteignez les professionnels au moment précis de leurs calculs techniques.",
+        "stats_badge": "Pourquoi OmniTools Lab ?",
+        "stat_1_val": "100%",
+        "stat_1_label": "Audience Professionnelle",
+        "stat_1_sub": "Strictement des professionnels du bâtiment, de l'architecture et du graphisme",
+        "stat_2_val": "6 Langues",
+        "stat_2_label": "Couverture Européenne",
+        "stat_2_sub": "FR, IT, EN, ES, DE, PT avec normes techniques intégrées",
+        "stat_3_val": "0 Publicité Invasive",
+        "stat_3_label": "Notoriété et Confiance",
+        "stat_3_sub": "Intégrations natives, élégantes et à forte valeur ajoutée",
+        "solutions_title": "Formats de Partenariat",
+        "sol_1_tag": "Sponsor Officiel",
+        "sol_1_title": "Sponsoring Exclusif d'Outil",
+        "sol_1_desc": "Associez votre marque à un calculateur avec logo dans l'en-tête et sur la fiche technique A4 imprimable.",
+        "sol_2_tag": "Affiliation & E-commerce",
+        "sol_2_title": "Lien Technique vers vos Produits",
+        "sol_2_desc": "Lien direct vers votre catalogue pour commander les matériaux calculés (raccords PVC, papiers spéciaux, lasers).",
+        "sol_3_tag": "Sur-Mesure",
+        "sol_3_title": "Calculateur Marque Blanche",
+        "sol_3_desc": "Développement d'un calculateur sur-mesure intégrant vos gammes de produits pour votre propre site internet.",
+        "sol_4_tag": "Demandes de Devis",
+        "sol_4_title": "Génération de Leads Qualifiés",
+        "sol_4_desc": "Recevez des demandes de devis émanant directement des installateurs et maîtres d'œuvre.",
+        "form_title": "Demander le Kit Média",
+        "form_sub": "Remplissez le formulaire ou contactez-nous à info@omnitoolslab.com.",
+        "label_company": "Entreprise / Bureau d'Études *",
+        "label_name": "Nom & Prénom",
+        "label_email": "Email Professionnel *",
+        "label_phone": "Téléphone (facultatif)",
+        "label_type": "Type de Partenariat *",
+        "opt_sponsor": "Sponsoring Exclusif d'un Outil",
+        "opt_affiliate": "Intégration Catalogue / Affiliation",
+        "opt_whitelabel": "Calculateur Personnalisé Marque Blanche",
+        "opt_other": "Autre demande commerciale",
+        "label_msg": "Présentation de votre projet ou marque *",
+        "btn_submit": "Envoyer la Demande",
+        "btn_submitting": "Envoi en cours...",
+        "success_title": "Demande Reçue avec Succès !",
+        "success_desc": "Merci pour votre message. Nous reviendrons vers vous sous 24h ouvrées.",
+        "direct_contact_title": "Contact direct ?",
+        "direct_contact_desc": "Écrivez-nous à",
+        "footer_disclaimer": "OmniTools Lab est une suite indépendante d'outils professionnels.",
+        "footer_rights": "© 2026 OmniTools Lab. Tous droits réservés."
+    },
+    "de": {
+        "title": "Partner oder Sponsor werden — OmniTools Lab",
+        "nav_back": "← Zurück zur Suite",
+        "hero_badge": "🤝 B2B-Kooperationen & Sponsoring",
+        "hero_title": "Präsentieren Sie Ihre Marke Architekten, Planern und Druckereien.",
+        "hero_sub": "OmniTools Lab ist das tägliche Präzisionswerkzeug für Bauingenieure, Installateure, Grafiker und Druckexperten in 6 Sprachen.",
+        "stats_badge": "Warum OmniTools Lab?",
+        "stat_1_val": "100%",
+        "stat_1_label": "Reine Fachzielgruppe",
+        "stat_1_sub": "Keine Streuverluste: Ausschließlich Planer, Handwerker und Agenturen",
+        "stat_2_val": "6 Sprachen",
+        "stat_2_label": "Europäische Reichweite",
+        "stat_2_sub": "DE, IT, EN, ES, FR, PT mit DIN-konformen Prüfungen",
+        "stat_3_val": "0 Aufdringliche Banner",
+        "stat_3_label": "Höchste Markensicherheit",
+        "stat_3_sub": "Seriöse, native Einbindungen mit hohem Nutzervertrauen",
+        "solutions_title": "Kooperationsformate",
+        "sol_1_tag": "Offizieller Sponsor",
+        "sol_1_title": "Exklusives Tool-Sponsoring",
+        "sol_1_desc": "Platzieren Sie Ihr Firmenlogo prominent im Rechner und auf dem generierten A4-PDF-Datenblatt.",
+        "sol_2_tag": "Affiliate & Shop",
+        "sol_2_title": "Produktverlinkung & Shopanbindung",
+        "sol_2_desc": "Direkter Absprung zu Ihren Produkten passend zum Berechnungsergebnis (Rohre, Spezialpapiere, Messtechnik).",
+        "sol_3_tag": "White-Label",
+        "sol_3_title": "Maßgeschneiderter Firmenrechner",
+        "sol_3_desc": "Wir programmieren für Ihre Website einen individuellen Rechner nach Ihren Produktkatalogen.",
+        "sol_4_tag": "Lead-Generierung",
+        "sol_4_title": "Qualifizierte Angebotsanfragen",
+        "sol_4_desc": "Erhalten Sie direkte Anfragen von Fachbetrieben und Planern während der Projektkalkulation.",
+        "form_title": "Mediadaten anfordern",
+        "form_sub": "Füllen Sie das Formular aus oder schreiben Sie an info@omnitoolslab.com.",
+        "label_company": "Firma / Ingenieurbüro *",
+        "label_name": "Name und Vorname",
+        "label_email": "Geschäftliche E-Mail *",
+        "label_phone": "Telefon (optional)",
+        "label_type": "Art der Partnerschaft *",
+        "opt_sponsor": "Exklusiv-Sponsoring eines Tools",
+        "opt_affiliate": "Produktverlinkung / Partnerschaft",
+        "opt_whitelabel": "Individueller White-Label-Rechner",
+        "opt_other": "Sonstige Kooperationsanfrage",
+        "label_msg": "Kurzbeschreibung Ihrer Anfrage *",
+        "btn_submit": "Anfrage absenden",
+        "btn_submitting": "Wird gesendet...",
+        "success_title": "Anfrage erfolgreich übermittelt!",
+        "success_desc": "Vielen Dank. Unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.",
+        "direct_contact_title": "Direkter Kontakt?",
+        "direct_contact_desc": "Schreiben Sie uns an",
+        "footer_disclaimer": "OmniTools Lab ist eine unabhängige Plattform für technische Berechnungswerkzeuge.",
+        "footer_rights": "© 2026 OmniTools Lab. Alle Rechte vorbehalten."
+    },
+    "pt": {
+        "title": "Torne-se Parceiro ou Patrocinador — OmniTools Lab",
+        "nav_back": "← Voltar à Suite",
+        "hero_badge": "🤝 Oportunidades Comerciais B2B e Parcerias",
+        "hero_title": "Apresente os seus produtos a quem projeta, imprime e constrói.",
+        "hero_sub": "O OmniTools Lab é a ferramenta diária de engenheiros, instaladores, designers e gráficas em 6 línguas europeias. Alcance decisores técnicos no momento exato do cálculo.",
+        "stats_badge": "Porquê o OmniTools Lab?",
+        "stat_1_val": "100%",
+        "stat_1_label": "Público B2B Qualificado",
+        "stat_1_sub": "Sem tráfego disperso: estritamente profissionais do setor e gabinetes técnicos",
+        "stat_2_val": "6 Línguas",
+        "stat_2_label": "Alcance Europeu",
+        "stat_2_sub": "PT, IT, EN, ES, FR, DE com tabelas normativas nativas",
+        "stat_3_val": "0 Banners Invasivos",
+        "stat_3_label": "Reputação e Confiança",
+        "stat_3_sub": "Integrações nativas, limpas e de elevada credibilidade",
+        "solutions_title": "Formatos de Parceria",
+        "sol_1_tag": "Patrocinador Oficial",
+        "sol_1_title": "Patrocínio Exclusivo de Ferramenta",
+        "sol_1_desc": "Associe a sua marca a uma ferramenta com logótipo no cabeçalho e na ficha técnica A4 descarregável.",
+        "sol_2_tag": "Afiliados & Loja",
+        "sol_2_title": "Ligação Técnica aos seus Produtos",
+        "sol_2_desc": "Link direto para o seu catálogo para compra de tubos, papéis especiais ou instrumentos de medição.",
+        "sol_3_tag": "À Medida",
+        "sol_3_title": "Calculador White-Label Personalizado",
+        "sol_3_desc": "Desenvolvemos calculadores com as fórmulas e produtos da sua empresa para embeber no seu site.",
+        "sol_4_tag": "Geração de Leads",
+        "sol_4_title": "Pedidos de Cotação Qualificados",
+        "sol_4_desc": "Receba pedidos de orçamento de profissionais em fase de projeto ou obra.",
+        "form_title": "Solicitar Media Kit e Informações",
+        "form_sub": "Preencha o formulário ou contacte-nos através de info@omnitoolslab.com.",
+        "label_company": "Empresa / Gabinete Técnico *",
+        "label_name": "Nome e Sobrenome",
+        "label_email": "Email Corporativo *",
+        "label_phone": "Telefone (opcional)",
+        "label_type": "Tipo de Parceria Pretendida *",
+        "opt_sponsor": "Patrocínio Exclusivo de Ferramenta",
+        "opt_affiliate": "Integração de Catálogo / Afiliados",
+        "opt_whitelabel": "Calculador Personalizado White-Label",
+        "opt_other": "Outra proposta comercial",
+        "label_msg": "Breve descrição da sua proposta *",
+        "btn_submit": "Enviar Pedido de Parceria",
+        "btn_submitting": "A enviar...",
+        "success_title": "Pedido Enviado com Sucesso!",
+        "success_desc": "Obrigado pelo interesse. Entraremos em contacto no prazo máximo de 24 horas úteis.",
+        "direct_contact_title": "Prefere contacto direto?",
+        "direct_contact_desc": "Envie email para",
+        "footer_disclaimer": "O OmniTools Lab é uma suite independente de ferramentas técnicas.",
+        "footer_rights": "© 2026 OmniTools Lab. Todos os direitos reservados."
+    }
+}
+
+html_content = f'''<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Diventa Partner o Sponsor — OmniTools Lab</title>
+    <meta name="description" content="Opportunità commerciali, sponsorship e partnership per produttori edili, cartiere, impiantisti e fornitori B2B su OmniTools Lab.">
+    <link rel="canonical" href="https://www.omnitoolslab.com/partnership">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.omnitoolslab.com/partnership">
+    <meta property="og:title" content="Diventa Partner o Sponsor — OmniTools Lab">
+    <meta property="og:description" content="Fai conoscere i tuoi prodotti B2B a geometri, architetti, ingegneri e grafici in Europa.">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-hub.png">
+
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {{
+            theme: {{
+                extend: {{
+                    fontFamily: {{
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }}
+                }}
+            }}
+        }}
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <span class="font-jakarta font-black text-base sm:text-lg text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
+                        <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Lab</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 font-medium hidden sm:inline leading-tight mt-0.5">Commercial & Partnerships</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="/" id="navBackBtn" class="text-xs sm:text-sm font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl border border-slate-200 transition flex items-center gap-1">
+                    ← Torna alla Suite
+                </a>
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <option value="it">🇮🇹 IT</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="de">🇩🇪 DE</option>
+                    <option value="pt">🇵🇹 PT</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 py-8 sm:py-12 flex-1 w-full space-y-12 sm:space-y-16">
+
+        <!-- Hero Section -->
+        <section class="text-center max-w-3xl mx-auto space-y-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 text-xs font-bold shadow-2xs">
+                <span id="heroBadge">🤝 Opportunità Commerciali & Sponsorizzazioni B2B</span>
+            </div>
+            <h1 id="heroTitle" class="font-jakarta text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Fai conoscere i tuoi prodotti a chi progetta, stampa e costruisce.
+            </h1>
+            <p id="heroSub" class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                OmniTools Lab è il punto di riferimento quotidiano per geometri, architetti, impiantisti, grafici editoriali e tipografi in 6 lingue europee. Raggiungi decision-maker tecnici nel momento esatto in cui calcolano.
+            </p>
+        </section>
+
+        <!-- Stats / Why OmniTools Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                <div class="text-3xl font-black text-blue-600 font-mono mb-1" id="stat1Val">100%</div>
+                <div class="font-bold text-slate-900 text-sm mb-1.5" id="stat1Label">Target Tecnico Qualificato</div>
+                <div class="text-xs text-slate-500 leading-relaxed" id="stat1Sub">Zero traffico casuale: solo professionisti del settore e studi tecnici</div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                <div class="text-3xl font-black text-indigo-600 font-mono mb-1" id="stat2Val">6 Lingue</div>
+                <div class="font-bold text-slate-900 text-sm mb-1.5" id="stat2Label">Portata Europea</div>
+                <div class="text-xs text-slate-500 leading-relaxed" id="stat2Sub">IT, EN, ES, FR, DE, PT con localizzazione normativa nativa</div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                <div class="text-3xl font-black text-emerald-600 font-mono mb-1" id="stat3Val">0 Banner Fastidiosi</div>
+                <div class="font-bold text-slate-900 text-sm mb-1.5" id="stat3Label">Massima Brand Reputation</div>
+                <div class="text-xs text-slate-500 leading-relaxed" id="stat3Sub">Integrazioni pulite, native e ad alta fiducia degli utenti</div>
+            </div>
+        </section>
+
+        <!-- Partnership Solutions Grid -->
+        <section class="space-y-6">
+            <div class="text-center">
+                <h2 id="solutionsTitle" class="text-2xl sm:text-3xl font-black text-slate-900 font-jakarta">Formati di Collaborazione & Sponsorship</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-blue-300 transition">
+                    <div>
+                        <span class="inline-block px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-bold rounded-lg border border-blue-200/60 mb-3" id="sol1Tag">Sponsor Ufficiale</span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2" id="sol1Title">Sponsor Esclusivo di Categoria</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed" id="sol1Desc">Associa il tuo brand in esclusiva a uno strumento (es. 'ScaricoFacile powered by [Produttore Tubi]'). Logo ben visibile nell'intestazione e nella scheda PDF A4 scaricata dal professionista.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-indigo-300 transition">
+                    <div>
+                        <span class="inline-block px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[11px] font-bold rounded-lg border border-indigo-200/60 mb-3" id="sol2Tag">Affiliazione & E-commerce</span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2" id="sol2Title">Link Tecnico ai Tuoi Prodotti</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed" id="sol2Desc">Inserisci il link diretto al tuo catalogo o e-commerce per acquistare il materiale calcolato (es. raccordi per tubi, campionari carte speciali, distanziometri laser).</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-amber-300 transition">
+                    <div>
+                        <span class="inline-block px-2.5 py-1 bg-amber-50 text-amber-800 text-[11px] font-bold rounded-lg border border-amber-200/60 mb-3" id="sol3Tag">Strumento Su Misura</span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2" id="sol3Title">White-Label & Calcolatore Personalizzato</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed" id="sol3Desc">Vuoi un calcolatore personalizzato con le formule e il catalogo della tua azienda da incorporare nel tuo sito web o distribuire ai tuoi installatori? Lo sviluppiamo noi.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition">
+                    <div>
+                        <span class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-800 text-[11px] font-bold rounded-lg border border-emerald-200/60 mb-3" id="sol4Tag">Lead Generation</span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2" id="sol4Title">Media Placement & Richieste Preventivo</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed" id="sol4Desc">Raccogli richieste di fornitura e preventivo qualificate direttamente dai professionisti alla ricerca di soluzioni idrauliche, edili o di stampa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Inquiry Form -->
+        <section class="bg-white rounded-3xl border border-slate-200 shadow-lg p-6 sm:p-10 max-w-2xl mx-auto">
+            <div class="text-center mb-8 space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 font-jakarta" id="formTitle">Richiedi Informazioni o un Media Kit</h2>
+                <p class="text-sm text-slate-500" id="formSub">Compila il modulo o scrivici direttamente a info@omnitoolslab.com. Rispondiamo entro 24 ore lavorative.</p>
+            </div>
+
+            <form id="partnerForm" onsubmit="submitPartnerInquiry(event)" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="lblCompany">Azienda / Studio Tecnico *</label>
+                    <input type="text" id="pCompany" required placeholder="Es. Rossi Tubi S.r.l. / Studio Associato" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm font-medium outline-none transition">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="lblName">Nome e Cognome</label>
+                        <input type="text" id="pName" placeholder="Mario Rossi" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm font-medium outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="lblEmail">Email Aziendale *</label>
+                        <input type="email" id="pEmail" required placeholder="mario.rossi@azienda.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm font-medium outline-none transition">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="lblPhone">Telefono (opzionale)</label>
+                        <input type="tel" id="pPhone" placeholder="+39 02 ..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm font-medium outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="lblType">Tipologia di Collaborazione Interessata *</label>
+                        <select id="pType" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm font-medium outline-none transition bg-white">
+                            <option value="Sponsorship Esclusiva" id="optSponsor">Sponsorizzazione Esclusiva di uno Strumento</option>
+                            <option value="Integrazione Affiliata" id="optAffiliate">Integrazione Prodotti / Affiliazione Commerciale</option>
+                            <option value="White-Label" id="optWhitelabel">Sviluppo Calcolatore Personalizzato (White-Label)</option>
+                            <option value="Altro" id="optOther">Altra proposta commerciale</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="lblMsg">Breve descrizione del tuo brand o proposta *</label>
+                    <textarea id="pMsg" rows="4" required placeholder="Raccontaci la tua azienda, quali categorie o prodotti vorresti valorizzare..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm font-medium outline-none transition"></textarea>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm shadow-md shadow-blue-500/25 transition cursor-pointer">
+                    Invia Richiesta di Collaborazione
+                </button>
+            </form>
+
+            <div id="successNotice" class="hidden text-center py-8 space-y-3">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
+                <h3 class="text-xl font-bold text-slate-900" id="successTitle">Richiesta Inviata con Successo!</h3>
+                <p class="text-sm text-slate-600 max-w-md mx-auto" id="successDesc">Grazie per l'interesse. Abbiamo ricevuto la tua richiesta e il nostro team ti contatterà al più presto con il Media Kit e le opzioni su misura.</p>
+            </div>
+
+            <!-- Direct mail fallback -->
+            <div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-500">
+                <span id="directTitle">Preferisci un contatto diretto?</span> Scrivici a <a href="mailto:info@omnitoolslab.com" class="font-bold text-blue-600 hover:underline">info@omnitoolslab.com</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center mt-12">
+        <div class="max-w-4xl mx-auto space-y-3">
+            <p id="footerDisclaimer" class="text-xs text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                OmniTools Lab è una suite indipendente di calcolatori tecnici. Valutiamo solo collaborazioni con marchi, produttori e distributori che rispettano standard etici e qualitativi di eccellenza.
+            </p>
+            <p id="footerRights" class="text-xs font-bold text-slate-600">
+                © 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const TRANSLATIONS = {json.dumps(translations, ensure_ascii=False)};
+        let currentLang = 'it';
+
+        function changeLanguage(lang) {{
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            const t = TRANSLATIONS[lang];
+
+            document.title = t.title;
+            document.getElementById('navBackBtn').textContent = t.nav_back;
+            document.getElementById('heroBadge').textContent = t.hero_badge;
+            document.getElementById('heroTitle').textContent = t.hero_title;
+            document.getElementById('heroSub').textContent = t.hero_sub;
+
+            document.getElementById('stat1Val').textContent = t.stat_1_val;
+            document.getElementById('stat1Label').textContent = t.stat_1_label;
+            document.getElementById('stat1Sub').textContent = t.stat_1_sub;
+
+            document.getElementById('stat2Val').textContent = t.stat_2_val;
+            document.getElementById('stat2Label').textContent = t.stat_2_label;
+            document.getElementById('stat2Sub').textContent = t.stat_2_sub;
+
+            document.getElementById('stat3Val').textContent = t.stat_3_val;
+            document.getElementById('stat3Label').textContent = t.stat_3_label;
+            document.getElementById('stat3Sub').textContent = t.stat_3_sub;
+
+            document.getElementById('solutionsTitle').textContent = t.solutions_title;
+            document.getElementById('sol1Tag').textContent = t.sol_1_tag;
+            document.getElementById('sol1Title').textContent = t.sol_1_title;
+            document.getElementById('sol1Desc').textContent = t.sol_1_desc;
+
+            document.getElementById('sol2Tag').textContent = t.sol_2_tag;
+            document.getElementById('sol2Title').textContent = t.sol_2_title;
+            document.getElementById('sol2Desc').textContent = t.sol_2_desc;
+
+            document.getElementById('sol3Tag').textContent = t.sol_3_tag;
+            document.getElementById('sol3Title').textContent = t.sol_3_title;
+            document.getElementById('sol3Desc').textContent = t.sol_3_desc;
+
+            document.getElementById('sol4Tag').textContent = t.sol_4_tag;
+            document.getElementById('sol4Title').textContent = t.sol_4_title;
+            document.getElementById('sol4Desc').textContent = t.sol_4_desc;
+
+            document.getElementById('formTitle').textContent = t.form_title;
+            document.getElementById('formSub').textContent = t.form_sub;
+            document.getElementById('lblCompany').textContent = t.label_company;
+            document.getElementById('lblName').textContent = t.label_name;
+            document.getElementById('lblEmail').textContent = t.label_email;
+            document.getElementById('lblPhone').textContent = t.label_phone;
+            document.getElementById('lblType').textContent = t.label_type;
+            document.getElementById('optSponsor').textContent = t.opt_sponsor;
+            document.getElementById('optAffiliate').textContent = t.opt_affiliate;
+            document.getElementById('optWhitelabel').textContent = t.opt_whitelabel;
+            document.getElementById('optOther').textContent = t.opt_other;
+            document.getElementById('lblMsg').textContent = t.label_msg;
+            document.getElementById('btnSubmit').textContent = t.btn_submit;
+
+            document.getElementById('successTitle').textContent = t.success_title;
+            document.getElementById('successDesc').textContent = t.success_desc;
+            document.getElementById('directTitle').textContent = t.direct_contact_title;
+            document.getElementById('footerDisclaimer').textContent = t.footer_disclaimer;
+            document.getElementById('footerRights').textContent = t.footer_rights;
+
+            document.getElementById('langSelect').value = lang;
+            localStorage.setItem('omni_lang', lang);
+        }}
+
+        async function submitPartnerInquiry(e) {{
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmit');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = TRANSLATIONS[currentLang].btn_submitting;
+
+            const payload = {{
+                company: document.getElementById('pCompany').value,
+                name: document.getElementById('pName').value,
+                email: document.getElementById('pEmail').value,
+                phone: document.getElementById('pPhone').value,
+                type: document.getElementById('pType').value,
+                message: document.getElementById('pMsg').value,
+                lang: currentLang
+            }};
+
+            try {{
+                const res = await fetch('/api/partner-contact', {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify(payload)
+                }});
+
+                if (res.ok) {{
+                    document.getElementById('partnerForm').classList.add('hidden');
+                    document.getElementById('successNotice').classList.remove('hidden');
+                }} else {{
+                    window.location.href = `mailto:info@omnitoolslab.com?subject=Partnership Inquiry - ${{encodeURIComponent(payload.company)}}&body=${{encodeURIComponent(payload.message + '\\n\\nTelefono: ' + payload.phone + '\\nTipo: ' + payload.type)}}`;
+                }}
+            }} catch (err) {{
+                window.location.href = `mailto:info@omnitoolslab.com?subject=Partnership Inquiry - ${{encodeURIComponent(payload.company)}}&body=${{encodeURIComponent(payload.message + '\\n\\nTelefono: ' + payload.phone + '\\nTipo: ' + payload.type)}}`;
+            }} finally {{
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }}
+        }}
+
+        // Initialize language from stored preference or browser language
+        document.addEventListener('DOMContentLoaded', () => {{
+            const stored = localStorage.getItem('omni_lang');
+            if (stored && TRANSLATIONS[stored]) {{
+                changeLanguage(stored);
+            }} else {{
+                const navLang = (navigator.language || 'it').substring(0, 2).toLowerCase();
+                if (TRANSLATIONS[navLang]) {{
+                    changeLanguage(navLang);
+                }}
+            }}
+        }});
+    </script>
+</body>
+</html>
+'''
+
+with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/partnership.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("partnership.html built successfully!")

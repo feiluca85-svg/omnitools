@@ -158,6 +158,14 @@ if __name__ == "__main__":
             "Conversione istantanea Pixel ↔ cm ↔ DPI con acuità visiva e distanza occhio.",
             "🖼️ OFFSET • DIGITALE • GRANDE FORMATO",
             "omnitoolslab.com/dpi"
+        ),
+        (
+            "og-tubi.png",
+            "🏗️ OMNIBUILDING",
+            "Calcolo Pendenza Tubazioni & Scarichi",
+            "Dislivello, caduta per metro lineare e verifica autopulizia UNI EN 12056.",
+            "🚰 UNI EN 12056 • Ø 40-200 MM",
+            "omnitoolslab.com/tubi"
         )
     ]
     for fn, div, tit, sub, pil, path in cards:
