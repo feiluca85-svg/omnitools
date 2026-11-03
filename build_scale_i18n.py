@@ -1,0 +1,1148 @@
+import json
+
+with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_scale.json', 'r', encoding='utf-8') as f:
+    t_data = json.load(f)
+
+t_json_str = json.dumps(t_data, ensure_ascii=False)
+
+html_code = f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>OmniTools - Calcolo Scala, Alzata & Pedata | Legge di Blondel (2a + p = 63 cm)</title>
+    <meta name="description" content="OmniTools: Calcolatore professionale per scale da cantiere e interni. Calcolo alzata, pedata, numero gradini e verifica comfort con Legge di Blondel.">
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/scale">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OmniTools - Calcolo Scala, Alzata & Pedata (Legge di Blondel)">
+    <meta property="og:description" content="Calcola gradini, alzata, pedata e ingombro a terra di una scala con verifica comfort Blondel (2a + p = 62-64 cm).">
+    <meta property="og:url" content="https://www.omnitoolslab.com/scale">
+    <meta property="og:site_name" content="OmniTools">
+    <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OmniTools - Calcolo Scale & Legge di Blondel",
+      "url": "https://www.omnitoolslab.com/scale",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "description": "Calcolatore professionale per scale d'interni e cantiere con verifica Legge di Blondel, D.M. 236/89 e DIN 18065.",
+      "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }}
+    }}
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
+    <link rel="alternate icon" type="image/png" href="favicon.png?v=6">
+    <link rel="shortcut icon" href="favicon.svg?v=6">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OmniTools">
+    <link rel="apple-touch-icon" href="icon-192.png?v=6">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {{
+            theme: {{
+                extend: {{
+                    fontFamily: {{
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }}
+                }}
+            }}
+        }}
+    </script>
+    <style>
+        * {{ -webkit-tap-highlight-color: transparent; }}
+        input[type="number"] {{ font-size: 17px !important; }}
+        input[type=range] {{
+            -webkit-appearance: none;
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            outline: none;
+        }}
+        input[type=range]::-webkit-slider-thumb {{
+            -webkit-appearance: none;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(37,99,235,0.45);
+            border: 2px solid #ffffff;
+            transition: transform 0.1s ease;
+        }}
+        input[type=range]::-webkit-slider-thumb:active {{ transform: scale(1.15); }}
+        
+        @page {{
+            size: A4 portrait;
+            margin: 10mm 12mm;
+        }}
+        @media print {{
+            header, footer, .no-print, button, input[type=range], #installBanner, #iosModal, #suggestModal, #suggestBanner, #faqSection, #heroContainer, #modeSelectorBar, #controlsColumn {{ 
+                display: none !important; 
+            }}
+            body {{ 
+                background: white !important; 
+                color: #0f172a !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                font-size: 11pt !important; 
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }}
+            main {{ 
+                max-width: 100% !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+            }}
+            #resultsColumn {{
+                width: 100% !important;
+                max-width: 100% !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            .print-border {{ 
+                border: 1px solid #94a3b8 !important; 
+                box-shadow: none !important;
+            }}
+            #stairsSvg {{
+                max-height: 180px !important;
+            }}
+        }}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- Top Navigation Header (Identical design to RampaFacile) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+            
+            <!-- OmniTools Master Brand + Tool Indicator -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
+                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </a>
+
+                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
+                <div class="flex flex-col min-w-0">
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <a href="/" class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none hover:text-blue-600 transition">Omni<span class="text-blue-600">Tools</span></a>
+                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
+                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
+                        
+                        <!-- Tool Switcher Pill Dropdown -->
+                        <div class="hidden sm:inline-flex items-center gap-1.5">
+                            <span id="brandTitle" class="font-bold text-xs text-slate-700">ScalaFacile</span>
+                            <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-indigo-50 text-indigo-700 rounded-md border border-indigo-200 shrink-0">Legge di Blondel</span>
+                        </div>
+                    </div>
+                    <!-- Row 2 on mobile: Tool Name + Standard Badge -->
+                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
+                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-700">ScalaFacile</span>
+                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Blondel</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions: Language Selector + App + Print (Clean icon buttons on mobile) -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- Suite Quick Switcher (Rampe / Scale) -->
+                <a href="/" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Passa a Calcolo Rampe">
+                    <span>📐</span>
+                    <span class="hidden md:inline">Rampe</span>
+                </a>
+
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
+
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline">App</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+        
+        <!-- Hero Header -->
+        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
+            <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2 font-jakarta">
+                Calcolo Scala, Alzata & Pedata
+            </h1>
+            <p id="heroDesc" class="text-slate-600 text-xs sm:text-base leading-relaxed px-2">
+                Calcola all'istante numero gradini, alzata, pedata e ingombro a terra con verifica comfort e conformità alla Legge di Blondel (2a + p = 62-64 cm).
+            </p>
+        </div>
+
+        <!-- Mode Selector (Direct vs Target Riser) -->
+        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
+            <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center">
+                📏 Da Spazio a Terra
+            </button>
+            <button id="modeReverseBtn" onclick="switchMode('reverse')" class="flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center">
+                📐 Da Alzata Ideale
+            </button>
+        </div>
+
+        <!-- Calculator Layout (12 Cols on desktop, top-results on mobile) -->
+        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
+            
+            <!-- RESULTS & VISUAL COLUMN (IN CIMA SU MOBILE) -->
+            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
+                
+                <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
+                <div id="printHeader" class="hidden print:block mb-3 pb-2.5 border-b-2 border-slate-900">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-sm">
+                                O/T
+                            </div>
+                            <div>
+                                <h1 class="text-base font-black tracking-tight text-slate-900">OMNITOOLS — SCHEDA TECNICA DI CALCOLO SCALE</h1>
+                                <p class="text-[10px] text-slate-600 font-medium">Relazione di Dimensionamento Gradini & Legge di Blondel</p>
+                            </div>
+                        </div>
+                        <div class="text-right text-[10px] text-slate-600 leading-tight">
+                            <div id="printReportDate" class="font-bold text-slate-900">Data: 03/11/2026</div>
+                            <div>Legge di Blondel • D.M. 236/89 • DIN 18065</div>
+                            <div class="text-[9px] text-slate-500">omnitoolslab.com/scale</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
+                <div id="printInputsSummary" class="hidden print:block mb-2 p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs">
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Dislivello Piano (H):</span>
+                            <span id="printHeightVal" class="text-xs font-extrabold text-slate-900">270 cm</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Sviluppo a terra (L):</span>
+                            <span id="printLengthVal" class="text-xs font-extrabold text-slate-900">392 cm</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Regola di Blondel:</span>
+                            <span id="printModeVal" class="text-xs font-extrabold text-slate-900">2a + p = 63.0 cm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comfort / Blondel Compliance Badge -->
+                <div id="complianceCard" class="p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border">
+                    <div class="flex items-start gap-2.5 sm:gap-3">
+                        <div id="statusIcon" class="w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20">
+                            ✓
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center justify-between gap-1">
+                                <h3 id="statusTitle" class="font-bold text-sm sm:text-base tracking-tight text-emerald-950">Comfort Ottimale & a Norma</h3>
+                                <span id="statusTag" class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800">Perfetta</span>
+                            </div>
+                            <p id="statusDesc" class="text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800">
+                                La scala rispetta la regola aurea di Blondel (2a + p tra 62 e 64 cm) con alzata agevole.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Numerical Output Cards -->
+                <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                    <!-- Alzata -->
+                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
+                        <span id="colRiserLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Alzata (a)</span>
+                        <div id="riserOutput" class="text-xl sm:text-3xl font-extrabold text-blue-600 tracking-tight font-jakarta">17.5 cm</div>
+                        <span id="riserSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">Ideale: 16-18 cm</span>
+                    </div>
+
+                    <!-- Pedata -->
+                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
+                        <span id="colTreadLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Pedata (p)</span>
+                        <div id="treadOutput" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight font-jakarta">28.0 cm</div>
+                        <span id="treadSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">Ideale: 26-30 cm</span>
+                    </div>
+
+                    <!-- Gradini & Formula Blondel -->
+                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
+                        <span id="colStepsLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Gradini / Blondel</span>
+                        <div id="stepsOutput" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight font-jakarta">15</div>
+                        <span id="blondelOutput" class="text-[10px] sm:text-xs font-bold text-indigo-600 block mt-0.5">2a + p = 63.0 cm</span>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC SVG DIAGRAM (Stair Section with Step Profile) -->
+                <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 shadow-xs print-border">
+                    <div class="flex items-center justify-between mb-2">
+                        <span id="schemaTitle" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Sezione Scala in Scala</span>
+                        <span id="schemaScaleText" class="text-[10px] text-blue-600 font-bold flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In scala vettoriale
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50/80 rounded-xl p-2 sm:p-4 border border-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg id="stairsSvg" class="w-full h-40 sm:h-52 transition-all duration-200" viewBox="0 0 540 240">
+                            <defs>
+                                <linearGradient id="stairsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
+                                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.75" />
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Ground Base Line -->
+                            <line x1="30" y1="185" x2="510" y2="185" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+                            
+                            <!-- Staircase Step Profile (Polyline/Polygon drawn dynamically) -->
+                            <polygon id="stairsPolygon" points="40,185 450,185 450,45" fill="url(#stairsGrad)" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" />
+                            
+                            <!-- Total Height Dimension (Red) -->
+                            <line id="heightDim" x1="465" y1="185" x2="465" y2="45" stroke="#dc2626" stroke-width="2.5" />
+                            <text id="heightText" x="472" y="115" fill="#dc2626" font-size="13" font-weight="800" font-family="system-ui, sans-serif">H: 270 cm</text>
+                            
+                            <!-- Total Length Dimension (Slate) -->
+                            <line id="lengthDim" x1="40" y1="205" x2="450" y2="205" stroke="#334155" stroke-width="2.5" />
+                            <text id="lengthText" x="210" y="222" fill="#334155" font-size="13" font-weight="800" font-family="system-ui, sans-serif">L: 392 cm (14 pedate)</text>
+                            
+                            <!-- Angle & Step Spec Tag -->
+                            <text id="slopeAngleText" x="150" y="80" fill="#1e3a8a" font-size="13" font-weight="900" font-family="system-ui, sans-serif">15 alzate da 18.0 cm • 34.6°</text>
+                        </svg>
+                    </div>
+
+                    <!-- Rule tip banner -->
+                    <div class="mt-2 flex items-center text-[11px] sm:text-xs text-slate-700 bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100">
+                        <span id="ruleTip">💡 <strong>Legge di Blondel:</strong> <code>2a + p = 62 ÷ 64 cm</code>. Il doppio dell'alzata sommato alla pedata garantisce il passo naturale senza affaticare le ginocchia.</span>
+                    </div>
+                </div>
+
+                <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
+                <div id="printFooterBox" class="hidden print:block mt-4 pt-3 border-t border-slate-300 text-xs">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Note di Cantiere / Prescrizioni Tecniche:</span>
+                            <div class="border border-dashed border-slate-400 h-16 rounded-lg p-2 text-[9px] text-slate-600 leading-tight">
+                                • Verificare altezza utile di passaggio (min. 200 cm di altezza libera sotto-soletta).<br>
+                                • Prevedere corrimano h = 90-100 cm dal bordo anteriore del gradino.
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Timbro e Firma del Progettista / Tecnico:</span>
+                            <div class="border border-slate-300 h-16 rounded-lg flex items-end justify-center pb-1 text-[9px] text-slate-400">
+                                Data e Firma Professionale
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
+                        Documento tecnico generato da <strong>OmniTools</strong> (https://www.omnitoolslab.com/scale) — Calcoli per predimensionamento geometrico.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
+            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4">
+                
+                <!-- Unit Switcher (Metric + Imperial) -->
+                <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
+                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
+                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                        <button type="button" id="unitM" onclick="setUnit('m')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
+                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
+                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
+                    </div>
+                </div>
+
+                <!-- Input: Dislivello totale (H) -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="heightInput" id="heightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
+                            Dislivello totale piano-piano (H)
+                        </label>
+                        <span id="heightUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
+                    </div>
+                    <div class="relative">
+                        <input type="number" id="heightInput" value="270" min="20" max="1000" step="any"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                    </div>
+                    <div class="pt-1.5 px-0.5">
+                        <input type="range" id="heightRange" min="50" max="450" value="270" class="w-full">
+                    </div>
+                </div>
+
+                <!-- FIELD A: Spazio a terra disponibile (L) - Modalità Diretta -->
+                <div id="lengthContainer">
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="lengthInput" id="lengthLabelInput" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
+                            Spazio a terra disponibile (L)
+                        </label>
+                        <span id="lengthUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
+                    </div>
+                    <div class="relative">
+                        <input type="number" id="lengthInput" value="392" min="50" max="2000" step="any"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                    </div>
+                    <div class="pt-1.5 px-0.5">
+                        <input type="range" id="lengthRange" min="100" max="700" value="392" class="w-full">
+                    </div>
+                </div>
+
+                <!-- FIELD B: Alzata Desiderata (Target Riser) - Modalità Inversa -->
+                <div id="targetRiserContainer" class="hidden">
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="targetRiserInput" id="targetRiserLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span>
+                            Alzata ideale desiderata (a)
+                        </label>
+                        <span id="targetRiserUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-indigo-50 text-indigo-700 rounded">cm</span>
+                    </div>
+                    <div class="relative">
+                        <input type="number" id="targetRiserInput" value="17.5" min="12" max="25" step="0.5"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-1.5 mt-2">
+                        <button type="button" id="targetBtn16" onclick="setTargetRiser(16.0)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">16 cm Comoda</button>
+                        <button type="button" id="targetBtn175" onclick="setTargetRiser(17.5)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">17.5 cm Standard</button>
+                        <button type="button" id="targetBtn19" onclick="setTargetRiser(19.0)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">19 cm Salvaspazio</button>
+                    </div>
+                </div>
+
+                <!-- Quick Presets -->
+                <div class="pt-2 border-t border-slate-100 no-print">
+                    <span id="presetsTitleText" class="text-[10px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Preset rapidi:</span>
+                    <div class="grid grid-cols-2 gap-1.5 text-xs">
+                        <button onclick="applyPreset(270, 392)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
+                            <span id="preset1Title" class="font-bold text-slate-800 block text-[11px]">Scala Interna (H 270 cm)</span>
+                            <span id="preset1Sub" class="text-[10px] text-slate-600">15 gradini comfort</span>
+                        </button>
+                        <button onclick="applyPreset(300, 448)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
+                            <span id="preset2Title" class="font-bold text-slate-800 block text-[11px]">Piano Alto (H 300 cm)</span>
+                            <span id="preset2Sub" class="text-[10px] text-slate-600">17 gradini con sosta</span>
+                        </button>
+                        <button onclick="applyPreset(220, 264)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
+                            <span id="preset3Title" class="font-bold text-slate-800 block text-[11px]">Soppalco (H 220 cm)</span>
+                            <span id="preset3Sub" class="text-[10px] text-slate-600">Salvaspazio 12 gradini</span>
+                        </button>
+                        <button onclick="applyPreset(120, 180)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
+                            <span id="preset4Title" class="font-bold text-slate-800 block text-[11px]">Scala Esterna (H 120 cm)</span>
+                            <span id="preset4Sub" class="text-[10px] text-slate-600">Pedata ampia 30 cm</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FAQ Section -->
+        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
+            <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2 font-jakarta">
+                <span>Domande Frequenti sul Calcolo delle Scale</span>
+                <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
+            </h2>
+            
+            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
+                <!-- Localized FAQs -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer with OmniTools Suite & Legal Disclaimer (Identical across all tools) -->
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            
+            <!-- Suggestion Prompt Strip -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore di cantiere o grafica?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- OmniTools Network Ecosystem Bar -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                            ⌘
+                        </div>
+                        <span class="font-black text-sm tracking-tight font-jakarta">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Cantiere ad Alta Precisione</span>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 text-[11px]">
+                    <a href="/" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">📐 Rampe & Pendenze</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-blue-500/20 text-blue-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/scale" class="p-2 rounded-xl bg-slate-800 border border-indigo-500/40 flex items-center justify-between transition">
+                        <span class="font-bold text-white">🪜 Scale & Blondel</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <div class="p-2 rounded-xl bg-slate-800/40 border border-slate-700/50 flex items-center justify-between opacity-75">
+                        <span class="text-slate-400">💧 Scarichi & Tubi</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In arrivo</span>
+                    </div>
+                    <div class="p-2 rounded-xl bg-slate-800/40 border border-slate-700/50 flex items-center justify-between opacity-75">
+                        <span class="text-slate-400">🧱 Calcestruzzo & Malta</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In arrivo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
+                    <strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti (Legge di Blondel, D.M. 236/89, D.P.R. 380/2001, IRC, DIN 18065) forniti da questo strumento online hanno finalità puramente geometrica ed orientativa. Non costituiscono progetto esecutivo o perizia tecnica ai sensi di legge.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smart Floating PWA Install Banner -->
+    <div id="installBanner" class="no-print fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700/60 z-50 flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-0">
+        <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md">
+                📱
+            </div>
+            <div class="min-w-0">
+                <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools come App</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">I tuoi calcolatori di cantiere pronti anche offline</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+            <button id="installBannerBtn" onclick="triggerInstall()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-sm">
+                Installa
+            </button>
+            <button onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg text-xs" title="Chiudi">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="hidden no-print fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-slate-800 shadow-2xl border border-slate-100 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-lg font-bold">
+                        💡
+                    </div>
+                    <div>
+                        <h4 id="modalSuggestTitle" class="font-extrabold text-base text-slate-900 leading-tight">Suggerisci uno Strumento</h4>
+                        <span class="text-[10px] text-slate-500 font-medium">OmniTools User Feedback</span>
+                    </div>
+                </div>
+                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 rounded-lg transition">✕</button>
+            </div>
+            
+            <p id="modalSuggestDesc" class="text-xs text-slate-600 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script & Calculation Engine for Scale & Blondel -->
+    <script>
+        const TRANSLATIONS = {t_json_str};
+
+        let currentLang = localStorage.getItem('omnitools_lang') || 'it';
+        let currentUnit = 'cm';
+        let currentMode = 'direct';
+
+        const heightInput = document.getElementById('heightInput');
+        const heightRange = document.getElementById('heightRange');
+        const lengthInput = document.getElementById('lengthInput');
+        const lengthRange = document.getElementById('lengthRange');
+        const targetRiserInput = document.getElementById('targetRiserInput');
+
+        const lengthContainer = document.getElementById('lengthContainer');
+        const targetRiserContainer = document.getElementById('targetRiserContainer');
+        const modeDirectBtn = document.getElementById('modeDirectBtn');
+        const modeReverseBtn = document.getElementById('modeReverseBtn');
+
+        const riserOutput = document.getElementById('riserOutput');
+        const treadOutput = document.getElementById('treadOutput');
+        const stepsOutput = document.getElementById('stepsOutput');
+        const blondelOutput = document.getElementById('blondelOutput');
+
+        const complianceCard = document.getElementById('complianceCard');
+        const statusIcon = document.getElementById('statusIcon');
+        const statusTitle = document.getElementById('statusTitle');
+        const statusTag = document.getElementById('statusTag');
+        const statusDesc = document.getElementById('statusDesc');
+
+        const stairsPolygon = document.getElementById('stairsPolygon');
+        const heightDim = document.getElementById('heightDim');
+        const heightText = document.getElementById('heightText');
+        const lengthDim = document.getElementById('lengthDim');
+        const lengthText = document.getElementById('lengthText');
+        const slopeAngleText = document.getElementById('slopeAngleText');
+        const ruleTip = document.getElementById('ruleTip');
+
+        function changeLanguage(lang) {{
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            document.getElementById('langSelect').value = lang;
+            document.documentElement.lang = lang;
+            applyTranslations();
+            updateCalculations();
+        }}
+
+        function applyTranslations() {{
+            const t = TRANSLATIONS[currentLang];
+            document.getElementById('brandTitle').textContent = t.title;
+            const btm = document.getElementById('brandTitleMobile');
+            if (btm) btm.textContent = t.title;
+            document.getElementById('brandBadge').textContent = t.badge;
+            const bbm = document.getElementById('brandBadgeMobile');
+            if (bbm) bbm.textContent = t.badge;
+
+            document.getElementById('heroTitle').textContent = t.hero_title;
+            document.getElementById('heroDesc').textContent = t.hero_desc;
+            document.getElementById('modeDirectBtn').textContent = t.mode_direct;
+            document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
+            document.getElementById('unitLabelText').textContent = t.unit_label;
+
+            document.getElementById('heightLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span> ${{t.height_label}}`;
+            document.getElementById('lengthLabelInput').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> ${{t.length_label}}`;
+            document.getElementById('targetRiserLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span> ${{t.target_riser_label}}`;
+            
+            document.getElementById('targetBtn16').textContent = t.target_16;
+            document.getElementById('targetBtn175').textContent = t.target_175;
+            document.getElementById('targetBtn19').textContent = t.target_19;
+
+            document.getElementById('presetsTitleText').textContent = t.presets_title;
+            document.getElementById('preset1Title').textContent = t.preset_1;
+            document.getElementById('preset1Sub').textContent = t.preset_1_sub;
+            document.getElementById('preset2Title').textContent = t.preset_2;
+            document.getElementById('preset2Sub').textContent = t.preset_2_sub;
+            document.getElementById('preset3Title').textContent = t.preset_3;
+            document.getElementById('preset3Sub').textContent = t.preset_3_sub;
+            document.getElementById('preset4Title').textContent = t.preset_4;
+            document.getElementById('preset4Sub').textContent = t.preset_4_sub;
+
+            document.getElementById('colRiserLabel').textContent = t.col_riser;
+            document.getElementById('colTreadLabel').textContent = t.col_tread;
+            document.getElementById('colStepsLabel').textContent = t.col_steps;
+            document.getElementById('schemaTitle').textContent = t.schema_title;
+            document.getElementById('schemaScaleText').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> ${{t.schema_scale}}`;
+            document.getElementById('printBtnText').textContent = t.print_btn;
+
+            document.getElementById('installBannerTitle').textContent = t.install_banner_title;
+            document.getElementById('installBannerSub').textContent = t.install_banner_sub;
+            document.getElementById('installBannerBtn').textContent = t.install_btn;
+            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            document.getElementById('faqTitle').firstElementChild.textContent = t.faq_title;
+
+            if (document.getElementById('suggestBannerText')) {{
+                document.getElementById('suggestBannerText').textContent = t.suggest_banner;
+                document.getElementById('suggestBtnText').textContent = t.suggest_btn;
+                document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
+                document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
+                document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
+                document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
+                document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
+                document.getElementById('modalCloseBtn').textContent = t.suggest_close;
+                document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
+            }}
+
+            renderFaqs();
+        }}
+
+        function renderFaqs() {{
+            const container = document.getElementById('faqContainer');
+            const faqs = {{
+                'it': [
+                    ['Cos\\'è la Legge di Blondel per il calcolo delle scale?', 'La Legge di Blondel stabilisce che il doppio dell\\'alzata più la pedata deve essere pari al passo naturale di una persona in piano (2a + p = 62 ÷ 64 cm, con valore ideale a 63 cm). Questo rapporto riduce al minimo l\\'affaticamento delle articolazioni.'],
+                    ['Quali sono le dimensioni ideali di alzata e pedata per una scala interna?', 'Nelle abitazioni private, l\\'alzata ideale è compresa tra 16.5 e 18 cm, mentre la pedata consigliata è tra 27 e 30 cm (minimo 25 cm a norma di legge).'],
+                    ['Quanti gradini consecutivi si possono fare senza pianerottolo?', 'La normativa tecnica raccomanda di non superare mai i 15 gradini consecutivi senza interporre un pianerottolo di sosta (lunghezza minima pari alla larghezza della rampa).'],
+                    ['Qual è l\\'inclinazione ottimale di una scala?', 'L\\'angolo di inclinazione più confortevole per una scala interna è compreso tra 30° e 37°. Sotto i 26° si ricade nella categoria rampe, mentre sopra i 40° la scala diventa ripida.']
+                ],
+                'en': [
+                    ['What is Blondel\\'s Formula for stair building?', 'Architect François Blondel established that 2 Risers + 1 Tread should equal natural walking pace: 2R + T = 62 to 64 cm (24.5 to 25.5 inches). This ensures maximum ergonomics and reduces tripping hazard.'],
+                    ['What are standard riser and tread dimensions under building code?', 'In residential codes (IRC/IBC), the maximum riser height is typically 7.75 inches (19.7 cm) and the minimum tread depth is 10 inches (25.4 cm). The sweet spot is 7 in rise and 11 in run.'],
+                    ['How many steps can you have before a landing?', 'Most international building codes require a level landing platform for every 12 feet (3.65 meters) of vertical rise, or roughly every 15 to 18 steps.']
+                ],
+                'es': [
+                    ['¿Qué establece la Ley de Blondel para escaleras?', 'Determina que dos contrahuellas más una huella deben sumar entre 62 y 64 cm (2c + h = 63 cm ideal) para asegurar una marcha cómoda y sin esfuerzo.'],
+                    ['¿Cuáles son las medidas mínimas según el CTE en España?', 'Según el CTE DB-SUA, en uso general las contrahuellas deben medir entre 13 y 18.5 cm, y las huellas un mínimo de 28 cm.']
+                ],
+                'fr': [
+                    ['Comment appliquer la Loi de Blondel ?', 'La formule est 2 Hauteurs + 1 Giron = 60 à 64 cm (idéal 63 cm). Elle garantit que la cadence de pas reste fluide lors de la montée et de la descente.'],
+                    ['Quelle est la hauteur de marche idéale ?', 'Pour un escalier d\\'habitation principale, la hauteur recommandée est de 17 cm avec un giron de 28 cm.']
+                ],
+                'de': [
+                    ['Was besagt die Schrittmaßregel nach DIN 18065?', 'Nach DIN 18065 gilt die Formel 2s + a = 62 bis 64 cm (Steigung s, Auftritt a). Der optimale Schrittmaß-Mittelwert liegt bei 63 cm.'],
+                    ['Welche Steigung ist im Wohnungsbau üblich?', 'Typisch sind Steigungen von 17 bis 18 cm und Auftritte von 27 bis 29 cm bei einem Neigungswinkel von 30° bis 35°.']
+                ],
+                'pt': [
+                    ['Qual a fórmula de Blondel segundo a NBR 9050?', 'A norma estabelece 2 Espelhos + 1 Piso = 63 a 64 cm (2E + P = 63 cm). O espelho deve situar-se entre 16 e 18 cm e o piso entre 28 e 32 cm.'],
+                    ['Quantos degraus cabem em um pé-direito padrão de 2,70m?', 'Com espelho de 17,5 cm, são necessários exatamente 15 degraus (14 pisos na horizontal).']
+                ]
+            }};
+
+            const list = faqs[currentLang] || faqs['it'];
+            container.innerHTML = list.map(item => `
+                <details class="py-3 group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex justify-between items-center list-none select-none">
+                        <span>${{item[0]}}</span>
+                        <span class="transition group-open:rotate-180 text-blue-600">▼</span>
+                    </summary>
+                    <p class="mt-1.5 text-slate-600 leading-relaxed pl-1">${{item[1]}}</p>
+                </details>
+            `).join('');
+        }}
+
+        function switchMode(mode) {{
+            currentMode = mode;
+            if (mode === 'direct') {{
+                modeDirectBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center";
+                modeReverseBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center";
+                lengthContainer.classList.remove('hidden');
+                targetRiserContainer.classList.add('hidden');
+            }} else {{
+                modeReverseBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-indigo-600 shadow-sm transition active:scale-95 text-center";
+                modeDirectBtn.className = "flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center";
+                lengthContainer.classList.add('hidden');
+                targetRiserContainer.classList.remove('hidden');
+            }}
+            updateCalculations();
+        }}
+
+        function setTargetRiser(val) {{
+            targetRiserInput.value = val;
+            updateCalculations();
+        }}
+
+        const UNIT_FACTORS_CM = {{
+            'cm': 1.0,
+            'm': 100.0,
+            'in': 2.54,
+            'ft': 30.48
+        }};
+
+        function setUnit(newUnit) {{
+            if (newUnit === currentUnit) return;
+            const prevUnit = currentUnit;
+            currentUnit = newUnit;
+
+            let h = parseFloat(heightInput.value) || 0;
+            let l = parseFloat(lengthInput.value) || 0;
+            let a = parseFloat(targetRiserInput.value) || 0;
+
+            let h_cm = h * (UNIT_FACTORS_CM[prevUnit] || 1.0);
+            let l_cm = l * (UNIT_FACTORS_CM[prevUnit] || 1.0);
+            let a_cm = a * (UNIT_FACTORS_CM[prevUnit] || 1.0);
+
+            let h_new = h_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
+            let l_new = l_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
+            let a_new = a_cm / (UNIT_FACTORS_CM[newUnit] || 1.0);
+
+            ['cm', 'm', 'in', 'ft'].forEach(u => {{
+                const btn = document.getElementById('unit' + u.charAt(0).toUpperCase() + u.slice(1));
+                if (btn) {{
+                    if (u === newUnit) {{
+                        btn.className = "w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center";
+                    }} else {{
+                        btn.className = "w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                    }}
+                }}
+            }});
+
+            document.getElementById('heightUnitBadge').textContent = newUnit;
+            document.getElementById('lengthUnitBadge').textContent = newUnit;
+            document.getElementById('targetRiserUnitBadge').textContent = newUnit;
+
+            if (newUnit === 'cm') {{
+                heightInput.value = Math.round(h_new);
+                lengthInput.value = Math.round(l_new);
+                targetRiserInput.value = a_new.toFixed(1);
+                heightRange.min = 50; heightRange.max = 450; heightRange.step = 1;
+                lengthRange.min = 100; lengthRange.max = 700; lengthRange.step = 5;
+            }} else if (newUnit === 'm') {{
+                heightInput.value = h_new.toFixed(2);
+                lengthInput.value = l_new.toFixed(2);
+                targetRiserInput.value = a_new.toFixed(2);
+                heightRange.min = 0.5; heightRange.max = 4.5; heightRange.step = 0.01;
+                lengthRange.min = 1.0; lengthRange.max = 7.0; lengthRange.step = 0.05;
+            }} else if (newUnit === 'in') {{
+                heightInput.value = h_new.toFixed(1);
+                lengthInput.value = l_new.toFixed(1);
+                targetRiserInput.value = a_new.toFixed(1);
+                heightRange.min = 20; heightRange.max = 180; heightRange.step = 0.5;
+                lengthRange.min = 40; lengthRange.max = 280; lengthRange.step = 1;
+            }} else if (newUnit === 'ft') {{
+                heightInput.value = h_new.toFixed(2);
+                lengthInput.value = l_new.toFixed(2);
+                targetRiserInput.value = a_new.toFixed(2);
+                heightRange.min = 1.5; heightRange.max = 15.0; heightRange.step = 0.05;
+                lengthRange.min = 3.0; lengthRange.max = 23.0; lengthRange.step = 0.1;
+            }}
+
+            syncSliderWithInput(heightRange, heightInput);
+            syncSliderWithInput(lengthRange, lengthInput);
+            updateCalculations();
+        }}
+
+        function syncSliderWithInput(slider, input) {{ slider.value = input.value; }}
+        function syncInputWithSlider(input, slider) {{ input.value = slider.value; }}
+
+        heightInput.addEventListener('input', () => {{ syncSliderWithInput(heightRange, heightInput); updateCalculations(); }});
+        heightRange.addEventListener('input', () => {{ syncInputWithSlider(heightInput, heightRange); updateCalculations(); }});
+        lengthInput.addEventListener('input', () => {{ syncSliderWithInput(lengthRange, lengthInput); updateCalculations(); }});
+        lengthRange.addEventListener('input', () => {{ syncInputWithSlider(lengthInput, lengthRange); updateCalculations(); }});
+        targetRiserInput.addEventListener('input', updateCalculations);
+
+        function applyPreset(hCm, lCm) {{
+            if (currentMode === 'reverse') {{
+                switchMode('direct');
+            }}
+            const factor = UNIT_FACTORS_CM[currentUnit] || 1.0;
+            const hVal = hCm / factor;
+            const lVal = lCm / factor;
+
+            if (currentUnit === 'cm') {{
+                heightInput.value = Math.round(hVal);
+                lengthInput.value = Math.round(lVal);
+            }} else if (currentUnit === 'in') {{
+                heightInput.value = hVal.toFixed(1);
+                lengthInput.value = lVal.toFixed(1);
+            }} else {{
+                heightInput.value = hVal.toFixed(2);
+                lengthInput.value = lVal.toFixed(2);
+            }}
+            syncSliderWithInput(heightRange, heightInput);
+            syncSliderWithInput(lengthRange, lengthInput);
+            updateCalculations();
+        }}
+
+        function updateCalculations() {{
+            const t = TRANSLATIONS[currentLang];
+            let h = parseFloat(heightInput.value);
+            if (isNaN(h) || h <= 0) return;
+
+            const u = currentUnit;
+            const factor = UNIT_FACTORS_CM[u] || 1.0;
+            const h_cm = h * factor;
+
+            let numRisers, riser_cm, tread_cm, l_cm, blondel_cm, angleDeg;
+
+            if (currentMode === 'direct') {{
+                let l = parseFloat(lengthInput.value);
+                if (isNaN(l) || l <= 0) return;
+                l_cm = l * factor;
+
+                // Trova il numero di alzate ottimale affinché l'alzata sia vicina a 17.5 cm
+                numRisers = Math.round(h_cm / 17.5);
+                if (numRisers < 1) numRisers = 1;
+
+                riser_cm = h_cm / numRisers;
+                let numTreads = Math.max(numRisers - 1, 1);
+                tread_cm = l_cm / numTreads;
+                blondel_cm = (2 * riser_cm) + tread_cm;
+                angleDeg = Math.atan(h_cm / l_cm) * (180 / Math.PI);
+            }} else {{
+                let targetRiser = parseFloat(targetRiserInput.value);
+                if (isNaN(targetRiser) || targetRiser <= 0) return;
+                let target_cm = targetRiser * factor;
+
+                numRisers = Math.round(h_cm / target_cm);
+                if (numRisers < 1) numRisers = 1;
+
+                riser_cm = h_cm / numRisers;
+                // Legge di Blondel ideale: 2a + p = 63 cm => p = 63 - 2a
+                tread_cm = 63.0 - (2 * riser_cm);
+                if (tread_cm < 18.0) tread_cm = 18.0;
+
+                let numTreads = Math.max(numRisers - 1, 1);
+                l_cm = tread_cm * numTreads;
+                blondel_cm = (2 * riser_cm) + tread_cm;
+                angleDeg = Math.atan(h_cm / l_cm) * (180 / Math.PI);
+            }}
+
+            const riserVal = riser_cm / factor;
+            const treadVal = tread_cm / factor;
+            const lVal = l_cm / factor;
+            const blondelVal = blondel_cm / factor;
+
+            const rFmt = (u === 'cm' || u === 'in' ? riserVal.toFixed(1) : riserVal.toFixed(2));
+            const tFmt = (u === 'cm' || u === 'in' ? treadVal.toFixed(1) : treadVal.toFixed(2));
+            const lFmt = (u === 'cm' ? Math.round(lVal) : (u === 'in' ? lVal.toFixed(1) : lVal.toFixed(2)));
+            const bFmt = (u === 'cm' || u === 'in' ? blondelVal.toFixed(1) : blondelVal.toFixed(2));
+
+            riserOutput.textContent = `${{rFmt}} ${{u}}`;
+            treadOutput.textContent = `${{tFmt}} ${{u}}`;
+            stepsOutput.textContent = `${{numRisers}}`;
+            blondelOutput.textContent = `2a + p = ${{bFmt}} ${{u}}`;
+
+            // Sync Print-only technical report summary
+            const printHeightVal = document.getElementById('printHeightVal');
+            const printLengthVal = document.getElementById('printLengthVal');
+            const printModeVal = document.getElementById('printModeVal');
+            if (printHeightVal) printHeightVal.textContent = `${{h.toFixed(0)}} ${{u}}`;
+            if (printLengthVal) printLengthVal.textContent = `${{lFmt}} ${{u}}`;
+            if (printModeVal) printModeVal.textContent = `2a + p = ${{bFmt}} ${{u}} (${{numRisers}} gradini)`;
+
+            updateComfortEvaluation(riser_cm, tread_cm, blondel_cm, angleDeg, t);
+            updateStairSvg(numRisers, riser_cm, tread_cm, h_cm, l_cm, rFmt, tFmt, lFmt, u, angleDeg);
+        }}
+
+        function updateComfortEvaluation(riser_cm, tread_cm, blondel_cm, angleDeg, t) {{
+            complianceCard.className = "p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border ";
+            statusTag.className = "text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ";
+
+            // Blondel aureo: 62 - 64 cm, alzata 16-18.5 cm, pedata 26-31 cm
+            if (blondel_cm >= 61.5 && blondel_cm <= 64.5 && riser_cm >= 15.5 && riser_cm <= 18.5 && tread_cm >= 26.0) {{
+                complianceCard.classList.add('bg-emerald-50/90', 'border-emerald-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
+                statusIcon.textContent = "✓";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-emerald-950";
+                statusTitle.textContent = t.status_opt_title;
+                statusTag.classList.add('bg-emerald-100', 'text-emerald-800');
+                statusTag.textContent = t.status_opt_tag;
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800";
+                statusDesc.textContent = t.status_opt_desc;
+            }} else if (riser_cm <= 20.0 && tread_cm >= 23.0 && blondel_cm >= 59.0 && blondel_cm <= 67.0) {{
+                complianceCard.classList.add('bg-amber-50/90', 'border-amber-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-amber-500 text-white shadow-md shadow-amber-500/20";
+                statusIcon.textContent = "!";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-amber-950";
+                statusTitle.textContent = t.status_warn_title;
+                statusTag.classList.add('bg-amber-100', 'text-amber-800');
+                statusTag.textContent = t.status_warn_tag;
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-amber-800";
+                statusDesc.textContent = t.status_warn_desc;
+            }} else {{
+                complianceCard.classList.add('bg-rose-50/90', 'border-rose-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-rose-600 text-white shadow-md shadow-rose-600/20";
+                statusIcon.textContent = "✕";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-rose-950";
+                statusTitle.textContent = t.status_danger_title;
+                statusTag.classList.add('bg-rose-100', 'text-rose-800');
+                statusTag.textContent = t.status_danger_tag;
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-rose-800";
+                statusDesc.textContent = t.status_danger_desc;
+            }}
+        }}
+
+        function updateStairSvg(numRisers, riser_cm, tread_cm, h_cm, l_cm, rFmt, tFmt, lFmt, u, angleDeg) {{
+            const groundY = 185;
+            const startX = 40;
+            const maxX = 450;
+            const availableW = maxX - startX;
+            const availableH = 140; // Max visual vertical height in SVG
+
+            let numTreads = Math.max(numRisers - 1, 1);
+            let displaySteps = Math.min(numRisers, 18); // Evita gradini minuscoli nel rendering vettoriale
+            
+            let stepDx = availableW / numTreads;
+            let stepDy = availableH / numRisers;
+
+            let pts = [`${{startX}},${{groundY}}`];
+            let curX = startX;
+            let curY = groundY;
+
+            for (let i = 0; i < numRisers; i++) {{
+                // Sale con l'alzata
+                curY -= stepDy;
+                pts.push(`${{curX}},${{curY}}`);
+                // Avanza con la pedata (tranne l'ultimo gradino che è il piano di arrivo)
+                if (i < numRisers - 1) {{
+                    curX += stepDx;
+                    pts.push(`${{curX}},${{curY}}`);
+                }} else {{
+                    curX += stepDx * 0.6; // Piccola piattaforma di arrivo
+                    pts.push(`${{curX}},${{curY}}`);
+                }}
+            }}
+
+            // Chiude il poligono a terra
+            pts.push(`${{curX}},${{groundY}}`);
+            stairsPolygon.setAttribute('points', pts.join(' '));
+
+            // Aggiorna quotature
+            heightDim.setAttribute('x1', curX + 15);
+            heightDim.setAttribute('x2', curX + 15);
+            heightDim.setAttribute('y1', groundY);
+            heightDim.setAttribute('y2', curY);
+            heightText.setAttribute('x', curX + 22);
+            heightText.setAttribute('y', curY + ((groundY - curY) / 2) + 5);
+            heightText.textContent = `H: ${{Math.round(h_cm / (UNIT_FACTORS_CM[u] || 1))}} ${{u}}`;
+
+            lengthDim.setAttribute('x1', startX);
+            lengthDim.setAttribute('x2', curX);
+            lengthText.setAttribute('x', startX + ((curX - startX) / 2) - 50);
+            lengthText.textContent = `L: ${{lFmt}} ${{u}} (${{numTreads}} pedate)`;
+
+            slopeAngleText.setAttribute('x', startX + 20);
+            slopeAngleText.setAttribute('y', curY - 12);
+            slopeAngleText.textContent = `${{numRisers}} alzate da ${{rFmt}} ${{u}} • ${{tFmt}} ${{u}} pedata • ${{angleDeg.toFixed(1)}}°`;
+        }}
+
+        // PWA Install Prompt Logic
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {{
+            e.preventDefault();
+            deferredPrompt = e;
+            if (!localStorage.getItem('omnitools_install_dismissed')) {{
+                document.getElementById('installBanner').classList.remove('hidden');
+            }}
+        }});
+
+        function triggerInstall() {{
+            if (deferredPrompt) {{
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {{
+                    if (choiceResult.outcome === 'accepted') {{
+                        dismissInstallBanner();
+                    }}
+                    deferredPrompt = null;
+                }});
+            }} else {{
+                alert("Per installare: apri le impostazioni del browser ⋮ e tocca 'Aggiungi a schermata Home'");
+            }}
+        }}
+
+        function dismissInstallBanner() {{
+            document.getElementById('installBanner').classList.add('hidden');
+            localStorage.setItem('omnitools_install_dismissed', 'true');
+        }}
+
+        // Suggestion Popup Logic
+        function openSuggestModal() {{
+            document.getElementById('suggestModal').classList.remove('hidden');
+            document.getElementById('suggestFormContainer').classList.remove('hidden');
+            document.getElementById('suggestSuccessContainer').classList.add('hidden');
+            document.getElementById('suggestMessage').value = '';
+        }}
+
+        function closeSuggestModal() {{
+            document.getElementById('suggestModal').classList.add('hidden');
+        }}
+
+        async function submitSuggestion() {{
+            const msg = document.getElementById('suggestMessage').value.trim();
+            if (!msg) return;
+            const btn = document.getElementById('modalSubmitBtn');
+            const t = TRANSLATIONS[currentLang];
+            btn.textContent = t.suggest_sending || "Invio...";
+            btn.disabled = true;
+
+            try {{
+                await fetch('/api/suggest', {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify({{ message: msg, lang: currentLang, tool: 'scale' }})
+                }});
+            }} catch (e) {{
+                console.log("Feedback logged", e);
+            }}
+
+            btn.textContent = t.suggest_send || "Invia";
+            btn.disabled = false;
+            document.getElementById('suggestFormContainer').classList.add('hidden');
+            document.getElementById('suggestSuccessContainer').classList.remove('hidden');
+        }}
+
+        // Initial setup
+        const prd = document.getElementById('printReportDate');
+        if (prd) {{
+            const now = new Date();
+            const dStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
+            prd.textContent = 'Data: ' + dStr;
+        }}
+        applyTranslations();
+        updateCalculations();
+    </script>
+</body>
+</html>
+"""
+
+with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/scale.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+print("scale.html compiled with full consistency successfully.")
