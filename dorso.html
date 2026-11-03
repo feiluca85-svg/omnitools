@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>OmniTools - Calcolo Dorso Libro & Copertina Stesa | Grafica & Stampa</title>
+    <meta name="description" content="OmniTools OmniGraph: Calcolatore professionale di spessore dorso libro e copertina stesa per brossura fresata, colla PUR, InDesign e Amazon KDP.">
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/dorso">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OmniTools - Calcolo Spessore Dorso Libro & Copertina Stesa">
+    <meta property="og:description" content="Calcola al millimetro lo spessore del dorso, la copertina aperta con refili da 3 mm e le quote pronte per InDesign, Illustrator e KDP.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/dorso">
+    <meta property="og:site_name" content="OmniTools">
+    <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OmniTools - Calcolo Dorso Libro & Copertina Stesa",
+      "url": "https://www.omnitoolslab.com/dorso",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "All",
+      "description": "Calcolatore professionale per grafici, tipografi e self-publisher per il dimensionamento del dorso libro e copertina stesa con refili.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
+    <link rel="alternate icon" type="image/png" href="favicon.png?v=6">
+    <link rel="shortcut icon" href="favicon.svg?v=6">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OmniTools">
+    <link rel="apple-touch-icon" href="icon-192.png?v=6">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+        input[type="number"] { font-size: 17px !important; }
+        input[type=range] {
+            -webkit-appearance: none;
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(37,99,235,0.45);
+            border: 2px solid #ffffff;
+            transition: transform 0.1s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:active { transform: scale(1.15); }
+        
+        @page {
+            size: A4 landscape;
+            margin: 10mm 12mm;
+        }
+        @media print {
+            header, footer, .no-print, button, input[type=range], #installBanner, #iosModal, #suggestModal, #suggestBanner, #faqSection, #heroContainer, #modeSelectorBar, #controlsColumn { 
+                display: none !important; 
+            }
+            body { 
+                background: white !important; 
+                color: #0f172a !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                font-size: 11pt !important; 
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            main { 
+                max-width: 100% !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+            }
+            #resultsColumn {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .print-border { 
+                border: 1px solid #94a3b8 !important; 
+                box-shadow: none !important;
+            }
+            #coverSvg {
+                max-height: 220px !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+            
+            <!-- OmniTools Master Brand + Module Indicator -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </a>
+
+                <div class="flex flex-col min-w-0">
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <a href="/" class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none hover:text-blue-600 transition">Omni<span class="text-blue-600">Tools</span></a>
+                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded-full border border-purple-200/80 shrink-0">Graph</span>
+                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
+                        
+                        <div class="hidden sm:inline-flex items-center gap-1.5">
+                            <span id="brandTitle" class="font-bold text-xs text-slate-700">DorsoFacile</span>
+                            <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-purple-50 text-purple-700 rounded-md border border-purple-200 shrink-0">Brossura & Dorso</span>
+                        </div>
+                    </div>
+                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
+                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-700">DorsoFacile</span>
+                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-purple-50 text-purple-700 rounded border border-purple-200">Dorso Libro</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions: Switcher + Language Selector + App + Print -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- Suite Quick Switcher -->
+                <a href="/" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
+                    <span>📐</span>
+                    <span class="hidden md:inline">Rampe</span>
+                </a>
+                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale">
+                    <span>🪜</span>
+                    <span class="hidden md:inline">Scale</span>
+                </a>
+
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
+
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline">App</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+        
+        <!-- Hero Header -->
+        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
+            <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2 font-jakarta">
+                Calcolo Spessore Dorso Libro & Copertina Stesa
+            </h1>
+            <p id="heroDesc" class="text-slate-600 text-xs sm:text-base leading-relaxed px-2">
+                Calcola all'istante lo spessore esatto del dorso, l'ingombro della copertina stesa con refili da 3 mm e le quote pronte per InDesign, Illustrator e Amazon KDP.
+            </p>
+        </div>
+
+        <!-- Mode Selector (Brossura Fresata vs Hardcover) -->
+        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
+            <button id="modeDirectBtn" onclick="switchBindingMode('softcover')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-purple-700 shadow-sm transition active:scale-95 text-center">
+                📖 Brossura Fresata / PUR
+            </button>
+            <button id="modeReverseBtn" onclick="switchBindingMode('hardcover')" class="flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center">
+                🧵 Copertina Rigida / Cartonato
+            </button>
+        </div>
+
+        <!-- Calculator Layout -->
+        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
+            
+            <!-- RESULTS & VISUAL COLUMN (TOP ON MOBILE) -->
+            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
+                
+                <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
+                <div id="printHeader" class="hidden print:block mb-3 pb-2.5 border-b-2 border-slate-900">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-purple-700 text-white flex items-center justify-center font-black text-sm">
+                                O/T
+                            </div>
+                            <div>
+                                <h1 class="text-base font-black tracking-tight text-slate-900">OMNITOOLS — SCHEDA TECNICA DI PRE-STAMPA</h1>
+                                <p class="text-[10px] text-slate-600 font-medium">Dimensionamento Fustella Copertina & Dorso Libro</p>
+                            </div>
+                        </div>
+                        <div class="text-right text-[10px] text-slate-600 leading-tight">
+                            <div id="printReportDate" class="font-bold text-slate-900">Data: 03/11/2026</div>
+                            <div>Refilo 3 mm • Gabbia Sicurezza 5 mm</div>
+                            <div class="text-[9px] text-slate-500">omnitoolslab.com/dorso</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
+                <div id="printInputsSummary" class="hidden print:block mb-2 p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs">
+                    <div class="grid grid-cols-4 gap-2">
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Pagine Totali:</span>
+                            <span id="printPagesVal" class="text-xs font-extrabold text-slate-900">240 pag</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Carta / Mano:</span>
+                            <span id="printPaperVal" class="text-xs font-extrabold text-slate-900">80g (Mano 1.3)</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Formato Chiuso:</span>
+                            <span id="printFormatVal" class="text-xs font-extrabold text-slate-900">148 × 210 mm</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Rilegatura:</span>
+                            <span id="printBindingVal" class="text-xs font-extrabold text-slate-900">Brossura PUR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Binding Feasibility Badge -->
+                <div id="complianceCard" class="p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border">
+                    <div class="flex items-start gap-2.5 sm:gap-3">
+                        <div id="statusIcon" class="w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20">
+                            ✓
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center justify-between gap-1">
+                                <h3 id="statusTitle" class="font-bold text-sm sm:text-base tracking-tight text-emerald-950">Spessore Ottimale per Brossura</h3>
+                                <span id="statusTag" class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800">Brossurabile</span>
+                            </div>
+                            <p id="statusDesc" class="text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800">
+                                Il dorso supera i 3 mm minimi: perfetto per brossura fresata, grecata o colla PUR con titolo leggibile.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Numerical Output Cards -->
+                <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                    <!-- Spessore Dorso -->
+                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-purple-200/80 shadow-xs text-center print-border">
+                        <span id="colSpineLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Spessore Dorso</span>
+                        <div id="spineOutput" class="text-xl sm:text-3xl font-extrabold text-purple-700 tracking-tight font-jakarta">13.0 mm</div>
+                        <span id="spineSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">Blocco + Colla</span>
+                    </div>
+
+                    <!-- Larghezza Stesa -->
+                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
+                        <span id="colTotalWidthLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Copertina Stesa</span>
+                        <div id="totalWidthOutput" class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-jakarta">309.0 mm</div>
+                        <span id="widthSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">+ 6 mm Refilo = 315.0</span>
+                    </div>
+
+                    <!-- Altezza con Refilo -->
+                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
+                        <span id="colTotalHeightLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Altezza con Refilo</span>
+                        <div id="totalHeightOutput" class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-jakarta">216.0 mm</div>
+                        <span id="heightSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">Taglio netto: 210.0</span>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC SVG DIAGRAM (Wrap-around Cover Blueprint) -->
+                <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 shadow-xs print-border">
+                    <div class="flex items-center justify-between mb-2">
+                        <span id="schemaTitle" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Tracciato Fustella Copertina Stesa</span>
+                        
+                        <!-- Fast Copy Button for InDesign / Illustrator -->
+                        <button type="button" onclick="copyInDesignSpecs()" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-lg border border-purple-200 transition active:scale-95">
+                            <span id="copyBtnIcon">📋</span>
+                            <span id="copyBtnText">Copia Quote InDesign</span>
+                        </button>
+                    </div>
+
+                    <!-- SVG Cover Blueprint Canvas -->
+                    <div class="bg-slate-900 rounded-xl p-3 sm:p-5 border border-slate-800 flex items-center justify-center overflow-hidden">
+                        <svg id="coverSvg" class="w-full h-44 sm:h-56 transition-all duration-200" viewBox="0 0 540 220">
+                            <defs>
+                                <pattern id="diagHatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                                    <line x1="0" y1="0" x2="0" y2="8" stroke="#334155" stroke-width="1.2" />
+                                </pattern>
+                            </defs>
+
+                            <!-- Outer Bleed Zone (Red Dashed Box +3mm) -->
+                            <rect id="bleedRect" x="30" y="30" width="480" height="150" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 4" />
+                            <text x="32" y="24" fill="#ef4444" font-size="9" font-family="monospace" font-weight="bold">LINEA REFILO (+3 mm Bleed)</text>
+
+                            <!-- Trim Line (Solid Slate Box) -->
+                            <rect id="trimRect" x="40" y="40" width="460" height="130" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5" />
+
+                            <!-- Flap Left (Hidden if flap = 0) -->
+                            <rect id="flapLeftRect" x="40" y="40" width="50" height="130" fill="url(#diagHatch)" stroke="#64748b" stroke-width="1" stroke-dasharray="2 2" />
+                            <text id="flapLeftText" x="45" y="108" fill="#94a3b8" font-size="9" font-weight="bold" font-family="system-ui">ALETTA</text>
+
+                            <!-- Back Cover (Piatto Retro) -->
+                            <rect id="backCoverRect" x="90" y="40" width="160" height="130" fill="#0f172a" stroke="#475569" stroke-width="1" />
+                            <text id="backCoverText" x="145" y="108" fill="#cbd5e1" font-size="11" font-weight="800" font-family="system-ui">RETRO</text>
+
+                            <!-- Spine Area (Dorso evidenziato in purple/blue) -->
+                            <rect id="spineRect" x="250" y="40" width="40" height="130" fill="#4c1d95" stroke="#a855f7" stroke-width="1.5" />
+                            <!-- Spine Center Vertical Guide Line -->
+                            <line id="spineCenterLine" x1="270" y1="40" x2="270" y2="170" stroke="#c084fc" stroke-width="1" stroke-dasharray="3 3" />
+                            <text id="spineLabelSvg" x="270" y="108" fill="#ffffff" font-size="9" font-weight="900" font-family="system-ui" text-anchor="middle" transform="rotate(-90 270 108)">DORSO 13 mm</text>
+
+                            <!-- Front Cover (Piatto Fronte) -->
+                            <rect id="frontCoverRect" x="290" y="40" width="160" height="130" fill="#0f172a" stroke="#475569" stroke-width="1" />
+                            <text id="frontCoverText" x="350" y="108" fill="#cbd5e1" font-size="11" font-weight="800" font-family="system-ui">FRONTE</text>
+
+                            <!-- Flap Right (Hidden if flap = 0) -->
+                            <rect id="flapRightRect" x="450" y="40" width="50" height="130" fill="url(#diagHatch)" stroke="#64748b" stroke-width="1" stroke-dasharray="2 2" />
+                            <text id="flapRightText" x="455" y="108" fill="#94a3b8" font-size="9" font-weight="bold" font-family="system-ui">ALETTA</text>
+
+                            <!-- Top Width Callout -->
+                            <line id="topDimLine" x1="40" y1="12" x2="500" y2="12" stroke="#38bdf8" stroke-width="1.5" />
+                            <text id="topDimText" x="270" y="8" fill="#38bdf8" font-size="11" font-weight="bold" font-family="monospace" text-anchor="middle">L: 309.0 mm (Stesa)</text>
+
+                            <!-- Right Height Callout -->
+                            <line id="rightDimLine" x1="520" y1="40" x2="520" y2="170" stroke="#38bdf8" stroke-width="1.5" />
+                            <text id="rightDimText" x="525" y="108" fill="#38bdf8" font-size="11" font-weight="bold" font-family="monospace">H: 210 mm</text>
+                        </svg>
+                    </div>
+
+                    <!-- Rule tip banner -->
+                    <div class="mt-2 flex items-center text-[11px] sm:text-xs text-slate-700 bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100">
+                        <span id="ruleTip">💡 <strong>Formula tipografica:</strong> <code>Dorso = (Pagine / 2) × (Grammatura / 1000) × Mano + Tolleranza Colla (0.5 mm)</code>. Linea tratteggiata rossa: refilo obbligatorio di 3 mm per lato.</span>
+                    </div>
+                </div>
+
+                <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
+                <div id="printFooterBox" class="hidden print:block mt-4 pt-3 border-t border-slate-300 text-xs">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Specifiche Esecutive Pre-Stampa:</span>
+                            <div class="border border-dashed border-slate-400 h-16 rounded-lg p-2 text-[9px] text-slate-600 leading-tight">
+                                • Mantenere testi ed elementi grafici critici ad almeno 5 mm dai bordi di taglio e cordonatura.<br>
+                                • Esportare PDF/X-1a o PDF/X-4 a 300 DPI con profilo colore CMYK e crocini di registro.
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Visto Si Stampi / Approvazione Bozza:</span>
+                            <div class="border border-slate-300 h-16 rounded-lg flex items-end justify-center pb-1 text-[9px] text-slate-400">
+                                Data, Firma del Cliente / Tipografia
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
+                        Scheda generata da <strong>OmniTools Graph</strong> (https://www.omnitoolslab.com/dorso) — Dimensionamento copertina e dorso libro.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
+            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4">
+                
+                <!-- Unit Switcher (mm / cm / in / pt) -->
+                <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
+                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Unità di Misura</span>
+                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
+                        <button type="button" id="unitMm" onclick="setUnit('mm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-purple-700 shadow-xs font-extrabold transition active:scale-95 text-center">mm</button>
+                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">cm</button>
+                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">in</button>
+                        <button type="button" id="unitPt" onclick="setUnit('pt')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">pt</button>
+                    </div>
+                </div>
+
+                <!-- Input: Numero Pagine Totali (Facciate) -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="pagesInput" id="pagesLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>
+                            Numero totale di pagine (facciate)
+                        </label>
+                        <span id="pagesBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded font-mono">240 pag (120 fogli)</span>
+                    </div>
+                    <div class="relative">
+                        <input type="number" id="pagesInput" value="240" min="4" max="2000" step="2"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition font-mono">
+                    </div>
+                    <div class="pt-1.5 px-0.5">
+                        <input type="range" id="pagesRange" min="20" max="600" step="4" value="240" class="w-full">
+                    </div>
+                </div>
+
+                <!-- Input: Grammatura Carta Interna -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="weightInput" id="paperWeightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
+                            Grammatura carta interna (g/m²)
+                        </label>
+                        <span id="weightBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">80 g/m²</span>
+                    </div>
+                    
+                    <!-- Quick Weight Selector Buttons -->
+                    <div class="grid grid-cols-4 gap-1 mb-2 text-xs font-bold">
+                        <button type="button" onclick="setWeight(80)" class="weight-btn py-1 px-1 rounded-lg border border-purple-300 bg-purple-50 text-purple-700 text-center text-[11px] font-extrabold">80g</button>
+                        <button type="button" onclick="setWeight(90)" class="weight-btn py-1 px-1 rounded-lg border border-slate-200 bg-white text-slate-700 text-center text-[11px]">90g</button>
+                        <button type="button" onclick="setWeight(115)" class="weight-btn py-1 px-1 rounded-lg border border-slate-200 bg-white text-slate-700 text-center text-[11px]">115g</button>
+                        <button type="button" onclick="setWeight(130)" class="weight-btn py-1 px-1 rounded-lg border border-slate-200 bg-white text-slate-700 text-center text-[11px]">130g</button>
+                    </div>
+
+                    <div class="relative">
+                        <input type="number" id="weightInput" value="80" min="40" max="400" step="5"
+                            class="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition">
+                    </div>
+                </div>
+
+                <!-- Input: Mano della Carta (Bulk Factor) -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="bulkSelect" id="paperBulkLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span>
+                            Mano della carta (Volume / Bulk)
+                        </label>
+                        <span id="bulkValBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-indigo-50 text-indigo-700 rounded font-mono">Mano 1.3</span>
+                    </div>
+                    <select id="bulkSelect" onchange="updateBulkFromSelect(this.value)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-xs sm:text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition cursor-pointer">
+                        <option value="1.3" selected>Usomano / Avorio Editoriale (Mano 1.3 - 1.4 - Romanzi)</option>
+                        <option value="1.15">Uso Mano Bianca Standard (Mano 1.1 - 1.2 - Manuali)</option>
+                        <option value="0.95">Patinata Opaca / Silk (Mano 0.95 - Cataloghi/Riviste)</option>
+                        <option value="0.88">Patinata Lucida / Gloss (Mano 0.85 - 0.90)</option>
+                        <option value="1.5">Carta Pregiata Extra-Volume (Mano 1.5 - 1.6)</option>
+                    </select>
+                </div>
+
+                <!-- Input: Formato Libro Chiuso & Alette -->
+                <div class="grid grid-cols-2 gap-2 pt-1 border-t border-slate-100">
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-700 block mb-1">Formato Chiuso</label>
+                        <select id="formatSelect" onchange="updateFormat(this.value)" class="w-full px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-xs text-slate-800 cursor-pointer">
+                            <option value="148x210" selected>A5 (148 × 210 mm)</option>
+                            <option value="120x190">Tascabile (120 × 190 mm)</option>
+                            <option value="150x230">Saggio (150 × 230 mm)</option>
+                            <option value="170x240">Standard (170 × 240 mm)</option>
+                            <option value="210x297">A4 (210 × 297 mm)</option>
+                            <option value="210x210">Quadrato (210 × 210 mm)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label id="flapsLabel" class="text-[11px] font-bold text-slate-700 block mb-1">Alette Copertina</label>
+                        <select id="flapsSelect" onchange="updateFlaps(this.value)" class="w-full px-2 py-1.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-xs text-slate-800 cursor-pointer">
+                            <option value="0" selected>Nessuna Aletta</option>
+                            <option value="70">Alette 70 mm</option>
+                            <option value="85">Alette 85 mm</option>
+                            <option value="100">Alette 100 mm</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Quick Presets -->
+                <div class="pt-2 border-t border-slate-100 no-print">
+                    <span id="presetsTitleText" class="text-[10px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Preset editoriali rapidi:</span>
+                    <div class="grid grid-cols-2 gap-1.5 text-xs">
+                        <button onclick="applyEditorialPreset(240, 80, 1.3, '148x210', 0)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-purple-50 hover:border-purple-200 active:scale-95 transition">
+                            <span id="preset1Title" class="font-bold text-slate-800 block text-[11px]">Romanzo (240 pag)</span>
+                            <span id="preset1Sub" class="text-[10px] text-slate-600">Usomano 80g • Mano 1.3</span>
+                        </button>
+                        <button onclick="applyEditorialPreset(96, 130, 0.95, '210x297', 0)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-purple-50 hover:border-purple-200 active:scale-95 transition">
+                            <span id="preset2Title" class="font-bold text-slate-800 block text-[11px]">Catalogo (96 pag)</span>
+                            <span id="preset2Sub" class="text-[10px] text-slate-600">Patinata 130g • Mano 0.95</span>
+                        </button>
+                        <button onclick="applyEditorialPreset(360, 90, 1.2, '150x230', 85)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-purple-50 hover:border-purple-200 active:scale-95 transition">
+                            <span id="preset3Title" class="font-bold text-slate-800 block text-[11px]">Saggio (360 pag)</span>
+                            <span id="preset3Sub" class="text-[10px] text-slate-600">Uso mano 90g • Con alette</span>
+                        </button>
+                        <button onclick="applyEditorialPreset(160, 170, 1.0, '210x210', 0)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-purple-50 hover:border-purple-200 active:scale-95 transition">
+                            <span id="preset4Title" class="font-bold text-slate-800 block text-[11px]">Fotolibro (160 pag)</span>
+                            <span id="preset4Sub" class="text-[10px] text-slate-600">Patinata 170g • Quadrato</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FAQ Section -->
+        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
+            <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2 font-jakarta">
+                <span>Domande Frequenti sul Calcolo del Dorso e Stampa</span>
+                <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
+            </h2>
+            
+            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
+                <!-- Localized FAQs -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer with OmniTools Suite & Legal Disclaimer -->
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            
+            <!-- Suggestion Prompt Strip -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore di cantiere o grafica?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- OmniTools Network Ecosystem Bar -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                            ⌘
+                        </div>
+                        <span class="font-black text-sm tracking-tight font-jakarta">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Precisione (Edilizia & Grafica)</span>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 text-[11px]">
+                    <a href="/" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">📐 Rampe</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-blue-500/20 text-blue-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/scale" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">🪜 Scale</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800 border border-purple-500/50 flex items-center justify-between transition">
+                        <span class="font-bold text-white">🎨 Dorso Libro</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
+                    </a>
+                    <div class="p-2 rounded-xl bg-slate-800/40 border border-slate-700/50 flex items-center justify-between opacity-75">
+                        <span class="text-slate-400">💧 Scarichi & Tubi</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In arrivo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
+                    <strong>Note Tecniche Tipografiche:</strong> Lo spessore effettivo del dorso può variare del ±3-5% in base all'umidità della carta e alla pressione di piega. Si consiglia sempre di richiedere al service di stampa il valore di mano esatto della cartiera.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smart Floating PWA Install Banner -->
+    <div id="installBanner" class="no-print fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700/60 z-50 flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-0">
+        <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-9 h-9 rounded-xl bg-purple-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md">
+                📱
+            </div>
+            <div class="min-w-0">
+                <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools come App</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">Utility per grafici e tipografi sempre a portata di mano</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+            <button id="installBannerBtn" onclick="triggerInstall()" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-sm">
+                Installa
+            </button>
+            <button onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg text-xs" title="Chiudi">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="hidden no-print fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-slate-800 shadow-2xl border border-slate-100 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 border border-purple-100 flex items-center justify-center text-lg font-bold">
+                        💡
+                    </div>
+                    <div>
+                        <h4 id="modalSuggestTitle" class="font-extrabold text-base text-slate-900 leading-tight">Suggerisci uno Strumento</h4>
+                        <span class="text-[10px] text-slate-500 font-medium">OmniTools User Feedback</span>
+                    </div>
+                </div>
+                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 rounded-lg transition">✕</button>
+            </div>
+            
+            <p id="modalSuggestDesc" class="text-xs text-slate-600 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold shadow-md shadow-purple-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script & Calculation Engine for Spine & Cover Layout -->
+    <script>
+        const TRANSLATIONS = {"it": {"title": "DorsoFacile", "badge": "OmniGraph", "hero_title": "Calcolo Spessore Dorso Libro & Copertina Stesa", "hero_desc": "Calcola all'istante lo spessore esatto del dorso, l'ingombro della copertina stesa con refili da 3 mm e le quote pronte per InDesign, Illustrator e Amazon KDP.", "mode_direct": "📖 Brossura Fresata / PUR", "mode_reverse": "🧵 Brossura Filo Refe / Hardcover", "unit_label": "Unità", "pages_label": "Numero totale di pagine (facciate)", "paper_weight_label": "Grammatura carta interna", "paper_bulk_label": "Mano della carta (Volume / Bulk)", "book_format_label": "Formato libro chiuso (Base × Altezza)", "flaps_label": "Alette / Bandelle copertina", "presets_title": "Preset editoriali rapidi:", "preset_1": "Romanzo Narrativa (240 pag)", "preset_1_sub": "Usomano 80g • Mano 1.3", "preset_2": "Catalogo / Rivista (96 pag)", "preset_2_sub": "Patinata 130g • Mano 0.95", "preset_3": "Saggio / Manuale (360 pag)", "preset_3_sub": "Uso mano 90g • Mano 1.2", "preset_4": "Libro Fotografico (160 pag)", "preset_4_sub": "Patinata 170g • Mano 1.0", "col_spine": "Spessore Dorso", "col_total_width": "Copertina Stesa", "col_total_height": "Altezza con Refilo", "schema_title": "Tracciato Fustella Copertina Stesa", "schema_scale": "In scala tipografica", "rule_tip": "💡 <strong>Formula tipografica:</strong> <code>Dorso = (Pagine / 2) × (Grammatura / 1000) × Mano + Tolleranza Colla (0.5 mm)</code>. Linea tratteggiata rossa: refilo obbligatorio di 3 mm per lato.", "print_btn": "Stampa", "install_btn": "Installa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "Utility per grafici e tipografi sempre a portata di mano", "legal_disclaimer": "<strong>Note Tecniche Tipografiche:</strong> Lo spessore effettivo del dorso può variare del ±3-5% in base all'umidità della carta, alla pressione della piega e al tipo di colla impiegata (Hotmelt o PUR). Si consiglia sempre di richiedere al service di stampa il valore di mano esatto della cartiera.", "faq_title": "Domande Frequenti sul Calcolo del Dorso e Stampa", "status_opt_title": "Spessore Ottimale per Brossura", "status_opt_tag": "Brossurabile", "status_opt_desc": "Il dorso supera i 3 mm minimi: perfetto per brossura fresata, grecata o colla PUR con titolo leggibile.", "status_warn_title": "Dorso Molto Sottile", "status_warn_tag": "Limite Critico", "status_warn_desc": "Spessore inferiore a 3 mm. Si sconsiglia il testo sul dorso: valutare la rilegatura a Punto Metallico.", "status_danger_title": "Dorso Troppo Sottile per Brossura", "status_danger_tag": "Punto Metallico", "status_danger_desc": "Dorso inferiore a 2 mm: impossibile fresare e incollare. Rilegare a 2 punti metallici a sella.", "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere o grafica?", "suggest_btn": "Suggerisci", "suggest_modal_title": "Suggerisci uno Strumento", "suggest_modal_desc": "Quale formula o utility vorresti su OmniTools?", "suggest_placeholder": "Scrivi qui la tua idea...", "suggest_privacy_note": "🔒 Invio 100% anonimo.", "suggest_send": "Invia", "suggest_close": "Annulla", "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.", "copy_btn": "Copia Quote InDesign", "copied_text": "Copiato!"}, "en": {"title": "SpineMaster", "badge": "OmniGraph", "hero_title": "Book Spine & Wrap-Around Cover Calculator", "hero_desc": "Instantly calculate exact spine width, full flat cover dimensions with 3 mm (0.125 in) bleed, and layout specs ready for Adobe InDesign, Illustrator, and Amazon KDP.", "mode_direct": "📖 Perfect Bound / PUR", "mode_reverse": "🧵 Casebound / Hardcover", "unit_label": "Units", "pages_label": "Total Page Count (Sides)", "paper_weight_label": "Interior Paper Weight", "paper_bulk_label": "Paper Caliper / Bulk Factor", "book_format_label": "Trim Size (Width × Height)", "flaps_label": "Cover French Flaps", "presets_title": "Quick publishing presets:", "preset_1": "Trade Paperback (240 pgs)", "preset_1_sub": "Uncoated 80gsm • Bulk 1.3", "preset_2": "Catalog / Magazine (96 pgs)", "preset_2_sub": "Coated 130gsm • Bulk 0.95", "preset_3": "Hardcover Novel (360 pgs)", "preset_3_sub": "Offset 90gsm • Bulk 1.2", "preset_4": "Art / Photo Book (160 pgs)", "preset_4_sub": "Silk 170gsm • Bulk 1.0", "col_spine": "Spine Width", "col_total_width": "Total Flat Width", "col_total_height": "Height with Bleed", "schema_title": "Cover Template Layout Blueprint", "schema_scale": "Scale Graphic Vector", "rule_tip": "💡 <strong>Formula:</strong> <code>Spine = (Pages / 2) × (Weight / 1000) × Bulk + Glue Allowance (0.5 mm)</code>. Red dotted line: 3 mm (0.125 in) bleed area.", "print_btn": "Print", "install_btn": "Install", "install_banner_title": "Install OmniTools as App", "install_banner_sub": "Print production tools always ready offline", "legal_disclaimer": "<strong>Technical Disclaimer:</strong> Spine width can vary by ±3-5% based on paper moisture, grain direction, and bindery clamp pressure. Always confirm exact paper caliper with your commercial printer.", "faq_title": "Frequently Asked Questions about Book Spines & Cover Design", "status_opt_title": "Ideal Spine for Perfect Binding", "status_opt_tag": "Perfect Bound", "status_opt_desc": "Spine exceeds 3 mm (0.12 in): ideal for PUR gluing, hotmelt binding, and legible spine text.", "status_warn_title": "Very Thin Spine", "status_warn_tag": "Borderline", "status_warn_desc": "Spine under 3 mm (0.12 in). Avoid spine text or switch to saddle-stitch booklet binding.", "status_danger_title": "Too Thin for Perfect Binding", "status_danger_tag": "Saddle Stitch", "status_danger_desc": "Spine under 2 mm: cannot be glued. Use saddle-stitch wire staples instead.", "suggest_banner": "Have an idea for a new calculator?", "suggest_btn": "Suggest", "suggest_modal_title": "Suggest a Tool", "suggest_modal_desc": "What formula or utility would you like on OmniTools?", "suggest_placeholder": "Type your idea here...", "suggest_privacy_note": "🔒 100% anonymous submission.", "suggest_send": "Send", "suggest_close": "Cancel", "suggest_thanks": "Thank you! Your feedback guides upcoming tools.", "copy_btn": "Copy InDesign Specs", "copied_text": "Copied!"}, "es": {"title": "LomoFácil", "badge": "OmniGraph", "hero_title": "Cálculo de Lomo de Libro y Cubierta Extendida", "hero_desc": "Calcula el grosor exacto del lomo, dimensiones de cubierta extendida con sangrado de 3 mm y especificaciones para InDesign y Amazon KDP.", "mode_direct": "📖 Rústica Fresada / Cola PUR", "mode_reverse": "🧵 Tapa Dura / Cosido", "unit_label": "Unidades", "pages_label": "Número total de páginas", "paper_weight_label": "Gramaje del papel interior", "paper_bulk_label": "Mano / Volumen del papel", "book_format_label": "Formato cerrado (Ancho × Alto)", "flaps_label": "Solapas de cubierta", "presets_title": "Ajustes rápidos:", "preset_1": "Novela Bolsillo (240 págs)", "preset_1_sub": "Offset 80g • Mano 1.3", "preset_2": "Catálogo Comercial (96 págs)", "preset_2_sub": "Estucado 130g • Mano 0.95", "preset_3": "Manual / Ensayo (360 págs)", "preset_3_sub": "Offset 90g • Mano 1.2", "preset_4": "Libro de Fotos (160 págs)", "preset_4_sub": "Estucado 170g • Mano 1.0", "col_spine": "Grosor del Lomo", "col_total_width": "Ancho Extendido", "col_total_height": "Alto con Sangrado", "schema_title": "Plantilla de Cubierta Extendida", "schema_scale": "A escala vectorial", "rule_tip": "💡 <strong>Fórmula:</strong> <code>Lomo = (Páginas / 2) × (Gramaje / 1000) × Mano + Cola</code>. Línea punteada roja: sangrado exterior de 3 mm.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instala OmniTools como App", "install_banner_sub": "Herramientas de artes gráficas sin conexión", "legal_disclaimer": "<strong>Nota Técnica:</strong> El grosor puede variar ligeramente según la humedad y fabricante del papel.", "faq_title": "Preguntas Frecuentes sobre Lomo y Encuadernación", "status_opt_title": "Lomo Óptimo para Rústica", "status_opt_tag": "Encuadernable", "status_opt_desc": "Grosor superior a 3 mm: perfecto para fresado y texto visible en el lomo.", "status_warn_title": "Lomo Muy Fino", "status_warn_tag": "Límite", "status_warn_desc": "Menos de 3 mm: evite texto en el lomo o use grapa a caballo.", "status_danger_title": "No Apto para Rústica", "status_danger_tag": "Grapa", "status_danger_desc": "Menos de 2 mm: encuadernar con dos grapas.", "suggest_banner": "¿Tienes una idea para una herramienta de diseño?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Herramienta", "suggest_modal_desc": "¿Qué calculadora te gustaría ver?", "suggest_placeholder": "Tu idea...", "suggest_privacy_note": "🔒 100% anónimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "¡Gracias por tu aporte!", "copy_btn": "Copiar Medidas InDesign", "copied_text": "¡Copiado!"}, "fr": {"title": "DosFacile", "badge": "OmniGraph", "hero_title": "Calcul de Dos de Livre & Couverture Ouverte", "hero_desc": "Calculez l'épaisseur exacte du dos, le gabarit de couverture à plat avec 3 mm de fond perdu pour InDesign, Illustrator et KDP.", "mode_direct": "📖 Dos Carré Collé / PUR", "mode_reverse": "🧵 Livre Relié / Cartonné", "unit_label": "Unités", "pages_label": "Nombre total de pages", "paper_weight_label": "Grammage du papier", "paper_bulk_label": "Main du papier (Bouffant)", "book_format_label": "Format fermé (Largeur × Hauteur)", "flaps_label": "Rabats de couverture", "presets_title": "Préréglages d'édition :", "preset_1": "Roman (240 pages)", "preset_1_sub": "Bouffant 80g • Main 1.3", "preset_2": "Magazine (96 pages)", "preset_2_sub": "Couché 130g • Main 0.95", "preset_3": "Essai / Manuel (360 pages)", "preset_3_sub": "Offset 90g • Main 1.2", "preset_4": "Livre d'Art (160 pages)", "preset_4_sub": "Couché 170g • Main 1.0", "col_spine": "Épaisseur du Dos", "col_total_width": "Largeur à Plat", "col_total_height": "Hauteur avec Fond Perdu", "schema_title": "Gabarit de Couverture à Plat", "schema_scale": "Échelle vectorielle", "rule_tip": "💡 <strong>Formule :</strong> <code>Dos = (Pages / 2) × (Grammage / 1000) × Main + Tolérance Colle (0.5 mm)</code>. Pointillés rouges : 3 mm de fond perdu.", "print_btn": "Imprimer", "install_btn": "Installer", "install_banner_title": "Installer OmniTools sur Smartphone", "install_banner_sub": "Outils de prépresse et PAO hors-ligne", "legal_disclaimer": "<strong>Mentions Techniques :</strong> L'épaisseur peut varier de ±3-5% selon l'humidité du papier et le collage.", "faq_title": "Questions Fréquentes sur le Dos et la Reliure", "status_opt_title": "Épaisseur Idéale pour Dos Carré", "status_opt_tag": "Reliure Parfaite", "status_opt_desc": "Le dos dépasse 3 mm : idéal pour le dos carré collé avec texte lisible.", "status_warn_title": "Dos Très Fin", "status_warn_tag": "Limite", "status_warn_desc": "Moins de 3 mm : éviter le texte sur le dos ou choisir la reliure piqûre.", "status_danger_title": "Trop Fin pour Dos Carré", "status_danger_tag": "Piqûre Métal", "status_danger_desc": "Moins de 2 mm : relier avec deux agrafes métal à cheval.", "suggest_banner": "Une idée pour OmniTools ?", "suggest_btn": "Suggérer", "suggest_modal_title": "Suggérer un Outil", "suggest_modal_desc": "Quelle formule aimeriez-vous voir ?", "suggest_placeholder": "Votre idée...", "suggest_privacy_note": "🔒 100% anonyme.", "suggest_send": "Envoyer", "suggest_close": "Annuler", "suggest_thanks": "Merci pour votre idée !", "copy_btn": "Copier Dimensions InDesign", "copied_text": "Copié !"}, "de": {"title": "BuchrückenRechner", "badge": "OmniGraph", "hero_title": "Buchrücken berechnen & Umschlag-Maße", "hero_desc": "Berechnen Sie die exakte Buchrückenbreite und das offene Umschlagformat mit 3 mm Beschnitt für InDesign, KDP und Druckereien.", "mode_direct": "📖 Klebebindung / PUR", "mode_reverse": "🧵 Fadenheftung / Hardcover", "unit_label": "Maßeinheiten", "pages_label": "Gesamtseitenzahl (Umfang)", "paper_weight_label": "Papiergrammatur (g/m²)", "paper_bulk_label": "Papiervolumen (Bulk)", "book_format_label": "Buchformat (Breite × Höhe)", "flaps_label": "Umschlagklappen", "presets_title": "Schnellvorlagen Verlagswesen:", "preset_1": "Taschenbuch (240 Seiten)", "preset_1_sub": "Werkdruck 80g • Volumen 1.3", "preset_2": "Katalog / Magazin (96 Seiten)", "preset_2_sub": "Bilderdruck 130g • Vol. 0.95", "preset_3": "Sachbuch (360 Seiten)", "preset_3_sub": "Offset 90g • Volumen 1.2", "preset_4": "Bildband (160 Seiten)", "preset_4_sub": "Bilderdruck 170g • Vol. 1.0", "col_spine": "Rückenbreite", "col_total_width": "Umschlagbreite offen", "col_total_height": "Höhe inkl. Beschnitt", "schema_title": "Umschlag-Bogen Layout", "schema_scale": "Maßstabsgetreu", "rule_tip": "💡 <strong>Formel:</strong> <code>Rücken = (Seiten / 2) × (Grammatur / 1000) × Volumen + Leimzugabe (0.5 mm)</code>. Rote Linie: 3 mm Beschnittzugabe.", "print_btn": "Drucken", "install_btn": "Installieren", "install_banner_title": "OmniTools als App nutzen", "install_banner_sub": "Druck- und Grafikwerkzeuge jederzeit offline", "legal_disclaimer": "<strong>Hinweis:</strong> Rückenbreite kann um ±3-5% je nach Papierfeuchte und Klebeart abweichen.", "faq_title": "Häufige Fragen zu Buchrücken & Bindung", "status_opt_title": "Optimale Rückenbreite für Klebebindung", "status_opt_tag": "Klebebindung", "status_opt_desc": "Der Rücken ist breiter als 3 mm: ideal für PUR-Klebebindung mit lesbarem Rückentext.", "status_warn_title": "Sehr schmaler Rücken", "status_warn_tag": "Grenzwertig", "status_warn_desc": "Unter 3 mm: Rückentext vermeiden oder Rückstichheftung wählen.", "status_danger_title": "Zu dünn für Klebebindung", "status_danger_tag": "Klammerheftung", "status_danger_desc": "Unter 2 mm: Bindung mit Drahtklammern (Broschüre) empfohlen.", "suggest_banner": "Idee für ein neues Druckwerkzeug?", "suggest_btn": "Vorschlagen", "suggest_modal_title": "Werkzeug vorschlagen", "suggest_modal_desc": "Welche Funktion wünschen Sie sich?", "suggest_placeholder": "Ihre Idee...", "suggest_privacy_note": "🔒 100% anonym.", "suggest_send": "Absenden", "suggest_close": "Abbrechen", "suggest_thanks": "Vielen Dank für Ihre Anregung.", "copy_btn": "InDesign-Maße kopieren", "copied_text": "Kopiert!"}, "pt": {"title": "LombadaFácil", "badge": "OmniGraph", "hero_title": "Cálculo de Lombada de Livro & Capa Aberta", "hero_desc": "Calcule a espessura da lombada, medidas da capa aberta com 3 mm de sangria e especificações para Adobe InDesign e Amazon KDP.", "mode_direct": "📖 Brochura / Cola PUR", "mode_reverse": "🧵 Capa Dura / Costurado", "unit_label": "Unidades", "pages_label": "Número total de páginas", "paper_weight_label": "Gramatura do papel miolo", "paper_bulk_label": "Mão / Volume do papel", "book_format_label": "Formato fechado (Largura × Altura)", "flaps_label": "Orelhas da capa", "presets_title": "Predefinições de publicação:", "preset_1": "Romance Literatura (240 págs)", "preset_1_sub": "Pólen 80g • Mão 1.3", "preset_2": "Catálogo Comercial (96 págs)", "preset_2_sub": "Couché 130g • Mão 0.95", "preset_3": "Ensaio Acadêmico (360 págs)", "preset_3_sub": "Offset 90g • Mão 1.2", "preset_4": "Livro de Arte (160 págs)", "preset_4_sub": "Couché 170g • Mão 1.0", "col_spine": "Espessura da Lombada", "col_total_width": "Largura Capa Aberta", "col_total_height": "Altura com Sangria", "schema_title": "Gabarito da Capa Aberta", "schema_scale": "Escala gráfica vetorial", "rule_tip": "💡 <strong>Fórmula:</strong> <code>Lombada = (Páginas / 2) × (Gramatura / 1000) × Mão + Cola (0.5 mm)</code>. Linha vermelha: 3 mm de sangria.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instalar OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de pré-impressão offline", "legal_disclaimer": "<strong>Nota Técnica:</strong> A espessura pode variar ±3-5% conforme a umidade e a prensagem gráfica.", "faq_title": "Perguntas Frequentes sobre Lombada e Encadernação", "status_opt_title": "Lombada Ideal para Brochura", "status_opt_tag": "Brochura PUR", "status_opt_desc": "Lombada superior a 3 mm: ideal para cola PUR com texto legível.", "status_warn_title": "Lombada Muito Estreita", "status_warn_tag": "Limite", "status_warn_desc": "Menos de 3 mm: evite texto na lombada ou opte por grampo canoa.", "status_danger_title": "Muito Fino para Brochura", "status_danger_tag": "Grampo Canoa", "status_danger_desc": "Menos de 2 mm: encadernar com grampo de sela.", "suggest_banner": "Tem ideia para nova ferramenta?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Ferramenta", "suggest_modal_desc": "Qual calculadora gostaria de ver?", "suggest_placeholder": "Digite sua ideia...", "suggest_privacy_note": "🔒 100% anônimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "Obrigado! Sua ideia guiará os próximos passos.", "copy_btn": "Copiar Medidas InDesign", "copied_text": "Copiado!"}};
+
+        let currentLang = localStorage.getItem('omnitools_lang') || 'it';
+        let currentUnit = 'mm';
+        let currentBinding = 'softcover'; // 'softcover' | 'hardcover'
+        let currentBookFormat = '148x210';
+        let currentFlapMm = 0;
+
+        const pagesInput = document.getElementById('pagesInput');
+        const pagesRange = document.getElementById('pagesRange');
+        const weightInput = document.getElementById('weightInput');
+        const bulkSelect = document.getElementById('bulkSelect');
+        const formatSelect = document.getElementById('formatSelect');
+        const flapsSelect = document.getElementById('flapsSelect');
+
+        const spineOutput = document.getElementById('spineOutput');
+        const totalWidthOutput = document.getElementById('totalWidthOutput');
+        const totalHeightOutput = document.getElementById('totalHeightOutput');
+
+        const complianceCard = document.getElementById('complianceCard');
+        const statusIcon = document.getElementById('statusIcon');
+        const statusTitle = document.getElementById('statusTitle');
+        const statusTag = document.getElementById('statusTag');
+        const statusDesc = document.getElementById('statusDesc');
+
+        // SVG Element references
+        const bleedRect = document.getElementById('bleedRect');
+        const trimRect = document.getElementById('trimRect');
+        const flapLeftRect = document.getElementById('flapLeftRect');
+        const flapLeftText = document.getElementById('flapLeftText');
+        const backCoverRect = document.getElementById('backCoverRect');
+        const spineRect = document.getElementById('spineRect');
+        const spineCenterLine = document.getElementById('spineCenterLine');
+        const spineLabelSvg = document.getElementById('spineLabelSvg');
+        const frontCoverRect = document.getElementById('frontCoverRect');
+        const flapRightRect = document.getElementById('flapRightRect');
+        const flapRightText = document.getElementById('flapRightText');
+        const topDimText = document.getElementById('topDimText');
+        const rightDimText = document.getElementById('rightDimText');
+
+        function changeLanguage(lang) {
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            document.getElementById('langSelect').value = lang;
+            document.documentElement.lang = lang;
+            applyTranslations();
+            updateCalculations();
+        }
+
+        function applyTranslations() {
+            const t = TRANSLATIONS[currentLang];
+            document.getElementById('brandTitle').textContent = t.title;
+            const btm = document.getElementById('brandTitleMobile');
+            if (btm) btm.textContent = t.title;
+            document.getElementById('brandBadge').textContent = t.badge;
+            const bbm = document.getElementById('brandBadgeMobile');
+            if (bbm) bbm.textContent = t.badge;
+
+            document.getElementById('heroTitle').textContent = t.hero_title;
+            document.getElementById('heroDesc').textContent = t.hero_desc;
+            document.getElementById('modeDirectBtn').textContent = t.mode_direct;
+            document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
+            document.getElementById('unitLabelText').textContent = t.unit_label;
+
+            document.getElementById('pagesLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span> ${t.pages_label}`;
+            document.getElementById('paperWeightLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> ${t.paper_weight_label}`;
+            document.getElementById('paperBulkLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span> ${t.paper_bulk_label}`;
+            document.getElementById('flapsLabel').textContent = t.flaps_label;
+
+            document.getElementById('presetsTitleText').textContent = t.presets_title;
+            document.getElementById('preset1Title').textContent = t.preset_1;
+            document.getElementById('preset1Sub').textContent = t.preset_1_sub;
+            document.getElementById('preset2Title').textContent = t.preset_2;
+            document.getElementById('preset2Sub').textContent = t.preset_2_sub;
+            document.getElementById('preset3Title').textContent = t.preset_3;
+            document.getElementById('preset3Sub').textContent = t.preset_3_sub;
+            document.getElementById('preset4Title').textContent = t.preset_4;
+            document.getElementById('preset4Sub').textContent = t.preset_4_sub;
+
+            document.getElementById('colSpineLabel').textContent = t.col_spine;
+            document.getElementById('colTotalWidthLabel').textContent = t.col_total_width;
+            document.getElementById('colTotalHeightLabel').textContent = t.col_total_height;
+            document.getElementById('schemaTitle').textContent = t.schema_title;
+            document.getElementById('printBtnText').textContent = t.print_btn;
+            document.getElementById('copyBtnText').textContent = t.copy_btn;
+
+            document.getElementById('installBannerTitle').textContent = t.install_banner_title;
+            document.getElementById('installBannerSub').textContent = t.install_banner_sub;
+            document.getElementById('installBannerBtn').textContent = t.install_btn;
+            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            document.getElementById('faqTitle').firstElementChild.textContent = t.faq_title;
+
+            if (document.getElementById('suggestBannerText')) {
+                document.getElementById('suggestBannerText').textContent = t.suggest_banner;
+                document.getElementById('suggestBtnText').textContent = t.suggest_btn;
+                document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
+                document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
+                document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
+                document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
+                document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
+                document.getElementById('modalCloseBtn').textContent = t.suggest_close;
+                document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
+            }
+
+            renderFaqs();
+        }
+
+        function renderFaqs() {
+            const container = document.getElementById('faqContainer');
+            const faqs = {
+                'it': [
+                    ['Come si calcola esattamente lo spessore del dorso di un libro?', 'La formula tipografica professionale è: <strong>Dorso (mm) = (Pagine / 2) × (Grammatura / 1000) × Mano della carta + Spessore Colla (0.5 mm)</strong>. Esempio per 240 pagine con carta usomano 80g a mano 1.3: (120 fogli) × 0.080 × 1.3 = 12.48 mm + 0.5 mm = circa 13 mm.'],
+                    ['Cosa si intende per "Mano" (Bulk o Volume) della carta?', 'La "Mano" è il rapporto tra lo spessore in micron e la grammatura in grammi/m². Una carta normale da fotocopie ha mano 1.0 (80g = 80 micron). Le carte da romanzo usomano/avorio hanno mano elevata (1.3 - 1.5) per dare spessore al libro senza appesantirlo, mentre le patinate hanno mano ridotta (0.85 - 0.95).'],
+                    ['Qual è lo spessore minimo di dorso per inserire un titolo leggibile?', 'Il limite tecnico raccomandato è di almeno <strong>6 mm</strong>. Su dorsi tra 3 e 5 mm il testo è possibile ma richiede una centratura millimetrica per evitare che scivoli sul fronte o sul retro a causa delle tolleranze di piega (±1-1.5 mm). Sotto i 3 mm è sconsigliato stampare testo.'],
+                    ['Quanti millimetri di abbondanza (refilo/bleed) devo impostare in InDesign?', 'In tipografia e per piattaforme come Amazon KDP o IngramSpark, il refilo standard obbligatorio è di <strong>3 mm per ogni lato</strong> (0.125 pollici negli USA). Ricorda di estendere tutti gli sfondi colorati fino alla linea rossa del refilo esterno.']
+                ],
+                'en': [
+                    ['How do you calculate spine width for a paperback book?', 'The industry formula is: <strong>Spine (mm) = (Page count / 2) × (Grammage / 1000) × Paper Bulk + Glue (0.5 mm)</strong>. In inches, page count is multiplied by paper thickness per page (caliper). E.g., 240 pages on 50# white paper equals approx 0.51 inches.'],
+                    ['What is paper bulk / caliper?', 'Bulk describes a paper\'s thickness relative to its basis weight. Bulky antique book paper (1.3-1.5 bulk) makes a novel look thick and light, whereas glossy coated art paper (0.85-0.95 bulk) produces a much thinner spine for the same number of pages.'],
+                    ['What is the minimum spine thickness for spine text?', 'Most commercial book printers and Amazon KDP require a minimum spine width of <strong>0.25 inches (6.35 mm)</strong> or at least 100 pages before allowing text on the spine.'],
+                    ['How much bleed is required for a wrap-around cover?', 'The standard commercial print bleed is <strong>0.125 inches (3.175 mm)</strong> on all four sides. Your background artwork must extend fully into this bleed zone.']
+                ],
+                'es': [
+                    ['¿Cómo se calcula el lomo de un libro para imprenta?', 'Fórmula: <strong>Lomo (mm) = (Páginas / 2) × (Gramaje / 1000) × Mano del papel + Cola (0.5 mm)</strong>. Para 200 páginas en offset 80g mano 1.3: 100 × 0.08 × 1.3 = 10.4 mm + 0.5 mm = 10.9 mm.'],
+                    ['¿Qué es el volumen o mano del papel?', 'Es la relación entre el grosor y el peso. Un papel ahuesado para novelas tiene volumen 1.3-1.5 (más cuerpo y menos peso), mientras que el papel estucado tiene volumen 0.9.']
+                ],
+                'fr': [
+                    ['Quelle est la formule de calcul d\'un dos carré collé ?', 'Formule : <strong>Dos (mm) = (Pages / 2) × (Grammage / 1000) × Main du papier + Tolérance Colle (0.5 mm)</strong>. Pour 160 pages en 90g bouffant main 1.4 : 80 × 0.09 × 1.4 = 10.08 mm + 0.5 mm = 10.6 mm.'],
+                    ['À partir de quelle épaisseur peut-on imprimer un titre sur le dos ?', 'Il est conseillé d\'avoir au moins 5 à 6 mm de dos pour assurer la lisibilité et compenser les tolérances de coupe du massicot (±1 mm).']
+                ],
+                'de': [
+                    ['Wie berechnet man die Buchrückenstärke?', 'Formel: <strong>Rücken (mm) = (Seitenzahl / 2) × (Grammatur / 1000) × Papiervolumen + 0.5 mm Leim</strong>. Beispiel: 240 Seiten Werkdruck 80g mit Volumen 1.3 ergibt ca. 13 mm Rücken.'],
+                    ['Was bedeutet Papiervolumen (Bulk)?', 'Das Papiervolumen beschreibt das Verhältnis von Dicke zu Gewicht. Werkdruckpapier mit 1.3-fachem Volumen ist deutlich dicker als gestrichenes Bilderdruckpapier.']
+                ],
+                'pt': [
+                    ['Como calcular a lombada de um livro para impressão?', 'Fórmula: <strong>Lombada = (Páginas / 2) × (Gramatura / 1000) × Mão do papel + Cola (0.5 mm)</strong>. Para 240 páginas em pólen 80g mão 1.3: 120 × 0.08 × 1.3 = 12.5 mm + 0.5 = 13 mm.'],
+                    ['Quanto de sangria é necessário na capa?', 'A sangria gráfica padrão é de <strong>3 mm em toda a volta</strong> (topo, base e laterais).']
+                ]
+            };
+
+            const list = faqs[currentLang] || faqs['it'];
+            container.innerHTML = list.map(item => `
+                <details class="py-3 group cursor-pointer">
+                    <summary class="font-bold text-slate-800 flex justify-between items-center list-none select-none">
+                        <span>${item[0]}</span>
+                        <span class="transition group-open:rotate-180 text-purple-600">▼</span>
+                    </summary>
+                    <p class="mt-1.5 text-slate-600 leading-relaxed pl-1">${item[1]}</p>
+                </details>
+            `).join('');
+        }
+
+        function switchBindingMode(mode) {
+            currentBinding = mode;
+            if (mode === 'softcover') {
+                document.getElementById('modeDirectBtn').className = "flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-purple-700 shadow-sm transition active:scale-95 text-center";
+                document.getElementById('modeReverseBtn').className = "flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center";
+            } else {
+                document.getElementById('modeReverseBtn').className = "flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-indigo-700 shadow-sm transition active:scale-95 text-center";
+                document.getElementById('modeDirectBtn').className = "flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center";
+            }
+            updateCalculations();
+        }
+
+        const UNIT_FACTORS_MM = {
+            'mm': 1.0,
+            'cm': 10.0,
+            'in': 25.4,
+            'pt': 0.352778
+        };
+
+        function setUnit(newUnit) {
+            if (newUnit === currentUnit) return;
+            currentUnit = newUnit;
+
+            ['mm', 'cm', 'in', 'pt'].forEach(u => {
+                const btn = document.getElementById('unit' + u.charAt(0).toUpperCase() + u.slice(1));
+                if (btn) {
+                    if (u === newUnit) {
+                        btn.className = "w-10 sm:w-11 py-1 rounded-lg bg-white text-purple-700 shadow-xs font-extrabold transition active:scale-95 text-center";
+                    } else {
+                        btn.className = "w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                    }
+                }
+            });
+            updateCalculations();
+        }
+
+        function setWeight(w) {
+            weightInput.value = w;
+            document.querySelectorAll('.weight-btn').forEach(b => {
+                if (b.textContent.includes(w + 'g')) {
+                    b.className = "weight-btn py-1 px-1 rounded-lg border border-purple-300 bg-purple-50 text-purple-700 text-center text-[11px] font-extrabold";
+                } else {
+                    b.className = "weight-btn py-1 px-1 rounded-lg border border-slate-200 bg-white text-slate-700 text-center text-[11px]";
+                }
+            });
+            updateCalculations();
+        }
+
+        function updateBulkFromSelect(val) {
+            document.getElementById('bulkValBadge').textContent = 'Mano ' + val;
+            updateCalculations();
+        }
+
+        function updateFormat(val) {
+            currentBookFormat = val;
+            updateCalculations();
+        }
+
+        function updateFlaps(val) {
+            currentFlapMm = parseFloat(val) || 0;
+            updateCalculations();
+        }
+
+        function applyEditorialPreset(p, w, b, fmt, flap) {
+            pagesInput.value = p;
+            pagesRange.value = p;
+            weightInput.value = w;
+            setWeight(w);
+            bulkSelect.value = b;
+            updateBulkFromSelect(b);
+            formatSelect.value = fmt;
+            currentBookFormat = fmt;
+            flapsSelect.value = flap;
+            currentFlapMm = flap;
+            updateCalculations();
+        }
+
+        pagesInput.addEventListener('input', () => {
+            pagesRange.value = pagesInput.value;
+            updateCalculations();
+        });
+        pagesRange.addEventListener('input', () => {
+            pagesInput.value = pagesRange.value;
+            updateCalculations();
+        });
+        weightInput.addEventListener('input', updateCalculations);
+
+        function updateCalculations() {
+            const t = TRANSLATIONS[currentLang];
+            let pages = parseInt(pagesInput.value) || 0;
+            if (pages < 2) pages = 2;
+            let weight = parseFloat(weightInput.value) || 80;
+            let bulk = parseFloat(bulkSelect.value) || 1.3;
+
+            document.getElementById('pagesBadge').textContent = `${pages} pag (${Math.ceil(pages/2)} fogli)`;
+            document.getElementById('weightBadge').textContent = `${weight} g/m²`;
+
+            // Calcolo Spessore Blocco Libro: (Pagine/2) * (Grammatura / 1000) * Mano
+            let sheets = Math.ceil(pages / 2);
+            let bookBlockMm = sheets * (weight / 1000) * bulk;
+
+            // Tolleranza colla / cartone
+            let glueToleranceMm = (currentBinding === 'softcover') ? 0.5 : 3.0; // Hardcover include cartone 2mm + garza
+            let spineMm = bookBlockMm + glueToleranceMm;
+            spineMm = Math.max(spineMm, 0.5);
+
+            // Dimensioni formato chiuso
+            let parts = currentBookFormat.split('x');
+            let bookWidthMm = parseFloat(parts[0]) || 148;
+            let bookHeightMm = parseFloat(parts[1]) || 210;
+
+            // Copertina stesa aperta: (Piatto Retro) + Dorso + (Piatto Fronte) + Alette
+            let flapTotalMm = currentFlapMm * 2;
+            let flatWidthMm = (bookWidthMm * 2) + spineMm + flapTotalMm;
+            let flatHeightMm = bookHeightMm;
+
+            // Con refilo da 3 mm (6 mm totali)
+            let bleedWidthMm = flatWidthMm + 6.0;
+            let bleedHeightMm = flatHeightMm + 6.0;
+
+            // Conversione unità scelta
+            const u = currentUnit;
+            const factor = UNIT_FACTORS_MM[u] || 1.0;
+
+            const spineVal = (spineMm / factor);
+            const flatWVal = (flatWidthMm / factor);
+            const flatHVal = (flatHeightMm / factor);
+            const bleedWVal = (bleedWidthMm / factor);
+            const bleedHVal = (bleedHeightMm / factor);
+
+            const dec = (u === 'mm' ? 1 : (u === 'pt' ? 0 : 2));
+            const spineStr = spineVal.toFixed(dec);
+            const flatWStr = flatWVal.toFixed(dec);
+            const bleedHStr = bleedHVal.toFixed(dec);
+
+            spineOutput.textContent = `${spineStr} ${u}`;
+            totalWidthOutput.textContent = `${flatWStr} ${u}`;
+            totalHeightOutput.textContent = `${bleedHStr} ${u}`;
+
+            document.getElementById('widthSubLabel').textContent = `+ Refilo = ${bleedWVal.toFixed(dec)} ${u}`;
+            document.getElementById('heightSubLabel').textContent = `Taglio netto: ${flatHVal.toFixed(dec)} ${u}`;
+
+            // Aggiorna stato brossurabilità
+            updateSpineStatus(spineMm, t);
+
+            // Aggiorna anteprima SVG Blueprint
+            updateSvgBlueprint(spineMm, bookWidthMm, bookHeightMm, currentFlapMm, flatWidthMm, flatHeightMm, bleedWidthMm, bleedHeightMm, spineStr, u);
+
+            // Aggiorna dati per la scheda di stampa
+            const ppv = document.getElementById('printPagesVal');
+            if (ppv) ppv.textContent = `${pages} pag`;
+            const ppw = document.getElementById('printPaperVal');
+            if (ppw) ppw.textContent = `${weight}g (Mano ${bulk})`;
+            const ppf = document.getElementById('printFormatVal');
+            if (ppf) ppf.textContent = `${bookWidthMm} × ${bookHeightMm} mm`;
+            const ppb = document.getElementById('printBindingVal');
+            if (ppb) ppb.textContent = (currentBinding === 'softcover' ? 'Brossura Fresata / PUR' : 'Cartonato / Hardcover');
+        }
+
+        function updateSpineStatus(spineMm, t) {
+            complianceCard.className = "p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border ";
+            statusTag.className = "text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ";
+
+            if (spineMm >= 3.0) {
+                complianceCard.classList.add('bg-emerald-50/90', 'border-emerald-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
+                statusIcon.textContent = "✓";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-emerald-950";
+                statusTitle.textContent = t.status_opt_title;
+                statusTag.classList.add('bg-emerald-100', 'text-emerald-800');
+                statusTag.textContent = t.status_opt_tag;
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800";
+                statusDesc.textContent = t.status_opt_desc;
+            } else if (spineMm >= 2.0) {
+                complianceCard.classList.add('bg-amber-50/90', 'border-amber-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-amber-500 text-white shadow-md shadow-amber-500/20";
+                statusIcon.textContent = "!";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-amber-950";
+                statusTitle.textContent = t.status_warn_title;
+                statusTag.classList.add('bg-amber-100', 'text-amber-800');
+                statusTag.textContent = t.status_warn_tag;
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-amber-800";
+                statusDesc.textContent = t.status_warn_desc;
+            } else {
+                complianceCard.classList.add('bg-rose-50/90', 'border-rose-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-rose-600 text-white shadow-md shadow-rose-600/20";
+                statusIcon.textContent = "✕";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-rose-950";
+                statusTitle.textContent = t.status_danger_title;
+                statusTag.classList.add('bg-rose-100', 'text-rose-800');
+                statusTag.textContent = t.status_danger_tag;
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-rose-800";
+                statusDesc.textContent = t.status_danger_desc;
+            }
+        }
+
+        function updateSvgBlueprint(spineMm, bookWidthMm, bookHeightMm, flapMm, flatWidthMm, flatHeightMm, bleedWidthMm, bleedHeightMm, spineStr, u) {
+            const svgTotalW = 460;
+            const startX = 40;
+            const startY = 40;
+            const svgH = 130;
+
+            // Proporzione orizzontale reale
+            let flapRatio = (flapMm / flatWidthMm);
+            let bookRatio = (bookWidthMm / flatWidthMm);
+            let spineRatio = (spineMm / flatWidthMm);
+
+            let flapW = svgTotalW * flapRatio;
+            let coverW = svgTotalW * bookRatio;
+            let spineW = Math.max(svgTotalW * spineRatio, 16); // Minimo visivo
+
+            let curX = startX;
+
+            // Flap Left
+            if (flapMm > 0) {
+                flapLeftRect.style.display = 'block';
+                flapLeftText.style.display = 'block';
+                flapLeftRect.setAttribute('x', curX);
+                flapLeftRect.setAttribute('width', flapW);
+                flapLeftText.setAttribute('x', curX + 4);
+                curX += flapW;
+            } else {
+                flapLeftRect.style.display = 'none';
+                flapLeftText.style.display = 'none';
+            }
+
+            // Back Cover
+            backCoverRect.setAttribute('x', curX);
+            backCoverRect.setAttribute('width', coverW);
+            backCoverText.setAttribute('x', curX + (coverW / 2) - 20);
+            curX += coverW;
+
+            // Spine
+            spineRect.setAttribute('x', curX);
+            spineRect.setAttribute('width', spineW);
+            let spineMid = curX + (spineW / 2);
+            spineCenterLine.setAttribute('x1', spineMid);
+            spineCenterLine.setAttribute('x2', spineMid);
+            spineLabelSvg.setAttribute('x', spineMid);
+            spineLabelSvg.setAttribute('transform', `rotate(-90 ${spineMid} 108)`);
+            spineLabelSvg.textContent = `DORSO ${spineStr} ${u}`;
+            curX += spineW;
+
+            // Front Cover
+            frontCoverRect.setAttribute('x', curX);
+            frontCoverRect.setAttribute('width', coverW);
+            frontCoverText.setAttribute('x', curX + (coverW / 2) - 22);
+            curX += coverW;
+
+            // Flap Right
+            if (flapMm > 0) {
+                flapRightRect.style.display = 'block';
+                flapRightText.style.display = 'block';
+                flapRightRect.setAttribute('x', curX);
+                flapRightRect.setAttribute('width', flapW);
+                flapRightText.setAttribute('x', curX + 4);
+                curX += flapW;
+            } else {
+                flapRightRect.style.display = 'none';
+                flapRightText.style.display = 'none';
+            }
+
+            // Dim Callouts
+            topDimText.textContent = `L: ${flatWidthMm.toFixed(1)} mm (Stesa Chiusa) • Dorso: ${spineMm.toFixed(1)} mm`;
+            rightDimText.textContent = `H: ${bookHeightMm} mm`;
+        }
+
+        function copyInDesignSpecs() {
+            let flatW = document.getElementById('totalWidthOutput').textContent;
+            let flatH = document.getElementById('totalHeightOutput').textContent;
+            let spine = document.getElementById('spineOutput').textContent;
+            let textToCopy = `Dimensioni Copertina OmniTools: Stesa: ${flatW} x ${flatH} (Dorso: ${spine} • Refilo: 3 mm su 4 lati)`;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const btn = document.getElementById('copyBtnText');
+                const t = TRANSLATIONS[currentLang];
+                btn.textContent = t.copied_text || "Copiato!";
+                setTimeout(() => {
+                    btn.textContent = t.copy_btn || "Copia Quote InDesign";
+                }, 2000);
+            }).catch(() => {
+                alert(textToCopy);
+            });
+        }
+
+        // PWA Install Prompt Logic
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (!localStorage.getItem('omnitools_install_dismissed')) {
+                document.getElementById('installBanner').classList.remove('hidden');
+            }
+        });
+
+        function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        dismissInstallBanner();
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                alert("Per installare: apri le impostazioni del browser ⋮ e tocca 'Aggiungi a schermata Home'");
+            }
+        }
+
+        function dismissInstallBanner() {
+            document.getElementById('installBanner').classList.add('hidden');
+            localStorage.setItem('omnitools_install_dismissed', 'true');
+        }
+
+        // Suggestion Popup Logic
+        function openSuggestModal() {
+            document.getElementById('suggestModal').classList.remove('hidden');
+            document.getElementById('suggestFormContainer').classList.remove('hidden');
+            document.getElementById('suggestSuccessContainer').classList.add('hidden');
+            document.getElementById('suggestMessage').value = '';
+        }
+
+        function closeSuggestModal() {
+            document.getElementById('suggestModal').classList.add('hidden');
+        }
+
+        async function submitSuggestion() {
+            const msg = document.getElementById('suggestMessage').value.trim();
+            if (!msg) return;
+            const btn = document.getElementById('modalSubmitBtn');
+            const t = TRANSLATIONS[currentLang];
+            btn.textContent = t.suggest_sending || "Invio...";
+            btn.disabled = true;
+
+            try {
+                await fetch('/api/suggest', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg, lang: currentLang, tool: 'dorso' })
+                });
+            } catch (e) {
+                console.log("Feedback logged", e);
+            }
+
+            btn.textContent = t.suggest_send || "Invia";
+            btn.disabled = false;
+            document.getElementById('suggestFormContainer').classList.add('hidden');
+            document.getElementById('suggestSuccessContainer').classList.remove('hidden');
+        }
+
+        // Initial setup
+        const prd = document.getElementById('printReportDate');
+        if (prd) {
+            const now = new Date();
+            const dStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
+            prd.textContent = 'Data: ' + dStr;
+        }
+        applyTranslations();
+        updateCalculations();
+    </script>
+</body>
+</html>
