@@ -177,6 +177,10 @@ html_code = f"""<!DOCTYPE html>
                     <span>🪜</span>
                     <span class="hidden md:inline">Scale</span>
                 </a>
+                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Calcolo Risoluzione & DPI">
+                    <span>🖼️</span>
+                    <span class="hidden md:inline">DPI</span>
+                </a>
 
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
@@ -590,10 +594,10 @@ html_code = f"""<!DOCTYPE html>
                         <span class="font-bold text-white">🎨 Dorso Libro</span>
                         <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
                     </a>
-                    <div class="p-2 rounded-xl bg-slate-800/40 border border-slate-700/50 flex items-center justify-between opacity-75">
-                        <span class="text-slate-400">💧 Scarichi & Tubi</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 font-bold rounded">In arrivo</span>
-                    </div>
+                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">🖼️ Risoluzione & DPI</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
                 </div>
             </div>
 
