@@ -413,6 +413,31 @@ html_code = f"""<!DOCTYPE html>
     <footer class="bg-slate-950 border-t border-slate-800/80 pt-10 pb-12 mt-12 text-xs text-slate-500">
         <div class="max-w-5xl mx-auto px-4 space-y-6">
             
+            <!-- Share & Viral Action Strip (Dark Mode) -->
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-md flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">📢</span>
+                    <div>
+                        <span class="text-xs sm:text-sm font-bold text-white block">Condividi la Suite OmniTools Lab</span>
+                        <span class="text-[11px] text-slate-400 block">Fai conoscere questi strumenti gratuiti ai tuoi colleghi e contatti</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <span>💬</span> <span>WhatsApp</span>
+                    </button>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0a66c2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <span>💼</span> <span>LinkedIn</span>
+                    </button>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition" title="Copia Link">
+                        <span>🔗</span> <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
+                        <span>📤</span> <span>Condividi</span>
+                    </button>
+                </div>
+            </div>
+
             <!-- Suggestion Bar -->
             <div class="bg-gradient-to-r from-blue-900/30 to-indigo-900/30 border border-blue-500/20 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <div class="flex items-center gap-2.5">
@@ -659,6 +684,37 @@ html_code = f"""<!DOCTYPE html>
         function dismissInstallBanner() {{
             document.getElementById('installBanner').classList.add('hidden');
             sessionStorage.setItem('omnitools_install_dismissed', '1');
+        }}
+
+        // Social Sharing Functions
+        function shareWhatsApp() {{
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://api.whatsapp.com/send?text=${{text}}%20${{url}}`, '_blank');
+        }}
+        function shareLinkedIn() {{
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${{url}}`, '_blank');
+        }}
+        function copyCurrentUrl() {{
+            navigator.clipboard.writeText(window.location.href).then(() => {{
+                const el = document.getElementById('shareCopyText');
+                if (el) {{
+                    const orig = el.textContent;
+                    el.textContent = 'Copiato! ✓';
+                    setTimeout(() => {{ el.textContent = orig; }}, 2000);
+                }}
+            }});
+        }}
+        function nativeShare() {{
+            if (navigator.share) {{
+                navigator.share({{
+                    title: document.title,
+                    url: window.location.href
+                }}).catch(() => {{}});
+            }} else {{
+                copyCurrentUrl();
+            }}
         }}
 
         // Init

@@ -1,24 +1,41 @@
 import math
 from PIL import Image, ImageDraw, ImageFont
 
-def draw_logo(draw, x, y, size=80):
-    # Background rounded rect for logo
-    r = 20
-    draw.rounded_rectangle([x, y, x + size, y + size], radius=r, fill="#2563eb", outline="#3b82f6", width=2)
-    # Circle
-    cx, cy = x + size / 2, y + size / 2
-    radius = size * 0.38
-    stroke = max(3, int(size * 0.09))
-    draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], outline="#ffffff", width=stroke)
-    # Crosshair T
-    top_y = cy - radius
-    bot_y = cy + radius * 0.8
-    bar_w = radius * 1.05
-    draw.line([cx - bar_w, top_y + stroke, cx + bar_w, top_y + stroke], fill="#ffffff", width=stroke)
-    draw.line([cx, top_y + stroke, cx, bot_y], fill="#ffffff", width=stroke)
-    # Cyan center dot
-    dot_r = stroke * 0.85
-    draw.ellipse([cx - dot_r, top_y + stroke - dot_r, cx + dot_r, top_y + stroke + dot_r], fill="#38bdf8")
+def render_vector_logo(size=70):
+    # Render at 4x supersampling for ultra-smooth anti-aliasing
+    scale = 4
+    canvas_size = size * scale
+    img = Image.new("RGBA", (canvas_size, canvas_size), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    s = canvas_size / 32.0
+    r = 8 * s
+    # Rounded badge background
+    draw.rounded_rectangle([0, 0, canvas_size, canvas_size], radius=r, fill="#2563eb", outline="#3b82f6", width=max(1, int(s * 0.8)))
+
+    cx, cy = 16 * s, 16 * s
+    r_circle = 13.2 * s
+    stroke = max(2, int(round(3.4 * s)))
+
+    # Circle (Omni O)
+    draw.ellipse([cx - r_circle, cy - r_circle, cx + r_circle, cy + r_circle], outline="#ffffff", width=stroke)
+
+    # T-bar: horizontal 7.5 to 24.5 at y=11.5
+    ty = 11.5 * s
+    tx1 = 7.5 * s
+    tx2 = 24.5 * s
+    draw.line([tx1, ty, tx2, ty], fill="#ffffff", width=stroke)
+
+    # T-stem: vertical from y=11.5 to 24.5 at x=16
+    ty2 = 24.5 * s
+    draw.line([cx, ty, cx, ty2], fill="#ffffff", width=stroke)
+
+    # Cyan center dot at (16, 11.5) with r=2.1
+    dot_r = 2.1 * s
+    draw.ellipse([cx - dot_r, ty - dot_r, cx + dot_r, ty + dot_r], fill="#38bdf8")
+
+    # Downsample with high-quality Lanczos filter
+    return img.resize((size, size), Image.Resampling.LANCZOS)
 
 def create_og_card(filename, division, title, subtitle, pill_text, path_label):
     W, H = 1200, 630
@@ -28,11 +45,9 @@ def create_og_card(filename, division, title, subtitle, pill_text, path_label):
     # Subtle radial glow simulation in center-top
     for r in range(400, 0, -10):
         alpha = int(25 * (1 - r / 400))
-        # Draw soft concentric circles
         draw.ellipse([W/2 - r*1.3, -50 - r*0.5, W/2 + r*1.3, 350 + r*0.5], outline=(37, 99, 235, alpha))
 
     # Grid background pattern
-    grid_color = (255, 255, 255, 12)
     for gx in range(0, W, 50):
         draw.line([(gx, 0), (gx, H)], fill="#111c3a", width=1)
     for gy in range(0, H, 50):
@@ -52,10 +67,13 @@ def create_og_card(filename, division, title, subtitle, pill_text, path_label):
     f_tag = ImageFont.truetype(font_bold, 20)
     f_url = ImageFont.truetype(font_bold, 22)
 
-    # Top brand bar
-    draw_logo(draw, 70, 60, size=70)
-    draw.text((155, 68), "OmniTools", fill="#ffffff", font=f_brand)
-    bbox_ot = draw.textbbox((155, 68), "OmniTools", font=f_brand)
+    # Paste ultra-clean anti-aliased logo
+    logo_img = render_vector_logo(size=72)
+    img.paste(logo_img, (70, 60), mask=logo_img)
+
+    # Brand text
+    draw.text((158, 68), "OmniTools", fill="#ffffff", font=f_brand)
+    bbox_ot = draw.textbbox((158, 68), "OmniTools", font=f_brand)
     draw.text((bbox_ot[2] + 4, 68), "Lab", fill="#38bdf8", font=f_brand)
     
     # Division Badge Pill
@@ -65,7 +83,7 @@ def create_og_card(filename, division, title, subtitle, pill_text, path_label):
     draw.rounded_rectangle([div_x, 72, div_x + div_w, 108], radius=18, fill="#1e293b", outline="#334155", width=2)
     draw.text((div_x + 12, 80), division, fill="#94a3b8", font=f_badge)
 
-    # Main Card Title (word wrap if needed)
+    # Main Card Title (word wrap)
     words = title.split()
     lines = []
     curr = []
