@@ -21,8 +21,12 @@ html_code = f"""<!DOCTYPE html>
     <meta property="og:description" content="Precisione millimetrica per cantiere, grafica e ingegneria. Strumenti gratuiti, senza registrazione, funzionanti offline.">
     <meta property="og:url" content="https://www.omnitoolslab.com/">
     <meta property="og:site_name" content="OmniTools Lab">
-    <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-hub.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-hub.png">
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">

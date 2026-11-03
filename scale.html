@@ -13,26 +13,80 @@
     <meta property="og:title" content="OmniTools - Calcolo Scala, Alzata & Pedata (Legge di Blondel)">
     <meta property="og:description" content="Calcola gradini, alzata, pedata e ingombro a terra di una scala con verifica comfort Blondel (2a + p = 62-64 cm).">
     <meta property="og:url" content="https://www.omnitoolslab.com/scale">
-    <meta property="og:site_name" content="OmniTools">
-    <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:site_name" content="OmniTools Lab">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-scale.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-scale.png">
 
-    <!-- Schema.org JSON-LD Structured Data -->
+    <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "OmniTools - Calcolo Scale & Legge di Blondel",
-      "url": "https://www.omnitoolslab.com/scale",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "All",
-      "description": "Calcolatore professionale per scale d'interni e cantiere con verifica Legge di Blondel, D.M. 236/89 e DIN 18065.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "OmniTools - Calcolo Scale & Legge di Blondel",
+        "url": "https://www.omnitoolslab.com/scale",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "description": "Calcolatore professionale per scale d'interni e cantiere con verifica Legge di Blondel, D.M. 236/89 e DIN 18065.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "OmniTools Lab",
+            "item": "https://www.omnitoolslab.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ScalaFacile",
+            "item": "https://www.omnitoolslab.com/scale"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Che cos'è la Legge di Blondel per il calcolo delle scale?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La Legge di Blondel è la formula ergonomica fondamentale per progettare scale comode e sicure: 2a + p = 62÷64 cm (dove 'a' è l'alzata del gradino e 'p' è la pedata). Se la somma di due alzate più una pedata si avvicina a 63 cm, la salita rispetta il passo naturale dell'essere umano senza affaticamento muscolare eccessivo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quali sono le dimensioni ideali di alzata e pedata per una scala interna?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Per scale residenziali interne, l'alzata ottimale è compresa tra 16 e 18 cm, mentre la pedata ideale è tra 27 e 30 cm. Per edifici aperti al pubblico, la normativa DM 236/89 raccomanda alzate non superiori a 16 cm e pedate non inferiori a 30 cm con profilo continuo a spigoli arrotondati."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ogni quanti gradini è obbligatorio inserire un pianerottolo di riposo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ai sensi delle normative tecniche e di sicurezza sul lavoro, ogni rampa continua non dovrebbe superare i 15 gradini (consigliato massimo 10-12 gradini in ambito pubblico). Quando il dislivello totale supera i 2.5 - 3.0 metri, è obbligatorio inserire un pianerottolo orizzontale di riposo con profondità almeno pari alla larghezza della rampa della scala."
+            }
+          }
+        ]
       }
-    }
+    ]
     </script>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
@@ -477,6 +531,57 @@
             </div>
 
         </div>
+
+        <!-- Reference Guide & Normative Tables (SEO Pillar) -->
+        <section class="no-print bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xs space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xl">📋</span>
+                <h2 class="text-sm sm:text-base font-bold text-slate-900 font-jakarta">Tabella Dimensionale Scale & Regola di Blondel per Destinazione d'Uso</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-200 text-slate-700 bg-slate-50/80">
+                            <th class="py-2.5 px-3 font-bold">Tipologia di Scala</th>
+                            <th class="py-2.5 px-3 font-bold">Norma Tecnica</th>
+                            <th class="py-2.5 px-3 font-bold">Alzata (a)</th>
+                            <th class="py-2.5 px-3 font-bold">Pedata (p)</th>
+                            <th class="py-2.5 px-3 font-bold">Verifica 2a + p</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Edifici Pubblici & Scuole</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-indigo-600">D.M. 236/89 art. 8.1.10</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">≤ 16.0 cm</td>
+                            <td class="py-2.5 px-3 font-bold text-emerald-700">≥ 30.0 cm</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-800">62.0 cm (Ottimale)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Residenziale Privato (Interni)</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-indigo-600">DIN 18065 / UNI 10818</td>
+                            <td class="py-2.5 px-3 text-slate-800 font-bold">16.5 – 18.0 cm</td>
+                            <td class="py-2.5 px-3 text-slate-800 font-bold">27.0 – 29.0 cm</td>
+                            <td class="py-2.5 px-3 font-bold text-emerald-700">63.0 cm (Ideale)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Scale di Servizio / Soppalchi</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-500">DIN 18065 cat. B</td>
+                            <td class="py-2.5 px-3 text-amber-700 font-bold">18.5 – 20.0 cm</td>
+                            <td class="py-2.5 px-3 text-amber-700 font-bold">23.0 – 25.0 cm</td>
+                            <td class="py-2.5 px-3 text-amber-800">60.0 – 63.0 cm (Ripida)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Scale da Esterno / Giardino</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-500">Prassi Architettonica</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">14.0 – 15.5 cm</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">32.0 – 35.0 cm</td>
+                            <td class="py-2.5 px-3 text-slate-800">62.0 – 65.0 cm (Dolce)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <!-- FAQ Section -->
         <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">

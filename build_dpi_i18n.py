@@ -20,26 +20,80 @@ html_code = f"""<!DOCTYPE html>
     <meta property="og:title" content="OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI">
     <meta property="og:description" content="Converti all'istante Pixel, Centimetri e DPI per InDesign, Photoshop e stampa grande formato con calcolo dell'acuità visiva umana.">
     <meta property="og:url" content="https://www.omnitoolslab.com/dpi">
-    <meta property="og:site_name" content="OmniTools">
-    <meta property="og:image" content="https://www.omnitoolslab.com/icon-512.png">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:site_name" content="OmniTools Lab">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-dpi.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-dpi.png">
 
-    <!-- Schema.org JSON-LD Structured Data -->
+    <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
-    {{
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI",
-      "url": "https://www.omnitoolslab.com/dpi",
-      "applicationCategory": "DesignApplication",
-      "operatingSystem": "All",
-      "description": "Calcolatore professionale per grafici, fotografi e tipografi per la conversione accurata tra pixel, cm di stampa e risoluzione DPI con distanza di visione.",
-      "offers": {{
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
+    [
+      {{
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI",
+        "url": "https://www.omnitoolslab.com/dpi",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "description": "Calcolatore professionale per grafici, fotografi e tipografi per la conversione accurata tra pixel, cm di stampa e risoluzione DPI con distanza di visione.",
+        "offers": {{
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }}
+      }},
+      {{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "OmniTools Lab",
+            "item": "https://www.omnitoolslab.com/"
+          }},
+          {{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "RisoluzioneFacile",
+            "item": "https://www.omnitoolslab.com/dpi"
+          }}
+        ]
+      }},
+      {{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "Qual è la differenza fondamentale tra DPI e PPI?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "PPI (Pixels Per Inch) indica il numero di pixel digitali per pollice all'interno di un file raster o su uno schermo. DPI (Dots Per Inch) indica invece i punti fisici di inchiostro che la macchina da stampa o il plotter deposita sulla carta. Nel flusso di lavoro di prestampa grafica si usano come sinonimi, ma il calcolo matematico della dimensione del documento si basa rigorosamente sulla formula PPI."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Servono davvero 300 DPI per stampare striscioni o cartelloni 6x3 metri?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "No, è uno degli errori più diffusi che genera file da molti Gigabyte impossibili da gestire. La risoluzione necessaria dipende esclusivamente dalla distanza dell'osservatore (acuità visiva di 1 arcminuto). A 5 metri di distanza, un cartellone appare nitidissimo a soli 25-35 DPI, perché a quella distanza l'occhio umano non è fisicamente in grado di distinguere i singoli punti di stampa."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Come si calcolano le dimensioni di stampa in cm conoscendo pixel e DPI?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "La formula esatta è: Centimetri = (Pixel / DPI) × 2.54. Ad esempio, per un file di 3000 pixel di larghezza stampato a 300 DPI: (3000 / 300) × 2.54 = 25.4 cm."
+            }}
+          }}
+        ]
       }}
-    }}
+    ]
     </script>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
@@ -426,6 +480,64 @@ html_code = f"""<!DOCTYPE html>
             </div>
 
         </div>
+
+        <!-- Reference Guide & Normative Tables (SEO Pillar) -->
+        <section class="no-print bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xs space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xl">📋</span>
+                <h2 class="text-sm sm:text-base font-bold text-slate-900 font-jakarta">Guida Tecnica: Risoluzione Ottica DPI Consigliata per Distanza di Visione</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-200 text-slate-700 bg-slate-50/80">
+                            <th class="py-2.5 px-3 font-bold">Supporto di Stampa</th>
+                            <th class="py-2.5 px-3 font-bold">Distanza Tipica</th>
+                            <th class="py-2.5 px-3 font-bold">DPI Consigliati</th>
+                            <th class="py-2.5 px-3 font-bold">Acuità Occhio Umano</th>
+                            <th class="py-2.5 px-3 font-bold">Spazio Colore Tipico</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Libri, Riviste, Biglietti da Visita</td>
+                            <td class="py-2.5 px-3">25 – 35 cm</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">300 DPI</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-800">100 – 130 DPI minimi</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-emerald-700">CMYK Fogra 39 / 51</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Fotografia Fine Art & Cataloghi Lusso</td>
+                            <td class="py-2.5 px-3">20 – 30 cm</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">360 – 600 DPI</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-800">Nitidezza assoluta microscopica</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-emerald-700">RGB ProPhoto / Adobe1998</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Poster, Locandine, Manifesti 70×100</td>
+                            <td class="py-2.5 px-3">1.0 – 1.5 metri</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">150 – 200 DPI</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-800">25 – 35 DPI minimi</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-emerald-700">CMYK / RGB Plotter</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Roll-up fieristici & Banner Forex</td>
+                            <td class="py-2.5 px-3">1.5 – 2.5 metri</td>
+                            <td class="py-2.5 px-3 text-slate-800 font-bold">100 – 120 DPI</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-800">15 – 25 DPI minimi</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-500">CMYK Digitale Grande Formato</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Cartelloni Stradali 6×3 m & Maxiteli</td>
+                            <td class="py-2.5 px-3">5.0 – 15 metri</td>
+                            <td class="py-2.5 px-3 text-amber-700 font-bold">25 – 35 DPI</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-800">3 – 7 DPI minimi</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-500">CMYK (scala 1:1 o 1:10 a 300 DPI)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <!-- Localized FAQs Section (No Print) -->
         <section class="no-print bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xs space-y-3 mt-6">
