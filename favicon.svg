@@ -2,14 +2,14 @@
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#2563eb"/>
-      <stop offset="100%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#4338ca"/>
     </linearGradient>
   </defs>
-  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
-  <!-- Bold Outer Ring O (Omni) -->
-  <circle cx="16" cy="16" r="12" fill="none" stroke="#ffffff" stroke-width="3.5"/>
-  <!-- Chunky Sharp T-Square (Tools) -->
-  <path d="M 8.5 11.5 H 23.5 M 16 11.5 V 23" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Precision Cyan Dot -->
-  <circle cx="16" cy="11.5" r="2.2" fill="#38bdf8"/>
+  <rect width="32" height="32" rx="8" fill="url(#bg)"/>
+  <!-- Calibrated Omni circle -->
+  <circle cx="16" cy="16" r="13.2" fill="none" stroke="#ffffff" stroke-width="3.4"/>
+  <!-- Precision Crosshair / T-Square -->
+  <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Technical Cyan Dot -->
+  <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8"/>
 </svg>

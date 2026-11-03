@@ -160,42 +160,42 @@ html_code = f"""<!DOCTYPE html>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header with safe area padding -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 10px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-3.5 sm:px-4 py-1.5 flex items-center justify-between gap-2">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
             
             <!-- OmniTools Master Brand + Tool Indicator -->
-            <div class="flex items-center gap-2.5 min-w-0">
-                <!-- Vibrant High-Contrast Modern Logo (White symbol enlarged to fill the badge) -->
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/25 shrink-0 p-1">
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
+                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Bold Large Outer Ring O (Omni) -->
-                        <circle cx="16" cy="16" r="13" stroke="#ffffff" stroke-width="3.5" />
-                        <!-- Chunky Sharp T-Square (Tools) -->
-                        <path d="M 8.5 11.5 H 23.5 M 16 11.5 V 23.5" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <!-- Precision Cyan Accent -->
-                        <circle cx="16" cy="11.5" r="2.2" fill="#38bdf8" />
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
                     </svg>
-                </div>
+                </a>
 
-                <!-- Brand Name & Module Indicator -->
+                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
                 <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-2 leading-none">
-                        <span class="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight">OMNI<span class="text-blue-600">TOOLS</span></span>
-                        <span class="h-3.5 w-px bg-slate-300 hidden sm:inline-block"></span>
-                        <span id="brandTitle" class="font-bold text-xs sm:text-sm text-slate-600 hidden sm:inline-block">RampaFacile</span>
-                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-blue-50 text-blue-700 rounded-full border border-blue-200 shrink-0">DM 236/89</span>
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
+                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
+                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
+                        <span id="brandTitle" class="font-bold text-xs text-slate-600 hidden sm:inline-block">RampaFacile</span>
+                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-blue-50 text-blue-700 rounded-md border border-blue-200 shrink-0 hidden sm:inline-block">DM 236/89</span>
                     </div>
+                    <!-- Row 2 on mobile: Tool Name + Standard Badge -->
                     <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-semibold text-xs text-slate-600">RampaFacile</span>
+                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-600">RampaFacile</span>
+                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-blue-50 text-blue-700 rounded border border-blue-200">DM 236/89</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Actions: Language Selector + App + Print -->
+            <!-- Quick Actions: Language Selector + App + Print (Clean icon buttons on mobile) -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -205,15 +205,15 @@ html_code = f"""<!DOCTYPE html>
                     </select>
                 </div>
 
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition">
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
                     <span>📲</span>
                     <span id="headerInstallText" class="hidden sm:inline">App</span>
                 </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs">
-                    <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                     </svg>
-                    <span id="printBtnText">Stampa</span>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
                 </button>
             </div>
         </div>
@@ -717,6 +717,8 @@ html_code = f"""<!DOCTYPE html>
             const btm = document.getElementById('brandTitleMobile');
             if (btm) btm.textContent = t.title;
             document.getElementById('brandBadge').textContent = t.badge;
+            const bbm = document.getElementById('brandBadgeMobile');
+            if (bbm) bbm.textContent = t.badge;
             document.getElementById('heroTitle').textContent = t.hero_title;
             document.getElementById('heroDesc').textContent = t.hero_desc;
             document.getElementById('modeDirectBtn').textContent = t.mode_direct;
