@@ -165,14 +165,44 @@ html_code = f"""<!DOCTYPE html>
         
         @page {{
             size: A4 portrait;
-            margin: 10mm 12mm;
+            margin: 8mm 10mm 8mm 10mm;
         }}
         @media print {{
-            body {{
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                font-size: 10.5pt;
+            header, footer, nav,
+            .no-print,
+            #faqSection, #faqContainer, #normSection, #shareStrip,
+            #suggestModal, #installBanner, #iosModal, #suggestBanner,
+            #heroContainer, #modeSelectorBar, #controlsColumn,
+            button, input[type=range], details, .faq-accordion {{ 
+                display: none !important; 
             }}
+            body {{ 
+                background: white !important; 
+                color: #0f172a !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                font-size: 10pt !important; 
+                line-height: 1.25 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }}
+            main {{ 
+                max-width: 100% !important; 
+                margin: 0 !important; 
+                padding: 0 !important; 
+            }}
+            #resultsColumn {{
+                width: 100% !important;
+                max-width: 100% !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            .print-border {{ 
+                border: 1px solid #cbd5e1 !important; 
+                box-shadow: none !important;
+            }}
+        }}
             .no-print {{
                 display: none !important;
             }}
@@ -389,23 +419,31 @@ html_code = f"""<!DOCTYPE html>
             <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
                 
                 <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
-                <div id="printHeader" class="hidden print:block mb-3 pb-2.5 border-b-2 border-slate-900">
+                <div id="printHeader" class="hidden print:block mb-3 pb-2 border-b-2 border-slate-900">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-9 h-9 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-black text-sm">
-                                O/T
-                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-sm" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </div>
                             <div>
-                                <h1 class="text-base font-black tracking-tight text-slate-900">OMNITOOLS — SCHEDA TECNICA DI RISOLUZIONE & PRE-STAMPA</h1>
-                                <p class="text-[10px] text-slate-600 font-medium">Relazione Tecnica di Conversione Pixel, DPI & Distanza di Visione Ottica</p>
+                                <div class="flex items-center gap-1.5 leading-none">
+                                    <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-blue-600">Tools</span> Lab</span>
+                                    <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">SCHEDA TECNICA A4</span>
+                                </div>
+                                <h1 class="text-xs font-bold text-slate-700 mt-1">RisoluzioneFacile — Scheda Tecnica di Risoluzione Stampa, Megapixel & DPI</h1>
                             </div>
                         </div>
-                        <div class="text-right text-[10px] text-slate-600 leading-tight">
-                            <div id="printReportDate" class="font-bold text-slate-900">Data: 03/11/2026</div>
-                            <div>Formula Acuità Visiva 1 Arcmin • Standard ISO 216</div>
-                            <div class="text-[9px] text-slate-500">omnitoolslab.com/dpi</div>
+                        <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
+                            <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
+                            <div>Offset • Digitale • Acuità Visiva</div>
+                            <div class="text-blue-600 font-bold">omnitoolslab.com/dpi</div>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <!-- Primary KPI Metrics Grid -->
@@ -477,6 +515,28 @@ html_code = f"""<!DOCTYPE html>
                     <span id="ruleTipText">
                         💡 <strong>Regola dell'Acuità Visiva Umana:</strong> A una certa distanza, l'occhio umano non distingue più i singoli pixel. Formula di risoluzione ottica: <code>DPI Ottimale ≈ 3438 / Distanza (cm)</code>. Per libri e riviste a 30 cm bastano 300 DPI; per un cartellone a 5 metri bastano 25-35 DPI.
                     </span>
+                </div>
+
+                <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
+                <div id="printFooterBox" class="hidden print:block mt-3 pt-2.5 border-t border-slate-300 text-xs">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[9px] uppercase tracking-wider">Note di Prestampa & Linee Guida File:</span>
+                            <div class="border border-dashed border-slate-400 h-14 rounded-lg p-1.5 text-[8.5px] text-slate-600 leading-tight">
+                                • Verificare spazio colore CMYK (Fogra 39 / Fogra 51) prima dell'invio in macchina.<br>
+                                • Per immagini bitmap al tratto utilizzare preferibilmente 1200 DPI a 1 bit.
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-800 block mb-1 text-[9px] uppercase tracking-wider">Visto Si Stampi / Firma Tecnico:</span>
+                            <div class="border border-slate-300 h-14 rounded-lg flex items-end justify-center pb-1 text-[8.5px] text-slate-400">
+                                Data, Firma Operatore Prestampa
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-[8px] text-slate-400 text-center mt-2 pt-1 border-t border-slate-200">
+                        Documento tecnico generato da <strong>OmniTools Lab</strong> (https://www.omnitoolslab.com) — Precision Utilities Suite.
+                    </div>
                 </div>
 
             </div>
