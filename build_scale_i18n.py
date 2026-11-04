@@ -353,8 +353,7 @@ html_code = f"""<!DOCTYPE html>
                         <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                             <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
                             <div>Blondel 2a+p=63 • DIN 18065</div>
-                            <div class="text-blue-600 font-bold">omnitoolslab.com/scale</div>
-                        </div>
+                            <div class="text-blue-600 font-bold">omnitoolslab.com/scale
                     </div>
                 </div>
                 </div>

@@ -296,7 +296,7 @@ html_code = f"""<!DOCTYPE html>
             </div>
 
             <!-- Inputs Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="no-print grid grid-cols-1 sm:grid-cols-2 gap-5">
                 
                 <!-- Input: Pipe Length (L) -->
                 <div class="space-y-2">

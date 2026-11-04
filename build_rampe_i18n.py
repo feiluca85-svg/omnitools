@@ -374,8 +374,7 @@ html_code = f"""<!DOCTYPE html>
                         <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                             <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
                             <div>DM 236/89 • ADA • CTE • DIN</div>
-                            <div class="text-blue-600 font-bold">omnitoolslab.com/rampe</div>
-                        </div>
+                            <div class="text-blue-600 font-bold">omnitoolslab.com/rampe
                     </div>
                 </div>
                 </div>
