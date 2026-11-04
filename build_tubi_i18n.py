@@ -952,24 +952,27 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('shareSub').textContent = t.share_sub;
 
             document.getElementById('langSelect').value = lang;
-            localStorage.setItem('omni_lang', lang);
+            localStorage.setItem('omnitools_lang', lang);
 
             calculate();
         }}
 
         // Initialization
-        document.addEventListener('DOMContentLoaded', () => {{
-            const stored = localStorage.getItem('omni_lang');
-            if (stored && TRANSLATIONS[stored]) {{
-                changeLanguage(stored);
-            }} else {{
-                const navLang = (navigator.language || 'it').substring(0, 2).toLowerCase();
-                if (TRANSLATIONS[navLang]) {{
-                    changeLanguage(navLang);
-                }} else {{
-                    calculate();
-                }}
+        function detectInitialLanguage() {{
+            const stored = localStorage.getItem('omnitools_lang');
+            if (stored && TRANSLATIONS[stored]) return stored;
+            const candidates = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+            for (let l of candidates) {{
+                if (!l) continue;
+                const code = l.toLowerCase().split('-')[0].split('_')[0];
+                if (TRANSLATIONS[code]) return code;
             }}
+            return 'en';
+        }}
+
+        document.addEventListener('DOMContentLoaded', () => {{
+            const lang = detectInitialLanguage();
+            changeLanguage(lang);
         }});
     </script>
 </body>

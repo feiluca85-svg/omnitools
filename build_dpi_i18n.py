@@ -759,7 +759,19 @@ html_code = f"""<!DOCTYPE html>
     <script>
         const TRANSLATIONS = {t_json_str};
 
-        let currentLang = localStorage.getItem('omnitools_lang') || 'it';
+        function detectInitialLanguage() {{
+            const stored = localStorage.getItem('omnitools_lang');
+            if (stored && TRANSLATIONS[stored]) return stored;
+            const candidates = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+            for (let l of candidates) {{
+                if (!l) continue;
+                const code = l.toLowerCase().split('-')[0].split('_')[0];
+                if (TRANSLATIONS[code]) return code;
+            }}
+            return 'en';
+        }}
+
+        let currentLang = detectInitialLanguage();
         let currentUnit = 'cm';
         let currentMode = 'direct'; // 'direct' = da px a cm, 'reverse' = da cm a px
         let currentDpi = 300;
@@ -1240,6 +1252,8 @@ html_code = f"""<!DOCTYPE html>
 
         // Init
         document.addEventListener('DOMContentLoaded', () => {{
+            document.getElementById('langSelect').value = currentLang;
+            document.documentElement.lang = currentLang;
             applyTranslations();
             calculateResolution();
         }});
