@@ -10,15 +10,15 @@ html_code = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK (Xeikon & Digitali)</title>
-    <meta name="description" content="Generatore professionale di matrici cromatiche di scarto CMYK. Trova la tinta perfetta al primo colpo ed elimina sprechi di carta e avviamenti su bobine Xeikon e stampanti digitali.">
+    <title>TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK (Bobina & Foglio)</title>
+    <meta name="description" content="Generatore professionale di matrici cromatiche di scarto CMYK. Trova la tinta perfetta al primo colpo ed elimina sprechi di carta e avviamenti su bobine a nastro e stampanti digitali.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tinta">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK">
-    <meta property="og:description" content="Azzeramento sprechi di avviamento su rotative digitali Xeikon e stampanti a foglio. Matrice di scarto cromatico CMYK di precisione.">
+    <meta property="og:description" content="Azzeramento sprechi di avviamento su rotative digitali Rotativa e stampanti a foglio. Matrice di scarto cromatico CMYK di precisione.">
     <meta property="og:url" content="https://www.omnitoolslab.com/tinta">
     <meta property="og:site_name" content="OmniTools Lab">
     
@@ -126,7 +126,7 @@ html_code = f"""<!DOCTYPE html>
                         <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-rose-100 text-rose-900 px-1.5 py-0.5 rounded-full border border-rose-300 shrink-0">Prestampa</span>
                         <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
                         <span class="font-bold text-xs text-slate-700 hidden sm:inline-block">TintaPerfetta</span>
-                        <span class="px-1.5 py-0.5 text-[9px] font-bold bg-rose-50 text-rose-800 rounded-md border border-rose-200 shrink-0 hidden sm:inline-block">Xeikon & Digital</span>
+                        <span class="px-1.5 py-0.5 text-[9px] font-bold bg-rose-50 text-rose-800 rounded-md border border-rose-200 shrink-0 hidden sm:inline-block">Bobina & Foglio</span>
                     </div>
                     <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
                         <span class="font-bold text-[11px] text-slate-700">TintaPerfetta</span>
@@ -210,7 +210,7 @@ html_code = f"""<!DOCTYPE html>
             <!-- Metadata Strip for Press Operator -->
             <div class="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] font-mono">
                 <div><span class="font-bold text-slate-500">COMMESSA:</span> <span id="printJobName" class="font-extrabold text-slate-900">Lavoro Campione</span></div>
-                <div><span class="font-bold text-slate-500">MACCHINA:</span> <span id="printPressName" class="font-extrabold text-slate-900">Xeikon 3030 / Rotativa</span></div>
+                <div><span class="font-bold text-slate-500">MACCHINA:</span> <span id="printPressName" class="font-extrabold text-slate-900">Rotativa a Bobina / Rotativa</span></div>
                 <div><span class="font-bold text-slate-500">SUPPORTO:</span> <span id="printPaperName" class="font-extrabold text-slate-900">Patinata Lucida / Bobina</span></div>
                 <div><span class="font-bold text-slate-500">PASSO:</span> <span id="printStepName" class="font-extrabold text-slate-900">±5% Standard</span></div>
             </div>
@@ -225,7 +225,7 @@ html_code = f"""<!DOCTYPE html>
                 Matrice di Scarto CMYK & Prova Colore
             </h1>
             <p id="heroDesc" class="text-slate-600 text-xs sm:text-sm leading-relaxed px-2">
-                Generatore di matrici cromatiche di scarto per azzeccare la tinta esatta al primo colpo di stampa. Elimina gli avviamenti a vuoto e azzera lo spreco di metri di bobina su Xeikon, digitali e offset.
+                Generatore di matrici cromatiche di scarto per azzeccare la tinta esatta al primo colpo di stampa. Elimina gli avviamenti a vuoto e azzera lo spreco di metri di bobina su Rotativa, digitali e offset.
             </p>
         </div>
 
@@ -328,7 +328,7 @@ html_code = f"""<!DOCTYPE html>
                         <label id="layoutModeLabel" class="text-xs font-bold text-slate-700 block mb-1">Formato di Stampa Prova</label>
                         <select id="layoutSelect" onchange="generateMatrix()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
                             <option value="sheet">📄 Foglio Singolo (A4 / A3 / SRA3)</option>
-                            <option value="strip">🎞️ Striscia Bobina Xeikon / Roll (Nastro Continuo)</option>
+                            <option value="strip">🎞️ Striscia Bobina a Nastro / Roll (Nastro Continuo)</option>
                         </select>
                     </div>
 
@@ -351,7 +351,7 @@ html_code = f"""<!DOCTYPE html>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <span id="jobPressLabel" class="font-bold text-slate-600 block mb-0.5">Macchina Stampa</span>
-                                <input type="text" id="pressInput" value="Xeikon 3030" oninput="updatePrintMetadata()" placeholder="Es. Xeikon / Xerox" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:border-rose-700">
+                                <input type="text" id="pressInput" value="Rotativa a Bobina" oninput="updatePrintMetadata()" placeholder="Es. Rotativa / Digitale" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:border-rose-700">
                             </div>
                             <div>
                                 <span id="jobPaperLabel" class="font-bold text-slate-600 block mb-0.5">Supporto / Carta</span>
@@ -705,7 +705,7 @@ html_code = f"""<!DOCTYPE html>
 
         function updatePrintMetadata() {{
             const job = document.getElementById('jobInput').value.trim() || 'Lavoro Campione';
-            const press = document.getElementById('pressInput').value.trim() || 'Xeikon 3030';
+            const press = document.getElementById('pressInput').value.trim() || 'Rotativa a Bobina';
             const paper = document.getElementById('paperInput').value.trim() || 'Patinata Lucida';
 
             document.getElementById('printJobName').textContent = job;
@@ -728,7 +728,7 @@ html_code = f"""<!DOCTYPE html>
 
             // Formats:
             // "sheet": 7 columns x 5 rows (Col 4, Row C is Center)
-            // "strip": 9 columns x 2 rows (Compact horizontal for Xeikon web roll)
+            // "strip": 9 columns x 2 rows (Compact horizontal for web roll press)
             const cols = format === 'strip' ? 9 : 7;
             const rows = format === 'strip' ? 2 : 5;
             const centerCol = Math.floor(cols / 2); // 3 (index) for 7 cols, 4 for 9 cols

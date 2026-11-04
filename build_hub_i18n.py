@@ -531,7 +531,7 @@ html_code = f"""<!DOCTYPE html>
                     </a>
 
                     <!-- TOOL 6: TintaPerfetta -->
-                    <a href="/tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa xeikon rotativa bobina offset digitale scarto bracketing fogra">
+                    <a href="/tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -551,7 +551,7 @@ html_code = f"""<!DOCTYPE html>
                                         <rect x="21" y="21" width="7" height="7" rx="1.5" fill="#4c0519" stroke="none" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolTintaBadge">CMYK & Xeikon</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolTintaBadge">CMYK & Rotativa</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
@@ -562,13 +562,13 @@ html_code = f"""<!DOCTYPE html>
 
                             <!-- Plain Description -->
                             <p id="toolTintaDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Xeikon e stampanti digitali.
+                                Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Rotativa e stampanti digitali.
                             </p>
 
                             <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
                                 <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎯 Matrice Scarto ±5%</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎞️ Striscia Bobina Xeikon</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎞️ Striscia Bobina Rotativa</span>
                                 <span class="px-2 py-0.5 bg-slate-100 rounded-md">🖨️ Zero Spreco Carta</span>
                             </div>
                         </div>

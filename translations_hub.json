@@ -50,9 +50,9 @@
     "tool_dpi_cta": "Verifica Risoluzione",
     "tool_tinta_title": "TintaPerfetta",
     "tool_tinta_hook": "Il colore non torna in stampa?",
-    "tool_tinta_desc": "Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Xeikon e stampanti digitali.",
+    "tool_tinta_desc": "Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Rotativa e stampanti digitali.",
     "tool_tinta_cta": "Genera Matrice Prova",
-    "tool_tinta_badge": "CMYK & Xeikon"
+    "tool_tinta_badge": "CMYK & Rotativa"
   },
   "en": {
     "title": "OmniTools Lab — Free Engineering & Graphic Calculators: Ramp Slope, Stairs, Pipe Fall",
@@ -105,9 +105,9 @@
     "tool_dpi_cta": "Check Print Quality",
     "tool_tinta_title": "TintaPerfetta",
     "tool_tinta_hook": "Color mismatch on press?",
-    "tool_tinta_desc": "Generate CMYK bracketing test grids to match exact spot colors on Xeikon web presses, digital and offset.",
+    "tool_tinta_desc": "Generate CMYK bracketing test grids to match exact spot colors on Rotativa web presses, digital and offset.",
     "tool_tinta_cta": "Generate Color Target",
-    "tool_tinta_badge": "CMYK & Xeikon"
+    "tool_tinta_badge": "CMYK & Rotativa"
   },
   "es": {
     "title": "OmniTools Lab — Suite de Calculadoras Técnicas de Precisión",
@@ -160,9 +160,9 @@
     "tool_dpi_cta": "Verificar Resolución",
     "tool_tinta_title": "TintaPerfetta",
     "tool_tinta_hook": "¿El color no coincide en máquina?",
-    "tool_tinta_desc": "Genera matrices de calibración CMYK para clavar la tinta a la primera en rotativas Xeikon y prensas digitales.",
+    "tool_tinta_desc": "Genera matrices de calibración CMYK para clavar la tinta a la primera en rotativas Rotativa y prensas digitales.",
     "tool_tinta_cta": "Generar Matriz de Prueba",
-    "tool_tinta_badge": "CMYK & Xeikon"
+    "tool_tinta_badge": "CMYK & Rotativa"
   },
   "fr": {
     "title": "OmniTools Lab — Suite de Calculateurs Techniques de Précision",
@@ -215,9 +215,9 @@
     "tool_dpi_cta": "Vérifier la Résolution",
     "tool_tinta_title": "TintaPerfetta",
     "tool_tinta_hook": "La couleur dérive à l'impression ?",
-    "tool_tinta_desc": "Générez des mires de bracketing CMJN pour caler la teinte exacte dès le premier tirage sur Xeikon et numérique.",
+    "tool_tinta_desc": "Générez des mires de bracketing CMJN pour caler la teinte exacte dès le premier tirage sur Rotativa et numérique.",
     "tool_tinta_cta": "Générer la Mire",
-    "tool_tinta_badge": "CMJN & Xeikon"
+    "tool_tinta_badge": "CMJN & Rotativa"
   },
   "de": {
     "title": "OmniTools Lab — Suite für Technische Präzisionsrechner",
@@ -270,9 +270,9 @@
     "tool_dpi_cta": "Auflösung Prüfen",
     "tool_tinta_title": "TintaPerfetta",
     "tool_tinta_hook": "Farbe stimmt im Druck nicht?",
-    "tool_tinta_desc": "Erzeugen Sie CMYK-Kalibriermatrizen für exakte Farbtreue beim ersten Durchlauf auf Xeikon und Digitaldruck.",
+    "tool_tinta_desc": "Erzeugen Sie CMYK-Kalibriermatrizen für exakte Farbtreue beim ersten Durchlauf auf Rotativa und Digitaldruck.",
     "tool_tinta_cta": "Prüfbogen Generieren",
-    "tool_tinta_badge": "CMYK & Xeikon"
+    "tool_tinta_badge": "CMYK & Rotativa"
   },
   "pt": {
     "title": "OmniTools Lab — Suite de Calculadores Técnicos de Precisão",
@@ -325,8 +325,8 @@
     "tool_dpi_cta": "Verificar Resolução",
     "tool_tinta_title": "TintaPerfetta",
     "tool_tinta_hook": "A cor sai errada na impressão?",
-    "tool_tinta_desc": "Gere matrizes cromáticas de variação CMYK para acertar no tom logo na primeira passagem em Xeikon e digital.",
+    "tool_tinta_desc": "Gere matrizes cromáticas de variação CMYK para acertar no tom logo na primeira passagem em Rotativa e digital.",
     "tool_tinta_cta": "Gerar Matriz de Prova",
-    "tool_tinta_badge": "CMYK & Xeikon"
+    "tool_tinta_badge": "CMYK & Rotativa"
   }
 }
