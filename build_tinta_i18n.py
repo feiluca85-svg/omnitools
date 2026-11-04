@@ -10,15 +10,15 @@ html_code = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK (Bobina & Foglio)</title>
-    <meta name="description" content="Generatore professionale di matrici cromatiche di scarto CMYK. Trova la tinta perfetta al primo colpo ed elimina sprechi di carta e avviamenti su bobine a nastro e stampanti digitali.">
+    <title>TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK (Formati A4, A3, 33x48 e Bobina)</title>
+    <meta name="description" content="Generatore professionale di matrici cromatiche di scarto CMYK su misura: A4, A3, SRA3 33x48 cm, formati personalizzati e strisce bobina su misura (25, 30, 33 cm).">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tinta">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK">
-    <meta property="og:description" content="Azzeramento sprechi di avviamento su rotative digitali Rotativa e stampanti a foglio. Matrice di scarto cromatico CMYK di precisione.">
+    <meta property="og:description" content="Azzeramento sprechi di avviamento su rotative a bobina e stampanti digitali a foglio. Matrice di scarto cromatico CMYK su qualsiasi formato.">
     <meta property="og:url" content="https://www.omnitoolslab.com/tinta">
     <meta property="og:site_name" content="OmniTools Lab">
     
@@ -27,6 +27,9 @@ html_code = f"""<!DOCTYPE html>
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
     <link rel="apple-touch-icon" href="icon-graph-192.png">
     <meta name="theme-color" content="#9f1239">
+
+    <!-- jsPDF Library for Custom Vector PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -61,7 +64,8 @@ html_code = f"""<!DOCTYPE html>
         }}
     </script>
 
-    <style>
+    <!-- Dynamic CSS Page Style for Print -->
+    <style id="dynamicPageStyle">
         @media print {{
             @page {{
                 size: A4 portrait;
@@ -126,7 +130,7 @@ html_code = f"""<!DOCTYPE html>
                         <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-rose-100 text-rose-900 px-1.5 py-0.5 rounded-full border border-rose-300 shrink-0">Prestampa</span>
                         <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
                         <span class="font-bold text-xs text-slate-700 hidden sm:inline-block">TintaPerfetta</span>
-                        <span class="px-1.5 py-0.5 text-[9px] font-bold bg-rose-50 text-rose-800 rounded-md border border-rose-200 shrink-0 hidden sm:inline-block">Bobina & Foglio</span>
+                        <span class="px-1.5 py-0.5 text-[9px] font-bold bg-rose-50 text-rose-800 rounded-md border border-rose-200 shrink-0 hidden sm:inline-block" id="badgeFormatIndicator">A4 / 33x48 / Bobina</span>
                     </div>
                     <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
                         <span class="font-bold text-[11px] text-slate-700">TintaPerfetta</span>
@@ -135,7 +139,7 @@ html_code = f"""<!DOCTYPE html>
                 </div>
             </div>
 
-            <!-- Quick Actions: Switcher + Language + App + Print -->
+            <!-- Quick Actions: Switcher + Language + App + Action Buttons -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Dorso Libro">
                     <span>📖</span>
@@ -144,10 +148,6 @@ html_code = f"""<!DOCTYPE html>
                 <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Risoluzione & DPI">
                     <span>🖼️</span>
                     <span class="hidden md:inline">DPI</span>
-                </a>
-                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-amber-600 bg-slate-100 hover:bg-amber-50 rounded-xl border border-slate-200 transition" title="Cantiere">
-                    <span>🏗️</span>
-                    <span class="hidden md:inline">Edilizia</span>
                 </a>
 
                 <!-- Language Selector -->
@@ -166,11 +166,11 @@ html_code = f"""<!DOCTYPE html>
                     <span>📲</span>
                     <span id="headerInstallText" class="hidden sm:inline">App</span>
                 </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-white bg-rose-900 hover:bg-rose-950 active:scale-95 rounded-xl transition shadow-xs" title="Stampa Matrice di Prova">
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+
+                <!-- PDF Direct Download Button -->
+                <button onclick="downloadVectorPdf()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-3 sm:py-1.5 text-xs font-bold text-white bg-rose-900 hover:bg-rose-950 active:scale-95 rounded-xl transition shadow-xs" title="Scarica file PDF vettoriale pronto per il RIP">
+                    <span>📥</span>
+                    <span class="hidden sm:inline ml-1 font-extrabold">PDF Pronto</span>
                 </button>
             </div>
         </div>
@@ -179,7 +179,7 @@ html_code = f"""<!DOCTYPE html>
     <!-- Main Content Container -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1 w-full space-y-4 sm:space-y-6">
 
-        <!-- UNIFIED A4 PRINT HEADER -->
+        <!-- UNIFIED A4/CUSTOM PRINT HEADER (Shown only when printing) -->
         <div id="printHeader" class="hidden print:block mb-2 pb-2 border-b-2 border-slate-900">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
@@ -208,10 +208,11 @@ html_code = f"""<!DOCTYPE html>
             </div>
             
             <!-- Metadata Strip for Press Operator -->
-            <div class="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] font-mono">
+            <div class="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] font-mono flex-wrap gap-2">
                 <div><span class="font-bold text-slate-500">COMMESSA:</span> <span id="printJobName" class="font-extrabold text-slate-900">Lavoro Campione</span></div>
-                <div><span class="font-bold text-slate-500">MACCHINA:</span> <span id="printPressName" class="font-extrabold text-slate-900">Rotativa a Bobina / Rotativa</span></div>
+                <div><span class="font-bold text-slate-500">MACCHINA:</span> <span id="printPressName" class="font-extrabold text-slate-900">Rotativa a Bobina</span></div>
                 <div><span class="font-bold text-slate-500">SUPPORTO:</span> <span id="printPaperName" class="font-extrabold text-slate-900">Patinata Lucida / Bobina</span></div>
+                <div><span class="font-bold text-slate-500">FORMATO:</span> <span id="printFormatName" class="font-extrabold text-rose-800">33 x 48 cm</span></div>
                 <div><span class="font-bold text-slate-500">PASSO:</span> <span id="printStepName" class="font-extrabold text-slate-900">±5% Standard</span></div>
             </div>
         </div>
@@ -225,7 +226,7 @@ html_code = f"""<!DOCTYPE html>
                 Matrice di Scarto CMYK & Prova Colore
             </h1>
             <p id="heroDesc" class="text-slate-600 text-xs sm:text-sm leading-relaxed px-2">
-                Generatore di matrici cromatiche di scarto per azzeccare la tinta esatta al primo colpo di stampa. Elimina gli avviamenti a vuoto e azzera lo spreco di metri di bobina su Rotativa, digitali e offset.
+                Generatore di matrici cromatiche di scarto su misura. Imposta il formato esatto del foglio (A4, A3, 33x48 cm o personalizzato) o l'altezza della bobina (25, 30, 33 cm) ed esporta il file PDF pronto per il RIP.
             </p>
         </div>
 
@@ -319,21 +320,92 @@ html_code = f"""<!DOCTYPE html>
                     </div>
                 </div>
 
-                <!-- Card 2: Matrix & Machine Configuration -->
-                <div class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200/90 shadow-xs space-y-3.5">
-                    <h2 id="configSectionTitle" class="font-black text-slate-900 text-sm sm:text-base border-b border-slate-100 pb-2">2. Configurazione Matrice & Macchina</h2>
-                    
-                    <!-- Print Format Selector (Sheet vs Web Strip) -->
+                <!-- Card 2: Professional Media & Custom Size Dimensions -->
+                <div class="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200/90 shadow-xs space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <h2 id="configSectionTitle" class="font-black text-slate-900 text-sm sm:text-base">2. Formato Foglio & Bobina</h2>
+                        <span id="liveSizeIndicator" class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200 font-mono">33.0 × 48.0 cm</span>
+                    </div>
+
+                    <!-- Feed Type Toggle (Sheet vs Continuous Web) -->
                     <div>
-                        <label id="layoutModeLabel" class="text-xs font-bold text-slate-700 block mb-1">Formato di Stampa Prova</label>
-                        <select id="layoutSelect" onchange="generateMatrix()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
-                            <option value="sheet">📄 Foglio Singolo (A4 / A3 / SRA3)</option>
-                            <option value="strip">🎞️ Striscia Bobina a Nastro / Roll (Nastro Continuo)</option>
-                        </select>
+                        <label id="supportTypeLabel" class="text-xs font-bold text-slate-700 block mb-1.5">Tipo di Supporto Stampa</label>
+                        <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                            <button type="button" id="btnFeedSheet" onclick="switchFeedType('sheet')" class="py-2 px-2 rounded-xl bg-rose-900 text-white shadow-2xs transition">
+                                📄 Foglio Singolo
+                            </button>
+                            <button type="button" id="btnFeedRoll" onclick="switchFeedType('roll')" class="py-2 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">
+                                🎞️ Nastro / Bobina
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 1. SHEET CONTROLS (Active by default) -->
+                    <div id="sheetOptionsGroup" class="space-y-3">
+                        <div>
+                            <label id="sheetFormatLabel" class="text-xs font-bold text-slate-700 block mb-1">Formato Foglio</label>
+                            <select id="sheetPresetSelect" onchange="onSheetPresetChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
+                                <option value="A4">A4 (21.0 × 29.7 cm)</option>
+                                <option value="A3">A3 (29.7 × 42.0 cm)</option>
+                                <option value="SRA3" selected>SRA3 / 33×48 (33.0 × 48.0 cm)</option>
+                                <option value="CUSTOM">Personalizzato (cm)...</option>
+                            </select>
+                        </div>
+
+                        <!-- Custom Sheet Dimensions Input (Shown when CUSTOM) -->
+                        <div id="customSheetInputs" class="grid grid-cols-2 gap-2 text-xs">
+                            <div>
+                                <span id="widthCmLabel" class="font-bold text-slate-600 block mb-0.5">Base (cm)</span>
+                                <input type="number" id="sheetWidthInput" value="33.0" step="0.5" min="10" max="200" oninput="onCustomDimensionsChange()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-slate-900 focus:outline-none focus:border-rose-700">
+                            </div>
+                            <div>
+                                <span id="heightCmLabel" class="font-bold text-slate-600 block mb-0.5">Altezza (cm)</span>
+                                <input type="number" id="sheetHeightInput" value="48.0" step="0.5" min="10" max="200" oninput="onCustomDimensionsChange()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-slate-900 focus:outline-none focus:border-rose-700">
+                            </div>
+                        </div>
+
+                        <!-- Orientation -->
+                        <div>
+                            <label id="orientationLabel" class="text-xs font-bold text-slate-700 block mb-1">Orientamento</label>
+                            <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                                <button type="button" id="btnOrientP" onclick="setOrientation('portrait')" class="py-1.5 px-2 rounded-xl bg-rose-50 text-rose-900 border border-rose-200 transition">Verticale (Portrait)</button>
+                                <button type="button" id="btnOrientL" onclick="setOrientation('landscape')" class="py-1.5 px-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 transition">Orizzontale (Landscape)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. CONTINUOUS ROLL CONTROLS (Hidden by default) -->
+                    <div id="rollOptionsGroup" class="hidden space-y-3">
+                        <div>
+                            <label id="rollWidthLabel" class="text-xs font-bold text-slate-700 block mb-1">Larghezza Bobina (Passaggio Carta)</label>
+                            <select id="rollWidthSelect" onchange="onRollPresetChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
+                                <option value="25">25 cm (250 mm)</option>
+                                <option value="30">30 cm (300 mm)</option>
+                                <option value="33" selected>33 cm (330 mm)</option>
+                                <option value="50">50 cm (500 mm)</option>
+                                <option value="CUSTOM">Altra Larghezza Personalizzata...</option>
+                            </select>
+                        </div>
+
+                        <!-- Custom Roll Width Input -->
+                        <div id="customRollWidthInput" class="hidden text-xs">
+                            <span class="font-bold text-slate-600 block mb-0.5">Larghezza Bobina Personalizzata (cm)</span>
+                            <input type="number" id="rollCustomWidthVal" value="33.0" step="0.5" min="10" max="320" oninput="onCustomDimensionsChange()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-slate-900 focus:outline-none focus:border-rose-700">
+                        </div>
+
+                        <!-- Strip Height (Waste along roll length) -->
+                        <div>
+                            <label id="stripHeightLabel" class="text-xs font-bold text-slate-700 block mb-1">Altezza Striscia (Consumo Lineare)</label>
+                            <select id="stripHeightSelect" onchange="onCustomDimensionsChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
+                                <option value="5">5 cm (Striscia Compatta 1 Riga — Minimo Spreco)</option>
+                                <option value="8" selected>8 cm (Striscia Standard 2 Righe)</option>
+                                <option value="12">12 cm (Striscia Estesa 3 Righe)</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Sensitivity Step -->
-                    <div>
+                    <div class="pt-1 border-t border-slate-100">
                         <label id="stepLabel" class="text-xs font-bold text-slate-700 block mb-1">Passo di Scarto (Sensibilità)</label>
                         <div class="grid grid-cols-3 gap-1.5 text-xs font-bold">
                             <button type="button" onclick="setStep(2)" id="step2Btn" class="py-1.5 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">±2% Fine</button>
@@ -346,12 +418,12 @@ html_code = f"""<!DOCTYPE html>
                     <div class="space-y-2 pt-1 border-t border-slate-100 text-xs">
                         <div>
                             <span id="jobNameLabel" class="font-bold text-slate-600 block mb-0.5">Cliente / Commessa</span>
-                            <input type="text" id="jobInput" value="Test Colore Etichetta" oninput="updatePrintMetadata()" placeholder="Es. Olio Extravergine Biologico" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:border-rose-700">
+                            <input type="text" id="jobInput" value="Test Colore Etichetta" oninput="updatePrintMetadata()" placeholder="Es. Olio Extravergine" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:border-rose-700">
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <span id="jobPressLabel" class="font-bold text-slate-600 block mb-0.5">Macchina Stampa</span>
-                                <input type="text" id="pressInput" value="Rotativa a Bobina" oninput="updatePrintMetadata()" placeholder="Es. Rotativa / Digitale" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:border-rose-700">
+                                <input type="text" id="pressInput" value="Rotativa a Bobina" oninput="updatePrintMetadata()" placeholder="Es. Macchina Stampa" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:border-rose-700">
                             </div>
                             <div>
                                 <span id="jobPaperLabel" class="font-bold text-slate-600 block mb-0.5">Supporto / Carta</span>
@@ -359,6 +431,7 @@ html_code = f"""<!DOCTYPE html>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -368,19 +441,26 @@ html_code = f"""<!DOCTYPE html>
                 
                 <!-- Main Calibration Matrix Card -->
                 <div class="bg-white p-3.5 sm:p-5 rounded-3xl border border-slate-200/90 shadow-xs space-y-3.5 print-card">
-                    <div class="flex items-center justify-between no-print">
+                    <div class="flex items-center justify-between no-print flex-wrap gap-2">
                         <div>
                             <h2 id="gridTitle" class="font-black text-slate-900 text-sm sm:text-base">Matrice di Calibrazione Generata</h2>
-                            <p id="gridSub" class="text-[11px] text-slate-500">Stampa questo foglio e confronta fisicamente il campione con i tasselli</p>
+                            <p id="gridSub" class="text-[11px] text-slate-500">Stampa o scarica il file vettoriale su misura reale con crocini</p>
                         </div>
-                        <button type="button" onclick="window.print()" class="px-3 py-1.5 bg-rose-900 hover:bg-rose-950 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-1.5">
-                            <span>🖨️</span> <span id="btnPrintMatrix">Stampa Prova</span>
-                        </button>
+                        
+                        <!-- Dual Action Buttons: Download PDF + Print -->
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="downloadVectorPdf()" class="px-3.5 py-2 bg-rose-900 hover:bg-rose-950 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-1.5 cursor-pointer">
+                                <span>📥</span> <span>Scarica PDF Vettoriale</span>
+                            </button>
+                            <button type="button" onclick="window.print()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition inline-flex items-center gap-1.5 cursor-pointer" title="Stampa Diretta">
+                                <span>🖨️</span> <span id="btnPrintMatrix">Stampa</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Instructions Bar in Print -->
                     <div class="print-only mb-2 p-2 bg-slate-50 border border-slate-300 rounded-lg text-[9pt] leading-tight text-slate-700">
-                        <strong class="text-slate-900">Istruzioni Operatore Macchina:</strong> 1) Stampa il presente foglio sul supporto effettivo di commessa; 2) Appoggia il campione originale alla luce ambiente neutra (D50); 3) Scegli il tassello coincidente ed inserisci la formula corrispondente nel RIP di macchina.
+                        <strong class="text-slate-900">Istruzioni Operatore Macchina:</strong> 1) Stampa il presente file sul supporto effettivo di commessa; 2) Appoggia il campione originale alla luce standard D50; 3) Scegli il tassello coincidente ed imposta la ricetta CMYK nel RIP.
                     </div>
 
                     <!-- DYNAMIC MATRIX GRID CONTAINER -->
@@ -389,20 +469,20 @@ html_code = f"""<!DOCTYPE html>
                     </div>
 
                     <!-- Legend / Center Swatch Notice -->
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100">
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100 flex-wrap gap-2">
                         <div class="flex items-center gap-2">
                             <span class="inline-block w-3.5 h-3.5 rounded border-2 border-amber-500 bg-amber-100 shrink-0"></span>
                             <span class="font-bold text-slate-700">Bordo Dorato: Colore Base di Partenza</span>
                         </div>
-                        <div class="font-mono text-[10px]">
-                            <span class="hidden sm:inline">Coordinate: Colonne 1-7 (Tonalità) • Righe A-E (Densità)</span>
+                        <div class="font-mono text-[10px]" id="matrixDimFooter">
+                            Dimensioni: 33.0 × 48.0 cm • FOGRA39
                         </div>
                     </div>
                 </div>
 
                 <!-- Inspector / Selected Tile Details (no-print) -->
                 <div id="inspectorCard" class="no-print bg-white p-4 sm:p-5 rounded-3xl border-2 border-rose-900/30 shadow-xs space-y-3">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100 flex-wrap gap-2">
                         <div class="flex items-center gap-2.5">
                             <div id="inspectorSwatch" class="w-9 h-9 rounded-xl shadow-inner border border-slate-300 shrink-0"></div>
                             <div>
@@ -411,10 +491,10 @@ html_code = f"""<!DOCTYPE html>
                             </div>
                         </div>
                         <div class="flex items-center gap-1.5">
-                            <button type="button" onclick="recenterOnSelected()" id="btnRecenter" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-900 font-bold text-xs rounded-xl border border-rose-200 transition" title="Ricalcola la matrice usando questo colore come centro">
+                            <button type="button" onclick="recenterOnSelected()" id="btnRecenter" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-900 font-bold text-xs rounded-xl border border-rose-200 transition cursor-pointer" title="Ricalcola la matrice usando questo colore come centro">
                                 🔍 <span id="btnRecenterText">Zoom su Questo</span>
                             </button>
-                            <button type="button" onclick="copyRecipe()" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition" title="Copia valori CMYK per il RIP">
+                            <button type="button" onclick="copyRecipe()" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition cursor-pointer" title="Copia valori CMYK per il RIP">
                                 📋 <span id="btnCopyText">Copia Ricetta</span>
                             </button>
                         </div>
@@ -522,7 +602,18 @@ html_code = f"""<!DOCTYPE html>
         let baseY = 90;
         let baseK = 0;
         let currentStep = 5; // ±5%
-        let selectedCell = null; // {{ c, m, y, k, coord, tac }}
+        let selectedCell = null; // {{ c, m, y, k, coord, tac, hex }}
+
+        // Media & Dimension State
+        let feedType = 'sheet'; // 'sheet' or 'roll'
+        let sheetPreset = 'SRA3';
+        let rollWidthPreset = '33';
+        let stripHeightPreset = '8';
+        let orientation = 'portrait'; // 'portrait' or 'landscape'
+
+        // Physical dimensions in millimeters
+        let currentWidthMm = 330;
+        let currentHeightMm = 480;
 
         // Helpers: CMYK ⇄ RGB Approximation (Screen Simulation)
         function cmykToRgb(c, m, y, k) {{
@@ -582,7 +673,6 @@ html_code = f"""<!DOCTYPE html>
             if (t.config_section_title) document.getElementById('configSectionTitle').textContent = t.config_section_title;
             if (t.grid_title) document.getElementById('gridTitle').textContent = t.grid_title;
             if (t.grid_sub) document.getElementById('gridSub').textContent = t.grid_sub;
-            if (t.btn_print) document.getElementById('printBtnText').textContent = t.btn_print;
             if (t.btn_print) document.getElementById('btnPrintMatrix').textContent = t.btn_print;
             if (t.share_title) document.getElementById('shareTitleText').textContent = t.share_title;
             if (t.share_sub) document.getElementById('shareSubText').textContent = t.share_sub;
@@ -617,6 +707,147 @@ html_code = f"""<!DOCTYPE html>
                 hexGroup.classList.remove('hidden');
                 cmykGroup.classList.add('hidden');
             }}
+        }}
+
+        // ==========================================
+        // MEDIA FORMAT & DIMENSION LOGIC
+        // ==========================================
+        function switchFeedType(type) {{
+            feedType = type;
+            const btnSheet = document.getElementById('btnFeedSheet');
+            const btnRoll = document.getElementById('btnFeedRoll');
+            const sheetGroup = document.getElementById('sheetOptionsGroup');
+            const rollGroup = document.getElementById('rollOptionsGroup');
+
+            if (type === 'sheet') {{
+                btnSheet.className = "py-2 px-2 rounded-xl bg-rose-900 text-white shadow-2xs transition font-bold";
+                btnRoll.className = "py-2 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition font-bold";
+                sheetGroup.classList.remove('hidden');
+                rollGroup.classList.add('hidden');
+            }} else {{
+                btnRoll.className = "py-2 px-2 rounded-xl bg-rose-900 text-white shadow-2xs transition font-bold";
+                btnSheet.className = "py-2 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition font-bold";
+                rollGroup.classList.remove('hidden');
+                sheetGroup.classList.add('hidden');
+            }}
+            recalculateDimensions();
+        }}
+
+        function onSheetPresetChange() {{
+            const val = document.getElementById('sheetPresetSelect').value;
+            sheetPreset = val;
+            const customBox = document.getElementById('customSheetInputs');
+            if (val === 'CUSTOM') {{
+                customBox.classList.remove('hidden');
+            }} else {{
+                if (val === 'A4') {{
+                    document.getElementById('sheetWidthInput').value = 21.0;
+                    document.getElementById('sheetHeightInput').value = 29.7;
+                }} else if (val === 'A3') {{
+                    document.getElementById('sheetWidthInput').value = 29.7;
+                    document.getElementById('sheetHeightInput').value = 42.0;
+                }} else if (val === 'SRA3') {{
+                    document.getElementById('sheetWidthInput').value = 33.0;
+                    document.getElementById('sheetHeightInput').value = 48.0;
+                }}
+            }}
+            recalculateDimensions();
+        }}
+
+        function setOrientation(orient) {{
+            orientation = orient;
+            const btnP = document.getElementById('btnOrientP');
+            const btnL = document.getElementById('btnOrientL');
+            if (orient === 'portrait') {{
+                btnP.className = "py-1.5 px-2 rounded-xl bg-rose-50 text-rose-900 border border-rose-200 transition font-bold";
+                btnL.className = "py-1.5 px-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 transition font-bold";
+            }} else {{
+                btnL.className = "py-1.5 px-2 rounded-xl bg-rose-50 text-rose-900 border border-rose-200 transition font-bold";
+                btnP.className = "py-1.5 px-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 transition font-bold";
+            }}
+            recalculateDimensions();
+        }}
+
+        function onRollPresetChange() {{
+            const val = document.getElementById('rollWidthSelect').value;
+            rollWidthPreset = val;
+            const customBox = document.getElementById('customRollWidthInput');
+            if (val === 'CUSTOM') {{
+                customBox.classList.remove('hidden');
+            }} else {{
+                customBox.classList.add('hidden');
+                document.getElementById('rollCustomWidthVal').value = parseFloat(val);
+            }}
+            recalculateDimensions();
+        }}
+
+        function onCustomDimensionsChange() {{
+            recalculateDimensions();
+        }}
+
+        function recalculateDimensions() {{
+            let wMm, hMm;
+
+            if (feedType === 'sheet') {{
+                let wCm = parseFloat(document.getElementById('sheetWidthInput').value) || 33.0;
+                let hCm = parseFloat(document.getElementById('sheetHeightInput').value) || 48.0;
+
+                if (orientation === 'landscape' && wCm < hCm) {{
+                    const temp = wCm; wCm = hCm; hCm = temp;
+                }} else if (orientation === 'portrait' && wCm > hCm) {{
+                    const temp = wCm; wCm = hCm; hCm = temp;
+                }}
+                wMm = Math.round(wCm * 10);
+                hMm = Math.round(hCm * 10);
+            }} else {{
+                // Roll Web Strip
+                let wCm;
+                if (rollWidthPreset === 'CUSTOM') {{
+                    wCm = parseFloat(document.getElementById('rollCustomWidthVal').value) || 33.0;
+                }} else {{
+                    wCm = parseFloat(rollWidthPreset) || 33.0;
+                }}
+                let stripHeightCm = parseFloat(document.getElementById('stripHeightSelect').value) || 8.0;
+                wMm = Math.round(wCm * 10);
+                hMm = Math.round(stripHeightCm * 10);
+            }}
+
+            currentWidthMm = wMm;
+            currentHeightMm = hMm;
+
+            const wCmStr = (wMm / 10).toFixed(1).replace('.0', '');
+            const hCmStr = (hMm / 10).toFixed(1).replace('.0', '');
+            const dimText = `${{wCmStr}} × ${{hCmStr}} cm`;
+
+            document.getElementById('liveSizeIndicator').textContent = dimText;
+            document.getElementById('printFormatName').textContent = dimText;
+            document.getElementById('matrixDimFooter').textContent = `Dimensioni Foglio: ${{dimText}} • FOGRA39`;
+            document.getElementById('badgeFormatIndicator').textContent = dimText;
+
+            // Update Dynamic Print CSS rule
+            const styleEl = document.getElementById('dynamicPageStyle');
+            styleEl.textContent = `
+                @media print {{
+                    @page {{
+                        size: ${{wMm}}mm ${{hMm}}mm;
+                        margin: 5mm;
+                    }}
+                    body {{
+                        background: #ffffff !important;
+                        color: #000000 !important;
+                        font-size: 8.5pt !important;
+                        line-height: 1.15 !important;
+                        padding: 0 !important;
+                    }}
+                    .no-print {{ display: none !important; }}
+                    .print-only {{ display: block !important; }}
+                    .print-card {{ box-shadow: none !important; border: 1px solid #cbd5e1 !important; break-inside: avoid !important; }}
+                    .matrix-cell {{ -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }}
+                }}
+                .print-only {{ display: none; }}
+            `;
+
+            generateMatrix();
         }}
 
         // Input Handlers
@@ -713,6 +944,9 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('printPaperName').textContent = paper;
         }}
 
+        // Matrix calculation cache for PDF download
+        let currentGridCells = []; // array of cell objects
+
         // ==========================================
         // CHROMATIC BRACKETING MATRIX GENERATOR
         // ==========================================
@@ -720,21 +954,41 @@ html_code = f"""<!DOCTYPE html>
             updatePreviewAndTac();
             updatePrintMetadata();
 
-            const format = document.getElementById('layoutSelect').value;
             const container = document.getElementById('matrixContainer');
             container.innerHTML = '';
 
             const step = currentStep;
 
-            // Formats:
-            // "sheet": 7 columns x 5 rows (Col 4, Row C is Center)
-            // "strip": 9 columns x 2 rows (Compact horizontal for web roll press)
-            const cols = format === 'strip' ? 9 : 7;
-            const rows = format === 'strip' ? 2 : 5;
-            const centerCol = Math.floor(cols / 2); // 3 (index) for 7 cols, 4 for 9 cols
-            const centerRow = format === 'strip' ? 0 : 2; // Row C (index 2) for 5 rows
+            // Dimensions and layout adaptation:
+            // If roll mode:
+            // 1 riga se altezza <= 6cm, 2 righe se 8cm, 3 righe se 12cm.
+            // Colonne: da 7 a 11 a seconda della larghezza bobina!
+            let cols = 7;
+            let rows = 5;
 
-            const rowLetters = ['A', 'B', 'C', 'D', 'E'];
+            if (feedType === 'roll') {{
+                const stripH = parseFloat(document.getElementById('stripHeightSelect').value) || 8;
+                rows = stripH <= 5 ? 1 : (stripH <= 8 ? 2 : 3);
+                const wCm = currentWidthMm / 10;
+                cols = wCm >= 45 ? 11 : (wCm >= 30 ? 9 : 7);
+            }} else {{
+                // Sheet Mode
+                if (currentWidthMm > currentHeightMm) {{
+                    // Landscape
+                    cols = 9;
+                    rows = 5;
+                }} else {{
+                    cols = 7;
+                    rows = 5;
+                }}
+            }}
+
+            const centerCol = Math.floor(cols / 2);
+            const centerRow = Math.floor(rows / 2);
+
+            const rowLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+            currentGridCells = [];
 
             const table = document.createElement('table');
             table.className = "w-full border-collapse text-center text-[10px] select-none";
@@ -778,15 +1032,12 @@ html_code = f"""<!DOCTYPE html>
                     const dCol = (c - centerCol) * step;
                     const dRow = (r - centerRow) * step;
 
-                    // Variation Logic:
-                    // Horizontal (Cols): Hue Variation (Yellow-Magenta vs Cyan)
-                    // Vertical (Rows): Density Variation (Black K + General load)
                     let tileC = baseC;
                     let tileM = baseM;
                     let tileY = baseY;
                     let tileK = baseK;
 
-                    // Apply horizontal shift:
+                    // Horizontal variation: Hue
                     if (dCol > 0) {{
                         tileM = clamp(tileM + dCol);
                         tileY = clamp(tileY + dCol);
@@ -794,13 +1045,11 @@ html_code = f"""<!DOCTYPE html>
                         tileC = clamp(tileC - dCol);
                     }}
 
-                    // Apply vertical shift:
+                    // Vertical variation: Density / K
                     if (dRow > 0) {{
-                        // Darker / heavier
                         tileK = clamp(tileK + dRow);
                         tileC = clamp(tileC + Math.round(dRow * 0.5));
                     }} else if (dRow < 0) {{
-                        // Lighter
                         tileK = clamp(tileK + dRow);
                         tileM = clamp(tileM + Math.round(dRow * 0.5));
                         tileY = clamp(tileY + Math.round(dRow * 0.5));
@@ -812,7 +1061,14 @@ html_code = f"""<!DOCTYPE html>
                     const coordName = `${{rowLetters[r]}}${{c + 1}}`;
                     const isCenter = (c === centerCol && r === centerRow);
 
-                    // Swatch Box
+                    const cellData = {{
+                        c: tileC, m: tileM, y: tileY, k: tileK,
+                        col: c, row: r, coord: coordName, tac: tileTac,
+                        rgb: rgb, hex: hex, isCenter: isCenter
+                    }};
+                    currentGridCells.push(cellData);
+
+                    // Swatch Box Element
                     const swatchBtn = document.createElement('button');
                     swatchBtn.type = "button";
                     swatchBtn.className = `color-swatch-box matrix-cell w-full h-14 sm:h-16 rounded-xl flex flex-col justify-between p-1 text-left relative cursor-pointer border ${{
@@ -820,7 +1076,6 @@ html_code = f"""<!DOCTYPE html>
                     }}`;
                     swatchBtn.style.backgroundColor = hex;
 
-                    // Text contrast on swatch (white vs dark text)
                     const isDark = (rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) < 140;
                     const textColor = isDark ? '#ffffff' : '#0f172a';
 
@@ -834,14 +1089,10 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                     `;
 
-                    // Click: select swatch in inspector
-                    const cellData = {{ c: tileC, m: tileM, y: tileY, k: tileK, coord: coordName, tac: tileTac, hex: hex, isCenter: isCenter }};
                     swatchBtn.onclick = () => selectSwatch(cellData);
-
                     td.appendChild(swatchBtn);
                     tr.appendChild(td);
 
-                    // If center, pre-select it
                     if (isCenter && !selectedCell) {{
                         selectedCell = cellData;
                     }}
@@ -896,10 +1147,144 @@ html_code = f"""<!DOCTYPE html>
             }});
         }}
 
+        // ==========================================
+        // CLIENT-SIDE VECTOR PDF GENERATOR (jsPDF)
+        // ==========================================
+        function downloadVectorPdf() {{
+            const jsPDFClass = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+            if (!jsPDFClass) {{
+                // Fallback to print dialog if jsPDF CDN is blocked
+                window.print();
+                return;
+            }}
+
+            const wMm = currentWidthMm;
+            const hMm = currentHeightMm;
+            const orient = wMm > hMm ? 'l' : 'p';
+
+            const doc = new jsPDFClass({{
+                orientation: orient,
+                unit: 'mm',
+                format: [wMm, hMm]
+            }});
+
+            const job = document.getElementById('jobInput').value.trim() || 'Commessa';
+            const press = document.getElementById('pressInput').value.trim() || 'Macchina';
+            const paper = document.getElementById('paperInput').value.trim() || 'Supporto';
+            const dateStr = new Date().toLocaleDateString('it-IT');
+
+            // Margin & Layout calculation
+            const margin = 10; // 10mm margin for print clamps & crop marks
+            const contentW = wMm - (margin * 2);
+            const contentH = hMm - (margin * 2);
+
+            // 1. Draw Technical Crop Marks (Crocini di registro tipografici)
+            doc.setDrawColor(30, 41, 59);
+            doc.setLineWidth(0.2);
+            // Top-left
+            doc.line(margin - 4, margin, margin + 4, margin);
+            doc.line(margin, margin - 4, margin, margin + 4);
+            // Top-right
+            doc.line(wMm - margin - 4, margin, wMm - margin + 4, margin);
+            doc.line(wMm - margin, margin - 4, wMm - margin, margin + 4);
+            // Bottom-left
+            doc.line(margin - 4, hMm - margin, margin + 4, hMm - margin);
+            doc.line(margin, hMm - margin - 4, margin, hMm - margin + 4);
+            // Bottom-right
+            doc.line(wMm - margin - 4, hMm - margin, wMm - margin + 4, hMm - margin);
+            doc.line(wMm - margin, hMm - margin - 4, wMm - margin, hMm - margin + 4);
+
+            // 2. Draw Technical Header Banner
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(10);
+            doc.setTextColor(159, 18, 57); // Rose 800
+            doc.text('OmniGraph Lab — TintaPerfetta', margin + 2, margin + 5);
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(7.5);
+            doc.setTextColor(71, 85, 105);
+            doc.text(`COMMESSA: ${{job}}   |   MACCHINA: ${{press}}   |   SUPPORTO: ${{paper}}   |   DATA: ${{dateStr}}   |   PASSO: ±${{currentStep}}%`, margin + 2, margin + 9);
+
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(7);
+            doc.setTextColor(100, 116, 139);
+            doc.text(`MISURA REALE: ${{wMm / 10}} × ${{hMm / 10}} cm  (FOGRA39 / ISO 12647-2)`, wMm - margin - 2, margin + 5, {{ align: 'right' }});
+
+            // Separator Line
+            doc.setDrawColor(226, 232, 240);
+            doc.line(margin + 2, margin + 11, wMm - margin - 2, margin + 11);
+
+            // 3. Grid Calculation
+            const gridStartY = margin + 14;
+            const gridH = hMm - gridStartY - margin - 4;
+            const gridW = contentW - 4;
+
+            // Find rows and cols in current cells
+            let maxCol = 0;
+            let maxRow = 0;
+            currentGridCells.forEach(cell => {{
+                if (cell.col > maxCol) maxCol = cell.col;
+                if (cell.row > maxRow) maxRow = cell.row;
+            }});
+
+            const totalCols = maxCol + 1;
+            const totalRows = maxRow + 1;
+
+            const gap = 1.5; // mm between cells
+            const cellW = (gridW - (gap * (totalCols - 1))) / totalCols;
+            const cellH = Math.min(22, (gridH - (gap * (totalRows - 1))) / totalRows);
+
+            // Draw Swatches
+            currentGridCells.forEach(cell => {{
+                const x = margin + 2 + (cell.col * (cellW + gap));
+                const y = gridStartY + (cell.row * (cellH + gap));
+
+                // Fill Color
+                doc.setFillColor(cell.rgb.r, cell.rgb.g, cell.rgb.b);
+                doc.roundedRect(x, y, cellW, cellH, 1, 1, 'F');
+
+                // Border
+                if (cell.isCenter) {{
+                    doc.setDrawColor(245, 158, 11); // Amber-500
+                    doc.setLineWidth(0.6);
+                    doc.roundedRect(x, y, cellW, cellH, 1, 1, 'D');
+                }} else {{
+                    doc.setDrawColor(0, 0, 0, 0.15);
+                    doc.setLineWidth(0.1);
+                    doc.roundedRect(x, y, cellW, cellH, 1, 1, 'D');
+                }}
+
+                // Text Contrast
+                const isDark = (cell.rgb.r * 0.299 + cell.rgb.g * 0.587 + cell.rgb.b * 0.114) < 140;
+                doc.setTextColor(isDark ? 255 : 15, isDark ? 255 : 23, isDark ? 255 : 42);
+
+                // Coordinate label (Top Left)
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(cellH > 15 ? 7 : 6);
+                doc.text(cell.coord + (cell.isCenter ? ' *' : ''), x + 1.2, y + 3.2);
+
+                // CMYK Formula (Bottom Left)
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(cellH > 15 ? 6.5 : 5.5);
+                doc.text(`${{cell.c}}/${{cell.m}}/${{cell.y}}/${{cell.k}}`, x + 1.2, y + cellH - 1.5);
+            }});
+
+            // 4. Operator Legend at Bottom
+            doc.setFont('helvetica', 'italic');
+            doc.setFontSize(6.5);
+            doc.setTextColor(148, 163, 184);
+            doc.text('Istruzioni: 1) Stampa sul supporto effettivo; 2) Confronta con il campione alla luce neutra D50; 3) Riporta i valori del tassello nel RIP.', margin + 2, hMm - margin + 1);
+
+            // Trigger Clean Download
+            const cleanJob = job.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+            const fileName = `TintaPerfetta_${{wMm / 10}}x${{hMm / 10}}cm_${{cleanJob}}.pdf`;
+            doc.save(fileName);
+        }}
+
         // Viral Sharing
         function shareWhatsApp() {{
             const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent('TintaPerfetta: Matrice di Scarto CMYK per centrare il colore al primo colpo ed azzerare gli sprechi: ' + window.location.href);
+            const text = encodeURIComponent('TintaPerfetta: Matrice di Scarto CMYK per centrare il colore al primo colpo su qualsiasi formato foglio o bobina: ' + window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${{text}}`, '_blank');
         }}
 
@@ -939,7 +1324,7 @@ html_code = f"""<!DOCTYPE html>
         document.addEventListener('DOMContentLoaded', () => {{
             applyTranslations();
             updateInputsFromState();
-            generateMatrix();
+            recalculateDimensions();
         }});
     </script>
 </body>
@@ -949,4 +1334,4 @@ html_code = f"""<!DOCTYPE html>
 with open("/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/tinta.html", "w", encoding="utf-8") as f:
     f.write(html_code)
 
-print("tinta.html compiled with TintaPerfetta CMYK Bracketing Matrix successfully.")
+print("tinta.html compiled with Custom Sheet & Roll Sizing and jsPDF Vector Engine successfully.")
