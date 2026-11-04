@@ -34,8 +34,8 @@ html_code = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools - Calcolo Pendenza Rampa | Normativa DM 236/89 & ADA Compliance</title>
-    <meta name="description" content="OmniTools: Suite professionale di calcolo. Calcolatore di pendenza rampa con verifica conformità disabili e garage in 6 lingue.">
+    <title>Calcolo Pendenza Rampa Disabili e Garage Online — Formula DM 236/89 & ADA</title>
+    <meta name="description" content="Calcolatore professionale per pendenza rampe in percentuale (%) e gradi, dislivello e sviluppo a terra. Verifica immediata conformità per disabili e carrozzine (DM 236/89, ADA) e rampe carrabili autorimesse.">
     
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">

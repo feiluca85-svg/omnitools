@@ -10,8 +10,8 @@ html_code = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools Lab — Suite di Calcolatori Tecnici di Precisione</title>
-    <meta name="description" content="OmniTools Lab: Suite gratuita e immediata di calcolatori tecnici per cantiere, architettura, grafica e prestampa. 100% offline, conforme alle normative.">
+    <title>OmniTools Lab — Calcolatori Tecnici Online: Pendenze Rampe, Scale, Tubi e Dorso</title>
+    <meta name="description" content="OmniTools Lab: Suite gratuita di calcolatori tecnici online. Calcolo pendenza rampe disabili e garage (DM 236/89), alzata e pedata scale (Blondel), pendenza tubi scarico (UNI EN 12056), dorso libro e DPI stampa.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/">

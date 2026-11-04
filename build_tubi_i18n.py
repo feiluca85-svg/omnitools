@@ -8,10 +8,11 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>ScaricoFacile — Calcolo Pendenza Tubazioni di Scarico e Fognatura (UNI EN 12056)</title>
-    <meta name="description" content="ScaricoFacile di OmniTools Lab: calcolatore professionale per pendenza scarichi, caduta per metro lineare, diametri e verifica autopulizia acque nere e grigie secondo UNI EN 12056 e UNI EN 752.">
+    <title>Calcolo Pendenza Tubi di Scarico e Fognatura — Dislivello e Autopulizia UNI EN 12056</title>
+    <meta name="description" content="Calcolatore online per pendenza tubazioni di scarico fognario, caduta per metro lineare (cm/m), dislivello e dimensionamento diametri Ø 40-200 mm con verifica di autopulizia acque nere e grigie secondo UNI EN 12056 e UNI EN 752.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tubi">

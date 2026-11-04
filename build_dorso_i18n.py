@@ -8,10 +8,11 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools - Calcolo Dorso Libro & Copertina Stesa | Grafica & Stampa</title>
-    <meta name="description" content="OmniTools OmniGraph: Calcolatore professionale di spessore dorso libro e copertina stesa per brossura fresata, colla PUR, InDesign e Amazon KDP.">
+    <title>Calcolo Spessore Dorso Libro e Copertina Stesa Online — InDesign & KDP</title>
+    <meta name="description" content="Calcolatore professionale di spessore del dorso libro e copertina aperta con refili 3 mm per brossura fresata, colla PUR e filo refe. Calcolo esatto da numero pagine, grammatura e mano carta con quote per Adobe InDesign e Amazon KDP.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/dorso">

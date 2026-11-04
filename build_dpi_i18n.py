@@ -8,10 +8,11 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI | OmniGraph</title>
-    <meta name="description" content="OmniTools OmniGraph: Convertitore professionale di risoluzione tra Pixel, Centimetri e DPI per stampa offset, digitale e grande formato con calcolo distanza di visione.">
+    <title>Convertitore Pixel Centimetri e DPI — Calcolo Risoluzione Stampa e Distanza Occhio</title>
+    <meta name="description" content="Convertitore online tra Pixel, Centimetri e Risoluzione DPI/PPI per stampa tipografica, offset, digitale e grande formato (poster, manifesti). Include formula acuità visiva dell'occhio umano in base alla distanza di osservazione.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/dpi">
