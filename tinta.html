@@ -87,6 +87,24 @@
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
+            #matrixContainer {
+                height: calc(100vh - 120px) !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            #matrixContainer table {
+                height: 100% !important;
+                width: 100% !important;
+                table-layout: fixed !important;
+            }
+            #matrixContainer td {
+                height: auto !important;
+                padding: 2px !important;
+            }
+            #matrixContainer .color-swatch-box {
+                height: 100% !important;
+                min-height: 100% !important;
+            }
         }
         .print-only {
             display: none;
@@ -252,13 +270,15 @@
                         </div>
                     </div>
 
-                    <!-- Input Mode Toggle -->
-                    <div class="bg-slate-100 p-1 rounded-xl flex text-xs font-bold">
-                        <button type="button" id="btnModeCmyk" onclick="switchInputMode('cmyk')" class="flex-1 py-1 rounded-lg bg-white text-rose-900 shadow-2xs transition">CMYK</button>
-                        <button type="button" id="btnModeHex" onclick="switchInputMode('hex')" class="flex-1 py-1 rounded-lg text-slate-600 transition">HEX / RGB</button>
+                    <!-- Input Mode Toggle (3 Modes: CMYK, HEX, DROPPER) -->
+                    <div class="bg-slate-100 p-1 rounded-xl grid grid-cols-3 gap-1 text-xs font-bold">
+                        <button type="button" id="btnModeCmyk" onclick="switchInputMode('cmyk')" class="py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold">CMYK</button>
+                        <button type="button" id="btnModeHex" onclick="switchInputMode('hex')" class="py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition text-center truncate font-bold">HEX / RGB</button>
+                        <button type="button" id="btnModeDropper" onclick="switchInputMode('dropper')" class="py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition text-center truncate font-bold inline-flex items-center justify-center gap-1">
+                            <span>💧</span> <span id="labelModeDropper">Pipetta & Foto</span>
+                        </button>
                     </div>
-
-                    <!-- CMYK Sliders Group -->
+<!-- CMYK Sliders Group -->
                     <div id="cmykControlsGroup" class="space-y-2.5">
                         <!-- Cyan -->
                         <div>
@@ -300,10 +320,77 @@
                         <div class="flex items-center gap-2">
                             <input type="color" id="nativeColorPicker" value="#d92638" onchange="onColorPickerChange(this.value)" class="w-10 h-10 rounded-xl border border-slate-300 p-0.5 cursor-pointer shrink-0">
                             <input type="text" id="hexInput" value="#D92638" oninput="onHexInputChange(this.value)" class="flex-1 p-2 font-mono text-sm uppercase font-bold border border-slate-300 rounded-xl focus:border-rose-700 focus:outline-none">
+                            <button type="button" onclick="triggerNativeEyeDropper()" class="p-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-800 border border-slate-300 transition shrink-0" title="Pipetta Schermo Intero">
+                                💧
+                            </button>
                         </div>
                     </div>
 
-                    <!-- TAC (Total Area Coverage) indicator -->
+                    <!-- DROPPER & IMAGE CONTROLS GROUP (Hidden by default) -->
+                    <div id="dropperControlsGroup" class="hidden space-y-3">
+                        <!-- Native EyeDropper API Button (Screen/Desktop) -->
+                        <div>
+                            <button type="button" id="btnNativeEyeDropper" onclick="triggerNativeEyeDropper()" class="w-full py-2.5 px-3 bg-gradient-to-r from-rose-900 to-rose-800 hover:from-rose-950 hover:to-rose-900 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-2 cursor-pointer active:scale-98">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m14 2-8.5 8.5a2.12 2.12 0 0 0-.6 1.5V16l-3.5 3.5a1 1 0 0 0 1.4 1.4L6.3 17.4h3.9c.56 0 1.1-.22 1.5-.6L20.2 8.3a2.12 2.12 0 0 0 0-3L18.7 3.8a2.12 2.12 0 0 0-3 0z"/>
+                                    <path d="m14 6 4 4"/>
+                                </svg>
+                                <span id="dropperBtnScreen">Pipetta Schermo Intero (Qualsiasi App)</span>
+                            </button>
+                            <p class="text-[10px] text-slate-500 mt-1 text-center">Campiona direttamente un pixel da qualsiasi finestra o foto aperta sullo schermo.</p>
+                        </div>
+
+                        <!-- Image Upload / Dropzone / Paste Area -->
+                        <div class="relative">
+                            <input type="file" id="imageFileInput" accept="image/*" class="hidden" onchange="handleImageFileUpload(event)">
+                            <div id="imageDropzone" onclick="document.getElementById('imageFileInput').click()" class="border-2 border-dashed border-rose-300 hover:border-rose-500 bg-rose-50/50 hover:bg-rose-50 p-4 rounded-2xl text-center cursor-pointer transition flex flex-col items-center justify-center gap-1.5 group">
+                                <div class="w-10 h-10 rounded-xl bg-white shadow-2xs border border-rose-200 flex items-center justify-center text-rose-800 group-hover:scale-105 transition">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                                        <circle cx="9" cy="9" r="2"/>
+                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                                    </svg>
+                                </div>
+                                <span id="dropperDropzoneTitle" class="text-xs font-bold text-slate-800">Trascina qui l'immagine o Incolla (Ctrl+V)</span>
+                                <span id="dropperDropzoneSub" class="text-[10px] text-slate-500 max-w-xs">Carica foto cliente, catalogo o logo per estrarre la tinta esatta</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Image Canvas Area with Loupe Magnifier -->
+                        <div id="imageSamplerArea" class="hidden space-y-2">
+                            <div class="flex items-center justify-between text-[11px]">
+                                <span id="dropperCanvasHint" class="font-bold text-slate-700">🔍 Clicca sull'immagine per campionare il colore</span>
+                                <button type="button" onclick="clearLoadedImage()" class="text-rose-700 hover:underline font-bold text-[10px]">Rimuovi</button>
+                            </div>
+                            
+                            <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-900/5 flex items-center justify-center max-h-60 select-none">
+                                <canvas id="samplerCanvas" class="max-w-full max-h-60 object-contain cursor-crosshair"></canvas>
+                                
+                                <!-- Magnifier Loupe Floating Ring -->
+                                <div id="magnifierLoupe" class="hidden absolute pointer-events-none w-20 h-20 rounded-full border-2 border-white shadow-2xl overflow-hidden ring-2 ring-slate-900/40 z-20" style="transform: translate(-50%, -50%);">
+                                    <canvas id="loupeCanvas" width="80" height="80" class="w-full h-full"></canvas>
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-white ring-1 ring-black"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Live Hovered Pixel Info Strip -->
+                            <div id="pixelHoverStrip" class="p-2 rounded-xl bg-slate-900 text-white flex items-center justify-between text-xs font-mono">
+                                <div class="flex items-center gap-2">
+                                    <div id="hoverColorBox" class="w-5 h-5 rounded-md border border-white/40 shrink-0" style="background-color: #d92638;"></div>
+                                    <span id="hoverHexText" class="font-bold">#D92638</span>
+                                </div>
+                                <div id="hoverCmykText" class="text-[10px] text-slate-300">C:0 M:90 Y:90 K:0</div>
+                            </div>
+                        </div>
+
+                        <!-- Picked Confirmation Toast -->
+                        <div id="pickedToast" class="hidden p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center gap-2">
+                            <span class="text-sm">✓</span> <span id="pickedToastText">Colore campionato con successo</span>
+                        </div>
+                    </div>
+<!-- TAC (Total Area Coverage) indicator -->
                     <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
                         <div class="flex items-center gap-1.5">
                             <span class="font-bold text-slate-700">Somma Inchiostri (TAC):</span>
@@ -574,7 +661,7 @@
 
     <!-- Logic Script -->
     <script>
-        const TRANSLATIONS = {"it": {"title": "TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK", "badge": "OmniGraph", "hero_title": "Matrice di Scarto CMYK & Prova Colore", "hero_desc": "Generatore di matrici cromatiche di scarto per azzeccare la tinta esatta al primo colpo di stampa. Elimina gli avviamenti a vuoto e azzera lo spreco di metri di bobina su Rotativa, digitali e offset.", "input_section_title": "1. Colore Target di Partenza", "input_section_sub": "Inserisci il colore da ricreare o seleziona un preset tipografico", "preset_label": "Campioni Rapidi di Riferimento", "mode_cmyk": "CMYK Diretto", "mode_hex": "HEX / RGB / Pipetta", "c_label": "Ciano (C)", "m_label": "Magenta (M)", "y_label": "Giallo (Y)", "k_label": "Nero (K)", "hex_label": "Codice Colore (HEX o RGB)", "config_section_title": "2. Configurazione Matrice & Macchina", "layout_mode_label": "Formato di Stampa Prova", "layout_sheet": "📄 Foglio Singolo (A4 / A3 / SRA3)", "layout_strip": "🎞️ Striscia Bobina Rotativa / Roll (Nastro Continuo)", "step_label": "Passo di Scarto (Sensibilità)", "step_fine": "Fine (±2%) — Rifinitura & Taratura", "step_medium": "Medio (±5%) — Standard Industriale", "step_coarse": "Ampio (±10%) — Ricerca Iniziale", "axis_label": "Tipo di Variazione Cromatica", "axis_temp": "Tonalità / Temperatura (C/M/Y)", "axis_density": "Densità / Luminosità (Inchiostro & K)", "strip_width_label": "Larghezza Striscia Bobina", "job_name_label": "Cliente / Commessa", "job_press_label": "Macchina di Stampa (es. Rotativa Bobina)", "job_paper_label": "Supporto / Supporto Bobina", "grid_title": "Matrice di Calibrazione Generata", "grid_sub": "Stampa questo foglio sulla tua macchina e confronta fisicamente il campione con i tasselli numerati", "btn_print": "Stampa Scheda Prova", "btn_recenter": "Zoom: Centra su questo Tassello", "btn_copy": "Copia Ricetta CMYK", "tac_label": "Somma Inchiostri (TAC)", "tac_safe": "Sicuro (adatto a qualsiasi carta)", "tac_warn": "Attenzione (limite max tipografico)", "selected_tile_title": "Dettaglio Tassello Selezionato", "selected_none": "Clicca su qualsiasi tassello della matrice per visualizzare la formula esatta e le coordinate di macchina.", "print_sheet_title": "TintaPerfetta — Scheda Tecnica di Calibrazione Cromatica", "print_legend": "Istruzioni Operatore: 1) Stampa il presente foglio su supporto di commessa; 2) Appoggia il campione cliente alla luce standard D50; 3) Individua il tassello coincidente e imposta la formula corrispondente nel RIP di macchina.", "share_title": "Ti è utile TintaPerfetta?", "share_sub": "Condividilo con il tuo reparto stampa, tipografi o colleghi grafici", "share_copy": "Copia Link", "share_copied": "Copiato! ✓", "rights_reserved": "© 2026 OmniTools Lab — Divisione OmniGraph. Tutti i diritti riservati.", "legal_disclaimer": "<strong>Note Tecniche di Laboratorio:</strong> La presente matrice genera valori percentuali CMYK matematici standard. La resa finale effettiva dipende dal profilo ICC di macchina, dalla calibrazione del RIP, dal punto termico e dalla porosità del supporto di stampa.", "support_type_label": "Tipo di Supporto Stampa", "support_sheet": "📄 Foglio Singolo", "support_roll": "🎞️ Nastro / Bobina Continua", "sheet_format_label": "Formato Foglio", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personalizzato...", "width_cm_label": "Base (cm)", "height_cm_label": "Altezza (cm)", "orientation_label": "Orientamento", "orient_portrait": "Verticale (Portrait)", "orient_landscape": "Orizzontale (Landscape)", "roll_width_label": "Larghezza Bobina (Passaggio Carta)", "roll_custom": "Personalizzata...", "strip_height_label": "Altezza Striscia (Consumo Lineare)", "btn_download_pdf": "Scarica PDF Vettoriale Pronto Stampa"}, "en": {"title": "TintaPerfetta — CMYK Color Bracketing Matrix & Print Matcher", "badge": "OmniGraph", "hero_title": "CMYK Bracketing Matrix & Print Proofing", "hero_desc": "Generates chromatic bracketing test grids to match any target color on the first run. Eliminates wasted make-ready meters on Rotativa web presses, digital and offset.", "input_section_title": "1. Baseline Target Color", "input_section_sub": "Enter estimated color values or select a prepress sample", "preset_label": "Quick Prepress Presets", "mode_cmyk": "Direct CMYK", "mode_hex": "HEX / RGB / Eyedropper", "c_label": "Cyan (C)", "m_label": "Magenta (M)", "y_label": "Yellow (Y)", "k_label": "Black (K)", "hex_label": "Color Code (HEX or RGB)", "config_section_title": "2. Proof & Press Settings", "layout_mode_label": "Proof Output Format", "layout_sheet": "📄 Sheet-fed (A4 / A3 / SRA3)", "layout_strip": "🎞️ Rotativa Web Strip / Roll-to-Roll", "step_label": "Bracketing Step (Sensitivity)", "step_fine": "Fine (±2%) — Fine-tuning & Substrate Match", "step_medium": "Medium (±5%) — Industry Standard", "step_coarse": "Coarse (±10%) — Broad Search", "axis_label": "Chromatic Variation Axis", "axis_temp": "Hue / Temperature (C/M/Y)", "axis_density": "Density / Brightness (Ink & K)", "strip_width_label": "Web Width (Roll)", "job_name_label": "Job / Client Name", "job_press_label": "Press Model (e.g. Rotativa Bobina)", "job_paper_label": "Substrate / Stock", "grid_title": "Generated Calibration Matrix", "grid_sub": "Print this target on your machine and physically match your physical sample against swatches", "btn_print": "Print Test Target", "btn_recenter": "Zoom: Recenter on this Swatch", "btn_copy": "Copy CMYK Formula", "tac_label": "Total Area Coverage (TAC)", "tac_safe": "Safe (suitable for any stock)", "tac_warn": "High (close to press limits)", "selected_tile_title": "Selected Swatch Details", "selected_none": "Click any swatch on the grid to view its exact CMYK formula and press coordinates.", "print_sheet_title": "TintaPerfetta — Chromatic Proofing Calibration Sheet", "print_legend": "Press Operator Instructions: 1) Print this target sheet on job substrate; 2) Compare sample under D50 daylight; 3) Match best patch and feed exact recipe into RIP.", "share_title": "Finding TintaPerfetta useful?", "share_sub": "Share this tool with fellow press operators and prepress designers", "share_copy": "Copy Link", "share_copied": "Copied! ✓", "rights_reserved": "© 2026 OmniTools Lab — OmniGraph Division. All rights reserved.", "legal_disclaimer": "<strong>Prepress Technical Notes:</strong> This tool produces pure mathematical CMYK values. Physical color reproduction depends on RIP ICC profiles, machine temperature, dot gain, and substrate absorbency.", "support_type_label": "Substrate / Feed Type", "support_sheet": "📄 Sheet-fed", "support_roll": "🎞️ Continuous Roll / Web", "sheet_format_label": "Sheet Size", "sheet_sra3": "SRA3 (33 x 48 cm / 13x19\")", "sheet_custom": "Custom Size...", "width_cm_label": "Width (cm)", "height_cm_label": "Height (cm)", "orientation_label": "Orientation", "orient_portrait": "Portrait", "orient_landscape": "Landscape", "roll_width_label": "Roll / Web Width (Paper Path)", "roll_custom": "Custom Width...", "strip_height_label": "Test Strip Height (Linear Web Waste)", "btn_download_pdf": "Download Ready-to-Print Vector PDF"}, "es": {"title": "TintaPerfetta — Matriz de Calibración de Color CMYK & Prueba de Impresión", "badge": "OmniGraph", "hero_title": "Matriz de Prueba CMYK & Calibración de Color", "hero_desc": "Generador de matrices cromáticas para clavar el color exacto a la primera. Elimina puestas a punto fallidas y metros de bobina desperdiciados en Rotativa y prensas digitales.", "input_section_title": "1. Color Objetivo de Entrada", "input_section_sub": "Introduce los valores o elige una muestra de referencia", "preset_label": "Muestras Rápidas", "mode_cmyk": "CMYK Directo", "mode_hex": "HEX / RGB / Selector", "c_label": "Cian (C)", "m_label": "Magenta (M)", "y_label": "Amarillo (Y)", "k_label": "Negro (K)", "hex_label": "Código de Color (HEX o RGB)", "config_section_title": "2. Configuración de Matriz y Máquina", "layout_mode_label": "Formato de Salida", "layout_sheet": "📄 Hoja Suelta (A4 / A3 / SRA3)", "layout_strip": "🎞️ Tira de Bobina Rotativa / Rotativa", "step_label": "Paso de Variación (Sensibilidad)", "step_fine": "Fino (±2%) — Ajuste Preciso", "step_medium": "Medio (±5%) — Estándar Industrial", "step_coarse": "Amplio (±10%) — Búsqueda Inicial", "axis_label": "Eje de Variación Cromática", "axis_temp": "Tono / Temperatura (C/M/Y)", "axis_density": "Densidad / Luminosidad (Tinta y K)", "strip_width_label": "Ancho de Bobina", "job_name_label": "Cliente / Pedido", "job_press_label": "Prensa (ej. Rotativa Bobina)", "job_paper_label": "Soporte / Papel", "grid_title": "Matriz de Calibración Generada", "grid_sub": "Imprime esta hoja de prueba en tu máquina y compara físicamente con la muestra del cliente", "btn_print": "Imprimir Hoja de Prueba", "btn_recenter": "Centrar Matriz en este Tono", "btn_copy": "Copiar Fórmula CMYK", "tac_label": "Suma de Tintas (TAC)", "tac_safe": "Seguro (apto para todo papel)", "tac_warn": "Atención (cerca del límite)", "selected_tile_title": "Detalle del Tono Seleccionado", "selected_none": "Haz clic en cualquier parche para ver su fórmula CMYK y coordenadas exactas.", "print_sheet_title": "TintaPerfetta — Hoja Técnica de Calibración Cromática", "print_legend": "Instrucciones de Máquina: 1) Imprime esta hoja en el material final; 2) Compara con la muestra bajo luz D50; 3) Elige el mejor parche y carga los valores en el RIP.", "share_title": "¿Te resulta útil TintaPerfetta?", "share_sub": "Compártelo con tus impresores y maquinistas", "share_copy": "Copiar Enlace", "share_copied": "¡Copiado! ✓", "rights_reserved": "© 2026 OmniTools Lab — División OmniGraph. Todos los derechos reservados.", "legal_disclaimer": "<strong>Notas Técnicas de Taller:</strong> Los valores generados son porcentajes CMYK matemáticos. La reproducción real depende del perfil ICC, RIP y absorción del papel.", "support_type_label": "Tipo de Alimentación", "support_sheet": "📄 Hoja Suelta", "support_roll": "🎞️ Bobina Continua / Rotativa", "sheet_format_label": "Formato de Hoja", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personalizado...", "width_cm_label": "Ancho (cm)", "height_cm_label": "Alto (cm)", "orientation_label": "Orientación", "orient_portrait": "Vertical", "orient_landscape": "Horizontal", "roll_width_label": "Ancho de Bobina (Paso de Máquina)", "roll_custom": "Ancho Personalizado...", "strip_height_label": "Alto de Tira (Desperdicio Lineal)", "btn_download_pdf": "Descargar PDF Vectorial para Imprimir"}, "fr": {"title": "TintaPerfetta — Matrice de Calibration Couleur CMJN & Épreuve Presse", "badge": "OmniGraph", "hero_title": "Matrice de Bracketing CMJN & Épreuve Couleur", "hero_desc": "Générateur de mires d'étalonnage chromatique pour obtenir la teinte exacte dès le premier tirage. Élimine les calages et les mètres de bobine gâchés sur Rotativa et numérique.", "input_section_title": "1. Couleur Cible de Départ", "input_section_sub": "Saisissez les valeurs estimées ou choisissez un échantillon", "preset_label": "Nuancier Rapide", "mode_cmyk": "CMJN Direct", "mode_hex": "HEX / RVB / Pipette", "c_label": "Cyan (C)", "m_label": "Magenta (M)", "y_label": "Jaune (J)", "k_label": "Noir (N)", "hex_label": "Code Couleur (HEX ou RVB)", "config_section_title": "2. Paramètres de Mire & Presse", "layout_mode_label": "Format d'Impression", "layout_sheet": "📄 Feuille à Feuille (A4 / A3 / SRA3)", "layout_strip": "🎞️ Bande Bobine Rotativa (Bandelette)", "step_label": "Pas de Variation (Sensibilité)", "step_fine": "Fin (±2%) — Ajustement & Calibrage", "step_medium": "Moyen (±5%) — Standard Industrie", "step_coarse": "Large (±10%) — Recherche Globale", "axis_label": "Axe de Variation", "axis_temp": "Teinte / Température (C/M/J)", "axis_density": "Densité / Luminosité (Encre & N)", "strip_width_label": "Largeur Bobine", "job_name_label": "Client / Dossier", "job_press_label": "Presse (ex. Rotativa Bobina)", "job_paper_label": "Support / Papier", "grid_title": "Matrice de Calibration Générée", "grid_sub": "Imprimez cette mire sur votre presse et comparez physiquement avec l'échantillon client", "btn_print": "Imprimer la Mire", "btn_recenter": "Recentrer sur cette Teinte", "btn_copy": "Copier la Recette CMJN", "tac_label": "Couverture d'Encre (TAC)", "tac_safe": "Sécurisé (tous papiers)", "tac_warn": "Attention (proche limite)", "selected_tile_title": "Détail de la Nuance Sélectionnée", "selected_none": "Cliquez sur une pastille pour afficher sa recette CMJN exacte et ses coordonnées machine.", "print_sheet_title": "TintaPerfetta — Fiche d'Étalonnage et d'Épreuve Couleur", "print_legend": "Instructions Conducteur: 1) Imprimer sur support réel; 2) Comparer sous lumière D50; 3) Sélectionner la nuance et reporter la formule dans le RIP.", "share_title": "TintaPerfetta vous est-il utile ?", "share_sub": "Partagez cet outil avec vos imprimeurs et graphistes", "share_copy": "Copier le Lien", "share_copied": "Copié ! ✓", "rights_reserved": "© 2026 OmniTools Lab — Division OmniGraph. Tous droits réservés.", "legal_disclaimer": "<strong>Notes Techniques Atelier:</strong> Les valeurs CMJN sont des calculs mathématiques purs. Le rendu dépend des courbes RIP, profils ICC et hygrométrie du support.", "support_type_label": "Type d'Alimentation", "support_sheet": "📄 Feuille à Feuille", "support_roll": "🎞️ Bobine Continue", "sheet_format_label": "Format de Feuille", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personnalisé...", "width_cm_label": "Largeur (cm)", "height_cm_label": "Hauteur (cm)", "orientation_label": "Orientation", "orient_portrait": "Portrait", "orient_landscape": "Paysage", "roll_width_label": "Laize Bobine (Passage Papier)", "roll_custom": "Laize Personnalisée...", "strip_height_label": "Hauteur Bandelette (Gâche Linéaire)", "btn_download_pdf": "Télécharger PDF Vectoriel Prêt à Imprimer"}, "de": {"title": "TintaPerfetta — CMYK-Farbmatrix & Druckkalibrierung", "badge": "OmniGraph", "hero_title": "CMYK-Bracketing-Matrix & Farbangleich", "hero_desc": "Farbmatrix-Generator für präzise Farbübereinstimmung beim ersten Drucklauf. Verhindert Makulatur und spart teure Rollenmeter auf Rotativa- und Digitaldrucksystemen.", "input_section_title": "1. Zielfarbe (Ausgangswert)", "input_section_sub": "Geben Sie die geschätzten Farbwerte ein oder wählen Sie ein Muster", "preset_label": "Schnellmuster", "mode_cmyk": "Direkt CMYK", "mode_hex": "HEX / RGB / Pipette", "c_label": "Cyan (C)", "m_label": "Magenta (M)", "y_label": "Gelb (Y)", "k_label": "Schwarz (K)", "hex_label": "Farbcode (HEX oder RGB)", "config_section_title": "2. Matrix- und Maschineneinstellungen", "layout_mode_label": "Druckausgabeformat", "layout_sheet": "📄 Einzelbogen (A4 / A3 / SRA3)", "layout_strip": "🎞️ Rotativa-Rollenstreifen (Endlosbahn)", "step_label": "Schrittweite (Empfindlichkeit)", "step_fine": "Fein (±2%) — Feinabstimmung", "step_medium": "Mittel (±5%) — Industriestandard", "step_coarse": "Grob (±10%) — Grobe Annäherung", "axis_label": "Farbvariationsachse", "axis_temp": "Farbton / Temperatur (C/M/Y)", "axis_density": "Dichte / Helligkeit (Farbauftrag & K)", "strip_width_label": "Bahnenbreite (Rolle)", "job_name_label": "Kunde / Auftrag", "job_press_label": "Druckmaschine (z.B. Rotativa Bobina)", "job_paper_label": "Bedruckstoff / Material", "grid_title": "Generierte Kalibriermatrix", "grid_sub": "Drucken Sie diesen Bogen auf Ihrer Maschine und vergleichen Sie das Original direkt mit den Farbfeldern", "btn_print": "Prüfbogen Drucken", "btn_recenter": "Auf dieses Farbfeld zentrieren", "btn_copy": "CMYK-Rezeptur kopieren", "tac_label": "Gesamtfarbauftrag (TAC)", "tac_safe": "Sicher (für alle Papiere)", "tac_warn": "Achtung (nahe Grenzwert)", "selected_tile_title": "Ausgewähltes Farbfeld", "selected_none": "Klicken Sie auf ein beliebiges Farbfeld, um die exakten CMYK-Werte und Maschinenkoordinaten anzuzeigen.", "print_sheet_title": "TintaPerfetta — Technisches Farbprüfblatt", "print_legend": "Drucker-Anweisung: 1) Auf Originalmaterial drucken; 2) Unter D50-Normlicht abgleichen; 3) Passendes Feld ermitteln und Werte ins RIP übernehmen.", "share_title": "Ist TintaPerfetta hilfreich?", "share_sub": "Teilen Sie dieses Werkzeug mit Kollegen in Druckerei und Vorstufe", "share_copy": "Link kopieren", "share_copied": "Kopiert! ✓", "rights_reserved": "© 2026 OmniTools Lab — OmniGraph. Alle Rechte vorbehalten.", "legal_disclaimer": "<strong>Drucktechnischer Hinweis:</strong> Diese Werte stellen mathematische CMYK-Prozentwerte dar. Das Druckergebnis hängt von ICC-Profilen, Tonerverhalten und Bedruckstoff ab.", "support_type_label": "Zuführung / Bedruckstoff", "support_sheet": "📄 Einzelbogen", "support_roll": "🎞️ Endlosrolle / Rollenbahn", "sheet_format_label": "Bogenformat", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Benutzerdefiniert...", "width_cm_label": "Breite (cm)", "height_cm_label": "Höhe (cm)", "orientation_label": "Ausrichtung", "orient_portrait": "Hochformat", "orient_landscape": "Querformat", "roll_width_label": "Rollenbreite (Papierlauf)", "roll_custom": "Benutzerdefinierte Breite...", "strip_height_label": "Streifenhöhe (Makulatur-Lauf)", "btn_download_pdf": "Vektor-Druck-PDF Herunterladen"}, "pt": {"title": "TintaPerfetta — Matriz de Calibração de Cor CMYK & Prova de Impressão", "badge": "OmniGraph", "hero_title": "Matriz de Variação CMYK & Acerto de Cor", "hero_desc": "Gerador de matrizes cromáticas de variação para acertar na cor logo na primeira impressão. Elimina arranques perdidos e poupa metros de bobina em rotativas Rotativa e digitais.", "input_section_title": "1. Cor Alvo de Partida", "input_section_sub": "Insira os valores estimados ou selecione uma amostra rápida", "preset_label": "Amostras Rápidas", "mode_cmyk": "CMYK Direto", "mode_hex": "HEX / RGB / Conta-gotas", "c_label": "Ciano (C)", "m_label": "Magenta (M)", "y_label": "Amarelo (Y)", "k_label": "Preto (K)", "hex_label": "Código de Cor (HEX ou RGB)", "config_section_title": "2. Configuração de Matriz e Máquina", "layout_mode_label": "Formato de Saída", "layout_sheet": "📄 Folha Solta (A4 / A3 / SRA3)", "layout_strip": "🎞️ Tira de Bobina Rotativa / Rotativa", "step_label": "Passo de Variação (Sensibilidade)", "step_fine": "Fino (±2%) — Ajuste Fino", "step_medium": "Médio (±5%) — Padrão Industrial", "step_coarse": "Amplo (±10%) — Procura Inicial", "axis_label": "Eixo de Variação Cromática", "axis_temp": "Tom / Temperatura (C/M/Y)", "axis_density": "Densidade / Luminosidade (Tinta e K)", "strip_width_label": "Largura da Bobina", "job_name_label": "Cliente / Trabalho", "job_press_label": "Impressora (ex. Rotativa Bobina)", "job_paper_label": "Suporte / Papel", "grid_title": "Matriz de Calibração Gerada", "grid_sub": "Imprima esta folha na sua máquina e compare fisicamente com a amostra do cliente", "btn_print": "Imprimir Folha de Prova", "btn_recenter": "Centrar Matriz nesta Cor", "btn_copy": "Copiar Receita CMYK", "tac_label": "Cobertura Total de Tinta (TAC)", "tac_safe": "Seguro (apto para qualquer papel)", "tac_warn": "Atenção (próximo do limite)", "selected_tile_title": "Detalhe da Cor Selecionada", "selected_none": "Clique em qualquer amostra para ver a sua receita CMYK e coordenadas exatas.", "print_sheet_title": "TintaPerfetta — Ficha Técnica de Calibração Cromática", "print_legend": "Instruções do Operador: 1) Imprimir no suporte final; 2) Comparar sob luz D50; 3) Identificar o tom coincidente e inserir no RIP.", "share_title": "Acha o TintaPerfetta útil?", "share_sub": "Partilhe esta ferramenta com colegas e técnicos de artes gráficas", "share_copy": "Copiar Ligação", "share_copied": "Copiado! ✓", "rights_reserved": "© 2026 OmniTools Lab — Divisão OmniGraph. Todos os direitos reservados.", "legal_disclaimer": "<strong>Notas Técnicas de Oficina:</strong> Os valores CMYK são matemáticos. A reprodução física depende do RIP, perfis ICC e absorção do suporte.", "support_type_label": "Tipo de Alimentação", "support_sheet": "📄 Folha Solta", "support_roll": "🎞️ Bobina Contínua", "sheet_format_label": "Formato de Folha", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personalizado...", "width_cm_label": "Largura (cm)", "height_cm_label": "Altura (cm)", "orientation_label": "Orientação", "orient_portrait": "Vertical", "orient_landscape": "Horizontal", "roll_width_label": "Largura da Bobina (Passagem)", "roll_custom": "Largura Personalizada...", "strip_height_label": "Altura da Tira (Consumo Linear)", "btn_download_pdf": "Descarregar PDF Vetorial Pronto a Imprimir"}};
+        const TRANSLATIONS = {"it": {"title": "TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK", "badge": "OmniGraph", "hero_title": "Matrice di Scarto CMYK & Prova Colore", "hero_desc": "Generatore di matrici cromatiche di scarto per azzeccare la tinta esatta al primo colpo di stampa. Elimina gli avviamenti a vuoto e azzera lo spreco di metri di bobina su Rotativa, digitali e offset.", "input_section_title": "1. Colore Target di Partenza", "input_section_sub": "Inserisci il colore da ricreare o seleziona un preset tipografico", "preset_label": "Campioni Rapidi di Riferimento", "mode_cmyk": "CMYK Diretto", "mode_hex": "HEX / RGB / Pipetta", "c_label": "Ciano (C)", "m_label": "Magenta (M)", "y_label": "Giallo (Y)", "k_label": "Nero (K)", "hex_label": "Codice Colore (HEX o RGB)", "config_section_title": "2. Configurazione Matrice & Macchina", "layout_mode_label": "Formato di Stampa Prova", "layout_sheet": "📄 Foglio Singolo (A4 / A3 / SRA3)", "layout_strip": "🎞️ Striscia Bobina Rotativa / Roll (Nastro Continuo)", "step_label": "Passo di Scarto (Sensibilità)", "step_fine": "Fine (±2%) — Rifinitura & Taratura", "step_medium": "Medio (±5%) — Standard Industriale", "step_coarse": "Ampio (±10%) — Ricerca Iniziale", "axis_label": "Tipo di Variazione Cromatica", "axis_temp": "Tonalità / Temperatura (C/M/Y)", "axis_density": "Densità / Luminosità (Inchiostro & K)", "strip_width_label": "Larghezza Striscia Bobina", "job_name_label": "Cliente / Commessa", "job_press_label": "Macchina di Stampa (es. Rotativa Bobina)", "job_paper_label": "Supporto / Supporto Bobina", "grid_title": "Matrice di Calibrazione Generata", "grid_sub": "Stampa questo foglio sulla tua macchina e confronta fisicamente il campione con i tasselli numerati", "btn_print": "Stampa Scheda Prova", "btn_recenter": "Zoom: Centra su questo Tassello", "btn_copy": "Copia Ricetta CMYK", "tac_label": "Somma Inchiostri (TAC)", "tac_safe": "Sicuro (adatto a qualsiasi carta)", "tac_warn": "Attenzione (limite max tipografico)", "selected_tile_title": "Dettaglio Tassello Selezionato", "selected_none": "Clicca su qualsiasi tassello della matrice per visualizzare la formula esatta e le coordinate di macchina.", "print_sheet_title": "TintaPerfetta — Scheda Tecnica di Calibrazione Cromatica", "print_legend": "Istruzioni Operatore: 1) Stampa il presente foglio su supporto di commessa; 2) Appoggia il campione cliente alla luce standard D50; 3) Individua il tassello coincidente e imposta la formula corrispondente nel RIP di macchina.", "share_title": "Ti è utile TintaPerfetta?", "share_sub": "Condividilo con il tuo reparto stampa, tipografi o colleghi grafici", "share_copy": "Copia Link", "share_copied": "Copiato! ✓", "rights_reserved": "© 2026 OmniTools Lab — Divisione OmniGraph. Tutti i diritti riservati.", "legal_disclaimer": "<strong>Note Tecniche di Laboratorio:</strong> La presente matrice genera valori percentuali CMYK matematici standard. La resa finale effettiva dipende dal profilo ICC di macchina, dalla calibrazione del RIP, dal punto termico e dalla porosità del supporto di stampa.", "support_type_label": "Tipo di Supporto Stampa", "support_sheet": "📄 Foglio Singolo", "support_roll": "🎞️ Nastro / Bobina Continua", "sheet_format_label": "Formato Foglio", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personalizzato...", "width_cm_label": "Base (cm)", "height_cm_label": "Altezza (cm)", "orientation_label": "Orientamento", "orient_portrait": "Verticale (Portrait)", "orient_landscape": "Orizzontale (Landscape)", "roll_width_label": "Larghezza Bobina (Passaggio Carta)", "roll_custom": "Personalizzata...", "strip_height_label": "Altezza Striscia (Consumo Lineare)", "btn_download_pdf": "Scarica PDF Vettoriale Pronto Stampa", "mode_dropper": "💧 Pipetta & Foto", "dropper_btn_screen": "Pipetta Schermo Intero", "dropper_dropzone_title": "Trascina qui l'immagine o Incolla (Ctrl+V)", "dropper_dropzone_sub": "Carica la foto del cliente, un logo o un catalogo, poi clicca sul colore esatto da riprodurre", "dropper_canvas_hint": "Muovi il mirino per esplorare con la lente di ingrandimento e clicca sul pixel desiderato", "dropper_picked_msg": "Colore campionato con successo"}, "en": {"title": "TintaPerfetta — CMYK Color Bracketing Matrix & Print Matcher", "badge": "OmniGraph", "hero_title": "CMYK Bracketing Matrix & Print Proofing", "hero_desc": "Generates chromatic bracketing test grids to match any target color on the first run. Eliminates wasted make-ready meters on Rotativa web presses, digital and offset.", "input_section_title": "1. Baseline Target Color", "input_section_sub": "Enter estimated color values or select a prepress sample", "preset_label": "Quick Prepress Presets", "mode_cmyk": "Direct CMYK", "mode_hex": "HEX / RGB / Eyedropper", "c_label": "Cyan (C)", "m_label": "Magenta (M)", "y_label": "Yellow (Y)", "k_label": "Black (K)", "hex_label": "Color Code (HEX or RGB)", "config_section_title": "2. Proof & Press Settings", "layout_mode_label": "Proof Output Format", "layout_sheet": "📄 Sheet-fed (A4 / A3 / SRA3)", "layout_strip": "🎞️ Rotativa Web Strip / Roll-to-Roll", "step_label": "Bracketing Step (Sensitivity)", "step_fine": "Fine (±2%) — Fine-tuning & Substrate Match", "step_medium": "Medium (±5%) — Industry Standard", "step_coarse": "Coarse (±10%) — Broad Search", "axis_label": "Chromatic Variation Axis", "axis_temp": "Hue / Temperature (C/M/Y)", "axis_density": "Density / Brightness (Ink & K)", "strip_width_label": "Web Width (Roll)", "job_name_label": "Job / Client Name", "job_press_label": "Press Model (e.g. Rotativa Bobina)", "job_paper_label": "Substrate / Stock", "grid_title": "Generated Calibration Matrix", "grid_sub": "Print this target on your machine and physically match your physical sample against swatches", "btn_print": "Print Test Target", "btn_recenter": "Zoom: Recenter on this Swatch", "btn_copy": "Copy CMYK Formula", "tac_label": "Total Area Coverage (TAC)", "tac_safe": "Safe (suitable for any stock)", "tac_warn": "High (close to press limits)", "selected_tile_title": "Selected Swatch Details", "selected_none": "Click any swatch on the grid to view its exact CMYK formula and press coordinates.", "print_sheet_title": "TintaPerfetta — Chromatic Proofing Calibration Sheet", "print_legend": "Press Operator Instructions: 1) Print this target sheet on job substrate; 2) Compare sample under D50 daylight; 3) Match best patch and feed exact recipe into RIP.", "share_title": "Finding TintaPerfetta useful?", "share_sub": "Share this tool with fellow press operators and prepress designers", "share_copy": "Copy Link", "share_copied": "Copied! ✓", "rights_reserved": "© 2026 OmniTools Lab — OmniGraph Division. All rights reserved.", "legal_disclaimer": "<strong>Prepress Technical Notes:</strong> This tool produces pure mathematical CMYK values. Physical color reproduction depends on RIP ICC profiles, machine temperature, dot gain, and substrate absorbency.", "support_type_label": "Substrate / Feed Type", "support_sheet": "📄 Sheet-fed", "support_roll": "🎞️ Continuous Roll / Web", "sheet_format_label": "Sheet Size", "sheet_sra3": "SRA3 (33 x 48 cm / 13x19\")", "sheet_custom": "Custom Size...", "width_cm_label": "Width (cm)", "height_cm_label": "Height (cm)", "orientation_label": "Orientation", "orient_portrait": "Portrait", "orient_landscape": "Landscape", "roll_width_label": "Roll / Web Width (Paper Path)", "roll_custom": "Custom Width...", "strip_height_label": "Test Strip Height (Linear Web Waste)", "btn_download_pdf": "Download Ready-to-Print Vector PDF", "mode_dropper": "💧 Eyedropper & Photo", "dropper_btn_screen": "Full Screen Eyedropper", "dropper_dropzone_title": "Drop image here or Paste (Ctrl+V)", "dropper_dropzone_sub": "Upload customer photo, logo or catalog, then click the exact color to match", "dropper_canvas_hint": "Hover crosshair with magnifying loupe and click the target pixel", "dropper_picked_msg": "Color sampled successfully"}, "es": {"title": "TintaPerfetta — Matriz de Calibración de Color CMYK & Prueba de Impresión", "badge": "OmniGraph", "hero_title": "Matriz de Prueba CMYK & Calibración de Color", "hero_desc": "Generador de matrices cromáticas para clavar el color exacto a la primera. Elimina puestas a punto fallidas y metros de bobina desperdiciados en Rotativa y prensas digitales.", "input_section_title": "1. Color Objetivo de Entrada", "input_section_sub": "Introduce los valores o elige una muestra de referencia", "preset_label": "Muestras Rápidas", "mode_cmyk": "CMYK Directo", "mode_hex": "HEX / RGB / Selector", "c_label": "Cian (C)", "m_label": "Magenta (M)", "y_label": "Amarillo (Y)", "k_label": "Negro (K)", "hex_label": "Código de Color (HEX o RGB)", "config_section_title": "2. Configuración de Matriz y Máquina", "layout_mode_label": "Formato de Salida", "layout_sheet": "📄 Hoja Suelta (A4 / A3 / SRA3)", "layout_strip": "🎞️ Tira de Bobina Rotativa / Rotativa", "step_label": "Paso de Variación (Sensibilidad)", "step_fine": "Fino (±2%) — Ajuste Preciso", "step_medium": "Medio (±5%) — Estándar Industrial", "step_coarse": "Amplio (±10%) — Búsqueda Inicial", "axis_label": "Eje de Variación Cromática", "axis_temp": "Tono / Temperatura (C/M/Y)", "axis_density": "Densidad / Luminosidad (Tinta y K)", "strip_width_label": "Ancho de Bobina", "job_name_label": "Cliente / Pedido", "job_press_label": "Prensa (ej. Rotativa Bobina)", "job_paper_label": "Soporte / Papel", "grid_title": "Matriz de Calibración Generada", "grid_sub": "Imprime esta hoja de prueba en tu máquina y compara físicamente con la muestra del cliente", "btn_print": "Imprimir Hoja de Prueba", "btn_recenter": "Centrar Matriz en este Tono", "btn_copy": "Copiar Fórmula CMYK", "tac_label": "Suma de Tintas (TAC)", "tac_safe": "Seguro (apto para todo papel)", "tac_warn": "Atención (cerca del límite)", "selected_tile_title": "Detalle del Tono Seleccionado", "selected_none": "Haz clic en cualquier parche para ver su fórmula CMYK y coordenadas exactas.", "print_sheet_title": "TintaPerfetta — Hoja Técnica de Calibración Cromática", "print_legend": "Instrucciones de Máquina: 1) Imprime esta hoja en el material final; 2) Compara con la muestra bajo luz D50; 3) Elige el mejor parche y carga los valores en el RIP.", "share_title": "¿Te resulta útil TintaPerfetta?", "share_sub": "Compártelo con tus impresores y maquinistas", "share_copy": "Copiar Enlace", "share_copied": "¡Copiado! ✓", "rights_reserved": "© 2026 OmniTools Lab — División OmniGraph. Todos los derechos reservados.", "legal_disclaimer": "<strong>Notas Técnicas de Taller:</strong> Los valores generados son porcentajes CMYK matemáticos. La reproducción real depende del perfil ICC, RIP y absorción del papel.", "support_type_label": "Tipo de Alimentación", "support_sheet": "📄 Hoja Suelta", "support_roll": "🎞️ Bobina Continua / Rotativa", "sheet_format_label": "Formato de Hoja", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personalizado...", "width_cm_label": "Ancho (cm)", "height_cm_label": "Alto (cm)", "orientation_label": "Orientación", "orient_portrait": "Vertical", "orient_landscape": "Horizontal", "roll_width_label": "Ancho de Bobina (Paso de Máquina)", "roll_custom": "Ancho Personalizado...", "strip_height_label": "Alto de Tira (Desperdicio Lineal)", "btn_download_pdf": "Descargar PDF Vectorial para Imprimir", "mode_dropper": "💧 Cuentagotas y Foto", "dropper_btn_screen": "Cuentagotas Pantalla Completa", "dropper_dropzone_title": "Arrastra la imagen o Pega (Ctrl+V)", "dropper_dropzone_sub": "Carga foto de cliente, logo o catálogo y haz clic en el color a igualar", "dropper_canvas_hint": "Mueve la mira con lupa de aumento y haz clic en el píxel deseado", "dropper_picked_msg": "Color capturado con éxito"}, "fr": {"title": "TintaPerfetta — Matrice de Calibration Couleur CMJN & Épreuve Presse", "badge": "OmniGraph", "hero_title": "Matrice de Bracketing CMJN & Épreuve Couleur", "hero_desc": "Générateur de mires d'étalonnage chromatique pour obtenir la teinte exacte dès le premier tirage. Élimine les calages et les mètres de bobine gâchés sur Rotativa et numérique.", "input_section_title": "1. Couleur Cible de Départ", "input_section_sub": "Saisissez les valeurs estimées ou choisissez un échantillon", "preset_label": "Nuancier Rapide", "mode_cmyk": "CMJN Direct", "mode_hex": "HEX / RVB / Pipette", "c_label": "Cyan (C)", "m_label": "Magenta (M)", "y_label": "Jaune (J)", "k_label": "Noir (N)", "hex_label": "Code Couleur (HEX ou RVB)", "config_section_title": "2. Paramètres de Mire & Presse", "layout_mode_label": "Format d'Impression", "layout_sheet": "📄 Feuille à Feuille (A4 / A3 / SRA3)", "layout_strip": "🎞️ Bande Bobine Rotativa (Bandelette)", "step_label": "Pas de Variation (Sensibilité)", "step_fine": "Fin (±2%) — Ajustement & Calibrage", "step_medium": "Moyen (±5%) — Standard Industrie", "step_coarse": "Large (±10%) — Recherche Globale", "axis_label": "Axe de Variation", "axis_temp": "Teinte / Température (C/M/J)", "axis_density": "Densité / Luminosité (Encre & N)", "strip_width_label": "Largeur Bobine", "job_name_label": "Client / Dossier", "job_press_label": "Presse (ex. Rotativa Bobina)", "job_paper_label": "Support / Papier", "grid_title": "Matrice de Calibration Générée", "grid_sub": "Imprimez cette mire sur votre presse et comparez physiquement avec l'échantillon client", "btn_print": "Imprimer la Mire", "btn_recenter": "Recentrer sur cette Teinte", "btn_copy": "Copier la Recette CMJN", "tac_label": "Couverture d'Encre (TAC)", "tac_safe": "Sécurisé (tous papiers)", "tac_warn": "Attention (proche limite)", "selected_tile_title": "Détail de la Nuance Sélectionnée", "selected_none": "Cliquez sur une pastille pour afficher sa recette CMJN exacte et ses coordonnées machine.", "print_sheet_title": "TintaPerfetta — Fiche d'Étalonnage et d'Épreuve Couleur", "print_legend": "Instructions Conducteur: 1) Imprimer sur support réel; 2) Comparer sous lumière D50; 3) Sélectionner la nuance et reporter la formule dans le RIP.", "share_title": "TintaPerfetta vous est-il utile ?", "share_sub": "Partagez cet outil avec vos imprimeurs et graphistes", "share_copy": "Copier le Lien", "share_copied": "Copié ! ✓", "rights_reserved": "© 2026 OmniTools Lab — Division OmniGraph. Tous droits réservés.", "legal_disclaimer": "<strong>Notes Techniques Atelier:</strong> Les valeurs CMJN sont des calculs mathématiques purs. Le rendu dépend des courbes RIP, profils ICC et hygrométrie du support.", "support_type_label": "Type d'Alimentation", "support_sheet": "📄 Feuille à Feuille", "support_roll": "🎞️ Bobine Continue", "sheet_format_label": "Format de Feuille", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personnalisé...", "width_cm_label": "Largeur (cm)", "height_cm_label": "Hauteur (cm)", "orientation_label": "Orientation", "orient_portrait": "Portrait", "orient_landscape": "Paysage", "roll_width_label": "Laize Bobine (Passage Papier)", "roll_custom": "Laize Personnalisée...", "strip_height_label": "Hauteur Bandelette (Gâche Linéaire)", "btn_download_pdf": "Télécharger PDF Vectoriel Prêt à Imprimer", "mode_dropper": "💧 Pipette & Photo", "dropper_btn_screen": "Pipette plein écran", "dropper_dropzone_title": "Glissez l'image ou Collez (Ctrl+V)", "dropper_dropzone_sub": "Téléchargez la photo client, un logo ou un catalogue, puis cliquez sur la couleur exacte", "dropper_canvas_hint": "Déplacez le réticule avec loupe et cliquez sur le pixel cible", "dropper_picked_msg": "Couleur prélevée avec succès"}, "de": {"title": "TintaPerfetta — CMYK-Farbmatrix & Druckkalibrierung", "badge": "OmniGraph", "hero_title": "CMYK-Bracketing-Matrix & Farbangleich", "hero_desc": "Farbmatrix-Generator für präzise Farbübereinstimmung beim ersten Drucklauf. Verhindert Makulatur und spart teure Rollenmeter auf Rotativa- und Digitaldrucksystemen.", "input_section_title": "1. Zielfarbe (Ausgangswert)", "input_section_sub": "Geben Sie die geschätzten Farbwerte ein oder wählen Sie ein Muster", "preset_label": "Schnellmuster", "mode_cmyk": "Direkt CMYK", "mode_hex": "HEX / RGB / Pipette", "c_label": "Cyan (C)", "m_label": "Magenta (M)", "y_label": "Gelb (Y)", "k_label": "Schwarz (K)", "hex_label": "Farbcode (HEX oder RGB)", "config_section_title": "2. Matrix- und Maschineneinstellungen", "layout_mode_label": "Druckausgabeformat", "layout_sheet": "📄 Einzelbogen (A4 / A3 / SRA3)", "layout_strip": "🎞️ Rotativa-Rollenstreifen (Endlosbahn)", "step_label": "Schrittweite (Empfindlichkeit)", "step_fine": "Fein (±2%) — Feinabstimmung", "step_medium": "Mittel (±5%) — Industriestandard", "step_coarse": "Grob (±10%) — Grobe Annäherung", "axis_label": "Farbvariationsachse", "axis_temp": "Farbton / Temperatur (C/M/Y)", "axis_density": "Dichte / Helligkeit (Farbauftrag & K)", "strip_width_label": "Bahnenbreite (Rolle)", "job_name_label": "Kunde / Auftrag", "job_press_label": "Druckmaschine (z.B. Rotativa Bobina)", "job_paper_label": "Bedruckstoff / Material", "grid_title": "Generierte Kalibriermatrix", "grid_sub": "Drucken Sie diesen Bogen auf Ihrer Maschine und vergleichen Sie das Original direkt mit den Farbfeldern", "btn_print": "Prüfbogen Drucken", "btn_recenter": "Auf dieses Farbfeld zentrieren", "btn_copy": "CMYK-Rezeptur kopieren", "tac_label": "Gesamtfarbauftrag (TAC)", "tac_safe": "Sicher (für alle Papiere)", "tac_warn": "Achtung (nahe Grenzwert)", "selected_tile_title": "Ausgewähltes Farbfeld", "selected_none": "Klicken Sie auf ein beliebiges Farbfeld, um die exakten CMYK-Werte und Maschinenkoordinaten anzuzeigen.", "print_sheet_title": "TintaPerfetta — Technisches Farbprüfblatt", "print_legend": "Drucker-Anweisung: 1) Auf Originalmaterial drucken; 2) Unter D50-Normlicht abgleichen; 3) Passendes Feld ermitteln und Werte ins RIP übernehmen.", "share_title": "Ist TintaPerfetta hilfreich?", "share_sub": "Teilen Sie dieses Werkzeug mit Kollegen in Druckerei und Vorstufe", "share_copy": "Link kopieren", "share_copied": "Kopiert! ✓", "rights_reserved": "© 2026 OmniTools Lab — OmniGraph. Alle Rechte vorbehalten.", "legal_disclaimer": "<strong>Drucktechnischer Hinweis:</strong> Diese Werte stellen mathematische CMYK-Prozentwerte dar. Das Druckergebnis hängt von ICC-Profilen, Tonerverhalten und Bedruckstoff ab.", "support_type_label": "Zuführung / Bedruckstoff", "support_sheet": "📄 Einzelbogen", "support_roll": "🎞️ Endlosrolle / Rollenbahn", "sheet_format_label": "Bogenformat", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Benutzerdefiniert...", "width_cm_label": "Breite (cm)", "height_cm_label": "Höhe (cm)", "orientation_label": "Ausrichtung", "orient_portrait": "Hochformat", "orient_landscape": "Querformat", "roll_width_label": "Rollenbreite (Papierlauf)", "roll_custom": "Benutzerdefinierte Breite...", "strip_height_label": "Streifenhöhe (Makulatur-Lauf)", "btn_download_pdf": "Vektor-Druck-PDF Herunterladen", "mode_dropper": "💧 Pipette & Foto", "dropper_btn_screen": "Bildschirm-Pipette", "dropper_dropzone_title": "Bild hier ablegen oder Einfügen (Strg+V)", "dropper_dropzone_sub": "Kundenfoto, Logo oder Katalog hochladen und auf die Zielfarbe klicken", "dropper_canvas_hint": "Fadenkreuz mit Lupe bewegen und auf den gewünschten Pixel klicken", "dropper_picked_msg": "Farbe erfolgreich abgetastet"}, "pt": {"title": "TintaPerfetta — Matriz de Calibração de Cor CMYK & Prova de Impressão", "badge": "OmniGraph", "hero_title": "Matriz de Variação CMYK & Acerto de Cor", "hero_desc": "Gerador de matrizes cromáticas de variação para acertar na cor logo na primeira impressão. Elimina arranques perdidos e poupa metros de bobina em rotativas Rotativa e digitais.", "input_section_title": "1. Cor Alvo de Partida", "input_section_sub": "Insira os valores estimados ou selecione uma amostra rápida", "preset_label": "Amostras Rápidas", "mode_cmyk": "CMYK Direto", "mode_hex": "HEX / RGB / Conta-gotas", "c_label": "Ciano (C)", "m_label": "Magenta (M)", "y_label": "Amarelo (Y)", "k_label": "Preto (K)", "hex_label": "Código de Cor (HEX ou RGB)", "config_section_title": "2. Configuração de Matriz e Máquina", "layout_mode_label": "Formato de Saída", "layout_sheet": "📄 Folha Solta (A4 / A3 / SRA3)", "layout_strip": "🎞️ Tira de Bobina Rotativa / Rotativa", "step_label": "Passo de Variação (Sensibilidade)", "step_fine": "Fino (±2%) — Ajuste Fino", "step_medium": "Médio (±5%) — Padrão Industrial", "step_coarse": "Amplo (±10%) — Procura Inicial", "axis_label": "Eixo de Variação Cromática", "axis_temp": "Tom / Temperatura (C/M/Y)", "axis_density": "Densidade / Luminosidade (Tinta e K)", "strip_width_label": "Largura da Bobina", "job_name_label": "Cliente / Trabalho", "job_press_label": "Impressora (ex. Rotativa Bobina)", "job_paper_label": "Suporte / Papel", "grid_title": "Matriz de Calibração Gerada", "grid_sub": "Imprima esta folha na sua máquina e compare fisicamente com a amostra do cliente", "btn_print": "Imprimir Folha de Prova", "btn_recenter": "Centrar Matriz nesta Cor", "btn_copy": "Copiar Receita CMYK", "tac_label": "Cobertura Total de Tinta (TAC)", "tac_safe": "Seguro (apto para qualquer papel)", "tac_warn": "Atenção (próximo do limite)", "selected_tile_title": "Detalhe da Cor Selecionada", "selected_none": "Clique em qualquer amostra para ver a sua receita CMYK e coordenadas exatas.", "print_sheet_title": "TintaPerfetta — Ficha Técnica de Calibração Cromática", "print_legend": "Instruções do Operador: 1) Imprimir no suporte final; 2) Comparar sob luz D50; 3) Identificar o tom coincidente e inserir no RIP.", "share_title": "Acha o TintaPerfetta útil?", "share_sub": "Partilhe esta ferramenta com colegas e técnicos de artes gráficas", "share_copy": "Copiar Ligação", "share_copied": "Copiado! ✓", "rights_reserved": "© 2026 OmniTools Lab — Divisão OmniGraph. Todos os direitos reservados.", "legal_disclaimer": "<strong>Notas Técnicas de Oficina:</strong> Os valores CMYK são matemáticos. A reprodução física depende do RIP, perfis ICC e absorção do suporte.", "support_type_label": "Tipo de Alimentação", "support_sheet": "📄 Folha Solta", "support_roll": "🎞️ Bobina Contínua", "sheet_format_label": "Formato de Folha", "sheet_sra3": "SRA3 (33 x 48 cm)", "sheet_custom": "Personalizado...", "width_cm_label": "Largura (cm)", "height_cm_label": "Altura (cm)", "orientation_label": "Orientação", "orient_portrait": "Vertical", "orient_landscape": "Horizontal", "roll_width_label": "Largura da Bobina (Passagem)", "roll_custom": "Largura Personalizada...", "strip_height_label": "Altura da Tira (Consumo Linear)", "btn_download_pdf": "Descarregar PDF Vetorial Pronto a Imprimir", "mode_dropper": "💧 Conta-gotas & Foto", "dropper_btn_screen": "Conta-gotas Ecrã Inteiro", "dropper_dropzone_title": "Arraste a imagem ou Cole (Ctrl+V)", "dropper_dropzone_sub": "Carregue a foto do cliente, logótipo ou catálogo e clique na cor a reproduzir", "dropper_canvas_hint": "Mova a mira com lupa e clique no píxel pretendido", "dropper_picked_msg": "Cor capturada com sucesso"}};
 
         function detectInitialLanguage() {
             const saved = localStorage.getItem('omnitools_lang');
@@ -686,25 +773,214 @@
         function switchInputMode(mode) {
             const btnCmyk = document.getElementById('btnModeCmyk');
             const btnHex = document.getElementById('btnModeHex');
+            const btnDropper = document.getElementById('btnModeDropper');
             const cmykGroup = document.getElementById('cmykControlsGroup');
             const hexGroup = document.getElementById('hexControlsGroup');
+            const dropperGroup = document.getElementById('dropperControlsGroup');
+
+            [btnCmyk, btnHex, btnDropper].forEach(b => {
+                if (b) b.className = "py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition text-center truncate font-bold";
+            });
+            cmykGroup.classList.add('hidden');
+            hexGroup.classList.add('hidden');
+            dropperGroup.classList.add('hidden');
 
             if (mode === 'cmyk') {
-                btnCmyk.className = "flex-1 py-1 rounded-lg bg-white text-rose-900 shadow-2xs transition font-bold";
-                btnHex.className = "flex-1 py-1 rounded-lg text-slate-600 transition font-bold";
+                btnCmyk.className = "py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold";
                 cmykGroup.classList.remove('hidden');
-                hexGroup.classList.add('hidden');
-            } else {
-                btnHex.className = "flex-1 py-1 rounded-lg bg-white text-rose-900 shadow-2xs transition font-bold";
-                btnCmyk.className = "flex-1 py-1 rounded-lg text-slate-600 transition font-bold";
+            } else if (mode === 'hex') {
+                btnHex.className = "py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold";
                 hexGroup.classList.remove('hidden');
-                cmykGroup.classList.add('hidden');
+            } else if (mode === 'dropper') {
+                btnDropper.className = "py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold inline-flex items-center justify-center gap-1";
+                dropperGroup.classList.remove('hidden');
             }
         }
 
         // ==========================================
-        // MEDIA FORMAT & DIMENSION LOGIC
+        // EYEDROPPER & IMAGE SAMPLER SYSTEM
         // ==========================================
+        async function triggerNativeEyeDropper() {
+            if (!window.EyeDropper) {
+                switchInputMode('dropper');
+                alert("La pipetta a schermo intero non è supportata da questo browser. Usa il box di caricamento immagine per campionare qualsiasi foto!");
+                return;
+            }
+            try {
+                const eyeDropper = new EyeDropper();
+                const result = await eyeDropper.open();
+                if (result && result.sRGBHex) {
+                    onHexInputChange(result.sRGBHex);
+                    showPickedToast(`✓ Colore campionato: ${result.sRGBHex.toUpperCase()} (C:${baseC} M:${baseM} Y:${baseY} K:${baseK})`);
+                }
+            } catch (e) {
+                // Dismissed
+            }
+        }
+
+        function showPickedToast(msg) {
+            const toast = document.getElementById('pickedToast');
+            const text = document.getElementById('pickedToastText');
+            if (toast && text) {
+                text.textContent = msg;
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 4000);
+            }
+        }
+
+        function handleImageFileUpload(e) {
+            const file = e.target.files && e.target.files[0];
+            if (file) loadImageFile(file);
+        }
+
+        function loadImageFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const img = new Image();
+                img.onload = function() {
+                    renderImageOnCanvas(img);
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        let loadedImageElement = null;
+
+        function renderImageOnCanvas(img) {
+            loadedImageElement = img;
+            const canvas = document.getElementById('samplerCanvas');
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+            const maxW = 500;
+            const maxH = 260;
+            let w = img.width;
+            let h = img.height;
+
+            if (w > maxW || h > maxH) {
+                const ratio = Math.min(maxW / w, maxH / h);
+                w = Math.round(w * ratio);
+                h = Math.round(h * ratio);
+            }
+
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(img, 0, 0, w, h);
+
+            document.getElementById('imageDropzone').classList.add('hidden');
+            document.getElementById('imageSamplerArea').classList.remove('hidden');
+
+            canvas.onmousemove = onCanvasMouseMove;
+            canvas.onmouseleave = onCanvasMouseLeave;
+            canvas.onclick = onCanvasClick;
+        }
+
+        function clearLoadedImage() {
+            loadedImageElement = null;
+            document.getElementById('imageDropzone').classList.remove('hidden');
+            document.getElementById('imageSamplerArea').classList.add('hidden');
+            document.getElementById('magnifierLoupe').classList.add('hidden');
+            const input = document.getElementById('imageFileInput');
+            if (input) input.value = '';
+        }
+
+        function onCanvasMouseMove(e) {
+            const canvas = document.getElementById('samplerCanvas');
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = Math.floor((e.clientX - rect.left) * scaleX);
+            const y = Math.floor((e.clientY - rect.top) * scaleY);
+
+            if (x < 0 || y < 0 || x >= canvas.width || y >= canvas.height) {
+                onCanvasMouseLeave();
+                return;
+            }
+
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const r = pixel[0], g = pixel[1], b = pixel[2];
+            const hex = rgbToHex(r, g, b);
+            const cmyk = rgbToCmyk(r, g, b);
+
+            document.getElementById('hoverColorBox').style.backgroundColor = hex;
+            document.getElementById('hoverHexText').textContent = hex;
+            document.getElementById('hoverCmykText').textContent = `C:${cmyk.c}% M:${cmyk.m}% Y:${cmyk.y}% K:${cmyk.k}%`;
+
+            const loupe = document.getElementById('magnifierLoupe');
+            loupe.classList.remove('hidden');
+            loupe.style.left = `${e.clientX - rect.left}px`;
+            loupe.style.top = `${e.clientY - rect.top}px`;
+
+            const loupeCanvas = document.getElementById('loupeCanvas');
+            const lctx = loupeCanvas.getContext('2d');
+            lctx.imageSmoothingEnabled = false;
+            lctx.clearRect(0, 0, 80, 80);
+            const sampleSize = 16;
+            const half = Math.floor(sampleSize / 2);
+            lctx.drawImage(canvas, x - half, y - half, sampleSize, sampleSize, 0, 0, 80, 80);
+        }
+
+        function onCanvasMouseLeave() {
+            const loupe = document.getElementById('magnifierLoupe');
+            if (loupe) loupe.classList.add('hidden');
+        }
+
+        function onCanvasClick(e) {
+            const canvas = document.getElementById('samplerCanvas');
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = Math.floor((e.clientX - rect.left) * scaleX);
+            const y = Math.floor((e.clientY - rect.top) * scaleY);
+
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+
+            onHexInputChange(hex);
+            showPickedToast(`✓ Campionato dall'immagine: ${hex} (C:${baseC} M:${baseM} Y:${baseY} K:${baseK})`);
+        }
+
+        function initImageSamplerListeners() {
+            const dropzone = document.getElementById('imageDropzone');
+            if (dropzone) {
+                ['dragenter', 'dragover'].forEach(name => {
+                    dropzone.addEventListener(name, (e) => {
+                        e.preventDefault();
+                        dropzone.classList.add('border-rose-600', 'bg-rose-100/50');
+                    });
+                });
+                ['dragleave', 'drop'].forEach(name => {
+                    dropzone.addEventListener(name, (e) => {
+                        e.preventDefault();
+                        dropzone.classList.remove('border-rose-600', 'bg-rose-100/50');
+                    });
+                });
+                dropzone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+                        loadImageFile(e.dataTransfer.files[0]);
+                    }
+                });
+            }
+
+            window.addEventListener('paste', function(e) {
+                if (e.clipboardData && e.clipboardData.items) {
+                    for (let i = 0; i < e.clipboardData.items.length; i++) {
+                        const item = e.clipboardData.items[i];
+                        if (item.type.indexOf('image') !== -1) {
+                            const file = item.getAsFile();
+                            switchInputMode('dropper');
+                            loadImageFile(file);
+                            break;
+                        }
+                    }
+                }
+            });
+        }
+
         function switchFeedType(type) {
             feedType = type;
             const btnSheet = document.getElementById('btnFeedSheet');
@@ -952,26 +1228,25 @@
 
             const step = currentStep;
 
-            // Dimensions and layout adaptation:
-            // If roll mode:
-            // 1 riga se altezza <= 6cm, 2 righe se 8cm, 3 righe se 12cm.
-            // Colonne: da 7 a 11 a seconda della larghezza bobina!
-            let cols = 7;
+            let cols = 5;
             let rows = 5;
 
             if (feedType === 'roll') {
                 const stripH = parseFloat(document.getElementById('stripHeightSelect').value) || 8;
-                rows = stripH <= 5 ? 1 : (stripH <= 8 ? 2 : 3);
+                // If strip height is 5cm or 8cm, 1 single row of GIANT test rectangles!
+                // If 12cm, 2 rows of giant rectangles!
+                rows = stripH <= 8 ? 1 : 2;
                 const wCm = currentWidthMm / 10;
                 cols = wCm >= 45 ? 11 : (wCm >= 30 ? 9 : 7);
             } else {
                 // Sheet Mode
                 if (currentWidthMm > currentHeightMm) {
                     // Landscape
-                    cols = 9;
+                    cols = 7;
                     rows = 5;
                 } else {
-                    cols = 7;
+                    // Portrait (A4, SRA3 33x48) -> 5 cols x 5 rows for MAXIMUM tile size
+                    cols = 5;
                     rows = 5;
                 }
             }
@@ -984,7 +1259,7 @@
             currentGridCells = [];
 
             const table = document.createElement('table');
-            table.className = "w-full border-collapse text-center text-[10px] select-none";
+            table.className = "w-full border-collapse text-center select-none print-full-height";
 
             // Table Header: Column Indices
             const thead = document.createElement('thead');
@@ -992,15 +1267,15 @@
             trHead.className = "border-b border-slate-200";
             
             const thCorner = document.createElement('th');
-            thCorner.className = "p-1 text-slate-400 font-mono text-[9px]";
+            thCorner.className = "p-1 text-slate-400 font-mono text-[9px] w-8";
             thCorner.textContent = "R/C";
             trHead.appendChild(thCorner);
 
             for (let c = 0; c < cols; c++) {
                 const th = document.createElement('th');
-                th.className = "p-1 text-slate-600 font-mono text-[10px] font-bold";
+                th.className = "p-1 sm:p-1.5 text-slate-700 font-mono text-[11px] sm:text-xs font-black";
                 const deltaCol = (c - centerCol) * step;
-                th.innerHTML = `${c + 1}<br><span class="text-[8px] font-normal text-slate-400">${deltaCol >= 0 ? '+' : ''}${deltaCol}%</span>`;
+                th.innerHTML = `${c + 1}<br><span class="text-[9px] sm:text-[10px] font-bold text-slate-400">${deltaCol >= 0 ? '+' : ''}${deltaCol}%</span>`;
                 trHead.appendChild(th);
             }
             thead.appendChild(trHead);
@@ -1014,13 +1289,13 @@
 
                 const tdRowLabel = document.createElement('td');
                 const deltaRow = (r - centerRow) * step;
-                tdRowLabel.className = "p-1 font-mono font-bold text-slate-600 text-xs";
-                tdRowLabel.innerHTML = `${rowLetters[r]}<br><span class="text-[8px] font-normal text-slate-400">${deltaRow >= 0 ? '+' : ''}${deltaRow}%</span>`;
+                tdRowLabel.className = "p-1 sm:p-1.5 font-mono font-black text-slate-700 text-xs sm:text-sm w-8";
+                tdRowLabel.innerHTML = `${rowLetters[r]}<br><span class="text-[9px] sm:text-[10px] font-bold text-slate-400">${deltaRow >= 0 ? '+' : ''}${deltaRow}%</span>`;
                 tr.appendChild(tdRowLabel);
 
                 for (let c = 0; c < cols; c++) {
                     const td = document.createElement('td');
-                    td.className = "p-1";
+                    td.className = "p-1 sm:p-1.5";
 
                     const dCol = (c - centerCol) * step;
                     const dRow = (r - centerRow) * step;
@@ -1061,11 +1336,17 @@
                     };
                     currentGridCells.push(cellData);
 
-                    // Swatch Box Element
+                    // Swatch Box Element:
+                    // If roll mode: GIANT vertical rectangle (h-36 sm:h-48)
+                    // If sheet mode: LARGE swatch (h-24 sm:h-28 md:h-32)
+                    const heightClass = (feedType === 'roll') 
+                        ? (rows === 1 ? 'h-36 sm:h-48' : 'h-28 sm:h-36')
+                        : 'h-24 sm:h-28 md:h-32';
+
                     const swatchBtn = document.createElement('button');
                     swatchBtn.type = "button";
-                    swatchBtn.className = `color-swatch-box matrix-cell w-full h-14 sm:h-16 rounded-xl flex flex-col justify-between p-1 text-left relative cursor-pointer border ${
-                        isCenter ? 'border-2 border-amber-400 ring-2 ring-amber-400/50 shadow-md' : 'border-black/10 shadow-2xs'
+                    swatchBtn.className = `color-swatch-box matrix-cell w-full ${heightClass} rounded-2xl flex flex-col justify-between p-2 text-left relative cursor-pointer border ${
+                        isCenter ? 'border-3 border-amber-400 ring-4 ring-amber-400/40 shadow-lg' : 'border-black/15 shadow-xs'
                     }`;
                     swatchBtn.style.backgroundColor = hex;
 
@@ -1074,11 +1355,13 @@
 
                     swatchBtn.innerHTML = `
                         <div class="flex items-center justify-between leading-none" style="color: ${textColor}">
-                            <span class="font-mono font-black text-[9px] sm:text-[10px]">${coordName}</span>
-                            ${isCenter ? '<span class="text-[9px]">★</span>' : ''}
+                            <span class="font-mono font-black text-xs sm:text-sm tracking-wide">${coordName}</span>
+                            ${isCenter ? '<span class="text-xs sm:text-sm font-black px-1.5 py-0.5 rounded bg-amber-400 text-slate-900 shadow-2xs">★ BASE</span>' : ''}
                         </div>
-                        <div class="font-mono font-bold text-[7.5px] sm:text-[8.5px] leading-tight" style="color: ${textColor}">
-                            ${tileC}/${tileM}/${tileY}/${tileK}
+                        <div class="font-mono font-extrabold text-[10px] sm:text-xs leading-tight tracking-tight mt-auto" style="color: ${textColor}">
+                            <div class="bg-black/30 backdrop-blur-xs px-1.5 py-1 rounded-lg inline-block w-full">
+                                C:${tileC} M:${tileM} Y:${tileY} K:${tileK}
+                            </div>
                         </div>
                     `;
 
@@ -1225,7 +1508,8 @@
 
             const gap = 1.5; // mm between cells
             const cellW = (gridW - (gap * (totalCols - 1))) / totalCols;
-            const cellH = Math.min(22, (gridH - (gap * (totalRows - 1))) / totalRows);
+            // FULL HEIGHT UTILIZATION - fills entire page / strip without arbitrary cap
+            const cellH = (gridH - (gap * (totalRows - 1))) / totalRows;
 
             // Draw Swatches
             currentGridCells.forEach(cell => {
@@ -1234,34 +1518,38 @@
 
                 // Fill Color
                 doc.setFillColor(cell.rgb.r, cell.rgb.g, cell.rgb.b);
-                doc.roundedRect(x, y, cellW, cellH, 1, 1, 'F');
+                doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'F');
 
                 // Border
                 if (cell.isCenter) {
                     doc.setDrawColor(245, 158, 11); // Amber-500
-                    doc.setLineWidth(0.6);
-                    doc.roundedRect(x, y, cellW, cellH, 1, 1, 'D');
+                    doc.setLineWidth(0.8);
+                    doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'D');
                 } else {
-                    doc.setDrawColor(0, 0, 0, 0.15);
-                    doc.setLineWidth(0.1);
-                    doc.roundedRect(x, y, cellW, cellH, 1, 1, 'D');
+                    doc.setDrawColor(0, 0, 0, 0.2);
+                    doc.setLineWidth(0.15);
+                    doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'D');
                 }
 
                 // Text Contrast
                 const isDark = (cell.rgb.r * 0.299 + cell.rgb.g * 0.587 + cell.rgb.b * 0.114) < 140;
                 doc.setTextColor(isDark ? 255 : 15, isDark ? 255 : 23, isDark ? 255 : 42);
 
-                // Coordinate label (Top Left)
+                // Top coordinate label
                 doc.setFont('helvetica', 'bold');
-                doc.setFontSize(cellH > 15 ? 7 : 6);
-                doc.text(cell.coord + (cell.isCenter ? ' *' : ''), x + 1.2, y + 3.2);
+                doc.setFontSize(cellH > 35 ? 12 : (cellH > 18 ? 9 : 7));
+                doc.text(cell.coord, x + 2.5, y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5)));
 
-                // CMYK Formula (Bottom Left)
+                if (cell.isCenter) {
+                    doc.setFontSize(cellH > 35 ? 9 : 7);
+                    doc.text('[★ BASE]', x + cellW - 2.5, y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5)), { align: 'right' });
+                }
+
+                // Bottom Recipe label
                 doc.setFont('helvetica', 'bold');
-                doc.setFontSize(cellH > 15 ? 6.5 : 5.5);
-                doc.text(`${cell.c}/${cell.m}/${cell.y}/${cell.k}`, x + 1.2, y + cellH - 1.5);
+                doc.setFontSize(cellH > 35 ? 9.5 : (cellH > 18 ? 7.5 : 5.8));
+                doc.text(`C:${cell.c} M:${cell.m} Y:${cell.y} K:${cell.k}`, x + 2.5, y + cellH - (cellH > 35 ? 3.5 : 2));
             });
-
             // 4. Operator Legend at Bottom
             doc.setFont('helvetica', 'italic');
             doc.setFontSize(6.5);

@@ -61,7 +61,13 @@
     "roll_width_label": "Larghezza Bobina (Passaggio Carta)",
     "roll_custom": "Personalizzata...",
     "strip_height_label": "Altezza Striscia (Consumo Lineare)",
-    "btn_download_pdf": "Scarica PDF Vettoriale Pronto Stampa"
+    "btn_download_pdf": "Scarica PDF Vettoriale Pronto Stampa",
+    "mode_dropper": "💧 Pipetta & Foto",
+    "dropper_btn_screen": "Pipetta Schermo Intero",
+    "dropper_dropzone_title": "Trascina qui l'immagine o Incolla (Ctrl+V)",
+    "dropper_dropzone_sub": "Carica la foto del cliente, un logo o un catalogo, poi clicca sul colore esatto da riprodurre",
+    "dropper_canvas_hint": "Muovi il mirino per esplorare con la lente di ingrandimento e clicca sul pixel desiderato",
+    "dropper_picked_msg": "Colore campionato con successo"
   },
   "en": {
     "title": "TintaPerfetta — CMYK Color Bracketing Matrix & Print Matcher",
@@ -125,7 +131,13 @@
     "roll_width_label": "Roll / Web Width (Paper Path)",
     "roll_custom": "Custom Width...",
     "strip_height_label": "Test Strip Height (Linear Web Waste)",
-    "btn_download_pdf": "Download Ready-to-Print Vector PDF"
+    "btn_download_pdf": "Download Ready-to-Print Vector PDF",
+    "mode_dropper": "💧 Eyedropper & Photo",
+    "dropper_btn_screen": "Full Screen Eyedropper",
+    "dropper_dropzone_title": "Drop image here or Paste (Ctrl+V)",
+    "dropper_dropzone_sub": "Upload customer photo, logo or catalog, then click the exact color to match",
+    "dropper_canvas_hint": "Hover crosshair with magnifying loupe and click the target pixel",
+    "dropper_picked_msg": "Color sampled successfully"
   },
   "es": {
     "title": "TintaPerfetta — Matriz de Calibración de Color CMYK & Prueba de Impresión",
@@ -189,7 +201,13 @@
     "roll_width_label": "Ancho de Bobina (Paso de Máquina)",
     "roll_custom": "Ancho Personalizado...",
     "strip_height_label": "Alto de Tira (Desperdicio Lineal)",
-    "btn_download_pdf": "Descargar PDF Vectorial para Imprimir"
+    "btn_download_pdf": "Descargar PDF Vectorial para Imprimir",
+    "mode_dropper": "💧 Cuentagotas y Foto",
+    "dropper_btn_screen": "Cuentagotas Pantalla Completa",
+    "dropper_dropzone_title": "Arrastra la imagen o Pega (Ctrl+V)",
+    "dropper_dropzone_sub": "Carga foto de cliente, logo o catálogo y haz clic en el color a igualar",
+    "dropper_canvas_hint": "Mueve la mira con lupa de aumento y haz clic en el píxel deseado",
+    "dropper_picked_msg": "Color capturado con éxito"
   },
   "fr": {
     "title": "TintaPerfetta — Matrice de Calibration Couleur CMJN & Épreuve Presse",
@@ -253,7 +271,13 @@
     "roll_width_label": "Laize Bobine (Passage Papier)",
     "roll_custom": "Laize Personnalisée...",
     "strip_height_label": "Hauteur Bandelette (Gâche Linéaire)",
-    "btn_download_pdf": "Télécharger PDF Vectoriel Prêt à Imprimer"
+    "btn_download_pdf": "Télécharger PDF Vectoriel Prêt à Imprimer",
+    "mode_dropper": "💧 Pipette & Photo",
+    "dropper_btn_screen": "Pipette plein écran",
+    "dropper_dropzone_title": "Glissez l'image ou Collez (Ctrl+V)",
+    "dropper_dropzone_sub": "Téléchargez la photo client, un logo ou un catalogue, puis cliquez sur la couleur exacte",
+    "dropper_canvas_hint": "Déplacez le réticule avec loupe et cliquez sur le pixel cible",
+    "dropper_picked_msg": "Couleur prélevée avec succès"
   },
   "de": {
     "title": "TintaPerfetta — CMYK-Farbmatrix & Druckkalibrierung",
@@ -317,7 +341,13 @@
     "roll_width_label": "Rollenbreite (Papierlauf)",
     "roll_custom": "Benutzerdefinierte Breite...",
     "strip_height_label": "Streifenhöhe (Makulatur-Lauf)",
-    "btn_download_pdf": "Vektor-Druck-PDF Herunterladen"
+    "btn_download_pdf": "Vektor-Druck-PDF Herunterladen",
+    "mode_dropper": "💧 Pipette & Foto",
+    "dropper_btn_screen": "Bildschirm-Pipette",
+    "dropper_dropzone_title": "Bild hier ablegen oder Einfügen (Strg+V)",
+    "dropper_dropzone_sub": "Kundenfoto, Logo oder Katalog hochladen und auf die Zielfarbe klicken",
+    "dropper_canvas_hint": "Fadenkreuz mit Lupe bewegen und auf den gewünschten Pixel klicken",
+    "dropper_picked_msg": "Farbe erfolgreich abgetastet"
   },
   "pt": {
     "title": "TintaPerfetta — Matriz de Calibração de Cor CMYK & Prova de Impressão",
@@ -381,6 +411,12 @@
     "roll_width_label": "Largura da Bobina (Passagem)",
     "roll_custom": "Largura Personalizada...",
     "strip_height_label": "Altura da Tira (Consumo Linear)",
-    "btn_download_pdf": "Descarregar PDF Vetorial Pronto a Imprimir"
+    "btn_download_pdf": "Descarregar PDF Vetorial Pronto a Imprimir",
+    "mode_dropper": "💧 Conta-gotas & Foto",
+    "dropper_btn_screen": "Conta-gotas Ecrã Inteiro",
+    "dropper_dropzone_title": "Arraste a imagem ou Cole (Ctrl+V)",
+    "dropper_dropzone_sub": "Carregue a foto do cliente, logótipo ou catálogo e clique na cor a reproduzir",
+    "dropper_canvas_hint": "Mova a mira com lupa e clique no píxel pretendido",
+    "dropper_picked_msg": "Cor capturada com sucesso"
   }
 }

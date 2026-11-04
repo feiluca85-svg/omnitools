@@ -94,6 +94,24 @@ html_code = f"""<!DOCTYPE html>
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }}
+            #matrixContainer {{
+                height: calc(100vh - 120px) !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }}
+            #matrixContainer table {{
+                height: 100% !important;
+                width: 100% !important;
+                table-layout: fixed !important;
+            }}
+            #matrixContainer td {{
+                height: auto !important;
+                padding: 2px !important;
+            }}
+            #matrixContainer .color-swatch-box {{
+                height: 100% !important;
+                min-height: 100% !important;
+            }}
         }}
         .print-only {{
             display: none;
@@ -259,13 +277,15 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <!-- Input Mode Toggle -->
-                    <div class="bg-slate-100 p-1 rounded-xl flex text-xs font-bold">
-                        <button type="button" id="btnModeCmyk" onclick="switchInputMode('cmyk')" class="flex-1 py-1 rounded-lg bg-white text-rose-900 shadow-2xs transition">CMYK</button>
-                        <button type="button" id="btnModeHex" onclick="switchInputMode('hex')" class="flex-1 py-1 rounded-lg text-slate-600 transition">HEX / RGB</button>
+                    <!-- Input Mode Toggle (3 Modes: CMYK, HEX, DROPPER) -->
+                    <div class="bg-slate-100 p-1 rounded-xl grid grid-cols-3 gap-1 text-xs font-bold">
+                        <button type="button" id="btnModeCmyk" onclick="switchInputMode('cmyk')" class="py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold">CMYK</button>
+                        <button type="button" id="btnModeHex" onclick="switchInputMode('hex')" class="py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition text-center truncate font-bold">HEX / RGB</button>
+                        <button type="button" id="btnModeDropper" onclick="switchInputMode('dropper')" class="py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition text-center truncate font-bold inline-flex items-center justify-center gap-1">
+                            <span>💧</span> <span id="labelModeDropper">Pipetta & Foto</span>
+                        </button>
                     </div>
-
-                    <!-- CMYK Sliders Group -->
+<!-- CMYK Sliders Group -->
                     <div id="cmykControlsGroup" class="space-y-2.5">
                         <!-- Cyan -->
                         <div>
@@ -307,10 +327,77 @@ html_code = f"""<!DOCTYPE html>
                         <div class="flex items-center gap-2">
                             <input type="color" id="nativeColorPicker" value="#d92638" onchange="onColorPickerChange(this.value)" class="w-10 h-10 rounded-xl border border-slate-300 p-0.5 cursor-pointer shrink-0">
                             <input type="text" id="hexInput" value="#D92638" oninput="onHexInputChange(this.value)" class="flex-1 p-2 font-mono text-sm uppercase font-bold border border-slate-300 rounded-xl focus:border-rose-700 focus:outline-none">
+                            <button type="button" onclick="triggerNativeEyeDropper()" class="p-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-800 border border-slate-300 transition shrink-0" title="Pipetta Schermo Intero">
+                                💧
+                            </button>
                         </div>
                     </div>
 
-                    <!-- TAC (Total Area Coverage) indicator -->
+                    <!-- DROPPER & IMAGE CONTROLS GROUP (Hidden by default) -->
+                    <div id="dropperControlsGroup" class="hidden space-y-3">
+                        <!-- Native EyeDropper API Button (Screen/Desktop) -->
+                        <div>
+                            <button type="button" id="btnNativeEyeDropper" onclick="triggerNativeEyeDropper()" class="w-full py-2.5 px-3 bg-gradient-to-r from-rose-900 to-rose-800 hover:from-rose-950 hover:to-rose-900 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-2 cursor-pointer active:scale-98">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m14 2-8.5 8.5a2.12 2.12 0 0 0-.6 1.5V16l-3.5 3.5a1 1 0 0 0 1.4 1.4L6.3 17.4h3.9c.56 0 1.1-.22 1.5-.6L20.2 8.3a2.12 2.12 0 0 0 0-3L18.7 3.8a2.12 2.12 0 0 0-3 0z"/>
+                                    <path d="m14 6 4 4"/>
+                                </svg>
+                                <span id="dropperBtnScreen">Pipetta Schermo Intero (Qualsiasi App)</span>
+                            </button>
+                            <p class="text-[10px] text-slate-500 mt-1 text-center">Campiona direttamente un pixel da qualsiasi finestra o foto aperta sullo schermo.</p>
+                        </div>
+
+                        <!-- Image Upload / Dropzone / Paste Area -->
+                        <div class="relative">
+                            <input type="file" id="imageFileInput" accept="image/*" class="hidden" onchange="handleImageFileUpload(event)">
+                            <div id="imageDropzone" onclick="document.getElementById('imageFileInput').click()" class="border-2 border-dashed border-rose-300 hover:border-rose-500 bg-rose-50/50 hover:bg-rose-50 p-4 rounded-2xl text-center cursor-pointer transition flex flex-col items-center justify-center gap-1.5 group">
+                                <div class="w-10 h-10 rounded-xl bg-white shadow-2xs border border-rose-200 flex items-center justify-center text-rose-800 group-hover:scale-105 transition">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                                        <circle cx="9" cy="9" r="2"/>
+                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                                    </svg>
+                                </div>
+                                <span id="dropperDropzoneTitle" class="text-xs font-bold text-slate-800">Trascina qui l'immagine o Incolla (Ctrl+V)</span>
+                                <span id="dropperDropzoneSub" class="text-[10px] text-slate-500 max-w-xs">Carica foto cliente, catalogo o logo per estrarre la tinta esatta</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Image Canvas Area with Loupe Magnifier -->
+                        <div id="imageSamplerArea" class="hidden space-y-2">
+                            <div class="flex items-center justify-between text-[11px]">
+                                <span id="dropperCanvasHint" class="font-bold text-slate-700">🔍 Clicca sull'immagine per campionare il colore</span>
+                                <button type="button" onclick="clearLoadedImage()" class="text-rose-700 hover:underline font-bold text-[10px]">Rimuovi</button>
+                            </div>
+                            
+                            <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-slate-900/5 flex items-center justify-center max-h-60 select-none">
+                                <canvas id="samplerCanvas" class="max-w-full max-h-60 object-contain cursor-crosshair"></canvas>
+                                
+                                <!-- Magnifier Loupe Floating Ring -->
+                                <div id="magnifierLoupe" class="hidden absolute pointer-events-none w-20 h-20 rounded-full border-2 border-white shadow-2xl overflow-hidden ring-2 ring-slate-900/40 z-20" style="transform: translate(-50%, -50%);">
+                                    <canvas id="loupeCanvas" width="80" height="80" class="w-full h-full"></canvas>
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-white ring-1 ring-black"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Live Hovered Pixel Info Strip -->
+                            <div id="pixelHoverStrip" class="p-2 rounded-xl bg-slate-900 text-white flex items-center justify-between text-xs font-mono">
+                                <div class="flex items-center gap-2">
+                                    <div id="hoverColorBox" class="w-5 h-5 rounded-md border border-white/40 shrink-0" style="background-color: #d92638;"></div>
+                                    <span id="hoverHexText" class="font-bold">#D92638</span>
+                                </div>
+                                <div id="hoverCmykText" class="text-[10px] text-slate-300">C:0 M:90 Y:90 K:0</div>
+                            </div>
+                        </div>
+
+                        <!-- Picked Confirmation Toast -->
+                        <div id="pickedToast" class="hidden p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center gap-2">
+                            <span class="text-sm">✓</span> <span id="pickedToastText">Colore campionato con successo</span>
+                        </div>
+                    </div>
+<!-- TAC (Total Area Coverage) indicator -->
                     <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
                         <div class="flex items-center gap-1.5">
                             <span class="font-bold text-slate-700">Somma Inchiostri (TAC):</span>
@@ -693,25 +780,214 @@ html_code = f"""<!DOCTYPE html>
         function switchInputMode(mode) {{
             const btnCmyk = document.getElementById('btnModeCmyk');
             const btnHex = document.getElementById('btnModeHex');
+            const btnDropper = document.getElementById('btnModeDropper');
             const cmykGroup = document.getElementById('cmykControlsGroup');
             const hexGroup = document.getElementById('hexControlsGroup');
+            const dropperGroup = document.getElementById('dropperControlsGroup');
+
+            [btnCmyk, btnHex, btnDropper].forEach(b => {{
+                if (b) b.className = "py-1.5 px-1 rounded-lg text-slate-600 hover:text-slate-900 transition text-center truncate font-bold";
+            }});
+            cmykGroup.classList.add('hidden');
+            hexGroup.classList.add('hidden');
+            dropperGroup.classList.add('hidden');
 
             if (mode === 'cmyk') {{
-                btnCmyk.className = "flex-1 py-1 rounded-lg bg-white text-rose-900 shadow-2xs transition font-bold";
-                btnHex.className = "flex-1 py-1 rounded-lg text-slate-600 transition font-bold";
+                btnCmyk.className = "py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold";
                 cmykGroup.classList.remove('hidden');
-                hexGroup.classList.add('hidden');
-            }} else {{
-                btnHex.className = "flex-1 py-1 rounded-lg bg-white text-rose-900 shadow-2xs transition font-bold";
-                btnCmyk.className = "flex-1 py-1 rounded-lg text-slate-600 transition font-bold";
+            }} else if (mode === 'hex') {{
+                btnHex.className = "py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold";
                 hexGroup.classList.remove('hidden');
-                cmykGroup.classList.add('hidden');
+            }} else if (mode === 'dropper') {{
+                btnDropper.className = "py-1.5 px-1 rounded-lg bg-white text-rose-900 shadow-2xs transition text-center truncate font-bold inline-flex items-center justify-center gap-1";
+                dropperGroup.classList.remove('hidden');
             }}
         }}
 
         // ==========================================
-        // MEDIA FORMAT & DIMENSION LOGIC
+        // EYEDROPPER & IMAGE SAMPLER SYSTEM
         // ==========================================
+        async function triggerNativeEyeDropper() {{
+            if (!window.EyeDropper) {{
+                switchInputMode('dropper');
+                alert("La pipetta a schermo intero non è supportata da questo browser. Usa il box di caricamento immagine per campionare qualsiasi foto!");
+                return;
+            }}
+            try {{
+                const eyeDropper = new EyeDropper();
+                const result = await eyeDropper.open();
+                if (result && result.sRGBHex) {{
+                    onHexInputChange(result.sRGBHex);
+                    showPickedToast(`✓ Colore campionato: ${{result.sRGBHex.toUpperCase()}} (C:${{baseC}} M:${{baseM}} Y:${{baseY}} K:${{baseK}})`);
+                }}
+            }} catch (e) {{
+                // Dismissed
+            }}
+        }}
+
+        function showPickedToast(msg) {{
+            const toast = document.getElementById('pickedToast');
+            const text = document.getElementById('pickedToastText');
+            if (toast && text) {{
+                text.textContent = msg;
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 4000);
+            }}
+        }}
+
+        function handleImageFileUpload(e) {{
+            const file = e.target.files && e.target.files[0];
+            if (file) loadImageFile(file);
+        }}
+
+        function loadImageFile(file) {{
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {{
+                const img = new Image();
+                img.onload = function() {{
+                    renderImageOnCanvas(img);
+                }};
+                img.src = evt.target.result;
+            }};
+            reader.readAsDataURL(file);
+        }}
+
+        let loadedImageElement = null;
+
+        function renderImageOnCanvas(img) {{
+            loadedImageElement = img;
+            const canvas = document.getElementById('samplerCanvas');
+            const ctx = canvas.getContext('2d', {{ willReadFrequently: true }});
+
+            const maxW = 500;
+            const maxH = 260;
+            let w = img.width;
+            let h = img.height;
+
+            if (w > maxW || h > maxH) {{
+                const ratio = Math.min(maxW / w, maxH / h);
+                w = Math.round(w * ratio);
+                h = Math.round(h * ratio);
+            }}
+
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(img, 0, 0, w, h);
+
+            document.getElementById('imageDropzone').classList.add('hidden');
+            document.getElementById('imageSamplerArea').classList.remove('hidden');
+
+            canvas.onmousemove = onCanvasMouseMove;
+            canvas.onmouseleave = onCanvasMouseLeave;
+            canvas.onclick = onCanvasClick;
+        }}
+
+        function clearLoadedImage() {{
+            loadedImageElement = null;
+            document.getElementById('imageDropzone').classList.remove('hidden');
+            document.getElementById('imageSamplerArea').classList.add('hidden');
+            document.getElementById('magnifierLoupe').classList.add('hidden');
+            const input = document.getElementById('imageFileInput');
+            if (input) input.value = '';
+        }}
+
+        function onCanvasMouseMove(e) {{
+            const canvas = document.getElementById('samplerCanvas');
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = Math.floor((e.clientX - rect.left) * scaleX);
+            const y = Math.floor((e.clientY - rect.top) * scaleY);
+
+            if (x < 0 || y < 0 || x >= canvas.width || y >= canvas.height) {{
+                onCanvasMouseLeave();
+                return;
+            }}
+
+            const ctx = canvas.getContext('2d', {{ willReadFrequently: true }});
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const r = pixel[0], g = pixel[1], b = pixel[2];
+            const hex = rgbToHex(r, g, b);
+            const cmyk = rgbToCmyk(r, g, b);
+
+            document.getElementById('hoverColorBox').style.backgroundColor = hex;
+            document.getElementById('hoverHexText').textContent = hex;
+            document.getElementById('hoverCmykText').textContent = `C:${{cmyk.c}}% M:${{cmyk.m}}% Y:${{cmyk.y}}% K:${{cmyk.k}}%`;
+
+            const loupe = document.getElementById('magnifierLoupe');
+            loupe.classList.remove('hidden');
+            loupe.style.left = `${{e.clientX - rect.left}}px`;
+            loupe.style.top = `${{e.clientY - rect.top}}px`;
+
+            const loupeCanvas = document.getElementById('loupeCanvas');
+            const lctx = loupeCanvas.getContext('2d');
+            lctx.imageSmoothingEnabled = false;
+            lctx.clearRect(0, 0, 80, 80);
+            const sampleSize = 16;
+            const half = Math.floor(sampleSize / 2);
+            lctx.drawImage(canvas, x - half, y - half, sampleSize, sampleSize, 0, 0, 80, 80);
+        }}
+
+        function onCanvasMouseLeave() {{
+            const loupe = document.getElementById('magnifierLoupe');
+            if (loupe) loupe.classList.add('hidden');
+        }}
+
+        function onCanvasClick(e) {{
+            const canvas = document.getElementById('samplerCanvas');
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = Math.floor((e.clientX - rect.left) * scaleX);
+            const y = Math.floor((e.clientY - rect.top) * scaleY);
+
+            const ctx = canvas.getContext('2d', {{ willReadFrequently: true }});
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+
+            onHexInputChange(hex);
+            showPickedToast(`✓ Campionato dall'immagine: ${{hex}} (C:${{baseC}} M:${{baseM}} Y:${{baseY}} K:${{baseK}})`);
+        }}
+
+        function initImageSamplerListeners() {{
+            const dropzone = document.getElementById('imageDropzone');
+            if (dropzone) {{
+                ['dragenter', 'dragover'].forEach(name => {{
+                    dropzone.addEventListener(name, (e) => {{
+                        e.preventDefault();
+                        dropzone.classList.add('border-rose-600', 'bg-rose-100/50');
+                    }});
+                }});
+                ['dragleave', 'drop'].forEach(name => {{
+                    dropzone.addEventListener(name, (e) => {{
+                        e.preventDefault();
+                        dropzone.classList.remove('border-rose-600', 'bg-rose-100/50');
+                    }});
+                }});
+                dropzone.addEventListener('drop', (e) => {{
+                    e.preventDefault();
+                    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {{
+                        loadImageFile(e.dataTransfer.files[0]);
+                    }}
+                }});
+            }}
+
+            window.addEventListener('paste', function(e) {{
+                if (e.clipboardData && e.clipboardData.items) {{
+                    for (let i = 0; i < e.clipboardData.items.length; i++) {{
+                        const item = e.clipboardData.items[i];
+                        if (item.type.indexOf('image') !== -1) {{
+                            const file = item.getAsFile();
+                            switchInputMode('dropper');
+                            loadImageFile(file);
+                            break;
+                        }}
+                    }}
+                }}
+            }});
+        }}
+
         function switchFeedType(type) {{
             feedType = type;
             const btnSheet = document.getElementById('btnFeedSheet');
@@ -959,26 +1235,25 @@ html_code = f"""<!DOCTYPE html>
 
             const step = currentStep;
 
-            // Dimensions and layout adaptation:
-            // If roll mode:
-            // 1 riga se altezza <= 6cm, 2 righe se 8cm, 3 righe se 12cm.
-            // Colonne: da 7 a 11 a seconda della larghezza bobina!
-            let cols = 7;
+            let cols = 5;
             let rows = 5;
 
             if (feedType === 'roll') {{
                 const stripH = parseFloat(document.getElementById('stripHeightSelect').value) || 8;
-                rows = stripH <= 5 ? 1 : (stripH <= 8 ? 2 : 3);
+                // If strip height is 5cm or 8cm, 1 single row of GIANT test rectangles!
+                // If 12cm, 2 rows of giant rectangles!
+                rows = stripH <= 8 ? 1 : 2;
                 const wCm = currentWidthMm / 10;
                 cols = wCm >= 45 ? 11 : (wCm >= 30 ? 9 : 7);
             }} else {{
                 // Sheet Mode
                 if (currentWidthMm > currentHeightMm) {{
                     // Landscape
-                    cols = 9;
+                    cols = 7;
                     rows = 5;
                 }} else {{
-                    cols = 7;
+                    // Portrait (A4, SRA3 33x48) -> 5 cols x 5 rows for MAXIMUM tile size
+                    cols = 5;
                     rows = 5;
                 }}
             }}
@@ -991,7 +1266,7 @@ html_code = f"""<!DOCTYPE html>
             currentGridCells = [];
 
             const table = document.createElement('table');
-            table.className = "w-full border-collapse text-center text-[10px] select-none";
+            table.className = "w-full border-collapse text-center select-none print-full-height";
 
             // Table Header: Column Indices
             const thead = document.createElement('thead');
@@ -999,15 +1274,15 @@ html_code = f"""<!DOCTYPE html>
             trHead.className = "border-b border-slate-200";
             
             const thCorner = document.createElement('th');
-            thCorner.className = "p-1 text-slate-400 font-mono text-[9px]";
+            thCorner.className = "p-1 text-slate-400 font-mono text-[9px] w-8";
             thCorner.textContent = "R/C";
             trHead.appendChild(thCorner);
 
             for (let c = 0; c < cols; c++) {{
                 const th = document.createElement('th');
-                th.className = "p-1 text-slate-600 font-mono text-[10px] font-bold";
+                th.className = "p-1 sm:p-1.5 text-slate-700 font-mono text-[11px] sm:text-xs font-black";
                 const deltaCol = (c - centerCol) * step;
-                th.innerHTML = `${{c + 1}}<br><span class=\"text-[8px] font-normal text-slate-400\">${{deltaCol >= 0 ? '+' : ''}}${{deltaCol}}%</span>`;
+                th.innerHTML = `${{c + 1}}<br><span class=\"text-[9px] sm:text-[10px] font-bold text-slate-400\">${{deltaCol >= 0 ? '+' : ''}}${{deltaCol}}%</span>`;
                 trHead.appendChild(th);
             }}
             thead.appendChild(trHead);
@@ -1021,13 +1296,13 @@ html_code = f"""<!DOCTYPE html>
 
                 const tdRowLabel = document.createElement('td');
                 const deltaRow = (r - centerRow) * step;
-                tdRowLabel.className = "p-1 font-mono font-bold text-slate-600 text-xs";
-                tdRowLabel.innerHTML = `${{rowLetters[r]}}<br><span class=\"text-[8px] font-normal text-slate-400\">${{deltaRow >= 0 ? '+' : ''}}${{deltaRow}}%</span>`;
+                tdRowLabel.className = "p-1 sm:p-1.5 font-mono font-black text-slate-700 text-xs sm:text-sm w-8";
+                tdRowLabel.innerHTML = `${{rowLetters[r]}}<br><span class=\"text-[9px] sm:text-[10px] font-bold text-slate-400\">${{deltaRow >= 0 ? '+' : ''}}${{deltaRow}}%</span>`;
                 tr.appendChild(tdRowLabel);
 
                 for (let c = 0; c < cols; c++) {{
                     const td = document.createElement('td');
-                    td.className = "p-1";
+                    td.className = "p-1 sm:p-1.5";
 
                     const dCol = (c - centerCol) * step;
                     const dRow = (r - centerRow) * step;
@@ -1068,11 +1343,17 @@ html_code = f"""<!DOCTYPE html>
                     }};
                     currentGridCells.push(cellData);
 
-                    // Swatch Box Element
+                    // Swatch Box Element:
+                    // If roll mode: GIANT vertical rectangle (h-36 sm:h-48)
+                    // If sheet mode: LARGE swatch (h-24 sm:h-28 md:h-32)
+                    const heightClass = (feedType === 'roll') 
+                        ? (rows === 1 ? 'h-36 sm:h-48' : 'h-28 sm:h-36')
+                        : 'h-24 sm:h-28 md:h-32';
+
                     const swatchBtn = document.createElement('button');
                     swatchBtn.type = "button";
-                    swatchBtn.className = `color-swatch-box matrix-cell w-full h-14 sm:h-16 rounded-xl flex flex-col justify-between p-1 text-left relative cursor-pointer border ${{
-                        isCenter ? 'border-2 border-amber-400 ring-2 ring-amber-400/50 shadow-md' : 'border-black/10 shadow-2xs'
+                    swatchBtn.className = `color-swatch-box matrix-cell w-full ${{heightClass}} rounded-2xl flex flex-col justify-between p-2 text-left relative cursor-pointer border ${{
+                        isCenter ? 'border-3 border-amber-400 ring-4 ring-amber-400/40 shadow-lg' : 'border-black/15 shadow-xs'
                     }}`;
                     swatchBtn.style.backgroundColor = hex;
 
@@ -1081,11 +1362,13 @@ html_code = f"""<!DOCTYPE html>
 
                     swatchBtn.innerHTML = `
                         <div class=\"flex items-center justify-between leading-none\" style=\"color: ${{textColor}}\">
-                            <span class=\"font-mono font-black text-[9px] sm:text-[10px]\">${{coordName}}</span>
-                            ${{isCenter ? '<span class=\"text-[9px]\">★</span>' : ''}}
+                            <span class=\"font-mono font-black text-xs sm:text-sm tracking-wide\">${{coordName}}</span>
+                            ${{isCenter ? '<span class=\"text-xs sm:text-sm font-black px-1.5 py-0.5 rounded bg-amber-400 text-slate-900 shadow-2xs\">★ BASE</span>' : ''}}
                         </div>
-                        <div class=\"font-mono font-bold text-[7.5px] sm:text-[8.5px] leading-tight\" style=\"color: ${{textColor}}\">
-                            ${{tileC}}/${{tileM}}/${{tileY}}/${{tileK}}
+                        <div class=\"font-mono font-extrabold text-[10px] sm:text-xs leading-tight tracking-tight mt-auto\" style=\"color: ${{textColor}}\">
+                            <div class=\"bg-black/30 backdrop-blur-xs px-1.5 py-1 rounded-lg inline-block w-full\">
+                                C:${{tileC}} M:${{tileM}} Y:${{tileY}} K:${{tileK}}
+                            </div>
                         </div>
                     `;
 
@@ -1232,7 +1515,8 @@ html_code = f"""<!DOCTYPE html>
 
             const gap = 1.5; // mm between cells
             const cellW = (gridW - (gap * (totalCols - 1))) / totalCols;
-            const cellH = Math.min(22, (gridH - (gap * (totalRows - 1))) / totalRows);
+            // FULL HEIGHT UTILIZATION - fills entire page / strip without arbitrary cap
+            const cellH = (gridH - (gap * (totalRows - 1))) / totalRows;
 
             // Draw Swatches
             currentGridCells.forEach(cell => {{
@@ -1241,34 +1525,38 @@ html_code = f"""<!DOCTYPE html>
 
                 // Fill Color
                 doc.setFillColor(cell.rgb.r, cell.rgb.g, cell.rgb.b);
-                doc.roundedRect(x, y, cellW, cellH, 1, 1, 'F');
+                doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'F');
 
                 // Border
                 if (cell.isCenter) {{
                     doc.setDrawColor(245, 158, 11); // Amber-500
-                    doc.setLineWidth(0.6);
-                    doc.roundedRect(x, y, cellW, cellH, 1, 1, 'D');
+                    doc.setLineWidth(0.8);
+                    doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'D');
                 }} else {{
-                    doc.setDrawColor(0, 0, 0, 0.15);
-                    doc.setLineWidth(0.1);
-                    doc.roundedRect(x, y, cellW, cellH, 1, 1, 'D');
+                    doc.setDrawColor(0, 0, 0, 0.2);
+                    doc.setLineWidth(0.15);
+                    doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'D');
                 }}
 
                 // Text Contrast
                 const isDark = (cell.rgb.r * 0.299 + cell.rgb.g * 0.587 + cell.rgb.b * 0.114) < 140;
                 doc.setTextColor(isDark ? 255 : 15, isDark ? 255 : 23, isDark ? 255 : 42);
 
-                // Coordinate label (Top Left)
+                // Top coordinate label
                 doc.setFont('helvetica', 'bold');
-                doc.setFontSize(cellH > 15 ? 7 : 6);
-                doc.text(cell.coord + (cell.isCenter ? ' *' : ''), x + 1.2, y + 3.2);
+                doc.setFontSize(cellH > 35 ? 12 : (cellH > 18 ? 9 : 7));
+                doc.text(cell.coord, x + 2.5, y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5)));
 
-                // CMYK Formula (Bottom Left)
+                if (cell.isCenter) {{
+                    doc.setFontSize(cellH > 35 ? 9 : 7);
+                    doc.text('[★ BASE]', x + cellW - 2.5, y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5)), {{ align: 'right' }});
+                }}
+
+                // Bottom Recipe label
                 doc.setFont('helvetica', 'bold');
-                doc.setFontSize(cellH > 15 ? 6.5 : 5.5);
-                doc.text(`${{cell.c}}/${{cell.m}}/${{cell.y}}/${{cell.k}}`, x + 1.2, y + cellH - 1.5);
+                doc.setFontSize(cellH > 35 ? 9.5 : (cellH > 18 ? 7.5 : 5.8));
+                doc.text(`C:${{cell.c}} M:${{cell.m}} Y:${{cell.y}} K:${{cell.k}}`, x + 2.5, y + cellH - (cellH > 35 ? 3.5 : 2));
             }});
-
             // 4. Operator Legend at Bottom
             doc.setFont('helvetica', 'italic');
             doc.setFontSize(6.5);
