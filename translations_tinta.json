@@ -67,7 +67,8 @@
     "dropper_dropzone_title": "Trascina qui l'immagine o Incolla (Ctrl+V)",
     "dropper_dropzone_sub": "Carica la foto del cliente, un logo o un catalogo, poi clicca sul colore esatto da riprodurre",
     "dropper_canvas_hint": "Muovi il mirino per esplorare con la lente di ingrandimento e clicca sul pixel desiderato",
-    "dropper_picked_msg": "Colore campionato con successo"
+    "dropper_picked_msg": "Colore campionato con successo",
+    "roll_rows_label": "Righe di Controllo (Avanzamento Bobina)"
   },
   "en": {
     "title": "TintaPerfetta — CMYK Color Bracketing Matrix & Print Matcher",
@@ -137,7 +138,8 @@
     "dropper_dropzone_title": "Drop image here or Paste (Ctrl+V)",
     "dropper_dropzone_sub": "Upload customer photo, logo or catalog, then click the exact color to match",
     "dropper_canvas_hint": "Hover crosshair with magnifying loupe and click the target pixel",
-    "dropper_picked_msg": "Color sampled successfully"
+    "dropper_picked_msg": "Color sampled successfully",
+    "roll_rows_label": "Number of Test Rows (Roll Feed)"
   },
   "es": {
     "title": "TintaPerfetta — Matriz de Calibración de Color CMYK & Prueba de Impresión",
@@ -207,7 +209,8 @@
     "dropper_dropzone_title": "Arrastra la imagen o Pega (Ctrl+V)",
     "dropper_dropzone_sub": "Carga foto de cliente, logo o catálogo y haz clic en el color a igualar",
     "dropper_canvas_hint": "Mueve la mira con lupa de aumento y haz clic en el píxel deseado",
-    "dropper_picked_msg": "Color capturado con éxito"
+    "dropper_picked_msg": "Color capturado con éxito",
+    "roll_rows_label": "Filas de Control (Avance de Bobina)"
   },
   "fr": {
     "title": "TintaPerfetta — Matrice de Calibration Couleur CMJN & Épreuve Presse",
@@ -277,7 +280,8 @@
     "dropper_dropzone_title": "Glissez l'image ou Collez (Ctrl+V)",
     "dropper_dropzone_sub": "Téléchargez la photo client, un logo ou un catalogue, puis cliquez sur la couleur exacte",
     "dropper_canvas_hint": "Déplacez le réticule avec loupe et cliquez sur le pixel cible",
-    "dropper_picked_msg": "Couleur prélevée avec succès"
+    "dropper_picked_msg": "Couleur prélevée avec succès",
+    "roll_rows_label": "Rangées de Test (Avance Bobine)"
   },
   "de": {
     "title": "TintaPerfetta — CMYK-Farbmatrix & Druckkalibrierung",
@@ -347,7 +351,8 @@
     "dropper_dropzone_title": "Bild hier ablegen oder Einfügen (Strg+V)",
     "dropper_dropzone_sub": "Kundenfoto, Logo oder Katalog hochladen und auf die Zielfarbe klicken",
     "dropper_canvas_hint": "Fadenkreuz mit Lupe bewegen und auf den gewünschten Pixel klicken",
-    "dropper_picked_msg": "Farbe erfolgreich abgetastet"
+    "dropper_picked_msg": "Farbe erfolgreich abgetastet",
+    "roll_rows_label": "Prüfreihen (Rollen-Vorschub)"
   },
   "pt": {
     "title": "TintaPerfetta — Matriz de Calibração de Cor CMYK & Prova de Impressão",
@@ -417,6 +422,7 @@
     "dropper_dropzone_title": "Arraste a imagem ou Cole (Ctrl+V)",
     "dropper_dropzone_sub": "Carregue a foto do cliente, logótipo ou catálogo e clique na cor a reproduzir",
     "dropper_canvas_hint": "Mova a mira com lupa e clique no píxel pretendido",
-    "dropper_picked_msg": "Cor capturada com sucesso"
+    "dropper_picked_msg": "Cor capturada com sucesso",
+    "roll_rows_label": "Linhas de Teste (Avanço de Bobina)"
   }
 }

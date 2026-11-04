@@ -480,13 +480,19 @@ html_code = f"""<!DOCTYPE html>
                             <input type="number" id="rollCustomWidthVal" value="33.0" step="0.5" min="10" max="320" oninput="onCustomDimensionsChange()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-slate-900 focus:outline-none focus:border-rose-700">
                         </div>
 
-                        <!-- Strip Height (Waste along roll length) -->
+                        <!-- Rows of Control Samples along Roll Feed -->
                         <div>
-                            <label id="stripHeightLabel" class="text-xs font-bold text-slate-700 block mb-1">Altezza Striscia (Consumo Lineare)</label>
-                            <select id="stripHeightSelect" onchange="onCustomDimensionsChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
-                                <option value="5">5 cm (Striscia Compatta 1 Riga — Minimo Spreco)</option>
-                                <option value="8" selected>8 cm (Striscia Standard 2 Righe)</option>
-                                <option value="12">12 cm (Striscia Estesa 3 Righe)</option>
+                            <div class="flex items-center justify-between mb-1">
+                                <label id="rollRowsLabel" class="text-xs font-bold text-slate-700">Righe di Controllo (Avanzamento Bobina)</label>
+                                <span id="rollAdvanceEstimate" class="text-[10px] font-mono font-bold text-rose-800 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">36 campioni • 16.5 cm</span>
+                            </div>
+                            <select id="rollRowsSelect" onchange="onRollRowsChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-800 cursor-pointer focus:outline-none focus:border-rose-700">
+                                <option value="1">1 Riga (Campione Singolo in Linea — Avanzamento ~6 cm)</option>
+                                <option value="2">2 Righe (18 Campioni — Avanzamento ~9.5 cm)</option>
+                                <option value="3">3 Righe (27 Campioni — Avanzamento ~13.0 cm)</option>
+                                <option value="4" selected>4 Righe (36 Campioni — Avanzamento ~16.5 cm • Consigliato)</option>
+                                <option value="5">5 Righe (45 Campioni — Avanzamento ~20.0 cm)</option>
+                                <option value="6">6 Righe (54 Campioni — Avanzamento ~23.5 cm • Ampio Spettro)</option>
                             </select>
                         </div>
                     </div>
@@ -1044,6 +1050,10 @@ html_code = f"""<!DOCTYPE html>
             recalculateDimensions();
         }}
 
+        function onRollRowsChange() {{
+            recalculateDimensions();
+        }}
+
         function onRollPresetChange() {{
             const val = document.getElementById('rollWidthSelect').value;
             rollWidthPreset = val;
@@ -1083,9 +1093,17 @@ html_code = f"""<!DOCTYPE html>
                 }} else {{
                     wCm = parseFloat(rollWidthPreset) || 33.0;
                 }}
-                let stripHeightCm = parseFloat(document.getElementById('stripHeightSelect').value) || 8.0;
+                const rollRows = parseInt(document.getElementById('rollRowsSelect')?.value, 10) || 4;
+                const calculatedHeightCm = (rollRows * 3.5) + 2.5;
                 wMm = Math.round(wCm * 10);
-                hMm = Math.round(stripHeightCm * 10);
+                hMm = Math.round(calculatedHeightCm * 10);
+
+                const colsCount = wCm >= 45 ? 11 : (wCm >= 30 ? 9 : 7);
+                const totalSamples = rollRows * colsCount;
+                const estEl = document.getElementById('rollAdvanceEstimate');
+                if (estEl) {{
+                    estEl.textContent = `${{totalSamples}} campioni • ${{calculatedHeightCm.toFixed(1)}} cm`;
+                }}
             }}
 
             currentWidthMm = wMm;
@@ -1239,10 +1257,8 @@ html_code = f"""<!DOCTYPE html>
             let rows = 5;
 
             if (feedType === 'roll') {{
-                const stripH = parseFloat(document.getElementById('stripHeightSelect').value) || 8;
-                // If strip height is 5cm or 8cm, 1 single row of GIANT test rectangles!
-                // If 12cm, 2 rows of giant rectangles!
-                rows = stripH <= 8 ? 1 : 2;
+                const rollRows = parseInt(document.getElementById('rollRowsSelect')?.value, 10) || 4;
+                rows = rollRows;
                 const wCm = currentWidthMm / 10;
                 cols = wCm >= 45 ? 11 : (wCm >= 30 ? 9 : 7);
             }} else {{
@@ -1347,7 +1363,7 @@ html_code = f"""<!DOCTYPE html>
                     // If roll mode: GIANT vertical rectangle (h-36 sm:h-48)
                     // If sheet mode: LARGE swatch (h-24 sm:h-28 md:h-32)
                     const heightClass = (feedType === 'roll') 
-                        ? (rows === 1 ? 'h-36 sm:h-48' : 'h-28 sm:h-36')
+                        ? (rows <= 2 ? 'h-32 sm:h-44' : (rows <= 4 ? 'h-24 sm:h-32' : 'h-20 sm:h-24'))
                         : 'h-24 sm:h-28 md:h-32';
 
                     const swatchBtn = document.createElement('button');
