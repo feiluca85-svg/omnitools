@@ -563,7 +563,8 @@ html_code = f"""<!DOCTYPE html>
             }}
         }}
 
-        entById('searchInput').value.toLowerCase().trim();
+        function filterTools() {{
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const clearBtn = document.getElementById('clearSearchBtn');
             if (query.length > 0) {{
                 clearBtn.classList.remove('hidden');

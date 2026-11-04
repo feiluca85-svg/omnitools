@@ -203,17 +203,8 @@ html_code = f"""<!DOCTYPE html>
                 box-shadow: none !important;
             }}
         }}
-            .no-print {{
-                display: none !important;
-            }}
-            .print-only {{
-                display: block !important;
-            }}
-            .print-container {{
-                max-width: 100% !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }}
+        .print-only {{
+            display: none;
         }}
     </style>
 </head>
@@ -440,9 +431,9 @@ html_code = f"""<!DOCTYPE html>
                         <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                             <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
                             <div>Offset • Digitale • Acuità Visiva</div>
-                            <div class="text-blue-600 font-bold">omnitoolslab.com/dpi
+                            <div class="text-blue-600 font-bold">omnitoolslab.com/dpi</div>
+                        </div>
                     </div>
-                </div>
                 </div>
 
                 <!-- Primary KPI Metrics Grid -->

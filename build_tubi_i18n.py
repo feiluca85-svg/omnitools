@@ -949,7 +949,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('faq4Q').textContent = t.faq_4_q;
             document.getElementById('faq4A').innerHTML = t.faq_4_a;
 
-            document.getElementById('printSheetTitle').textContent = t.print_sheet_title;
+            const pst = document.getElementById('printSheetTitle'); if (pst) pst.textContent = t.print_sheet_title;
             document.getElementById('btnPrint').textContent = t.print_btn;
             document.getElementById('legalDisclaimer').innerHTML = t.legal_disclaimer;
             document.getElementById('rightsReserved').textContent = t.rights_reserved;

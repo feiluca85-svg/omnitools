@@ -160,65 +160,8 @@ html_code = f"""<!DOCTYPE html>
             #heroContainer, #modeSelectorBar, #controlsColumn,
             button, input[type=range], details, .faq-accordion {{ 
                 display: none !important; 
-            }}
-            body {{ 
-                background: white !important; 
-                color: #0f172a !important; 
-                padding: 0 !important; 
-                margin: 0 !important;
-                font-size: 10pt !important; 
-                line-height: 1.25 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }}
-            main {{ 
-                max-width: 100% !important; 
-                margin: 0 !important; 
-                padding: 0 !important; 
-            }}
-            #resultsColumn {{
-                width: 100% !important;
-                max-width: 100% !important;
-                display: block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }}
-            .print-border {{ 
-                border: 1px solid #cbd5e1 !important; 
-                box-shadow: none !important;
-            }}
-            #stairSvg {{
-                max-height: 160px !important;
-            }}
-        }}
-            body {{ 
-                background: white !important; 
-                color: #0f172a !important; 
-                padding: 0 !important; 
-                margin: 0 !important;
-                font-size: 11pt !important; 
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }}
-            main {{ 
-                max-width: 100% !important; 
-                margin: 0 !important; 
-                padding: 0 !important; 
-            }}
-            #resultsColumn {{
-                width: 100% !important;
-                max-width: 100% !important;
-                display: block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }}
-            .print-border {{ 
-                border: 1px solid #94a3b8 !important; 
-                box-shadow: none !important;
-            }}
-            #stairsSvg {{
-                max-height: 180px !important;
-            }}
+            }}        .print-only {{
+            display: none;
         }}
     </style>
 </head>
@@ -353,9 +296,9 @@ html_code = f"""<!DOCTYPE html>
                         <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                             <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
                             <div>Blondel 2a+p=63 • DIN 18065</div>
-                            <div class="text-blue-600 font-bold">omnitoolslab.com/scale
+                            <div class="text-blue-600 font-bold">omnitoolslab.com/scale</div>
+                        </div>
                     </div>
-                </div>
                 </div>
 
                 <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
