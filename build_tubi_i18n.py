@@ -187,41 +187,74 @@ html_code = f"""<!DOCTYPE html>
 
     <!-- Header Navigation -->
     <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-4xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
-            <a href="/" class="flex items-center gap-2.5 group" title="OmniTools Home">
-                <div class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0 p-1 transition group-hover:scale-105">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+            
+            <!-- OmniTools Master Brand + Tool Indicator -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
-                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="16" cy="11.5" r="2.1" fill="#fde047" />
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
+                        <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                        <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
+                        <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
                     </svg>
-                </div>
+                </a>
                 <div class="flex flex-col min-w-0">
                     <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
+                        <a href="/" class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none hover:text-blue-600 transition">Omni<span class="text-blue-600">Tools</span></a>
                         <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded-full border border-amber-300 shrink-0">OmniBuilding</span>
                         <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
                         <span class="font-bold text-xs text-slate-700 hidden sm:inline-block">ScaricoFacile</span>
+                        <span class="px-1.5 py-0.5 text-[9px] font-bold bg-amber-50 text-amber-800 rounded-md border border-amber-200 shrink-0 hidden sm:inline-block">UNI EN 12056</span>
                     </div>
                     <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
                         <span class="font-bold text-[11px] text-slate-700">ScaricoFacile</span>
                         <span class="px-1.5 py-0.2 text-[8px] font-bold bg-amber-50 text-amber-800 rounded border border-amber-200">UNI EN 12056</span>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <div class="flex items-center gap-2">
-                <a href="/" class="text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl border border-slate-200 transition">
-                    ← Suite
+            <!-- Quick Actions: Switcher + Language + App + Print -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
+                    <span>📐</span>
+                    <span class="hidden md:inline">Rampe</span>
                 </a>
-                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
-                    <option value="it">🇮🇹 IT</option>
-                    <option value="en">🇬🇧 EN</option>
-                    <option value="es">🇪🇸 ES</option>
-                    <option value="fr">🇫🇷 FR</option>
-                    <option value="de">🇩🇪 DE</option>
-                    <option value="pt">🇵🇹 PT</option>
-                </select>
+                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale">
+                    <span>🪜</span>
+                    <span class="hidden md:inline">Scale</span>
+                </a>
+                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Dorso Libro">
+                    <span>🎨</span>
+                    <span class="hidden md:inline">Dorso</span>
+                </a>
+                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Risoluzione & DPI">
+                    <span>🖼️</span>
+                    <span class="hidden md:inline">DPI</span>
+                </a>
+
+                <!-- Language Selector -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
+
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 active:scale-95 rounded-xl border border-amber-200 transition" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline">App</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                </button>
             </div>
         </div>
     </header>
@@ -233,13 +266,14 @@ html_code = f"""<!DOCTYPE html>
         <div class="print-only mb-3 pb-2 border-b-2 border-slate-900">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-sm" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
-                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
-                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
-                    </svg>
-                </div>
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-sm" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
+                            <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
+                            <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
+                        </svg>
+                    </div>
                     <div>
                         <div class="flex items-center gap-1.5 leading-none">
                             <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-blue-600">Tools</span> Lab</span>
@@ -639,29 +673,96 @@ html_code = f"""<!DOCTYPE html>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center mt-12 no-print">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <div class="flex items-center justify-center gap-4 text-xs font-bold text-slate-600 flex-wrap">
-                <a href="/" class="hover:text-blue-600 transition">Suite Hub</a>
-                <span>•</span>
-                <a href="/rampe" class="hover:text-blue-600 transition">RampaFacile</a>
-                <span>•</span>
-                <a href="/scale" class="hover:text-blue-600 transition">ScalaFacile</a>
-                <span>•</span>
-                <a href="/tubi" class="text-blue-600">ScaricoFacile</a>
-                <span>•</span>
-                <a href="/dorso" class="hover:text-blue-600 transition">DorsoFacile</a>
-                <span>•</span>
-                <a href="/dpi" class="hover:text-blue-600 transition">RisoluzioneFacile</a>
-                <span>•</span>
-                <a href="/partnership" class="text-indigo-600 hover:underline">Diventa Partner / Sponsor</a>
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            
+            <!-- Share & Viral Action Strip -->
+            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">📢</span>
+                    <div>
+                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
+                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o sui canali di settore</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <span>💬</span> <span>WhatsApp</span>
+                    </button>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0a66c2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <span>💼</span> <span>LinkedIn</span>
+                    </button>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
+                        <span>🔗</span> <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
+                        <span>📤</span> <span>Condividi</span>
+                    </button>
+                </div>
             </div>
-            <p id="legalDisclaimer" class="text-xs text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                <strong>Note Tecniche:</strong> Il presente calcolatore fornisce valori indicativi basati sulle norme UNI EN 12056 e UNI EN 752. La verifica esecutiva delle reti fognarie complesse richiede l'asseverazione del progettista idraulico o termotecnico abilitato.
-            </p>
-            <p id="rightsReserved" class="text-xs font-bold text-slate-600">
-                © 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.
-            </p>
+
+            <!-- Suggestion Prompt Strip (Zero Distraction / High Utility) -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore o un miglioramento?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- OmniTools Network Ecosystem Bar -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                            ⌘
+                        </div>
+                        <span class="font-black text-sm tracking-tight">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Cantiere ad Alta Precisione</span>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 pt-3 text-[11px]">
+<a href="/rampe" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-blue-500/30 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">📐 Rampe & Pendenze</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/scale" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-indigo-500/30 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">🪜 Scale & Blondel</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-purple-500/30 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">🎨 Dorso Libro</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
+                    </a>
+                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-emerald-500/30 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white">🖼️ Risoluzione & DPI</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    </a>
+                    <div class="p-2 rounded-xl bg-slate-800/80 border border-amber-500/40 flex items-center justify-between">
+                        <span class="font-bold text-white">🚰 Scarico & Tubi</span>
+                        <span class="text-[9px] px-1.5 py-0.2 bg-amber-500/20 text-amber-400 font-bold rounded">Attivo</span>
+                    </div>
+                </div>
+                <div class="pt-2.5 text-center">
+                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
+                    <strong>Note Tecniche e Limitazione di Responsabilità:</strong> Il presente calcolatore fornisce valori indicativi basati sulle norme UNI EN 12056 e UNI EN 752 per reti di scarico a gravità e autopulizia idraulica. Non sostituisce il progetto esecutivo o la perizia asseverata di un termotecnico o ingegnere idraulico abilitato ai sensi di legge.
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -950,11 +1051,11 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('faq4A').innerHTML = t.faq_4_a;
 
             const pst = document.getElementById('printSheetTitle'); if (pst) pst.textContent = t.print_sheet_title;
-            document.getElementById('btnPrint').textContent = t.print_btn;
-            document.getElementById('legalDisclaimer').innerHTML = t.legal_disclaimer;
-            document.getElementById('rightsReserved').textContent = t.rights_reserved;
-            document.getElementById('shareTitle').textContent = t.share_title;
-            document.getElementById('shareSub').textContent = t.share_sub;
+            const bp = document.getElementById('btnPrint'); if (bp) bp.textContent = t.print_btn;
+            const ld = document.getElementById('legalDisclaimer') || document.getElementById('legalDisclaimerText'); if (ld) ld.innerHTML = t.legal_disclaimer;
+            const rr = document.getElementById('rightsReserved') || document.getElementById('rightsText'); if (rr) rr.textContent = t.rights_reserved;
+            const st = document.getElementById('shareTitle') || document.getElementById('shareTitleText'); if (st) st.textContent = t.share_title;
+            const ss = document.getElementById('shareSub') || document.getElementById('shareSubText'); if (ss) ss.textContent = t.share_sub;
 
             document.getElementById('langSelect').value = lang;
             localStorage.setItem('omnitools_lang', lang);
@@ -979,6 +1080,29 @@ html_code = f"""<!DOCTYPE html>
             const lang = detectInitialLanguage();
             changeLanguage(lang);
         }});
+    
+        function shareWhatsApp() {{
+            window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('Calcolo Pendenza Tubazioni e Scarichi Fognari UNI EN 12056: ' + window.location.href), '_blank');
+        }}
+        function shareLinkedIn() {{
+            window.open('https://api.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank');
+        }}
+        function copyCurrentUrl() {{
+            navigator.clipboard.writeText(window.location.href).then(() => {{
+                const btn = document.getElementById('shareCopyText');
+                if (btn) {{ const orig = btn.textContent; btn.textContent = 'Copiato! ✓'; setTimeout(() => btn.textContent = orig, 2000); }}
+            }});
+        }}
+        function nativeShare() {{
+            if (navigator.share) {{
+                navigator.share({{ title: document.title, url: window.location.href }});
+            }} else {{
+                copyCurrentUrl();
+            }}
+        }}
+        function openSuggestModal() {{
+            window.location.href = 'mailto:info@omnitoolslab.com?subject=' + encodeURIComponent('Suggerimento Calcolatore ScaricoFacile');
+        }}
     </script>
 </body>
 </html>
