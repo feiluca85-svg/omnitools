@@ -182,33 +182,54 @@ html_code = f"""<!DOCTYPE html>
                     </button>
                 </div>
 
-                <!-- DIVISION SEGMENTED PICKER: Child-Proof, Colorful & Obvious -->
-                <div class="grid grid-cols-3 gap-1.5 sm:gap-2 pt-3.5">
+                <!-- DIVISION SEGMENTED PICKER: Child-Proof, Authentic Division Logos & Brand Colors -->
+                <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 pt-3.5">
                     
-                    <!-- Tab: Tutti -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/20 font-bold text-xs sm:text-sm transition-all duration-150">
-                        <span class="text-base sm:text-lg">🌐</span>
+                    <!-- Tab: Tutti (OmniTools Blue) -->
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/20 font-bold text-xs sm:text-sm transition-all duration-150">
+                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-white/30">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                                <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                            </svg>
+                        </div>
                         <div class="text-left leading-tight">
                             <span id="filterAllText" class="block">Tutti i Tool</span>
-                            <span class="text-[10px] text-blue-200 font-normal hidden sm:block">5 Strumenti</span>
+                            <span class="subtext text-[10px] text-blue-100 font-normal hidden sm:block">5 Strumenti</span>
                         </div>
                     </button>
 
                     <!-- Tab: OmniBuilding (Ocra) -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-amber-50/50 text-slate-700 hover:text-amber-800 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150">
-                        <span class="text-base sm:text-lg">🏗️</span>
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-amber-50/50 text-slate-700 hover:text-amber-800 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150">
+                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-amber-300/40">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
+                                <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
+                                <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
+                            </svg>
+                        </div>
                         <div class="text-left leading-tight">
                             <span class="block">OmniBuilding</span>
-                            <span class="text-[10px] text-amber-700/80 font-normal hidden sm:block">3 Cantiere & Impianti</span>
+                            <span class="subtext text-[10px] text-amber-700/80 font-normal hidden sm:block">3 Cantiere & Impianti</span>
                         </div>
                     </button>
 
                     <!-- Tab: OmniGraph (Bordeaux) -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-rose-50/50 text-slate-700 hover:text-rose-900 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150">
-                        <span class="text-base sm:text-lg">🎨</span>
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-rose-50/50 text-slate-700 hover:text-rose-900 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150">
+                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-rose-300/40">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
+                                <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
+                                <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
+                            </svg>
+                        </div>
                         <div class="text-left leading-tight">
                             <span class="block">OmniGraph</span>
-                            <span class="text-[10px] text-rose-800/80 font-normal hidden sm:block">2 Grafica & Stampa</span>
+                            <span class="subtext text-[10px] text-rose-800/80 font-normal hidden sm:block">2 Grafica & Stampa</span>
                         </div>
                     </button>
 
@@ -716,19 +737,29 @@ html_code = f"""<!DOCTYPE html>
             const btnGraph = document.getElementById('filterGraphBtn');
 
             // Reset base classes
-            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150";
+            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150";
 
             btnAll.className = filter === 'all' 
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/20 font-bold text-xs sm:text-sm transition-all duration-150"
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/20 font-bold text-xs sm:text-sm transition-all duration-150"
                 : baseInactive;
 
             btnBuilding.className = filter === 'building'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/25 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-150"
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/25 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-150"
                 : baseInactive;
 
             btnGraph.className = filter === 'graph'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2 sm:py-2.5 px-2 rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/25 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-150"
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/25 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-150"
                 : baseInactive;
+
+            // Adjust subtext colors
+            const subAll = btnAll.querySelector('.subtext');
+            if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-normal hidden sm:block" : "subtext text-[10px] text-slate-500 font-normal hidden sm:block";
+
+            const subB = btnBuilding.querySelector('.subtext');
+            if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-normal hidden sm:block" : "subtext text-[10px] text-amber-700/80 font-normal hidden sm:block";
+
+            const subG = btnGraph.querySelector('.subtext');
+            if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-normal hidden sm:block" : "subtext text-[10px] text-rose-800/80 font-normal hidden sm:block";
 
             filterTools();
         }}
