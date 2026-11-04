@@ -107,7 +107,7 @@ html_code = f"""<!DOCTYPE html>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest-building.json">
     <meta name="theme-color" content="#2563eb">
 
     <!-- Fonts -->
@@ -188,20 +188,25 @@ html_code = f"""<!DOCTYPE html>
     <!-- Header Navigation -->
     <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="max-w-4xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
-            <a href="/" class="flex items-center gap-2.5 group">
-                <div class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
+            <a href="/" class="flex items-center gap-2.5 group" title="OmniTools Home">
+                <div class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0 p-1 transition group-hover:scale-105">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                         <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#fde047" />
                     </svg>
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col min-w-0">
                     <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-jakarta font-black text-base sm:text-lg text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
-                        <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Lab</span>
+                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
+                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded-full border border-amber-300 shrink-0">OmniBuilding</span>
+                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
+                        <span class="font-bold text-xs text-slate-700 hidden sm:inline-block">ScaricoFacile</span>
                     </div>
-                    <span class="text-[10px] text-slate-500 font-medium hidden sm:inline leading-tight mt-0.5">ScaricoFacile — UNI EN 12056</span>
+                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
+                        <span class="font-bold text-[11px] text-slate-700">ScaricoFacile</span>
+                        <span class="px-1.5 py-0.2 text-[8px] font-bold bg-amber-50 text-amber-800 rounded border border-amber-200">UNI EN 12056</span>
+                    </div>
                 </div>
             </a>
 

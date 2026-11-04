@@ -96,7 +96,7 @@ html_code = f"""<!DOCTYPE html>
       }}
     ]
     </script>
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest-graph.json">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
     <link rel="alternate icon" type="image/png" href="favicon.png?v=6">
     <link rel="shortcut icon" href="favicon.svg?v=6">
@@ -231,11 +231,11 @@ html_code = f"""<!DOCTYPE html>
             
             <!-- OmniTools Master Brand + Module Indicator -->
             <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-md shadow-rose-900/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                         <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#fda4af" />
                     </svg>
                 </a>
 
@@ -336,7 +336,7 @@ html_code = f"""<!DOCTYPE html>
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                         <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#fda4af" />
                     </svg>
                 </div>
                             <div>

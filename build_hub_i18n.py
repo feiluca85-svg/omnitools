@@ -182,10 +182,11 @@ html_code = f"""<!DOCTYPE html>
             <div id="sectionBuilding" class="space-y-3">
                 <div class="flex items-center justify-between pb-1.5 border-b border-slate-200">
                     <div class="flex items-center gap-2">
-                        <span class="text-base">🏗️</span>
-                        <h2 id="divBuildingTitle" class="text-sm sm:text-base font-black text-slate-900 tracking-tight font-jakarta">OmniBuilding</h2>
-                        <span class="h-3 w-px bg-slate-200"></span>
-                        <p id="divBuildingDesc" class="text-xs text-slate-600">Edilizia, cantiere e accessibilità</p>
+                        <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white text-xs shadow-xs">🏗️</div>
+                        <h2 id="divBuildingTitle" class="text-sm sm:text-base font-black text-amber-900 tracking-tight font-jakarta">Omni<span class="text-amber-600">Building</span></h2>
+                        <span class="text-[9px] font-extrabold uppercase bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-300">Edilizia & Cantiere</span>
+                        <span class="h-3 w-px bg-slate-200 hidden sm:inline-block"></span>
+                        <p id="divBuildingDesc" class="text-xs text-slate-600 hidden sm:inline-block">Edilizia, cantiere e accessibilità</p>
                     </div>
                 </div>
 
@@ -282,10 +283,11 @@ html_code = f"""<!DOCTYPE html>
             <div id="sectionGraph" class="space-y-3">
                 <div class="flex items-center justify-between pb-1.5 border-b border-slate-200">
                     <div class="flex items-center gap-2">
-                        <span class="text-base">🎨</span>
-                        <h2 id="divGraphTitle" class="text-sm sm:text-base font-black text-slate-900 tracking-tight font-jakarta">OmniGraph</h2>
-                        <span class="h-3 w-px bg-slate-200"></span>
-                        <p id="divGraphDesc" class="text-xs text-slate-600">Grafica, prestampa e tipografia</p>
+                        <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white text-xs shadow-xs">🎨</div>
+                        <h2 id="divGraphTitle" class="text-sm sm:text-base font-black text-rose-950 tracking-tight font-jakarta">Omni<span class="text-rose-700">Graph</span></h2>
+                        <span class="text-[9px] font-extrabold uppercase bg-rose-100 text-rose-900 px-2 py-0.5 rounded-full border border-rose-300">Grafica & Prestampa</span>
+                        <span class="h-3 w-px bg-slate-200 hidden sm:inline-block"></span>
+                        <p id="divGraphDesc" class="text-xs text-slate-600 hidden sm:inline-block">Grafica, prestampa e tipografia</p>
                     </div>
                 </div>
 
@@ -540,12 +542,11 @@ html_code = f"""<!DOCTYPE html>
             const btnBuilding = document.getElementById('filterBuildingBtn');
             const btnGraph = document.getElementById('filterGraphBtn');
 
-            const activeClass = "px-3 py-1 rounded-xl bg-blue-600 text-white shadow-xs transition font-bold";
             const inactiveClass = "px-3 py-1 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition font-bold";
 
-            btnAll.className = filter === 'all' ? activeClass : inactiveClass;
-            btnBuilding.className = filter === 'building' ? activeClass : inactiveClass;
-            btnGraph.className = filter === 'graph' ? activeClass : inactiveClass;
+            btnAll.className = filter === 'all' ? "px-3 py-1 rounded-xl bg-blue-600 text-white shadow-xs transition font-bold" : inactiveClass;
+            btnBuilding.className = filter === 'building' ? "px-3 py-1 rounded-xl bg-amber-600 text-white shadow-xs transition font-bold border-amber-600" : inactiveClass;
+            btnGraph.className = filter === 'graph' ? "px-3 py-1 rounded-xl bg-rose-900 text-white shadow-xs transition font-bold border-rose-900" : inactiveClass;
 
             const secBuilding = document.getElementById('sectionBuilding');
             const secGraph = document.getElementById('sectionGraph');
@@ -562,8 +563,7 @@ html_code = f"""<!DOCTYPE html>
             }}
         }}
 
-        function filterTools() {{
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        entById('searchInput').value.toLowerCase().trim();
             const clearBtn = document.getElementById('clearSearchBtn');
             if (query.length > 0) {{
                 clearBtn.classList.remove('hidden');

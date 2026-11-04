@@ -1,0 +1,21 @@
+{
+  "name": "OmniBuilding - Suite Calcoli Cantiere & Edilizia",
+  "short_name": "OmniBuilding",
+  "start_url": "./rampe.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d97706",
+  "description": "Divisione Edilizia e Cantieri di OmniTools: pendenza rampe e disabili, dimensionamento scale e pendenze scarichi fognari",
+  "icons": [
+    {
+      "src": "icon-building-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-building-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

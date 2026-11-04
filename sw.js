@@ -1,11 +1,23 @@
-const CACHE_NAME = 'omnitools-v2';
+const CACHE_NAME = 'omnitools-suite-v3';
 const ASSETS = [
   './',
   './index.html',
+  './rampe.html',
+  './scale.html',
+  './tubi.html',
+  './dorso.html',
+  './dpi.html',
   './manifest.json',
+  './manifest-building.json',
+  './manifest-graph.json',
   './icon-192.png',
   './icon-512.png',
-  './favicon.png'
+  './icon-building-192.png',
+  './icon-building-512.png',
+  './icon-graph-192.png',
+  './icon-graph-512.png',
+  './favicon.png',
+  './favicon.svg'
 ];
 
 self.addEventListener('install', (e) => {
@@ -36,7 +48,10 @@ self.addEventListener('fetch', (e) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
           return response;
         })
-        .catch(() => caches.match('./index.html'))
+        .catch(() => {
+          // If navigating, try to match the exact URL, else fallback to index.html
+          return caches.match(e.request).then((res) => res || caches.match('./index.html'));
+        })
     );
     return;
   }
