@@ -47,7 +47,12 @@
     "tool_dorso_hook": "Quanto è spesso il libro?",
     "tool_dorso_cta": "Calcola Spessore Dorso",
     "tool_dpi_hook": "Verrà sgranato in stampa?",
-    "tool_dpi_cta": "Verifica Risoluzione"
+    "tool_dpi_cta": "Verifica Risoluzione",
+    "tool_tinta_title": "TintaPerfetta",
+    "tool_tinta_hook": "Il colore non torna in stampa?",
+    "tool_tinta_desc": "Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Xeikon e stampanti digitali.",
+    "tool_tinta_cta": "Genera Matrice Prova",
+    "tool_tinta_badge": "CMYK & Xeikon"
   },
   "en": {
     "title": "OmniTools Lab — Free Engineering & Graphic Calculators: Ramp Slope, Stairs, Pipe Fall",
@@ -97,7 +102,12 @@
     "tool_dorso_hook": "How thick is the book?",
     "tool_dorso_cta": "Calculate Spine Width",
     "tool_dpi_hook": "Will it print blurry?",
-    "tool_dpi_cta": "Check Print Quality"
+    "tool_dpi_cta": "Check Print Quality",
+    "tool_tinta_title": "TintaPerfetta",
+    "tool_tinta_hook": "Color mismatch on press?",
+    "tool_tinta_desc": "Generate CMYK bracketing test grids to match exact spot colors on Xeikon web presses, digital and offset.",
+    "tool_tinta_cta": "Generate Color Target",
+    "tool_tinta_badge": "CMYK & Xeikon"
   },
   "es": {
     "title": "OmniTools Lab — Suite de Calculadoras Técnicas de Precisión",
@@ -147,7 +157,12 @@
     "tool_dorso_hook": "¿Qué grosor tiene el libro?",
     "tool_dorso_cta": "Calcular Grosor Lomo",
     "tool_dpi_hook": "¿Se verá pixelado al imprimir?",
-    "tool_dpi_cta": "Verificar Resolución"
+    "tool_dpi_cta": "Verificar Resolución",
+    "tool_tinta_title": "TintaPerfetta",
+    "tool_tinta_hook": "¿El color no coincide en máquina?",
+    "tool_tinta_desc": "Genera matrices de calibración CMYK para clavar la tinta a la primera en rotativas Xeikon y prensas digitales.",
+    "tool_tinta_cta": "Generar Matriz de Prueba",
+    "tool_tinta_badge": "CMYK & Xeikon"
   },
   "fr": {
     "title": "OmniTools Lab — Suite de Calculateurs Techniques de Précision",
@@ -197,7 +212,12 @@
     "tool_dorso_hook": "Quelle est l'épaisseur du livre ?",
     "tool_dorso_cta": "Calculer le Dos de Livre",
     "tool_dpi_hook": "L'impression sera-t-elle nette ou floue ?",
-    "tool_dpi_cta": "Vérifier la Résolution"
+    "tool_dpi_cta": "Vérifier la Résolution",
+    "tool_tinta_title": "TintaPerfetta",
+    "tool_tinta_hook": "La couleur dérive à l'impression ?",
+    "tool_tinta_desc": "Générez des mires de bracketing CMJN pour caler la teinte exacte dès le premier tirage sur Xeikon et numérique.",
+    "tool_tinta_cta": "Générer la Mire",
+    "tool_tinta_badge": "CMJN & Xeikon"
   },
   "de": {
     "title": "OmniTools Lab — Suite für Technische Präzisionsrechner",
@@ -247,7 +267,12 @@
     "tool_dorso_hook": "Wie dick ist das Buch?",
     "tool_dorso_cta": "Buchrücken Berechnen",
     "tool_dpi_hook": "Wird der Druck gestochen scharf?",
-    "tool_dpi_cta": "Auflösung Prüfen"
+    "tool_dpi_cta": "Auflösung Prüfen",
+    "tool_tinta_title": "TintaPerfetta",
+    "tool_tinta_hook": "Farbe stimmt im Druck nicht?",
+    "tool_tinta_desc": "Erzeugen Sie CMYK-Kalibriermatrizen für exakte Farbtreue beim ersten Durchlauf auf Xeikon und Digitaldruck.",
+    "tool_tinta_cta": "Prüfbogen Generieren",
+    "tool_tinta_badge": "CMYK & Xeikon"
   },
   "pt": {
     "title": "OmniTools Lab — Suite de Calculadores Técnicos de Precisão",
@@ -297,6 +322,11 @@
     "tool_dorso_hook": "Qual a espessura do livro?",
     "tool_dorso_cta": "Calcular Lombada Livro",
     "tool_dpi_hook": "Vai ficar pixelizado na impressão?",
-    "tool_dpi_cta": "Verificar Resolução"
+    "tool_dpi_cta": "Verificar Resolução",
+    "tool_tinta_title": "TintaPerfetta",
+    "tool_tinta_hook": "A cor sai errada na impressão?",
+    "tool_tinta_desc": "Gere matrizes cromáticas de variação CMYK para acertar no tom logo na primeira passagem em Xeikon e digital.",
+    "tool_tinta_cta": "Gerar Matriz de Prova",
+    "tool_tinta_badge": "CMYK & Xeikon"
   }
 }

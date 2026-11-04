@@ -196,7 +196,7 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                         <div class="text-left leading-tight">
                             <span id="filterAllText" class="block">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-normal hidden sm:block">5 Strumenti</span>
+                            <span class="subtext text-[10px] text-blue-100 font-normal hidden sm:block">6 Strumenti</span>
                         </div>
                     </button>
 
@@ -229,7 +229,7 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                         <div class="text-left leading-tight">
                             <span class="block">OmniGraph</span>
-                            <span class="subtext text-[10px] text-rose-800/80 font-normal hidden sm:block">2 Grafica & Stampa</span>
+                            <span class="subtext text-[10px] text-rose-800/80 font-normal hidden sm:block">3 Grafica & Stampa</span>
                         </div>
                     </button>
 
@@ -431,11 +431,11 @@ html_code = f"""<!DOCTYPE html>
                             <p id="divGraphDesc" class="text-[11px] text-slate-500 mt-0.5">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
                         </div>
                     </div>
-                    <span class="text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200 hidden sm:inline-block">2 Tool Attivi</span>
+                    <span class="text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200 hidden sm:inline-block">3 Tool Attivi</span>
                 </div>
 
-                <!-- 2 Graphic Tools Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- 3 Graphic Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     
                     <!-- TOOL 4: DorsoFacile -->
                     <a href="/dorso" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
@@ -530,6 +530,58 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                     </a>
 
+                    <!-- TOOL 6: TintaPerfetta -->
+                    <a href="/tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa xeikon rotativa bobina offset digitale scarto bracketing fogra">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                    <!-- Blueprint Swatch Matrix SVG -->
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <rect x="4" y="4" width="7" height="7" rx="1.5" fill="#f43f5e" stroke="none" />
+                                        <rect x="12.5" y="4" width="7" height="7" rx="1.5" fill="#fb7185" stroke="none" />
+                                        <rect x="21" y="4" width="7" height="7" rx="1.5" fill="#fda4af" stroke="none" />
+                                        
+                                        <rect x="4" y="12.5" width="7" height="7" rx="1.5" fill="#e11d48" stroke="none" />
+                                        <rect x="12.5" y="12.5" width="7" height="7" rx="1.5" fill="#be123c" stroke="#fde047" stroke-width="1.8" />
+                                        <rect x="21" y="12.5" width="7" height="7" rx="1.5" fill="#9f1239" stroke="none" />
+                                        
+                                        <rect x="4" y="21" width="7" height="7" rx="1.5" fill="#9f1239" stroke="none" />
+                                        <rect x="12.5" y="21" width="7" height="7" rx="1.5" fill="#881337" stroke="none" />
+                                        <rect x="21" y="21" width="7" height="7" rx="1.5" fill="#4c0519" stroke="none" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolTintaBadge">CMYK & Xeikon</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolTintaTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">TintaPerfetta</h3>
+                                <div id="toolTintaHook" class="text-xs font-bold text-rose-800 mt-0.5">Il colore non torna in stampa?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolTintaDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Xeikon e stampanti digitali.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎯 Matrice Scarto ±5%</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎞️ Striscia Bobina Xeikon</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🖨️ Zero Spreco Carta</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolTintaCta">Genera Matrice Prova</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
             </div>
 
@@ -590,6 +642,8 @@ html_code = f"""<!DOCTYPE html>
                 <a href="/dorso" class="hover:text-blue-600 transition">DorsoFacile</a>
                 <span>•</span>
                 <a href="/dpi" class="hover:text-blue-600 transition">RisoluzioneFacile</a>
+                <span>•</span>
+                <a href="/tinta" class="hover:text-rose-900 transition">TintaPerfetta</a>
                 <span>•</span>
                 <a href="/partnership" class="text-indigo-600 hover:underline" id="navPartnerText">🤝 Diventa Partner / Sponsor</a>
             </div>
@@ -717,6 +771,13 @@ html_code = f"""<!DOCTYPE html>
             if (t.tool_dpi_hook) document.getElementById('toolDpiHook').textContent = t.tool_dpi_hook;
             if (t.tool_dpi_desc) document.getElementById('toolDpiDesc').textContent = t.tool_dpi_desc;
             if (t.tool_dpi_cta) document.getElementById('toolDpiCta').textContent = t.tool_dpi_cta;
+
+            // Tool 6: Tinta
+            if (t.tool_tinta_title) document.getElementById('toolTintaTitle').textContent = t.tool_tinta_title;
+            if (t.tool_tinta_hook) document.getElementById('toolTintaHook').textContent = t.tool_tinta_hook;
+            if (t.tool_tinta_desc) document.getElementById('toolTintaDesc').textContent = t.tool_tinta_desc;
+            if (t.tool_tinta_cta) document.getElementById('toolTintaCta').textContent = t.tool_tinta_cta;
+            if (t.tool_tinta_badge) document.getElementById('toolTintaBadge').textContent = t.tool_tinta_badge;
 
             // Share & Footer
             if (t.share_title) document.getElementById('shareTitleText').textContent = t.share_title;
