@@ -939,7 +939,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('installBannerSub').textContent = t.install_banner_sub;
             document.getElementById('installBannerBtn').textContent = t.install_btn;
             document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
-            document.getElementById('faqTitle').firstElementChild.textContent = t.faq_title;
+            const ft = document.getElementById('faqTitle'); if (ft && t.faq_title) ft.innerHTML = `<span>${{t.faq_title}}</span>`;
 
             if (document.getElementById('suggestBannerText')) {{
                 document.getElementById('suggestBannerText').textContent = t.suggest_banner;
