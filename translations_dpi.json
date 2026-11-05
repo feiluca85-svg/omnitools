@@ -53,7 +53,9 @@
     "faq_2_q": "Serve davvero inviare file a 300 DPI per manifesti 6x3 metri o striscioni?",
     "faq_2_a": "No, è un errore classico che genera file enormi e ingestibili da svariati Gigabyte. Più il supporto è grande, maggiore è la distanza da cui viene guardato. Un manifesto 6x3 metri visto da 5-10 metri di distanza appare nitidissimo a soli 25-35 DPI, perché il potere risolutivo dell'angolo visivo umano a quella distanza rende invisibile la griglia di stampa.",
     "faq_3_q": "Come si calcola la dimensione in cm conoscendo pixel e DPI?",
-    "faq_3_a": "La formula esatta è: <code>Centimetri = (Pixel / DPI) × 2.54</code>. Ad esempio, un'immagine di 3000 pixel di larghezza a 300 DPI misurerà: (3000 / 300) × 2.54 = 25.4 cm di larghezza stampata."
+    "faq_3_a": "La formula esatta è: <code>Centimetri = (Pixel / DPI) × 2.54</code>. Ad esempio, un'immagine di 3000 pixel di larghezza a 300 DPI misurerà: (3000 / 300) × 2.54 = 25.4 cm di larghezza stampata.",
+    "faq_4_q": "Come varia il peso del file TIFF/PSD aumentando i DPI?",
+    "faq_4_a": "Raddoppiando i DPI (es. da 150 a 300 DPI) la superficie in pixel quadruplica (2×2 = 4 volte). Un file da 50 MB passerà istantaneamente a 200 MB. Per questo per manifesti e roll-up è opportuno non eccedere i 100-150 DPI."
   },
   "en": {
     "title": "ResolutionFast",
@@ -109,7 +111,9 @@
     "faq_2_q": "Do billboards or large banners really need 300 DPI?",
     "faq_2_a": "No, this common misconception creates massive, unmanageable files of multiple gigabytes. The larger the print, the farther away the viewer stands. A 6x3m billboard viewed from 5–10 meters looks razor-sharp at just 25–35 DPI.",
     "faq_3_q": "How do you calculate print dimensions from pixels and DPI?",
-    "faq_3_a": "The formula is: <code>Size (cm) = (Pixels / DPI) × 2.54</code> (or <code>Size (in) = Pixels / DPI</code>). For instance, a 3000 px image at 300 DPI prints at (3000 / 300) × 2.54 = 25.4 cm wide."
+    "faq_3_a": "The formula is: <code>Size (cm) = (Pixels / DPI) × 2.54</code> (or <code>Size (in) = Pixels / DPI</code>). For instance, a 3000 px image at 300 DPI prints at (3000 / 300) × 2.54 = 25.4 cm wide.",
+    "faq_4_q": "How does file size change when increasing DPI?",
+    "faq_4_a": "Doubling DPI (e.g. from 150 to 300 DPI) quadruples the total pixel count (4x). A 50 MB uncompressed image will jump to 200 MB. Always match DPI to the actual human viewing distance."
   },
   "es": {
     "title": "ResolucionFacil",
@@ -165,7 +169,9 @@
     "faq_2_q": "¿Las vallas de 6x3 metros necesitan 300 DPI?",
     "faq_2_a": "No, a 5-10 metros de distancia de visión, 25-35 DPI son más que suficientes y evitan archivos de gigabytes innecesarios.",
     "faq_3_q": "¿Cómo calcular centímetros a partir de píxeles y DPI?",
-    "faq_3_a": "Fórmula: <code>Centímetros = (Píxeles / DPI) × 2.54</code>."
+    "faq_3_a": "Fórmula: <code>Centímetros = (Píxeles / DPI) × 2.54</code>.",
+    "faq_4_q": "¿Cómo cambia el peso del archivo al aumentar los DPI?",
+    "faq_4_a": "Duplicar los DPI multiplica por 4 el número de píxeles. Una imagen de 50 MB pasará a 200 MB. Para pancartas y vallas, 100-150 DPI son óptimos."
   },
   "fr": {
     "title": "ResolutionFacile",
@@ -221,7 +227,9 @@
     "faq_2_q": "Faut-il 300 DPI pour une bâche grand format ?",
     "faq_2_a": "Non, vue de plusieurs mètres, 25 à 50 DPI suffisent amplement.",
     "faq_3_q": "Comment convertir pixels en cm ?",
-    "faq_3_a": "Formule : <code>cm = (Pixels / DPI) × 2.54</code>."
+    "faq_3_a": "Formule : <code>cm = (Pixels / DPI) × 2.54</code>.",
+    "faq_4_q": "Comment le poids du fichier évolue-t-il avec les DPI ?",
+    "faq_4_a": "Doubler la résolution (ex: de 150 à 300 DPI) quadruple le nombre de pixels et le poids du fichier (4×). Pour les affiches et bâches, 100-150 DPI suffisent largement."
   },
   "de": {
     "title": "AufloesungRechner",
@@ -277,7 +285,9 @@
     "faq_2_q": "Brauchen Plakatwände 300 DPI?",
     "faq_2_a": "Nein, bei mehreren Metern Abstand genügen 25-35 DPI völlig.",
     "faq_3_q": "Wie rechnet man Pixel in cm um?",
-    "faq_3_a": "Formel: <code>cm = (Pixel / DPI) × 2.54</code>."
+    "faq_3_a": "Formel: <code>cm = (Pixel / DPI) × 2.54</code>.",
+    "faq_4_q": "Wie verändert sich die Dateigröße bei höherer DPI-Zahl?",
+    "faq_4_a": "Eine Verdopplung der DPI vervierfacht die Pixelmenge und Dateigröße (4×). Eine 50-MB-Datei wächst auf 200 MB an. Passen Sie die DPI stets an den Betrachtungsabstand an."
   },
   "pt": {
     "title": "ResolucaoFacil",
@@ -333,6 +343,8 @@
     "faq_2_q": "Outdoors e lonas gigantes precisam de 300 DPI?",
     "faq_2_a": "Não, vistos a vários metros, 25 a 35 DPI são mais do que suficientes.",
     "faq_3_q": "Como converter pixels para centímetros?",
-    "faq_3_a": "Fórmula: <code>cm = (Pixels / DPI) × 2.54</code>."
+    "faq_3_a": "Fórmula: <code>cm = (Pixels / DPI) × 2.54</code>.",
+    "faq_4_q": "Como muda o tamanho do ficheiro ao aumentar os DPI?",
+    "faq_4_a": "Dobrar os DPI quadruplica a quantidade de píxeis (4×). Um ficheiro de 50 MB salta para 200 MB. Em lonas e outdoors, 100-150 DPI são mais do que suficientes."
   }
 }

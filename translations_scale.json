@@ -33,7 +33,7 @@
     "install_banner_title": "Installa OmniTools come App",
     "install_banner_sub": "Calcolatori di cantiere pronti anche offline",
     "legal_disclaimer": "<strong>Disclaimer Tecnico:</strong> I calcoli e i riferimenti (Legge di Blondel, D.M. 236/89, D.P.R. 380/2001, IRC, DIN 18065) hanno finalità puramente didattica e di predimensionamento geometrico.",
-    "faq_title": "Domande Frequenti sul Calcolo delle Scale",
+    "faq_title": "Domande Frequenti sul Calcolo Scale e Legge di Blondel",
     "status_opt_title": "Comfort Ottimale & a Norma",
     "status_opt_tag": "Perfetta",
     "status_opt_desc": "La scala rispetta la regola aurea di Blondel (2a + p tra 62 e 64 cm) con alzata agevole.",
@@ -51,7 +51,15 @@
     "suggest_privacy_note": "🔒 Invio 100% anonimo. Non serve registrarsi.",
     "suggest_send": "Invia",
     "suggest_close": "Annulla",
-    "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools."
+    "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.",
+    "faq_1_q": "Cos'è la formula di Blondel per il dimensionamento delle scale?",
+    "faq_1_a": "L'architetto François Blondel stabilì che il rapporto biomeccanico ideale per salire una scala senza affaticare le articolazioni è: <code>2 Alzate + 1 Pedata = 62 ÷ 64 cm</code> (valore ideale <strong>63 cm</strong>). Questa equazione riproduce esattamente il passo naturale di una persona sul piano.",
+    "faq_2_q": "Quali sono le misure ideali di alzata e pedata per una scala comoda?",
+    "faq_2_a": "Nelle abitazioni private l'alzata ideale è di <strong>16.5 ÷ 17.5 cm</strong> (massimo 18 cm), mentre la pedata perfetta è di <strong>28 ÷ 30 cm</strong> (mai inferiore a 25 cm a norma di legge). Alzate superiori a 19 cm rendono la scala faticosa e pericolosa in discesa.",
+    "faq_3_q": "Quanti gradini consecutivi si possono fare senza pianerottolo?",
+    "faq_3_a": "Le norme di sicurezza architettonica (D.M. 236/89) vietano rampe di scale continue con più di <strong>15 gradini consecutivi</strong>. Oltre questa soglia è obbligatorio inserire un pianerottolo di sosta orizzontale lungo almeno quanto la larghezza della rampa.",
+    "faq_4_q": "Qual è l'inclinazione ideale di una scala in gradi?",
+    "faq_4_a": "L'inclinazione ottimale per scale interne è compresa tra <strong>30° e 37°</strong>. Sotto i 26° la pendenza è troppo dolce (diventa rampa a gradoni), mentre sopra i 42° la scala diventa a pioli o marinara, inadatta all'uso residenziale quotidiano."
   },
   "en": {
     "title": "StairMaster",
@@ -87,7 +95,7 @@
     "install_banner_title": "Install OmniTools as App",
     "install_banner_sub": "Jobsite calculators ready offline",
     "legal_disclaimer": "<strong>Technical Disclaimer:</strong> Calculations and building references (Blondel's Law, IRC, IBC, OSHA, DIN 18065) are for geometric pre-dimensioning.",
-    "faq_title": "Frequently Asked Questions about Stairs",
+    "faq_title": "Frequently Asked Questions on Stair Dimensions & Blondel's Rule",
     "status_opt_title": "Optimal Comfort & Code Compliant",
     "status_opt_tag": "Ideal",
     "status_opt_desc": "The staircase perfectly satisfies Blondel's rule with safe and natural walking ergonomics.",
@@ -105,7 +113,15 @@
     "suggest_privacy_note": "🔒 100% anonymous submission.",
     "suggest_send": "Send",
     "suggest_close": "Cancel",
-    "suggest_thanks": "Thank you! Your idea will guide upcoming tools."
+    "suggest_thanks": "Thank you! Your idea will guide upcoming tools.",
+    "faq_1_q": "What is Blondel's Formula for building comfortable stairs?",
+    "faq_1_a": "Architect François Blondel determined that two risers plus one tread should equal natural walking pace: <code>2 Risers + 1 Tread = 62 to 64 cm (24.5 to 25.5 inches)</code>. Ideal target is <strong>63 cm</strong> for effortless ergonomics.",
+    "faq_2_q": "What are the ideal riser and tread dimensions for private homes?",
+    "faq_2_a": "Under international building codes (IRC / IBC / UK Building Regs Part K), ideal riser height is <strong>16.5 to 17.8 cm (6.5 to 7 inches)</strong>, while ideal tread run is <strong>28 to 30 cm (11 inches)</strong>, with 25 cm being legal minimum.",
+    "faq_3_q": "What is the maximum number of steps allowed without a landing?",
+    "faq_3_a": "Building codes restrict continuous stair flights to a maximum of <strong>14 to 16 risers</strong> (or 12 feet / 3.6 meters vertical rise) before requiring a level rest landing equal to stair width.",
+    "faq_4_q": "What is the optimal stair pitch / slope angle in degrees?",
+    "faq_4_a": "The most comfortable internal stair pitch is between <strong>30° and 37°</strong>. Angles above 42° become too steep for safe everyday descent."
   },
   "es": {
     "title": "EscaleraFácil",
@@ -141,7 +157,7 @@
     "install_banner_title": "Instala OmniTools como App",
     "install_banner_sub": "Herramientas de obra listas sin conexión",
     "legal_disclaimer": "<strong>Aviso Legal:</strong> Los cálculos y referencias normativas (CTE DB-SUA, Blondel) son orientativos.",
-    "faq_title": "Preguntas Frecuentes sobre Escaleras",
+    "faq_title": "Preguntas Frecuentes sobre Cálculo de Escaleras y Regla de Blondel",
     "status_opt_title": "Confort Óptimo y Conforme",
     "status_opt_tag": "Excelente",
     "status_opt_desc": "Cumple rigurosamente la Ley de Blondel con pendiente ergonómica.",
@@ -159,7 +175,15 @@
     "suggest_privacy_note": "🔒 100% anónimo.",
     "suggest_send": "Enviar",
     "suggest_close": "Cancelar",
-    "suggest_thanks": "¡Gracias! Tu propuesta guiará las próximas herramientas."
+    "suggest_thanks": "¡Gracias! Tu propuesta guiará las próximas herramientas.",
+    "faq_1_q": "¿Qué es la Ley de Blondel para el diseño de escaleras?",
+    "faq_1_a": "Es la relación ergonómica universal: <code>2 Contrahuellas + 1 Huella = 62 a 64 cm</code> (óptimo 63 cm), que garantiza un paso cómodo y seguro.",
+    "faq_2_q": "¿Cuáles son las medidas ideales de huella y contrahuella?",
+    "faq_2_a": "En viviendas, la contrahuella ideal mide <strong>17 a 17.5 cm</strong> (máximo 18.5 cm) y la huella entre <strong>28 y 30 cm</strong> (mínimo legal 28 cm en España según CTE).",
+    "faq_3_q": "¿Cuántos peldaños seguidos se pueden construir sin rellano?",
+    "faq_3_a": "El CTE español exige un rellano intermedio tras un máximo de <strong>16 peldaños consecutivos</strong> en uso general y 12 en accesibilidad.",
+    "faq_4_q": "¿Cuál es el ángulo de inclinación idóneo?",
+    "faq_4_a": "El ángulo óptimo para escaleras de interior se sitúa entre <strong>30° y 36°</strong>."
   },
   "fr": {
     "title": "EscalierFacile",
@@ -195,7 +219,7 @@
     "install_banner_title": "Installer OmniTools sur Smartphone",
     "install_banner_sub": "Outils de chantier hors-ligne",
     "legal_disclaimer": "<strong>Mentions Légales :</strong> Calculs indicatifs selon les règles de l'art.",
-    "faq_title": "Questions Fréquentes sur les Escaliers",
+    "faq_title": "Foire Aux Questions sur le Calcul d'Escalier et la Formule de Blondel",
     "status_opt_title": "Confort Optimal & Conforme",
     "status_opt_tag": "Parfait",
     "status_opt_desc": "Loi de Blondel respectée avec giron et hauteur confortables.",
@@ -213,7 +237,15 @@
     "suggest_privacy_note": "🔒 100% anonyme.",
     "suggest_send": "Envoyer",
     "suggest_close": "Annuler",
-    "suggest_thanks": "Merci ! Votre retour nous aide."
+    "suggest_thanks": "Merci ! Votre retour nous aide.",
+    "faq_1_q": "Qu'est-ce que la loi de Blondel pour un escalier confortable ?",
+    "faq_1_a": "La formule de Blondel établit que : <code>2 Hauteurs + 1 Giron = 60 à 64 cm</code> (valeur idéale <strong>63 cm</strong>) pour respecter le pas de marche naturel.",
+    "faq_2_q": "Quelles sont les dimensions idéales d'un escalier d'intérieur ?",
+    "faq_2_a": "La hauteur de marche idéale est de <strong>16.5 à 17.5 cm</strong> (max 18 cm) et le giron (profondeur) doit être compris entre <strong>27 et 30 cm</strong>.",
+    "faq_3_q": "Combien de marches consécutives peut-on poser sans palier ?",
+    "faq_3_a": "Les normes de sécurité recommandent de ne pas dépasser <strong>15 à 16 marches d'affilée</strong> avant d'insérer un palier de repos.",
+    "faq_4_q": "Quel est l'angle d'inclinaison recommandé ?",
+    "faq_4_a": "L'inclinaison idéale d'un escalier confortable se situe entre <strong>30° et 35°</strong>."
   },
   "de": {
     "title": "TreppenRechner",
@@ -249,7 +281,7 @@
     "install_banner_title": "OmniTools als App nutzen",
     "install_banner_sub": "Baurechner offline verfügbar",
     "legal_disclaimer": "<strong>Technischer Hinweis:</strong> Berechnungen dienen der Vordimensionierung nach DIN 18065.",
-    "faq_title": "Häufige Fragen zur Treppenberechnung",
+    "faq_title": "Häufig gestellte Fragen zur Treppenberechnung nach DIN 18065",
     "status_opt_title": "Optimaler Komfort & DIN-konform",
     "status_opt_tag": "Ideal",
     "status_opt_desc": "Schrittmaßregel exakt erfüllt mit sicherem und ermüdungsfreiem Aufstieg.",
@@ -267,7 +299,15 @@
     "suggest_privacy_note": "🔒 100% anonym.",
     "suggest_send": "Absenden",
     "suggest_close": "Abbrechen",
-    "suggest_thanks": "Vielen Dank für Ihre Anregung."
+    "suggest_thanks": "Vielen Dank für Ihre Anregung.",
+    "faq_1_q": "Was besagt die Schrittmaßregel nach François Blondel?",
+    "faq_1_a": "Nach <strong>DIN 18065</strong> gilt die Schrittmaßformel: <code>2 Steigungen + 1 Auftritt = 62 bis 64 cm</code> (Idealwert <strong>63 cm</strong>).",
+    "faq_2_q": "Was sind die optimalen Maße für Steigung und Auftritt?",
+    "faq_2_a": "Für Wohnhäuser gilt eine Steigung (s) von <strong>16.5 bis 17.5 cm</strong> und ein Auftritt (a) von <strong>28 bis 30 cm</strong> als ergonomisches Optimum.",
+    "faq_3_q": "Wie viele Stufen sind ohne Zwischenpodest zulässig?",
+    "faq_3_a": "Nach maximal <strong>18 Stufen</strong> ist nach baurechtlichen Vorschriften zwingend ein Treppenabsatz (Podest) vorzusehen.",
+    "faq_4_q": "Welcher Neigungswinkel ist optimal?",
+    "faq_4_a": "Der komfortabelste Neigungswinkel für Haupttreppen liegt zwischen <strong>30° und 37°</strong>."
   },
   "pt": {
     "title": "EscadaFácil",
@@ -303,7 +343,7 @@
     "install_banner_title": "Instalar OmniTools no Telemóvel",
     "install_banner_sub": "Ferramentas de obra offline",
     "legal_disclaimer": "<strong>Aviso Legal:</strong> Cálculos geométricos conforme normas técnicas.",
-    "faq_title": "Perguntas Frequentes sobre Escadas",
+    "faq_title": "Perguntas Frequentes sobre Cálculo de Escadas e Fórmula de Blondel",
     "status_opt_title": "Conforto Ideal e Conforme",
     "status_opt_tag": "Excelente",
     "status_opt_desc": "Atende com perfeição à Fórmula de Blondel com ergonomia natural.",
@@ -321,6 +361,14 @@
     "suggest_privacy_note": "🔒 Envio 100% anônimo.",
     "suggest_send": "Enviar",
     "suggest_close": "Cancelar",
-    "suggest_thanks": "Obrigado! Sua ideia guiará as próximas ferramentas."
+    "suggest_thanks": "Obrigado! Sua ideia guiará as próximas ferramentas.",
+    "faq_1_q": "O que é a Fórmula de Blondel para dimensionamento de escadas?",
+    "faq_1_a": "É a relação ergonômica: <code>2 Espelhos + 1 Piso = 62 a 64 cm</code> (ideal <strong>63 cm</strong>), reproduzindo a passada humana natural.",
+    "faq_2_q": "Quais são as medidas ideais de espelho e piso?",
+    "faq_2_a": "O espelho ideal situa-se entre <strong>16.5 e 17.5 cm</strong> (máximo 18 cm) e o piso entre <strong>28 e 30 cm</strong> (mínimo 25 cm).",
+    "faq_3_q": "Quantos degraus consecutivos podem ser construídos sem patamar?",
+    "faq_3_a": "A legislação técnica restringe lances contínuos a um máximo de <strong>15 a 16 degraus</strong> antes de exigir um patamar de descanso.",
+    "faq_4_q": "Qual é a inclinação ideal de uma escada?",
+    "faq_4_a": "A inclinação mais confortável e segura para escadas internas está entre <strong>30° e 36°</strong>."
   }
 }

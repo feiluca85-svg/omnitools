@@ -596,14 +596,18 @@ html_code = f"""<!DOCTYPE html>
         </section>
 
         <!-- Localized FAQs Section (No Print) -->
-        <section class="no-print bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xs space-y-3 mt-6">
-            <h2 id="faqMainTitle" class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
-                <span>📚</span>
-                <span>Domande Frequenti su DPI, Pixel e Risoluzione di Stampa</span>
-            </h2>
+                <!-- FAQ Accordion Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
             
-            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                <!-- Localized FAQs injected via JS -->
+            <div id="faqContainer" class="space-y-3">
+                <!-- Localized FAQs injected via renderFaqs() -->
             </div>
         </section>
 
@@ -826,23 +830,39 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('copyBtnText').textContent = t.copy_btn;
 
             // Update FAQs
-            const faqContainer = document.getElementById('faqContainer');
-            faqContainer.innerHTML = `
-                <div class="py-2.5">
-                    <h3 class="font-bold text-slate-900 mb-1">${{t.faq_1_q}}</h3>
-                    <p class="text-slate-600 leading-relaxed text-xs">${{t.faq_1_a}}</p>
-                </div>
-                <div class="py-2.5">
-                    <h3 class="font-bold text-slate-900 mb-1">${{t.faq_2_q}}</h3>
-                    <p class="text-slate-600 leading-relaxed text-xs">${{t.faq_2_a}}</p>
-                </div>
-                <div class="py-2.5">
-                    <h3 class="font-bold text-slate-900 mb-1">${{t.faq_3_q}}</h3>
-                    <p class="text-slate-600 leading-relaxed text-xs">${{t.faq_3_a}}</p>
-                </div>
-            `;
+            renderFaqs();
         }}
 
+                function renderFaqs() {{
+            const container = document.getElementById('faqContainer');
+            if (!container) return;
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const titleElem = document.getElementById('faqTitle');
+            if (titleElem && t.faq_title) {{
+                titleElem.innerHTML = `<span>${{t.faq_title}}</span>`;
+            }}
+
+            let html = '';
+            for (let i = 1; i <= 4; i++) {{
+                const q = t[`faq_${{i}}_q`];
+                const a = t[`faq_${{i}}_a`];
+                if (q && a) {{
+                    html += `
+                    <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                        <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                            <span>${{q}}</span>
+                            <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                            ${{a}}
+                        </div>
+                    </details>`;
+                }}
+            }}
+            container.innerHTML = html;
+        }}
         function switchMode(mode) {{
             currentMode = mode;
             const directGroup = document.getElementById('directInputsGroup');

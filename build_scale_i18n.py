@@ -579,15 +579,18 @@ html_code = f"""<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
-            <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2 font-jakarta">
-                <span>Domande Frequenti sul Calcolo delle Scale</span>
-                <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
-            </h2>
+                <!-- FAQ Accordion Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
             
-            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                <!-- Localized FAQs -->
+            <div id="faqContainer" class="space-y-3">
+                <!-- Localized FAQs injected via renderFaqs() -->
             </div>
         </section>
 
@@ -885,48 +888,35 @@ html_code = f"""<!DOCTYPE html>
             renderFaqs();
         }}
 
-        function renderFaqs() {{
+                function renderFaqs() {{
             const container = document.getElementById('faqContainer');
-            const faqs = {{
-                'it': [
-                    ['Cos\\'è la Legge di Blondel per il calcolo delle scale?', 'La Legge di Blondel stabilisce che il doppio dell\\'alzata più la pedata deve essere pari al passo naturale di una persona in piano (2a + p = 62 ÷ 64 cm, con valore ideale a 63 cm). Questo rapporto riduce al minimo l\\'affaticamento delle articolazioni.'],
-                    ['Quali sono le dimensioni ideali di alzata e pedata per una scala interna?', 'Nelle abitazioni private, l\\'alzata ideale è compresa tra 16.5 e 18 cm, mentre la pedata consigliata è tra 27 e 30 cm (minimo 25 cm a norma di legge).'],
-                    ['Quanti gradini consecutivi si possono fare senza pianerottolo?', 'La normativa tecnica raccomanda di non superare mai i 15 gradini consecutivi senza interporre un pianerottolo di sosta (lunghezza minima pari alla larghezza della rampa).'],
-                    ['Qual è l\\'inclinazione ottimale di una scala?', 'L\\'angolo di inclinazione più confortevole per una scala interna è compreso tra 30° e 37°. Sotto i 26° si ricade nella categoria rampe, mentre sopra i 40° la scala diventa ripida.']
-                ],
-                'en': [
-                    ['What is Blondel\\'s Formula for stair building?', 'Architect François Blondel established that 2 Risers + 1 Tread should equal natural walking pace: 2R + T = 62 to 64 cm (24.5 to 25.5 inches). This ensures maximum ergonomics and reduces tripping hazard.'],
-                    ['What are standard riser and tread dimensions under building code?', 'In residential codes (IRC/IBC), the maximum riser height is typically 7.75 inches (19.7 cm) and the minimum tread depth is 10 inches (25.4 cm). The sweet spot is 7 in rise and 11 in run.'],
-                    ['How many steps can you have before a landing?', 'Most international building codes require a level landing platform for every 12 feet (3.65 meters) of vertical rise, or roughly every 15 to 18 steps.']
-                ],
-                'es': [
-                    ['¿Qué establece la Ley de Blondel para escaleras?', 'Determina que dos contrahuellas más una huella deben sumar entre 62 y 64 cm (2c + h = 63 cm ideal) para asegurar una marcha cómoda y sin esfuerzo.'],
-                    ['¿Cuáles son las medidas mínimas según el CTE en España?', 'Según el CTE DB-SUA, en uso general las contrahuellas deben medir entre 13 y 18.5 cm, y las huellas un mínimo de 28 cm.']
-                ],
-                'fr': [
-                    ['Comment appliquer la Loi de Blondel ?', 'La formule est 2 Hauteurs + 1 Giron = 60 à 64 cm (idéal 63 cm). Elle garantit que la cadence de pas reste fluide lors de la montée et de la descente.'],
-                    ['Quelle est la hauteur de marche idéale ?', 'Pour un escalier d\\'habitation principale, la hauteur recommandée est de 17 cm avec un giron de 28 cm.']
-                ],
-                'de': [
-                    ['Was besagt die Schrittmaßregel nach DIN 18065?', 'Nach DIN 18065 gilt die Formel 2s + a = 62 bis 64 cm (Steigung s, Auftritt a). Der optimale Schrittmaß-Mittelwert liegt bei 63 cm.'],
-                    ['Welche Steigung ist im Wohnungsbau üblich?', 'Typisch sind Steigungen von 17 bis 18 cm und Auftritte von 27 bis 29 cm bei einem Neigungswinkel von 30° bis 35°.']
-                ],
-                'pt': [
-                    ['Qual a fórmula de Blondel segundo a NBR 9050?', 'A norma estabelece 2 Espelhos + 1 Piso = 63 a 64 cm (2E + P = 63 cm). O espelho deve situar-se entre 16 e 18 cm e o piso entre 28 e 32 cm.'],
-                    ['Quantos degraus cabem em um pé-direito padrão de 2,70m?', 'Com espelho de 17,5 cm, são necessários exatamente 15 degraus (14 pisos na horizontal).']
-                ]
-            }};
+            if (!container) return;
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const titleElem = document.getElementById('faqTitle');
+            if (titleElem && t.faq_title) {{
+                titleElem.innerHTML = `<span>${{t.faq_title}}</span>`;
+            }}
 
-            const list = faqs[currentLang] || faqs['it'];
-            container.innerHTML = list.map(item => `
-                <details class="py-3 group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex justify-between items-center list-none select-none">
-                        <span>${{item[0]}}</span>
-                        <span class="transition group-open:rotate-180 text-blue-600">▼</span>
-                    </summary>
-                    <p class="mt-1.5 text-slate-600 leading-relaxed pl-1">${{item[1]}}</p>
-                </details>
-            `).join('');
+            let html = '';
+            for (let i = 1; i <= 4; i++) {{
+                const q = t[`faq_${{i}}_q`];
+                const a = t[`faq_${{i}}_a`];
+                if (q && a) {{
+                    html += `
+                    <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                        <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                            <span>${{q}}</span>
+                            <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                            ${{a}}
+                        </div>
+                    </details>`;
+                }}
+            }}
+            container.innerHTML = html;
         }}
 
         function switchMode(mode) {{

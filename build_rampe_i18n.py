@@ -613,15 +613,18 @@ html_code = f"""<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
-            <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2">
-                <span>Domande Frequenti sulle Rampe</span>
-                <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
-            </h2>
+                <!-- FAQ Accordion Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
             
-            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                <!-- Localized FAQs -->
+            <div id="faqContainer" class="space-y-3">
+                <!-- Localized FAQs injected via renderFaqs() -->
             </div>
         </section>
 
@@ -931,47 +934,35 @@ html_code = f"""<!DOCTYPE html>
             renderFaqs();
         }}
 
-        function renderFaqs() {{
+                function renderFaqs() {{
             const container = document.getElementById('faqContainer');
-            const faqs = {{
-                'it': [
-                    ['Qual è la pendenza massima per legge di una rampa per disabili?', 'In Italia, secondo il DM 236/1989, la pendenza consigliata è fino al 5%. Il limite massimo consentito per brevi tratti è dell\\'8%, con obbligo di pianerottolo ogni 10 metri.'],
-                    ['Come calcolo lo spazio a terra conoscendo l\\'altezza del gradino?', 'Usa il Calcolo Spazio di OmniTools: dividi il dislivello per la pendenza desiderata. Esempio per 45 cm all\\'8%: 45 / 0.08 = 562.5 cm (circa 5.6 metri).'],
-                    ['Quando è obbligatorio il pianerottolo di sosta?', 'Il pianerottolo orizzontale (minimo 150 × 150 cm) è obbligatorio per legge ogni 10 metri di rampa e davanti a porte o cambi di direzione.']
-                ],
-                'en': [
-                    ['What is the maximum ADA compliant ramp slope?', 'Under the Americans with Disabilities Act (ADA) and UK Part M regulations, the maximum slope for commercial ramps is 1:12 (8.33%). The recommended slope for easier unassisted access is 1:20 (5%).'],
-                    ['How much horizontal space do I need for a ramp?', 'For an 8.3% slope (1:12), every 1 inch (or cm) of rise requires 12 inches (or cm) of ramp run. A 40 cm rise requires at least 480 cm of horizontal space.'],
-                    ['Are landing platforms required?', 'Yes, level rest landings (at least 150 x 150 cm / 5 x 5 ft) are required at the top and bottom of ramps and every 9 meters (30 feet) of horizontal run.']
-                ],
-                'es': [
-                    ['¿Cuál es la pendiente máxima accesible según el CTE?', 'En España, según el CTE DB-SUA, la pendiente máxima es del 10% para tramos menores de 3m, 8% para tramos de hasta 6m y 6% para el resto. La óptima recomendada es del 5%.'],
-                    ['¿Cuánto espacio en suelo se necesita para una rampa?', 'Divida la altura entre la pendiente: para salvar 40 cm al 8%, se requieren 40 / 0.08 = 500 cm (5 metros) de longitud en el suelo.']
-                ],
-                'fr': [
-                    ['Quelle est la pente maximale pour une rampe PMR ?', 'En France, la norme d\\'accessibilité PMR impose une pente de 5% maximum. Des tolérances existent : jusqu\\'à 8% sur 2 mètres et 10% sur 0,5 mètre.'],
-                    ['Comment calculer la longueur nécessaire pour une rampe ?', 'Pour une pente de 5%, il faut multiplier la hauteur par 20. Pour franchir 20 cm, il faut donc 20 × 20 = 400 cm (4 mètres) de rampe.']
-                ],
-                'de': [
-                    ['Welche Neigung gilt nach DIN 18040 als barrierefrei?', 'Nach DIN 18040 darf die Neigung einer barrierefreien Rampe maximal 6% betragen. Quergefälle sind unzulässig.'],
-                    ['Wann sind Zwischenpodeste vorgeschrieben?', 'Nach jeweils 600 cm Rampenlänge ist ein Zwischenpodest mit einer Mindestlänge von 150 cm erforderlich.']
-                ],
-                'pt': [
-                    ['Qual a inclinação máxima de rampa segundo a NBR 9050?', 'A norma NBR 9050 recomenda inclinações entre 5% e 6,25% para total autonomia. A inclinação máxima admissível para reformas é de 8,33% (1:12).'],
-                    ['Como calcular o espaço necessário?', 'Para desnível de 40 cm a 8,33%, divida 40 por 0,0833 = 480 cm (4,8 metros) de comprimento no piso.']
-                ]
-            }};
+            if (!container) return;
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const titleElem = document.getElementById('faqTitle');
+            if (titleElem && t.faq_title) {{
+                titleElem.innerHTML = `<span>${{t.faq_title}}</span>`;
+            }}
 
-            const list = faqs[currentLang] || faqs['it'];
-            container.innerHTML = list.map(item => `
-                <details class="py-3 group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex justify-between items-center list-none select-none">
-                        <span>${{item[0]}}</span>
-                        <span class="transition group-open:rotate-180 text-blue-600">▼</span>
-                    </summary>
-                    <p class="mt-1.5 text-slate-600 leading-relaxed pl-1">${{item[1]}}</p>
-                </details>
-            `).join('');
+            let html = '';
+            for (let i = 1; i <= 4; i++) {{
+                const q = t[`faq_${{i}}_q`];
+                const a = t[`faq_${{i}}_a`];
+                if (q && a) {{
+                    html += `
+                    <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                        <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                            <span>${{q}}</span>
+                            <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                            ${{a}}
+                        </div>
+                    </details>`;
+                }}
+            }}
+            container.innerHTML = html;
         }}
 
         function switchMode(mode) {{

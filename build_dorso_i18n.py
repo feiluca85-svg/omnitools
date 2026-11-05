@@ -646,15 +646,18 @@ html_code = f"""<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faqSection" class="no-print bg-white rounded-2xl border border-slate-200 p-4 sm:p-7 shadow-xs">
-            <h2 id="faqTitle" class="text-lg sm:text-xl font-bold text-slate-900 mb-3 tracking-tight flex items-center gap-2 font-jakarta">
-                <span>Domande Frequenti sul Calcolo del Dorso e Stampa</span>
-                <span class="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full font-bold">FAQ</span>
-            </h2>
+                <!-- FAQ Accordion Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
             
-            <div id="faqContainer" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                <!-- Localized FAQs -->
+            <div id="faqContainer" class="space-y-3">
+                <!-- Localized FAQs injected via renderFaqs() -->
             </div>
         </section>
 
@@ -953,49 +956,35 @@ html_code = f"""<!DOCTYPE html>
             renderFaqs();
         }}
 
-        function renderFaqs() {{
+                function renderFaqs() {{
             const container = document.getElementById('faqContainer');
-            const faqs = {{
-                'it': [
-                    ['Come si calcola esattamente lo spessore del dorso di un libro?', 'La formula tipografica professionale è: <strong>Dorso (mm) = (Pagine / 2) × (Grammatura / 1000) × Mano della carta + Spessore Colla (0.5 mm)</strong>. Esempio per 240 pagine con carta usomano 80g a mano 1.3: (120 fogli) × 0.080 × 1.3 = 12.48 mm + 0.5 mm = circa 13 mm.'],
-                    ['Cosa si intende per "Mano" (Bulk o Volume) della carta?', 'La "Mano" è il rapporto tra lo spessore in micron e la grammatura in grammi/m². Una carta normale da fotocopie ha mano 1.0 (80g = 80 micron). Le carte da romanzo usomano/avorio hanno mano elevata (1.3 - 1.5) per dare spessore al libro senza appesantirlo, mentre le patinate hanno mano ridotta (0.85 - 0.95).'],
-                    ['Qual è lo spessore minimo di dorso per inserire un titolo leggibile?', 'Il limite tecnico raccomandato è di almeno <strong>6 mm</strong>. Su dorsi tra 3 e 5 mm il testo è possibile ma richiede una centratura millimetrica per evitare che scivoli sul fronte o sul retro a causa delle tolleranze di piega (±1-1.5 mm). Sotto i 3 mm è sconsigliato stampare testo.'],
-                    ['Quanti millimetri di abbondanza (refilo/bleed) devo impostare in InDesign?', 'In tipografia e per piattaforme come Amazon KDP o IngramSpark, il refilo standard obbligatorio è di <strong>3 mm per ogni lato</strong> (0.125 pollici negli USA). Ricorda di estendere tutti gli sfondi colorati fino alla linea rossa del refilo esterno.']
-                ],
-                'en': [
-                    ['How do you calculate spine width for a paperback book?', 'The industry formula is: <strong>Spine (mm) = (Page count / 2) × (Grammage / 1000) × Paper Bulk + Glue (0.5 mm)</strong>. In inches, page count is multiplied by paper thickness per page (caliper). E.g., 240 pages on 50# white paper equals approx 0.51 inches.'],
-                    ['What is paper bulk / caliper?', 'Bulk describes a paper\\'s thickness relative to its basis weight. Bulky antique book paper (1.3-1.5 bulk) makes a novel look thick and light, whereas glossy coated art paper (0.85-0.95 bulk) produces a much thinner spine for the same number of pages.'],
-                    ['What is the minimum spine thickness for spine text?', 'Most commercial book printers and Amazon KDP require a minimum spine width of <strong>0.25 inches (6.35 mm)</strong> or at least 100 pages before allowing text on the spine.'],
-                    ['How much bleed is required for a wrap-around cover?', 'The standard commercial print bleed is <strong>0.125 inches (3.175 mm)</strong> on all four sides. Your background artwork must extend fully into this bleed zone.']
-                ],
-                'es': [
-                    ['¿Cómo se calcula el lomo de un libro para imprenta?', 'Fórmula: <strong>Lomo (mm) = (Páginas / 2) × (Gramaje / 1000) × Mano del papel + Cola (0.5 mm)</strong>. Para 200 páginas en offset 80g mano 1.3: 100 × 0.08 × 1.3 = 10.4 mm + 0.5 mm = 10.9 mm.'],
-                    ['¿Qué es el volumen o mano del papel?', 'Es la relación entre el grosor y el peso. Un papel ahuesado para novelas tiene volumen 1.3-1.5 (más cuerpo y menos peso), mientras que el papel estucado tiene volumen 0.9.']
-                ],
-                'fr': [
-                    ['Quelle est la formule de calcul d\\'un dos carré collé ?', 'Formule : <strong>Dos (mm) = (Pages / 2) × (Grammage / 1000) × Main du papier + Tolérance Colle (0.5 mm)</strong>. Pour 160 pages en 90g bouffant main 1.4 : 80 × 0.09 × 1.4 = 10.08 mm + 0.5 mm = 10.6 mm.'],
-                    ['À partir de quelle épaisseur peut-on imprimer un titre sur le dos ?', 'Il est conseillé d\\'avoir au moins 5 à 6 mm de dos pour assurer la lisibilité et compenser les tolérances de coupe du massicot (±1 mm).']
-                ],
-                'de': [
-                    ['Wie berechnet man die Buchrückenstärke?', 'Formel: <strong>Rücken (mm) = (Seitenzahl / 2) × (Grammatur / 1000) × Papiervolumen + 0.5 mm Leim</strong>. Beispiel: 240 Seiten Werkdruck 80g mit Volumen 1.3 ergibt ca. 13 mm Rücken.'],
-                    ['Was bedeutet Papiervolumen (Bulk)?', 'Das Papiervolumen beschreibt das Verhältnis von Dicke zu Gewicht. Werkdruckpapier mit 1.3-fachem Volumen ist deutlich dicker als gestrichenes Bilderdruckpapier.']
-                ],
-                'pt': [
-                    ['Como calcular a lombada de um livro para impressão?', 'Fórmula: <strong>Lombada = (Páginas / 2) × (Gramatura / 1000) × Mão do papel + Cola (0.5 mm)</strong>. Para 240 páginas em pólen 80g mão 1.3: 120 × 0.08 × 1.3 = 12.5 mm + 0.5 = 13 mm.'],
-                    ['Quanto de sangria é necessário na capa?', 'A sangria gráfica padrão é de <strong>3 mm em toda a volta</strong> (topo, base e laterais).']
-                ]
-            }};
+            if (!container) return;
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const titleElem = document.getElementById('faqTitle');
+            if (titleElem && t.faq_title) {{
+                titleElem.innerHTML = `<span>${{t.faq_title}}</span>`;
+            }}
 
-            const list = faqs[currentLang] || faqs['it'];
-            container.innerHTML = list.map(item => `
-                <details class="py-3 group cursor-pointer">
-                    <summary class="font-bold text-slate-800 flex justify-between items-center list-none select-none">
-                        <span>${{item[0]}}</span>
-                        <span class="transition group-open:rotate-180 text-purple-600">▼</span>
-                    </summary>
-                    <p class="mt-1.5 text-slate-600 leading-relaxed pl-1">${{item[1]}}</p>
-                </details>
-            `).join('');
+            let html = '';
+            for (let i = 1; i <= 4; i++) {{
+                const q = t[`faq_${{i}}_q`];
+                const a = t[`faq_${{i}}_a`];
+                if (q && a) {{
+                    html += `
+                    <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                        <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                            <span>${{q}}</span>
+                            <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                            ${{a}}
+                        </div>
+                    </details>`;
+                }}
+            }}
+            container.innerHTML = html;
         }}
 
         function switchBindingMode(mode) {{

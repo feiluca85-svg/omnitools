@@ -53,7 +53,7 @@
     "install_banner_sub": "I tuoi calcolatori di cantiere pronti anche offline",
     "install_btn": "Installa",
     "legal_disclaimer": "<strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (DM 236/89, D.M. 01/02/1986) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi del D.P.R. 380/2001 e successive modifiche. Lo sviluppatore e il gestore del sito declinano espressamente ogni responsabilità per errori, inesattezze, o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato (geometra, architetto o ingegnere).",
-    "faq_title": "Domande Frequenti sulle Rampe (FAQ)",
+    "faq_title": "Domande Frequenti su Pendenza Rampe e Normative Disabili",
     "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore o un miglioramento?",
     "suggest_btn": "Suggerisci",
     "suggest_modal_title": "Suggerisci uno Strumento",
@@ -65,7 +65,15 @@
     "suggest_thanks": "🎉 Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.",
     "suggest_close": "Chiudi",
     "unit_in": "Pollici (in)",
-    "unit_ft": "Piedi (ft)"
+    "unit_ft": "Piedi (ft)",
+    "faq_1_q": "Qual è la pendenza massima consentita per legge per una rampa disabili?",
+    "faq_1_a": "In Italia, secondo il <strong>D.M. 236/1989 (art. 4.1.11)</strong> e il D.P.R. 503/1996, la pendenza consigliata è fino al <strong>5% (1:20)</strong> per consentire la totale autonomia a chi spinge una sedia a rotelle. Il limite massimo assoluto tollerato per brevi raccordi di dislivello è dell'<strong>8% (1:12.5)</strong>.",
+    "faq_2_q": "Come si calcola lo spazio orizzontale a terra necessario per una rampa?",
+    "faq_2_a": "La formula matematica è: <code>Spazio a terra (L) = Dislivello (H) / (Pendenza % / 100)</code>. Per superare un dislivello di 40 cm (circa due gradini) all'8% servono: 40 / 0.08 = 500 cm (5 metri lineari di sviluppo a terra). Con il 5% servirebbero 8 metri.",
+    "faq_3_q": "Quando è obbligatorio inserire un pianerottolo orizzontale di sosta?",
+    "faq_3_a": "Il pianerottolo di sosta orizzontale in piano è obbligatorio ogni <strong>10 metri di sviluppo continuo</strong> della rampa, nonché in corrispondenza di qualsiasi porta, varco di accesso o cambio di direzione. Le dimensioni minime regolamentari sono di <strong>150 × 150 cm</strong> (oppure 140 × 140 cm in casi speciali).",
+    "faq_4_q": "Qual è la larghezza minima di passaggio e quali cordoli servono?",
+    "faq_4_a": "La larghezza minima della rampa deve essere di <strong>90 cm per transito a senso unico</strong> e di almeno <strong>150 cm per l'incrocio simultaneo</strong> di due carrozzine. Su entrambi i lati aperti è obbligatorio un cordolo di protezione di almeno 10 cm di altezza e corrimano continuo a doppia altezza (90 cm e 75 cm)."
   },
   "en": {
     "title": "EasyRamp",
@@ -121,7 +129,7 @@
     "install_banner_sub": "Field & engineering calculators ready offline",
     "install_btn": "Install",
     "legal_disclaimer": "<strong>Legal Disclaimer & Limitation of Liability:</strong> Calculations, diagrams and regulatory standards (ADA, Building Regulations Part M) provided by this online tool are strictly for educational, informational and preliminary estimation purposes. They do not constitute formal architectural engineering drawings or certified technical advice. The website developer and operator expressly disclaim any liability for errors or damages resulting from construction without certified licensed professionals.",
-    "faq_title": "Frequently Asked Questions (FAQ)",
+    "faq_title": "Frequently Asked Questions on Ramp Slope & ADA Accessibility Standards",
     "suggest_banner": "💡 Have an idea for a new calculator or an improvement?",
     "suggest_btn": "Suggest Tool",
     "suggest_modal_title": "Suggest a Calculator",
@@ -133,7 +141,15 @@
     "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will guide upcoming OmniTools modules.",
     "suggest_close": "Close",
     "unit_in": "Inches (in)",
-    "unit_ft": "Feet (ft)"
+    "unit_ft": "Feet (ft)",
+    "faq_1_q": "What is the legal maximum ramp slope for wheelchair accessibility?",
+    "faq_1_a": "Under the <strong>Americans with Disabilities Act (ADA)</strong> and UK Part M regulations, the maximum legal slope for commercial ramps is <strong>1:12 (8.33%)</strong>. However, for unassisted wheelchair users, <strong>1:20 (5.0%)</strong> is strongly recommended for safety and effortless ascent.",
+    "faq_2_q": "How do you calculate the horizontal run needed for a ramp?",
+    "faq_2_a": "Formula: <code>Run = Rise / (Slope % / 100)</code>. At standard 1:12 slope (8.33%), each 1 inch (or cm) of vertical rise requires 12 inches (or cm) of horizontal run. To overcome a 30 cm doorstep, you need at least 360 cm (3.6 meters) of linear ground space.",
+    "faq_3_q": "When are level landing platforms mandatory?",
+    "faq_3_a": "Level rest landings (at least 60×60 inches or 150×150 cm) are legally mandatory every <strong>30 feet (9 meters) of continuous slope</strong>, at the top and bottom of the ramp, and whenever the ramp turns or meets an entrance door.",
+    "faq_4_q": "What is the required clear width and handrail specifications?",
+    "faq_4_a": "The clear width between handrails must be at least <strong>36 inches (91 cm)</strong> for single passage. Continuous handrails on both sides are required on any ramp with a rise greater than 6 inches (15 cm)."
   },
   "es": {
     "title": "RampaFacil",
@@ -189,7 +205,7 @@
     "install_banner_sub": "Tus herramientas de obra listas sin conexión",
     "install_btn": "Instalar",
     "legal_disclaimer": "<strong>Aviso Legal y Limitación de Responsabilidad:</strong> Los cálculos y normativas (CTE DB-SUA) facilitados por esta herramienta tienen carácter estrictamente orientativo y docente. No constituyen proyecto técnico ni sustituyen la labor de un arquitecto o aparejador colegiado.",
-    "faq_title": "Preguntas Frecuentes (FAQ)",
+    "faq_title": "Preguntas Frecuentes sobre Pendiente de Rampas y Accesibilidad",
     "suggest_banner": "💡 ¿Tienes una idea para un nuevo cálculo o una mejora?",
     "suggest_btn": "Sugerir herramienta",
     "suggest_modal_title": "Sugerir una Herramienta",
@@ -201,7 +217,15 @@
     "suggest_thanks": "🎉 ¡Muchas gracias! Tu sugerencia guiarà el desarrollo de las próximas herramientas.",
     "suggest_close": "Cerrar",
     "unit_in": "Pulgadas (in)",
-    "unit_ft": "Pies (ft)"
+    "unit_ft": "Pies (ft)",
+    "faq_1_q": "¿Cuál es la pendiente máxima permitida por ley para rampas de accesibilidad?",
+    "faq_1_a": "Según el Código Técnico de la Edificación (CTE DB-SUA en España), la pendiente máxima permitida es del <strong>10% para tramos menores de 3 metros</strong>, <strong>8% para tramos de hasta 6 metros</strong> y <strong>6% para tramos de hasta 9 metros</strong>.",
+    "faq_2_q": "¿Cómo calcular la longitud en planta necesaria para una rampa?",
+    "faq_2_a": "Fórmula: <code>Longitud = Desnivel / (Pendiente % / 100)</code>. Para superar un desnivel de 40 cm al 8%, se requieren: 40 / 0.08 = 500 cm (5 metros en planta).",
+    "faq_3_q": "¿Cuándo es obligatorio colocar una meseta intermedia?",
+    "faq_3_a": "Es obligatorio colocar rellanos o mesetas intermedias horizontales sin pendiente cada <strong>9 o 10 metros de recorrido</strong>, con una longitud mínima de 1.50 m.",
+    "faq_4_q": "¿Cuál es el ancho mínimo libre de paso?",
+    "faq_4_a": "El ancho libre de paso mínimo es de <strong>120 cm</strong> para edificios públicos y 100 cm en accesos privados, con pasamanos dobles a 70 y 90 cm de altura."
   },
   "fr": {
     "title": "RampeFacile",
@@ -257,7 +281,7 @@
     "install_banner_sub": "Vos outils de chantier utilisables hors-ligne",
     "install_btn": "Installer",
     "legal_disclaimer": "<strong>Clause de Non-Responsabilité Légale :</strong> Les calculs et normes (accessibilité PMR) sont fournis à titre strictement indicatif et pédagogique. Ils ne remplacent en aucun cas un plan ou diagnostic établi par un maître d'œuvre ou architecte habilité.",
-    "faq_title": "Foire Aux Questions (FAQ)",
+    "faq_title": "Foire Aux Questions sur la Pente des Rampes PMR et Réglementation",
     "suggest_banner": "💡 Une idée de nouveau calculateur ou d'amélioration ?",
     "suggest_btn": "Suggérer un outil",
     "suggest_modal_title": "Suggérer un Outil",
@@ -269,7 +293,15 @@
     "suggest_thanks": "🎉 Merci beaucoup ! Votre suggestion orientera les prochains modules d'OmniTools.",
     "suggest_close": "Fermer",
     "unit_in": "Pouces (in)",
-    "unit_ft": "Pieds (ft)"
+    "unit_ft": "Pieds (ft)",
+    "faq_1_q": "Quelle est la pente maximale autorisée pour une rampe PMR ?",
+    "faq_1_a": "Selon la réglementation française d'accessibilité (PMR), la pente réglementaire est de <strong>5% (recommandée)</strong>. Une tolérance est accordée jusqu'à <strong>8% sur 2 mètres</strong> maximum et <strong>10% sur 50 cm</strong> de longueur.",
+    "faq_2_q": "Comment calculer la longueur au sol nécessaire pour une rampe ?",
+    "faq_2_a": "Formule : <code>Longueur = Dénivelé / (Pente % / 100)</code>. Pour franchir une hauteur de 40 cm à 5%, il faut 40 / 0.05 = 800 cm (8 mètres linéaires au sol).",
+    "faq_3_q": "Quand faut-il installer un palier de repos horizontal ?",
+    "faq_3_a": "Un palier de repos horizontal (au moins 140 × 140 cm) est obligatoire tous les <strong>10 mètres de pente</strong> ainsi qu'à chaque changement de direction et devant chaque porte.",
+    "faq_4_q": "Quelle est la largeur minimale obligatoire ?",
+    "faq_4_a": "La largeur libre de passage doit être d'au moins <strong>1.20 mètre</strong> (1.40 m recommandé en ERP) avec mains courantes continues de chaque côté."
   },
   "de": {
     "title": "RampeProfi",
@@ -325,7 +357,7 @@
     "install_banner_sub": "Praktische Baurechner jederzeit auch offline",
     "install_btn": "Installieren",
     "legal_disclaimer": "<strong>Haftungsausschluss:</strong> Die Berechnungen und Normenhinweise (DIN 18040) dienen ausschließlich der unverbindlichen Orientierung und stellen keine statische oder baurechtliche Fachplanung dar.",
-    "faq_title": "Häufig gestellte Fragen (FAQ)",
+    "faq_title": "Häufig gestellte Fragen zu Rampenneigung und DIN 18040 Barrierefreiheit",
     "suggest_banner": "💡 Haben Sie eine Idee für einen neuen Rechner oder eine Verbesserung?",
     "suggest_btn": "Vorschlag senden",
     "suggest_modal_title": "Neues Tool vorschlagen",
@@ -337,7 +369,15 @@
     "suggest_thanks": "🎉 Vielen Dank! Ihr Vorschlag fließt direkt in die Weiterentwicklung von OmniTools ein.",
     "suggest_close": "Schließen",
     "unit_in": "Zoll (in)",
-    "unit_ft": "Fuß (ft)"
+    "unit_ft": "Fuß (ft)",
+    "faq_1_q": "Was ist die maximale Steigung für Rollstuhlrampen nach DIN 18040?",
+    "faq_1_a": "Nach <strong>DIN 18040-1</strong> beträgt die maximal zulässige Steigung für barrierefreie Rampen im öffentlichen Raum <strong>6.0%</strong>. Querneigungen sind unzulässig.",
+    "faq_2_q": "Wie berechnet man die erforderliche Rampenlänge?",
+    "faq_2_a": "Formel: <code>Rampenlänge = Höhenunterschied / 0.06</code>. Um 30 cm Höhendifferenz bei 6% Steigung zu überwinden, werden 30 / 0.06 = 500 cm (5 Meter) Grundfläche benötigt.",
+    "faq_3_q": "Wann ist ein Zwischenpodest vorgeschrieben?",
+    "faq_3_a": "Ab einer Rampenlänge von mehr als <strong>6 Metern</strong> ist zwingend ein horizontales Zwischenpodest von mindestens 150 cm Länge einzubauen.",
+    "faq_4_q": "Welche Mindestbreite gilt für Rollstuhlrampen?",
+    "faq_4_a": "Die lichte Durchgangsbreite zwischen den beidseitigen Radabweisern und Handläufen muss mindestens <strong>120 cm</strong> betragen."
   },
   "pt": {
     "title": "RampaFacil",
@@ -393,7 +433,7 @@
     "install_banner_sub": "Ferramentas de obra disponíveis sem internet",
     "install_btn": "Instalar",
     "legal_disclaimer": "<strong>Aviso Legal e Limitação de Responsabilidade:</strong> Os cálculos e referências normativas (NBR 9050 / DL 163) têm caráter puramente informativo e não substituem o projeto assinado por engenheiro ou arquiteto habilitado.",
-    "faq_title": "Perguntas Frequentes (FAQ)",
+    "faq_title": "Perguntas Frequentes sobre Inclinação de Rampas e Acessibilidade",
     "suggest_banner": "💡 Tem alguma ideia de nova calculadora ou sugestão de melhoria?",
     "suggest_btn": "Sugerir ferramenta",
     "suggest_modal_title": "Sugerir uma Ferramenta",
@@ -405,6 +445,14 @@
     "suggest_thanks": "🎉 Muito obrigado! A sua sugestão guiará os próximos módulos do OmniTools.",
     "suggest_close": "Fechar",
     "unit_in": "Polegadas (in)",
-    "unit_ft": "Pés (ft)"
+    "unit_ft": "Pés (ft)",
+    "faq_1_q": "Qual é a inclinação máxima de uma rampa para cadeirantes?",
+    "faq_1_a": "Segundo as normas de acessibilidade (Decreto-Lei 163/2006 em Portugal e NBR 9050 no Brasil), a inclinação recomendada é de <strong>5.0% a 6.0%</strong>, com limite máximo de <strong>8.33% (1:12)</strong> para percursos curtos.",
+    "faq_2_q": "Como calcular o comprimento em planta de uma rampa?",
+    "faq_2_a": "Fórmula: <code>Comprimento = Desnível / (Inclinação % / 100)</code>. Para um degrau de 30 cm com inclinação de 6%, são necessários: 30 / 0.06 = 500 cm (5 metros lineares).",
+    "faq_3_q": "Quando é obrigatório criar patamares de descanso?",
+    "faq_3_a": "É obrigatório intercalar patamares horizontais (mínimo 150 × 150 cm) a cada <strong>9 ou 10 metros de rampa contínua</strong> e em mudanças de direção.",
+    "faq_4_q": "Qual é a largura livre mínima exigida por norma?",
+    "faq_4_a": "A largura livre mínima é de <strong>120 cm</strong> para circulação pública, devendo ter corrimão duplo contínuo e guias de proteção lateral."
   }
 }

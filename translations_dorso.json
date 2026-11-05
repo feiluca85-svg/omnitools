@@ -32,7 +32,7 @@
     "install_banner_title": "Installa OmniTools come App",
     "install_banner_sub": "Utility per grafici e tipografi sempre a portata di mano",
     "legal_disclaimer": "<strong>Note Tecniche Tipografiche:</strong> Lo spessore effettivo del dorso può variare del ±3-5% in base all'umidità della carta, alla pressione della piega e al tipo di colla impiegata (Hotmelt o PUR). Si consiglia sempre di richiedere al service di stampa il valore di mano esatto della cartiera.",
-    "faq_title": "Domande Frequenti sul Calcolo del Dorso e Stampa",
+    "faq_title": "Domande Frequenti sul Calcolo del Dorso e Stampa Editoriale",
     "status_opt_title": "Spessore Ottimale per Brossura",
     "status_opt_tag": "Brossurabile",
     "status_opt_desc": "Il dorso supera i 3 mm minimi: perfetto per brossura fresata, grecata o colla PUR con titolo leggibile.",
@@ -53,7 +53,15 @@
     "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.",
     "copy_btn": "Copia Quote InDesign",
     "copied_text": "Copiato!",
-    "download_svg_dima": "Scarica Dima SVG (Illustrator)"
+    "download_svg_dima": "Scarica Dima SVG (Illustrator)",
+    "faq_1_q": "Come si calcola esattamente lo spessore del dorso di un libro?",
+    "faq_1_a": "La formula tipografica professionale è: <code>Dorso (mm) = (Pagine / 2) × (Grammatura / 1000) × Mano della carta + Spessore Colla (0.5 mm)</code>. Esempio per 240 pagine su carta usomano 80g a mano 1.3: (120 fogli) × 0.080 × 1.3 = 12.48 mm + 0.5 mm = circa 13 mm.",
+    "faq_2_q": "Cosa significa la \"Mano\" (Bulk / Volume) della carta?",
+    "faq_2_a": "La \"Mano\" è il rapporto matematico tra spessore in micron e grammatura in grammi/m². Una carta da fotocopie ha mano 1.0 (80g = 80 µm). Le carte per romanzi (usomano avorio) hanno mano elevata (1.3 - 1.5) per dare corpo al libro, mentre le patinate hanno mano compatta (0.85 - 0.95).",
+    "faq_3_q": "Qual è lo spessore minimo di dorso per stampare un titolo leggibile?",
+    "faq_3_a": "Il limite tecnico raccomandato è di almeno <strong>6 mm</strong>. Tra 3 e 5 mm il testo è possibile ma richiede centrature millimetriche per non scivolare sui piatti a causa delle tolleranze di brossura (±1 mm). Sotto i 3 mm è sconsigliato stampare scritte sul dorso.",
+    "faq_4_q": "Quanti millimetri di abbondanza (refilo/bleed) servono per la copertina?",
+    "faq_4_a": "Nelle tipografie professionali e su piattaforme come Amazon KDP, il refilo perimetrale obbligatorio è di <strong>3 mm su tutti e 4 i lati esterni</strong> (6 mm complessivi su larghezza e altezza stese)."
   },
   "en": {
     "title": "SpineMaster",
@@ -88,7 +96,7 @@
     "install_banner_title": "Install OmniTools as App",
     "install_banner_sub": "Print production tools always ready offline",
     "legal_disclaimer": "<strong>Technical Disclaimer:</strong> Spine width can vary by ±3-5% based on paper moisture, grain direction, and bindery clamp pressure. Always confirm exact paper caliper with your commercial printer.",
-    "faq_title": "Frequently Asked Questions about Book Spines & Cover Design",
+    "faq_title": "Frequently Asked Questions on Book Spine Width & Cover Layout",
     "status_opt_title": "Ideal Spine for Perfect Binding",
     "status_opt_tag": "Perfect Bound",
     "status_opt_desc": "Spine exceeds 3 mm (0.12 in): ideal for PUR gluing, hotmelt binding, and legible spine text.",
@@ -109,7 +117,15 @@
     "suggest_thanks": "Thank you! Your feedback guides upcoming tools.",
     "copy_btn": "Copy InDesign Specs",
     "copied_text": "Copied!",
-    "download_svg_dima": "Download SVG Template (Illustrator)"
+    "download_svg_dima": "Download SVG Template (Illustrator)",
+    "faq_1_q": "How do you calculate exact book spine width?",
+    "faq_1_a": "The industry formula is: <code>Spine Width = (Page Count / 2) × (Paper Weight in GSM / 1000) × Paper Bulk + Glue Hinge (0.5 mm)</code>. Example: 240 pages on 80 gsm bulk 1.3 paper yields (120) × 0.080 × 1.3 + 0.5 = 13.0 mm.",
+    "faq_2_q": "What does Paper Bulk / Volume mean?",
+    "faq_2_a": "Paper bulk is the thickness-to-weight ratio (caliper in microns divided by grammage). High-bulk book papers (bulk 1.3 - 1.5) create thicker books without adding weight, while glossy coated papers are compact (0.85 - 0.95).",
+    "faq_3_q": "What is the minimum spine thickness for readable text?",
+    "faq_3_a": "The industry rule of thumb is at least <strong>6 mm (0.24 in)</strong>. Between 3 and 5 mm, text is possible with strict centering tolerances (±1 mm). Under 3 mm, text should be avoided; saddle-stitching is recommended.",
+    "faq_4_q": "What bleed margin is required for full wrap-around covers?",
+    "faq_4_a": "Commercial printing and print-on-demand platforms (Amazon KDP, IngramSpark) require a mandatory <strong>3 mm (0.125 in) bleed</strong> on all outer edges."
   },
   "es": {
     "title": "LomoFácil",
@@ -144,7 +160,7 @@
     "install_banner_title": "Instala OmniTools como App",
     "install_banner_sub": "Herramientas de artes gráficas sin conexión",
     "legal_disclaimer": "<strong>Nota Técnica:</strong> El grosor puede variar ligeramente según la humedad y fabricante del papel.",
-    "faq_title": "Preguntas Frecuentes sobre Lomo y Encuadernación",
+    "faq_title": "Preguntas Frecuentes sobre Lomo de Libros y Cubierta Abierta",
     "status_opt_title": "Lomo Óptimo para Rústica",
     "status_opt_tag": "Encuadernable",
     "status_opt_desc": "Grosor superior a 3 mm: perfecto para fresado y texto visible en el lomo.",
@@ -165,7 +181,15 @@
     "suggest_thanks": "¡Gracias por tu aporte!",
     "copy_btn": "Copiar Medidas InDesign",
     "copied_text": "¡Copiado!",
-    "download_svg_dima": "Descargar Plantilla SVG"
+    "download_svg_dima": "Descargar Plantilla SVG",
+    "faq_1_q": "¿Cómo se calcula el grosor del lomo de un libro?",
+    "faq_1_a": "Fórmula editorial: <code>Lomo (mm) = (Páginas / 2) × (Gramaje / 1000) × Mano del papel + Cola (0.5 mm)</code>.",
+    "faq_2_q": "¿Qué significa el volumen o mano del papel?",
+    "faq_2_a": "Es la relación entre espesor en micras y peso. Un papel de novela (mano 1.3-1.5) aporta más grosor que un papel estucado (mano 0.9).",
+    "faq_3_q": "¿Cuál es el grosor mínimo para incluir texto en el lomo?",
+    "faq_3_a": "Se recomienda un mínimo de <strong>6 mm</strong>. Con menos de 3 mm no se debe poner texto y conviene grapar a caballete.",
+    "faq_4_q": "¿Cuánta sangría exterior se debe aplicar?",
+    "faq_4_a": "El estándar editorial internacional exige <strong>3 mm de sangría</strong> en todo el perímetro."
   },
   "fr": {
     "title": "DosFacile",
@@ -200,7 +224,7 @@
     "install_banner_title": "Installer OmniTools sur Smartphone",
     "install_banner_sub": "Outils de prépresse et PAO hors-ligne",
     "legal_disclaimer": "<strong>Mentions Techniques :</strong> L'épaisseur peut varier de ±3-5% selon l'humidité du papier et le collage.",
-    "faq_title": "Questions Fréquentes sur le Dos et la Reliure",
+    "faq_title": "Foire Aux Questions sur le Dos de Livre et Couverture Dépliée",
     "status_opt_title": "Épaisseur Idéale pour Dos Carré",
     "status_opt_tag": "Reliure Parfaite",
     "status_opt_desc": "Le dos dépasse 3 mm : idéal pour le dos carré collé avec texte lisible.",
@@ -221,7 +245,15 @@
     "suggest_thanks": "Merci pour votre idée !",
     "copy_btn": "Copier Dimensions InDesign",
     "copied_text": "Copié !",
-    "download_svg_dima": "Télécharger Gabarit SVG"
+    "download_svg_dima": "Télécharger Gabarit SVG",
+    "faq_1_q": "Comment calculer l'épaisseur exacte du dos d'un livre ?",
+    "faq_1_a": "Formule typographique : <code>Épaisseur Dos (mm) = (Nombre de Pages / 2) × (Grammage / 1000) × Main du papier + Colle (0.5 mm)</code>.",
+    "faq_2_q": "Que signifie la \"Main\" d'un papier ?",
+    "faq_2_a": "La main représente le volume spécifique d'un papier (épaisseur divisée par le grammage). Les papiers bouffants (main 1.3 à 1.5) donnent du volume aux romans.",
+    "faq_3_q": "Quelle est l'épaisseur minimale pour imprimer un titre sur le dos ?",
+    "faq_3_a": "Un minimum de <strong>6 mm</strong> est conseillé. En dessous de 3 mm, le titrage est déconseillé en raison des tolérances de pliage.",
+    "faq_4_q": "Combien de millimètres de fond perdu ajouter ?",
+    "faq_4_a": "Le fond perdu standard est de <strong>3 mm sur les 4 côtés extérieurs</strong>."
   },
   "de": {
     "title": "BuchrückenRechner",
@@ -256,7 +288,7 @@
     "install_banner_title": "OmniTools als App nutzen",
     "install_banner_sub": "Druck- und Grafikwerkzeuge jederzeit offline",
     "legal_disclaimer": "<strong>Hinweis:</strong> Rückenbreite kann um ±3-5% je nach Papierfeuchte und Klebeart abweichen.",
-    "faq_title": "Häufige Fragen zu Buchrücken & Bindung",
+    "faq_title": "Häufig gestellte Fragen zur Buchrückenberechnung & Klebebindung",
     "status_opt_title": "Optimale Rückenbreite für Klebebindung",
     "status_opt_tag": "Klebebindung",
     "status_opt_desc": "Der Rücken ist breiter als 3 mm: ideal für PUR-Klebebindung mit lesbarem Rückentext.",
@@ -277,7 +309,15 @@
     "suggest_thanks": "Vielen Dank für Ihre Anregung.",
     "copy_btn": "InDesign-Maße kopieren",
     "copied_text": "Kopiert!",
-    "download_svg_dima": "SVG-Vorlage herunterladen"
+    "download_svg_dima": "SVG-Vorlage herunterladen",
+    "faq_1_q": "Wie berechnet man die Buchrückenstärke exakt?",
+    "faq_1_a": "Druckformel: <code>Rückenstärke (mm) = (Seiten / 2) × (Grammatur / 1000) × Papiervolumen + Klebstoff (0.5 mm)</code>.",
+    "faq_2_q": "Was bedeutet das Papiervolumen (Bulk)?",
+    "faq_2_a": "Das Volumen beschreibt das Verhältnis von Papierstärke zum Flächengewicht. Werkdruckpapiere mit 1.3- bis 1.5-fachem Volumen ergeben dickere Bücher.",
+    "faq_3_q": "Ab welcher Rückenbreite ist Rückentext lesbar?",
+    "faq_3_a": "Empfohlen werden mindestens <strong>6 mm</strong>. Unter 3 mm sollte kein Rückentext gedruckt werden (Klammerheftung empfohlen).",
+    "faq_4_q": "Wie viel Beschnittzugabe ist erforderlich?",
+    "faq_4_a": "Der Standard für Druckereien und Amazon KDP beträgt <strong>3 mm Beschnitt ringsum</strong>."
   },
   "pt": {
     "title": "LombadaFácil",
@@ -312,7 +352,7 @@
     "install_banner_title": "Instalar OmniTools no Telemóvel",
     "install_banner_sub": "Ferramentas de pré-impressão offline",
     "legal_disclaimer": "<strong>Nota Técnica:</strong> A espessura pode variar ±3-5% conforme a umidade e a prensagem gráfica.",
-    "faq_title": "Perguntas Frequentes sobre Lombada e Encadernação",
+    "faq_title": "Perguntas Frequentes sobre Lombada de Livro e Capa Aberta",
     "status_opt_title": "Lombada Ideal para Brochura",
     "status_opt_tag": "Brochura PUR",
     "status_opt_desc": "Lombada superior a 3 mm: ideal para cola PUR com texto legível.",
@@ -333,6 +373,14 @@
     "suggest_thanks": "Obrigado! Sua ideia guiará os próximos passos.",
     "copy_btn": "Copiar Medidas InDesign",
     "copied_text": "Copiado!",
-    "download_svg_dima": "Baixar Gabarito SVG"
+    "download_svg_dima": "Baixar Gabarito SVG",
+    "faq_1_q": "Como calcular a espessura exata da lombada de um livro?",
+    "faq_1_a": "Fórmula gráfica: <code>Lombada (mm) = (Páginas / 2) × (Gramatura / 1000) × Mão do papel + Cola (0.5 mm)</code>.",
+    "faq_2_q": "O que significa a \"Mão\" ou volume do papel?",
+    "faq_2_a": "É a relação entre espessura em micra e peso em g/m². Papéis pólen para literatura têm mão 1.3 a 1.5, conferindo corpo ao livro.",
+    "faq_3_q": "Qual é a espessura mínima para colocar texto na lombada?",
+    "faq_3_a": "Recomenda-se no mínimo <strong>6 mm</strong>. Abaixo de 3 mm desaconselha-se texto (optar por grampo canoa).",
+    "faq_4_q": "Qual é a sangria obrigatória na capa?",
+    "faq_4_a": "O padrão gráfico internacional é de <strong>3 mm de sangria</strong> em todo o perímetro."
   }
 }

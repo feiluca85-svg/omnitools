@@ -661,33 +661,18 @@
 
         </div>
 
-        <!-- Reference FAQ Section (SEO Pillar & Rich Snippets) -->
-        <section class="no-print bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xs space-y-5 mt-6">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl">❓</span>
-                <div>
-                    <h2 id="faqTitle" class="text-base sm:text-lg font-black text-slate-900 font-jakarta">Domande Frequenti sulla Calibrazione CMYK e Tinte Piatte</h2>
-                    <p class="text-xs text-slate-500">I consigli tecnici per azzerare gli scarti di prestampa</p>
-                </div>
+                <!-- FAQ Accordion Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed" id="faqContainer">
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq1Q">Perché il colore RGB a video differisce dalla stampa CMYK?</h3>
-                    <p class="text-slate-600" id="faq1A">I monitor lavorano in sintesi additiva RGB, mentre la stampa tipografica usa la sintesi sottrattiva CMYK. La natura fisica del supporto (porosità, sbiancanti ottici) influisce direttamente sulla riflettanza della luce.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq2Q">Come si utilizza la matrice TintaPerfetta?</h3>
-                    <p class="text-slate-600" id="faq2A">Stampa il PDF vettoriale generato sulla carta definitiva, posiziona il campione fisico del cliente sotto luce standard D50, seleziona il riquadro perfetto e imposta i valori nel tuo RIP.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq3Q">Cosa significa passo di sensibilità (±2%, ±5%, ±10%)?</h3>
-                    <p class="text-slate-600" id="faq3A">È la variazione di inchiostro tra una casella e la successiva. ±10% per sgrossatura veloce, ±5% per tolleranze standard e ±2% per accordi millimetrici di tinte istituzionali.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq4Q">Cos'è il Total Area Coverage (TAC)?</h3>
-                    <p class="text-slate-600" id="faq4A">È la somma totale dei 4 canali C+M+Y+K. Su carte patinate deve restare sotto 300-320%, mentre su carte naturali non deve superare il 260% per evitare mancata asciugatura.</p>
-                </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <!-- Localized FAQs injected via renderFaqs() -->
             </div>
         </section>
 
@@ -829,7 +814,38 @@
             applyTranslations();
         }
 
+                function renderFaqs() {
+            const container = document.getElementById('faqContainer');
+            if (!container) return;
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const titleElem = document.getElementById('faqTitle');
+            if (titleElem && t.faq_title) {
+                titleElem.innerHTML = `<span>${t.faq_title}</span>`;
+            }
+
+            let html = '';
+            for (let i = 1; i <= 4; i++) {
+                const q = t[`faq_${i}_q`];
+                const a = t[`faq_${i}_a`];
+                if (q && a) {
+                    html += `
+                    <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                        <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                            <span>${q}</span>
+                            <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                            ${a}
+                        </div>
+                    </details>`;
+                }
+            }
+            container.innerHTML = html;
+        }
         function applyTranslations() {
+            renderFaqs();
             const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
             if (t.hero_title) document.getElementById('heroTitle').textContent = t.hero_title;
             if (t.hero_desc) document.getElementById('heroDesc').textContent = t.hero_desc;

@@ -633,58 +633,18 @@
             </div>
         </section>
 
-        <!-- FAQ Accordion Section -->
-        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-8 space-y-4">
-            <h2 class="text-lg sm:text-xl font-black text-slate-900 font-jakarta mb-4" id="faqTitle">Domande Frequenti su Pendenze Tubi e Scarichi</h2>
+                <!-- FAQ Accordion Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
             
-            <div class="space-y-3">
-                <details class="group bg-slate-50 rounded-2xl border border-slate-200/80 p-4 [&_svg]:open:-rotate-180 transition">
-                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none">
-                        <span id="faq1Q">Qual è la pendenza minima obbligatoria per un tubo di scarico fognario?</span>
-                        <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </summary>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3" id="faq1A">
-                        La pendenza minima raccomandata dalle norme tecniche europee (UNI EN 12056) è dell'<strong>1% (1 cm per ogni metro lineare)</strong>. Al di sotto di questa soglia l'acqua non raggiunge la velocità di 0.7 m/s necessaria a trascinare carta e deiezioni, provocando depositi e cattivi odori.
-                    </p>
-                </details>
-
-                <details class="group bg-slate-50 rounded-2xl border border-slate-200/80 p-4 [&_svg]:open:-rotate-180 transition">
-                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none">
-                        <span id="faq2Q">Cosa succede se la pendenza dello scarico è troppo ripida (es. 5-10%)?</span>
-                        <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </summary>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3" id="faq2A">
-                        È un errore comune pensare che 'più pendenza c'è, meglio scorre'. Sopra il 3.5-4%, l'acqua scivola via a forte velocità mentre i solidi pesanti rimangono fermi sul fondo del tubo per attrito (separazione liquido-solido), creando intasamenti cronici.
-                    </p>
-                </details>
-
-                <details class="group bg-slate-50 rounded-2xl border border-slate-200/80 p-4 [&_svg]:open:-rotate-180 transition">
-                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none">
-                        <span id="faq3Q">Come si calcola il dislivello tra punto di partenza e punto di arrivo?</span>
-                        <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </summary>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3" id="faq3A">
-                        Formula: <code>Dislivello (cm) = Lunghezza (metri) × Pendenza (%)</code>. Ad esempio, per un tubo lungo 4 metri con pendenza 1.5%, la caduta necessaria è: 4 × 1.5 = 6 cm.
-                    </p>
-                </details>
-
-                <details class="group bg-slate-50 rounded-2xl border border-slate-200/80 p-4 [&_svg]:open:-rotate-180 transition">
-                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none">
-                        <span id="faq4Q">Che differenza c'è tra Ø nominale interno ed esterno nei tubi in PVC/PP?</span>
-                        <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </summary>
-                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed border-t border-slate-200/60 pt-3" id="faq4A">
-                        I tubi plastici per edilizia (PVC arancione o PP insonorizzato) sono commercialmente identificati dal diametro esterno (DE). Il diametro interno utile dipende dallo spessore della parete (es. tubo Ø 110 spessore 3.2 mm ha diametro interno utile di 103.6 mm).
-                    </p>
-                </details>
+            <div id="faqContainer" class="space-y-3">
+                <!-- Localized FAQs injected via renderFaqs() -->
             </div>
         </section>
 
@@ -1073,15 +1033,8 @@
             document.getElementById('row3Slope').textContent = t.norm_row3_slope;
             document.getElementById('row3Note').textContent = t.norm_row3_note;
 
-            document.getElementById('faqTitle').textContent = t.faq_title;
-            document.getElementById('faq1Q').textContent = t.faq_1_q;
-            document.getElementById('faq1A').innerHTML = t.faq_1_a;
-            document.getElementById('faq2Q').textContent = t.faq_2_q;
-            document.getElementById('faq2A').innerHTML = t.faq_2_a;
-            document.getElementById('faq3Q').textContent = t.faq_3_q;
-            document.getElementById('faq3A').innerHTML = t.faq_3_a;
-            document.getElementById('faq4Q').textContent = t.faq_4_q;
-            document.getElementById('faq4A').innerHTML = t.faq_4_a;
+            
+            
 
             const pst = document.getElementById('printSheetTitle'); if (pst) pst.textContent = t.print_sheet_title;
             const bp = document.getElementById('btnPrint'); if (bp) bp.textContent = t.print_btn;
