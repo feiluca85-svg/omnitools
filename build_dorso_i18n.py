@@ -657,7 +657,50 @@ html_code = f"""<!DOCTYPE html>
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <!-- Localized FAQs injected via renderFaqs() -->
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come si calcola esattamente lo spessore del dorso di un libro?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La formula tipografica professionale è: <code>Dorso (mm) = (Pagine / 2) × (Grammatura / 1000) × Mano della carta + Spessore Colla (0.5 mm)</code>. Esempio per 240 pagine su carta usomano 80g a mano 1.3: (120 fogli) × 0.080 × 1.3 = 12.48 mm + 0.5 mm = circa 13 mm.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cosa significa la "Mano" (Bulk / Volume) della carta?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La "Mano" è il rapporto matematico tra spessore in micron e grammatura in grammi/m². Una carta da fotocopie ha mano 1.0 (80g = 80 µm). Le carte per romanzi (usomano avorio) hanno mano elevata (1.3 - 1.5) per dare corpo al libro, mentre le patinate hanno mano compatta (0.85 - 0.95).
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è lo spessore minimo di dorso per stampare un titolo leggibile?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il limite tecnico raccomandato è di almeno <strong>6 mm</strong>. Tra 3 e 5 mm il testo è possibile ma richiede centrature millimetriche per non scivolare sui piatti a causa delle tolleranze di brossura (±1 mm). Sotto i 3 mm è sconsigliato stampare scritte sul dorso.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Quanti millimetri di abbondanza (refilo/bleed) servono per la copertina?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Nelle tipografie professionali e su piattaforme come Amazon KDP, il refilo perimetrale obbligatorio è di <strong>3 mm su tutti e 4 i lati esterni</strong> (6 mm complessivi su larghezza e altezza stese).
+                    </div>
+                </details>
             </div>
         </section>
 

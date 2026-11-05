@@ -590,7 +590,50 @@ html_code = f"""<!DOCTYPE html>
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <!-- Localized FAQs injected via renderFaqs() -->
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cos'è la formula di Blondel per il dimensionamento delle scale?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        L'architetto François Blondel stabilì che il rapporto biomeccanico ideale per salire una scala senza affaticare le articolazioni è: <code>2 Alzate + 1 Pedata = 62 ÷ 64 cm</code> (valore ideale <strong>63 cm</strong>). Questa equazione riproduce esattamente il passo naturale di una persona sul piano.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Quali sono le misure ideali di alzata e pedata per una scala comoda?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Nelle abitazioni private l'alzata ideale è di <strong>16.5 ÷ 17.5 cm</strong> (massimo 18 cm), mentre la pedata perfetta è di <strong>28 ÷ 30 cm</strong> (mai inferiore a 25 cm a norma di legge). Alzate superiori a 19 cm rendono la scala faticosa e pericolosa in discesa.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Quanti gradini consecutivi si possono fare senza pianerottolo?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Le norme di sicurezza architettonica (D.M. 236/89) vietano rampe di scale continue con più di <strong>15 gradini consecutivi</strong>. Oltre questa soglia è obbligatorio inserire un pianerottolo di sosta orizzontale lungo almeno quanto la larghezza della rampa.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è l'inclinazione ideale di una scala in gradi?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        L'inclinazione ottimale per scale interne è compresa tra <strong>30° e 37°</strong>. Sotto i 26° la pendenza è troppo dolce (diventa rampa a gradoni), mentre sopra i 42° la scala diventa a pioli o marinara, inadatta all'uso residenziale quotidiano.
+                    </div>
+                </details>
             </div>
         </section>
 

@@ -651,7 +651,50 @@ html_code = f"""<!DOCTYPE html>
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <!-- Localized FAQs injected via renderFaqs() -->
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è la pendenza minima obbligatoria per un tubo di scarico fognario?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La pendenza minima raccomandata dalle norme tecniche europee (UNI EN 12056) è dell'<strong>1% (1 cm per ogni metro lineare)</strong>. Al di sotto di questa soglia l'acqua non raggiunge la velocità di 0.7 m/s necessaria a trascinare carta e deiezioni, provocando depositi e cattivi odori.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cosa succede se la pendenza dello scarico è troppo ripida (es. 5-10%)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        È un errore comune pensare che 'più pendenza c'è, meglio scorre'. Sopra il 3.5-4%, l'acqua scivola via a forte velocità mentre i solidi pesanti rimangono fermi sul fondo del tubo per attrito (separazione liquido-solido), creando intasamenti cronici.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come si calcola il dislivello tra punto di partenza e punto di arrivo?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Formula: <code>Dislivello (cm) = Lunghezza (metri) × Pendenza (%)</code>. Ad esempio, per un tubo lungo 4 metri con pendenza 1.5%, la caduta necessaria è: 4 × 1.5 = 6 cm.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Che differenza c'è tra Ø nominale interno ed esterno nei tubi in PVC/PP?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        I tubi plastici per edilizia (PVC arancione o PP insonorizzato) sono commercialmente identificati dal diametro esterno (DE). Il diametro interno utile dipende dallo spessore della parete (es. tubo Ø 110 spessore 3.2 mm ha diametro interno utile di 103.6 mm).
+                    </div>
+                </details>
             </div>
         </section>
 

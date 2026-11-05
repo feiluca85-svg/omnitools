@@ -600,7 +600,50 @@
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <!-- Localized FAQs injected via renderFaqs() -->
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è la vera differenza tra DPI e PPI?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        PPI (Pixels Per Inch) indica il numero di pixel per pollice su un display o in un file digitale raster. DPI (Dots Per Inch) indica il numero di punti di inchiostro fisici che una macchina da stampa o una stampante deposita sul foglio. Nel parlato comune della grafica pubblicitaria vengono spesso usati come sinonimi, ma il calcolo matematico delle dimensioni del documento si basa rigorosamente sulla formula dei PPI.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Serve davvero inviare file a 300 DPI per manifesti 6x3 metri o striscioni?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        No, è un errore classico che genera file enormi e ingestibili da svariati Gigabyte. Più il supporto è grande, maggiore è la distanza da cui viene guardato. Un manifesto 6x3 metri visto da 5-10 metri di distanza appare nitidissimo a soli 25-35 DPI, perché il potere risolutivo dell'angolo visivo umano a quella distanza rende invisibile la griglia di stampa.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come si calcola la dimensione in cm conoscendo pixel e DPI?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La formula esatta è: <code>Centimetri = (Pixel / DPI) × 2.54</code>. Ad esempio, un'immagine di 3000 pixel di larghezza a 300 DPI misurerà: (3000 / 300) × 2.54 = 25.4 cm di larghezza stampata.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come varia il peso del file TIFF/PSD aumentando i DPI?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Raddoppiando i DPI (es. da 150 a 300 DPI) la superficie in pixel quadruplica (2×2 = 4 volte). Un file da 50 MB passerà istantaneamente a 200 MB. Per questo per manifesti e roll-up è opportuno non eccedere i 100-150 DPI.
+                    </div>
+                </details>
             </div>
         </section>
 

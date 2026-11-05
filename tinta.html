@@ -672,7 +672,50 @@
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <!-- Localized FAQs injected via renderFaqs() -->
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Perché il colore a video RGB non corrisponde mai al 100% alla stampa CMYK?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        I monitor emettono luce additiva (RGB) con un gamut di colori molto più esteso, mentre la stampa sottrae luce tramite inchiostri fisici su carta (CMYK). Inoltre la porosità della carta, la laminazione (lucida/opaca) e il tipo di macchina da stampa modificano sensibilmente la resa finale.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come si usa la matrice di calibrazione TintaPerfetta?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Inserisci la tua ricetta colore stimata (o campionala con la pipetta). Seleziona il formato del tuo supporto (foglio o nastro bobina) e stampa il file PDF vettoriale direttamente sulla macchina da stampa con la carta definitiva della commessa. Appoggia il campione originale alla luce naturale o cabina D50, trova il tassello perfetto e inserisci la ricetta corrispondente nel tuo RIP.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cosa significa passo di sensibilità ±2%, ±5% o ±10%?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Rappresenta la variazione percentuale di inchiostro tra una casella e la successiva. ±10% serve per una sgrossatura rapida quando il colore è lontano; ±5% è il passo standard di precisione; ±2% è ideale per rifiniture micrometriche su tonalità critiche come incarnati o tinte istituzionali.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cos'è il Total Area Coverage (TAC) e perché è importante?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il TAC è la somma delle percentuali dei quattro canali CMYK (C+M+Y+K). Per carte patinate non dovrebbe superare il 300-320%, mentre per carte uso mano o giornale è raccomandato non superare il 260-280% per evitare sbavature, problemi di asciugatura e controstampa.
+                    </div>
+                </details>
             </div>
         </section>
 

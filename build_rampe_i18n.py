@@ -624,7 +624,50 @@ html_code = f"""<!DOCTYPE html>
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <!-- Localized FAQs injected via renderFaqs() -->
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è la pendenza massima consentita per legge per una rampa disabili?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        In Italia, secondo il <strong>D.M. 236/1989 (art. 4.1.11)</strong> e il D.P.R. 503/1996, la pendenza consigliata è fino al <strong>5% (1:20)</strong> per consentire la totale autonomia a chi spinge una sedia a rotelle. Il limite massimo assoluto tollerato per brevi raccordi di dislivello è dell'<strong>8% (1:12.5)</strong>.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come si calcola lo spazio orizzontale a terra necessario per una rampa?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La formula matematica è: <code>Spazio a terra (L) = Dislivello (H) / (Pendenza % / 100)</code>. Per superare un dislivello di 40 cm (circa due gradini) all'8% servono: 40 / 0.08 = 500 cm (5 metri lineari di sviluppo a terra). Con il 5% servirebbero 8 metri.
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Quando è obbligatorio inserire un pianerottolo orizzontale di sosta?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il pianerottolo di sosta orizzontale in piano è obbligatorio ogni <strong>10 metri di sviluppo continuo</strong> della rampa, nonché in corrispondenza di qualsiasi porta, varco di accesso o cambio di direzione. Le dimensioni minime regolamentari sono di <strong>150 × 150 cm</strong> (oppure 140 × 140 cm in casi speciali).
+                    </div>
+                </details>
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è la larghezza minima di passaggio e quali cordoli servono?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La larghezza minima della rampa deve essere di <strong>90 cm per transito a senso unico</strong> e di almeno <strong>150 cm per l'incrocio simultaneo</strong> di due carrozzine. Su entrambi i lati aperti è obbligatorio un cordolo di protezione di almeno 10 cm di altezza e corrimano continuo a doppia altezza (90 cm e 75 cm).
+                    </div>
+                </details>
             </div>
         </section>
 
