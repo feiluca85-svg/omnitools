@@ -88,20 +88,7 @@ def get_tool_icon_svg(tool_id):
             <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
             <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
         </svg>"""
-    elif tool_id == "barcode":
-        return """<svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="6" width="24" height="20" rx="4" fill="#0f172a" />
-            <!-- Barcode vertical lines -->
-            <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-            <line x1="11" y1="10" x2="11" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="14" y1="10" x2="14" y2="22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="18" y1="10" x2="18" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="21" y1="10" x2="21" y2="22" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-            <line x1="24" y1="10" x2="24" y2="22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-            <!-- Red Laser Beam 670nm -->
-            <line x1="5" y1="16" x2="27" y2="16" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" />
-            <circle cx="16" cy="16" r="1.8" fill="#fee2e2" />
-        </svg>"""
+
     else: # dorso, dpi, tinta
         return """<svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
@@ -116,8 +103,7 @@ def render_suite_header(current_id):
     is_building = current["category"] == "OmniBuilding"
     
     brand_gradient = "bg-gradient-to-br from-amber-500 to-amber-700 shadow-amber-500/20" if is_building else "bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20"
-    if current_id == "barcode":
-        brand_gradient = "bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 shadow-slate-900/30"
+
         
     cat_tag_class = "bg-blue-100 text-blue-800 border-blue-200/80" if is_building else "bg-purple-100 text-purple-800 border-purple-200/80"
     cat_name = "Building" if is_building else "Graph"

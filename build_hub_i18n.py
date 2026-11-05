@@ -105,7 +105,7 @@ html_code = f"""<!DOCTYPE html>
 
     <!-- Top Navigation Header -->
     <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-4xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
+        <div class="max-w-5xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
             
             <!-- Brand Identity -->
             <a href="/" class="flex items-center gap-2.5 group">
@@ -150,7 +150,7 @@ html_code = f"""<!DOCTYPE html>
     <main class="flex-1 space-y-6 sm:space-y-8 py-6 sm:py-9">
         
         <!-- Hero Section: High Impact, Direct & Child-Proof -->
-        <section class="max-w-4xl mx-auto px-4 text-center space-y-3.5">
+        <section class="max-w-5xl mx-auto px-4 text-center space-y-3.5">
             
             <!-- Trust Badge -->
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50/80 border border-blue-200/90 text-blue-700 text-xs font-bold shadow-2xs">
@@ -229,7 +229,7 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                         <div class="text-left leading-tight">
                             <span class="block">OmniGraph</span>
-                            <span class="subtext text-[10px] text-rose-800/80 font-normal hidden sm:block">3 Grafica & Stampa</span>
+                            <span class="subtext text-[10px] text-rose-800/80 font-normal hidden sm:block">4 Grafica & Stampa</span>
                         </div>
                     </button>
 
@@ -239,7 +239,7 @@ html_code = f"""<!DOCTYPE html>
         </section>
 
         <!-- Tools Showcase -->
-        <section class="max-w-4xl mx-auto px-4 space-y-8">
+        <section class="max-w-5xl mx-auto px-4 space-y-8">
             
             <!-- ========================================== -->
             <!-- DIVISION 1: OmniBuilding (Edilizia & Tubi) -->
@@ -664,7 +664,7 @@ html_code = f"""<!DOCTYPE html>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 pt-8 pb-10 text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto px-4 space-y-5">
+        <div class="max-w-5xl mx-auto px-4 space-y-5">
             
             <!-- Suggestion Bar -->
             <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-2xs">
