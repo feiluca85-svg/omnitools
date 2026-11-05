@@ -977,7 +977,39 @@ html_code = f"""<!DOCTYPE html>
             }});
         }}
 
+                function renderFaqs() {{
+            const container = document.getElementById('faqContainer');
+            if (!container) return;
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const titleElem = document.getElementById('faqTitle');
+            if (titleElem && t.faq_title) {{
+                titleElem.innerHTML = `<span>${{t.faq_title}}</span>`;
+            }}
+
+            let html = '';
+            for (let i = 1; i <= 4; i++) {{
+                const q = t[`faq_${{i}}_q`];
+                const a = t[`faq_${{i}}_a`];
+                if (q && a) {{
+                    html += `
+                    <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                        <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                            <span>${{q}}</span>
+                            <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                            ${{a}}
+                        </div>
+                    </details>`;
+                }}
+            }}
+            container.innerHTML = html;
+        }}
+
         function changeLanguage(lang) {{
+            renderFaqs();
             if (!TRANSLATIONS[lang]) return;
             currentLang = lang;
             document.documentElement.lang = lang;
