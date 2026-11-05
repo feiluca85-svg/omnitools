@@ -435,6 +435,31 @@ html_code = f"""<!DOCTYPE html>
                 </div>
             </div>
 
+            <!-- Flow Velocity & Laser Benchmarking Strip -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 text-xs">
+                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">🌊</span>
+                        <div>
+                            <span class="font-bold text-slate-800 block" id="lblVelocity">Velocità di Scorrimento (Manning)</span>
+                            <span class="text-[10px] text-slate-500">Autopulizia ottimale: 0.7 - 2.5 m/s</span>
+                        </div>
+                    </div>
+                    <span class="font-mono font-black text-sm text-blue-900 px-2 py-1 bg-white rounded-lg border border-slate-200" id="resVelocity">1.05 m/s</span>
+                </div>
+
+                <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">📐</span>
+                        <div>
+                            <span class="font-bold text-slate-800 block" id="lblLaserDrop">Caduta Totale di Battuta</span>
+                            <span class="text-[10px] text-slate-500">Quota dislivello per livello laser o stadia</span>
+                        </div>
+                    </div>
+                    <span class="font-mono font-black text-sm text-slate-800 px-2 py-1 bg-white rounded-lg border border-slate-200" id="resLaserDrop">ΔH = 6.0 cm</span>
+                </div>
+            </div>
+
             <!-- Dynamic Compliance & Self-Cleansing Status -->
             <div id="statusContainer" class="p-4 sm:p-5 rounded-2xl border transition-all">
                 <div class="flex items-start gap-3">
@@ -857,11 +882,22 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('resSlope').textContent = slopePercent.toFixed(2) + ' %';
             document.getElementById('resRatio').textContent = '1 : ' + ratio + ' (1 cm ogni ' + ratio + ' cm)';
             document.getElementById('resDrop').textContent = dropCm.toFixed(1) + ' cm';
+            const rld = document.getElementById('resLaserDrop'); if (rld) rld.textContent = 'ΔH = ' + dropCm.toFixed(1) + ' cm';
             document.getElementById('resDropMm').textContent = Math.round(dropMm) + ' mm';
             document.getElementById('resDropMeter').textContent = dropPerMeterCm.toFixed(1) + ' cm/m';
             document.getElementById('resDropMeterMm').textContent = dropPerMeterMm.toFixed(0) + ' mm al metro';
             document.getElementById('resAngle').textContent = angleDeg.toFixed(2) + ' °';
             document.getElementById('resDiamBadge').textContent = 'Ø ' + diam + ' mm';
+            
+            // Manning-Gauckler-Strickler hydraulic velocity estimation for half-full pipe (V = (1/n) * Rh^(2/3) * S^(1/2))
+            // Rh = D / 4 for half full
+            const dMeters = (parseFloat(diam) || 110) / 1000.0;
+            const rh = dMeters / 4.0;
+            const sSlope = Math.max(0.001, slopePercent / 100.0);
+            const nRoughness = 0.010; // PVC / PE smooth plastic pipe
+            const velocity = (1.0 / nRoughness) * Math.pow(rh, 2.0 / 3.0) * Math.pow(sSlope, 0.5);
+            const resVel = document.getElementById('resVelocity');
+            if (resVel) resVel.textContent = velocity.toFixed(2) + ' m/s';
 
             // Update Compliance Status Banner
             updateStatus(slopePercent);

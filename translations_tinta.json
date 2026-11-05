@@ -68,7 +68,16 @@
     "dropper_dropzone_sub": "Carica la foto del cliente, un logo o un catalogo, poi clicca sul colore esatto da riprodurre",
     "dropper_canvas_hint": "Muovi il mirino per esplorare con la lente di ingrandimento e clicca sul pixel desiderato",
     "dropper_picked_msg": "Colore campionato con successo",
-    "roll_rows_label": "Righe di Controllo (Avanzamento Bobina)"
+    "roll_rows_label": "Righe di Controllo (Avanzamento Bobina)",
+    "faq_title": "Domande Frequenti sulla Calibrazione CMYK e Tinte Piatte",
+    "faq_1_q": "Perché il colore a video RGB non corrisponde mai al 100% alla stampa CMYK?",
+    "faq_1_a": "I monitor emettono luce additiva (RGB) con un gamut di colori molto più esteso, mentre la stampa sottrae luce tramite inchiostri fisici su carta (CMYK). Inoltre la porosità della carta, la laminazione (lucida/opaca) e il tipo di macchina da stampa modificano sensibilmente la resa finale.",
+    "faq_2_q": "Come si usa la matrice di calibrazione TintaPerfetta?",
+    "faq_2_a": "Inserisci la tua ricetta colore stimata (o campionala con la pipetta). Seleziona il formato del tuo supporto (foglio o nastro bobina) e stampa il file PDF vettoriale direttamente sulla macchina da stampa con la carta definitiva della commessa. Appoggia il campione originale alla luce naturale o cabina D50, trova il tassello perfetto e inserisci la ricetta corrispondente nel tuo RIP.",
+    "faq_3_q": "Cosa significa passo di sensibilità ±2%, ±5% o ±10%?",
+    "faq_3_a": "Rappresenta la variazione percentuale di inchiostro tra una casella e la successiva. ±10% serve per una sgrossatura rapida quando il colore è lontano; ±5% è il passo standard di precisione; ±2% è ideale per rifiniture micrometriche su tonalità critiche come incarnati o tinte istituzionali.",
+    "faq_4_q": "Cos'è il Total Area Coverage (TAC) e perché è importante?",
+    "faq_4_a": "Il TAC è la somma delle percentuali dei quattro canali CMYK (C+M+Y+K). Per carte patinate non dovrebbe superare il 300-320%, mentre per carte uso mano o giornale è raccomandato non superare il 260-280% per evitare sbavature, problemi di asciugatura e controstampa."
   },
   "en": {
     "title": "TintaPerfetta — CMYK Color Bracketing Matrix & Print Matcher",
@@ -139,7 +148,16 @@
     "dropper_dropzone_sub": "Upload customer photo, logo or catalog, then click the exact color to match",
     "dropper_canvas_hint": "Hover crosshair with magnifying loupe and click the target pixel",
     "dropper_picked_msg": "Color sampled successfully",
-    "roll_rows_label": "Number of Test Rows (Roll Feed)"
+    "roll_rows_label": "Number of Test Rows (Roll Feed)",
+    "faq_title": "Frequently Asked Questions about CMYK Calibration & Spot Colors",
+    "faq_1_q": "Why does RGB on screen differ from printed CMYK?",
+    "faq_1_a": "Monitors use additive RGB light with a broader color gamut, while printing subtracts light using physical CMYK inks on paper. Paper absorption, coating, and press calibration also heavily impact the final hue.",
+    "faq_2_q": "How do I use the TintaPerfetta calibration chart?",
+    "faq_2_a": "Enter your target color (or sample it via eyedropper). Select your substrate size (sheet or roll) and print the vector PDF on your target press and actual substrate. Compare with your physical reference under D50 standard lighting and apply the winning CMYK values in your RIP.",
+    "faq_3_q": "What does sensitivity step (±2%, ±5%, ±10%) mean?",
+    "faq_3_a": "It defines the ink percentage difference between adjacent patches. ±10% is for broad matching, ±5% is standard production tolerance, and ±2% is for micro-calibration on critical brand colors.",
+    "faq_4_q": "What is Total Area Coverage (TAC)?",
+    "faq_4_a": "TAC is the sum of all 4 ink channels (C+M+Y+K). Coated papers typically max out at 300-320%, while uncoated or newsprint should stay below 260-280% to avoid ink bleeding and slow drying."
   },
   "es": {
     "title": "TintaPerfetta — Matriz de Calibración de Color CMYK & Prueba de Impresión",
@@ -210,7 +228,16 @@
     "dropper_dropzone_sub": "Carga foto de cliente, logo o catálogo y haz clic en el color a igualar",
     "dropper_canvas_hint": "Mueve la mira con lupa de aumento y haz clic en el píxel deseado",
     "dropper_picked_msg": "Color capturado con éxito",
-    "roll_rows_label": "Filas de Control (Avance de Bobina)"
+    "roll_rows_label": "Filas de Control (Avance de Bobina)",
+    "faq_title": "Preguntas Frecuentes sobre Calibración CMYK y Tintas Planas",
+    "faq_1_q": "¿Por qué el color RGB en pantalla no coincide con la impresión CMYK?",
+    "faq_1_a": "Las pantallas emiten luz aditiva RGB con mayor gama cromática, mientras que la imprenta usa tintas sustractivas CMYK sobre papel. La porosidad y el acabado del papel modifican el tono final.",
+    "faq_2_q": "¿Cómo utilizar la matriz de calibración?",
+    "faq_2_a": "Introduce tu color objetivo, descarga e imprime el PDF vectorial en tu soporte final, compara bajo luz estándar D50 y copia la fórmula ganadora en tu RIP.",
+    "faq_3_q": "¿Qué significa el paso de sensibilidad ±2%, ±5%, ±10%?",
+    "faq_3_a": "Define la variación porcentual de tinta entre parches adyacentes. ±5% es estándar y ±2% es para ajustes micrométricos de alta precisión.",
+    "faq_4_q": "¿Qué es el Total Area Coverage (TAC)?",
+    "faq_4_a": "Es la suma de los cuatro canales CMYK. No debe superar el 300-320% en estucados ni el 260% en papeles no estucados para evitar repintado."
   },
   "fr": {
     "title": "TintaPerfetta — Matrice de Calibration Couleur CMJN & Épreuve Presse",
@@ -281,7 +308,16 @@
     "dropper_dropzone_sub": "Téléchargez la photo client, un logo ou un catalogue, puis cliquez sur la couleur exacte",
     "dropper_canvas_hint": "Déplacez le réticule avec loupe et cliquez sur le pixel cible",
     "dropper_picked_msg": "Couleur prélevée avec succès",
-    "roll_rows_label": "Rangées de Test (Avance Bobine)"
+    "roll_rows_label": "Rangées de Test (Avance Bobine)",
+    "faq_title": "Foire Aux Questions sur l'Étalonnage CMJN et Tons Directs",
+    "faq_1_q": "Pourquoi le rendu RVB à l'écran diffère-t-il de l'impression CMJN ?",
+    "faq_1_a": "Les écrans utilisent la synthèse additive RVB tandis que l'imprimerie repose sur les encres CMJN soustractives. Le support papier modifie considérablement le rendu.",
+    "faq_2_q": "Comment utiliser la mire d'étalonnage TintaPerfetta ?",
+    "faq_2_a": "Saisissez la teinte cible, imprimez la charte vectorielle sur le support réel, observez sous éclairage D50 et appliquez la formule idéale dans votre RIP.",
+    "faq_3_q": "Que signifie le pas de variation (±2%, ±5%, ±10%) ?",
+    "faq_3_a": "Il indique l'écart d'encrage entre chaque échantillon. ±5% est la norme industrielle, ±2% pour l'accord parfait de teintes institutionnelles.",
+    "faq_4_q": "Qu'est-ce que la charge d'encre maximale (TAC) ?",
+    "faq_4_a": "C'est la somme des pourcentages CMJN. Elle ne doit pas dépasser 300-320% sur couché pour éviter les problèmes de séchage."
   },
   "de": {
     "title": "TintaPerfetta — CMYK-Farbmatrix & Druckkalibrierung",
@@ -352,7 +388,16 @@
     "dropper_dropzone_sub": "Kundenfoto, Logo oder Katalog hochladen und auf die Zielfarbe klicken",
     "dropper_canvas_hint": "Fadenkreuz mit Lupe bewegen und auf den gewünschten Pixel klicken",
     "dropper_picked_msg": "Farbe erfolgreich abgetastet",
-    "roll_rows_label": "Prüfreihen (Rollen-Vorschub)"
+    "roll_rows_label": "Prüfreihen (Rollen-Vorschub)",
+    "faq_title": "Häufig gestellte Fragen zu CMYK-Kalibrierung & Sonderfarben",
+    "faq_1_q": "Warum weicht Bildschirm-RGB vom gedruckten CMYK ab?",
+    "faq_1_a": "Monitore arbeiten mit additivem RGB-Farbraum, während der Druck subtraktive Pigmente nutzt. Auch Papiersorte und Veredelung beeinflussen das Druckergebnis.",
+    "faq_2_q": "Wie wird die Testmatrix verwendet?",
+    "faq_2_a": "Zielrezeptur eingeben, PDF auf Originalmaterial drucken, unter D50-Normlicht abmustern und die passende CMYK-Mischung im RIP hinterlegen.",
+    "faq_3_q": "Was bedeutet die Schrittweite ±2%, ±5%, ±10%?",
+    "faq_3_a": "Der Farbabstand zwischen den Feldern. ±5% ist Standard, ±2% dient der Feinabstimmung von CI-Farben.",
+    "faq_4_q": "Was ist der Gesamtfarbauftrag (TAC)?",
+    "faq_4_a": "Die Summe aller vier Kanäle (C+M+Y+K). Bei gestrichenem Papier sollte 300-320% nicht überschritten werden."
   },
   "pt": {
     "title": "TintaPerfetta — Matriz de Calibração de Cor CMYK & Prova de Impressão",
@@ -423,6 +468,15 @@
     "dropper_dropzone_sub": "Carregue a foto do cliente, logótipo ou catálogo e clique na cor a reproduzir",
     "dropper_canvas_hint": "Mova a mira com lupa e clique no píxel pretendido",
     "dropper_picked_msg": "Cor capturada com sucesso",
-    "roll_rows_label": "Linhas de Teste (Avanço de Bobina)"
+    "roll_rows_label": "Linhas de Teste (Avanço de Bobina)",
+    "faq_title": "Perguntas Frequentes sobre Calibração CMYK e Cores Diretas",
+    "faq_1_q": "Por que as cores RGB no monitor diferem da impressão CMYK?",
+    "faq_1_a": "Monitores emitem luz RGB com gama mais ampla, enquanto a impressão subtrai luz com tintas CMYK no papel. O substrato altera o tom final.",
+    "faq_2_q": "Como utilizar a matriz TintaPerfetta?",
+    "faq_2_a": "Insira a receita de cor, imprima o PDF vetorial no papel real, compare sob luz D50 e aplique os valores ideais no RIP.",
+    "faq_3_q": "O que é o passo de sensibilidade ±2%, ±5%, ±10%?",
+    "faq_3_a": "Variação percentual entre amostras vizinhas. ±5% é o padrão gráfico e ±2% para máxima precisão de marcas.",
+    "faq_4_q": "O que é a Cobertura Total de Tinta (TAC)?",
+    "faq_4_a": "É a soma dos quatro canais CMYK. Não deve ultrapassar 300-320% para evitar problemas de secagem."
   }
 }

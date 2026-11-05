@@ -52,7 +52,8 @@
     "suggest_close": "Annulla",
     "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.",
     "copy_btn": "Copia Quote InDesign",
-    "copied_text": "Copiato!"
+    "copied_text": "Copiato!",
+    "download_svg_dima": "Scarica Dima SVG (Illustrator)"
   },
   "en": {
     "title": "SpineMaster",
@@ -107,7 +108,8 @@
     "suggest_close": "Cancel",
     "suggest_thanks": "Thank you! Your feedback guides upcoming tools.",
     "copy_btn": "Copy InDesign Specs",
-    "copied_text": "Copied!"
+    "copied_text": "Copied!",
+    "download_svg_dima": "Download SVG Template (Illustrator)"
   },
   "es": {
     "title": "LomoFácil",
@@ -162,7 +164,8 @@
     "suggest_close": "Cancelar",
     "suggest_thanks": "¡Gracias por tu aporte!",
     "copy_btn": "Copiar Medidas InDesign",
-    "copied_text": "¡Copiado!"
+    "copied_text": "¡Copiado!",
+    "download_svg_dima": "Descargar Plantilla SVG"
   },
   "fr": {
     "title": "DosFacile",
@@ -217,7 +220,8 @@
     "suggest_close": "Annuler",
     "suggest_thanks": "Merci pour votre idée !",
     "copy_btn": "Copier Dimensions InDesign",
-    "copied_text": "Copié !"
+    "copied_text": "Copié !",
+    "download_svg_dima": "Télécharger Gabarit SVG"
   },
   "de": {
     "title": "BuchrückenRechner",
@@ -272,7 +276,8 @@
     "suggest_close": "Abbrechen",
     "suggest_thanks": "Vielen Dank für Ihre Anregung.",
     "copy_btn": "InDesign-Maße kopieren",
-    "copied_text": "Kopiert!"
+    "copied_text": "Kopiert!",
+    "download_svg_dima": "SVG-Vorlage herunterladen"
   },
   "pt": {
     "title": "LombadaFácil",
@@ -327,6 +332,7 @@
     "suggest_close": "Cancelar",
     "suggest_thanks": "Obrigado! Sua ideia guiará os próximos passos.",
     "copy_btn": "Copiar Medidas InDesign",
-    "copied_text": "Copiado!"
+    "copied_text": "Copiado!",
+    "download_svg_dima": "Baixar Gabarito SVG"
   }
 }

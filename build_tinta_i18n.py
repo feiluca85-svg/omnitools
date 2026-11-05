@@ -13,6 +13,56 @@ html_code = f"""<!DOCTYPE html>
     <title>TintaPerfetta — Matrice di Calibrazione Colore & Prova Stampa CMYK (Formati A4, A3, 33x48 e Bobina)</title>
     <meta name="description" content="Generatore professionale di matrici cromatiche di scarto CMYK su misura: A4, A3, SRA3 33x48 cm, formati personalizzati e strisce bobina su misura (25, 30, 33 cm).">
     
+    <!-- Schema.org Structured Data (WebApplication + FAQPage) -->
+    <script type="application/ld+json">
+    [
+      {{
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "TintaPerfetta — Matrice di Calibrazione CMYK",
+        "url": "https://www.omnitoolslab.com/tinta",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "description": "Matrice di scarto cromatico CMYK su misura per rotative a bobina, stampanti digitali SRA3 e formati personalizzati con campionamento colore pipetta contagocce.",
+        "offers": {{
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }}
+      }},
+      {{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "Perché il colore a video RGB non corrisponde mai al 100% alla stampa CMYK?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "I monitor emettono luce RGB con un gamut più ampio, mentre la stampa sottrae luce tramite inchiostri CMYK. La finitura della carta e la macchina modificano il risultato reale."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Come si usa la matrice di calibrazione TintaPerfetta?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Inserisci la ricetta colore stimata, stampa il file PDF vettoriale sul supporto reale con la tua macchina da stampa, confronta il tassello sotto luce D50 e imposta il codice vincente nel RIP."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Cos'è il Total Area Coverage (TAC) e perché è importante?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Il TAC è la somma delle percentuali dei quattro canali CMYK. Per carte patinate non deve superare il 300-320%, per uso mano 260% per evitare sbavature o problemi di asciugatura."
+            }}
+          }}
+        ]
+      }}
+    ]
+    </script>
+
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tinta">
     <meta name="robots" content="index, follow">
@@ -618,6 +668,36 @@ html_code = f"""<!DOCTYPE html>
 
         </div>
 
+        <!-- Reference FAQ Section (SEO Pillar & Rich Snippets) -->
+        <section class="no-print bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xs space-y-5 mt-6">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">❓</span>
+                <div>
+                    <h2 id="faqTitle" class="text-base sm:text-lg font-black text-slate-900 font-jakarta">Domande Frequenti sulla Calibrazione CMYK e Tinte Piatte</h2>
+                    <p class="text-xs text-slate-500">I consigli tecnici per azzerare gli scarti di prestampa</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed" id="faqContainer">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq1Q">Perché il colore RGB a video differisce dalla stampa CMYK?</h3>
+                    <p class="text-slate-600" id="faq1A">I monitor lavorano in sintesi additiva RGB, mentre la stampa tipografica usa la sintesi sottrattiva CMYK. La natura fisica del supporto (porosità, sbiancanti ottici) influisce direttamente sulla riflettanza della luce.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq2Q">Come si utilizza la matrice TintaPerfetta?</h3>
+                    <p class="text-slate-600" id="faq2A">Stampa il PDF vettoriale generato sulla carta definitiva, posiziona il campione fisico del cliente sotto luce standard D50, seleziona il riquadro perfetto e imposta i valori nel tuo RIP.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq3Q">Cosa significa passo di sensibilità (±2%, ±5%, ±10%)?</h3>
+                    <p class="text-slate-600" id="faq3A">È la variazione di inchiostro tra una casella e la successiva. ±10% per sgrossatura veloce, ±5% per tolleranze standard e ±2% per accordi millimetrici di tinte istituzionali.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2" id="faq4Q">Cos'è il Total Area Coverage (TAC)?</h3>
+                    <p class="text-slate-600" id="faq4A">È la somma totale dei 4 canali C+M+Y+K. Su carte patinate deve restare sotto 300-320%, mentre su carte naturali non deve superare il 260% per evitare mancata asciugatura.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Social Share & Viral Strip -->
         <div class="no-print bg-white p-4 rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3.5 text-center sm:text-left mt-6">
             <div class="flex items-center gap-3">
@@ -773,6 +853,16 @@ html_code = f"""<!DOCTYPE html>
             if (t.rights_reserved) document.getElementById('rightsText').textContent = t.rights_reserved;
             if (t.legal_disclaimer) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
             if (t.print_sheet_title) document.getElementById('printSheetTitle').textContent = t.print_sheet_title;
+
+            const fqTitle = document.getElementById('faqTitle'); if (fqTitle && t.faq_title) fqTitle.textContent = t.faq_title;
+            const f1q = document.getElementById('faq1Q'); if (f1q && t.faq_1_q) f1q.textContent = t.faq_1_q;
+            const f1a = document.getElementById('faq1A'); if (f1a && t.faq_1_a) f1a.innerHTML = t.faq_1_a;
+            const f2q = document.getElementById('faq2Q'); if (f2q && t.faq_2_q) f2q.textContent = t.faq_2_q;
+            const f2a = document.getElementById('faq2A'); if (f2a && t.faq_2_a) f2a.innerHTML = t.faq_2_a;
+            const f3q = document.getElementById('faq3Q'); if (f3q && t.faq_3_q) f3q.textContent = t.faq_3_q;
+            const f3a = document.getElementById('faq3A'); if (f3a && t.faq_3_a) f3a.innerHTML = t.faq_3_a;
+            const f4q = document.getElementById('faq4Q'); if (f4q && t.faq_4_q) f4q.textContent = t.faq_4_q;
+            const f4a = document.getElementById('faq4A'); if (f4a && t.faq_4_a) f4a.innerHTML = t.faq_4_a;
         }}
 
         // Preset Selector

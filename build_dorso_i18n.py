@@ -372,10 +372,16 @@ html_code = f"""<!DOCTYPE html>
                         <span id="schemaTitle" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Tracciato Fustella Copertina Stesa</span>
                         
                         <!-- Fast Copy Button for InDesign / Illustrator -->
-                        <button type="button" onclick="copyInDesignSpecs()" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-lg border border-purple-200 transition active:scale-95">
-                            <span id="copyBtnIcon">📋</span>
-                            <span id="copyBtnText">Copia Quote InDesign</span>
-                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" onclick="downloadSvgDima()" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-2xs transition active:scale-95" title="Scarica tracciato vettoriale aperto per Illustrator o InDesign">
+                                <span>📥</span>
+                                <span id="downloadDimaText">Scarica Dima SVG</span>
+                            </button>
+                            <button type="button" onclick="copyInDesignSpecs()" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-lg border border-purple-200 transition active:scale-95">
+                                <span id="copyBtnIcon">📋</span>
+                                <span id="copyBtnText">Copia Quote InDesign</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- SVG Cover Blueprint Canvas -->
@@ -924,6 +930,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('schemaTitle').textContent = t.schema_title;
             document.getElementById('printBtnText').textContent = t.print_btn;
             document.getElementById('copyBtnText').textContent = t.copy_btn;
+            const ddt = document.getElementById('downloadDimaText'); if (ddt && t.download_svg_dima) ddt.textContent = t.download_svg_dima;
 
             document.getElementById('installBannerTitle').textContent = t.install_banner_title;
             document.getElementById('installBannerSub').textContent = t.install_banner_sub;
@@ -1256,6 +1263,89 @@ html_code = f"""<!DOCTYPE html>
             // Dim Callouts
             topDimText.textContent = `L: ${{flatWidthMm.toFixed(1)}} mm (Stesa Chiusa) • Dorso: ${{spineMm.toFixed(1)}} mm`;
             rightDimText.textContent = `H: ${{bookHeightMm}} mm`;
+        }}
+
+        function downloadSvgDima() {{
+            const t = TRANSLATIONS[currentLang];
+            let pages = parseInt(pagesInput.value) || 240;
+            let weight = parseFloat(weightInput.value) || 80;
+            let bulk = parseFloat(bulkSelect.value) || 1.3;
+            let sheets = Math.ceil(pages / 2);
+            let bookBlockMm = sheets * (weight / 1000) * bulk;
+            let glueToleranceMm = (currentBinding === 'softcover') ? 0.5 : 3.0;
+            let spineMm = Math.max(bookBlockMm + glueToleranceMm, 0.5);
+
+            let parts = currentBookFormat.split('x');
+            let bookWidthMm = parseFloat(parts[0]) || 148;
+            let bookHeightMm = parseFloat(parts[1]) || 210;
+            let flapMm = currentFlapMm || 0;
+            let flapTotalMm = flapMm * 2;
+            let flatWidthMm = (bookWidthMm * 2) + spineMm + flapTotalMm;
+            let flatHeightMm = bookHeightMm;
+            let bleedWidthMm = flatWidthMm + 6.0;
+            let bleedHeightMm = flatHeightMm + 6.0;
+
+            const bleed = 3.0;
+            let svgLines = [
+                '<?xml version="1.0" encoding="UTF-8"?>',
+                `<svg xmlns="http://www.w3.org/2000/svg" width="${{bleedWidthMm.toFixed(2)}}mm" height="${{bleedHeightMm.toFixed(2)}}mm" viewBox="0 0 ${{bleedWidthMm.toFixed(2)}} ${{bleedHeightMm.toFixed(2)}}">`,
+                `  <desc>Dima Copertina OmniTools Lab (https://www.omnitoolslab.com/dorso)</desc>`,
+                '  <defs>',
+                '    <style>',
+                '      .bleed-box {{ fill: none; stroke: #ef4444; stroke-width: 0.35; stroke-dasharray: 2 2; }}',
+                '      .trim-box {{ fill: none; stroke: #0284c7; stroke-width: 0.35; }}',
+                '      .crease-line {{ fill: none; stroke: #9333ea; stroke-width: 0.35; stroke-dasharray: 1 1; }}',
+                "      .guide-text {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 3.5px; fill: #64748b; font-weight: bold; }}",
+                "      .title-text {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 5px; fill: #0f172a; font-weight: bold; }}",
+                '    </style>',
+                '  </defs>',
+                '  <g id="Livello_Refilo">',
+                `    <rect class="bleed-box" x="0" y="0" width="${{bleedWidthMm.toFixed(2)}}" height="${{bleedHeightMm.toFixed(2)}}" />`,
+                '  </g>',
+                '  <g id="Livello_Taglio">',
+                `    <rect class="trim-box" x="${{bleed.toFixed(2)}}" y="${{bleed.toFixed(2)}}" width="${{flatWidthMm.toFixed(2)}}" height="${{flatHeightMm.toFixed(2)}}" />`,
+                '  </g>',
+                '  <g id="Livello_Piega">'
+            ];
+
+            let curX = bleed;
+            if (flapMm > 0) {{
+                curX += flapMm;
+                svgLines.push(`    <line class="crease-line" x1="${{curX.toFixed(2)}}" y1="0" x2="${{curX.toFixed(2)}}" y2="${{bleedHeightMm.toFixed(2)}}" />`);
+            }}
+
+            curX += bookWidthMm;
+            svgLines.push(`    <line class="crease-line" x1="${{curX.toFixed(2)}}" y1="0" x2="${{curX.toFixed(2)}}" y2="${{bleedHeightMm.toFixed(2)}}" />`);
+
+            let spineCenterX = curX + (spineMm / 2.0);
+            curX += spineMm;
+            svgLines.push(`    <line class="crease-line" x1="${{curX.toFixed(2)}}" y1="0" x2="${{curX.toFixed(2)}}" y2="${{bleedHeightMm.toFixed(2)}}" />`);
+
+            if (flapMm > 0) {{
+                let rightFlapX = curX + bookWidthMm;
+                svgLines.push(`    <line class="crease-line" x1="${{rightFlapX.toFixed(2)}}" y1="0" x2="${{rightFlapX.toFixed(2)}}" y2="${{bleedHeightMm.toFixed(2)}}" />`);
+            }}
+
+            svgLines.push(`    <line class="crease-line" stroke="#a855f7" stroke-dasharray="0.5 1" x1="${{spineCenterX.toFixed(2)}}" y1="0" x2="${{spineCenterX.toFixed(2)}}" y2="${{bleedHeightMm.toFixed(2)}}" />`);
+            svgLines.push('  </g>');
+            svgLines.push('  <g id="Livello_Quote_Testi">');
+            svgLines.push(`    <text class="title-text" x="${{bleed + 5}}" y="${{bleed + 12}}">DIMA COPERTINA OMNITOOLS</text>`);
+            svgLines.push(`    <text class="guide-text" x="${{bleed + 5}}" y="${{bleed + 18}}">Formato: ${{bookWidthMm}}x${{bookHeightMm}} mm | Pagine: ${{pages}} (${{weight}}g Mano ${{bulk}})</text>`);
+            svgLines.push(`    <text class="guide-text" x="${{bleed + 5}}" y="${{bleed + 23}}">DORSO: ${{spineMm.toFixed(2)}} mm | Refilo: 3.0 mm</text>`);
+            svgLines.push(`    <text class="guide-text" x="${{spineCenterX.toFixed(2)}}" y="${{(bleed + (flatHeightMm/2)).toFixed(2)}}" text-anchor="middle" transform="rotate(-90 ${{spineCenterX.toFixed(2)}} ${{(bleed + (flatHeightMm/2)).toFixed(2)}})">DORSO ${{spineMm.toFixed(1)}} mm</text>`);
+            svgLines.push('  </g>');
+            svgLines.push('</svg>');
+
+            const svgContent = svgLines.join('\n');
+            const blob = new Blob([svgContent], {{ type: 'image/svg+xml;charset=utf-8' }});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dima_copertina_${{bookWidthMm}}x${{bookHeightMm}}_dorso_${{spineMm.toFixed(1)}}mm.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }}
 
         function copyInDesignSpecs() {{

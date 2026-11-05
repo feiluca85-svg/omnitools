@@ -78,7 +78,10 @@
     "share_title": "Ti è utile questo calcolatore per scarichi?",
     "share_sub": "Condividi lo strumento con colleghi termoidraulici, geometri o installatori",
     "share_copy": "Copia Link",
-    "share_copied": "Copiato! ✓"
+    "share_copied": "Copiato! ✓",
+    "laser_drop_note": "Battuta Laser / Quota di Posa",
+    "velocity_label": "Velocità Flussaggio Stimata",
+    "laser_sub": "Dislivello netto tra inizio e fine tubo per stasare la pendenza con livello laser o metro da muratore."
   },
   "en": {
     "title": "DrainFast — Sewer Pipe Slope & Drainage Fall Calculator (EN 12056)",
@@ -159,7 +162,10 @@
     "share_title": "Found this pipe slope tool useful?",
     "share_sub": "Share it with plumbing engineers, architects, and site managers",
     "share_copy": "Copy Link",
-    "share_copied": "Copied! ✓"
+    "share_copied": "Copied! ✓",
+    "laser_drop_note": "Laser Grade / Trench Drop",
+    "velocity_label": "Estimated Flow Velocity",
+    "laser_sub": "Net drop between inlet and outlet to set slope with laser level or folding rule."
   },
   "es": {
     "title": "DesagueFacil — Cálculo de Pendiente de Tuberías y Saneamiento (CTE & EN 12056)",
@@ -240,7 +246,10 @@
     "share_title": "¿Te resulta útil este calculador de desagües?",
     "share_sub": "Compártelo con fontaneros, aparejadores y jefes de obra",
     "share_copy": "Copiar Enlace",
-    "share_copied": "¡Copiado! ✓"
+    "share_copied": "¡Copiado! ✓",
+    "laser_drop_note": "Cota Láser / Caída de Zanja",
+    "velocity_label": "Velocidad de Flujo Estimada",
+    "laser_sub": "Desnivel neto para replanteo con nivel láser o regla."
   },
   "fr": {
     "title": "PenteTuyauFacile — Calcul de Pente pour Évacuation et Assainissement (DTU 60.11 & EN 12056)",
@@ -321,7 +330,10 @@
     "share_title": "Cet outil de calcul de pente vous est utile ?",
     "share_sub": "Partagez-le avec vos collègues plombiers, architectes et maîtres d'œuvre",
     "share_copy": "Copier le Lien",
-    "share_copied": "Copié ! ✓"
+    "share_copied": "Copié ! ✓",
+    "laser_drop_note": "Cote Laser / Chute de Pose",
+    "velocity_label": "Vitesse d'Écoulement Estimée",
+    "laser_sub": "Dénivelé net pour calage de la pente au niveau laser."
   },
   "de": {
     "title": "RohrGefaelleRechner — Gefälle für Abwasser- und Kanalrohre (DIN 1986-100 & EN 12056)",
@@ -402,7 +414,10 @@
     "share_title": "Ist dieser Rohrgefälle-Rechner nützlich?",
     "share_sub": "Teilen Sie das Tool mit Installateuren, Polieren und Planern",
     "share_copy": "Link kopieren",
-    "share_copied": "Kopiert! ✓"
+    "share_copied": "Kopiert! ✓",
+    "laser_drop_note": "Laser-Gefälle / Höhenunterschied",
+    "velocity_label": "Geschätzte Fließgeschwindigkeit",
+    "laser_sub": "Netto-Höhenunterschied zum Einmessen mit Rotationslaser oder Wasserwaage."
   },
   "pt": {
     "title": "EsgotoFacil — Cálculo de Declive de Tubagens e Esgotos (EN 12056 & Regulamento Geral)",
@@ -483,6 +498,9 @@
     "share_title": "Esta ferramenta de cálculo de tubos é-lhe útil?",
     "share_sub": "Partilhe com canalizadores, projetistas e diretores de obra",
     "share_copy": "Copiar Ligação",
-    "share_copied": "Copiado! ✓"
+    "share_copied": "Copiado! ✓",
+    "laser_drop_note": "Cota Laser / Queda de Assentamento",
+    "velocity_label": "Velocidade de Escoamento Estimada",
+    "laser_sub": "Desnível líquido para marcação com nível laser ou fita métrica."
   }
 }
