@@ -1129,19 +1129,21 @@ document.addEventListener('keydown', function(e) {
                 width.value = 2;
                 displayCheck.checked = true;
                 setColorPair('#000000', '#ffffff');
-            } else if (type === 'code128') {
-                symb.value = 'CODE128';
-                input.value = 'LOGIS-849204-IT';
+            } else if (type === 'gs1_128') {
+                symb.value = 'GS1_128';
+                input.value = '(01)08012345678901(10)LOT459(17)261231';
                 height.value = 65;
-                width.value = 2;
+                width.value = 1.6;
                 displayCheck.checked = true;
                 setColorPair('#000000', '#ffffff');
             } else if (type === 'itf14') {
-                symb.value = 'ITF';
+                symb.value = 'ITF14';
                 input.value = '1801234567890';
                 height.value = 65;
                 width.value = 2;
                 displayCheck.checked = true;
+                const bearerCheck = document.getElementById('bearerBarsCheck');
+                if (bearerCheck) bearerCheck.checked = true;
                 setColorPair('#000000', '#ffffff');
             }
             onSymbologyChange();
