@@ -1325,7 +1325,7 @@ html_code = f"""<!DOCTYPE html>
             svgLines.push('  </g>');
             svgLines.push('</svg>');
 
-            const svgContent = svgLines.join('\n');
+            const svgContent = svgLines.join(String.fromCharCode(10));
             const blob = new Blob([svgContent], {{ type: 'image/svg+xml;charset=utf-8' }});
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
