@@ -1208,7 +1208,8 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('liveSizeIndicator').textContent = dimText;
             document.getElementById('printFormatName').textContent = dimText;
             document.getElementById('matrixDimFooter').textContent = `Dimensioni Foglio: ${{dimText}} • FOGRA39`;
-            document.getElementById('badgeFormatIndicator').textContent = dimText;
+            const badgeEl = document.getElementById('badgeFormatIndicator');
+            if (badgeEl) badgeEl.textContent = dimText;
 
             // Update Dynamic Print CSS rule
             const styleEl = document.getElementById('dynamicPageStyle');
