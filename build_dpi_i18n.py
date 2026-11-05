@@ -825,7 +825,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('installBannerSub').textContent = t.install_banner_sub;
             document.getElementById('installBannerBtn').textContent = t.install_btn;
             document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
-            document.getElementById('faqMainTitle').innerHTML = `<span>📚</span> <span>${{t.faq_title}}</span>`;
+            const fmt = document.getElementById('faqTitle') || document.getElementById('faqMainTitle'); if (fmt && t.faq_title) fmt.innerHTML = `<span>${{t.faq_title}}</span>`;
             document.getElementById('ruleTipText').innerHTML = t.rule_tip;
             document.getElementById('copyBtnText').textContent = t.copy_btn;
 
