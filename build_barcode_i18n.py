@@ -868,6 +868,17 @@ html_code = f"""<!DOCTYPE html>
             return (10 - (sum % 10)) % 10;
         }}
 
+        function calculateItf14CheckDigit(str) {{
+            if (!str || str.length < 13) return null;
+            let sum = 0;
+            for (let i = 0; i < 13; i++) {{
+                let n = parseInt(str[i], 10);
+                if (isNaN(n)) return null;
+                sum += (i % 2 === 0) ? n * 3 : n;
+            }}
+            return (10 - (sum % 10)) % 10;
+        }}
+
         function onSymbologyChange() {{
             const symb = document.getElementById('symbologySelect').value;
             const input = document.getElementById('barcodeValue');
@@ -1018,6 +1029,13 @@ html_code = f"""<!DOCTYPE html>
             const quietZone = parseInt(document.getElementById('quietZone').value, 10);
             const displayValue = document.getElementById('displayValueCheck').checked;
 
+            let formatToRender = symb;
+            if (symb === 'GS1_128') {{
+                formatToRender = 'CODE128';
+            }} else if (symb === 'ITF14' || symb === 'ITF') {{
+                formatToRender = 'ITF14';
+            }}
+
             document.getElementById('barWidthVal').innerText = barWidth + ' px';
             document.getElementById('barHeightVal').innerText = barHeight + ' px';
             document.getElementById('quietZoneVal').innerText = quietZone + ' px';
@@ -1026,7 +1044,7 @@ html_code = f"""<!DOCTYPE html>
             let finalValue = rawValue;
             const statusBadge = document.getElementById('checksumStatus');
 
-            // Handle Checksums
+            // Handle Checksums & Formats
             if (symb === 'EAN13') {{
                 const cleanDigits = rawValue.replace(/\\D/g, '');
                 if (cleanDigits.length === 12) {{
@@ -1072,15 +1090,41 @@ html_code = f"""<!DOCTYPE html>
                     statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
                     finalValue = cleanDigits;
                 }}
+            }} else if (symb === 'ITF14' || symb === 'ITF') {{
+                const cleanDigits = rawValue.replace(/\\D/g, '');
+                if (cleanDigits.length === 13) {{
+                    const check = calculateItf14CheckDigit(cleanDigits);
+                    finalValue = cleanDigits + check;
+                    statusBadge.innerText = 'ITF-14 Check auto: ' + check;
+                    statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
+                }} else if (cleanDigits.length === 14) {{
+                    const check = calculateItf14CheckDigit(cleanDigits.slice(0, 13));
+                    if (parseInt(cleanDigits[13], 10) === check) {{
+                        statusBadge.innerText = 'ITF-14 Check valido (' + check + ')';
+                        statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
+                    }} else {{
+                        statusBadge.innerText = 'ITF-14 Check errato (atteso ' + check + ')';
+                        statusBadge.className = 'text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200';
+                    }}
+                    finalValue = cleanDigits;
+                }} else {{
+                    finalValue = cleanDigits;
+                    statusBadge.innerText = 'ITF-14 (' + cleanDigits.length + '/14 cifre)';
+                    statusBadge.className = 'text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200';
+                }}
+            }} else if (symb === 'GS1_128') {{
+                statusBadge.innerText = 'GS1-128 Conforme Pallet';
+                statusBadge.className = 'text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200';
+                finalValue = rawValue;
             }} else {{
-                statusBadge.innerText = symb === 'CODE39' ? 'Code 39 Alfanumerico' : (symb === 'ITF' ? 'ITF-14 Cartoni' : 'Code 128 Standard');
+                statusBadge.innerText = symb === 'CODE39' ? 'Code 39 Alfanumerico' : 'Code 128 Standard';
                 statusBadge.className = 'text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200';
             }}
 
             // Render Barcode via JsBarcode
             try {{
                 JsBarcode("#barcodeSvg", finalValue, {{
-                    format: symb,
+                    format: formatToRender,
                     lineColor: barColorCurrent,
                     background: bgColorCurrent,
                     width: barWidth,
