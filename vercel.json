@@ -3,6 +3,8 @@
   "rewrites": [
     { "source": "/risoluzione", "destination": "/dpi" },
     { "source": "/scarichi", "destination": "/tubi" },
-    { "source": "/fognatura", "destination": "/tubi" }
+    { "source": "/fognatura", "destination": "/tubi" },
+    { "source": "/barcodes", "destination": "/barcode" },
+    { "source": "/codiceabarre", "destination": "/barcode" }
   ]
 }

@@ -196,7 +196,7 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                         <div class="text-left leading-tight">
                             <span id="filterAllText" class="block">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-normal hidden sm:block">6 Strumenti</span>
+                            <span class="subtext text-[10px] text-blue-100 font-normal hidden sm:block">7 Strumenti</span>
                         </div>
                     </button>
 
@@ -431,11 +431,11 @@ html_code = f"""<!DOCTYPE html>
                             <p id="divGraphDesc" class="text-[11px] text-slate-500 mt-0.5">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
                         </div>
                     </div>
-                    <span class="text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200 hidden sm:inline-block">3 Tool Attivi</span>
+                    <span class="text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200 hidden sm:inline-block">4 Tool Attivi</span>
                 </div>
 
-                <!-- 3 Graphic Tools Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- 4 Graphic Tools Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     
                     <!-- TOOL 4: DorsoFacile -->
                     <a href="/dorso" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
@@ -577,6 +577,54 @@ html_code = f"""<!DOCTYPE html>
                         <div class="pt-3 border-t border-slate-100">
                             <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
                                 <span id="toolTintaCta">Genera Matrice Prova</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- TOOL 7: OmniBarcode Studio -->
+                    <a href="/barcode" class="tool-card group relative bg-white hover:bg-indigo-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-indigo-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white flex items-center justify-center shadow-md shadow-indigo-950/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#0f172a" />
+                                        <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="11" y1="10" x2="11" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                                        <line x1="14" y1="10" x2="14" y2="22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                                        <line x1="18" y1="10" x2="18" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                                        <line x1="21" y1="10" x2="21" y2="22" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+                                        <line x1="24" y1="10" x2="24" y2="22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+                                        <line x1="5" y1="16" x2="27" y2="16" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolBarcodeTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-indigo-600 transition">OmniBarcode</h3>
+                                <div id="toolBarcodeHook" class="text-xs font-bold text-indigo-700 mt-0.5">Il codice passerà alla cassa?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolBarcodeDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ EAN-13 & Code 128</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏥 Tessera Sanitaria</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔴 Laser 670 nm</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-indigo-50 group-hover:bg-indigo-600 text-indigo-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolBarcodeCta">Genera Codice a Barre</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
                         </div>

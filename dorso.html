@@ -162,58 +162,160 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
             
-            <!-- OmniTools Master Brand + Module Indicator -->
+            <!-- Breadcrumb Navigation & Suite Switcher -->
             <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-md shadow-rose-900/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+                <!-- Home Link & Brand Logo -->
+                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                        <circle cx="16" cy="16" r="7.5" stroke="#ffffff" stroke-width="2.2" />
-                        <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
-                        <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
-                        <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                    </svg>
+            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
+            <circle cx="16" cy="16" r="6.8" stroke="#ffffff" stroke-width="2" />
+            <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
+        </svg>
                 </a>
 
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <a href="/" class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none hover:text-blue-600 transition">Omni<span class="text-blue-600">Tools</span></a>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded-full border border-purple-200/80 shrink-0">Graph</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
+                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
+                <div class="relative flex items-center min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
+                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
+                            <span>Omni<span class="text-blue-600">Tools</span></span>
+                        </a>
+                        <span class="text-slate-300 font-normal">/</span>
+                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border-purple-200/80 border shrink-0 hidden xs:inline-block">Graph</span>
+                        <span id="brandBadgeMobile" class="hidden">Brossura</span>
+                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
                         
-                        <div class="hidden sm:inline-flex items-center gap-1.5">
-                            <span id="brandTitle" class="font-bold text-xs text-slate-700">DorsoFacile</span>
-                            <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-purple-50 text-purple-700 rounded-md border border-purple-200 shrink-0">Brossura & Dorso</span>
-                        </div>
+                        <!-- Dropdown Switcher Button -->
+                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
+                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">DorsoFacile</span>
+                            <span id="brandTitleMobile" class="hidden">DorsoFacile</span>
+                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-700">DorsoFacile</span>
-                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-purple-50 text-purple-700 rounded border border-purple-200">Dorso Libro</span>
+
+                    <!-- Dropdown Popover Menu (All 7 Tools Categorized) -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
+                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools</span>
+                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
+                                Home Hub →
+                            </a>
+                        </div>
+
+                        <!-- Cantiere & Struttura -->
+                        <div class="px-2 pt-2 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
+                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📐</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">DM 236/89</span>
+            </a>
+            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🪜</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+            </a>
+            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🚰</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Grafica & Prestampa -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
+                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-purple-50/80 text-purple-700 border border-purple-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📕</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-purple-600 text-white shadow-2xs">Attivo</span>
+            </a>
+            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🔍</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Pixel/DPI</span>
+            </a>
+            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🎨</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+            </a>
+            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">GS1 / TS</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Link to Hub -->
+                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
+                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
+                                <span>🏠</span> Tutti gli strumenti nella Home
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Actions: Switcher + Language Selector + App + Print -->
+            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Suite Quick Switcher -->
-                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
-                    <span>📐</span>
-                    <span class="hidden md:inline">Rampe</span>
-                </a>
-                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale">
-                    <span>🪜</span>
-                    <span class="hidden md:inline">Scale</span>
-                </a>
-                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Calcolo Risoluzione & DPI">
-                    <span>🖼️</span>
-                    <span class="hidden md:inline">DPI</span>
-                </a>
-
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -225,7 +327,7 @@
 
                 <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
+                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
                 </button>
                 <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
                     <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -872,6 +974,54 @@
     <!-- Script & Calculation Engine for Spine & Cover Layout -->
     <script>
         const TRANSLATIONS = {"it": {"title": "DorsoFacile", "badge": "OmniGraph", "hero_title": "Calcolo Spessore Dorso Libro & Copertina Stesa", "hero_desc": "Calcola all'istante lo spessore esatto del dorso, l'ingombro della copertina stesa con refili da 3 mm e le quote pronte per InDesign, Illustrator e Amazon KDP.", "mode_direct": "📖 Brossura Fresata / PUR", "mode_reverse": "🧵 Brossura Filo Refe / Hardcover", "unit_label": "Unità", "pages_label": "Numero totale di pagine (facciate)", "paper_weight_label": "Grammatura carta interna", "paper_bulk_label": "Mano della carta (Volume / Bulk)", "book_format_label": "Formato libro chiuso (Base × Altezza)", "flaps_label": "Alette / Bandelle copertina", "presets_title": "Preset editoriali rapidi:", "preset_1": "Romanzo Narrativa (240 pag)", "preset_1_sub": "Usomano 80g • Mano 1.3", "preset_2": "Catalogo / Rivista (96 pag)", "preset_2_sub": "Patinata 130g • Mano 0.95", "preset_3": "Saggio / Manuale (360 pag)", "preset_3_sub": "Uso mano 90g • Mano 1.2", "preset_4": "Libro Fotografico (160 pag)", "preset_4_sub": "Patinata 170g • Mano 1.0", "col_spine": "Spessore Dorso", "col_total_width": "Copertina Stesa", "col_total_height": "Altezza con Refilo", "schema_title": "Tracciato Fustella Copertina Stesa", "schema_scale": "In scala tipografica", "rule_tip": "💡 <strong>Formula tipografica:</strong> <code>Dorso = (Pagine / 2) × (Grammatura / 1000) × Mano + Tolleranza Colla (0.5 mm)</code>. Linea tratteggiata rossa: refilo obbligatorio di 3 mm per lato.", "print_btn": "Stampa", "install_btn": "Installa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "Utility per grafici e tipografi sempre a portata di mano", "legal_disclaimer": "<strong>Note Tecniche Tipografiche:</strong> Lo spessore effettivo del dorso può variare del ±3-5% in base all'umidità della carta, alla pressione della piega e al tipo di colla impiegata (Hotmelt o PUR). Si consiglia sempre di richiedere al service di stampa il valore di mano esatto della cartiera.", "faq_title": "Domande Frequenti sul Calcolo del Dorso e Stampa Editoriale", "status_opt_title": "Spessore Ottimale per Brossura", "status_opt_tag": "Brossurabile", "status_opt_desc": "Il dorso supera i 3 mm minimi: perfetto per brossura fresata, grecata o colla PUR con titolo leggibile.", "status_warn_title": "Dorso Molto Sottile", "status_warn_tag": "Limite Critico", "status_warn_desc": "Spessore inferiore a 3 mm. Si sconsiglia il testo sul dorso: valutare la rilegatura a Punto Metallico.", "status_danger_title": "Dorso Troppo Sottile per Brossura", "status_danger_tag": "Punto Metallico", "status_danger_desc": "Dorso inferiore a 2 mm: impossibile fresare e incollare. Rilegare a 2 punti metallici a sella.", "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere o grafica?", "suggest_btn": "Suggerisci", "suggest_modal_title": "Suggerisci uno Strumento", "suggest_modal_desc": "Quale formula o utility vorresti su OmniTools?", "suggest_placeholder": "Scrivi qui la tua idea...", "suggest_privacy_note": "🔒 Invio 100% anonimo.", "suggest_send": "Invia", "suggest_close": "Annulla", "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.", "copy_btn": "Copia Quote InDesign", "copied_text": "Copiato!", "download_svg_dima": "Scarica Dima SVG (Illustrator)", "faq_1_q": "Come si calcola esattamente lo spessore del dorso di un libro?", "faq_1_a": "La formula tipografica professionale è: <code>Dorso (mm) = (Pagine / 2) × (Grammatura / 1000) × Mano della carta + Spessore Colla (0.5 mm)</code>. Esempio per 240 pagine su carta usomano 80g a mano 1.3: (120 fogli) × 0.080 × 1.3 = 12.48 mm + 0.5 mm = circa 13 mm.", "faq_2_q": "Cosa significa la \"Mano\" (Bulk / Volume) della carta?", "faq_2_a": "La \"Mano\" è il rapporto matematico tra spessore in micron e grammatura in grammi/m². Una carta da fotocopie ha mano 1.0 (80g = 80 µm). Le carte per romanzi (usomano avorio) hanno mano elevata (1.3 - 1.5) per dare corpo al libro, mentre le patinate hanno mano compatta (0.85 - 0.95).", "faq_3_q": "Qual è lo spessore minimo di dorso per stampare un titolo leggibile?", "faq_3_a": "Il limite tecnico raccomandato è di almeno <strong>6 mm</strong>. Tra 3 e 5 mm il testo è possibile ma richiede centrature millimetriche per non scivolare sui piatti a causa delle tolleranze di brossura (±1 mm). Sotto i 3 mm è sconsigliato stampare scritte sul dorso.", "faq_4_q": "Quanti millimetri di abbondanza (refilo/bleed) servono per la copertina?", "faq_4_a": "Nelle tipografie professionali e su piattaforme come Amazon KDP, il refilo perimetrale obbligatorio è di <strong>3 mm su tutti e 4 i lati esterni</strong> (6 mm complessivi su larghezza e altezza stese)."}, "en": {"title": "SpineMaster", "badge": "OmniGraph", "hero_title": "Book Spine & Wrap-Around Cover Calculator", "hero_desc": "Instantly calculate exact spine width, full flat cover dimensions with 3 mm (0.125 in) bleed, and layout specs ready for Adobe InDesign, Illustrator, and Amazon KDP.", "mode_direct": "📖 Perfect Bound / PUR", "mode_reverse": "🧵 Casebound / Hardcover", "unit_label": "Units", "pages_label": "Total Page Count (Sides)", "paper_weight_label": "Interior Paper Weight", "paper_bulk_label": "Paper Caliper / Bulk Factor", "book_format_label": "Trim Size (Width × Height)", "flaps_label": "Cover French Flaps", "presets_title": "Quick publishing presets:", "preset_1": "Trade Paperback (240 pgs)", "preset_1_sub": "Uncoated 80gsm • Bulk 1.3", "preset_2": "Catalog / Magazine (96 pgs)", "preset_2_sub": "Coated 130gsm • Bulk 0.95", "preset_3": "Hardcover Novel (360 pgs)", "preset_3_sub": "Offset 90gsm • Bulk 1.2", "preset_4": "Art / Photo Book (160 pgs)", "preset_4_sub": "Silk 170gsm • Bulk 1.0", "col_spine": "Spine Width", "col_total_width": "Total Flat Width", "col_total_height": "Height with Bleed", "schema_title": "Cover Template Layout Blueprint", "schema_scale": "Scale Graphic Vector", "rule_tip": "💡 <strong>Formula:</strong> <code>Spine = (Pages / 2) × (Weight / 1000) × Bulk + Glue Allowance (0.5 mm)</code>. Red dotted line: 3 mm (0.125 in) bleed area.", "print_btn": "Print", "install_btn": "Install", "install_banner_title": "Install OmniTools as App", "install_banner_sub": "Print production tools always ready offline", "legal_disclaimer": "<strong>Technical Disclaimer:</strong> Spine width can vary by ±3-5% based on paper moisture, grain direction, and bindery clamp pressure. Always confirm exact paper caliper with your commercial printer.", "faq_title": "Frequently Asked Questions on Book Spine Width & Cover Layout", "status_opt_title": "Ideal Spine for Perfect Binding", "status_opt_tag": "Perfect Bound", "status_opt_desc": "Spine exceeds 3 mm (0.12 in): ideal for PUR gluing, hotmelt binding, and legible spine text.", "status_warn_title": "Very Thin Spine", "status_warn_tag": "Borderline", "status_warn_desc": "Spine under 3 mm (0.12 in). Avoid spine text or switch to saddle-stitch booklet binding.", "status_danger_title": "Too Thin for Perfect Binding", "status_danger_tag": "Saddle Stitch", "status_danger_desc": "Spine under 2 mm: cannot be glued. Use saddle-stitch wire staples instead.", "suggest_banner": "Have an idea for a new calculator?", "suggest_btn": "Suggest", "suggest_modal_title": "Suggest a Tool", "suggest_modal_desc": "What formula or utility would you like on OmniTools?", "suggest_placeholder": "Type your idea here...", "suggest_privacy_note": "🔒 100% anonymous submission.", "suggest_send": "Send", "suggest_close": "Cancel", "suggest_thanks": "Thank you! Your feedback guides upcoming tools.", "copy_btn": "Copy InDesign Specs", "copied_text": "Copied!", "download_svg_dima": "Download SVG Template (Illustrator)", "faq_1_q": "How do you calculate exact book spine width?", "faq_1_a": "The industry formula is: <code>Spine Width = (Page Count / 2) × (Paper Weight in GSM / 1000) × Paper Bulk + Glue Hinge (0.5 mm)</code>. Example: 240 pages on 80 gsm bulk 1.3 paper yields (120) × 0.080 × 1.3 + 0.5 = 13.0 mm.", "faq_2_q": "What does Paper Bulk / Volume mean?", "faq_2_a": "Paper bulk is the thickness-to-weight ratio (caliper in microns divided by grammage). High-bulk book papers (bulk 1.3 - 1.5) create thicker books without adding weight, while glossy coated papers are compact (0.85 - 0.95).", "faq_3_q": "What is the minimum spine thickness for readable text?", "faq_3_a": "The industry rule of thumb is at least <strong>6 mm (0.24 in)</strong>. Between 3 and 5 mm, text is possible with strict centering tolerances (±1 mm). Under 3 mm, text should be avoided; saddle-stitching is recommended.", "faq_4_q": "What bleed margin is required for full wrap-around covers?", "faq_4_a": "Commercial printing and print-on-demand platforms (Amazon KDP, IngramSpark) require a mandatory <strong>3 mm (0.125 in) bleed</strong> on all outer edges."}, "es": {"title": "LomoFácil", "badge": "OmniGraph", "hero_title": "Cálculo de Lomo de Libro y Cubierta Extendida", "hero_desc": "Calcula el grosor exacto del lomo, dimensiones de cubierta extendida con sangrado de 3 mm y especificaciones para InDesign y Amazon KDP.", "mode_direct": "📖 Rústica Fresada / Cola PUR", "mode_reverse": "🧵 Tapa Dura / Cosido", "unit_label": "Unidades", "pages_label": "Número total de páginas", "paper_weight_label": "Gramaje del papel interior", "paper_bulk_label": "Mano / Volumen del papel", "book_format_label": "Formato cerrado (Ancho × Alto)", "flaps_label": "Solapas de cubierta", "presets_title": "Ajustes rápidos:", "preset_1": "Novela Bolsillo (240 págs)", "preset_1_sub": "Offset 80g • Mano 1.3", "preset_2": "Catálogo Comercial (96 págs)", "preset_2_sub": "Estucado 130g • Mano 0.95", "preset_3": "Manual / Ensayo (360 págs)", "preset_3_sub": "Offset 90g • Mano 1.2", "preset_4": "Libro de Fotos (160 págs)", "preset_4_sub": "Estucado 170g • Mano 1.0", "col_spine": "Grosor del Lomo", "col_total_width": "Ancho Extendido", "col_total_height": "Alto con Sangrado", "schema_title": "Plantilla de Cubierta Extendida", "schema_scale": "A escala vectorial", "rule_tip": "💡 <strong>Fórmula:</strong> <code>Lomo = (Páginas / 2) × (Gramaje / 1000) × Mano + Cola</code>. Línea punteada roja: sangrado exterior de 3 mm.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instala OmniTools como App", "install_banner_sub": "Herramientas de artes gráficas sin conexión", "legal_disclaimer": "<strong>Nota Técnica:</strong> El grosor puede variar ligeramente según la humedad y fabricante del papel.", "faq_title": "Preguntas Frecuentes sobre Lomo de Libros y Cubierta Abierta", "status_opt_title": "Lomo Óptimo para Rústica", "status_opt_tag": "Encuadernable", "status_opt_desc": "Grosor superior a 3 mm: perfecto para fresado y texto visible en el lomo.", "status_warn_title": "Lomo Muy Fino", "status_warn_tag": "Límite", "status_warn_desc": "Menos de 3 mm: evite texto en el lomo o use grapa a caballo.", "status_danger_title": "No Apto para Rústica", "status_danger_tag": "Grapa", "status_danger_desc": "Menos de 2 mm: encuadernar con dos grapas.", "suggest_banner": "¿Tienes una idea para una herramienta de diseño?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Herramienta", "suggest_modal_desc": "¿Qué calculadora te gustaría ver?", "suggest_placeholder": "Tu idea...", "suggest_privacy_note": "🔒 100% anónimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "¡Gracias por tu aporte!", "copy_btn": "Copiar Medidas InDesign", "copied_text": "¡Copiado!", "download_svg_dima": "Descargar Plantilla SVG", "faq_1_q": "¿Cómo se calcula el grosor del lomo de un libro?", "faq_1_a": "Fórmula editorial: <code>Lomo (mm) = (Páginas / 2) × (Gramaje / 1000) × Mano del papel + Cola (0.5 mm)</code>.", "faq_2_q": "¿Qué significa el volumen o mano del papel?", "faq_2_a": "Es la relación entre espesor en micras y peso. Un papel de novela (mano 1.3-1.5) aporta más grosor que un papel estucado (mano 0.9).", "faq_3_q": "¿Cuál es el grosor mínimo para incluir texto en el lomo?", "faq_3_a": "Se recomienda un mínimo de <strong>6 mm</strong>. Con menos de 3 mm no se debe poner texto y conviene grapar a caballete.", "faq_4_q": "¿Cuánta sangría exterior se debe aplicar?", "faq_4_a": "El estándar editorial internacional exige <strong>3 mm de sangría</strong> en todo el perímetro."}, "fr": {"title": "DosFacile", "badge": "OmniGraph", "hero_title": "Calcul de Dos de Livre & Couverture Ouverte", "hero_desc": "Calculez l'épaisseur exacte du dos, le gabarit de couverture à plat avec 3 mm de fond perdu pour InDesign, Illustrator et KDP.", "mode_direct": "📖 Dos Carré Collé / PUR", "mode_reverse": "🧵 Livre Relié / Cartonné", "unit_label": "Unités", "pages_label": "Nombre total de pages", "paper_weight_label": "Grammage du papier", "paper_bulk_label": "Main du papier (Bouffant)", "book_format_label": "Format fermé (Largeur × Hauteur)", "flaps_label": "Rabats de couverture", "presets_title": "Préréglages d'édition :", "preset_1": "Roman (240 pages)", "preset_1_sub": "Bouffant 80g • Main 1.3", "preset_2": "Magazine (96 pages)", "preset_2_sub": "Couché 130g • Main 0.95", "preset_3": "Essai / Manuel (360 pages)", "preset_3_sub": "Offset 90g • Main 1.2", "preset_4": "Livre d'Art (160 pages)", "preset_4_sub": "Couché 170g • Main 1.0", "col_spine": "Épaisseur du Dos", "col_total_width": "Largeur à Plat", "col_total_height": "Hauteur avec Fond Perdu", "schema_title": "Gabarit de Couverture à Plat", "schema_scale": "Échelle vectorielle", "rule_tip": "💡 <strong>Formule :</strong> <code>Dos = (Pages / 2) × (Grammage / 1000) × Main + Tolérance Colle (0.5 mm)</code>. Pointillés rouges : 3 mm de fond perdu.", "print_btn": "Imprimer", "install_btn": "Installer", "install_banner_title": "Installer OmniTools sur Smartphone", "install_banner_sub": "Outils de prépresse et PAO hors-ligne", "legal_disclaimer": "<strong>Mentions Techniques :</strong> L'épaisseur peut varier de ±3-5% selon l'humidité du papier et le collage.", "faq_title": "Foire Aux Questions sur le Dos de Livre et Couverture Dépliée", "status_opt_title": "Épaisseur Idéale pour Dos Carré", "status_opt_tag": "Reliure Parfaite", "status_opt_desc": "Le dos dépasse 3 mm : idéal pour le dos carré collé avec texte lisible.", "status_warn_title": "Dos Très Fin", "status_warn_tag": "Limite", "status_warn_desc": "Moins de 3 mm : éviter le texte sur le dos ou choisir la reliure piqûre.", "status_danger_title": "Trop Fin pour Dos Carré", "status_danger_tag": "Piqûre Métal", "status_danger_desc": "Moins de 2 mm : relier avec deux agrafes métal à cheval.", "suggest_banner": "Une idée pour OmniTools ?", "suggest_btn": "Suggérer", "suggest_modal_title": "Suggérer un Outil", "suggest_modal_desc": "Quelle formule aimeriez-vous voir ?", "suggest_placeholder": "Votre idée...", "suggest_privacy_note": "🔒 100% anonyme.", "suggest_send": "Envoyer", "suggest_close": "Annuler", "suggest_thanks": "Merci pour votre idée !", "copy_btn": "Copier Dimensions InDesign", "copied_text": "Copié !", "download_svg_dima": "Télécharger Gabarit SVG", "faq_1_q": "Comment calculer l'épaisseur exacte du dos d'un livre ?", "faq_1_a": "Formule typographique : <code>Épaisseur Dos (mm) = (Nombre de Pages / 2) × (Grammage / 1000) × Main du papier + Colle (0.5 mm)</code>.", "faq_2_q": "Que signifie la \"Main\" d'un papier ?", "faq_2_a": "La main représente le volume spécifique d'un papier (épaisseur divisée par le grammage). Les papiers bouffants (main 1.3 à 1.5) donnent du volume aux romans.", "faq_3_q": "Quelle est l'épaisseur minimale pour imprimer un titre sur le dos ?", "faq_3_a": "Un minimum de <strong>6 mm</strong> est conseillé. En dessous de 3 mm, le titrage est déconseillé en raison des tolérances de pliage.", "faq_4_q": "Combien de millimètres de fond perdu ajouter ?", "faq_4_a": "Le fond perdu standard est de <strong>3 mm sur les 4 côtés extérieurs</strong>."}, "de": {"title": "BuchrückenRechner", "badge": "OmniGraph", "hero_title": "Buchrücken berechnen & Umschlag-Maße", "hero_desc": "Berechnen Sie die exakte Buchrückenbreite und das offene Umschlagformat mit 3 mm Beschnitt für InDesign, KDP und Druckereien.", "mode_direct": "📖 Klebebindung / PUR", "mode_reverse": "🧵 Fadenheftung / Hardcover", "unit_label": "Maßeinheiten", "pages_label": "Gesamtseitenzahl (Umfang)", "paper_weight_label": "Papiergrammatur (g/m²)", "paper_bulk_label": "Papiervolumen (Bulk)", "book_format_label": "Buchformat (Breite × Höhe)", "flaps_label": "Umschlagklappen", "presets_title": "Schnellvorlagen Verlagswesen:", "preset_1": "Taschenbuch (240 Seiten)", "preset_1_sub": "Werkdruck 80g • Volumen 1.3", "preset_2": "Katalog / Magazin (96 Seiten)", "preset_2_sub": "Bilderdruck 130g • Vol. 0.95", "preset_3": "Sachbuch (360 Seiten)", "preset_3_sub": "Offset 90g • Volumen 1.2", "preset_4": "Bildband (160 Seiten)", "preset_4_sub": "Bilderdruck 170g • Vol. 1.0", "col_spine": "Rückenbreite", "col_total_width": "Umschlagbreite offen", "col_total_height": "Höhe inkl. Beschnitt", "schema_title": "Umschlag-Bogen Layout", "schema_scale": "Maßstabsgetreu", "rule_tip": "💡 <strong>Formel:</strong> <code>Rücken = (Seiten / 2) × (Grammatur / 1000) × Volumen + Leimzugabe (0.5 mm)</code>. Rote Linie: 3 mm Beschnittzugabe.", "print_btn": "Drucken", "install_btn": "Installieren", "install_banner_title": "OmniTools als App nutzen", "install_banner_sub": "Druck- und Grafikwerkzeuge jederzeit offline", "legal_disclaimer": "<strong>Hinweis:</strong> Rückenbreite kann um ±3-5% je nach Papierfeuchte und Klebeart abweichen.", "faq_title": "Häufig gestellte Fragen zur Buchrückenberechnung & Klebebindung", "status_opt_title": "Optimale Rückenbreite für Klebebindung", "status_opt_tag": "Klebebindung", "status_opt_desc": "Der Rücken ist breiter als 3 mm: ideal für PUR-Klebebindung mit lesbarem Rückentext.", "status_warn_title": "Sehr schmaler Rücken", "status_warn_tag": "Grenzwertig", "status_warn_desc": "Unter 3 mm: Rückentext vermeiden oder Rückstichheftung wählen.", "status_danger_title": "Zu dünn für Klebebindung", "status_danger_tag": "Klammerheftung", "status_danger_desc": "Unter 2 mm: Bindung mit Drahtklammern (Broschüre) empfohlen.", "suggest_banner": "Idee für ein neues Druckwerkzeug?", "suggest_btn": "Vorschlagen", "suggest_modal_title": "Werkzeug vorschlagen", "suggest_modal_desc": "Welche Funktion wünschen Sie sich?", "suggest_placeholder": "Ihre Idee...", "suggest_privacy_note": "🔒 100% anonym.", "suggest_send": "Absenden", "suggest_close": "Abbrechen", "suggest_thanks": "Vielen Dank für Ihre Anregung.", "copy_btn": "InDesign-Maße kopieren", "copied_text": "Kopiert!", "download_svg_dima": "SVG-Vorlage herunterladen", "faq_1_q": "Wie berechnet man die Buchrückenstärke exakt?", "faq_1_a": "Druckformel: <code>Rückenstärke (mm) = (Seiten / 2) × (Grammatur / 1000) × Papiervolumen + Klebstoff (0.5 mm)</code>.", "faq_2_q": "Was bedeutet das Papiervolumen (Bulk)?", "faq_2_a": "Das Volumen beschreibt das Verhältnis von Papierstärke zum Flächengewicht. Werkdruckpapiere mit 1.3- bis 1.5-fachem Volumen ergeben dickere Bücher.", "faq_3_q": "Ab welcher Rückenbreite ist Rückentext lesbar?", "faq_3_a": "Empfohlen werden mindestens <strong>6 mm</strong>. Unter 3 mm sollte kein Rückentext gedruckt werden (Klammerheftung empfohlen).", "faq_4_q": "Wie viel Beschnittzugabe ist erforderlich?", "faq_4_a": "Der Standard für Druckereien und Amazon KDP beträgt <strong>3 mm Beschnitt ringsum</strong>."}, "pt": {"title": "LombadaFácil", "badge": "OmniGraph", "hero_title": "Cálculo de Lombada de Livro & Capa Aberta", "hero_desc": "Calcule a espessura da lombada, medidas da capa aberta com 3 mm de sangria e especificações para Adobe InDesign e Amazon KDP.", "mode_direct": "📖 Brochura / Cola PUR", "mode_reverse": "🧵 Capa Dura / Costurado", "unit_label": "Unidades", "pages_label": "Número total de páginas", "paper_weight_label": "Gramatura do papel miolo", "paper_bulk_label": "Mão / Volume do papel", "book_format_label": "Formato fechado (Largura × Altura)", "flaps_label": "Orelhas da capa", "presets_title": "Predefinições de publicação:", "preset_1": "Romance Literatura (240 págs)", "preset_1_sub": "Pólen 80g • Mão 1.3", "preset_2": "Catálogo Comercial (96 págs)", "preset_2_sub": "Couché 130g • Mão 0.95", "preset_3": "Ensaio Acadêmico (360 págs)", "preset_3_sub": "Offset 90g • Mão 1.2", "preset_4": "Livro de Arte (160 págs)", "preset_4_sub": "Couché 170g • Mão 1.0", "col_spine": "Espessura da Lombada", "col_total_width": "Largura Capa Aberta", "col_total_height": "Altura com Sangria", "schema_title": "Gabarito da Capa Aberta", "schema_scale": "Escala gráfica vetorial", "rule_tip": "💡 <strong>Fórmula:</strong> <code>Lombada = (Páginas / 2) × (Gramatura / 1000) × Mão + Cola (0.5 mm)</code>. Linha vermelha: 3 mm de sangria.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instalar OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de pré-impressão offline", "legal_disclaimer": "<strong>Nota Técnica:</strong> A espessura pode variar ±3-5% conforme a umidade e a prensagem gráfica.", "faq_title": "Perguntas Frequentes sobre Lombada de Livro e Capa Aberta", "status_opt_title": "Lombada Ideal para Brochura", "status_opt_tag": "Brochura PUR", "status_opt_desc": "Lombada superior a 3 mm: ideal para cola PUR com texto legível.", "status_warn_title": "Lombada Muito Estreita", "status_warn_tag": "Limite", "status_warn_desc": "Menos de 3 mm: evite texto na lombada ou opte por grampo canoa.", "status_danger_title": "Muito Fino para Brochura", "status_danger_tag": "Grampo Canoa", "status_danger_desc": "Menos de 2 mm: encadernar com grampo de sela.", "suggest_banner": "Tem ideia para nova ferramenta?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Ferramenta", "suggest_modal_desc": "Qual calculadora gostaria de ver?", "suggest_placeholder": "Digite sua ideia...", "suggest_privacy_note": "🔒 100% anônimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "Obrigado! Sua ideia guiará os próximos passos.", "copy_btn": "Copiar Medidas InDesign", "copied_text": "Copiado!", "download_svg_dima": "Baixar Gabarito SVG", "faq_1_q": "Como calcular a espessura exata da lombada de um livro?", "faq_1_a": "Fórmula gráfica: <code>Lombada (mm) = (Páginas / 2) × (Gramatura / 1000) × Mão do papel + Cola (0.5 mm)</code>.", "faq_2_q": "O que significa a \"Mão\" ou volume do papel?", "faq_2_a": "É a relação entre espessura em micra e peso em g/m². Papéis pólen para literatura têm mão 1.3 a 1.5, conferindo corpo ao livro.", "faq_3_q": "Qual é a espessura mínima para colocar texto na lombada?", "faq_3_a": "Recomenda-se no mínimo <strong>6 mm</strong>. Abaixo de 3 mm desaconselha-se texto (optar por grampo canoa).", "faq_4_q": "Qual é a sangria obrigatória na capa?", "faq_4_a": "O padrão gráfico internacional é de <strong>3 mm de sangria</strong> em todo o perímetro."}};
+
+        
+// Soluzione 1: Suite Switcher Dropdown Interaction
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (!menu) return;
+    const isClosed = menu.classList.contains('hidden');
+    if (isClosed) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('suiteMenuDropdown');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            const btn = document.getElementById('suiteMenuBtn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+
 
         function detectInitialLanguage() {
             const stored = localStorage.getItem('omnitools_lang');

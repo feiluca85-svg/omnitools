@@ -1,9 +1,13 @@
+from nav_header import render_suite_header, render_suite_header_js
 import json
 
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_dpi.json', 'r', encoding='utf-8') as f:
     t_data = json.load(f)
 
 t_json_str = json.dumps(t_data, ensure_ascii=False)
+
+header_html = render_suite_header("dpi")
+header_js = render_suite_header_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -211,79 +215,7 @@ html_code = f"""<!DOCTYPE html>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header with safe area padding -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
-            
-            <!-- OmniTools Master Brand + Tool Indicator -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-md shadow-rose-900/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
-                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                        <circle cx="16" cy="16" r="7.5" stroke="#ffffff" stroke-width="2.2" />
-                        <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
-                        <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
-                        <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                    </svg>
-                </a>
-
-                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
-                        <span id="brandTitle" class="font-bold text-xs text-slate-700 hidden sm:inline-block">RisoluzioneFacile</span>
-                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-black uppercase bg-rose-100 text-rose-900 rounded-md border border-rose-300 shrink-0 hidden sm:inline-block">OmniGraph</span>
-                    </div>
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-700">RisoluzioneFacile</span>
-                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-emerald-50 text-emerald-700 rounded border border-emerald-200">Pixel & DPI</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quick Actions: Switcher + Language Selector + App + Print -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Suite Quick Switcher (Rampe, Scale, Dorso) -->
-                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
-                    <span>📐</span>
-                    <span class="hidden md:inline">Rampe</span>
-                </a>
-                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale">
-                    <span>🪜</span>
-                    <span class="hidden md:inline">Scale</span>
-                </a>
-                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Calcolo Dorso Libro">
-                    <span>🎨</span>
-                    <span class="hidden md:inline">Dorso</span>
-                </a>
-
-                <!-- Language Selector Dropdown -->
-                <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="pt">🇵🇹 PT</option>
-                    </select>
-                </div>
-
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
-                    <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
-                </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
-                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
-                </button>
-            </div>
-        </div>
-    </header>
+    {header_html}
 
     <!-- Main Content Container -->
     <main class="max-w-5xl mx-auto px-3 sm:px-4 py-3 sm:py-5 flex-1 space-y-3 sm:space-y-4 print-container">
@@ -804,6 +736,9 @@ html_code = f"""<!DOCTYPE html>
     <!-- JAVASCRIPT CALCULATION & UI ENGINE -->
     <script>
         const TRANSLATIONS = {t_json_str};
+
+        {header_js}
+
 
         function detectInitialLanguage() {{
             const stored = localStorage.getItem('omnitools_lang');

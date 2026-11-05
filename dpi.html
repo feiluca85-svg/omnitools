@@ -204,57 +204,160 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header with safe area padding -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
             
-            <!-- OmniTools Master Brand + Tool Indicator -->
+            <!-- Breadcrumb Navigation & Suite Switcher -->
             <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-md shadow-rose-900/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+                <!-- Home Link & Brand Logo -->
+                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                        <circle cx="16" cy="16" r="7.5" stroke="#ffffff" stroke-width="2.2" />
-                        <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
-                        <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
-                        <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                    </svg>
+            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
+            <circle cx="16" cy="16" r="6.8" stroke="#ffffff" stroke-width="2" />
+            <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
+        </svg>
                 </a>
 
-                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
-                        <span id="brandTitle" class="font-bold text-xs text-slate-700 hidden sm:inline-block">RisoluzioneFacile</span>
-                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-black uppercase bg-rose-100 text-rose-900 rounded-md border border-rose-300 shrink-0 hidden sm:inline-block">OmniGraph</span>
+                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
+                <div class="relative flex items-center min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
+                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
+                            <span>Omni<span class="text-blue-600">Tools</span></span>
+                        </a>
+                        <span class="text-slate-300 font-normal">/</span>
+                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border-purple-200/80 border shrink-0 hidden xs:inline-block">Graph</span>
+                        <span id="brandBadgeMobile" class="hidden">Pixel/DPI</span>
+                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
+                        
+                        <!-- Dropdown Switcher Button -->
+                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
+                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">RisoluzioneFacile</span>
+                            <span id="brandTitleMobile" class="hidden">RisoluzioneFacile</span>
+                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-700">RisoluzioneFacile</span>
-                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-emerald-50 text-emerald-700 rounded border border-emerald-200">Pixel & DPI</span>
+
+                    <!-- Dropdown Popover Menu (All 7 Tools Categorized) -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
+                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools</span>
+                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
+                                Home Hub →
+                            </a>
+                        </div>
+
+                        <!-- Cantiere & Struttura -->
+                        <div class="px-2 pt-2 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
+                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📐</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">DM 236/89</span>
+            </a>
+            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🪜</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+            </a>
+            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🚰</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Grafica & Prestampa -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
+                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📕</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Brossura</span>
+            </a>
+            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-purple-50/80 text-purple-700 border border-purple-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🔍</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-purple-600 text-white shadow-2xs">Attivo</span>
+            </a>
+            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🎨</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+            </a>
+            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">GS1 / TS</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Link to Hub -->
+                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
+                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
+                                <span>🏠</span> Tutti gli strumenti nella Home
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Actions: Switcher + Language Selector + App + Print -->
+            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Suite Quick Switcher (Rampe, Scale, Dorso) -->
-                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Calcolo Rampe">
-                    <span>📐</span>
-                    <span class="hidden md:inline">Rampe</span>
-                </a>
-                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale">
-                    <span>🪜</span>
-                    <span class="hidden md:inline">Scale</span>
-                </a>
-                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Calcolo Dorso Libro">
-                    <span>🎨</span>
-                    <span class="hidden md:inline">Dorso</span>
-                </a>
-
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -266,7 +369,7 @@
 
                 <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
+                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
                 </button>
                 <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
                     <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -797,6 +900,54 @@
     <!-- JAVASCRIPT CALCULATION & UI ENGINE -->
     <script>
         const TRANSLATIONS = {"it": {"title": "RisoluzioneFacile", "badge": "OmniGraph", "hero_title": "Calcolo Risoluzione Stampa, Pixel & DPI", "hero_desc": "Converti istantaneamente tra Pixel, Centimetri e DPI per stampa offset, digitale e grande formato, con calcolo della distanza di visione ottimale dell'occhio umano.", "mode_direct": "🖼️ Da Pixel a Formato Stampa (cm)", "mode_reverse": "📐 Da Formato Stampa (cm) a Pixel", "unit_label": "Unità Misure", "pixels_w_label": "Larghezza Pixel (px)", "pixels_h_label": "Altezza Pixel (px)", "print_w_label": "Larghezza Stampa", "print_h_label": "Altezza Stampa", "dpi_target_label": "Risoluzione di Stampa (DPI / PPI)", "view_dist_label": "Distanza di Visione Osservatore", "presets_title": "Preset standard di stampa & supporti:", "preset_1": "A4 Offset HD (300 DPI)", "preset_1_sub": "21 × 29.7 cm • 2480 × 3508 px", "preset_2": "Manifesto 70×100 cm (150 DPI)", "preset_2_sub": "Distanza 1.5 m • 4134 × 5906 px", "preset_3": "Roll-up 85×200 cm (100 DPI)", "preset_3_sub": "Distanza 2 m • 3346 × 7874 px", "preset_4": "Cartellone 6×3 m (30 DPI)", "preset_4_sub": "Distanza 5 m • 7087 × 3543 px", "col_dimensions": "Dimensione Stampa", "col_pixels": "Risoluzione File", "col_megapixels": "Megapixel & Peso", "schema_title": "Rapporto di Forma & Densità Pixel", "schema_scale": "Proporzione dinamica", "rule_tip": "💡 <strong>Regola dell'Acuità Visiva Umana:</strong> A una certa distanza, l'occhio umano non distingue più i singoli pixel. Formula di risoluzione ottica: <code>DPI Ottimale ≈ 3438 / Distanza (cm)</code>. Per libri e riviste a 30 cm bastano 300 DPI; per un cartellone a 5 metri bastano 25-35 DPI.", "print_btn": "Stampa", "install_btn": "Installa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "Calcolatori grafici sempre a portata di mano anche offline", "legal_disclaimer": "<strong>Note Tecniche di Prestampa:</strong> I calcoli di conversione pixel/cm si basano sullo standard internazionale 1 pollice = 2.54 cm. Il peso del file stimato fa riferimento a immagini raster non compresse (TIFF a 8-bit per canale in spazio colore RGB o CMYK). Verificare sempre le schede tecniche del fornitore di stampa o RIP per retini speciali o stampe Fine Art.", "faq_title": "Domande Frequenti su DPI, Pixel e Risoluzione di Stampa", "status_opt_title": "Nitidezza Perfetta (Qualità Fotografica)", "status_opt_tag": "Qualità Ottima", "status_opt_desc": "La densità di pixel supera ampiamente la capacità risolutiva dell'occhio alla distanza indicata. Immagine definita e priva di sgranature visibili.", "status_warn_title": "Qualità Accettabile / Standard", "status_warn_tag": "Accettabile", "status_warn_desc": "Risoluzione adatta per stampa digitale commerciale o visione da media distanza. A distanza ravvicinata si potrebbe percepire una lieve perdita di dettaglio.", "status_danger_title": "Risoluzione Bassa (Rischio Pixelatura)", "status_danger_tag": "Sgranata", "status_danger_desc": "Densità inferiore a quella raccomandata per la distanza di visione selezionata. Rischio evidente di sfocatura o pixel evidenti in fase di stampa.", "copy_btn": "Copia Quote Photoshop/InDesign", "copied_text": "Copiato negli appunti!", "uncompressed_size": "Dimensione File Non Compresso", "aspect_ratio": "Proporzioni (Aspect Ratio)", "human_acuity_dpi": "DPI Minimi Consigliati per la Distanza", "faq_1_q": "Qual è la vera differenza tra DPI e PPI?", "faq_1_a": "PPI (Pixels Per Inch) indica il numero di pixel per pollice su un display o in un file digitale raster. DPI (Dots Per Inch) indica il numero di punti di inchiostro fisici che una macchina da stampa o una stampante deposita sul foglio. Nel parlato comune della grafica pubblicitaria vengono spesso usati come sinonimi, ma il calcolo matematico delle dimensioni del documento si basa rigorosamente sulla formula dei PPI.", "faq_2_q": "Serve davvero inviare file a 300 DPI per manifesti 6x3 metri o striscioni?", "faq_2_a": "No, è un errore classico che genera file enormi e ingestibili da svariati Gigabyte. Più il supporto è grande, maggiore è la distanza da cui viene guardato. Un manifesto 6x3 metri visto da 5-10 metri di distanza appare nitidissimo a soli 25-35 DPI, perché il potere risolutivo dell'angolo visivo umano a quella distanza rende invisibile la griglia di stampa.", "faq_3_q": "Come si calcola la dimensione in cm conoscendo pixel e DPI?", "faq_3_a": "La formula esatta è: <code>Centimetri = (Pixel / DPI) × 2.54</code>. Ad esempio, un'immagine di 3000 pixel di larghezza a 300 DPI misurerà: (3000 / 300) × 2.54 = 25.4 cm di larghezza stampata.", "faq_4_q": "Come varia il peso del file TIFF/PSD aumentando i DPI?", "faq_4_a": "Raddoppiando i DPI (es. da 150 a 300 DPI) la superficie in pixel quadruplica (2×2 = 4 volte). Un file da 50 MB passerà istantaneamente a 200 MB. Per questo per manifesti e roll-up è opportuno non eccedere i 100-150 DPI."}, "en": {"title": "ResolutionFast", "badge": "OmniGraph", "hero_title": "Print Resolution, Pixel & DPI Calculator", "hero_desc": "Instantly convert between Pixels, Centimeters/Inches, and DPI for offset, digital, and large-format printing, with human visual acuity viewing distance calculation.", "mode_direct": "🖼️ From Pixels to Print Size", "mode_reverse": "📐 From Print Size to Pixels", "unit_label": "Measurement Units", "pixels_w_label": "Pixel Width (px)", "pixels_h_label": "Pixel Height (px)", "print_w_label": "Print Width", "print_h_label": "Print Height", "dpi_target_label": "Print Resolution (DPI / PPI)", "view_dist_label": "Viewer Distance", "presets_title": "Standard print & format presets:", "preset_1": "A4 Offset HD (300 DPI)", "preset_1_sub": "21 × 29.7 cm • 2480 × 3508 px", "preset_2": "Poster 70×100 cm (150 DPI)", "preset_2_sub": "1.5 m distance • 4134 × 5906 px", "preset_3": "Roll-up 85×200 cm (100 DPI)", "preset_3_sub": "2 m distance • 3346 × 7874 px", "preset_4": "Billboard 6×3 m (30 DPI)", "preset_4_sub": "5 m distance • 7087 × 3543 px", "col_dimensions": "Print Dimensions", "col_pixels": "Image Pixels", "col_megapixels": "Megapixels & Size", "schema_title": "Aspect Ratio & Pixel Density Blueprint", "schema_scale": "Dynamic scale", "rule_tip": "💡 <strong>Human Visual Acuity Rule:</strong> At a given distance, human eyes cannot distinguish individual dots. Optical formula: <code>Optimal DPI ≈ 3438 / Distance (cm)</code>. Magazines at 30 cm need 300 DPI; a billboard at 5 meters only requires 25-35 DPI.", "print_btn": "Print", "install_btn": "Install", "install_banner_title": "Install OmniTools on Mobile", "install_banner_sub": "Graphic design prepress utilities always available offline", "legal_disclaimer": "<strong>Prepress Technical Notes:</strong> Pixel-to-metric conversions use 1 inch = 2.54 cm. Estimated file size applies to uncompressed 8-bit per channel raster images in RGB or CMYK. Always consult your print shop RIP specifications for stochastic screens or Fine Art printing.", "faq_title": "Frequently Asked Questions on DPI, Pixels & Print Resolution", "status_opt_title": "Pin-Sharp Clarity (Photo Quality)", "status_opt_tag": "Excellent Quality", "status_opt_desc": "Pixel density comfortably exceeds human eye resolution at this viewing distance. Perfectly sharp with no visible pixelation.", "status_warn_title": "Acceptable / Commercial Standard", "status_warn_tag": "Acceptable", "status_warn_desc": "Suitable for standard commercial digital print or medium viewing distances. Close inspection might reveal minor softness.", "status_danger_title": "Low Resolution (Pixelation Risk)", "status_danger_tag": "Pixelated", "status_danger_desc": "Resolution is below the recommended threshold for the selected viewing distance. Significant risk of blur or visible pixels.", "copy_btn": "Copy Photoshop / InDesign Specs", "copied_text": "Copied to clipboard!", "uncompressed_size": "Uncompressed File Size", "aspect_ratio": "Aspect Ratio", "human_acuity_dpi": "Minimum Recommended DPI for Distance", "faq_1_q": "What is the true difference between DPI and PPI?", "faq_1_a": "PPI (Pixels Per Inch) describes digital pixel density on a display or in a raster image file. DPI (Dots Per Inch) describes physical ink droplets laid down by a printing press or printer. While often used interchangeably in graphic design, document size formulas mathematically calculate PPI.", "faq_2_q": "Do billboards or large banners really need 300 DPI?", "faq_2_a": "No, this common misconception creates massive, unmanageable files of multiple gigabytes. The larger the print, the farther away the viewer stands. A 6x3m billboard viewed from 5–10 meters looks razor-sharp at just 25–35 DPI.", "faq_3_q": "How do you calculate print dimensions from pixels and DPI?", "faq_3_a": "The formula is: <code>Size (cm) = (Pixels / DPI) × 2.54</code> (or <code>Size (in) = Pixels / DPI</code>). For instance, a 3000 px image at 300 DPI prints at (3000 / 300) × 2.54 = 25.4 cm wide.", "faq_4_q": "How does file size change when increasing DPI?", "faq_4_a": "Doubling DPI (e.g. from 150 to 300 DPI) quadruples the total pixel count (4x). A 50 MB uncompressed image will jump to 200 MB. Always match DPI to the actual human viewing distance."}, "es": {"title": "ResolucionFacil", "badge": "OmniGraph", "hero_title": "Cálculo de Resolución de Impresión, Píxeles y DPI", "hero_desc": "Convierte al instante entre Píxeles, Centímetros y DPI para impresión offset, digital y gran formato, con cálculo de distancia de visión del ojo humano.", "mode_direct": "🖼️ De Píxeles a Tamaño Impreso", "mode_reverse": "📐 De Tamaño Impreso a Píxeles", "unit_label": "Unidad de Medida", "pixels_w_label": "Anchura en Píxeles (px)", "pixels_h_label": "Altura en Píxeles (px)", "print_w_label": "Anchura de Impresión", "print_h_label": "Altura de Impresión", "dpi_target_label": "Resolución de Impresión (DPI / PPI)", "view_dist_label": "Distancia del Observador", "presets_title": "Formatos estándar de impresión:", "preset_1": "A4 Offset HD (300 DPI)", "preset_1_sub": "21 × 29.7 cm • 2480 × 3508 px", "preset_2": "Cartel 70×100 cm (150 DPI)", "preset_2_sub": "Distancia 1.5 m • 4134 × 5906 px", "preset_3": "Roll-up 85×200 cm (100 DPI)", "preset_3_sub": "Distancia 2 m • 3346 × 7874 px", "preset_4": "Valla 6×3 m (30 DPI)", "preset_4_sub": "Distancia 5 m • 7087 × 3543 px", "col_dimensions": "Tamaño de Impresión", "col_pixels": "Resolución de Archivo", "col_megapixels": "Megapíxeles y Peso", "schema_title": "Proporción y Densidad de Píxeles", "schema_scale": "Escala dinámica", "rule_tip": "💡 <strong>Agudeza Visual Humana:</strong> A cierta distancia, el ojo humano ya no distingue los puntos individuales. Fórmula óptica: <code>DPI Óptimo ≈ 3438 / Distancia (cm)</code>. Libros a 30 cm requieren 300 DPI; vallas publicitarias a 5 metros necesitan sólo 25-35 DPI.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instalar OmniTools en el Móvil", "install_banner_sub": "Herramientas de preimpresión y diseño disponibles sin conexión", "legal_disclaimer": "<strong>Notas Técnicas de Preimpresión:</strong> Conversión basada en 1 pulgada = 2.54 cm. Tamaño de archivo estimado para mapas de bits sin comprimir de 8 bits en RGB o CMYK.", "faq_title": "Preguntas Frecuentes sobre DPI, Píxeles y Resolución", "status_opt_title": "Nitidez Excelente (Calidad Fotográfica)", "status_opt_tag": "Calidad Óptima", "status_opt_desc": "La densidad de píxeles supera la capacidad del ojo a la distancia indicada. Imagen nítida sin píxeles visibles.", "status_warn_title": "Calidad Aceptable / Estándar", "status_warn_tag": "Aceptable", "status_warn_desc": "Apta para impresión comercial o visión a media distancia.", "status_danger_title": "Baja Resolución (Riesgo de Pixelado)", "status_danger_tag": "Pixelado", "status_danger_desc": "Densidad inferior a la recomendada para la distancia de visión seleccionada.", "copy_btn": "Copiar Cotas para Photoshop/InDesign", "copied_text": "¡Copiado al portapapeles!", "uncompressed_size": "Tamaño de Archivo sin Comprimir", "aspect_ratio": "Relación de Aspecto", "human_acuity_dpi": "DPI Mínimo Recomendado por Distancia", "faq_1_q": "¿Cuál es la diferencia entre DPI y PPI?", "faq_1_a": "PPI son los píxeles por pulgada de un archivo digital o pantalla; DPI son los puntos físicos de tinta depositados por la imprenta.", "faq_2_q": "¿Las vallas de 6x3 metros necesitan 300 DPI?", "faq_2_a": "No, a 5-10 metros de distancia de visión, 25-35 DPI son más que suficientes y evitan archivos de gigabytes innecesarios.", "faq_3_q": "¿Cómo calcular centímetros a partir de píxeles y DPI?", "faq_3_a": "Fórmula: <code>Centímetros = (Píxeles / DPI) × 2.54</code>.", "faq_4_q": "¿Cómo cambia el peso del archivo al aumentar los DPI?", "faq_4_a": "Duplicar los DPI multiplica por 4 el número de píxeles. Una imagen de 50 MB pasará a 200 MB. Para pancartas y vallas, 100-150 DPI son óptimos."}, "fr": {"title": "ResolutionFacile", "badge": "OmniGraph", "hero_title": "Calculateur Résolution d'Impression, Pixels & DPI", "hero_desc": "Convertissez instantanément entre Pixels, Centimètres et DPI pour l'impression offset, numérique et grand format, avec calcul de la distance d'observation optimale.", "mode_direct": "🖼️ Des Pixels au Format d'Impression", "mode_reverse": "📐 Du Format d'Impression aux Pixels", "unit_label": "Unités de Mesure", "pixels_w_label": "Largeur en Pixels (px)", "pixels_h_label": "Hauteur en Pixels (px)", "print_w_label": "Largeur d'Impression", "print_h_label": "Hauteur d'Impression", "dpi_target_label": "Résolution d'Impression (DPI / PPI)", "view_dist_label": "Distance d'Observation", "presets_title": "Formats d'impression standards :", "preset_1": "A4 Offset HD (300 DPI)", "preset_1_sub": "21 × 29.7 cm • 2480 × 3508 px", "preset_2": "Affiche 70×100 cm (150 DPI)", "preset_2_sub": "Distance 1.5 m • 4134 × 5906 px", "preset_3": "Kakémono / Roll-up 85×200 cm (100 DPI)", "preset_3_sub": "Distance 2 m • 3346 × 7874 px", "preset_4": "Panneau 6×3 m (30 DPI)", "preset_4_sub": "Distance 5 m • 7087 × 3543 px", "col_dimensions": "Dimensions d'Impression", "col_pixels": "Résolution de l'Image", "col_megapixels": "Mégapixels & Poids", "schema_title": "Rapport d'Aspect & Densité de Pixels", "schema_scale": "Échelle dynamique", "rule_tip": "💡 <strong>Acuité Visuelle Humaine :</strong> À une distance donnée, l'œil ne distingue plus les points individuels. Formule : <code>DPI Optimal ≈ 3438 / Distance (cm)</code>. Un livre à 30 cm nécessite 300 DPI ; un panneau 4x3 à 5 mètres ne demande que 25-35 DPI.", "print_btn": "Imprimer", "install_btn": "Installer", "install_banner_title": "Installer OmniTools sur Mobile", "install_banner_sub": "Outils de prépresse graphique accessibles hors-ligne", "legal_disclaimer": "<strong>Notes Techniques Prépresse :</strong> 1 pouce = 2.54 cm. Poids estimé pour fichier raster 8-bit non compressé (RGB/CMJN).", "faq_title": "Questions Fréquentes sur les DPI, Pixels et l'Impression", "status_opt_title": "Netteté Parfaite (Qualité Photo)", "status_opt_tag": "Qualité Optimale", "status_opt_desc": "La densité de pixels dépasse le pouvoir séparateur de l'œil. Rendu impeccable sans pixellisation.", "status_warn_title": "Qualité Standard / Commerciale", "status_warn_tag": "Acceptable", "status_warn_desc": "Convient pour une consultation à moyenne distance.", "status_danger_title": "Basse Résolution (Pixellisation)", "status_danger_tag": "Pixellisé", "status_danger_desc": "Résolution insuffisante pour la distance de vue sélectionnée.", "copy_btn": "Copier pour Photoshop/InDesign", "copied_text": "Copié dans le presse-papier !", "uncompressed_size": "Taille Fichier Non Compressé", "aspect_ratio": "Rapport de Forme (Ratio)", "human_acuity_dpi": "DPI Minimum Recommandé selon la Distance", "faq_1_q": "Quelle est la différence entre DPI et PPI ?", "faq_1_a": "PPI définit la résolution numérique des pixels; DPI définit les points d'encre imprimés physiquement.", "faq_2_q": "Faut-il 300 DPI pour une bâche grand format ?", "faq_2_a": "Non, vue de plusieurs mètres, 25 à 50 DPI suffisent amplement.", "faq_3_q": "Comment convertir pixels en cm ?", "faq_3_a": "Formule : <code>cm = (Pixels / DPI) × 2.54</code>.", "faq_4_q": "Comment le poids du fichier évolue-t-il avec les DPI ?", "faq_4_a": "Doubler la résolution (ex: de 150 à 300 DPI) quadruple le nombre de pixels et le poids du fichier (4×). Pour les affiches et bâches, 100-150 DPI suffisent largement."}, "de": {"title": "AufloesungRechner", "badge": "OmniGraph", "hero_title": "Druckauflösung, Pixel & DPI Rechner", "hero_desc": "Rechnen Sie Pixel, Zentimeter und DPI für Offset-, Digital- und Großformatdruck blitzschnell um – inklusive optimaler Betrachtungsabstand-Berechnung.", "mode_direct": "🖼️ Von Pixeln zu Druckgröße (cm)", "mode_reverse": "📐 Von Druckgröße zu Pixeln", "unit_label": "Maßeinheit", "pixels_w_label": "Breite in Pixeln (px)", "pixels_h_label": "Höhe in Pixeln (px)", "print_w_label": "Druckbreite", "print_h_label": "Druckhöhe", "dpi_target_label": "Druckauflösung (DPI / PPI)", "view_dist_label": "Betrachtungsabstand", "presets_title": "Standard-Druckformate:", "preset_1": "A4 Offset HD (300 DPI)", "preset_1_sub": "21 × 29.7 cm • 2480 × 3508 px", "preset_2": "Plakat 70×100 cm (150 DPI)", "preset_2_sub": "Abstand 1.5 m • 4134 × 5906 px", "preset_3": "Roll-up 85×200 cm (100 DPI)", "preset_3_sub": "Abstand 2 m • 3346 × 7874 px", "preset_4": "Großplakat 6×3 m (30 DPI)", "preset_4_sub": "Abstand 5 m • 7087 × 3543 px", "col_dimensions": "Druckabmessungen", "col_pixels": "Bildpixel", "col_megapixels": "Megapixel & Dateigröße", "schema_title": "Seitenverhältnis & Pixeldichte", "schema_scale": "Dynamischer Maßstab", "rule_tip": "💡 <strong>Sehschärfe des menschlichen Auges:</strong> Ab einem gewissen Abstand kann das Auge einzelne Pixel nicht mehr auflösen. Optische Formel: <code>Optimale DPI ≈ 3438 / Abstand (cm)</code>. Magazine bei 30 cm benötigen 300 DPI; ein Großplakat bei 5 Metern benötigt nur 25-35 DPI.", "print_btn": "Drucken", "install_btn": "Installieren", "install_banner_title": "OmniTools auf Smartphone installieren", "install_banner_sub": "Druckvorstufen-Rechner offline griffbereit", "legal_disclaimer": "<strong>Druckvorstufe-Hinweis:</strong> 1 Zoll = 2.54 cm. Geschätzte Dateigröße für unkomprimierte 8-Bit-Rastergrafiken in RGB oder CMYK.", "faq_title": "Häufig gestellte Fragen zu DPI, Pixeln und Druck", "status_opt_title": "Gestochen scharf (Fotoqualität)", "status_opt_tag": "Optimale Qualität", "status_opt_desc": "Pixeldichte übersteigt die Sehschärfe bei diesem Abstand. Perfekt scharf.", "status_warn_title": "Standardqualität / Akzeptabel", "status_warn_tag": "Akzeptabel", "status_warn_desc": "Geeignet für mittlere Betrachtungsabstände.", "status_danger_title": "Geringe Auflösung (Pixelgefahr)", "status_danger_tag": "Verpixelt", "status_danger_desc": "Auflösung liegt unter dem empfohlenen Schwellenwert für diesen Abstand.", "copy_btn": "Werte für Photoshop/InDesign kopieren", "copied_text": "In die Zwischenablage kopiert!", "uncompressed_size": "Dateigröße unkomprimiert", "aspect_ratio": "Seitenverhältnis", "human_acuity_dpi": "Empfohlene Mindest-DPI für Abstand", "faq_1_q": "Was ist der Unterschied zwischen DPI und PPI?", "faq_1_a": "PPI bezieht sich auf digitale Pixel; DPI beschreibt die physischen Druckpunkte der Druckmaschine.", "faq_2_q": "Brauchen Plakatwände 300 DPI?", "faq_2_a": "Nein, bei mehreren Metern Abstand genügen 25-35 DPI völlig.", "faq_3_q": "Wie rechnet man Pixel in cm um?", "faq_3_a": "Formel: <code>cm = (Pixel / DPI) × 2.54</code>.", "faq_4_q": "Wie verändert sich die Dateigröße bei höherer DPI-Zahl?", "faq_4_a": "Eine Verdopplung der DPI vervierfacht die Pixelmenge und Dateigröße (4×). Eine 50-MB-Datei wächst auf 200 MB an. Passen Sie die DPI stets an den Betrachtungsabstand an."}, "pt": {"title": "ResolucaoFacil", "badge": "OmniGraph", "hero_title": "Cálculo de Resolução de Impressão, Pixels & DPI", "hero_desc": "Converta instantaneamente entre Pixels, Centímetros e DPI para impressão offset, digital e grande formato, com cálculo de distância de visão humana.", "mode_direct": "🖼️ De Pixels para Tamanho Impresso (cm)", "mode_reverse": "📐 De Tamanho Impresso para Pixels", "unit_label": "Unidade de Medida", "pixels_w_label": "Largura em Pixels (px)", "pixels_h_label": "Altura em Pixels (px)", "print_w_label": "Largura de Impressão", "print_h_label": "Altura de Impressão", "dpi_target_label": "Resolução de Impressão (DPI / PPI)", "view_dist_label": "Distância do Observador", "presets_title": "Formatos padrão de impressão:", "preset_1": "A4 Offset HD (300 DPI)", "preset_1_sub": "21 × 29.7 cm • 2480 × 3508 px", "preset_2": "Cartaz 70×100 cm (150 DPI)", "preset_2_sub": "Distância 1.5 m • 4134 × 5906 px", "preset_3": "Roll-up 85×200 cm (100 DPI)", "preset_3_sub": "Distância 2 m • 3346 × 7874 px", "preset_4": "Outdoor 6×3 m (30 DPI)", "preset_4_sub": "Distância 5 m • 7087 × 3543 px", "col_dimensions": "Dimensões de Impressão", "col_pixels": "Resolução do Ficheiro", "col_megapixels": "Megapixels e Peso", "schema_title": "Proporção e Densidade de Pixels", "schema_scale": "Escala dinâmica", "rule_tip": "💡 <strong>Acuidade Visual Humana:</strong> A certa distância, o olho humano não distingue pixels individuais. Fórmula: <code>DPI Ótimo ≈ 3438 / Distância (cm)</code>. Revistas a 30 cm precisam de 300 DPI; outdoors a 5 metros exigem apenas 25-35 DPI.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instalar OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de pré-impressão sempre à mão sem internet", "legal_disclaimer": "<strong>Notas Técnicas de Pré-impressão:</strong> 1 polegada = 2.54 cm. Tamanho de ficheiro estimado para ficheiros raster não comprimidos de 8 bits em RGB/CMYK.", "faq_title": "Perguntas Frequentes sobre DPI, Pixels e Impressão", "status_opt_title": "Nitidez Perfeita (Qualidade Fotográfica)", "status_opt_tag": "Qualidade Ótima", "status_opt_desc": "Densidade de pixels superior à resolução do olho à distância selecionada. Nitidez total.", "status_warn_title": "Qualidade Padrão / Aceitável", "status_warn_tag": "Aceitável", "status_warn_desc": "Adequada para visualização a média distância.", "status_danger_title": "Baixa Resolução (Risco de Pixelização)", "status_danger_tag": "Pixelizado", "status_danger_desc": "Resolução abaixo do recomendado para a distância de visão.", "copy_btn": "Copiar Valores para Photoshop/InDesign", "copied_text": "Copiado para a área de transferência!", "uncompressed_size": "Tamanho de Ficheiro Não Comprimido", "aspect_ratio": "Proporção de Tela", "human_acuity_dpi": "DPI Mínimo Recomendado para a Distância", "faq_1_q": "Qual a diferença entre DPI e PPI?", "faq_1_a": "PPI refere-se aos pixels digitais; DPI são os pontos de tinta impressos no papel.", "faq_2_q": "Outdoors e lonas gigantes precisam de 300 DPI?", "faq_2_a": "Não, vistos a vários metros, 25 a 35 DPI são mais do que suficientes.", "faq_3_q": "Como converter pixels para centímetros?", "faq_3_a": "Fórmula: <code>cm = (Pixels / DPI) × 2.54</code>.", "faq_4_q": "Como muda o tamanho do ficheiro ao aumentar os DPI?", "faq_4_a": "Dobrar os DPI quadruplica a quantidade de píxeis (4×). Um ficheiro de 50 MB salta para 200 MB. Em lonas e outdoors, 100-150 DPI são mais do que suficientes."}};
+
+        
+// Soluzione 1: Suite Switcher Dropdown Interaction
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (!menu) return;
+    const isClosed = menu.classList.contains('hidden');
+    if (isClosed) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('suiteMenuDropdown');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            const btn = document.getElementById('suiteMenuBtn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+
 
         function detectInitialLanguage() {
             const stored = localStorage.getItem('omnitools_lang');

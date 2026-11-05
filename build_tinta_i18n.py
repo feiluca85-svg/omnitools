@@ -1,9 +1,13 @@
+from nav_header import render_suite_header, render_suite_header_js
 import json
 
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_tinta.json', 'r', encoding='utf-8') as f:
     t_data = json.load(f)
 
 t_json_str = json.dumps(t_data, ensure_ascii=False)
+
+header_html = render_suite_header("tinta")
+header_js = render_suite_header_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -178,71 +182,7 @@ html_code = f"""<!DOCTYPE html>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-rose-900 selection:text-white">
 
     <!-- Header Navigation -->
-    <header class="no-print bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
-            
-            <!-- Brand Identity -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-md shadow-rose-900/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
-                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
-                        <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
-                        <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                        <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                        <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                    </svg>
-                </a>
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <a href="/" class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none hover:text-rose-900 transition">Omni<span class="text-rose-800">Graph</span></a>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-rose-100 text-rose-900 px-1.5 py-0.5 rounded-full border border-rose-300 shrink-0">Prestampa</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
-                        <span class="font-bold text-xs text-slate-700 hidden sm:inline-block">TintaPerfetta</span>
-                        <span class="px-1.5 py-0.5 text-[9px] font-bold bg-rose-50 text-rose-800 rounded-md border border-rose-200 shrink-0 hidden sm:inline-block" id="badgeFormatIndicator">A4 / 33x48 / Bobina</span>
-                    </div>
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span class="font-bold text-[11px] text-slate-700">TintaPerfetta</span>
-                        <span class="px-1.5 py-0.2 text-[8px] font-bold bg-rose-50 text-rose-800 rounded border border-rose-200">CMYK Matrix</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions: Switcher + Language + App + Action Buttons -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Dorso Libro">
-                    <span>📖</span>
-                    <span class="hidden md:inline">Dorso</span>
-                </a>
-                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Risoluzione & DPI">
-                    <span>🖼️</span>
-                    <span class="hidden md:inline">DPI</span>
-                </a>
-
-                <!-- Language Selector -->
-                <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="pt">🇵🇹 PT</option>
-                    </select>
-                </div>
-
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-rose-800 bg-rose-50 hover:bg-rose-100 active:scale-95 rounded-xl border border-rose-200 transition" title="Installa come App">
-                    <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
-                </button>
-
-                <!-- PDF Direct Download Button -->
-                <button onclick="downloadVectorPdf()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-3 sm:py-1.5 text-xs font-bold text-white bg-rose-900 hover:bg-rose-950 active:scale-95 rounded-xl transition shadow-xs" title="Scarica file PDF vettoriale pronto per il RIP">
-                    <span>📥</span>
-                    <span class="hidden sm:inline ml-1 font-extrabold">PDF Pronto</span>
-                </button>
-            </div>
-        </div>
-    </header>
+    {header_html}
 
     <!-- Main Content Container -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1 w-full space-y-4 sm:space-y-6">
@@ -783,6 +723,9 @@ html_code = f"""<!DOCTYPE html>
     <!-- Logic Script -->
     <script>
         const TRANSLATIONS = {t_json_str};
+
+        {header_js}
+
 
         function detectInitialLanguage() {{
             const saved = localStorage.getItem('omnitools_lang');

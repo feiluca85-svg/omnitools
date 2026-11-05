@@ -162,57 +162,159 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header with safe area padding -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
             
-            <!-- OmniTools Master Brand + Tool Indicator -->
+            <!-- Breadcrumb Navigation & Suite Switcher -->
             <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
+                <!-- Home Link & Brand Logo -->
+                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 shadow-amber-500/20 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                        <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
-                        <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
-                    </svg>
+            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
+            <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+            <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
+            <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
+        </svg>
                 </a>
 
-                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <span class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
-                        <span id="brandTitle" class="font-bold text-xs text-slate-600 hidden sm:inline-block">RampaFacile</span>
-                        <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-blue-50 text-blue-700 rounded-md border border-blue-200 shrink-0 hidden sm:inline-block">DM 236/89</span>
+                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
+                <div class="relative flex items-center min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
+                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
+                            <span>Omni<span class="text-blue-600">Tools</span></span>
+                        </a>
+                        <span class="text-slate-300 font-normal">/</span>
+                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border-blue-200/80 border shrink-0 hidden xs:inline-block">Building</span>
+                        <span id="brandBadgeMobile" class="hidden">DM 236/89</span>
+                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
+                        
+                        <!-- Dropdown Switcher Button -->
+                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
+                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">RampaFacile</span>
+                            <span id="brandTitleMobile" class="hidden">RampaFacile</span>
+                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
                     </div>
-                    <!-- Row 2 on mobile: Tool Name + Standard Badge -->
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-600">RampaFacile</span>
-                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-blue-50 text-blue-700 rounded border border-blue-200">DM 236/89</span>
+
+                    <!-- Dropdown Popover Menu (All 7 Tools Categorized) -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
+                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools</span>
+                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
+                                Home Hub →
+                            </a>
+                        </div>
+
+                        <!-- Cantiere & Struttura -->
+                        <div class="px-2 pt-2 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
+                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-blue-50/80 text-blue-700 border border-blue-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📐</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-blue-600 text-white shadow-2xs">Attivo</span>
+            </a>
+            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🪜</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+            </a>
+            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🚰</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Grafica & Prestampa -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
+                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📕</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Brossura</span>
+            </a>
+            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🔍</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Pixel/DPI</span>
+            </a>
+            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🎨</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+            </a>
+            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">GS1 / TS</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Link to Hub -->
+                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
+                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
+                                <span>🏠</span> Tutti gli strumenti nella Home
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Quick Actions: Language Selector + App + Print (Clean icon buttons on mobile) -->
+            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Suite Quick Switcher (Scale, Dorso, DPI) -->
-                <a href="/scale" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 bg-slate-100 hover:bg-indigo-50 rounded-xl border border-slate-200 transition" title="Calcolo Scale & Gradini">
-                    <span>🪜</span>
-                    <span class="hidden md:inline">Scale</span>
-                </a>
-                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Dorso & Copertina Libro">
-                    <span>🎨</span>
-                    <span class="hidden md:inline">Dorso</span>
-                </a>
-                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Calcolo Risoluzione & DPI">
-                    <span>🖼️</span>
-                    <span class="hidden md:inline">DPI</span>
-                </a>
-
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -224,7 +326,7 @@
 
                 <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
+                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
                 </button>
                 <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
                     <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -832,6 +934,54 @@
     <!-- Script & Multi-Language Logic -->
     <script>
         const TRANSLATIONS = {"it": {"title": "RampaFacile", "badge": "DM 236/89", "hero_title": "Calcolo Pendenza Rampa & Dislivello", "hero_desc": "Calcola istantaneamente pendenza percentuale, gradi e spazio necessario a terra con verifica conformità normativa barriere architettoniche.", "mode_direct": "📏 Calcola Pendenza", "mode_reverse": "📐 Calcola Spazio", "unit_label": "Imposta Misure", "unit_cm": "Centimetri (cm)", "unit_m": "Metri (m)", "height_label": "Dislivello da superare (h)", "length_label": "Spazio a terra disponibile (L)", "target_slope_label": "Pendenza richiesta (%)", "target_5": "5% Ideale", "target_8": "8% Limite DM", "target_20": "20% Garage", "presets_title": "Preset rapidi:", "preset_1": "1 Gradino (15 cm)", "preset_1_sub": "Disabili max 6%", "preset_2": "3 Gradini (45 cm)", "preset_2_sub": "Ingresso a norma", "preset_3": "Mezzo piano (120 cm)", "preset_3_sub": "Con sosta", "preset_4": "Garage Auto (250 cm)", "preset_4_sub": "Carrabile 20%", "col_slope": "Pendenza", "col_angle": "Angolo", "col_angle_sub": "Inclinazione", "col_length": "Lunghezza", "col_length_sub": "Piano inclinato", "col_space_min": "Spazio Minimo", "col_space_min_sub": "Spazio a terra (L)", "schema_title": "Schema Visivo Dinamico", "schema_scale": "In scala", "rule_tip_direct": "💡 <strong>Regola del cantiere:</strong> ogni 10 cm di gradino richiedono almeno 125 cm a terra per non superare l'8%.", "rule_tip_reverse": "📐 <strong>Risultato:</strong> per superare <strong>{h} {u}</strong> con pendenza al <strong>{s}%</strong> serve uno spazio a terra di <strong>{l} {u}</strong> (rampa lunga {hyp} {u}).", "status_opt_title": "Pendenza Ottimale (DM 236/89)", "status_opt_desc": "Pendenza ideale per sedie a rotelle e passeggini senza accompagnatore. Accessibilità autonoma garantita secondo legge.", "status_opt_tag": "Accessibile 100%", "status_warn_title": "Conforme con Riserva (Tratti Brevi)", "status_warn_desc": "Pendenza massima consentita dal DM 236/89. È obbligatorio inserire un pianerottolo orizzontale di riposo (min. 150x150 cm) ogni 10 metri.", "status_warn_tag": "Limite Massimo", "status_car_title": "Non adatta a disabili — Idonea per Auto", "status_car_desc": "Troppo ripida per carrozzine. Rispetta la normativa antincendio per autorimesse (max 20% rettilinea, 16% curvilinea).", "status_car_tag": "Solo Garage / Auto", "status_danger_title": "Pendenza Eccessiva (> 20%)", "status_danger_desc": "Non conforme per disabili e oltre i limiti di legge anche per auto. Rischio di ribaltamento o di toccare il fondo della vettura.", "status_danger_tag": "Fuori Norma", "app_btn": "App", "print_btn": "Stampa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "I tuoi calcolatori di cantiere pronti anche offline", "install_btn": "Installa", "legal_disclaimer": "<strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (DM 236/89, D.M. 01/02/1986) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi del D.P.R. 380/2001 e successive modifiche. Lo sviluppatore e il gestore del sito declinano espressamente ogni responsabilità per errori, inesattezze, o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato (geometra, architetto o ingegnere).", "faq_title": "Domande Frequenti su Pendenza Rampe e Normative Disabili", "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore o un miglioramento?", "suggest_btn": "Suggerisci", "suggest_modal_title": "Suggerisci uno Strumento", "suggest_modal_desc": "Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?", "suggest_placeholder": "Scrivi qui la tua idea (es. calcolo armatura solette, corrimano scale, pendenza scoli...)", "suggest_privacy_note": "🔒 Invio 100% anonimo. Non serve inserire dati personali.", "suggest_send": "Invia Suggerimento", "suggest_sending": "Invio...", "suggest_thanks": "🎉 Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.", "suggest_close": "Chiudi", "unit_in": "Pollici (in)", "unit_ft": "Piedi (ft)", "faq_1_q": "Qual è la pendenza massima consentita per legge per una rampa disabili?", "faq_1_a": "In Italia, secondo il <strong>D.M. 236/1989 (art. 4.1.11)</strong> e il D.P.R. 503/1996, la pendenza consigliata è fino al <strong>5% (1:20)</strong> per consentire la totale autonomia a chi spinge una sedia a rotelle. Il limite massimo assoluto tollerato per brevi raccordi di dislivello è dell'<strong>8% (1:12.5)</strong>.", "faq_2_q": "Come si calcola lo spazio orizzontale a terra necessario per una rampa?", "faq_2_a": "La formula matematica è: <code>Spazio a terra (L) = Dislivello (H) / (Pendenza % / 100)</code>. Per superare un dislivello di 40 cm (circa due gradini) all'8% servono: 40 / 0.08 = 500 cm (5 metri lineari di sviluppo a terra). Con il 5% servirebbero 8 metri.", "faq_3_q": "Quando è obbligatorio inserire un pianerottolo orizzontale di sosta?", "faq_3_a": "Il pianerottolo di sosta orizzontale in piano è obbligatorio ogni <strong>10 metri di sviluppo continuo</strong> della rampa, nonché in corrispondenza di qualsiasi porta, varco di accesso o cambio di direzione. Le dimensioni minime regolamentari sono di <strong>150 × 150 cm</strong> (oppure 140 × 140 cm in casi speciali).", "faq_4_q": "Qual è la larghezza minima di passaggio e quali cordoli servono?", "faq_4_a": "La larghezza minima della rampa deve essere di <strong>90 cm per transito a senso unico</strong> e di almeno <strong>150 cm per l'incrocio simultaneo</strong> di due carrozzine. Su entrambi i lati aperti è obbligatorio un cordolo di protezione di almeno 10 cm di altezza e corrimano continuo a doppia altezza (90 cm e 75 cm)."}, "en": {"title": "EasyRamp", "badge": "ADA / Part M", "hero_title": "Ramp Slope & Length Calculator", "hero_desc": "Instantly calculate ramp slope percentage, angle and required horizontal space with wheelchair accessibility compliance check (ADA & Building Regs).", "mode_direct": "📏 Calculate Slope", "mode_reverse": "📐 Calculate Space Needed", "unit_label": "Units", "unit_cm": "Centimeters (cm)", "unit_m": "Meters (m)", "height_label": "Rise / Height to climb (h)", "length_label": "Available horizontal run (L)", "target_slope_label": "Required Slope (%)", "target_5": "5% (1:20) Ideal", "target_8": "8.3% (1:12) ADA Max", "target_20": "20% Vehicle", "presets_title": "Quick Presets:", "preset_1": "1 Step (15 cm / 6 in)", "preset_1_sub": "Wheelchair accessible", "preset_2": "3 Steps (45 cm / 18 in)", "preset_2_sub": "Entrance threshold", "preset_3": "Half landing (120 cm)", "preset_3_sub": "With rest platforms", "preset_4": "Driveway (250 cm)", "preset_4_sub": "Car garage ramp", "col_slope": "Slope", "col_angle": "Angle", "col_angle_sub": "Inclination", "col_length": "Ramp Length", "col_length_sub": "Inclined run (hypotenuse)", "col_space_min": "Min Space Needed", "col_space_min_sub": "Horizontal run (L)", "schema_title": "Dynamic Visual Diagram", "schema_scale": "Scaled", "rule_tip_direct": "💡 <strong>Rule of thumb:</strong> for every 10 cm of rise you need at least 120 cm of run to stay under ADA 1:12 (8.3%).", "rule_tip_reverse": "📐 <strong>Result:</strong> to climb <strong>{h} {u}</strong> at <strong>{s}%</strong> slope you need a run of <strong>{l} {u}</strong> (ramp length {hyp} {u}).", "status_opt_title": "Optimal Slope (ADA / 1:20)", "status_opt_desc": "Ideal slope for manual wheelchairs and strollers without assistance. Guaranteed independent accessibility.", "status_opt_tag": "100% Accessible", "status_warn_title": "Compliant with Limits (1:12 ADA Max)", "status_warn_desc": "Maximum legal slope under ADA guidelines (8.3% / 1:12). Level landing platforms (min 150x150 cm) are required every 9-10 meters.", "status_warn_tag": "Max Legal Limit", "status_car_title": "Vehicle / Driveway Ramp Only", "status_car_desc": "Too steep for pedestrian or wheelchair access. Suitable for garage and car ramps (up to 20%).", "status_car_tag": "Vehicles Only", "status_danger_title": "Excessive Slope (> 20%)", "status_danger_desc": "Non-compliant for disabled access and exceeds safety standards for vehicles. High risk of bottoming out or tipping over.", "status_danger_tag": "Not Compliant", "app_btn": "App", "print_btn": "Print", "install_banner_title": "Install OmniTools as App", "install_banner_sub": "Field & engineering calculators ready offline", "install_btn": "Install", "legal_disclaimer": "<strong>Legal Disclaimer & Limitation of Liability:</strong> Calculations, diagrams and regulatory standards (ADA, Building Regulations Part M) provided by this online tool are strictly for educational, informational and preliminary estimation purposes. They do not constitute formal architectural engineering drawings or certified technical advice. The website developer and operator expressly disclaim any liability for errors or damages resulting from construction without certified licensed professionals.", "faq_title": "Frequently Asked Questions on Ramp Slope & ADA Accessibility Standards", "suggest_banner": "💡 Have an idea for a new calculator or an improvement?", "suggest_btn": "Suggest Tool", "suggest_modal_title": "Suggest a Calculator", "suggest_modal_desc": "What calculation tool, formula, or feature would you like to see next on OmniTools?", "suggest_placeholder": "Type your idea here (e.g. rebar calculator, handrail slope, drainage ditches...)", "suggest_privacy_note": "🔒 100% anonymous submission. No personal data needed.", "suggest_send": "Submit Suggestion", "suggest_sending": "Submitting...", "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will guide upcoming OmniTools modules.", "suggest_close": "Close", "unit_in": "Inches (in)", "unit_ft": "Feet (ft)", "faq_1_q": "What is the legal maximum ramp slope for wheelchair accessibility?", "faq_1_a": "Under the <strong>Americans with Disabilities Act (ADA)</strong> and UK Part M regulations, the maximum legal slope for commercial ramps is <strong>1:12 (8.33%)</strong>. However, for unassisted wheelchair users, <strong>1:20 (5.0%)</strong> is strongly recommended for safety and effortless ascent.", "faq_2_q": "How do you calculate the horizontal run needed for a ramp?", "faq_2_a": "Formula: <code>Run = Rise / (Slope % / 100)</code>. At standard 1:12 slope (8.33%), each 1 inch (or cm) of vertical rise requires 12 inches (or cm) of horizontal run. To overcome a 30 cm doorstep, you need at least 360 cm (3.6 meters) of linear ground space.", "faq_3_q": "When are level landing platforms mandatory?", "faq_3_a": "Level rest landings (at least 60×60 inches or 150×150 cm) are legally mandatory every <strong>30 feet (9 meters) of continuous slope</strong>, at the top and bottom of the ramp, and whenever the ramp turns or meets an entrance door.", "faq_4_q": "What is the required clear width and handrail specifications?", "faq_4_a": "The clear width between handrails must be at least <strong>36 inches (91 cm)</strong> for single passage. Continuous handrails on both sides are required on any ramp with a rise greater than 6 inches (15 cm)."}, "es": {"title": "RampaFacil", "badge": "CTE DB-SUA", "hero_title": "Cálculo de Pendiente de Rampa y Longitud", "hero_desc": "Calcula al instante el porcentaje de pendiente, grados y espacio necesario con verificación de accesibilidad y normativa CTE.", "mode_direct": "📏 Calcular Pendiente", "mode_reverse": "📐 Calcular Espacio", "unit_label": "Unidades", "unit_cm": "Centímetros (cm)", "unit_m": "Metros (m)", "height_label": "Desnivel a salvar (h)", "length_label": "Espacio horizontal disponible (L)", "target_slope_label": "Pendiente deseada (%)", "target_5": "5% Ideal", "target_8": "8% Límite Accesible", "target_20": "20% Garaje", "presets_title": "Valores rápidos:", "preset_1": "1 Escalón (15 cm)", "preset_1_sub": "Accesible max 6%", "preset_2": "3 Escalones (45 cm)", "preset_2_sub": "Acceso portal", "preset_3": "Medio piso (120 cm)", "preset_3_sub": "Con descansillo", "preset_4": "Rampa Garaje (250 cm)", "preset_4_sub": "Vehicular 20%", "col_slope": "Pendiente", "col_angle": "Ángulo", "col_angle_sub": "Inclinación", "col_length": "Longitud Rampa", "col_length_sub": "Plano inclinado", "col_space_min": "Espacio Mínimo", "col_space_min_sub": "Longitud en suelo (L)", "schema_title": "Esquema Visual a Escala", "schema_scale": "En tiempo real", "rule_tip_direct": "💡 <strong>Regla práctica:</strong> cada 10 cm de altura requieren al menos 125 cm en el suelo para no superar el 8%.", "rule_tip_reverse": "📐 <strong>Resultado:</strong> para salvar <strong>{h} {u}</strong> con pendiente del <strong>{s}%</strong> se necesita un suelo de <strong>{l} {u}</strong>.", "status_opt_title": "Pendiente Óptima (Accesible)", "status_opt_desc": "Pendiente perfecta para sillas de ruedas sin ayuda. Máxima comodidad según el Código Técnico de la Edificación (CTE).", "status_opt_tag": "100% Accesible", "status_warn_title": "Límite Máximo Accesible (Tramos Cortos)", "status_warn_desc": "Pendiente máxima permitida para tramos cortos. Es obligatorio incluir mesetas horizontales de descanso cada 9-10 metros.", "status_warn_tag": "Límite Máximo", "status_car_title": "Solo para Vehículos / Garaje", "status_car_desc": "Demasiado inclinada para peatones. Apta para rampas de aparcamiento y vehículos (hasta 20% recta, 16% curva).", "status_car_tag": "Solo Vehículos", "status_danger_title": "Pendiente Excesiva (> 20%)", "status_danger_desc": "Fuera de normativa para peatones y coches. Riesgo de vuelco o roce con los bajos del vehículo.", "status_danger_tag": "No Conforme", "app_btn": "App", "print_btn": "Imprimir", "install_banner_title": "Instala OmniTools como App", "install_banner_sub": "Tus herramientas de obra listas sin conexión", "install_btn": "Instalar", "legal_disclaimer": "<strong>Aviso Legal y Limitación de Responsabilidad:</strong> Los cálculos y normativas (CTE DB-SUA) facilitados por esta herramienta tienen carácter estrictamente orientativo y docente. No constituyen proyecto técnico ni sustituyen la labor de un arquitecto o aparejador colegiado.", "faq_title": "Preguntas Frecuentes sobre Pendiente de Rampas y Accesibilidad", "suggest_banner": "💡 ¿Tienes una idea para un nuevo cálculo o una mejora?", "suggest_btn": "Sugerir herramienta", "suggest_modal_title": "Sugerir una Herramienta", "suggest_modal_desc": "¿Qué calculadora o función técnica te gustaría ver próximamente en OmniTools?", "suggest_placeholder": "Escribe tu idea aquí (ej. cálculo de armaduras, pasamanos, pendientes de drenaje...)", "suggest_privacy_note": "🔒 Envío 100% anónimo. Sin registro ni datos personales.", "suggest_send": "Enviar Sugerencia", "suggest_sending": "Enviando...", "suggest_thanks": "🎉 ¡Muchas gracias! Tu sugerencia guiarà el desarrollo de las próximas herramientas.", "suggest_close": "Cerrar", "unit_in": "Pulgadas (in)", "unit_ft": "Pies (ft)", "faq_1_q": "¿Cuál es la pendiente máxima permitida por ley para rampas de accesibilidad?", "faq_1_a": "Según el Código Técnico de la Edificación (CTE DB-SUA en España), la pendiente máxima permitida es del <strong>10% para tramos menores de 3 metros</strong>, <strong>8% para tramos de hasta 6 metros</strong> y <strong>6% para tramos de hasta 9 metros</strong>.", "faq_2_q": "¿Cómo calcular la longitud en planta necesaria para una rampa?", "faq_2_a": "Fórmula: <code>Longitud = Desnivel / (Pendiente % / 100)</code>. Para superar un desnivel de 40 cm al 8%, se requieren: 40 / 0.08 = 500 cm (5 metros en planta).", "faq_3_q": "¿Cuándo es obligatorio colocar una meseta intermedia?", "faq_3_a": "Es obligatorio colocar rellanos o mesetas intermedias horizontales sin pendiente cada <strong>9 o 10 metros de recorrido</strong>, con una longitud mínima de 1.50 m.", "faq_4_q": "¿Cuál es el ancho mínimo libre de paso?", "faq_4_a": "El ancho libre de paso mínimo es de <strong>120 cm</strong> para edificios públicos y 100 cm en accesos privados, con pasamanos dobles a 70 y 90 cm de altura."}, "fr": {"title": "RampeFacile", "badge": "Norme PMR", "hero_title": "Calcul Pente de Rampe & Dénivelé", "hero_desc": "Calculez instantanément le pourcentage de pente, l'angle et l'espace au sol requis avec vérification de conformité accessibilité PMR.", "mode_direct": "📏 Calculer la Pente", "mode_reverse": "📐 Calculer l'Espace Requis", "unit_label": "Unités", "unit_cm": "Centimètres (cm)", "unit_m": "Mètres (m)", "height_label": "Dénivelé à franchir (h)", "length_label": "Longueur au sol disponible (L)", "target_slope_label": "Pente souhaitée (%)", "target_5": "5% Idéal PMR", "target_8": "8% Tolérance max", "target_20": "20% Garage", "presets_title": "Cas fréquents:", "preset_1": "1 Marche (15 cm)", "preset_1_sub": "PMR max 6%", "preset_2": "3 Marches (45 cm)", "preset_2_sub": "Accès entrée", "preset_3": "Demi-étage (120 cm)", "preset_3_sub": "Avec paliers", "preset_4": "Rampe Garage (250 cm)", "preset_4_sub": "Voitures 20%", "col_slope": "Pente", "col_angle": "Angle", "col_angle_sub": "Inclinaison", "col_length": "Longueur Rampe", "col_length_sub": "Plan incliné", "col_space_min": "Espace Requis", "col_space_min_sub": "Longueur au sol (L)", "schema_title": "Schéma Visuel à l'Échelle", "schema_scale": "En direct", "rule_tip_direct": "💡 <strong>Règle de chantier :</strong> chaque 10 cm de marche nécessite au moins 125 cm au sol pour ne pas dépasser 8%.", "rule_tip_reverse": "📐 <strong>Résultat :</strong> pour franchir <strong>{h} {u}</strong> à <strong>{s}%</strong> il faut une longueur au sol de <strong>{l} {u}</strong>.", "status_opt_title": "Pente Optimale (Norme PMR 5%)", "status_opt_desc": "Pente recommandée pour les fauteuils roulants en toute autonomie sans effort selon la réglementation française.", "status_opt_tag": "100% Accessible", "status_warn_title": "Tolérance Maximale (Courtes Distances)", "status_warn_desc": "Pente maximale autorisée (8% jusqu'à 2m). Un palier de repos horizontal de 140x140 cm minimum est requis tous les 10 mètres.", "status_warn_tag": "Limite Légale", "status_car_title": "Réservé aux Véhicules / Parking", "status_car_desc": "Trop raide pour les piétons. Conforme pour les rampes de parking et garages automobiles (max 20%).", "status_car_tag": "Véhicules Seuls", "status_danger_title": "Pente Excessive (> 20%)", "status_danger_desc": "Non conforme pour piétons et voitures. Risque de basculement ou d'accrochage du bas de caisse.", "status_danger_tag": "Non Conforme", "app_btn": "App", "print_btn": "Imprimer", "install_banner_title": "Installer OmniTools sur Smartphone", "install_banner_sub": "Vos outils de chantier utilisables hors-ligne", "install_btn": "Installer", "legal_disclaimer": "<strong>Clause de Non-Responsabilité Légale :</strong> Les calculs et normes (accessibilité PMR) sont fournis à titre strictement indicatif et pédagogique. Ils ne remplacent en aucun cas un plan ou diagnostic établi par un maître d'œuvre ou architecte habilité.", "faq_title": "Foire Aux Questions sur la Pente des Rampes PMR et Réglementation", "suggest_banner": "💡 Une idée de nouveau calculateur ou d'amélioration ?", "suggest_btn": "Suggérer un outil", "suggest_modal_title": "Suggérer un Outil", "suggest_modal_desc": "Quel calculateur ou fonction technique aimeriez-vous voir prochainement sur OmniTools ?", "suggest_placeholder": "Décrivez votre idée (ex. calcul d'armatures, garde-corps, caniveaux...)", "suggest_privacy_note": "🔒 Envoi 100% anonyme. Aucune inscription requise.", "suggest_send": "Envoyer la suggestion", "suggest_sending": "Envoi en cours...", "suggest_thanks": "🎉 Merci beaucoup ! Votre suggestion orientera les prochains modules d'OmniTools.", "suggest_close": "Fermer", "unit_in": "Pouces (in)", "unit_ft": "Pieds (ft)", "faq_1_q": "Quelle est la pente maximale autorisée pour une rampe PMR ?", "faq_1_a": "Selon la réglementation française d'accessibilité (PMR), la pente réglementaire est de <strong>5% (recommandée)</strong>. Une tolérance est accordée jusqu'à <strong>8% sur 2 mètres</strong> maximum et <strong>10% sur 50 cm</strong> de longueur.", "faq_2_q": "Comment calculer la longueur au sol nécessaire pour une rampe ?", "faq_2_a": "Formule : <code>Longueur = Dénivelé / (Pente % / 100)</code>. Pour franchir une hauteur de 40 cm à 5%, il faut 40 / 0.05 = 800 cm (8 mètres linéaires au sol).", "faq_3_q": "Quand faut-il installer un palier de repos horizontal ?", "faq_3_a": "Un palier de repos horizontal (au moins 140 × 140 cm) est obligatoire tous les <strong>10 mètres de pente</strong> ainsi qu'à chaque changement de direction et devant chaque porte.", "faq_4_q": "Quelle est la largeur minimale obligatoire ?", "faq_4_a": "La largeur libre de passage doit être d'au moins <strong>1.20 mètre</strong> (1.40 m recommandé en ERP) avec mains courantes continues de chaque côté."}, "de": {"title": "RampeProfi", "badge": "DIN 18040", "hero_title": "Rampenneigung & Längenrechner", "hero_desc": "Berechnen Sie Neigung in Prozent, Grad und die benötigte Bodenlänge nach DIN 18040 für barrierefreies Bauen.", "mode_direct": "📏 Neigung berechnen", "mode_reverse": "📐 Länge berechnen", "unit_label": "Maßeinheit", "unit_cm": "Zentimeter (cm)", "unit_m": "Meter (m)", "height_label": "Höhenunterschied (h)", "length_label": "Verfügbare Bodenlänge (L)", "target_slope_label": "Gewünschte Neigung (%)", "target_5": "5% Sehr leicht", "target_8": "6% DIN 18040 Max", "target_20": "15-20% Tiefgarage", "presets_title": "Schnellwahl:", "preset_1": "1 Stufe (15 cm)", "preset_1_sub": "Barrierefrei", "preset_2": "3 Stufen (45 cm)", "preset_2_sub": "Hauseingang", "preset_3": "Halbe Etage (120 cm)", "preset_3_sub": "Mit Ruhepodest", "preset_4": "Tiefgarage (250 cm)", "preset_4_sub": "PKW Rampe", "col_slope": "Neigung", "col_angle": "Winkel", "col_angle_sub": "Steigung", "col_length": "Rampenlänge", "col_length_sub": "Schräge Bahn", "col_space_min": "Min. Bodenlänge", "col_space_min_sub": "Horizontale Länge (L)", "schema_title": "Maßstabsgetreue Skizze", "schema_scale": "Echtzeit", "rule_tip_direct": "💡 <strong>Praxistipp:</strong> Für DIN 18040 (max. 6%) werden pro 10 cm Stufenhöhe ca. 167 cm Bodenlänge benötigt.", "rule_tip_reverse": "📐 <strong>Ergebnis:</strong> Für <strong>{h} {u}</strong> bei <strong>{s}%</strong> Neigung sind <strong>{l} {u}</strong> Bodenlänge erforderlich.", "status_opt_title": "Optimal barrierefrei (DIN 18040)", "status_opt_desc": "Ideal für Rollstuhlfahrer ohne Begleitperson. Entspricht vollständig den Anforderungen für Barrierefreiheit.", "status_opt_tag": "Barrierefrei", "status_warn_title": "Grenzbereich / Steil", "status_warn_desc": "Übersteigt die empfohlene DIN-Norm von 6%. Nur mit Zwischenpodesten (mind. 150x150 cm) nach maximal 6m Länge zulässig.", "status_warn_tag": "Erhöhter Kraftaufwand", "status_car_title": "Nur für PKW / Tiefgarage", "status_car_desc": "Zu steil für Rollstühle. Geeignet für Kfz-Rampen und Tiefgaragen (bis 15-20%).", "status_car_tag": "Nur Fahrzeuge", "status_danger_title": "Unzulässige Neigung (> 20%)", "status_danger_desc": "Nicht zulässig für Fußgänger und Fahrzeuge. Hohe Aufsetz- und Kippgefahr.", "status_danger_tag": "Nicht zulässig", "app_btn": "App", "print_btn": "Drucken", "install_banner_title": "OmniTools als App nutzen", "install_banner_sub": "Praktische Baurechner jederzeit auch offline", "install_btn": "Installieren", "legal_disclaimer": "<strong>Haftungsausschluss:</strong> Die Berechnungen und Normenhinweise (DIN 18040) dienen ausschließlich der unverbindlichen Orientierung und stellen keine statische oder baurechtliche Fachplanung dar.", "faq_title": "Häufig gestellte Fragen zu Rampenneigung und DIN 18040 Barrierefreiheit", "suggest_banner": "💡 Haben Sie eine Idee für einen neuen Rechner oder eine Verbesserung?", "suggest_btn": "Vorschlag senden", "suggest_modal_title": "Neues Tool vorschlagen", "suggest_modal_desc": "Welchen Baurechner oder welche Funktion wünschen Sie sich als Nächstes auf OmniTools?", "suggest_placeholder": "Beschreiben Sie Ihre Idee (z. B. Bewehrungsrechner, Treppengeländer, Drainagegefälle...)", "suggest_privacy_note": "🔒 100% anonyme Übermittlung. Keine Registrierung erforderlich.", "suggest_send": "Vorschlag einreichen", "suggest_sending": "Wird gesendet...", "suggest_thanks": "🎉 Vielen Dank! Ihr Vorschlag fließt direkt in die Weiterentwicklung von OmniTools ein.", "suggest_close": "Schließen", "unit_in": "Zoll (in)", "unit_ft": "Fuß (ft)", "faq_1_q": "Was ist die maximale Steigung für Rollstuhlrampen nach DIN 18040?", "faq_1_a": "Nach <strong>DIN 18040-1</strong> beträgt die maximal zulässige Steigung für barrierefreie Rampen im öffentlichen Raum <strong>6.0%</strong>. Querneigungen sind unzulässig.", "faq_2_q": "Wie berechnet man die erforderliche Rampenlänge?", "faq_2_a": "Formel: <code>Rampenlänge = Höhenunterschied / 0.06</code>. Um 30 cm Höhendifferenz bei 6% Steigung zu überwinden, werden 30 / 0.06 = 500 cm (5 Meter) Grundfläche benötigt.", "faq_3_q": "Wann ist ein Zwischenpodest vorgeschrieben?", "faq_3_a": "Ab einer Rampenlänge von mehr als <strong>6 Metern</strong> ist zwingend ein horizontales Zwischenpodest von mindestens 150 cm Länge einzubauen.", "faq_4_q": "Welche Mindestbreite gilt für Rollstuhlrampen?", "faq_4_a": "Die lichte Durchgangsbreite zwischen den beidseitigen Radabweisern und Handläufen muss mindestens <strong>120 cm</strong> betragen."}, "pt": {"title": "RampaFacil", "badge": "NBR 9050", "hero_title": "Cálculo de Inclinação de Rampa & Comprimento", "hero_desc": "Calcule a inclinação percentual, graus e o comprimento necessário com verificação de normas de acessibilidade (NBR 9050).", "mode_direct": "📏 Calcular Inclinação", "mode_reverse": "📐 Calcular Espaço", "unit_label": "Unidades", "unit_cm": "Centímetros (cm)", "unit_m": "Metros (m)", "height_label": "Desnível a vencer (h)", "length_label": "Espaço horizontal disponível (L)", "target_slope_label": "Inclinação pretendida (%)", "target_5": "5% Ideal Acessível", "target_8": "8.3% Limite Norma", "target_20": "20% Garagem", "presets_title": "Casos comuns:", "preset_1": "1 Degrau (15 cm)", "preset_1_sub": "Acessível", "preset_2": "3 Degraus (45 cm)", "preset_2_sub": "Entrada principal", "preset_3": "Meio piso (120 cm)", "preset_3_sub": "Com patamar", "preset_4": "Garagem (250 cm)", "preset_4_sub": "Carros 20%", "col_slope": "Inclinação", "col_angle": "Ângulo", "col_angle_sub": "Graus", "col_length": "Comprimento Rampa", "col_length_sub": "Plano inclinado", "col_space_min": "Espaço Mínimo", "col_space_min_sub": "Comprimento no chão (L)", "schema_title": "Desenho Visual em Escala", "schema_scale": "Tempo real", "rule_tip_direct": "💡 <strong>Regra prática:</strong> para cada 10 cm de desnível são necessários pelo menos 120 cm no chão para ficar dentro de 8,33%.", "rule_tip_reverse": "📐 <strong>Resultado:</strong> para vencer <strong>{h} {u}</strong> a <strong>{s}%</strong> é necessário um espaço de <strong>{l} {u}</strong>.", "status_opt_title": "Inclinação Ideal (Acessível)", "status_opt_desc": "Inclinação excelente para cadeiras de rodas sem ajuda, garantindo total autonomia e conforto.", "status_opt_tag": "100% Acessível", "status_warn_title": "Limite Máximo por Norma (Trechos Curtos)", "status_warn_desc": "Inclinação máxima permitida pela norma (até 8.33%). É obrigatório patamar de descanso a cada trecho longo.", "status_warn_tag": "Limite Máximo", "status_car_title": "Apenas Veículos / Garagem", "status_car_desc": "Muito inclinada para pessoas. Adequada para rampas de garagem e estacionamentos (até 20%).", "status_car_tag": "Apenas Carros", "status_danger_title": "Inclinação Excessiva (> 20%)", "status_danger_desc": "Fora de qualquer norma. Risco sério de acidentes e danos no fundo dos veículos.", "status_danger_tag": "Não Conforme", "app_btn": "App", "print_btn": "Imprimir", "install_banner_title": "Instale OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de obra disponíveis sem internet", "install_btn": "Instalar", "legal_disclaimer": "<strong>Aviso Legal e Limitação de Responsabilidade:</strong> Os cálculos e referências normativas (NBR 9050 / DL 163) têm caráter puramente informativo e não substituem o projeto assinado por engenheiro ou arquiteto habilitado.", "faq_title": "Perguntas Frequentes sobre Inclinação de Rampas e Acessibilidade", "suggest_banner": "💡 Tem alguma ideia de nova calculadora ou sugestão de melhoria?", "suggest_btn": "Sugerir ferramenta", "suggest_modal_title": "Sugerir uma Ferramenta", "suggest_modal_desc": "Qual calculadora ou função técnica gostaria de ver no OmniTools?", "suggest_placeholder": "Escreva a sua ideia (ex. cálculo de armaduras, corrimões, drenagem...)", "suggest_privacy_note": "🔒 Envio 100% anónimo. Sem necessidade de registo.", "suggest_send": "Enviar Sugestão", "suggest_sending": "A enviar...", "suggest_thanks": "🎉 Muito obrigado! A sua sugestão guiará os próximos módulos do OmniTools.", "suggest_close": "Fechar", "unit_in": "Polegadas (in)", "unit_ft": "Pés (ft)", "faq_1_q": "Qual é a inclinação máxima de uma rampa para cadeirantes?", "faq_1_a": "Segundo as normas de acessibilidade (Decreto-Lei 163/2006 em Portugal e NBR 9050 no Brasil), a inclinação recomendada é de <strong>5.0% a 6.0%</strong>, com limite máximo de <strong>8.33% (1:12)</strong> para percursos curtos.", "faq_2_q": "Como calcular o comprimento em planta de uma rampa?", "faq_2_a": "Fórmula: <code>Comprimento = Desnível / (Inclinação % / 100)</code>. Para um degrau de 30 cm com inclinação de 6%, são necessários: 30 / 0.06 = 500 cm (5 metros lineares).", "faq_3_q": "Quando é obrigatório criar patamares de descanso?", "faq_3_a": "É obrigatório intercalar patamares horizontais (mínimo 150 × 150 cm) a cada <strong>9 ou 10 metros de rampa contínua</strong> e em mudanças de direção.", "faq_4_q": "Qual é a largura livre mínima exigida por norma?", "faq_4_a": "A largura livre mínima é de <strong>120 cm</strong> para circulação pública, devendo ter corrimão duplo contínuo e guias de proteção lateral."}};
+
+        
+// Soluzione 1: Suite Switcher Dropdown Interaction
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (!menu) return;
+    const isClosed = menu.classList.contains('hidden');
+    if (isClosed) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('suiteMenuDropdown');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            const btn = document.getElementById('suiteMenuBtn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+
 
         function detectInitialLanguage() {
             const stored = localStorage.getItem('omnitools_lang');

@@ -1,9 +1,13 @@
+from nav_header import render_suite_header, render_suite_header_js
 import json
 
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_scale.json', 'r', encoding='utf-8') as f:
     t_data = json.load(f)
 
 t_json_str = json.dumps(t_data, ensure_ascii=False)
+
+header_html = render_suite_header("scale")
+header_js = render_suite_header_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -168,83 +172,7 @@ html_code = f"""<!DOCTYPE html>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header (Identical design to RampaFacile) -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
-            
-            <!-- OmniTools Master Brand + Tool Indicator -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <!-- Calibrated Logo (Version 3.4 Golden Ratio) -->
-                <a href="/" class="w-[33px] h-[33px] sm:w-[36px] sm:h-[36px] rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0 p-1 transition hover:opacity-95" title="OmniTools Home">
-                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                        <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
-                        <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
-                    </svg>
-                </a>
-
-                <!-- Brand Name & Module Indicator (Zero Mobile Overlap) -->
-                <div class="flex flex-col min-w-0">
-                    <div class="flex items-center gap-1.5 leading-none">
-                        <a href="/" class="font-jakarta font-black text-sm sm:text-base text-slate-900 tracking-tight leading-none hover:text-blue-600 transition">Omni<span class="text-blue-600">Tools</span></a>
-                        <span class="text-[8px] sm:text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80 shrink-0">Lab</span>
-                        <span class="h-3.5 w-px bg-slate-200 hidden sm:inline-block"></span>
-                        
-                        <!-- Tool Switcher Pill Dropdown -->
-                        <div class="hidden sm:inline-flex items-center gap-1.5">
-                            <span id="brandTitle" class="font-bold text-xs text-slate-700">ScalaFacile</span>
-                            <span id="brandBadge" class="px-1.5 py-0.5 text-[9px] font-bold bg-indigo-50 text-indigo-700 rounded-md border border-indigo-200 shrink-0">Legge di Blondel</span>
-                        </div>
-                    </div>
-                    <!-- Row 2 on mobile: Tool Name + Standard Badge -->
-                    <div class="sm:hidden flex items-center gap-1.5 leading-none mt-1">
-                        <span id="brandTitleMobile" class="font-bold text-[11px] text-slate-700">ScalaFacile</span>
-                        <span id="brandBadgeMobile" class="px-1.5 py-0.2 text-[8px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Blondel</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quick Actions: Language Selector + App + Print (Clean icon buttons on mobile) -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Suite Quick Switcher (Rampe / Dorso / DPI) -->
-                <a href="/rampe" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 rounded-xl border border-slate-200 transition" title="Passa a Calcolo Rampe">
-                    <span>📐</span>
-                    <span class="hidden md:inline">Rampe</span>
-                </a>
-                <a href="/dorso" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-purple-600 bg-slate-100 hover:bg-purple-50 rounded-xl border border-slate-200 transition" title="Dorso & Copertina Libro">
-                    <span>🎨</span>
-                    <span class="hidden md:inline">Dorso</span>
-                </a>
-                <a href="/dpi" class="no-print inline-flex items-center gap-1 px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 bg-slate-100 hover:bg-emerald-50 rounded-xl border border-slate-200 transition" title="Calcolo Risoluzione & DPI">
-                    <span>🖼️</span>
-                    <span class="hidden md:inline">DPI</span>
-                </a>
-
-                <!-- Language Selector Dropdown -->
-                <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="pt">🇵🇹 PT</option>
-                    </select>
-                </div>
-
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
-                    <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">App</span>
-                </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
-                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
-                </button>
-            </div>
-        </div>
-    </header>
+    {header_html}
 
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
@@ -813,6 +741,9 @@ html_code = f"""<!DOCTYPE html>
     <!-- Script & Calculation Engine for Scale & Blondel -->
     <script>
         const TRANSLATIONS = {t_json_str};
+
+        {header_js}
+
 
         function detectInitialLanguage() {{
             const stored = localStorage.getItem('omnitools_lang');

@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Generatore Codici a Barre Online Vettoriale SVG & PDF — EAN-13, Tessera Sanitaria & Verifica GS1</title>
+    <meta name="description" content="Generatore professionale di codici a barre vettoriali SVG e PDF ad alta risoluzione (EAN-13, UPC-A, Code 128, Code 39 per Tessera Sanitaria). Include simulatore contrasto laser 670 nm conforme alle specifiche ufficiali GS1.">
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/barcode">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OmniBarcode Studio — Generatore Codici a Barre Vettoriale SVG & Verifica GS1">
+    <meta property="og:description" content="Genera codici a barre SVG vettoriali puri e PDF per packaging, editoria e sanità. Con simulatore laser GS1 a 670 nm e preset Tessera Sanitaria.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/barcode">
+    <meta property="og:site_name" content="OmniTools Lab">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-barcode.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-barcode.png">
+
+    <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "OmniBarcode Studio - Generatore Codici a Barre Vettoriale GS1",
+        "url": "https://www.omnitoolslab.com/barcode",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "description": "Generatore vettoriale SVG/PDF di codici a barre EAN-13, UPC-A, Code 128 e Code 39 (Tessera Sanitaria) con verifica contrasto laser 670 nm conforme alle specifiche GS1.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "OmniTools Lab",
+            "item": "https://www.omnitoolslab.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "OmniBarcode Studio",
+            "item": "https://www.omnitoolslab.com/barcode"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qual è la differenza tra EAN-13, Code 128 e Code 39?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "L'EAN-13 (e la controparte americana UPC-A) è lo standard commerciale universale per la vendita al dettaglio nei supermercati e negozi, composto da sole 13 cifre numeriche con codice paese, prefisso aziendale e check-digit. Il Code 128 è un codice alfanumerico ad altissima densità utilizzato nella logistica, magazzini e spedizioni corrieri (es. Amazon, Poste, DHL). Il Code 39 è uno standard storico industriale e sanitario, capace di codificare lettere maiuscole e numeri, utilizzato in Italia per il codice a barre della Tessera Sanitaria e nelle cartelle cliniche ospedaliere."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Perché le barre rosse o gialle non possono mai essere usate nei codici a barre?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I lettori ottici e scanner delle casse utilizzano fasci laser a luce rossa (con lunghezza d'onda di circa 670 nanometri). Nel mondo ottico, un oggetto appare rosso perché riflette la luce rossa. Di conseguenza, quando il raggio laser colpisce una barra rossa o gialla, la luce viene rimbalzata esattamente come se colpisse uno sfondo bianco: per il sensore dello scanner le barre semplicemente non esistono! Al contrario, uno sfondo rosso o giallo riflette la luce rossa, quindi barre nere o blu scuro su sfondo rosso sono perfettamente leggibili secondo le specifiche GS1."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Come funziona il codice a barre della Tessera Sanitaria (TS-CNS)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sul retro della Tessera Sanitaria italiana (TS-CNS) è stampato un codice a barre con simbologia Code 39 che codifica esattamente i 16 caratteri alfanumerici del Codice Fiscale dell'assistito (senza checksum aggiuntivo, delimitato dai caratteri di controllo asterisco). Quando il medico di famiglia, l'ospedale o il farmacista passano il lettore ottico sulla tessera, il software riceve istantaneamente la stringa del codice fiscale per emettere ricette, referti o lo scontrino parlante."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Cos'è la 'Quiet Zone' (zona di silenzio) e perché è obbligatoria?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La Quiet Zone è lo spazio bianco libero obbligatorio che deve precedere la prima barra e seguire l'ultima barra del codice. Per lo standard GS1 EAN-13, la Quiet Zone deve essere larga almeno 9 volte la larghezza della barra più sottile (circa 3 mm a scala 100%). Se grafici o impaginatori posizionano testi, cornici, fustelle o fotografie troppo vicine alle barre, il laser non riesce a capire dove inizia e dove finisce il codice, causando il tipico 'bip di errore' alla cassa del supermercato."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+    <link rel="manifest" href="manifest-graph.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
+    <link rel="alternate icon" type="image/png" href="favicon.png?v=6">
+    <link rel="shortcut icon" href="favicon.svg?v=6">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OmniBarcode">
+    <link rel="apple-touch-icon" href="icon-192.png?v=6">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    screens: {
+                        'xs': '480px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Embedded JsBarcode Library (100% Offline Resilience) -->
+    <script>
+    /*! JsBarcode v3.11.5 | (c) Johan Lindell | MIT license */
+!function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=15)}([function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.default=function t(e,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.data=e,this.text=n.text||e,this.options=n}},function(t,e,n){"use strict";var r;function o(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}Object.defineProperty(e,"__esModule",{value:!0});var i=e.SET_A=0,a=e.SET_B=1,u=e.SET_C=2,f=(e.SHIFT=98,e.START_A=103),c=e.START_B=104,s=e.START_C=105;e.MODULO=103,e.STOP=106,e.FNC1=207,e.SET_BY_CODE=(o(r={},f,i),o(r,c,a),o(r,s,u),r),e.SWAP={101:i,100:a,99:u},e.A_START_CHAR=String.fromCharCode(208),e.B_START_CHAR=String.fromCharCode(209),e.C_START_CHAR=String.fromCharCode(210),e.A_CHARS="[\0-_È-Ï]",e.B_CHARS="[ -È-Ï]",e.C_CHARS="(Ï*[0-9]{2}Ï*)",e.BARS=[11011001100,11001101100,11001100110,10010011e3,10010001100,10001001100,10011001e3,10011000100,10001100100,11001001e3,11001000100,11000100100,10110011100,10011011100,10011001110,10111001100,10011101100,10011100110,11001110010,11001011100,11001001110,11011100100,11001110100,11101101110,11101001100,11100101100,11100100110,11101100100,11100110100,11100110010,11011011e3,11011000110,11000110110,10100011e3,10001011e3,10001000110,10110001e3,10001101e3,10001100010,11010001e3,11000101e3,11000100010,10110111e3,10110001110,10001101110,10111011e3,10111000110,10001110110,11101110110,11010001110,11000101110,11011101e3,11011100010,11011101110,11101011e3,11101000110,11100010110,11101101e3,11101100010,11100011010,11101111010,11001000010,11110001010,1010011e4,10100001100,1001011e4,10010000110,10000101100,10000100110,1011001e4,10110000100,1001101e4,10011000010,10000110100,10000110010,11000010010,1100101e4,11110111010,11000010100,10001111010,10100111100,10010111100,10010011110,10111100100,10011110100,10011110010,11110100100,11110010100,11110010010,11011011110,11011110110,11110110110,10101111e3,10100011110,10001011110,10111101e3,10111100010,11110101e3,11110100010,10111011110,10111101110,11101011110,11110101110,11010000100,1101001e4,11010011100,1100011101011]},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.SIDE_BIN="101",e.MIDDLE_BIN="01010",e.BINARIES={L:["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"],G:["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"],R:["1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"],O:["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"],E:["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"]},e.EAN2_STRUCTURE=["LL","LG","GL","GG"],e.EAN5_STRUCTURE=["GGLLL","GLGLL","GLLGL","GLLLG","LGGLL","LLGGL","LLLGG","LGLGL","LGLLG","LLGLG"],e.EAN13_STRUCTURE=["LLLLLL","LLGLGG","LLGGLG","LLGGGL","LGLLGG","LGGLLG","LGGGLL","LGLGLG","LGLGGL","LGGLGL"]},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(2);e.default=function(t,e,n){var o=t.split("").map((function(t,n){return r.BINARIES[e[n]]})).map((function(e,n){return e?e[t[n]]:""}));if(n){var i=t.length-1;o=o.map((function(t,e){return e<i?t+n:t}))}return o.join("")}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){for(var t="110",e=0;e<this.data.length;e++){var n=parseInt(this.data[e]).toString(2);n=u(n,4-n.length);for(var r=0;r<n.length;r++)t+="0"==n[r]?"100":"110"}return{data:t+="1001",text:this.text}}},{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]+$/)}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);function u(t,e){for(var n=0;n<e;n++)t="0"+t;return t}e.default=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t.substring(1),n));return r.bytes=t.split("").map((function(t){return t.charCodeAt(0)})),r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return/^[\x00-\x7F\xC8-\xD3]+$/.test(this.data)}},{key:"encode",value:function(){var t=this.bytes,n=t.shift()-105,r=u.SET_BY_CODE[n];if(void 0===r)throw new RangeError("The encoding does not start with a start character.");!0===this.shouldEncodeAsEan128()&&t.unshift(u.FNC1);var o=e.next(t,1,r);return{text:this.text===this.data?this.text.replace(/[^\x20-\x7E]/g,""):this.text,data:e.getBar(n)+o.result+e.getBar((o.checksum+n)%u.MODULO)+e.getBar(u.STOP)}}},{key:"shouldEncodeAsEan128",value:function(){var t=this.options.ean128||!1;return"string"==typeof t&&(t="true"===t.toLowerCase()),t}}],[{key:"getBar",value:function(t){return u.BARS[t]?u.BARS[t].toString():""}},{key:"correctIndex",value:function(t,e){if(e===u.SET_A){var n=t.shift();return n<32?n+64:n-32}return e===u.SET_B?t.shift()-32:10*(t.shift()-48)+t.shift()-48}},{key:"next",value:function(t,n,r){if(!t.length)return{result:"",checksum:0};var o=void 0,i=void 0;if(t[0]>=200){i=t.shift()-105;var a=u.SWAP[i];void 0!==a?o=e.next(t,n+1,a):(r!==u.SET_A&&r!==u.SET_B||i!==u.SHIFT||(t[0]=r===u.SET_A?t[0]>95?t[0]-96:t[0]:t[0]<32?t[0]+96:t[0]),o=e.next(t,n+1,r))}else i=e.correctIndex(t,r),o=e.next(t,n+1,r);var f=i*n;return{result:e.getBar(i)+o.result,checksum:f+o.checksum}}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.mod10=function(t){for(var e=0,n=0;n<t.length;n++){var r=parseInt(t[n]);(n+t.length)%2==0?e+=r:e+=2*r%10+Math.floor(2*r/10)}return(10-e%10)%10},e.mod11=function(t){for(var e=0,n=[2,3,4,5,6,7],r=0;r<t.length;r++){var o=parseInt(t[t.length-1-r]);e+=n[r%n.length]*o}return(11-e%11)%11}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t};e.default=function(t,e){return r({},t,e)}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=n(2),i=a(n(3));function a(t){return t&&t.__esModule?t:{default:t}}var u=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.fontSize=!n.flat&&n.fontSize>10*n.width?10*n.width:n.fontSize,r.guardHeight=n.height+r.fontSize/2+n.textMargin,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"encode",value:function(){return this.options.flat?this.encodeFlat():this.encodeGuarded()}},{key:"leftText",value:function(t,e){return this.text.substr(t,e)}},{key:"leftEncode",value:function(t,e){return(0,i.default)(t,e)}},{key:"rightText",value:function(t,e){return this.text.substr(t,e)}},{key:"rightEncode",value:function(t,e){return(0,i.default)(t,e)}},{key:"encodeGuarded",value:function(){var t={fontSize:this.fontSize},e={height:this.guardHeight};return[{data:o.SIDE_BIN,options:e},{data:this.leftEncode(),text:this.leftText(),options:t},{data:o.MIDDLE_BIN,options:e},{data:this.rightEncode(),text:this.rightText(),options:t},{data:o.SIDE_BIN,options:e}]}},{key:"encodeFlat",value:function(){return{data:[o.SIDE_BIN,this.leftEncode(),o.MIDDLE_BIN,this.rightEncode(),o.SIDE_BIN].join(""),text:this.text}}}]),e}(a(n(0)).default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}();e.checksum=u;var o=i(n(3));function i(t){return t&&t.__esModule?t:{default:t}}var a=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{11}$/)&&(t+=u(t));var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.displayValue=n.displayValue,n.fontSize>10*n.width?r.fontSize=10*n.width:r.fontSize=n.fontSize,r.guardHeight=n.height+r.fontSize/2+n.textMargin,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{12}$/)&&this.data[11]==u(this.data)}},{key:"encode",value:function(){return this.options.flat?this.flatEncoding():this.guardedEncoding()}},{key:"flatEncoding",value:function(){var t="";return t+="101",t+=(0,o.default)(this.data.substr(0,6),"LLLLLL"),t+="01010",t+=(0,o.default)(this.data.substr(6,6),"RRRRRR"),{data:t+="101",text:this.text}}},{key:"guardedEncoding",value:function(){var t=[];return this.displayValue&&t.push({data:"00000000",text:this.text.substr(0,1),options:{textAlign:"left",fontSize:this.fontSize}}),t.push({data:"101"+(0,o.default)(this.data[0],"L"),options:{height:this.guardHeight}}),t.push({data:(0,o.default)(this.data.substr(1,5),"LLLLL"),text:this.text.substr(1,5),options:{fontSize:this.fontSize}}),t.push({data:"01010",options:{height:this.guardHeight}}),t.push({data:(0,o.default)(this.data.substr(6,5),"RRRRR"),text:this.text.substr(6,5),options:{fontSize:this.fontSize}}),t.push({data:(0,o.default)(this.data[11],"R")+"101",options:{height:this.guardHeight}}),this.displayValue&&t.push({data:"00000000",text:this.text.substr(11,1),options:{textAlign:"right",fontSize:this.fontSize}}),t}}]),e}(i(n(0)).default);function u(t){var e,n=0;for(e=1;e<11;e+=2)n+=parseInt(t[e]);for(e=0;e<11;e+=2)n+=3*parseInt(t[e]);return(10-n%10)%10}e.default=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(31),a=n(0);function u(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function f(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}var c=function(t){function e(){return u(this,e),f(this,(e.__proto__||Object.getPrototypeOf(e)).apply(this,arguments))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^([0-9]{2})+$/)}},{key:"encode",value:function(){var t=this,e=this.data.match(/.{2}/g).map((function(e){return t.encodePair(e)})).join("");return{data:i.START_BIN+e+i.END_BIN,text:this.text}}},{key:"encodePair",value:function(t){var e=i.BINARIES[t[1]];return i.BINARIES[t[0]].split("").map((function(t,n){return("1"===t?"111":"1")+("1"===e[n]?"000":"0")})).join("")}}]),e}(((r=a)&&r.__esModule?r:{default:r}).default);e.default=c},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){var e=["width","height","textMargin","fontSize","margin","marginTop","marginBottom","marginLeft","marginRight"];for(var n in e)e.hasOwnProperty(n)&&(n=e[n],"string"==typeof t[n]&&(t[n]=parseInt(t[n],10)));"string"==typeof t.displayValue&&(t.displayValue="false"!=t.displayValue);return t}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r={width:2,height:100,format:"auto",displayValue:!0,fontOptions:"",font:"monospace",text:void 0,textAlign:"center",textPosition:"bottom",textMargin:2,fontSize:20,background:"#ffffff",lineColor:"#000000",margin:10,marginTop:void 0,marginBottom:void 0,marginLeft:void 0,marginRight:void 0,valid:function(){}};e.default=r},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.getTotalWidthOfEncodings=e.calculateEncodingAttributes=e.getBarcodePadding=e.getEncodingHeight=e.getMaximumHeightOfEncodings=void 0;var r,o=n(7),i=(r=o)&&r.__esModule?r:{default:r};function a(t,e){return e.height+(e.displayValue&&t.text.length>0?e.fontSize+e.textMargin:0)+e.marginTop+e.marginBottom}function u(t,e,n){if(n.displayValue&&e<t){if("center"==n.textAlign)return Math.floor((t-e)/2);if("left"==n.textAlign)return 0;if("right"==n.textAlign)return Math.floor(t-e)}return 0}function f(t,e,n){var r;if(n)r=n;else{if("undefined"==typeof document)return 0;r=document.createElement("canvas").getContext("2d")}r.font=e.fontOptions+" "+e.fontSize+"px "+e.font;var o=r.measureText(t);return o?o.width:0}e.getMaximumHeightOfEncodings=function(t){for(var e=0,n=0;n<t.length;n++)t[n].height>e&&(e=t[n].height);return e},e.getEncodingHeight=a,e.getBarcodePadding=u,e.calculateEncodingAttributes=function(t,e,n){for(var r=0;r<t.length;r++){var o,c=t[r],s=(0,i.default)(e,c.options);o=s.displayValue?f(c.text,s,n):0;var l=c.data.length*s.width;c.width=Math.ceil(Math.max(o,l)),c.height=a(c,s),c.barcodePadding=u(o,l,s)}},e.getTotalWidthOfEncodings=function(t){for(var e=0,n=0;n<t.length;n++)e+=t[n].width;return e}},function(t,e,n){"use strict";function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function o(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(t){function e(t,n){r(this,e);var i=o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return i.name="InvalidInputException",i.symbology=t,i.input=n,i.message='"'+i.input+'" is not a valid input for '+i.symbology,i}return i(e,Error),e}(),u=function(t){function e(){r(this,e);var t=o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return t.name="InvalidElementException",t.message="Not supported type to render on",t}return i(e,Error),e}(),f=function(t){function e(){r(this,e);var t=o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return t.name="NoElementException",t.message="No element to render on.",t}return i(e,Error),e}();e.InvalidInputException=a,e.InvalidElementException=u,e.NoElementException=f},function(t,e,n){"use strict";var r=p(n(16)),o=p(n(7)),i=p(n(41)),a=p(n(42)),u=p(n(43)),f=p(n(11)),c=p(n(49)),s=n(14),l=p(n(12));function p(t){return t&&t.__esModule?t:{default:t}}var d=function(){},h=function(t,e,n){var r=new d;if(void 0===t)throw Error("No element to render on was provided.");return r._renderProperties=(0,u.default)(t),r._encodings=[],r._options=l.default,r._errorHandler=new c.default(r),void 0!==e&&((n=n||{}).format||(n.format=_()),r.options(n)[n.format](e,n).render()),r};for(var y in h.getModule=function(t){return r.default[t]},r.default)r.default.hasOwnProperty(y)&&b(r.default,y);function b(t,e){d.prototype[e]=d.prototype[e.toUpperCase()]=d.prototype[e.toLowerCase()]=function(n,r){var i=this;return i._errorHandler.wrapBarcodeCall((function(){r.text=void 0===r.text?void 0:""+r.text;var a=(0,o.default)(i._options,r);a=(0,f.default)(a);var u=t[e],c=v(n,u,a);return i._encodings.push(c),i}))}}function v(t,e,n){var r=new e(t=""+t,n);if(!r.valid())throw new s.InvalidInputException(r.constructor.name,t);var a=r.encode();a=(0,i.default)(a);for(var u=0;u<a.length;u++)a[u].options=(0,o.default)(n,a[u].options);return a}function _(){return r.default.CODE128?"CODE128":Object.keys(r.default)[0]}function g(t,e,n){e=(0,i.default)(e);for(var r=0;r<e.length;r++)e[r].options=(0,o.default)(n,e[r].options),(0,a.default)(e[r].options);(0,a.default)(n),new(0,t.renderer)(t.element,e,n).render(),t.afterRender&&t.afterRender()}d.prototype.options=function(t){return this._options=(0,o.default)(this._options,t),this},d.prototype.blank=function(t){var e=new Array(t+1).join("0");return this._encodings.push({data:e}),this},d.prototype.init=function(){var t;if(this._renderProperties)for(var e in Array.isArray(this._renderProperties)||(this._renderProperties=[this._renderProperties]),this._renderProperties){t=this._renderProperties[e];var n=(0,o.default)(this._options,t.options);"auto"==n.format&&(n.format=_()),this._errorHandler.wrapBarcodeCall((function(){var e=v(n.value,r.default[n.format.toUpperCase()],n);g(t,e,n)}))}},d.prototype.render=function(){if(!this._renderProperties)throw new s.NoElementException;if(Array.isArray(this._renderProperties))for(var t=0;t<this._renderProperties.length;t++)g(this._renderProperties[t],this._encodings,this._options);else g(this._renderProperties,this._encodings,this._options);return this},d.prototype._defaults=l.default,"undefined"!=typeof window&&(window.JsBarcode=h),"undefined"!=typeof jQuery&&(jQuery.fn.JsBarcode=function(t,e){var n=[];return jQuery(this).each((function(){n.push(this)})),h(n,t,e)}),t.exports=h},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(17),o=n(18),i=n(24),a=n(30),u=n(33),f=n(38),c=n(39),s=n(40);e.default={CODE39:r.CODE39,CODE128:o.CODE128,CODE128A:o.CODE128A,CODE128B:o.CODE128B,CODE128C:o.CODE128C,EAN13:i.EAN13,EAN8:i.EAN8,EAN5:i.EAN5,EAN2:i.EAN2,UPC:i.UPC,UPCE:i.UPCE,ITF14:a.ITF14,ITF:a.ITF,MSI:u.MSI,MSI10:u.MSI10,MSI11:u.MSI11,MSI1010:u.MSI1010,MSI1110:u.MSI1110,pharmacode:f.pharmacode,codabar:c.codabar,GenericBarcode:s.GenericBarcode}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.CODE39=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t=t.toUpperCase(),n.mod43&&(t+=function(t){return u[t]}(function(t){for(var e=0,n=0;n<t.length;n++)e+=s(t[n]);return e%=43}(t))),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){for(var t=c("*"),e=0;e<this.data.length;e++)t+=c(this.data[e])+"0";return{data:t+=c("*"),text:this.text}}},{key:"valid",value:function(){return-1!==this.data.search(/^[0-9A-Z\-\.\ \$\/\+\%]+$/)}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default),u=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","-","."," ","$","/","+","%","*"],f=[20957,29783,23639,30485,20951,29813,23669,20855,29789,23645,29975,23831,30533,22295,30149,24005,21623,29981,23837,22301,30023,23879,30545,22343,30161,24017,21959,30065,23921,22385,29015,18263,29141,17879,29045,18293,17783,29021,18269,17477,17489,17681,20753,35770];function c(t){return function(t){return f[t].toString(2)}(s(t))}function s(t){return u.indexOf(t)}e.CODE39=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.CODE128C=e.CODE128B=e.CODE128A=e.CODE128=void 0;var r=u(n(19)),o=u(n(21)),i=u(n(22)),a=u(n(23));function u(t){return t&&t.__esModule?t:{default:t}}e.CODE128=r.default,e.CODE128A=o.default,e.CODE128B=i.default,e.CODE128C=a.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=i(n(5)),o=i(n(20));function i(t){return t&&t.__esModule?t:{default:t}}function a(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}var u=function(t){function e(t,n){if(function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),/^[\x00-\x7F\xC8-\xD3]+$/.test(t))var r=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,(0,o.default)(t),n));else r=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return a(r)}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(r.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=n(1),o=function(t){return t.match(new RegExp("^"+r.A_CHARS+"*"))[0].length},i=function(t){return t.match(new RegExp("^"+r.B_CHARS+"*"))[0].length},a=function(t){return t.match(new RegExp("^"+r.C_CHARS+"*"))[0]};function u(t,e){var n=e?r.A_CHARS:r.B_CHARS,o=t.match(new RegExp("^("+n+"+?)(([0-9]{2}){2,})([^0-9]|$)"));if(o)return o[1]+String.fromCharCode(204)+f(t.substring(o[1].length));var i=t.match(new RegExp("^"+n+"+"))[0];return i.length===t.length?t:i+String.fromCharCode(e?205:206)+u(t.substring(i.length),!e)}function f(t){var e=a(t),n=e.length;if(n===t.length)return t;t=t.substring(n);var r=o(t)>=i(t);return e+String.fromCharCode(r?206:205)+u(t,r)}e.default=function(t){var e=void 0;if(a(t).length>=2)e=r.C_START_CHAR+f(t);else{var n=o(t)>i(t);e=(n?r.A_START_CHAR:r.B_START_CHAR)+u(t,n)}return e.replace(/[\xCD\xCE]([^])[\xCD\xCE]/,(function(t,e){return String.fromCharCode(203)+e}))}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(5),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,u.A_START_CHAR+t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return new RegExp("^"+u.A_CHARS+"+$").test(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(5),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,u.B_START_CHAR+t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return new RegExp("^"+u.B_CHARS+"+$").test(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(5),a=(r=i)&&r.__esModule?r:{default:r},u=n(1);var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,u.C_START_CHAR+t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return new RegExp("^"+u.C_CHARS+"+$").test(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.UPCE=e.UPC=e.EAN2=e.EAN5=e.EAN8=e.EAN13=void 0;var r=c(n(25)),o=c(n(26)),i=c(n(27)),a=c(n(28)),u=c(n(9)),f=c(n(29));function c(t){return t&&t.__esModule?t:{default:t}}e.EAN13=r.default,e.EAN8=o.default,e.EAN5=i.default,e.EAN2=a.default,e.UPC=u.default,e.UPCE=f.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=function t(e,n,r){null===e&&(e=Function.prototype);var o=Object.getOwnPropertyDescriptor(e,n);if(void 0===o){var i=Object.getPrototypeOf(e);return null===i?void 0:t(i,n,r)}if("value"in o)return o.value;var a=o.get;return void 0!==a?a.call(r):void 0},a=n(2),u=n(8),f=(r=u)&&r.__esModule?r:{default:r};var c=function(t){return(10-t.substr(0,12).split("").map((function(t){return+t})).reduce((function(t,e,n){return n%2?t+3*e:t+e}),0)%10)%10},s=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{12}$/)&&(t+=c(t));var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.lastChar=n.lastChar,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{13}$/)&&+this.data[12]===c(this.data)}},{key:"leftText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftText",this).call(this,1,6)}},{key:"leftEncode",value:function(){var t=this.data.substr(1,6),n=a.EAN13_STRUCTURE[this.data[0]];return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftEncode",this).call(this,t,n)}},{key:"rightText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightText",this).call(this,7,6)}},{key:"rightEncode",value:function(){var t=this.data.substr(7,6);return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightEncode",this).call(this,t,"RRRRRR")}},{key:"encodeGuarded",value:function(){var t=i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"encodeGuarded",this).call(this);return this.options.displayValue&&(t.unshift({data:"000000000000",text:this.text.substr(0,1),options:{textAlign:"left",fontSize:this.fontSize}}),this.options.lastChar&&(t.push({data:"00"}),t.push({data:"00000",text:this.options.lastChar,options:{fontSize:this.fontSize}}))),t}}]),e}(f.default);e.default=s},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=function t(e,n,r){null===e&&(e=Function.prototype);var o=Object.getOwnPropertyDescriptor(e,n);if(void 0===o){var i=Object.getPrototypeOf(e);return null===i?void 0:t(i,n,r)}if("value"in o)return o.value;var a=o.get;return void 0!==a?a.call(r):void 0},a=n(8),u=(r=a)&&r.__esModule?r:{default:r};var f=function(t){return(10-t.substr(0,7).split("").map((function(t){return+t})).reduce((function(t,e,n){return n%2?t+e:t+3*e}),0)%10)%10},c=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{7}$/)&&(t+=f(t)),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{8}$/)&&+this.data[7]===f(this.data)}},{key:"leftText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftText",this).call(this,0,4)}},{key:"leftEncode",value:function(){var t=this.data.substr(0,4);return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"leftEncode",this).call(this,t,"LLLL")}},{key:"rightText",value:function(){return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightText",this).call(this,4,4)}},{key:"rightEncode",value:function(){var t=this.data.substr(4,4);return i(e.prototype.__proto__||Object.getPrototypeOf(e.prototype),"rightEncode",this).call(this,t,"RRRR")}}]),e}(u.default);e.default=c},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=n(2),i=u(n(3)),a=u(n(0));function u(t){return t&&t.__esModule?t:{default:t}}var f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{5}$/)}},{key:"encode",value:function(){var t,e=o.EAN5_STRUCTURE[(t=this.data,t.split("").map((function(t){return+t})).reduce((function(t,e,n){return n%2?t+9*e:t+3*e}),0)%10)];return{data:"1011"+(0,i.default)(this.data,e,"01"),text:this.text}}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=n(2),i=a(n(3));function a(t){return t&&t.__esModule?t:{default:t}}var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{2}$/)}},{key:"encode",value:function(){var t=o.EAN2_STRUCTURE[parseInt(this.data)%4];return{data:"1011"+(0,i.default)(this.data,t,"01"),text:this.text}}}]),e}(a(n(0)).default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),o=u(n(3)),i=u(n(0)),a=n(9);function u(t){return t&&t.__esModule?t:{default:t}}function f(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}var c=["XX00000XXX","XX10000XXX","XX20000XXX","XXX00000XX","XXXX00000X","XXXXX00005","XXXXX00006","XXXXX00007","XXXXX00008","XXXXX00009"],s=[["EEEOOO","OOOEEE"],["EEOEOO","OOEOEE"],["EEOOEO","OOEEOE"],["EEOOOE","OOEEEO"],["EOEEOO","OEOOEE"],["EOOEEO","OEEOOE"],["EOOOEE","OEEEOO"],["EOEOEO","OEOEOE"],["EOEOOE","OEOEEO"],["EOOEOE","OEEOEO"]],l=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=f(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));if(r.isValid=!1,-1!==t.search(/^[0-9]{6}$/))r.middleDigits=t,r.upcA=p(t,"0"),r.text=n.text||""+r.upcA[0]+t+r.upcA[r.upcA.length-1],r.isValid=!0;else{if(-1===t.search(/^[01][0-9]{7}$/))return f(r);if(r.middleDigits=t.substring(1,t.length-1),r.upcA=p(r.middleDigits,t[0]),r.upcA[r.upcA.length-1]!==t[t.length-1])return f(r);r.isValid=!0}return r.displayValue=n.displayValue,n.fontSize>10*n.width?r.fontSize=10*n.width:r.fontSize=n.fontSize,r.guardHeight=n.height+r.fontSize/2+n.textMargin,r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),r(e,[{key:"valid",value:function(){return this.isValid}},{key:"encode",value:function(){return this.options.flat?this.flatEncoding():this.guardedEncoding()}},{key:"flatEncoding",value:function(){var t="";return t+="101",t+=this.encodeMiddleDigits(),{data:t+="010101",text:this.text}}},{key:"guardedEncoding",value:function(){var t=[];return this.displayValue&&t.push({data:"00000000",text:this.text[0],options:{textAlign:"left",fontSize:this.fontSize}}),t.push({data:"101",options:{height:this.guardHeight}}),t.push({data:this.encodeMiddleDigits(),text:this.text.substring(1,7),options:{fontSize:this.fontSize}}),t.push({data:"010101",options:{height:this.guardHeight}}),this.displayValue&&t.push({data:"00000000",text:this.text[7],options:{textAlign:"right",fontSize:this.fontSize}}),t}},{key:"encodeMiddleDigits",value:function(){var t=this.upcA[0],e=this.upcA[this.upcA.length-1],n=s[parseInt(e)][parseInt(t)];return(0,o.default)(this.middleDigits,n)}}]),e}(i.default);function p(t,e){for(var n=parseInt(t[t.length-1]),r=c[n],o="",i=0,u=0;u<r.length;u++){var f=r[u];o+="X"===f?t[i++]:f}return""+(o=""+e+o)+(0,a.checksum)(o)}e.default=l},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.ITF14=e.ITF=void 0;var r=i(n(10)),o=i(n(32));function i(t){return t&&t.__esModule?t:{default:t}}e.ITF=r.default,e.ITF14=o.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});e.START_BIN="1010",e.END_BIN="11101",e.BINARIES=["00110","10001","01001","11000","00101","10100","01100","00011","10010","01010"]},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(10),a=(r=i)&&r.__esModule?r:{default:r};var u=function(t){var e=t.substr(0,13).split("").map((function(t){return parseInt(t,10)})).reduce((function(t,e,n){return t+e*(3-n%2*2)}),0);return 10*Math.ceil(e/10)-e},f=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),-1!==t.search(/^[0-9]{13}$/)&&(t+=u(t)),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[0-9]{14}$/)&&+this.data[13]===u(this.data)}}]),e}(a.default);e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.MSI1110=e.MSI1010=e.MSI11=e.MSI10=e.MSI=void 0;var r=f(n(4)),o=f(n(34)),i=f(n(35)),a=f(n(36)),u=f(n(37));function f(t){return t&&t.__esModule?t:{default:t}}e.MSI=r.default,e.MSI10=o.default,e.MSI11=i.default,e.MSI1010=a.default,e.MSI1110=u.default},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t+(0,a.mod10)(t),n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t+(0,a.mod11)(t),n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t+=(0,a.mod10)(t),t+=(0,a.mod10)(t),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=n(4),i=(r=o)&&r.__esModule?r:{default:r},a=n(6);var u=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),t+=(0,a.mod11)(t),t+=(0,a.mod10)(t),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),e}(i.default);e.default=u},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.pharmacode=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e);var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n));return r.number=parseInt(t,10),r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){for(var t=this.number,e="";!isNaN(t)&&0!=t;)t%2==0?(e="11100"+e,t=(t-2)/2):(e="100"+e,t=(t-1)/2);return{data:e=e.slice(0,-2),text:this.text}}},{key:"valid",value:function(){return this.number>=3&&this.number<=131070}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);e.pharmacode=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.codabar=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),0===t.search(/^[0-9\-\$\:\.\+\/]+$/)&&(t="A"+t+"A");var r=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t.toUpperCase(),n));return r.text=r.options.text||r.text.replace(/[A-D]/g,""),r}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"valid",value:function(){return-1!==this.data.search(/^[A-D][0-9\-\$\:\.\+\/]+[A-D]$/)}},{key:"encode",value:function(){for(var t=[],e=this.getEncodings(),n=0;n<this.data.length;n++)t.push(e[this.data.charAt(n)]),n!==this.data.length-1&&t.push("0");return{text:this.text,data:t.join("")}}},{key:"getEncodings",value:function(){return{0:"101010011",1:"101011001",2:"101001011",3:"110010101",4:"101101001",5:"110101001",6:"100101011",7:"100101101",8:"100110101",9:"110100101","-":"101001101",$:"101100101",":":"1101011011","/":"1101101011",".":"1101101101","+":"1011011011",A:"1011001001",B:"1001001011",C:"1010010011",D:"1010011001"}}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);e.codabar=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.GenericBarcode=void 0;var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(0);var a=function(t){function e(t,n){return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(e,t),o(e,[{key:"encode",value:function(){return{data:"10101010101010101010101010101010101010101",text:this.text}}},{key:"valid",value:function(){return!0}}]),e}(((r=i)&&r.__esModule?r:{default:r}).default);e.GenericBarcode=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){var e=[];return function t(n){if(Array.isArray(n))for(var r=0;r<n.length;r++)t(n[r]);else n.text=n.text||"",n.data=n.data||"",e.push(n)}(t),e}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(t){return t.marginTop=t.marginTop||t.margin,t.marginBottom=t.marginBottom||t.margin,t.marginRight=t.marginRight||t.margin,t.marginLeft=t.marginLeft||t.margin,t}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},o=u(n(44)),i=u(n(45)),a=n(14);function u(t){return t&&t.__esModule?t:{default:t}}function f(t){if("string"==typeof t)return function(t){var e=document.querySelectorAll(t);if(0===e.length)return;for(var n=[],r=0;r<e.length;r++)n.push(f(e[r]));return n}(t);if(Array.isArray(t)){for(var e=[],n=0;n<t.length;n++)e.push(f(t[n]));return e}if("undefined"!=typeof HTMLCanvasElement&&t instanceof HTMLImageElement)return u=t,{element:c=document.createElement("canvas"),options:(0,o.default)(u),renderer:i.default.CanvasRenderer,afterRender:function(){u.setAttribute("src",c.toDataURL())}};if(t&&t.nodeName&&"svg"===t.nodeName.toLowerCase()||"undefined"!=typeof SVGElement&&t instanceof SVGElement)return{element:t,options:(0,o.default)(t),renderer:i.default.SVGRenderer};if("undefined"!=typeof HTMLCanvasElement&&t instanceof HTMLCanvasElement)return{element:t,options:(0,o.default)(t),renderer:i.default.CanvasRenderer};if(t&&t.getContext)return{element:t,renderer:i.default.CanvasRenderer};if(t&&"object"===(void 0===t?"undefined":r(t))&&!t.nodeName)return{element:t,renderer:i.default.ObjectRenderer};throw new a.InvalidElementException;var u,c}e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=i(n(11)),o=i(n(12));function i(t){return t&&t.__esModule?t:{default:t}}e.default=function(t){var e={};for(var n in o.default)o.default.hasOwnProperty(n)&&(t.hasAttribute("jsbarcode-"+n.toLowerCase())&&(e[n]=t.getAttribute("jsbarcode-"+n.toLowerCase())),t.hasAttribute("data-"+n.toLowerCase())&&(e[n]=t.getAttribute("data-"+n.toLowerCase())));return e.value=t.getAttribute("jsbarcode-value")||t.getAttribute("data-value"),e=(0,r.default)(e)}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=a(n(46)),o=a(n(47)),i=a(n(48));function a(t){return t&&t.__esModule?t:{default:t}}e.default={CanvasRenderer:r.default,SVGRenderer:o.default,ObjectRenderer:i.default}},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(7),a=(r=i)&&r.__esModule?r:{default:r},u=n(13);var f=function(){function t(e,n,r){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.canvas=e,this.encodings=n,this.options=r}return o(t,[{key:"render",value:function(){if(!this.canvas.getContext)throw new Error("The browser does not support canvas.");this.prepareCanvas();for(var t=0;t<this.encodings.length;t++){var e=(0,a.default)(this.options,this.encodings[t].options);this.drawCanvasBarcode(e,this.encodings[t]),this.drawCanvasText(e,this.encodings[t]),this.moveCanvasDrawing(this.encodings[t])}this.restoreCanvas()}},{key:"prepareCanvas",value:function(){var t=this.canvas.getContext("2d");t.save(),(0,u.calculateEncodingAttributes)(this.encodings,this.options,t);var e=(0,u.getTotalWidthOfEncodings)(this.encodings),n=(0,u.getMaximumHeightOfEncodings)(this.encodings);this.canvas.width=e+this.options.marginLeft+this.options.marginRight,this.canvas.height=n,t.clearRect(0,0,this.canvas.width,this.canvas.height),this.options.background&&(t.fillStyle=this.options.background,t.fillRect(0,0,this.canvas.width,this.canvas.height)),t.translate(this.options.marginLeft,0)}},{key:"drawCanvasBarcode",value:function(t,e){var n,r=this.canvas.getContext("2d"),o=e.data;n="top"==t.textPosition?t.marginTop+t.fontSize+t.textMargin:t.marginTop,r.fillStyle=t.lineColor;for(var i=0;i<o.length;i++){var a=i*t.width+e.barcodePadding;"1"===o[i]?r.fillRect(a,n,t.width,t.height):o[i]&&r.fillRect(a,n,t.width,t.height*o[i])}}},{key:"drawCanvasText",value:function(t,e){var n,r,o=this.canvas.getContext("2d"),i=t.fontOptions+" "+t.fontSize+"px "+t.font;t.displayValue&&(r="top"==t.textPosition?t.marginTop+t.fontSize-t.textMargin:t.height+t.textMargin+t.marginTop+t.fontSize,o.font=i,"left"==t.textAlign||e.barcodePadding>0?(n=0,o.textAlign="left"):"right"==t.textAlign?(n=e.width-1,o.textAlign="right"):(n=e.width/2,o.textAlign="center"),o.fillText(e.text,n,r))}},{key:"moveCanvasDrawing",value:function(t){this.canvas.getContext("2d").translate(t.width,0)}},{key:"restoreCanvas",value:function(){this.canvas.getContext("2d").restore()}}]),t}();e.default=f},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r,o=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),i=n(7),a=(r=i)&&r.__esModule?r:{default:r},u=n(13);var f="http://www.w3.org/2000/svg",c=function(){function t(e,n,r){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.svg=e,this.encodings=n,this.options=r,this.document=r.xmlDocument||document}return o(t,[{key:"render",value:function(){var t=this.options.marginLeft;this.prepareSVG();for(var e=0;e<this.encodings.length;e++){var n=this.encodings[e],r=(0,a.default)(this.options,n.options),o=this.createGroup(t,r.marginTop,this.svg);this.setGroupOptions(o,r),this.drawSvgBarcode(o,r,n),this.drawSVGText(o,r,n),t+=n.width}}},{key:"prepareSVG",value:function(){for(;this.svg.firstChild;)this.svg.removeChild(this.svg.firstChild);(0,u.calculateEncodingAttributes)(this.encodings,this.options);var t=(0,u.getTotalWidthOfEncodings)(this.encodings),e=(0,u.getMaximumHeightOfEncodings)(this.encodings),n=t+this.options.marginLeft+this.options.marginRight;this.setSvgAttributes(n,e),this.options.background&&this.drawRect(0,0,n,e,this.svg).setAttribute("style","fill:"+this.options.background+";")}},{key:"drawSvgBarcode",value:function(t,e,n){var r,o=n.data;r="top"==e.textPosition?e.fontSize+e.textMargin:0;for(var i=0,a=0,u=0;u<o.length;u++)a=u*e.width+n.barcodePadding,"1"===o[u]?i++:i>0&&(this.drawRect(a-e.width*i,r,e.width*i,e.height,t),i=0);i>0&&this.drawRect(a-e.width*(i-1),r,e.width*i,e.height,t)}},{key:"drawSVGText",value:function(t,e,n){var r,o,i=this.document.createElementNS(f,"text");e.displayValue&&(i.setAttribute("style","font:"+e.fontOptions+" "+e.fontSize+"px "+e.font),o="top"==e.textPosition?e.fontSize-e.textMargin:e.height+e.textMargin+e.fontSize,"left"==e.textAlign||n.barcodePadding>0?(r=0,i.setAttribute("text-anchor","start")):"right"==e.textAlign?(r=n.width-1,i.setAttribute("text-anchor","end")):(r=n.width/2,i.setAttribute("text-anchor","middle")),i.setAttribute("x",r),i.setAttribute("y",o),i.appendChild(this.document.createTextNode(n.text)),t.appendChild(i))}},{key:"setSvgAttributes",value:function(t,e){var n=this.svg;n.setAttribute("width",t+"px"),n.setAttribute("height",e+"px"),n.setAttribute("x","0px"),n.setAttribute("y","0px"),n.setAttribute("viewBox","0 0 "+t+" "+e),n.setAttribute("xmlns",f),n.setAttribute("version","1.1"),n.setAttribute("style","transform: translate(0,0)")}},{key:"createGroup",value:function(t,e,n){var r=this.document.createElementNS(f,"g");return r.setAttribute("transform","translate("+t+", "+e+")"),n.appendChild(r),r}},{key:"setGroupOptions",value:function(t,e){t.setAttribute("style","fill:"+e.lineColor+";")}},{key:"drawRect",value:function(t,e,n,r,o){var i=this.document.createElementNS(f,"rect");return i.setAttribute("x",t),i.setAttribute("y",e),i.setAttribute("width",n),i.setAttribute("height",r),o.appendChild(i),i}}]),t}();e.default=c},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}();var o=function(){function t(e,n,r){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.object=e,this.encodings=n,this.options=r}return r(t,[{key:"render",value:function(){this.object.encodings=this.encodings}}]),t}();e.default=o},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}();var o=function(){function t(e){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.api=e}return r(t,[{key:"handleCatch",value:function(t){if("InvalidInputException"!==t.name)throw t;if(this.api._options.valid===this.api._defaults.valid)throw t.message;this.api._options.valid(!1),this.api.render=function(){}}},{key:"wrapBarcodeCall",value:function(t){try{var e=t.apply(void 0,arguments);return this.api._options.valid(!0),e}catch(t){return this.handleCatch(t),this.api}}}]),t}();e.default=o}]);
+    </script>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        .laser-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ef4444;
+            box-shadow: 0 0 8px #ef4444, 0 0 12px #f87171;
+            pointer-events: none;
+            animation: laserScan 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes laserScan {
+            0% { top: 15%; opacity: 0.6; }
+            50% { top: 50%; opacity: 0.95; }
+            100% { top: 85%; opacity: 0.6; }
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 8mm 10mm 8mm 10mm;
+        }
+        @media print {
+            header, footer, nav,
+            .no-print,
+            #faqSection, #normSection, #shareStrip,
+            #installBanner, #iosModal,
+            button, input, select { 
+                display: none !important; 
+            }
+            .print-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+            
+            <!-- Breadcrumb Navigation & Suite Switcher -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <!-- Home Link & Brand Logo -->
+                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 shadow-slate-900/30 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="24" height="20" rx="4" fill="#0f172a" />
+            <!-- Barcode vertical lines -->
+            <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <line x1="11" y1="10" x2="11" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="14" y1="10" x2="14" y2="22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="18" y1="10" x2="18" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="21" y1="10" x2="21" y2="22" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="24" y1="10" x2="24" y2="22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- Red Laser Beam 670nm -->
+            <line x1="5" y1="16" x2="27" y2="16" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" />
+            <circle cx="16" cy="16" r="1.8" fill="#fee2e2" />
+        </svg>
+                </a>
+
+                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
+                <div class="relative flex items-center min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
+                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
+                            <span>Omni<span class="text-blue-600">Tools</span></span>
+                        </a>
+                        <span class="text-slate-300 font-normal">/</span>
+                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border-purple-200/80 border shrink-0 hidden xs:inline-block">Graph</span>
+                        <span id="brandBadgeMobile" class="hidden">GS1 / TS</span>
+                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
+                        
+                        <!-- Dropdown Switcher Button -->
+                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
+                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">OmniBarcode Studio</span>
+                            <span id="brandTitleMobile" class="hidden">OmniBarcode Studio</span>
+                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Dropdown Popover Menu (All 7 Tools Categorized) -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
+                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools</span>
+                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
+                                Home Hub →
+                            </a>
+                        </div>
+
+                        <!-- Cantiere & Struttura -->
+                        <div class="px-2 pt-2 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
+                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📐</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">DM 236/89</span>
+            </a>
+            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🪜</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+            </a>
+            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🚰</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Grafica & Prestampa -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
+                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📕</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Brossura</span>
+            </a>
+            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🔍</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Pixel/DPI</span>
+            </a>
+            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🎨</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+            </a>
+            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-purple-50/80 text-purple-700 border border-purple-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-purple-600 text-white shadow-2xs">Attivo</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Link to Hub -->
+                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
+                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
+                                <span>🏠</span> Tutti gli strumenti nella Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
+
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+        
+        <!-- Hero Header -->
+        <div class="text-center space-y-1.5 sm:space-y-2">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-200/80 text-[11px] font-extrabold text-purple-800 tracking-wide uppercase">
+                <span>🎯</span>
+                <span id="heroBadge">OmniGraph · Packaging & Editoria</span>
+            </div>
+            <h1 id="heroTitle" class="text-2xl sm:text-3xl md:text-4xl font-extrabold font-jakarta text-slate-900 tracking-tight leading-tight">
+                Generatore Codici a Barre Vettoriale & GS1
+            </h1>
+            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Genera codici a barre SVG vettoriali puri e PDF per packaging, editoria e magazzino. Include preset per Tessera Sanitaria (Code 39) e simulatore contrasto laser 670 nm conforme alle specifiche ufficiali GS1.
+            </p>
+        </div>
+
+        <!-- Presets Quick Bar -->
+        <div class="bg-white rounded-2xl p-2.5 sm:p-3 border border-slate-200 shadow-2xs">
+            <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2 px-1 flex items-center justify-between">
+                <span>⚡ Preset Rapidi Standard</span>
+                <span class="text-[10px] text-indigo-600 font-bold hidden sm:inline">1-Click Setup</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button type="button" onclick="applyPreset('ts')" class="flex flex-col text-left p-2 rounded-xl bg-purple-50/70 hover:bg-purple-100/70 border border-purple-200 transition group">
+                    <span class="text-xs font-bold text-purple-900 group-hover:text-purple-700 flex items-center gap-1">
+                        <span>🏥</span> Tessera Sanitaria
+                    </span>
+                    <span class="text-[10px] text-purple-700">Code 39 • Codice Fiscale</span>
+                </button>
+                <button type="button" onclick="applyPreset('ean13')" class="flex flex-col text-left p-2 rounded-xl bg-blue-50/70 hover:bg-blue-100/70 border border-blue-200 transition group">
+                    <span class="text-xs font-bold text-blue-900 group-hover:text-blue-700 flex items-center gap-1">
+                        <span>🛒</span> EAN-13 Commercio
+                    </span>
+                    <span class="text-[10px] text-blue-700">13 Cifre GDO & Checksum</span>
+                </button>
+                <button type="button" onclick="applyPreset('code128')" class="flex flex-col text-left p-2 rounded-xl bg-indigo-50/70 hover:bg-indigo-100/70 border border-indigo-200 transition group">
+                    <span class="text-xs font-bold text-indigo-900 group-hover:text-indigo-700 flex items-center gap-1">
+                        <span>📦</span> Code 128 Pacchi
+                    </span>
+                    <span class="text-[10px] text-indigo-700">Logistica, Spedizioni, Hub</span>
+                </button>
+                <button type="button" onclick="applyPreset('upca')" class="flex flex-col text-left p-2 rounded-xl bg-emerald-50/70 hover:bg-emerald-100/70 border border-emerald-200 transition group">
+                    <span class="text-xs font-bold text-emerald-900 group-hover:text-emerald-700 flex items-center gap-1">
+                        <span>🇺🇸</span> UPC-A Retail USA
+                    </span>
+                    <span class="text-[10px] text-emerald-700">12 Cifre Nord America</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 2-Column Studio Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5">
+            
+            <!-- LEFT COLUMN: Controls & Parameters (7 Cols) -->
+            <div class="lg:col-span-6 space-y-3 sm:space-y-4">
+                
+                <!-- Main Parameters Card -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
+                    
+                    <!-- Symbology Selector -->
+                    <div>
+                        <label id="symbologyLabel" class="block text-xs font-bold text-slate-700 mb-1.5">
+                            Simbologia / Standard Barcode
+                        </label>
+                        <select id="symbologySelect" onchange="onSymbologyChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
+                            <option value="EAN13">EAN-13 (Commercio & GDO Europa)</option>
+                            <option value="UPC">UPC-A (Standard USA & Nord America)</option>
+                            <option value="CODE128">Code 128 (Logistica, Magazzino & Pacchi)</option>
+                            <option value="CODE39">Code 39 (Industria & Tessera Sanitaria)</option>
+                        </select>
+                    </div>
+
+                    <!-- Input Code -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label id="inputLabel" class="text-xs font-bold text-slate-700">
+                                Codice / Dati da Codificare
+                            </label>
+                            <span id="checksumStatus" class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                                Check-digit auto
+                            </span>
+                        </div>
+                        <div class="relative">
+                            <input type="text" id="barcodeValue" value="801234567890" oninput="updateBarcode()" placeholder="Es. 801234567890" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition">
+                            <button type="button" onclick="randomizeCode()" class="absolute right-2 top-1.5 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-indigo-600 bg-white hover:bg-indigo-50 rounded-lg border border-slate-200 transition" title="Genera codice casuale">
+                                🎲 Random
+                            </button>
+                        </div>
+                        <p id="inputHelper" class="text-[10px] text-slate-500 mt-1">
+                            Per EAN-13 inserisci 12 cifre: la 13ª cifra di controllo (checksum) viene calcolata automaticamente.
+                        </p>
+                    </div>
+
+                    <!-- Settings: Display Value & Dimensions -->
+                    <div class="pt-2 border-t border-slate-100 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <label id="displayValueLabel" for="displayValueCheck" class="text-xs font-semibold text-slate-700 cursor-pointer">
+                                Mostra Testo sotto le Barre (Human Readable)
+                            </label>
+                            <input type="checkbox" id="displayValueCheck" checked onchange="updateBarcode()" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+                        </div>
+
+                        <!-- Sliders Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+                            <div>
+                                <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
+                                    <span id="barWidthLabel">Modulo</span>
+                                    <span id="barWidthVal" class="font-mono text-indigo-600">2 px</span>
+                                </div>
+                                <input type="range" id="barWidth" min="1" max="4" step="0.5" value="2" oninput="updateBarcode()" class="w-full accent-indigo-600 cursor-pointer">
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
+                                    <span id="barHeightLabel">Altezza</span>
+                                    <span id="barHeightVal" class="font-mono text-indigo-600">60 px</span>
+                                </div>
+                                <input type="range" id="barHeight" min="30" max="120" step="5" value="60" oninput="updateBarcode()" class="w-full accent-indigo-600 cursor-pointer">
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
+                                    <span id="quietZoneLabel">Quiet Zone</span>
+                                    <span id="quietZoneVal" class="font-mono text-indigo-600">10 px</span>
+                                </div>
+                                <input type="range" id="quietZone" min="0" max="30" step="5" value="10" oninput="updateBarcode()" class="w-full accent-indigo-600 cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GS1 Colors & Laser Contrast Engine Card -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h2 id="colorsTitle" class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
+                            <span>🎨</span> Colori & Verifica Contrasto Laser GS1 (670 nm)
+                        </h2>
+                        <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Norme GS1</span>
+                    </div>
+
+                    <!-- Color Pickers Row -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <label id="barColorLabel" class="block text-[11px] font-bold text-slate-700 mb-1.5">
+                                Colore Barre
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <input type="color" id="barColor" value="#000000" onchange="updateBarcode()" class="w-8 h-8 rounded-lg border border-slate-300 cursor-pointer p-0 bg-transparent">
+                                <input type="text" id="barColorText" value="#000000" oninput="syncColorText('bar')" class="w-full text-xs font-mono font-bold text-slate-700 bg-white border border-slate-200 rounded-lg px-2 py-1 uppercase">
+                            </div>
+                        </div>
+
+                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <label id="bgColorLabel" class="block text-[11px] font-bold text-slate-700 mb-1.5">
+                                Colore Sfondo
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <input type="color" id="bgColor" value="#ffffff" onchange="updateBarcode()" class="w-8 h-8 rounded-lg border border-slate-300 cursor-pointer p-0 bg-transparent">
+                                <input type="text" id="bgColorText" value="#ffffff" oninput="syncColorText('bg')" class="w-full text-xs font-mono font-bold text-slate-700 bg-white border border-slate-200 rounded-lg px-2 py-1 uppercase">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Official GS1 Presets (Tabella 1 & Tabella 2) -->
+                    <div>
+                        <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5">
+                            Combinazioni Ufficiali GS1:
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                            <button type="button" onclick="setColorPair('#000000', '#ffffff')" class="text-left px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-[11px] font-bold text-slate-700 transition flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 rounded border border-slate-300 bg-black shrink-0"></span>
+                                <span class="truncate">Nero su Bianco (GS1)</span>
+                            </button>
+                            <button type="button" onclick="setColorPair('#002060', '#ffffff')" class="text-left px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-[11px] font-bold text-slate-700 transition flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 rounded border border-slate-300 bg-[#002060] shrink-0"></span>
+                                <span class="truncate">Blu Scuro su Bianco</span>
+                            </button>
+                            <button type="button" onclick="setColorPair('#006020', '#ffffff')" class="text-left px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-[11px] font-bold text-slate-700 transition flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 rounded border border-slate-300 bg-[#006020] shrink-0"></span>
+                                <span class="truncate">Verde Scuro su Bianco</span>
+                            </button>
+                            <button type="button" onclick="setColorPair('#000000', '#facc15')" class="text-left px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-[11px] font-bold text-slate-700 transition flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 rounded border border-slate-300 bg-[#facc15] shrink-0"></span>
+                                <span class="truncate">Nero su Giallo</span>
+                            </button>
+                            <button type="button" onclick="setColorPair('#000000', '#ef4444')" class="text-left px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-[11px] font-bold text-slate-700 transition flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 rounded border border-slate-300 bg-[#ef4444] shrink-0"></span>
+                                <span class="truncate">Nero su Rosso (GS1)</span>
+                            </button>
+                            <button type="button" onclick="setColorPair('#ef4444', '#ffffff')" class="text-left px-2 py-1.5 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-[11px] font-bold text-rose-700 transition flex items-center gap-1.5">
+                                <span class="w-3.5 h-3.5 rounded border border-rose-300 bg-[#ef4444] shrink-0"></span>
+                                <span class="truncate">⚠️ Barre Rosse (Errore)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Live SVG Preview, GS1 Laser Simulator & Export (5 Cols) -->
+            <div class="lg:col-span-6 space-y-3 sm:space-y-4">
+                
+                <!-- Vector Barcode Preview Card -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
+                            <span>🔍</span> Anteprima Vettoriale SVG
+                        </span>
+                        <span id="barcodeSpecsBadge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                            EAN-13 • 100% Vettoriale
+                        </span>
+                    </div>
+
+                    <!-- Canvas / SVG Container -->
+                    <div id="barcodePreviewBox" class="w-full min-h-[170px] rounded-xl border border-slate-200 flex items-center justify-center p-3 sm:p-4 overflow-x-auto custom-scrollbar transition-colors" style="background-color: #ffffff;">
+                        <svg id="barcodeSvg" class="max-w-full"></svg>
+                    </div>
+
+                    <!-- Export Actions Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        <button type="button" onclick="exportSvg()" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md shadow-indigo-600/20 active:scale-95 transition">
+                            <span>⬇️</span>
+                            <span id="exportSvgBtn">Scarica SVG Vettoriale</span>
+                        </button>
+                        <button type="button" onclick="exportPng()" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold shadow-md shadow-slate-800/20 active:scale-95 transition">
+                            <span>🖼️</span>
+                            <span id="exportPngBtn">Scarica PNG (300 DPI)</span>
+                        </button>
+                        <button type="button" onclick="copySvgCode()" class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 active:scale-95 transition">
+                            <span>📋</span>
+                            <span id="copySvgBtn">Copia Codice SVG</span>
+                        </button>
+                        <button type="button" onclick="window.print()" class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 active:scale-95 transition">
+                            <span>🖨️</span>
+                            <span id="printBtnSpec">Stampa Scheda Tecnica</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- GS1 Laser Vision Simulator Card (670 nm) -->
+                <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-xl space-y-3 relative overflow-hidden">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                            <span class="text-xs font-black uppercase tracking-wider text-rose-400">
+                                👁️ Visore Laser GS1 (670 nm)
+                            </span>
+                        </div>
+                        <span id="pcsBadge" class="text-[10px] font-mono font-black px-2 py-0.5 rounded bg-slate-800 text-emerald-400 border border-slate-700">
+                            PCS: 100%
+                        </span>
+                    </div>
+
+                    <p class="text-[11px] text-slate-300 leading-tight">
+                        Simulazione ottica di come la fotocellula laser a raggio rosso (670 nm) percepisce il codice a barre:
+                    </p>
+
+                    <!-- Laser View Simulation Box -->
+                    <div class="relative bg-black rounded-xl p-3 border border-slate-800 flex items-center justify-center overflow-hidden">
+                        <div class="laser-line"></div>
+                        <div id="laserSimBox" class="p-2 rounded flex items-center justify-center transition-all duration-300" style="background-color: #ffffff;">
+                            <svg id="laserSimSvg" class="max-w-full opacity-95"></svg>
+                        </div>
+                    </div>
+
+                    <!-- GS1 Verdict Banner -->
+                    <div id="gs1VerdictBox" class="p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs space-y-1">
+                        <div id="gs1VerdictTitle" class="font-extrabold text-emerald-300 flex items-center gap-1.5">
+                            🟢 CONFORME GS1 — PCS Ottimale (≥ 75%)
+                        </div>
+                        <div id="gs1VerdictDesc" class="text-[11px] text-emerald-200/90 leading-relaxed">
+                            Contrasto spettrale perfetto. Il raggio laser a 670 nm distingue nettamente le barre dallo sfondo. Lettura istantanea garantita a tutte le casse.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Educational Rule Tip Box -->
+        <div class="bg-indigo-50/70 border border-indigo-200/80 rounded-2xl p-3 sm:p-4 text-xs text-indigo-900 leading-relaxed shadow-2xs">
+            <span id="ruleTipText">
+                💡 <strong>La Fisica del Laser GS1 a 670 nm:</strong> Gli scanner da cassa e industriali emettono luce laser rossa (lunghezza d'onda ~670 nm). La luce rossa viene <em>riflessa</em> dai pigmenti caldi (rosso, arancio, giallo, oro) che quindi allo scanner appaiono <strong>BIANCHI</strong>. Viene invece <em>assorbita</em> dai pigmenti freddi e scuri (nero, blu scuro, verde scuro, marrone) che appaiono <strong>NERI</strong>. Ecco perché le barre rosse o gialle sono del tutto invisibili allo scanner!
+            </span>
+        </div>
+
+        <!-- FAQ Section (Pre-rendered static HTML with JSON Schema) -->
+        <section id="faqSection" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+                <span class="text-xl">❓</span>
+                <h2 id="faqTitle" class="text-base sm:text-lg font-bold text-slate-900">
+                    Domande Frequenti su Codici a Barre, GS1 e Tessera Sanitaria
+                </h2>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 transition" open>
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                        <span id="faq1Q">Qual è la differenza tra EAN-13, Code 128 e Code 39?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▾</span>
+                    </summary>
+                    <div id="faq1A" class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        L'<strong>EAN-13</strong> (e la controparte americana UPC-A) è lo standard commerciale universale per la vendita al dettaglio nei supermercati e negozi, composto da sole 13 cifre numeriche con codice paese, prefisso aziendale e check-digit. Il <strong>Code 128</strong> è un codice alfanumerico ad altissima densità utilizzato nella logistica, magazzini e spedizioni corrieri (es. Amazon, Poste, DHL). Il <strong>Code 39</strong> è uno standard storico industriale e sanitario, capace di codificare lettere maiuscole e numeri, utilizzato in Italia per il codice a barre della <strong>Tessera Sanitaria</strong> e nelle cartelle cliniche ospedaliere.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 transition">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                        <span id="faq2Q">Perché le barre rosse o gialle non possono mai essere usate nei codici a barre?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▾</span>
+                    </summary>
+                    <div id="faq2A" class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        I lettori ottici e scanner delle casse utilizzano fasci laser a luce rossa (con lunghezza d'onda di circa 670 nanometri). Nel mondo ottico, un oggetto appare rosso perché <em>riflette</em> la luce rossa. Di conseguenza, quando il raggio laser colpisce una barra rossa o gialla, la luce viene rimbalzata esattamente come se colpisse uno sfondo bianco: per il sensore dello scanner le barre semplicemente <strong>non esistono</strong>! Al contrario, uno sfondo rosso o giallo riflette la luce rossa, quindi barre nere o blu scuro su sfondo rosso sono perfettamente leggibili secondo le specifiche GS1.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 transition">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                        <span id="faq3Q">Come funziona il codice a barre della Tessera Sanitaria (TS-CNS)?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▾</span>
+                    </summary>
+                    <div id="faq3A" class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        Sul retro della Tessera Sanitaria italiana (TS-CNS) è stampato un codice a barre con simbologia <strong>Code 39</strong> che codifica esattamente i 16 caratteri alfanumerici del <strong>Codice Fiscale</strong> dell'assistito (senza checksum aggiuntivo, delimitato dai caratteri di controllo asterisco). Quando il medico di famiglia, l'ospedale o il farmacista passano il lettore ottico sulla tessera, il software riceve istantaneamente la stringa del codice fiscale per emettere ricette, referti o lo scontrino parlante.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 transition">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                        <span id="faq4Q">Cos'è la 'Quiet Zone' (zona di silenzio) e perché è obbligatoria?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▾</span>
+                    </summary>
+                    <div id="faq4A" class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        La Quiet Zone è lo spazio bianco libero obbligatorio che deve precedere la prima barra e seguire l'ultima barra del codice. Per lo standard GS1 EAN-13, la Quiet Zone deve essere larga almeno <strong>9 volte la larghezza della barra più sottile</strong> (circa 3 mm a scala 100%). Se grafici o impaginatori posizionano testi, cornici, fustelle o fotografie troppo vicine alle barre, il laser non riesce a capire dove inizia e dove finisce il codice, causando il tipico 'bip di errore' alla cassa del supermercato.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Technical Disclaimer -->
+        <div class="text-[11px] text-slate-500 text-center leading-relaxed max-w-3xl mx-auto px-2">
+            <span id="legalDisclaimer">
+                <strong>Specifiche Tecniche GS1 & ISO/IEC:</strong> Generatore conforme agli standard ISO/IEC 15420 (EAN/UPC), ISO/IEC 15417 (Code 128) e ISO/IEC 16388 (Code 39). Il calcolo del contrasto del simbolo (PCS) è simulato sulla curva di riflettanza spettrale standard a 670 nm. Si raccomanda di verificare sempre la Quiet Zone laterale (almeno 9 volte la larghezza del modulo X) per evitare scarti in cassa.
+            </span>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-8">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center gap-2">
+                <span class="font-jakarta font-black text-slate-900">Omni<span class="text-blue-600">Tools</span></span>
+                <span>© 2026 OmniTools Lab • Precision Utilities Suite</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="/" class="hover:text-blue-600 transition">Tutti gli strumenti</a>
+                <span>•</span>
+                <a href="/partnership" class="hover:text-blue-600 transition">Partnership B2B</a>
+                <span>•</span>
+                <a href="/privacy" class="hover:text-blue-600 transition">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Script Logic -->
+    <script>
+        const TRANSLATIONS = {"it": {"title": "OmniBarcode Studio", "badge": "OmniGraph", "hero_title": "Generatore Codici a Barre Vettoriale & GS1", "hero_desc": "Genera codici a barre SVG vettoriali puri e PDF per packaging, editoria e magazzino. Include preset per Tessera Sanitaria (Code 39) e simulatore contrasto laser 670 nm conforme alle specifiche ufficiali GS1.", "symbology_label": "Simbologia / Standard Barcode", "symbology_ean13": "EAN-13 (Commercio & GDO Europa)", "symbology_upca": "UPC-A (Standard USA & Nord America)", "symbology_code128": "Code 128 (Logistica, Magazzino & Pacchi)", "symbology_code39": "Code 39 (Industria & Tessera Sanitaria)", "ts_preset_btn": "🏥 Preset Tessera Sanitaria (Codice Fiscale)", "ts_preset_badge": "Standard SSN / Tessera Sanitaria", "input_label": "Codice / Dati da Codificare", "input_placeholder_ean": "Es. 801234567890 (12 o 13 cifre)", "input_placeholder_code": "Es. ABC-123456 o Codice Fiscale", "checksum_auto": "Calcolo automatico check-digit attivo", "checksum_err": "Codice non valido per questa simbologia", "display_value_label": "Mostra Testo sotto le Barre (Human Readable)", "bar_width_label": "Spessore Modulo Base (px)", "bar_height_label": "Altezza Barre (mm/px)", "quiet_zone_label": "Margine di Sicurezza / Quiet Zone", "colors_title": "Colori & Verifica Contrasto Laser GS1 (670 nm)", "bar_color_label": "Colore Barre", "bg_color_label": "Colore Sfondo", "gs1_presets_title": "Preset Colore Ufficiali GS1:", "preset_gs1_bw": "Nero su Bianco (Ottimale GS1)", "preset_gs1_blue": "Blu Scuro su Bianco (Approvato)", "preset_gs1_green": "Verde Scuro su Bianco (Approvato)", "preset_gs1_yellow": "Nero su Fondo Giallo (Approvato)", "preset_gs1_red_bg": "Nero su Fondo Rosso (Approvato GS1)", "preset_gs1_danger_red": "⚠️ Barre Rosse (Vietato - Rifiuto Cassa)", "preset_gs1_danger_dark": "⚠️ Barre Nere su Blu Scuro (Vietato)", "laser_simulator_title": "👁️ Visore Laser GS1 (Simulazione Spettrale 670 nm)", "laser_simulator_desc": "Come la fotocellula laser da cassa vede il tuo codice:", "status_gs1_ok_title": "🟢 CONFORME GS1 — PCS Ottimale (≥ 75%)", "status_gs1_ok_desc": "Contrasto spettrale perfetto. Il raggio laser a 670 nm distingue nettamente le barre dallo sfondo. Lettura istantanea garantita a tutte le casse.", "status_gs1_warn_title": "🟡 ATTENZIONE GS1 — Contrasto Limite", "status_gs1_warn_desc": "Il contrasto spettrale è vicino al limite minimo tollerato da GS1. Eseguire una scansione di prova prima della tiratura industriale.", "status_gs1_danger_title": "🔴 RIFIUTO CASSA — Non Conforme GS1", "status_gs1_danger_desc": "Il laser a 670 nm non rileva le barre! I pigmenti rossi o gialli riflettono la luce rossa, oppure il fondo scuro assorbe il raggio. Rischio di blocco merci e penali dalla GDO.", "export_svg_btn": "⬇️ Scarica SVG Vettoriale", "export_png_btn": "🖼️ Scarica PNG Alta Risoluzione (300 DPI)", "copy_svg_btn": "📋 Copia Codice SVG", "copied_svg_text": "SVG copiato negli appunti!", "print_btn": "Stampa Scheda", "install_btn": "App", "rule_tip": "💡 <strong>La Fisica del Laser GS1 a 670 nm:</strong> Gli scanner da cassa e industriali emettono luce laser rossa (lunghezza d'onda ~670 nm). La luce rossa viene <em>riflessa</em> dai pigmenti caldi (rosso, arancio, giallo, oro) che quindi allo scanner appaiono <strong>BIANCHI</strong>. Viene invece <em>assorbita</em> dai pigmenti freddi e scuri (nero, blu scuro, verde scuro, marrone) che appaiono <strong>NERI</strong>. Ecco perché le barre rosse o gialle sono del tutto invisibili allo scanner!", "legal_disclaimer": "<strong>Specifiche Tecniche GS1 & ISO/IEC:</strong> Generatore conforme agli standard ISO/IEC 15420 (EAN/UPC), ISO/IEC 15417 (Code 128) e ISO/IEC 16388 (Code 39). Il calcolo del contrasto del simbolo (PCS) è simulato sulla curva di riflettanza spettrale standard a 670 nm. Si raccomanda di verificare sempre la Quiet Zone laterale (almeno 9 volte la larghezza del modulo X) per evitare scarti in cassa.", "faq_title": "Domande Frequenti su Codici a Barre, GS1 e Tessera Sanitaria", "faq_1_q": "Qual è la differenza tra EAN-13, Code 128 e Code 39?", "faq_1_a": "L'<strong>EAN-13</strong> (e la controparte americana UPC-A) è lo standard commerciale universale per la vendita al dettaglio nei supermercati e negozi, composto da sole 13 cifre numeriche con codice paese, prefisso aziendale e check-digit. Il <strong>Code 128</strong> è un codice alfanumerico ad altissima densità utilizzato nella logistica, magazzini e spedizioni corrieri (es. Amazon, Poste, DHL). Il <strong>Code 39</strong> è uno standard storico industriale e sanitario, capace di codificare lettere maiuscole e numeri, utilizzato in Italia per il codice a barre della <strong>Tessera Sanitaria</strong> e nelle cartelle cliniche ospedaliere.", "faq_2_q": "Perché le barre rosse o gialle non possono mai essere usate nei codici a barre?", "faq_2_a": "I lettori ottici e scanner delle casse utilizzano fasci laser a luce rossa (con lunghezza d'onda di circa 670 nanometri). Nel mondo ottico, un oggetto appare rosso perché <em>riflette</em> la luce rossa. Di conseguenza, quando il raggio laser colpisce una barra rossa o gialla, la luce viene rimbalzata esattamente come se colpisse uno sfondo bianco: per il sensore dello scanner le barre semplicemente <strong>non esistono</strong>! Al contrario, uno sfondo rosso o giallo riflette la luce rossa, quindi barre nere o blu scuro su sfondo rosso sono perfettamente leggibili secondo le specifiche GS1.", "faq_3_q": "Come funziona il codice a barre della Tessera Sanitaria (TS-CNS)?", "faq_3_a": "Sul retro della Tessera Sanitaria italiana (TS-CNS) è stampato un codice a barre con simbologia <strong>Code 39</strong> che codifica esattamente i 16 caratteri alfanumerici del <strong>Codice Fiscale</strong> dell'assistito (senza checksum aggiuntivo, delimitato dai caratteri di controllo asterisco). Quando il medico di famiglia, l'ospedale o il farmacista passano il lettore ottico sulla tessera, il software riceve istantaneamente la stringa del codice fiscale per emettere ricette, referti o lo scontrino parlante.", "faq_4_q": "Cos'è la 'Quiet Zone' (zona di silenzio) e perché è obbligatoria?", "faq_4_a": "La Quiet Zone è lo spazio bianco libero obbligatorio che deve precedere la prima barra e seguire l'ultima barra del codice. Per lo standard GS1 EAN-13, la Quiet Zone deve essere larga almeno <strong>9 volte la larghezza della barra più sottile</strong> (circa 3 mm a scala 100%). Se grafici o impaginatori posizionano testi, cornici, fustelle o fotografie troppo vicine alle barre, il laser non riesce a capire dove inizia e dove finisce il codice, causando il tipico 'bip di errore' alla cassa del supermercato."}, "en": {"title": "OmniBarcode Studio", "badge": "OmniGraph", "hero_title": "Vector Barcode Generator & GS1 Laser Verifier", "hero_desc": "Generate pure vector SVG and PDF barcodes for packaging, publishing, and inventory. Includes Health Card preset (Code 39) and GS1-compliant 670 nm laser contrast verification.", "symbology_label": "Barcode Symbology / Standard", "symbology_ean13": "EAN-13 (European Retail & Grocery)", "symbology_upca": "UPC-A (US & North American Retail)", "symbology_code128": "Code 128 (Logistics, Parcels & Warehousing)", "symbology_code39": "Code 39 (Industrial & Health Card)", "ts_preset_btn": "🏥 Health Card / Fiscal Code Preset", "ts_preset_badge": "Healthcare / ID Standard", "input_label": "Barcode Value / Data", "input_placeholder_ean": "E.g. 801234567890 (12 or 13 digits)", "input_placeholder_code": "E.g. ABC-123456 or Fiscal Code", "checksum_auto": "Automatic check-digit enabled", "checksum_err": "Invalid code for selected symbology", "display_value_label": "Show Human-Readable Text Below", "bar_width_label": "Module Width (px)", "bar_height_label": "Bar Height (mm/px)", "quiet_zone_label": "Quiet Zone (Safety Margin)", "colors_title": "Colors & GS1 Laser Contrast (670 nm)", "bar_color_label": "Bar Color", "bg_color_label": "Background Color", "gs1_presets_title": "Official GS1 Color Combinations:", "preset_gs1_bw": "Black on White (GS1 Gold Standard)", "preset_gs1_blue": "Dark Blue on White (Approved)", "preset_gs1_green": "Dark Green on White (Approved)", "preset_gs1_yellow": "Black on Yellow (Approved)", "preset_gs1_red_bg": "Black on Red (Approved by GS1)", "preset_gs1_danger_red": "⚠️ Red Bars (Rejected at Checkout)", "preset_gs1_danger_dark": "⚠️ Black on Dark Blue (Rejected)", "laser_simulator_title": "👁️ GS1 Laser Sensor View (670 nm Simulation)", "laser_simulator_desc": "How retail laser scanners perceive your barcode:", "status_gs1_ok_title": "🟢 GS1 COMPLIANT — Optimal PCS (≥ 75%)", "status_gs1_ok_desc": "Flawless spectral contrast. The 670 nm laser easily distinguishes bars from the background. Instant scan guaranteed at all cash registers.", "status_gs1_warn_title": "🟡 GS1 WARNING — Borderline Contrast", "status_gs1_warn_desc": "Spectral contrast is near GS1 minimum limits. Conduct test scans prior to full commercial print run.", "status_gs1_danger_title": "🔴 REJECTED AT CHECKOUT — Non-Compliant", "status_gs1_danger_desc": "The 670 nm laser cannot detect the bars! Red/yellow pigments reflect red light, or dark background absorbs the beam. Retail rejection guaranteed.", "export_svg_btn": "⬇️ Download Vector SVG", "export_png_btn": "🖼️ Download High-Res PNG (300 DPI)", "copy_svg_btn": "📋 Copy SVG Code", "copied_svg_text": "SVG copied to clipboard!", "print_btn": "Print Spec Sheet", "install_btn": "App", "rule_tip": "💡 <strong>The Physics of 670 nm GS1 Lasers:</strong> Retail scanners use red laser diodes (~670 nm). Warm pigments (red, orange, yellow) reflect red light and appear <strong>WHITE</strong> to the sensor. Cool and dark pigments (black, dark blue, dark green) absorb the light and appear <strong>BLACK</strong>. That is why red bars are completely invisible to scanners!", "legal_disclaimer": "<strong>GS1 & ISO/IEC Technical Standards:</strong> Conforms to ISO/IEC 15420 (EAN/UPC), ISO/IEC 15417 (Code 128), and ISO/IEC 16388 (Code 39). Always maintain minimum quiet zones.", "faq_title": "Frequently Asked Questions on Barcodes and GS1 Standards", "faq_1_q": "What is the difference between EAN-13, Code 128, and Code 39?", "faq_1_a": "<strong>EAN-13</strong> is the universal consumer retail standard with 13 numeric digits. <strong>Code 128</strong> is high-density alphanumeric used in shipping and warehouses. <strong>Code 39</strong> is an industrial and medical standard widely used on ID cards and European Health Cards.", "faq_2_q": "Why can red or yellow colors never be used for barcode bars?", "faq_2_a": "Retail scanners read with 670 nm red lasers. Red and yellow reflect red light, so to the scanner, red bars appear white—making them completely invisible.", "faq_3_q": "How does the European Health Insurance Card barcode work?", "faq_3_a": "It uses <strong>Code 39</strong> symbology encoding the 16-character alphanumeric Fiscal Identification Number directly without additional checksum digits.", "faq_4_q": "What is a 'Quiet Zone' and why is it mandatory?", "faq_4_a": "The Quiet Zone is the clear margin on both sides of the barcode. Without at least 9 to 10 module widths of blank space, scanners cannot detect the start and stop patterns."}, "es": {"title": "OmniBarcode Studio", "badge": "OmniGraph", "hero_title": "Generador de Códigos de Barras Vectorial y GS1", "hero_desc": "Genera códigos de barras SVG vectoriales puros y PDF para empaques, editorial y logística. Incluye simulador de contraste láser a 670 nm según normas GS1.", "symbology_label": "Simbología / Estándar", "symbology_ean13": "EAN-13 (Comercio y Supermercados Europa)", "symbology_upca": "UPC-A (Estándar EE.UU. y Norteamérica)", "symbology_code128": "Code 128 (Logística y Almacenes)", "symbology_code39": "Code 39 (Industria y Tarjetas Sanitarias)", "ts_preset_btn": "🏥 Tarjeta Sanitaria / Código Fiscal", "ts_preset_badge": "Estándar Sanitario", "input_label": "Código o Datos", "input_placeholder_ean": "Ej. 801234567890 (12 o 13 dígitos)", "input_placeholder_code": "Ej. ABC-123456", "checksum_auto": "Dígito de control automático activado", "checksum_err": "Código no válido para esta simbología", "display_value_label": "Mostrar Texto Debajo (Legible por Humanos)", "bar_width_label": "Grosor Módulo (px)", "bar_height_label": "Altura Barras (mm/px)", "quiet_zone_label": "Zona de Silencio (Quiet Zone)", "colors_title": "Colores y Contraste Láser GS1 (670 nm)", "bar_color_label": "Color de Barras", "bg_color_label": "Color de Fondo", "gs1_presets_title": "Combinaciones Oficiales GS1:", "preset_gs1_bw": "Negro sobre Blanco (Óptimo GS1)", "preset_gs1_blue": "Azul Oscuro sobre Blanco (Aprobado)", "preset_gs1_green": "Verde Oscuro sobre Blanco (Aprobado)", "preset_gs1_yellow": "Negro sobre Amarillo (Aprobado)", "preset_gs1_red_bg": "Negro sobre Fondo Rojo (Aprobado GS1)", "preset_gs1_danger_red": "⚠️ Barras Rojas (Rechazo en Caja)", "preset_gs1_danger_dark": "⚠️ Negro sobre Azul Oscuro (Prohibido)", "laser_simulator_title": "👁️ Visor Láser GS1 (Simulación 670 nm)", "laser_simulator_desc": "Cómo percibe el escáner de caja tu código:", "status_gs1_ok_title": "🟢 CONFORME GS1 — Contraste Óptimo (≥ 75%)", "status_gs1_ok_desc": "Excelente contraste espectral. El láser a 670 nm lee las barras sin dificultad.", "status_gs1_warn_title": "🟡 ADVERTENCIA GS1 — Contraste Límite", "status_gs1_warn_desc": "El contraste está cerca del límite mínimo GS1. Realizar pruebas antes de imprimir.", "status_gs1_danger_title": "🔴 RECHAZO EN CAJA — No Conforme GS1", "status_gs1_danger_desc": "¡El láser a 670 nm no detecta las barras! Los pigmentos rojos/amarillos son invisibles.", "export_svg_btn": "⬇️ Descargar SVG Vectorial", "export_png_btn": "🖼️ Descargar PNG Alta Resolución (300 DPI)", "copy_svg_btn": "📋 Copiar Código SVG", "copied_svg_text": "¡SVG copiado al portapapeles!", "print_btn": "Imprimir Ficha", "install_btn": "App", "rule_tip": "💡 <strong>Física del Láser GS1 (670 nm):</strong> Los escáneres emiten luz láser roja. Los colores cálidos reflejan la luz y se ven <strong>BLANCOS</strong>. ¡Por eso las barras rojas son invisibles!", "legal_disclaimer": "<strong>Normativa GS1 e ISO/IEC:</strong> Conforme con ISO/IEC 15420, 15417 y 16388.", "faq_title": "Preguntas Frecuentes sobre Códigos de Barras y Normas GS1", "faq_1_q": "¿Cuál es la diferencia entre EAN-13, Code 128 y Code 39?", "faq_1_a": "EAN-13 se usa en tiendas minoristas; Code 128 en logística y paquetería; Code 39 en tarjetas sanitarias e industria.", "faq_2_q": "¿Por qué no se pueden usar barras rojas o amarillas?", "faq_2_a": "Porque el láser rojo a 670 nm las ve blancas, haciéndolas completamente invisibles para el lector.", "faq_3_q": "¿Cómo funciona el código de la Tarjeta Sanitaria?", "faq_3_a": "Utiliza la simbología Code 39 codificando directamente el código alfanumérico del paciente.", "faq_4_q": "¿Qué es la 'Quiet Zone' y por qué es obligatoria?", "faq_4_a": "Es el margen en blanco a ambos lados del código necesario para que el sensor identifique el inicio y fin."}, "fr": {"title": "OmniBarcode Studio", "badge": "OmniGraph", "hero_title": "Générateur de Codes-Barres Vectoriel & GS1", "hero_desc": "Générez des codes-barres SVG vectoriels purs et PDF pour le packaging et la logistique. Comprend la vérification du contraste laser 670 nm selon les normes GS1.", "symbology_label": "Symbologie / Standard", "symbology_ean13": "EAN-13 (Commerce & Grande Distribution)", "symbology_upca": "UPC-A (Standard USA)", "symbology_code128": "Code 128 (Logistique & Colis)", "symbology_code39": "Code 39 (Industrie & Carte Vitale/Santé)", "ts_preset_btn": "🏥 Carte de Santé / Numéro Fiscal", "ts_preset_badge": "Standard Médical", "input_label": "Code ou Données", "input_placeholder_ean": "Ex. 801234567890 (12 ou 13 chiffres)", "input_placeholder_code": "Ex. ABC-123456", "checksum_auto": "Clé de contrôle automatique", "checksum_err": "Code non valide pour cette symbologie", "display_value_label": "Afficher le Texte en Dessous", "bar_width_label": "Largeur Module (px)", "bar_height_label": "Hauteur des Barres (mm/px)", "quiet_zone_label": "Zone de Silence (Quiet Zone)", "colors_title": "Couleurs & Contraste Laser GS1 (670 nm)", "bar_color_label": "Couleur des Barres", "bg_color_label": "Couleur de Fond", "gs1_presets_title": "Combinaisons Officielles GS1 :", "preset_gs1_bw": "Noir sur Blanc (Standard GS1)", "preset_gs1_blue": "Bleu Foncé sur Blanc (Approuvé)", "preset_gs1_green": "Vert Foncé sur Blanc (Approuvé)", "preset_gs1_yellow": "Noir sur Jaune (Approuvé)", "preset_gs1_red_bg": "Noir sur Rouge (Approuvé GS1)", "preset_gs1_danger_red": "⚠️ Barres Rouges (Rejet en Caisse)", "preset_gs1_danger_dark": "⚠️ Noir sur Bleu Foncé (Interdit)", "laser_simulator_title": "👁️ Vision Laser GS1 (Simulation 670 nm)", "laser_simulator_desc": "Comment le scanner de caisse perçoit votre code :", "status_gs1_ok_title": "🟢 CONFORME GS1 — Contraste Parfait (≥ 75%)", "status_gs1_ok_desc": "Le laser 670 nm distingue parfaitement les barres du fond. Lecture garantie.", "status_gs1_warn_title": "🟡 ATTENTION GS1 — Contraste Limite", "status_gs1_warn_desc": "Contraste proche du seuil minimal. Effectuez des tests avant impression.", "status_gs1_danger_title": "🔴 REJET EN CAISSE — Non Conforme GS1", "status_gs1_danger_desc": "Le laser 670 nm ne voit pas les barres ! Les pigments rouges/jaunes sont invisibles.", "export_svg_btn": "⬇️ Télécharger SVG Vectoriel", "export_png_btn": "🖼️ Télécharger PNG Haute Résolution (300 DPI)", "copy_svg_btn": "📋 Copier le Code SVG", "copied_svg_text": "SVG copié dans le presse-papiers !", "print_btn": "Imprimer Fiche", "install_btn": "App", "rule_tip": "💡 <strong>Physique du Laser GS1 (670 nm) :</strong> Les lecteurs utilisent un laser rouge. Les couleurs chaudes réfléchissent la lumière et apparaissent <strong>BLANCHES</strong>. Les barres rouges sont invisibles !", "legal_disclaimer": "<strong>Normes GS1 & ISO/IEC :</strong> Conforme aux spécifications ISO/IEC 15420, 15417 et 16388.", "faq_title": "Questions Fréquentes sur les Codes-Barres et Normes GS1", "faq_1_q": "Quelle est la différence entre EAN-13, Code 128 et Code 39 ?", "faq_1_a": "EAN-13 est le standard du commerce de détail ; Code 128 est utilisé en logistique ; Code 39 est utilisé dans la santé et l'industrie.", "faq_2_q": "Pourquoi les barres rouges ou jaunes sont-elles interdites ?", "faq_2_a": "Le faisceau laser rouge à 670 nm les perçoit comme blanches, rendant le code totalement illisible.", "faq_3_q": "Comment fonctionne le code de la carte de santé / vitale ?", "faq_3_a": "Il s'appuie sur la symbologie Code 39 codant directement l'identifiant fiscal ou sanitaire de l'assuré.", "faq_4_q": "Qu'est-ce que la Quiet Zone ?", "faq_4_a": "C'est la marge blanche de sécurité requise de part et d'autre pour délimiter le code."}, "de": {"title": "OmniBarcode Studio", "badge": "OmniGraph", "hero_title": "Vektorieller Barcode-Generator & GS1-Prüfung", "hero_desc": "Erstellen Sie reine Vektor-SVG- und PDF-Barcodes für Verpackungen und Logistik. Enthält GS1-Laserkontrastprüfung bei 670 nm.", "symbology_label": "Symbologie / Standard", "symbology_ean13": "EAN-13 (Einzelhandel & Supermärkte)", "symbology_upca": "UPC-A (US-Handelsstandard)", "symbology_code128": "Code 128 (Logistik, Versand & Lager)", "symbology_code39": "Code 39 (Industrie & Gesundheitskarten)", "ts_preset_btn": "🏥 Gesundheitskarte / Steuer-ID", "ts_preset_badge": "Gesundheitswesen-Standard", "input_label": "Code-Inhalt / Daten", "input_placeholder_ean": "Z.B. 801234567890 (12 oder 13 Ziffern)", "input_placeholder_code": "Z.B. ABC-123456", "checksum_auto": "Automatische Prüfziffer aktiviert", "checksum_err": "Ungültiger Code für diese Symbologie", "display_value_label": "Klartext darunter anzeigen", "bar_width_label": "Modulbreite (px)", "bar_height_label": "Strichhöhe (mm/px)", "quiet_zone_label": "Ruhezone (Quiet Zone)", "colors_title": "Farben & GS1-Laserkontrast (670 nm)", "bar_color_label": "Strichfarbe", "bg_color_label": "Hintergrundfarbe", "gs1_presets_title": "Offizielle GS1-Farbkombinationen:", "preset_gs1_bw": "Schwarz auf Weiß (GS1-Standard)", "preset_gs1_blue": "Dunkelblau auf Weiß (Zugelassen)", "preset_gs1_green": "Dunkelgrün auf Weiß (Zugelassen)", "preset_gs1_yellow": "Schwarz auf Gelb (Zugelassen)", "preset_gs1_red_bg": "Schwarz auf Rot (Von GS1 zugelassen)", "preset_gs1_danger_red": "⚠️ Rote Striche (Kassenabweisung)", "preset_gs1_danger_dark": "⚠️ Schwarz auf Dunkelblau (Verboten)", "laser_simulator_title": "👁️ GS1-Lasersensor-Ansicht (670 nm)", "laser_simulator_desc": "So sieht der Kassenscanner Ihren Barcode:", "status_gs1_ok_title": "🟢 GS1-KONFORM — Optimaler Kontrast (≥ 75%)", "status_gs1_ok_desc": "Ausgezeichneter spektraler Kontrast. Der 670-nm-Laser erkennt die Striche sofort.", "status_gs1_warn_title": "🟡 GS1-WARNUNG — Grenzwertiger Kontrast", "status_gs1_warn_desc": "Der Kontrast liegt nahe am Minimum. Vor dem Druck Testscans durchführen.", "status_gs1_danger_title": "🔴 KASSENABWEISUNG — Nicht GS1-konform", "status_gs1_danger_desc": "Der 670-nm-Laser sieht keine Striche! Rote und gelbe Pigmente reflektieren rot.", "export_svg_btn": "⬇️ Vektor-SVG herunterladen", "export_png_btn": "🖼️ Hochauflösendes PNG (300 DPI)", "copy_svg_btn": "📋 SVG-Code kopieren", "copied_svg_text": "SVG in Zwischenablage kopiert!", "print_btn": "Datenblatt drucken", "install_btn": "App", "rule_tip": "💡 <strong>Physik des GS1-Lasers (670 nm):</strong> Scanner nutzen rotes Laserlicht. Warme Farben reflektieren und erscheinen <strong>WEISS</strong>. Rote Striche sind unsichtbar!", "legal_disclaimer": "<strong>GS1- & ISO-Normen:</strong> Konform mit ISO/IEC 15420, 15417 und 16388.", "faq_title": "Häufige Fragen zu Barcodes und GS1-Standards", "faq_1_q": "Was ist der Unterschied zwischen EAN-13, Code 128 und Code 39?", "faq_1_a": "EAN-13 ist der globale Standard für den Einzelhandel; Code 128 für Versandlogistik; Code 39 für Industrie und Gesundheitskarten.", "faq_2_q": "Warum dürfen rote oder gelbe Striche nicht verwendet werden?", "faq_2_a": "Der 670-nm-Laser sieht rote und gelbe Striche als weiß an, wodurch sie unsichtbar werden.", "faq_3_q": "Wie funktioniert der Barcode auf Gesundheitskarten?", "faq_3_a": "Er nutzt Code 39 zur Kodierung der Steuernummer bzw. Versichertennummer.", "faq_4_q": "Was ist die Quiet Zone?", "faq_4_a": "Der freie Rand links und rechts, der für die Erkennung von Start- und Stoppzeichen unerlässlich ist."}, "pt": {"title": "OmniBarcode Studio", "badge": "OmniGraph", "hero_title": "Gerador de Código de Barras Vetorial & GS1", "hero_desc": "Gere códigos de barras vetoriais SVG e PDF para embalagens e inventário. Inclui verificação de contraste a laser 670 nm de acordo com as normas GS1.", "symbology_label": "Simbologia / Padrão", "symbology_ean13": "EAN-13 (Comércio & Supermercados Europa)", "symbology_upca": "UPC-A (Padrão EUA e América do Norte)", "symbology_code128": "Code 128 (Logística & Armazéns)", "symbology_code39": "Code 39 (Indústria & Cartão de Saúde)", "ts_preset_btn": "🏥 Cartão de Saúde / NIF", "ts_preset_badge": "Padrão Saúde", "input_label": "Código ou Dados", "input_placeholder_ean": "Ex. 801234567890 (12 ou 13 dígitos)", "input_placeholder_code": "Ex. ABC-123456", "checksum_auto": "Dígito de controlo automático", "checksum_err": "Código inválido para esta simbologia", "display_value_label": "Mostrar Texto Abaixo (Legível)", "bar_width_label": "Largura Módulo (px)", "bar_height_label": "Altura das Barras (mm/px)", "quiet_zone_label": "Zona de Silêncio (Quiet Zone)", "colors_title": "Cores & Contraste Laser GS1 (670 nm)", "bar_color_label": "Cor das Barras", "bg_color_label": "Cor de Fundo", "gs1_presets_title": "Combinações Oficiais GS1:", "preset_gs1_bw": "Preto no Branco (Ótimo GS1)", "preset_gs1_blue": "Azul Escuro no Branco (Aprovado)", "preset_gs1_green": "Verde Escuro no Branco (Aprovado)", "preset_gs1_yellow": "Preto no Amarelo (Aprovado)", "preset_gs1_red_bg": "Preto no Fundo Vermelho (Aprovado GS1)", "preset_gs1_danger_red": "⚠️ Barras Vermelhas (Rejeição na Caixa)", "preset_gs1_danger_dark": "⚠️ Preto no Azul Escuro (Proibido)", "laser_simulator_title": "👁️ Visor Laser GS1 (Simulação 670 nm)", "laser_simulator_desc": "Como o scanner de caixa percebe o seu código:", "status_gs1_ok_title": "🟢 CONFORME GS1 — Contraste Ótimo (≥ 75%)", "status_gs1_ok_desc": "O laser de 670 nm distingue com precisão as barras do fundo. Leitura garantida.", "status_gs1_warn_title": "🟡 AVISO GS1 — Contraste Limite", "status_gs1_warn_desc": "O contraste está perto do limite mínimo. Realize testes antes da impressão em massa.", "status_gs1_danger_title": "🔴 REJEIÇÃO NA CAIXA — Não Conforme GS1", "status_gs1_danger_desc": "O laser de 670 nm não detecta as barras! Pigmentos vermelhos/amarelos são invisíveis.", "export_svg_btn": "⬇️ Descarregar SVG Vetorial", "export_png_btn": "🖼️ Descarregar PNG Alta Resolução (300 DPI)", "copy_svg_btn": "📋 Copiar Código SVG", "copied_svg_text": "SVG copiado para a área de transferência!", "print_btn": "Imprimir Ficha", "install_btn": "App", "rule_tip": "💡 <strong>Física do Laser GS1 (670 nm):</strong> Os scanners usam laser vermelho. Cores quentes refletem a luz e parecem <strong>BRANCAS</strong>. Barras vermelhas são invisíveis!", "legal_disclaimer": "<strong>Normas GS1 e ISO/IEC:</strong> Em conformidade com ISO/IEC 15420, 15417 e 16388.", "faq_title": "Perguntas Frequentes sobre Códigos de Barras e Normas GS1", "faq_1_q": "Qual a diferença entre EAN-13, Code 128 e Code 39?", "faq_1_a": "EAN-13 é usado no retalho; Code 128 em logística e encomendas; Code 39 na saúde e indústria.", "faq_2_q": "Por que não se podem usar barras vermelhas ou amarelas?", "faq_2_a": "O laser vermelho de 670 nm vê as barras como brancas, tornando o código invisível.", "faq_3_q": "Como funciona o código do Cartão de Saúde?", "faq_3_a": "Usa Code 39 codificando diretamente o número de identificação fiscal ou de utente.", "faq_4_q": "O que é a Quiet Zone?", "faq_4_a": "É a margem livre de ambos os lados necessária para que o leitor reconheça os limites do código."}};
+        let currentLang = 'it';
+
+        
+// Soluzione 1: Suite Switcher Dropdown Interaction
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (!menu) return;
+    const isClosed = menu.classList.contains('hidden');
+    if (isClosed) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('suiteMenuDropdown');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            const btn = document.getElementById('suiteMenuBtn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+
+        function calculateEan13CheckDigit(str) {
+            if (!str || str.length < 12) return null;
+            let sum = 0;
+            for (let i = 0; i < 12; i++) {
+                let n = parseInt(str[i], 10);
+                if (isNaN(n)) return null;
+                sum += (i % 2 === 0) ? n : n * 3;
+            }
+            return (10 - (sum % 10)) % 10;
+        }
+
+        function calculateUpcCheckDigit(str) {
+            if (!str || str.length < 11) return null;
+            let sum = 0;
+            for (let i = 0; i < 11; i++) {
+                let n = parseInt(str[i], 10);
+                if (isNaN(n)) return null;
+                sum += (i % 2 === 0) ? n * 3 : n;
+            }
+            return (10 - (sum % 10)) % 10;
+        }
+
+        function onSymbologyChange() {
+            const symb = document.getElementById('symbologySelect').value;
+            const input = document.getElementById('barcodeValue');
+            const helper = document.getElementById('inputHelper');
+            const status = document.getElementById('checksumStatus');
+
+            if (symb === 'EAN13') {
+                input.placeholder = 'Es. 801234567890 (12 o 13 cifre)';
+                helper.innerText = 'Per EAN-13 inserisci 12 cifre: la 13ª cifra di controllo viene calcolata automaticamente.';
+                if (!/^\d{12,13}$/.test(input.value)) {
+                    input.value = '801234567890';
+                }
+            } else if (symb === 'UPC') {
+                input.placeholder = 'Es. 01234567890 (11 o 12 cifre)';
+                helper.innerText = 'Per UPC-A inserisci 11 cifre: la 12ª cifra di controllo viene calcolata automaticamente.';
+                if (!/^\d{11,12}$/.test(input.value)) {
+                    input.value = '01234567890';
+                }
+            } else if (symb === 'CODE39') {
+                input.placeholder = 'Es. RSSMRA85M01H501Z (Alfanumerico TS)';
+                helper.innerText = 'Code 39 supporta lettere maiuscole (A-Z), numeri (0-9) e simboli standard. Ideale per Tessera Sanitaria.';
+            } else {
+                input.placeholder = 'Es. PACK-2026-X7';
+                helper.innerText = 'Code 128 supporta qualsiasi carattere alfanumerico ASCII ad alta densità.';
+            }
+            updateBarcode();
+        }
+
+        function applyPreset(type) {
+            const symb = document.getElementById('symbologySelect');
+            const input = document.getElementById('barcodeValue');
+            const height = document.getElementById('barHeight');
+            const width = document.getElementById('barWidth');
+            const displayCheck = document.getElementById('displayValueCheck');
+
+            if (type === 'ts') {
+                symb.value = 'CODE39';
+                input.value = 'RSSMRA85M01H501Z';
+                height.value = 50;
+                width.value = 1.5;
+                displayCheck.checked = true;
+                setColorPair('#000000', '#ffffff');
+            } else if (type === 'ean13') {
+                symb.value = 'EAN13';
+                input.value = '801234567890';
+                height.value = 60;
+                width.value = 2;
+                displayCheck.checked = true;
+                setColorPair('#000000', '#ffffff');
+            } else if (type === 'code128') {
+                symb.value = 'CODE128';
+                input.value = 'LOGIS-849204-IT';
+                height.value = 65;
+                width.value = 2;
+                displayCheck.checked = true;
+                setColorPair('#000000', '#ffffff');
+            } else if (type === 'upca') {
+                symb.value = 'UPC';
+                input.value = '01234567890';
+                height.value = 60;
+                width.value = 2;
+                displayCheck.checked = true;
+                setColorPair('#000000', '#ffffff');
+            }
+            onSymbologyChange();
+        }
+
+        function randomizeCode() {
+            const symb = document.getElementById('symbologySelect').value;
+            const input = document.getElementById('barcodeValue');
+            if (symb === 'EAN13') {
+                let s = '80'; // Prefisso GS1 Italia
+                for (let i = 0; i < 10; i++) {
+                    s += Math.floor(Math.random() * 10);
+                }
+                input.value = s;
+            } else if (symb === 'UPC') {
+                let s = '0';
+                for (let i = 0; i < 10; i++) {
+                    s += Math.floor(Math.random() * 10);
+                }
+                input.value = s;
+            } else if (symb === 'CODE39') {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let s = '';
+                for (let i = 0; i < 16; i++) {
+                    s += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                input.value = s;
+            } else {
+                input.value = 'OMNI-' + Math.floor(100000 + Math.random() * 900000);
+            }
+            updateBarcode();
+        }
+
+        function setColorPair(bar, bg) {
+            document.getElementById('barColor').value = bar;
+            document.getElementById('barColorText').value = bar;
+            document.getElementById('bgColor').value = bg;
+            document.getElementById('bgColorText').value = bg;
+            updateBarcode();
+        }
+
+        function syncColorText(target) {
+            if (target === 'bar') {
+                const val = document.getElementById('barColorText').value;
+                if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+                    document.getElementById('barColor').value = val;
+                    updateBarcode();
+                }
+            } else {
+                const val = document.getElementById('bgColorText').value;
+                if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+                    document.getElementById('bgColor').value = val;
+                    updateBarcode();
+                }
+            }
+        }
+
+        function hexToRgb(hex) {
+            hex = hex.replace('#', '');
+            if (hex.length === 3) {
+                hex = hex.split('').map(c => c + c).join('');
+            }
+            const num = parseInt(hex, 16);
+            return {
+                r: (num >> 16) & 255,
+                g: (num >> 8) & 255,
+                b: num & 255
+            };
+        }
+
+        // GS1 Laser Spectral Reflectance at 670 nm Calculation
+        function calculateReflectance670(rgb) {
+            // Red light (670 nm) is primarily reflected by Red channel and slightly by warm pigments
+            const rNorm = rgb.r / 255;
+            const gNorm = rgb.g / 255;
+            const bNorm = rgb.b / 255;
+            // 670 nm spectral response model:
+            let ref = (rNorm * 0.85) + (gNorm * 0.10) + (bNorm * 0.05);
+            return Math.min(1.0, Math.max(0.0, ref));
+        }
+
+        function updateBarcode() {
+            const symb = document.getElementById('symbologySelect').value;
+            let rawValue = document.getElementById('barcodeValue').value.trim();
+            const barWidth = parseFloat(document.getElementById('barWidth').value);
+            const barHeight = parseInt(document.getElementById('barHeight').value, 10);
+            const quietZone = parseInt(document.getElementById('quietZone').value, 10);
+            const displayValue = document.getElementById('displayValueCheck').checked;
+            const barColor = document.getElementById('barColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+
+            document.getElementById('barWidthVal').innerText = barWidth + ' px';
+            document.getElementById('barHeightVal').innerText = barHeight + ' px';
+            document.getElementById('quietZoneVal').innerText = quietZone + ' px';
+            document.getElementById('barColorText').value = barColor;
+            document.getElementById('bgColorText').value = bgColor;
+            document.getElementById('barcodePreviewBox').style.backgroundColor = bgColor;
+
+            let finalValue = rawValue;
+            const statusBadge = document.getElementById('checksumStatus');
+
+            // Handle Checksum for EAN-13 & UPC
+            if (symb === 'EAN13') {
+                const cleanDigits = rawValue.replace(/\D/g, '');
+                if (cleanDigits.length === 12) {
+                    const check = calculateEan13CheckDigit(cleanDigits);
+                    finalValue = cleanDigits + check;
+                    statusBadge.innerText = 'Check-digit auto: ' + check;
+                    statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
+                } else if (cleanDigits.length === 13) {
+                    const check = calculateEan13CheckDigit(cleanDigits.slice(0, 12));
+                    if (parseInt(cleanDigits[12], 10) === check) {
+                        statusBadge.innerText = 'Check-digit valido (' + check + ')';
+                        statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
+                    } else {
+                        statusBadge.innerText = 'Check-digit errato (atteso ' + check + ')';
+                        statusBadge.className = 'text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200';
+                    }
+                    finalValue = cleanDigits;
+                } else {
+                    statusBadge.innerText = 'Richieste 12 o 13 cifre (' + cleanDigits.length + ')';
+                    statusBadge.className = 'text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200';
+                }
+            } else if (symb === 'UPC') {
+                const cleanDigits = rawValue.replace(/\D/g, '');
+                if (cleanDigits.length === 11) {
+                    const check = calculateUpcCheckDigit(cleanDigits);
+                    finalValue = cleanDigits + check;
+                    statusBadge.innerText = 'Check-digit auto: ' + check;
+                    statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
+                } else if (cleanDigits.length === 12) {
+                    const check = calculateUpcCheckDigit(cleanDigits.slice(0, 11));
+                    statusBadge.innerText = 'UPC 12 cifre';
+                    statusBadge.className = 'text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
+                    finalValue = cleanDigits;
+                }
+            } else {
+                statusBadge.innerText = symb === 'CODE39' ? 'Code 39 Alfanumerico' : 'Code 128 Standard';
+                statusBadge.className = 'text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200';
+            }
+
+            // Render Barcode via JsBarcode
+            try {
+                JsBarcode("#barcodeSvg", finalValue, {
+                    format: symb,
+                    lineColor: barColor,
+                    background: bgColor,
+                    width: barWidth,
+                    height: barHeight,
+                    displayValue: displayValue,
+                    font: "JetBrains Mono, monospace",
+                    fontSize: 14,
+                    textMargin: 4,
+                    margin: quietZone
+                });
+            } catch (err) {
+                console.warn("JsBarcode render error:", err);
+            }
+
+            // Render GS1 Laser 670nm Simulation
+            renderLaserSimulation(barColor, bgColor, symb, finalValue, barWidth, barHeight, quietZone, displayValue);
+        }
+
+        function renderLaserSimulation(barColor, bgColor, symb, value, barWidth, barHeight, quietZone, displayValue) {
+            const rgbBar = hexToRgb(barColor);
+            const rgbBg = hexToRgb(bgColor);
+
+            const rBar = calculateReflectance670(rgbBar); // 0.0 (dark) to 1.0 (light)
+            const rBg = calculateReflectance670(rgbBg);
+
+            // In laser vision, reflectance converts to brightness seen by sensor
+            // High reflectance (red/orange/yellow/white) = bright / white
+            // Low reflectance (black/dark blue/green) = dark / black
+            const simBgGrey = Math.round(rBg * 255);
+            const simBarGrey = Math.round(rBar * 255);
+
+            const simBgColor = `rgb(${simBgGrey}, ${simBgGrey}, ${simBgGrey})`;
+            const simBarColor = `rgb(${simBarGrey}, ${simBarGrey}, ${simBarGrey})`;
+
+            document.getElementById('laserSimBox').style.backgroundColor = simBgColor;
+
+            try {
+                JsBarcode("#laserSimSvg", value, {
+                    format: symb,
+                    lineColor: simBarColor,
+                    background: simBgColor,
+                    width: barWidth,
+                    height: barHeight,
+                    displayValue: displayValue,
+                    font: "JetBrains Mono, monospace",
+                    fontSize: 14,
+                    textMargin: 4,
+                    margin: quietZone
+                });
+            } catch (e) {}
+
+            // Calculate PCS (Print Contrast Signal) = (RL - RD) / RL
+            let pcs = 0;
+            if (rBg > 0.01) {
+                pcs = ((rBg - rBar) / rBg) * 100;
+            }
+
+            const pcsBadge = document.getElementById('pcsBadge');
+            const verdictBox = document.getElementById('gs1VerdictBox');
+            const verdictTitle = document.getElementById('gs1VerdictTitle');
+            const verdictDesc = document.getElementById('gs1VerdictDesc');
+
+            pcsBadge.innerText = 'PCS: ' + Math.max(0, Math.round(pcs)) + '%';
+
+            // Check if bars reflect red (e.g. red bars or yellow bars)
+            const barsReflectRed = rgbBar.r > 160 && (rgbBar.g < 80 || (rgbBar.r > 200 && rgbBar.g > 180));
+            const bgIsTooDark = rBg < 0.45;
+
+            if (barsReflectRed) {
+                // Red or Yellow Bars Error!
+                pcsBadge.className = 'text-[10px] font-mono font-black px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-700';
+                verdictBox.className = 'p-3 rounded-xl bg-rose-950/90 border border-rose-500/50 text-rose-200 text-xs space-y-1';
+                verdictTitle.innerHTML = '🔴 RIFIUTO CASSA — Barre Invisibili al Laser (GS1)';
+                verdictDesc.innerHTML = '<strong>Errore Critico:</strong> Il colore delle barre contiene pigmenti caldi che riflettono la luce rossa a 670 nm. Lo scanner laser della cassa "vede" sia lo sfondo che le barre come bianchi omogenei: il codice a barre scompare e la lettura fallisce al 100%.';
+            } else if (bgIsTooDark) {
+                // Background too dark (e.g. Black on Dark Blue / Black on Black)
+                pcsBadge.className = 'text-[10px] font-mono font-black px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-700';
+                verdictBox.className = 'p-3 rounded-xl bg-rose-950/90 border border-rose-500/50 text-rose-200 text-xs space-y-1';
+                verdictTitle.innerHTML = '🔴 RIFIUTO CASSA — Sfondo Troppo Scuro (Assorbe 670 nm)';
+                verdictDesc.innerHTML = '<strong>Errore GS1:</strong> Lo sfondo assorbe il raggio laser rosso anziché rifletterlo. Senza un fondo riflettente chiaro, il sensore ottico non può rilevare i bordi delle barre.';
+            } else if (pcs >= 75) {
+                // Conforme GS1 Ottimale
+                pcsBadge.className = 'text-[10px] font-mono font-black px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700';
+                verdictBox.className = 'p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs space-y-1';
+                verdictTitle.innerHTML = '🟢 CONFORME GS1 — PCS Ottimale (' + Math.round(pcs) + '%)';
+                verdictDesc.innerHTML = 'Contrasto spettrale perfetto secondo gli standard ufficiali GS1. Il laser a 670 nm distingue le barre con la massima ampiezza di segnale. Lettura garantita su tutti gli scanner lineari e a cassa.';
+            } else if (pcs >= 60) {
+                // Warning
+                pcsBadge.className = 'text-[10px] font-mono font-black px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-700';
+                verdictBox.className = 'p-3 rounded-xl bg-amber-950/80 border border-amber-500/40 text-amber-200 text-xs space-y-1';
+                verdictTitle.innerHTML = '🟡 ATTENZIONE GS1 — Contrasto Limite (' + Math.round(pcs) + '%)';
+                verdictDesc.innerHTML = 'Il contrasto PCS è al limite minimo consentito dalle specifiche industriali. Si consiglia una prova di stampa o di aumentare l\\opacità delle barre prima della tiratura finale.';
+            } else {
+                // Danger
+                pcsBadge.className = 'text-[10px] font-mono font-black px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-700';
+                verdictBox.className = 'p-3 rounded-xl bg-rose-950/90 border border-rose-500/50 text-rose-200 text-xs space-y-1';
+                verdictTitle.innerHTML = '🔴 NON CONFORME GS1 — Contrasto Insufficiente (' + Math.round(pcs) + '%)';
+                verdictDesc.innerHTML = 'Il contrasto tra barre e sfondo è inferiore al limite GS1. Rischio concreto di blocco della lettura alle casse automatiche e restituzione delle merci.';
+            }
+        }
+
+        function exportSvg() {
+            const svg = document.getElementById('barcodeSvg');
+            if (!svg) return;
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const symb = document.getElementById('symbologySelect').value;
+            const val = document.getElementById('barcodeValue').value.trim() || 'barcode';
+            a.href = url;
+            a.download = `OmniBarcode-${symb}-${val}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function exportPng() {
+            const svg = document.getElementById('barcodeSvg');
+            if (!svg) return;
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            const img = new Image();
+            
+            // 300 DPI multiplier (3x or 4x scale)
+            const scale = 3;
+            const bbox = svg.getBoundingClientRect();
+            canvas.width = bbox.width * scale;
+            canvas.height = bbox.height * scale;
+
+            img.onload = function() {
+                ctx.scale(scale, scale);
+                ctx.drawImage(img, 0, 0);
+                const pngUrl = canvas.toDataURL("image/png");
+                const a = document.createElement('a');
+                const symb = document.getElementById('symbologySelect').value;
+                const val = document.getElementById('barcodeValue').value.trim() || 'barcode';
+                a.href = pngUrl;
+                a.download = `OmniBarcode-300DPI-${symb}-${val}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+            img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        function copySvgCode() {
+            const svg = document.getElementById('barcodeSvg');
+            if (!svg) return;
+            const svgData = new XMLSerializer().serializeToString(svg);
+            navigator.clipboard.writeText(svgData).then(() => {
+                const btn = document.getElementById('copySvgBtn');
+                const old = btn.innerText;
+                btn.innerText = '✅ Copiato!';
+                setTimeout(() => {
+                    btn.innerText = old;
+                }, 2000);
+            }).catch(() => {
+                alert('Impossibile copiare il codice SVG negli appunti.');
+            });
+        }
+
+        function changeLanguage(lang) {
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            const t = TRANSLATIONS[lang];
+
+            document.getElementById('heroTitle').innerHTML = t.hero_title;
+            document.getElementById('heroDesc').innerHTML = t.hero_desc;
+            document.getElementById('symbologyLabel').innerHTML = t.symbology_label;
+            document.getElementById('inputLabel').innerHTML = t.input_label;
+            document.getElementById('displayValueLabel').innerHTML = t.display_value_label;
+            document.getElementById('barWidthLabel').innerHTML = t.bar_width_label.split(' ')[0];
+            document.getElementById('barHeightLabel').innerHTML = t.bar_height_label.split(' ')[0];
+            document.getElementById('quietZoneLabel').innerHTML = t.quiet_zone_label.split(' ')[0];
+            document.getElementById('colorsTitle').innerHTML = '<span>🎨</span> ' + t.colors_title;
+            document.getElementById('barColorLabel').innerHTML = t.bar_color_label;
+            document.getElementById('bgColorLabel').innerHTML = t.bg_color_label;
+            document.getElementById('exportSvgBtn').innerHTML = t.export_svg_btn;
+            document.getElementById('exportPngBtn').innerHTML = t.export_png_btn;
+            document.getElementById('copySvgBtn').innerHTML = t.copy_svg_btn;
+            document.getElementById('ruleTipText').innerHTML = t.rule_tip;
+            document.getElementById('legalDisclaimer').innerHTML = t.legal_disclaimer;
+            document.getElementById('faqTitle').innerHTML = t.faq_title;
+
+            // Update FAQs
+            document.getElementById('faq1Q').innerHTML = t.faq_1_q;
+            document.getElementById('faq1A').innerHTML = t.faq_1_a;
+            document.getElementById('faq2Q').innerHTML = t.faq_2_q;
+            document.getElementById('faq2A').innerHTML = t.faq_2_a;
+            document.getElementById('faq3Q').innerHTML = t.faq_3_q;
+            document.getElementById('faq3A').innerHTML = t.faq_3_a;
+            document.getElementById('faq4Q').innerHTML = t.faq_4_q;
+            document.getElementById('faq4A').innerHTML = t.faq_4_a;
+
+            updateBarcode();
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateBarcode();
+        });
+    </script>
+</body>
+</html>

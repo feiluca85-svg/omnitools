@@ -52,7 +52,12 @@
     "tool_tinta_hook": "Il colore non torna in stampa?",
     "tool_tinta_desc": "Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Rotativa e stampanti digitali.",
     "tool_tinta_cta": "Genera Matrice Prova",
-    "tool_tinta_badge": "CMYK & Rotativa"
+    "tool_tinta_badge": "CMYK & Rotativa",
+    "tool_barcode_title": "OmniBarcode",
+    "tool_barcode_hook": "Il codice passerà alla cassa?",
+    "tool_barcode_desc": "Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.",
+    "tool_barcode_cta": "Genera Codice a Barre",
+    "tool_barcode_badge": "GS1 & Vettoriale"
   },
   "en": {
     "title": "OmniTools Lab — Free Engineering & Graphic Calculators: Ramp Slope, Stairs, Pipe Fall",
@@ -107,7 +112,12 @@
     "tool_tinta_hook": "Color mismatch on press?",
     "tool_tinta_desc": "Generate CMYK bracketing test grids to match exact spot colors on Rotativa web presses, digital and offset.",
     "tool_tinta_cta": "Generate Color Target",
-    "tool_tinta_badge": "CMYK & Rotativa"
+    "tool_tinta_badge": "CMYK & Rotativa",
+    "tool_barcode_title": "OmniBarcode",
+    "tool_barcode_hook": "Will your barcode scan at checkout?",
+    "tool_barcode_desc": "Generate pure vector SVG barcodes (EAN-13, Health Card Code 39, Code 128) with official GS1 670 nm laser contrast verification.",
+    "tool_barcode_cta": "Generate Barcode",
+    "tool_barcode_badge": "GS1 & Vector"
   },
   "es": {
     "title": "OmniTools Lab — Suite de Calculadoras Técnicas de Precisión",
@@ -162,7 +172,12 @@
     "tool_tinta_hook": "¿El color no coincide en máquina?",
     "tool_tinta_desc": "Genera matrices de calibración CMYK para clavar la tinta a la primera en rotativas Rotativa y prensas digitales.",
     "tool_tinta_cta": "Generar Matriz de Prueba",
-    "tool_tinta_badge": "CMYK & Rotativa"
+    "tool_tinta_badge": "CMYK & Rotativa",
+    "tool_barcode_title": "OmniBarcode",
+    "tool_barcode_hook": "¿Tu código pasará por la caja?",
+    "tool_barcode_desc": "Genera códigos de barras SVG vectoriales puros (EAN-13, Tarjeta Sanitaria Code 39, Code 128) con verificación láser 670 nm GS1.",
+    "tool_barcode_cta": "Generar Código de Barras",
+    "tool_barcode_badge": "GS1 y Vectorial"
   },
   "fr": {
     "title": "OmniTools Lab — Suite de Calculateurs Techniques de Précision",
@@ -217,7 +232,12 @@
     "tool_tinta_hook": "La couleur dérive à l'impression ?",
     "tool_tinta_desc": "Générez des mires de bracketing CMJN pour caler la teinte exacte dès le premier tirage sur Rotativa et numérique.",
     "tool_tinta_cta": "Générer la Mire",
-    "tool_tinta_badge": "CMJN & Rotativa"
+    "tool_tinta_badge": "CMJN & Rotativa",
+    "tool_barcode_title": "OmniBarcode",
+    "tool_barcode_hook": "Votre code passera-t-il en caisse ?",
+    "tool_barcode_desc": "Générez des codes-barres SVG vectoriels purs (EAN-13, Carte Vitale Code 39, Code 128) avec vérification de contraste laser 670 nm GS1.",
+    "tool_barcode_cta": "Générer Code-Barres",
+    "tool_barcode_badge": "GS1 & Vectoriel"
   },
   "de": {
     "title": "OmniTools Lab — Suite für Technische Präzisionsrechner",
@@ -272,7 +292,12 @@
     "tool_tinta_hook": "Farbe stimmt im Druck nicht?",
     "tool_tinta_desc": "Erzeugen Sie CMYK-Kalibriermatrizen für exakte Farbtreue beim ersten Durchlauf auf Rotativa und Digitaldruck.",
     "tool_tinta_cta": "Prüfbogen Generieren",
-    "tool_tinta_badge": "CMYK & Rotativa"
+    "tool_tinta_badge": "CMYK & Rotativa",
+    "tool_barcode_title": "OmniBarcode",
+    "tool_barcode_hook": "Wird Ihr Barcode an der Kasse gelesen?",
+    "tool_barcode_desc": "Erstellen Sie reine Vektor-SVG-Barcodes (EAN-13, Gesundheitskarte Code 39, Code 128) mit offizieller GS1-Laserkontrastprüfung bei 670 nm.",
+    "tool_barcode_cta": "Barcode Generieren",
+    "tool_barcode_badge": "GS1 & Vektor"
   },
   "pt": {
     "title": "OmniTools Lab — Suite de Calculadores Técnicos de Precisão",
@@ -327,6 +352,11 @@
     "tool_tinta_hook": "A cor sai errada na impressão?",
     "tool_tinta_desc": "Gere matrizes cromáticas de variação CMYK para acertar no tom logo na primeira passagem em Rotativa e digital.",
     "tool_tinta_cta": "Gerar Matriz de Prova",
-    "tool_tinta_badge": "CMYK & Rotativa"
+    "tool_tinta_badge": "CMYK & Rotativa",
+    "tool_barcode_title": "OmniBarcode",
+    "tool_barcode_hook": "O código passará na caixa?",
+    "tool_barcode_desc": "Gere códigos de barras vetoriais SVG (EAN-13, Cartão de Saúde Code 39, Code 128) com verificação de contraste a laser 670 nm GS1.",
+    "tool_barcode_cta": "Gerar Código de Barras",
+    "tool_barcode_badge": "GS1 & Vetorial"
   }
 }
