@@ -254,21 +254,21 @@ html_code = f"""<!DOCTYPE html>
                 </button>
                 <button type="button" onclick="applyPreset('ean13')" class="flex flex-col text-left p-2 rounded-xl bg-blue-50/70 hover:bg-blue-100/70 border border-blue-200 transition group active:scale-98">
                     <span class="text-xs font-bold text-blue-900 group-hover:text-blue-700 flex items-center gap-1">
-                        <span>🛒</span> EAN-13 Commercio
+                        <span>🛒</span> EAN-13 GS1
                     </span>
                     <span class="text-[10px] text-blue-700">13 Cifre GDO & Checksum</span>
                 </button>
-                <button type="button" onclick="applyPreset('code128')" class="flex flex-col text-left p-2 rounded-xl bg-indigo-50/70 hover:bg-indigo-100/70 border border-indigo-200 transition group active:scale-98">
+                <button type="button" onclick="applyPreset('gs1_128')" class="flex flex-col text-left p-2 rounded-xl bg-indigo-50/70 hover:bg-indigo-100/70 border border-indigo-200 transition group active:scale-98">
                     <span class="text-xs font-bold text-indigo-900 group-hover:text-indigo-700 flex items-center gap-1">
-                        <span>📦</span> Code 128 Pacchi
+                        <span>📦</span> GS1-128 Pallet
                     </span>
-                    <span class="text-[10px] text-indigo-700">Logistica, Spedizioni, Hub</span>
+                    <span class="text-[10px] text-indigo-700">AI: SSCC, Lotto, Scadenza</span>
                 </button>
                 <button type="button" onclick="applyPreset('itf14')" class="flex flex-col text-left p-2 rounded-xl bg-amber-50/70 hover:bg-amber-100/70 border border-amber-200 transition group active:scale-98">
                     <span class="text-xs font-bold text-amber-900 group-hover:text-amber-700 flex items-center gap-1">
-                        <span>📦</span> ITF-14 Imballaggi
+                        <span>📦</span> GS1 ITF-14 Cartoni
                     </span>
-                    <span class="text-[10px] text-amber-700">Cartoni & Scatoloni GS1</span>
+                    <span class="text-[10px] text-amber-700">Cornice Bearer Bars GS1</span>
                 </button>
             </div>
         </div>
@@ -288,12 +288,13 @@ html_code = f"""<!DOCTYPE html>
                             Simbologia / Standard Barcode
                         </label>
                         <select id="symbologySelect" onchange="onSymbologyChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition cursor-pointer">
-                            <option value="EAN13">EAN-13 (Commercio & GDO Europa)</option>
+                            <option value="EAN13">EAN-13 (Commercio & GDO Europa - GS1)</option>
+                            <option value="GS1_128">GS1-128 / EAN-128 (Logistica Pallet & AI)</option>
+                            <option value="ITF14">GS1 ITF-14 (Scatoloni, Imballaggi & Cartoni)</option>
+                            <option value="CODE128">Code 128 (Spedizioni Generiche & Magazzino)</option>
+                            <option value="CODE39">Code 39 (Industria & Tessera Sanitaria)</option>
                             <option value="EAN8">EAN-8 (Packaging compatto & piccoli prodotti)</option>
                             <option value="UPC">UPC-A (Standard USA & Nord America)</option>
-                            <option value="CODE128">Code 128 (Logistica, Magazzino & Pacchi)</option>
-                            <option value="CODE39">Code 39 (Industria & Tessera Sanitaria)</option>
-                            <option value="ITF">ITF-14 (Scatoloni, Imballaggi & Bancali)</option>
                         </select>
                     </div>
 
@@ -325,6 +326,15 @@ html_code = f"""<!DOCTYPE html>
                                 Mostra Testo sotto le Barre (Human Readable)
                             </label>
                             <input type="checkbox" id="displayValueCheck" checked onchange="updateBarcode()" class="w-4 h-4 rounded text-rose-700 focus:ring-rose-500 cursor-pointer">
+                        </div>
+                        <div id="bearerBarsRow" class="hidden flex items-center justify-between p-2 rounded-xl bg-amber-50/80 border border-amber-200">
+                            <div>
+                                <label for="bearerBarsCheck" class="text-xs font-bold text-amber-950 cursor-pointer block">
+                                    Cornice Portante GS1 (Bearer Bars)
+                                </label>
+                                <span class="text-[10px] text-amber-800 font-normal">Spessore 4.8 mm per evitare distorsioni su cartone ondulato</span>
+                            </div>
+                            <input type="checkbox" id="bearerBarsCheck" checked onchange="updateBarcode()" class="w-4 h-4 rounded text-amber-700 focus:ring-amber-500 cursor-pointer">
                         </div>
 
                         <!-- Sliders Grid -->
@@ -1084,7 +1094,7 @@ html_code = f"""<!DOCTYPE html>
             }}
 
             // Render GS1 Laser 670nm Simulation
-            renderLaserSimulation(barColorCurrent, bgColorCurrent, symb, finalValue, barWidth, barHeight, quietZone, displayValue);
+            renderLaserSimulation(barColorCurrent, bgColorCurrent, formatToRender, finalValue, barWidth, barHeight, quietZone, displayValue);
         }}
 
         function renderLaserSimulation(barColor, bgColor, symb, value, barWidth, barHeight, quietZone, displayValue) {{

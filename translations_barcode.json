@@ -55,7 +55,12 @@
     "faq_3_q": "Come funziona il codice a barre della Tessera Sanitaria (TS-CNS)?",
     "faq_3_a": "Sul retro della Tessera Sanitaria italiana (TS-CNS) è stampato un codice a barre con simbologia <strong>Code 39</strong> che codifica esattamente i 16 caratteri alfanumerici del <strong>Codice Fiscale</strong> dell'assistito (senza checksum aggiuntivo, delimitato dai caratteri di controllo asterisco). Quando il medico di famiglia, l'ospedale o il farmacista passano il lettore ottico sulla tessera, il software riceve istantaneamente la stringa del codice fiscale per emettere ricette, referti o lo scontrino parlante.",
     "faq_4_q": "Cos'è la 'Quiet Zone' (zona di silenzio) e perché è obbligatoria?",
-    "faq_4_a": "La Quiet Zone è lo spazio bianco libero obbligatorio che deve precedere la prima barra e seguire l'ultima barra del codice. Per lo standard GS1 EAN-13, la Quiet Zone deve essere larga almeno <strong>9 volte la larghezza della barra più sottile</strong> (circa 3 mm a scala 100%). Se grafici o impaginatori posizionano testi, cornici, fustelle o fotografie troppo vicine alle barre, il laser non riesce a capire dove inizia e dove finisce il codice, causando il tipico 'bip di errore' alla cassa del supermercato."
+    "faq_4_a": "La Quiet Zone è lo spazio bianco libero obbligatorio che deve precedere la prima barra e seguire l'ultima barra del codice. Per lo standard GS1 EAN-13, la Quiet Zone deve essere larga almeno <strong>9 volte la larghezza della barra più sottile</strong> (circa 3 mm a scala 100%). Se grafici o impaginatori posizionano testi, cornici, fustelle o fotografie troppo vicine alle barre, il laser non riesce a capire dove inizia e dove finisce il codice, causando il tipico 'bip di errore' alla cassa del supermercato.",
+    "symbology_gs1_128": "GS1-128 / EAN-128 (Pallet, Logistica & AI)",
+    "symbology_itf14": "GS1 ITF-14 (Scatoloni, Imballaggi & Cartoni)",
+    "bearer_bars_label": "Cornice Portante GS1 Bearer Bars (Cartone Ondulato)",
+    "preset_gs1_128": "GS1-128 Pallet",
+    "preset_itf14": "GS1 ITF-14 Cartoni"
   },
   "en": {
     "title": "OmniBarcode Studio",
@@ -113,7 +118,12 @@
     "faq_3_q": "How does the European Health Insurance Card barcode work?",
     "faq_3_a": "It uses <strong>Code 39</strong> symbology encoding the 16-character alphanumeric Fiscal Identification Number directly without additional checksum digits.",
     "faq_4_q": "What is a 'Quiet Zone' and why is it mandatory?",
-    "faq_4_a": "The Quiet Zone is the clear margin on both sides of the barcode. Without at least 9 to 10 module widths of blank space, scanners cannot detect the start and stop patterns."
+    "faq_4_a": "The Quiet Zone is the clear margin on both sides of the barcode. Without at least 9 to 10 module widths of blank space, scanners cannot detect the start and stop patterns.",
+    "symbology_gs1_128": "GS1-128 / EAN-128 (Pallets, Logistics & AI)",
+    "symbology_itf14": "GS1 ITF-14 (Cartons & Master Cases)",
+    "bearer_bars_label": "GS1 Bearer Bars Frame (Corrugated Boxes)",
+    "preset_gs1_128": "GS1-128 Pallet",
+    "preset_itf14": "GS1 ITF-14 Cartons"
   },
   "es": {
     "title": "OmniBarcode Studio",
@@ -171,7 +181,12 @@
     "faq_3_q": "¿Cómo funciona el código de la Tarjeta Sanitaria?",
     "faq_3_a": "Utiliza la simbología Code 39 codificando directamente el código alfanumérico del paciente.",
     "faq_4_q": "¿Qué es la 'Quiet Zone' y por qué es obligatoria?",
-    "faq_4_a": "Es el margen en blanco a ambos lados del código necesario para que el sensor identifique el inicio y fin."
+    "faq_4_a": "Es el margen en blanco a ambos lados del código necesario para que el sensor identifique el inicio y fin.",
+    "symbology_gs1_128": "GS1-128 / EAN-128 (Pallets y Logística AI)",
+    "symbology_itf14": "GS1 ITF-14 (Cajas y Embalajes GS1)",
+    "bearer_bars_label": "Marco Portante GS1 Bearer Bars",
+    "preset_gs1_128": "GS1-128 Pallet",
+    "preset_itf14": "GS1 ITF-14 Cajas"
   },
   "fr": {
     "title": "OmniBarcode Studio",
@@ -229,7 +244,12 @@
     "faq_3_q": "Comment fonctionne le code de la carte de santé / vitale ?",
     "faq_3_a": "Il s'appuie sur la symbologie Code 39 codant directement l'identifiant fiscal ou sanitaire de l'assuré.",
     "faq_4_q": "Qu'est-ce que la Quiet Zone ?",
-    "faq_4_a": "C'est la marge blanche de sécurité requise de part et d'autre pour délimiter le code."
+    "faq_4_a": "C'est la marge blanche de sécurité requise de part et d'autre pour délimiter le code.",
+    "symbology_gs1_128": "GS1-128 / EAN-128 (Palettes & Logistique AI)",
+    "symbology_itf14": "GS1 ITF-14 (Cartons & Emballages GS1)",
+    "bearer_bars_label": "Cadre Porteur GS1 Bearer Bars",
+    "preset_gs1_128": "GS1-128 Palettes",
+    "preset_itf14": "GS1 ITF-14 Cartons"
   },
   "de": {
     "title": "OmniBarcode Studio",
@@ -287,7 +307,12 @@
     "faq_3_q": "Wie funktioniert der Barcode auf Gesundheitskarten?",
     "faq_3_a": "Er nutzt Code 39 zur Kodierung der Steuernummer bzw. Versichertennummer.",
     "faq_4_q": "Was ist die Quiet Zone?",
-    "faq_4_a": "Der freie Rand links und rechts, der für die Erkennung von Start- und Stoppzeichen unerlässlich ist."
+    "faq_4_a": "Der freie Rand links und rechts, der für die Erkennung von Start- und Stoppzeichen unerlässlich ist.",
+    "symbology_gs1_128": "GS1-128 / EAN-128 (Paletten & Logistik AI)",
+    "symbology_itf14": "GS1 ITF-14 (Kartons & Umverpackungen)",
+    "bearer_bars_label": "GS1 Bearer Bars Schutzrahmen",
+    "preset_gs1_128": "GS1-128 Paletten",
+    "preset_itf14": "GS1 ITF-14 Kartons"
   },
   "pt": {
     "title": "OmniBarcode Studio",
@@ -345,6 +370,11 @@
     "faq_3_q": "Como funciona o código do Cartão de Saúde?",
     "faq_3_a": "Usa Code 39 codificando diretamente o número de identificação fiscal ou de utente.",
     "faq_4_q": "O que é a Quiet Zone?",
-    "faq_4_a": "É a margem livre de ambos os lados necessária para que o leitor reconheça os limites do código."
+    "faq_4_a": "É a margem livre de ambos os lados necessária para que o leitor reconheça os limites do código.",
+    "symbology_gs1_128": "GS1-128 / EAN-128 (Paletes & Logística AI)",
+    "symbology_itf14": "GS1 ITF-14 (Caixas & Embalagens GS1)",
+    "bearer_bars_label": "Moldura Portante GS1 Bearer Bars",
+    "preset_gs1_128": "GS1-128 Paletes",
+    "preset_itf14": "GS1 ITF-14 Caixas"
   }
 }

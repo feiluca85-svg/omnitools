@@ -94,7 +94,7 @@
         }
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
     <!-- Top Navigation Header -->
     <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
@@ -174,28 +174,31 @@
                         ✕
                     </button>
                 </div>
+            </div>
 
-                <!-- DIVISION SEGMENTED PICKER: Child-Proof, Authentic Division Logos & Brand Colors -->
-                <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 pt-3.5">
+            <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (Proposta 1) -->
+            <div class="pt-2 sm:pt-3 max-w-2xl sm:max-w-3xl mx-auto w-full">
+                <div class="grid grid-cols-3 gap-1.5 sm:gap-3 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
-                    <!-- Tab: Tutti (OmniTools Blue) -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/20 font-bold text-xs sm:text-sm transition-all duration-150">
-                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-white/30">
+                    <!-- Tab 1: Tutti i Tool -->
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-white/30">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                                 <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
                                 <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
                             </svg>
                         </div>
-                        <div class="text-left leading-tight">
-                            <span id="filterAllText" class="block">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-normal hidden sm:block">7 Strumenti</span>
+                        <div class="text-center sm:text-left leading-tight">
+                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (7)</span>
+                            <span id="filterAllText" class="hidden sm:block font-black">Tutti i Tool</span>
+                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">7 Strumenti</span>
                         </div>
                     </button>
 
-                    <!-- Tab: OmniBuilding (Ocra) -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-amber-50/50 text-slate-700 hover:text-amber-800 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150">
-                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-amber-300/40">
+                    <!-- Tab 2: OmniBuilding -->
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-amber-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
                                 <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -203,15 +206,16 @@
                                 <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
                             </svg>
                         </div>
-                        <div class="text-left leading-tight">
-                            <span class="block">OmniBuilding</span>
-                            <span class="subtext text-[10px] text-amber-700/80 font-normal hidden sm:block">3 Cantiere & Impianti</span>
+                        <div class="text-center sm:text-left leading-tight">
+                            <span class="sm:hidden font-black text-[11px] block text-current">Building (3)</span>
+                            <span class="hidden sm:block font-black">OmniBuilding</span>
+                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">3 Cantiere & Impianti</span>
                         </div>
                     </button>
 
-                    <!-- Tab: OmniGraph (Bordeaux) -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-rose-50/50 text-slate-700 hover:text-rose-900 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150">
-                        <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-rose-300/40">
+                    <!-- Tab 3: OmniGraph -->
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-rose-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
                                 <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
@@ -220,9 +224,10 @@
                                 <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
                             </svg>
                         </div>
-                        <div class="text-left leading-tight">
-                            <span class="block">OmniGraph</span>
-                            <span class="subtext text-[10px] text-rose-800/80 font-normal hidden sm:block">4 Grafica & Stampa</span>
+                        <div class="text-center sm:text-left leading-tight">
+                            <span class="sm:hidden font-black text-[11px] block text-current">Graph (4)</span>
+                            <span class="hidden sm:block font-black">OmniGraph</span>
+                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">4 Grafica & Stampa</span>
                         </div>
                     </button>
 
@@ -820,6 +825,13 @@
             if (t.tool_tinta_cta) document.getElementById('toolTintaCta').textContent = t.tool_tinta_cta;
             if (t.tool_tinta_badge) document.getElementById('toolTintaBadge').textContent = t.tool_tinta_badge;
 
+            // Tool 7: Barcode
+            if (t.tool_barcode_title) document.getElementById('toolBarcodeTitle').textContent = t.tool_barcode_title;
+            if (t.tool_barcode_hook) document.getElementById('toolBarcodeHook').textContent = t.tool_barcode_hook;
+            if (t.tool_barcode_desc) document.getElementById('toolBarcodeDesc').textContent = t.tool_barcode_desc;
+            if (t.tool_barcode_cta) document.getElementById('toolBarcodeCta').textContent = t.tool_barcode_cta;
+            if (t.tool_barcode_badge) document.getElementById('toolBarcodeBadge').textContent = t.tool_barcode_badge;
+
             // Share & Footer
             if (t.share_title) document.getElementById('shareTitleText').textContent = t.share_title;
             if (t.share_sub) document.getElementById('shareSubText').textContent = t.share_sub;
@@ -831,40 +843,61 @@
             if (t.legal_disclaimer) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
         }
 
-        // Filter / Search Management
-        function setFilter(filter) {
+        // Filter / Search Management (Tabbed Hub - Proposta 1)
+        function setFilter(filter, updateHash = true) {
             currentFilter = filter;
+            if (updateHash) {
+                if (filter === 'all') {
+                    history.replaceState(null, null, window.location.pathname + window.location.search);
+                } else {
+                    history.replaceState(null, null, '#' + filter);
+                }
+            }
+
             const btnAll = document.getElementById('filterAllBtn');
             const btnBuilding = document.getElementById('filterBuildingBtn');
             const btnGraph = document.getElementById('filterGraphBtn');
 
             // Reset base classes
-            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 font-bold text-xs sm:text-sm transition-all duration-150";
+            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer";
 
             btnAll.className = filter === 'all' 
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/20 font-bold text-xs sm:text-sm transition-all duration-150"
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
             btnBuilding.className = filter === 'building'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/25 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-150"
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
             btnGraph.className = filter === 'graph'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/25 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-150"
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
             // Adjust subtext colors
             const subAll = btnAll.querySelector('.subtext');
-            if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-normal hidden sm:block" : "subtext text-[10px] text-slate-500 font-normal hidden sm:block";
+            if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
 
             const subB = btnBuilding.querySelector('.subtext');
-            if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-normal hidden sm:block" : "subtext text-[10px] text-amber-700/80 font-normal hidden sm:block";
+            if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
 
             const subG = btnGraph.querySelector('.subtext');
-            if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-normal hidden sm:block" : "subtext text-[10px] text-rose-800/80 font-normal hidden sm:block";
+            if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
 
             filterTools();
         }
+
+        function initFilterFromHash() {
+            const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+            if (hash === 'building' || hash === 'graph' || hash === 'all') {
+                setFilter(hash, false);
+            } else {
+                setFilter('all', false);
+            }
+        }
+
+        window.addEventListener('hashchange', () => {
+            initFilterFromHash();
+        });
 
         function filterTools() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -1012,7 +1045,7 @@
         // Init
         document.addEventListener('DOMContentLoaded', () => {
             applyTranslations();
-            filterTools();
+            initFilterFromHash();
         });
     </script>
 </body>
