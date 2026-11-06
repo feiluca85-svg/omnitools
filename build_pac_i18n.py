@@ -161,7 +161,12 @@ html_content = f"""<!DOCTYPE html>
             <div class="lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4 card-box">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-700 block pb-2 border-b border-slate-100 flex items-center justify-between">
                     <span class="flex items-center gap-1.5"><span>⚙️</span> Parametri del Piano di Accumulo</span>
-                    <button type="button" onclick="resetDefaults()" class="text-[11px] font-semibold text-emerald-700 hover:underline">Reimposta</button>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="copyShareLink()" id="btnShare" title="Copia link con i parametri attuali" class="text-[11px] font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-2 py-0.5 rounded-lg border border-emerald-200 transition flex items-center gap-1 cursor-pointer">
+                            <span>🔗</span> <span id="btnShareText">Condividi</span>
+                        </button>
+                        <button type="button" onclick="resetDefaults()" class="text-[11px] font-semibold text-slate-500 hover:text-slate-800">Reimposta</button>
+                    </div>
                 </span>
 
                 <!-- Capitale Iniziale -->
@@ -611,6 +616,8 @@ html_content = f"""<!DOCTYPE html>
             }}
 
             svg.innerHTML = svgContent;
+
+            updateUrlParams();
         }}
 
         // Print date
@@ -618,7 +625,65 @@ html_content = f"""<!DOCTYPE html>
         if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
 
         // Initial Run
+        initFromUrl();
         calculateCompound();
+
+        function updateUrlParams() {{
+            try {{
+                const params = new URLSearchParams();
+                if (currentCurrency !== 'EUR') params.set('curr', currentCurrency);
+                const initial = document.getElementById('inputInitial').value;
+                if (initial && initial !== '5000') params.set('initial', initial);
+                const monthly = document.getElementById('inputMonthly').value;
+                if (monthly && monthly !== '250') params.set('monthly', monthly);
+                const years = document.getElementById('inputYears').value;
+                if (years && years !== '20') params.set('years', years);
+                const ret = document.getElementById('inputReturn').value;
+                if (ret && ret !== '7.00') params.set('return', ret);
+
+                const query = params.toString();
+                const newUrl = query ? (window.location.pathname + '?' + query) : window.location.pathname;
+                window.history.replaceState({{}}, '', newUrl);
+            }} catch(e) {{}}
+        }}
+
+        function initFromUrl() {{
+            try {{
+                const params = new URLSearchParams(window.location.search);
+                if (params.has('curr')) setCurrency(params.get('curr'));
+                if (params.has('initial')) setInitial(parseFloat(params.get('initial')));
+                if (params.has('monthly')) setMonthly(parseFloat(params.get('monthly')));
+                if (params.has('years')) setYears(parseInt(params.get('years')));
+                if (params.has('return')) setReturn(parseFloat(params.get('return')));
+            }} catch(e) {{}}
+        }}
+
+        function copyShareLink() {{
+            updateUrlParams();
+            const url = window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {{
+                navigator.clipboard.writeText(url).then(() => {{
+                    showCopiedFeedback();
+                }}).catch(() => {{
+                    fallbackCopy(url);
+                }});
+            }} else {{
+                fallbackCopy(url);
+            }}
+        }}
+
+        function showCopiedFeedback() {{
+            const btnText = document.getElementById('btnShareText');
+            if (btnText) {{
+                const orig = btnText.textContent;
+                btnText.textContent = 'Copiato!';
+                setTimeout(() => {{ btnText.textContent = orig; }}, 2000);
+            }}
+        }}
+
+        function fallbackCopy(text) {{
+            prompt('Copia questo link con la tua proiezione PAC:', text);
+        }}
     </script>
 </body>
 </html>
