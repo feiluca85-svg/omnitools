@@ -340,25 +340,25 @@ html_code = f"""<!DOCTYPE html>
                     </a>
 
                     <!-- TOOL 2: ScalaFacile -->
-                    <a href="/scale" class="tool-card group relative bg-white hover:bg-indigo-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-indigo-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
+                    <a href="/scale" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 text-white flex items-center justify-center shadow-md shadow-indigo-500/25 p-2">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
                                     <!-- Blueprint Stairs SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M 5 25 H 12 V 18 H 19 V 11 H 27" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="12" y1="25" x2="12" y2="18" stroke="#a5b4fc" stroke-width="2" stroke-dasharray="1.5 1.5" />
-                                        <line x1="19" y1="18" x2="19" y2="11" stroke="#a5b4fc" stroke-width="2" stroke-dasharray="1.5 1.5" />
+                                        <line x1="12" y1="25" x2="12" y2="18" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
+                                        <line x1="19" y1="18" x2="19" y2="11" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Blondel</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Blondel</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolScaleTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-indigo-600 transition">ScalaFacile</h3>
-                                <div id="toolScaleHook" class="text-xs font-bold text-indigo-700 mt-0.5">Quanti gradini servono?</div>
+                                <h3 id="toolScaleTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">ScalaFacile</h3>
+                                <div id="toolScaleHook" class="text-xs font-bold text-amber-700 mt-0.5">Quanti gradini servono?</div>
                             </div>
 
                             <!-- Plain Description -->
@@ -376,7 +376,7 @@ html_code = f"""<!DOCTYPE html>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-indigo-50 group-hover:bg-indigo-600 text-indigo-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
                                 <span id="toolScaleCta">Progetta Scala Ora</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
@@ -384,25 +384,25 @@ html_code = f"""<!DOCTYPE html>
                     </a>
 
                     <!-- TOOL 3: ScaricoFacile -->
-                    <a href="/tubi" class="tool-card group relative bg-white hover:bg-cyan-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-cyan-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
+                    <a href="/tubi" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-600 to-blue-700 text-white flex items-center justify-center shadow-md shadow-cyan-600/25 p-2">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
                                     <!-- Blueprint Pipe Flow SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <line x1="5" y1="11" x2="27" y2="21" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" />
-                                        <path d="M 12 14.5 C 15 16, 17 17, 20 18.5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
-                                        <circle cx="21" cy="22" r="2" fill="#38bdf8" />
+                                        <path d="M 12 14.5 C 15 16, 17 17, 20 18.5" stroke="#fde047" stroke-width="2" stroke-linecap="round" />
+                                        <circle cx="21" cy="22" r="2" fill="#fde047" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700 border border-cyan-200">UNI EN 12056</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">UNI EN 12056</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolTubiTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-cyan-600 transition">ScaricoFacile</h3>
-                                <div id="toolTubiHook" class="text-xs font-bold text-cyan-700 mt-0.5">L'acqua scorre o si intasa?</div>
+                                <h3 id="toolTubiTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">ScaricoFacile</h3>
+                                <div id="toolTubiHook" class="text-xs font-bold text-amber-700 mt-0.5">L'acqua scorre o si intasa?</div>
                             </div>
 
                             <!-- Plain Description -->
@@ -420,7 +420,7 @@ html_code = f"""<!DOCTYPE html>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-cyan-50 group-hover:bg-cyan-600 text-cyan-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
                                 <span id="toolTubiCta">Calcola Pendenza Tubo</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
@@ -508,28 +508,28 @@ html_code = f"""<!DOCTYPE html>
                     </a>
 
                     <!-- TOOL 5: RisoluzioneFacile -->
-                    <a href="/dpi" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
+                    <a href="/dpi" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white flex items-center justify-center shadow-md shadow-emerald-600/25 p-2">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <!-- Blueprint DPI Grid SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <circle cx="14" cy="14" r="9" stroke="#ffffff" stroke-width="2.5" />
                                         <line x1="20.5" y1="20.5" x2="27" y2="27" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
-                                        <rect x="10" y="10" width="3" height="3" fill="#6ee7b7" />
-                                        <rect x="15" y="10" width="3" height="3" fill="#6ee7b7" />
-                                        <rect x="10" y="15" width="3" height="3" fill="#6ee7b7" />
-                                        <rect x="15" y="15" width="3" height="3" fill="#6ee7b7" />
+                                        <rect x="10" y="10" width="3" height="3" fill="#fda4af" />
+                                        <rect x="15" y="10" width="3" height="3" fill="#fda4af" />
+                                        <rect x="10" y="15" width="3" height="3" fill="#fda4af" />
+                                        <rect x="15" y="15" width="3" height="3" fill="#fda4af" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Pixel & Acuità</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200">Pixel & Acuità</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolDpiTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">RisoluzioneFacile</h3>
-                                <div id="toolDpiHook" class="text-xs font-bold text-emerald-700 mt-0.5">Verrà sgranato in stampa?</div>
+                                <h3 id="toolDpiTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">RisoluzioneFacile</h3>
+                                <div id="toolDpiHook" class="text-xs font-bold text-rose-800 mt-0.5">Verrà sgranato in stampa?</div>
                             </div>
 
                             <!-- Plain Description -->
@@ -547,7 +547,7 @@ html_code = f"""<!DOCTYPE html>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-600 text-emerald-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
                                 <span id="toolDpiCta">Verifica Risoluzione</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
@@ -607,29 +607,29 @@ html_code = f"""<!DOCTYPE html>
                     </a>
 
                     <!-- TOOL 7: OmniBarcode Studio -->
-                    <a href="/barcode" class="tool-card group relative bg-white hover:bg-indigo-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-indigo-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
+                    <a href="/barcode" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white flex items-center justify-center shadow-md shadow-indigo-950/25 p-2">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#0f172a" />
+                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#4c0519" />
                                         <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
                                         <line x1="11" y1="10" x2="11" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
                                         <line x1="14" y1="10" x2="14" y2="22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
                                         <line x1="18" y1="10" x2="18" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
                                         <line x1="21" y1="10" x2="21" y2="22" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
                                         <line x1="24" y1="10" x2="24" y2="22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-                                        <line x1="5" y1="16" x2="27" y2="16" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" />
+                                        <line x1="5" y1="16" x2="27" y2="16" stroke="#fda4af" stroke-width="1.6" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolBarcodeTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-indigo-600 transition">OmniBarcode</h3>
-                                <div id="toolBarcodeHook" class="text-xs font-bold text-indigo-700 mt-0.5">Il codice passerà alla cassa?</div>
+                                <h3 id="toolBarcodeTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">OmniBarcode</h3>
+                                <div id="toolBarcodeHook" class="text-xs font-bold text-rose-800 mt-0.5">Il codice passerà alla cassa?</div>
                             </div>
 
                             <!-- Plain Description -->
@@ -647,7 +647,7 @@ html_code = f"""<!DOCTYPE html>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-indigo-50 group-hover:bg-indigo-600 text-indigo-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
                                 <span id="toolBarcodeCta">Genera Codice a Barre</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
@@ -699,26 +699,26 @@ html_code = f"""<!DOCTYPE html>
                     </a>
 
                     <!-- TOOL 9: ResaCarta -->
-                    <a href="/resa" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
+                    <a href="/resa" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-600 to-amber-800 text-white flex items-center justify-center shadow-md shadow-amber-700/25 p-2">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <rect x="4" y="4" width="24" height="24" rx="3" fill="#78350f" stroke="#fbbf24" stroke-width="1.5" />
-                                        <rect x="7" y="7" width="8" height="6" rx="1" fill="#f59e0b" />
-                                        <rect x="17" y="7" width="8" height="6" rx="1" fill="#f59e0b" />
-                                        <rect x="7" y="15" width="8" height="6" rx="1" fill="#f59e0b" />
-                                        <rect x="17" y="15" width="8" height="6" rx="1" fill="#f59e0b" />
+                                        <rect x="4" y="4" width="24" height="24" rx="3" fill="#4c0519" stroke="#fda4af" stroke-width="1.5" />
+                                        <rect x="7" y="7" width="8" height="6" rx="1" fill="#f43f5e" />
+                                        <rect x="17" y="7" width="8" height="6" rx="1" fill="#f43f5e" />
+                                        <rect x="7" y="15" width="8" height="6" rx="1" fill="#f43f5e" />
+                                        <rect x="17" y="15" width="8" height="6" rx="1" fill="#f43f5e" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200" id="toolResaBadge">Nesting & Taglio</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolResaBadge">Nesting & Taglio</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolResaTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-700 transition">ResaCarta</h3>
-                                <div id="toolResaHook" class="text-xs font-bold text-amber-800 mt-0.5">Quante pose entrano nel foglio macchina?</div>
+                                <h3 id="toolResaTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">ResaCarta</h3>
+                                <div id="toolResaHook" class="text-xs font-bold text-rose-800 mt-0.5">Quante pose entrano nel foglio macchina?</div>
                             </div>
 
                             <!-- Plain Description -->
@@ -736,7 +736,7 @@ html_code = f"""<!DOCTYPE html>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-600 text-amber-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
                                 <span id="toolResaCta">Calcola Resa Fogli</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
