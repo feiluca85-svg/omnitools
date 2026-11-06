@@ -5,6 +5,9 @@
     { "source": "/scarichi", "destination": "/tubi" },
     { "source": "/fognatura", "destination": "/tubi" },
     { "source": "/barcodes", "destination": "/barcode" },
-    { "source": "/codiceabarre", "destination": "/barcode" }
+    { "source": "/codiceabarre", "destination": "/barcode" },
+    { "source": "/cmyk", "destination": "/copertura" },
+    { "source": "/inchiostro", "destination": "/copertura" },
+    { "source": "/ink", "destination": "/copertura" }
   ]
 }

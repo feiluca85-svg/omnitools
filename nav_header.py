@@ -77,6 +77,17 @@ TOOLS = [
         "url": "/barcode",
         "badge": "GS1 / TS",
         "color": "indigo"
+    },
+    {
+        "id": "copertura",
+        "category": "OmniGraph",
+        "category_label": "Grafica & Prestampa",
+        "name": "CoperturaFacile",
+        "desc": "Copertura Inchiostro CMYK & Costi",
+        "emoji": "🖨️",
+        "url": "/copertura",
+        "badge": "CMYK / TAC",
+        "color": "rose"
     }
 ]
 
