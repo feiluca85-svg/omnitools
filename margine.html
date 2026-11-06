@@ -32,7 +32,7 @@
         .print-only { display: none; }
     </style>
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,6 +47,56 @@
         "price": "0",
         "priceCurrency": "EUR"
       }
+    }
+    </script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual è la differenza sostanziale tra margine di profitto e ricarico (markup)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il margine di profitto esprime la percentuale di utile calcolata sul prezzo di vendita finale (non può mai superare il 100%). Il ricarico (markup) indica invece di quale percentuale viene aumentato il costo di acquisto o produzione (COGS) per arrivare al prezzo di vendita (può superare abbondantemente il 100% o 500%)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa include esattamente il costo del venduto (COGS)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il COGS (Cost of Goods Sold) comprende esclusivamente i costi diretti imputabili al singolo bene o servizio venduto: prezzo di acquisto dal fornitore, imballaggio primario, spese di trasporto/doganali inbound e manodopera diretta di lavorazione. Non include costi fissi generali o marketing indiretto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Perché il margine di profitto non può mai raggiungere o superare il 100%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Poiché il margine è il rapporto tra utile e prezzo di vendita [Margine = (Utile / Prezzo) × 100], per raggiungere il 100% il costo del prodotto dovrebbe essere zero assoluto. Superare il 100% è matematicamente impossibile a meno che il costo non sia negativo. Il ricarico invece non ha alcun limite superiore teorico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si calcola lo scorporo dell'IVA dal prezzo lordo al consumatore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per scorporare l'IVA da un prezzo lordo finale al dettaglio si applica la formula: Prezzo Netto = Prezzo Lordo / (1 + Aliquota IVA/100). Ad esempio, per un'IVA al 22%, si divide il prezzo lordo per 1,22. L'IVA non costituisce ricavo per l'azienda ma un debito verso l'Erario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali sono i margini di profitto medi di riferimento per settore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nel retail e grande distribuzione alimentare i margini netti sono compressi (2%-5%), mentre i margini lordi si attestano sul 20%-30%. Nell'e-commerce e moda i margini lordi medi variano tra il 50% e il 70%. Nei software B2B e servizi SaaS il margine lordo supera frequentemente l'80%."
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -532,6 +582,76 @@
                 <strong>Regola pratica veloce:</strong> Un ricarico del <span class="font-bold text-blue-700" id="txtExpMarkup">53.8%</span> su un prodotto genera un margine effettivo del <span class="font-bold text-emerald-700">35.0%</span>.
             </p>
         </div>
+
+        <!-- FAQ Section (Frequently Asked Questions) -->
+        <section class="mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
+            <div class="space-y-1">
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-800">Guida & Domande Frequenti</span>
+                <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Tutto sul Calcolo dei Margini, Prezzo di Vendita e Ricarico</h2>
+            </div>
+
+            <div class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150" open>
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è la differenza sostanziale tra margine di profitto e ricarico (markup)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La differenza fondamentale risiede nella base imponibile del calcolo. Il <strong>margine di profitto lordo</strong> (Margin) misura la percentuale di utile rispetto al ricavo totale (prezzo di vendita finale): non può mai eccedere il 100%. Il <strong>ricarico</strong> (Markup) misura invece l'incremento percentuale applicato sopra il costo del prodotto: un ricarico del 100% raddoppia il prezzo e corrisponde a un margine del 50%.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cosa include esattamente il costo del venduto (COGS)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il <strong>COGS</strong> (Cost of Goods Sold) raggruppa tutti i costi direttamente imputabili alla fabbricazione o all'acquisizione del prodotto finito: prezzo netto d'acquisto da fornitore o terzista, materie prime, manodopera diretta, packaging primario e oneri di spedizione o dogana sostenuti per l'approvvigionamento. Non comprende spese generali, affitti aziendali o costi promozionali indiretti.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Perché il margine di profitto non può mai superare il 100%?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Per definizione matematica, l'utile lordo è dato da <code>Prezzo di Vendita - Costo</code>. Dividendo l'utile per il prezzo di vendita, si ottiene un rapporto che raggiungerebbe il 100% solo se il costo fosse pari a zero. Superare il 100% significherebbe che il fornitore ti paga per ricevere il prodotto. Se desideri moltiplicare il costo per 3 o 4 volte, devi impostare un <em>ricarico (markup)</em> del 200% o 300%, non un margine.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come funziona lo scorporo dell'IVA dal prezzo al consumo?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        L'IVA (Imposta sul Valore Aggiunto) o Sales Tax è un'imposta di consumo riscossa dall'esercente per conto dello Stato. Per scorporare l'IVA da un prezzo lordo si divide per il coefficiente <code>1 + (Aliquota/100)</code>. Per esempio con IVA ordinaria italiana al 22%, un prodotto venduto a 122 € ha un imponibile netto di <code>122 / 1.22 = 100 €</code>. È su quest'ultimo imponibile netto che devono essere calcolati margine e markup.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Quali sono i margini lordi medi nei diversi settori commerciali?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        I benchmark variano ampiamente: nella <strong>grande distribuzione e commercio alimentare</strong> i margini lordi oscillano tipicamente tra il 20% e il 30% a fronte di volumi enormi. Nel <strong>settore retail moda ed e-commerce</strong> il margine lordo ideale si situa tra il 50% e il 65% (ricarichi da 2x a 3x). Nei settori del <strong>software SaaS, consulenza e beni digitali</strong> i margini lordi superano stabilmente l'80%-90%.
+                    </div>
+                </details>
+            </div>
+        </section>
 
     </main>
 

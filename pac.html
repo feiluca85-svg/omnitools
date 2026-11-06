@@ -32,7 +32,7 @@
         .print-only { display: none; }
     </style>
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,6 +47,56 @@
         "price": "0",
         "priceCurrency": "EUR"
       }
+    }
+    </script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è l'interesse composto e come funziona l'effetto valanga?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'interesse composto è il processo per cui gli interessi maturati su un capitale vengono reinvestiti, iniziando a generare a loro volta nuovi interessi nei periodi successivi. Nel lungo periodo questo meccanismo trasforma la crescita da lineare a esponenziale (effetto valanga)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual è il vantaggio di un PAC (Piano di Accumulo del Capitale) rispetto a un versamento unico?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il PAC si basa sulla strategia del Dollar Cost Averaging (DCA): investendo una somma costante a intervalli regolari (es. ogni mese), si acquistano più quote quando i mercati scendono e meno quote quando salgono, mediando il prezzo di carico ed eliminando lo stress del timing di mercato."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è la regola del 4% (Trinity Study) per la rendita da capitale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La regola del 4% deriva dallo studio accademico dell'Università Trinity (Texas). Dimostra che, con un portafoglio bilanciato tra azioni e obbligazioni, è storicamente possibile prelevare il 4% del capitale il primo anno (adeguandolo poi all'inflazione) con una probabilità superiore al 95% di preservare il capitale per oltre 30 anni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come vengono tassate le plusvalenze e i rendimenti finanziari in Italia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Italia le plusvalenze derivanti da ETF azionari, azioni e fondi sono soggette all'imposta sostitutiva del 26%. Per i titoli di Stato italiani o della white list l'aliquota agevolata è del 12,5%. Inoltre sui dossier titoli grava l'imposta di bollo proporzionale dello 0,20% annuo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo occorre affinché l'interesse composto mostri la sua vera forza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'effetto esponenziale dell'interesse composto richiede tempo: nei primi 5-7 anni la crescita è dominata dai versamenti effettivi effettuati. Dopo i 10-15 anni, la quota degli interessi reinvestiti supera i versamenti annuali, accelerando vertiginosamente la crescita del patrimonio."
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -505,6 +555,76 @@
                 I risultati visualizzati sono puramente teorici, didattici ed estimativi. <strong>Non costituiscono in alcun modo consulenza finanziaria, raccomandazione d'investimento personalizzata o offerta di servizi finanziari</strong> ai sensi del D.Lgs. 58/1998 (TUF) e del regolamento intermediari Consob. I rendimenti passati dei mercati finanziari non sono garanzia di rendimenti futuri. Il simulatore assume un rendimento costante annuo non volatile; nella realtà i mercati azionari e obbligazionari subiscono fluttuazioni, drawdown e perdite di capitale. La simulazione non tiene conto di imposte sulle plusvalenze (capital gain al 26% o 12,5% sui titoli di stato), imposta di bollo sul dossier titoli (0,20% annuo), costi di gestione degli strumenti (TER/ETF) o impatto dell'inflazione sul potere d'acquisto reale.
             </p>
         </div>
+
+        <!-- FAQ Section (Frequenty Asked Questions) -->
+        <section class="mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
+            <div class="space-y-1">
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-800">Guida & Domande Frequenti</span>
+                <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Tutto quello che devi sapere su Interesse Composto e PAC</h2>
+            </div>
+
+            <div class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150" open>
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cos'è l'interesse composto e come funziona l'effetto valanga?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        A differenza dell'interesse semplice (in cui il rendimento viene calcolato unicamente sulla quota originaria depositata), con l'<strong>interesse composto</strong> i guadagni generati da ciascun periodo vengono automaticamente ri-sommati al capitale iniziale. Nei periodi successivi, tali interessi producono a loro volta altri interessi: si innesca così il cosiddetto <em>effetto valanga esponenziale</em>, descritto da Albert Einstein come la "forza più potente dell'universo".
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è il vantaggio di un PAC (Piano di Accumulo) rispetto al versamento unico (PIC)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il PAC sfrutta la celebre metodologia del <strong>Dollar-Cost Averaging (DCA)</strong>. Investire una somma fissa e costante ogni mese abbatte il rischio di <em>market timing</em> (ovvero la paura di investire al picco massimo di mercato): quando i corsi azionari calano, la rata mensile compra un numero maggiore di quote a sconto; quando salgono compra meno quote, mediando efficacemente il prezzo medio di carico nel tempo con disciplina psicologica.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cos'è la regola del 4% (Trinity Study) per la rendita da capitale?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La <strong>Regola del 4%</strong> (Safe Withdrawal Rate - SWR) è il pilastro del movimento FIRE (Financial Independence, Retire Early), derivata da un rigoroso studio scientifico condotto dall'Università Trinity (Texas). Dimostra che, con un portafoglio diversificato tra azioni globali e obbligazioni, prelevando il 4% del capitale accumulato durante il primo anno di pensione anticipata (e adeguando il prelievo all'inflazione gli anni successivi), il capitale ha una probabilità superiore al <strong>95% di non estinguersi</strong> nell'arco di un orizzonte trentennale.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come vengono tassate le plusvalenze e i rendimenti finanziari in Italia?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        In Italia il capital gain (plusvalenza da vendita di azioni, ETF o dividendi) è assoggettato a un'imposta sostitutiva ordinaria del <strong>26%</strong>. Fanno eccezione i Titoli di Stato italiani e i titoli sovranazionali inseriti nella "White List", che godono dell'aliquota agevolata del <strong>12,50%</strong>. Inoltre, su base annua, grava sui patrimoni investiti l'imposta di bollo proporzionale dello <strong>0,20%</strong> sul controvalore del dossier titoli (art. 19 D.L. 201/2011).
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Quanto tempo occorre affinché l'interesse composto mostri la sua vera forza?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La variabile fondamentale dell'equazione dell'interesse composto è l'<strong>esponente tempo</strong> (gli anni di investimento). Nei primi 5-8 anni, oltre l'80% del valore del conto è costituito semplicemente dai risparmi versati di tasca propria. Tra il decimo e il ventesimo anno si verifica il sorpasso: i guadagni generati dagli interessi reinvestiti superano il valore totale dei versamenti mensili, provocando una vera e propria impennata parabolica del conto.
+                    </div>
+                </details>
+            </div>
+        </section>
 
     </main>
 

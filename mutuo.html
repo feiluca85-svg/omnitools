@@ -32,7 +32,7 @@
         .print-only { display: none; }
     </style>
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,6 +47,56 @@
         "price": "0",
         "priceCurrency": "EUR"
       }
+    }
+    </script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Come funziona l'ammortamento progressivo alla francese?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'ammortamento alla francese prevede una rata periodica costante per tutta la durata del mutuo. Ogni rata è suddivisa in quota interessi (sul debito residuo) e quota capitale. All'inizio del piano prevale la quota interessi; col tempo la quota capitale aumenta e gli interessi si riducono progressivamente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è la regola del 33% (rapporto rata/reddito) utilizzata dalle banche?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "È il parametro prudenziale cardine valutato dagli istituti bancari. Di norma, la rata mensile complessiva del mutuo non dovrebbe superare il 30%-35% del reddito netto mensile dei richiedenti, garantendo la disponibilità per le spese ordinarie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual è la differenza fondamentale tra TAN e TAEG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il TAN misura il tasso di interesse puro applicato al prestito. Il TAEG esprime il costo totale effettivo del mutuo, includendo per legge tutte le spese accessorie: imposta sostitutiva, istruttoria, perizia, assicurazione incendio/scoppio obbligatoria e incasso rata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Conviene scegliere un mutuo a tasso fisso o a tasso variabile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il tasso fisso blocca la rata per l'intera durata offrendo certezza assoluta di bilancio. Il tasso variabile oscilla secondo l'Euribor: può offrire tassi di ingresso più bassi, ma espone al rischio di futuri rialzi della rata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'estinzione anticipata o la surroga del mutuo comportano penali?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. In virtù della Legge Bersani (Legge 40/2007), per i mutui prima casa non sono ammesse penali di estinzione anticipata. La surroga consente inoltre di trasferire il mutuo verso una nuova banca a costo zero."
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -512,7 +562,7 @@
         </div>
 
         <!-- Technical Legal Disclaimer Box (TUF / D.Lgs. 58/1998) -->
-        <div class="p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5">
+        <div class="p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5 card-box">
             <div class="flex items-center gap-1.5 font-bold text-slate-800">
                 <span>⚖️</span>
                 <span>Nota Tecnica & Disclaimer Legale (OmniFinance):</span>
@@ -525,6 +575,83 @@
                 I risultati hanno scopo puramente informativo ed educativo e <strong>non costituiscono proposta contrattuale, preventivo vincolante né sollecitazione al credito</strong>. Il calcolo non include spese accessorie quali: imposta sostitutiva di legge (0,25% prima casa, 2% seconda casa), costi di perizia tecnica e istruttoria bancaria, polizze incendio e scoppio obbligatorie o opzionali (CPI), commissioni di incasso rata o oscillazioni dei tassi variabili (Euribor). Rivolgersi sempre all'istituto di credito per il prospetto informativo europeo standardizzato (PIES).
             </p>
         </div>
+
+        <!-- FAQ Section -->
+        <section class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xs space-y-4 no-print card-box">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+                        ❓
+                    </div>
+                    <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                        <span>Domande Frequenti su Rata Mutuo & Ammortamento</span>
+                    </h2>
+                </div>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div class="space-y-2.5">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150" open>
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Come funziona l'ammortamento progressivo alla francese?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        L'ammortamento alla francese è il piano più diffuso in Italia ed Europa. Prevede una <strong>rata periodica costante</strong> per tutta la durata del finanziamento. Ogni rata è suddivisa in <em>quota interessi</em> (calcolata sul debito residuo) e <em>quota capitale</em>. Nei primi anni, poiché il debito residuo è elevato, la rata è composta prevalentemente da interessi; col passare del tempo il capitale viene via via rimborsato, riducendo gli interessi e aumentando progressivamente la quota di capitale restituita ogni mese.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Cos'è la regola bancaria del 33% (rapporto rata/reddito)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        È il parametro prudenziale cardine (Debt-to-Income / DTI) utilizzato dagli istituti bancari per valutare il merito creditizio. Di norma, l'importo della rata mensile non deve superare un terzo (<strong>30% - 35%</strong>) del reddito netto mensile complessivo dei richiedenti (al netto di altri prestiti personali o finanziamenti auto già in essere), garantendo una soglia minima di sussistenza per le spese correnti e imprevisti.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Qual è la differenza tra TAN e TAEG nel calcolo del mutuo?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il <strong>TAN</strong> (Tasso Annuo Nominale) misura il tasso di interesse puro applicato al prestito. Il <strong>TAEG</strong> (Tasso Annuo Effettivo Globale) è invece l'indicatore reale del costo complessivo del finanziamento: include obbligatoriamente per legge tutte le spese accessorie, tra cui imposta sostitutiva statale, spese di istruttoria, perizia dell'immobile, polizza assicurativa incendio e scoppio obbligatoria e spese di incasso rata. È il TAEG il valore da confrontare tra diverse banche.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>Conviene scegliere un mutuo a tasso fisso o a tasso variabile?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Il <strong>tasso fisso</strong> (Eurirs + spread) blocca la rata per l'intera durata, offrendo certezza assoluta e protezione contro i rincari dell'inflazione e del costo del denaro. Il <strong>tasso variabile</strong> (Euribor + spread) varia periodicamente in base all'andamento dei mercati interbancari: può offrire condizioni di ingresso più convenienti o ribassi nei periodi di politica monetaria espansiva, ma espone al rischio di rialzi imprevedibili della rata mensile.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span>L'estinzione anticipata o la surroga del mutuo comportano penali?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        <strong>No.</strong> In virtù della Legge Bersani (D.L. 7/2007, Legge 40/2007), per i mutui stipulati da persone fisiche per l'acquisto o ristrutturazione della prima casa è <em>vietata qualsiasi penale o costo di estinzione anticipata</em> (sia parziale che totale). Inoltre, con la portabilità o surroga gratuita, è possibile trasferire il debito residuo a un nuovo istituto di credito a costo zero (spese di atto notarile e perizia a carico della nuova banca subentrante).
+                    </div>
+                </details>
+            </div>
+        </section>
 
     </main>
 
