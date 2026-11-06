@@ -273,13 +273,19 @@ html_code = f"""<!DOCTYPE html>
             <!-- Inputs Grid -->
             <div class="no-print grid grid-cols-1 sm:grid-cols-2 gap-5">
                 
-                <!-- Input: Pipe Length (L) -->
+                <!-- Input: Pipe Length (L) with Unit Switcher -->
                 <div class="space-y-2">
                     <div class="flex justify-between items-center">
                         <label class="text-xs font-bold text-slate-700 uppercase tracking-wider" id="lblPipeLength">Lunghezza Tratta Tubo (L)</label>
-                        <div class="flex items-center gap-1">
-                            <input type="number" id="numLength" min="0.5" max="100" step="0.1" value="4.0" class="w-20 px-2 py-1 text-right font-mono font-bold text-sm bg-slate-50 border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:border-blue-600">
-                            <span class="text-xs font-bold text-slate-500">m</span>
+                        <div class="flex items-center gap-2">
+                            <div class="inline-flex p-0.5 bg-slate-100 rounded-lg border border-slate-200 gap-0.5 text-[10px] font-bold">
+                                <button type="button" id="unitLenM" onclick="setTubiLengthUnit('m')" class="px-1.5 py-0.5 rounded bg-white text-blue-700 font-extrabold shadow-2xs">m</button>
+                                <button type="button" id="unitLenCm" onclick="setTubiLengthUnit('cm')" class="px-1.5 py-0.5 rounded text-slate-600 hover:text-slate-900">cm</button>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <input type="number" id="numLength" min="0.5" max="100" step="0.1" value="4.0" class="w-20 px-2 py-1 text-right font-mono font-bold text-sm bg-slate-50 border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:border-blue-600">
+                                <span id="lengthUnitBadge" class="text-xs font-bold text-slate-500">m</span>
+                            </div>
                         </div>
                     </div>
                     <input type="range" id="rngLength" min="0.5" max="30" step="0.1" value="4.0" class="w-full accent-blue-600 cursor-pointer">

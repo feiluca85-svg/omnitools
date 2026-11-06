@@ -355,15 +355,25 @@ html_code = f"""<!DOCTYPE html>
                             <input type="number" id="copiesCount" value="1000" min="1" step="50" oninput="calculateCosts()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 font-mono focus:ring-2 focus:ring-rose-500 focus:outline-none">
                         </div>
 
-                        <!-- Custom Dimensions (hidden by default) -->
-                        <div id="customDimBox" class="sm:col-span-2 hidden grid grid-cols-2 gap-3 p-3 bg-rose-50/50 rounded-xl border border-rose-200">
-                            <div>
-                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Larghezza Foglio (mm)</label>
-                                <input type="number" id="customWidth" value="210" min="10" max="3000" oninput="calculateCosts()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold font-mono">
+                        <!-- Custom Dimensions (hidden by default) with Unit Switcher -->
+                        <div id="customDimBox" class="sm:col-span-2 hidden p-3 bg-rose-50/50 rounded-xl border border-rose-200 space-y-2">
+                            <div class="flex items-center justify-between pb-1 border-b border-rose-200/60">
+                                <span class="text-[11px] font-bold text-rose-900 uppercase tracking-wide">Dimensioni Personalizzate</span>
+                                <div class="inline-flex p-0.5 bg-white rounded-lg border border-rose-200 gap-1 text-[10px] font-bold">
+                                    <button type="button" id="copUnitMm" onclick="setCopUnit('mm')" class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-extrabold">mm</button>
+                                    <button type="button" id="copUnitCm" onclick="setCopUnit('cm')" class="px-2 py-0.5 rounded text-slate-600 hover:text-slate-900">cm</button>
+                                    <button type="button" id="copUnitIn" onclick="setCopUnit('in')" class="px-2 py-0.5 rounded text-slate-600 hover:text-slate-900">in</button>
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Altezza Foglio (mm)</label>
-                                <input type="number" id="customHeight" value="297" min="10" max="3000" oninput="calculateCosts()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold font-mono">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Larghezza Foglio (<span class="copUnitBadge">mm</span>)</label>
+                                    <input type="number" id="customWidth" value="210" min="1" max="3000" oninput="calculateCosts()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold font-mono">
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Altezza Foglio (<span class="copUnitBadge">mm</span>)</label>
+                                    <input type="number" id="customHeight" value="297" min="1" max="3000" oninput="calculateCosts()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-bold font-mono">
+                                </div>
                             </div>
                         </div>
 
@@ -653,8 +663,48 @@ html_code = f"""<!DOCTYPE html>
 {header_js}
 {footer_js}
 
-        // Global State
+        // Global State & Units
         let currentImage = null;
+        let copUnit = 'mm';
+
+        function setCopUnit(u) {{
+            if (u === copUnit) return;
+            const prev = copUnit;
+            copUnit = u;
+
+            ['mm', 'cm', 'in'].forEach(unit => {{
+                const btn = document.getElementById('copUnit' + unit.charAt(0).toUpperCase() + unit.slice(1));
+                if (btn) {{
+                    if (unit === u) {{
+                        btn.className = 'px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-extrabold';
+                    }} else {{
+                        btn.className = 'px-2 py-0.5 rounded text-slate-600 hover:text-slate-900';
+                    }}
+                }}
+            }});
+
+            document.querySelectorAll('.copUnitBadge').forEach(el => el.textContent = u);
+
+            const convertVal = (val, from, to) => {{
+                let mm = val;
+                if (from === 'cm') mm = val * 10;
+                else if (from === 'in') mm = val * 25.4;
+
+                if (to === 'cm') return parseFloat((mm / 10).toFixed(2));
+                if (to === 'in') return parseFloat((mm / 25.4).toFixed(3));
+                return Math.round(mm);
+            }};
+
+            ['customWidth', 'customHeight'].forEach(id => {{
+                const el = document.getElementById(id);
+                if (el && el.value) {{
+                    const parsed = parseFloat(el.value);
+                    if (!isNaN(parsed)) el.value = convertVal(parsed, prev, u);
+                }}
+            }});
+
+            calculateCosts();
+        }}
         let cmykData = {{ c: 0, m: 0, y: 0, k: 0, tacAvg: 0, tacPeak: 0 }};
         let pixelMap = null;
         let isHeatmapActive = false;
@@ -1034,8 +1084,10 @@ html_code = f"""<!DOCTYPE html>
             let sheetAreaM2 = PAPER_AREAS[format] || PAPER_AREAS['a4'];
 
             if (format === 'custom') {{
-                const wMm = parseFloat(document.getElementById('customWidth').value) || 210;
-                const hMm = parseFloat(document.getElementById('customHeight').value) || 297;
+                let wMm = parseFloat(document.getElementById('customWidth').value) || 210;
+                let hMm = parseFloat(document.getElementById('customHeight').value) || 297;
+                if (copUnit === 'cm') {{ wMm *= 10; hMm *= 10; }}
+                else if (copUnit === 'in') {{ wMm *= 25.4; hMm *= 25.4; }}
                 sheetAreaM2 = (wMm / 1000) * (hMm / 1000);
             }}
 

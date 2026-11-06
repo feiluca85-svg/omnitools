@@ -222,9 +222,12 @@ html_code = f"""<!DOCTYPE html>
                         <span class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
                             <span>📐</span> Formati & Dimensioni
                         </span>
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
-                            mm millimetri
-                        </span>
+                        <!-- Unit Switcher -->
+                        <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-[11px] font-bold">
+                            <button type="button" id="unitMm" onclick="setUnit('mm')" class="px-2 py-0.5 rounded-lg bg-white text-amber-800 shadow-xs font-extrabold transition active:scale-95 text-center">mm</button>
+                            <button type="button" id="unitCm" onclick="setUnit('cm')" class="px-2 py-0.5 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">cm</button>
+                            <button type="button" id="unitIn" onclick="setUnit('in')" class="px-2 py-0.5 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">in</button>
+                        </div>
                     </div>
 
                     <!-- Sheet Format Selector -->
@@ -244,11 +247,11 @@ html_code = f"""<!DOCTYPE html>
                     <!-- Custom Sheet Dimensions -->
                     <div id="sheetCustomBox" class="grid grid-cols-2 gap-2.5">
                         <div>
-                            <label id="lblSheetW" class="block text-[11px] font-bold text-slate-600 mb-0.5">Base Foglio (mm)</label>
+                            <label id="lblSheetW" class="block text-[11px] font-bold text-slate-600 mb-0.5">Base Foglio (<span class="unitBadge">mm</span>)</label>
                             <input type="number" id="sheetW" value="320" min="50" max="3000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
                         </div>
                         <div>
-                            <label id="lblSheetH" class="block text-[11px] font-bold text-slate-600 mb-0.5">Altezza Foglio (mm)</label>
+                            <label id="lblSheetH" class="block text-[11px] font-bold text-slate-600 mb-0.5">Altezza Foglio (<span class="unitBadge">mm</span>)</label>
                             <input type="number" id="sheetH" value="450" min="50" max="3000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
                         </div>
                     </div>
@@ -270,11 +273,11 @@ html_code = f"""<!DOCTYPE html>
                     <!-- Custom Cut Dimensions -->
                     <div id="cutCustomBox" class="grid grid-cols-2 gap-2.5">
                         <div>
-                            <label id="lblCutW" class="block text-[11px] font-bold text-slate-600 mb-0.5">Base Prodotto (mm)</label>
+                            <label id="lblCutW" class="block text-[11px] font-bold text-slate-600 mb-0.5">Base Prodotto (<span class="unitBadge">mm</span>)</label>
                             <input type="number" id="cutW" value="85" min="10" max="2000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
                         </div>
                         <div>
-                            <label id="lblCutH" class="block text-[11px] font-bold text-slate-600 mb-0.5">Altezza Prodotto (mm)</label>
+                            <label id="lblCutH" class="block text-[11px] font-bold text-slate-600 mb-0.5">Altezza Prodotto (<span class="unitBadge">mm</span>)</label>
                             <input type="number" id="cutH" value="55" min="10" max="2000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
                         </div>
                     </div>
@@ -288,11 +291,11 @@ html_code = f"""<!DOCTYPE html>
 
                     <div class="grid grid-cols-2 gap-2.5">
                         <div>
-                            <label id="lblGripper" class="block text-[11px] font-bold text-slate-600 mb-0.5">Pinza Macchina (mm)</label>
+                            <label id="lblGripper" class="block text-[11px] font-bold text-slate-600 mb-0.5">Pinza Macchina (<span class="unitBadge">mm</span>)</label>
                             <input type="number" id="gripperMargin" value="10" min="0" max="50" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
                         </div>
                         <div>
-                            <label id="lblBleed" class="block text-[11px] font-bold text-slate-600 mb-0.5">Refilo / Spazio Pose (mm)</label>
+                            <label id="lblBleed" class="block text-[11px] font-bold text-slate-600 mb-0.5">Refilo / Spazio Pose (<span class="unitBadge">mm</span>)</label>
                             <input type="number" id="cutBleed" value="2" min="0" max="20" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
                         </div>
                     </div>
@@ -466,8 +469,51 @@ html_code = f"""<!DOCTYPE html>
 {header_js}
 {footer_js}
 
-        // Global Imposition State
+        // Global Imposition State & Units
         let currentCalculation = null;
+        let currentUnit = 'mm';
+
+        function setUnit(u) {{
+            if (u === currentUnit) return;
+            const prevUnit = currentUnit;
+            currentUnit = u;
+
+            ['mm', 'cm', 'in'].forEach(unit => {{
+                const btn = document.getElementById('unit' + unit.charAt(0).toUpperCase() + unit.slice(1));
+                if (btn) {{
+                    if (unit === u) {{
+                        btn.className = 'px-2 py-0.5 rounded-lg bg-white text-amber-800 shadow-xs font-extrabold transition active:scale-95 text-center';
+                    }} else {{
+                        btn.className = 'px-2 py-0.5 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold';
+                    }}
+                }}
+            }});
+
+            document.querySelectorAll('.unitBadge').forEach(el => el.textContent = u);
+
+            const convertVal = (val, from, to) => {{
+                let mm = val;
+                if (from === 'cm') mm = val * 10;
+                else if (from === 'in') mm = val * 25.4;
+
+                if (to === 'cm') return parseFloat((mm / 10).toFixed(2));
+                if (to === 'in') return parseFloat((mm / 25.4).toFixed(3));
+                return Math.round(mm);
+            }};
+
+            const fields = ['sheetW', 'sheetH', 'cutW', 'cutH', 'gripperMargin', 'cutBleed'];
+            fields.forEach(id => {{
+                const el = document.getElementById(id);
+                if (el && el.value) {{
+                    const parsed = parseFloat(el.value);
+                    if (!isNaN(parsed)) {{
+                        el.value = convertVal(parsed, prevUnit, u);
+                    }}
+                }}
+            }});
+
+            calculateYield();
+        }}
 
         document.addEventListener('DOMContentLoaded', function() {{
             initLanguage();
@@ -489,7 +535,9 @@ html_code = f"""<!DOCTYPE html>
         function applySheetPreset() {{
             const val = document.getElementById('sheetPreset').value;
             if (val !== 'custom') {{
-                const [w, h] = val.split('x').map(Number);
+                let [w, h] = val.split('x').map(Number);
+                if (currentUnit === 'cm') {{ w = (w/10).toFixed(1); h = (h/10).toFixed(1); }}
+                else if (currentUnit === 'in') {{ w = (w/25.4).toFixed(2); h = (h/25.4).toFixed(2); }}
                 document.getElementById('sheetW').value = w;
                 document.getElementById('sheetH').value = h;
             }}
@@ -499,7 +547,9 @@ html_code = f"""<!DOCTYPE html>
         function applyCutPreset() {{
             const val = document.getElementById('cutPreset').value;
             if (val !== 'custom') {{
-                const [w, h] = val.split('x').map(Number);
+                let [w, h] = val.split('x').map(Number);
+                if (currentUnit === 'cm') {{ w = (w/10).toFixed(1); h = (h/10).toFixed(1); }}
+                else if (currentUnit === 'in') {{ w = (w/25.4).toFixed(2); h = (h/25.4).toFixed(2); }}
                 document.getElementById('cutW').value = w;
                 document.getElementById('cutH').value = h;
             }}
@@ -508,12 +558,18 @@ html_code = f"""<!DOCTYPE html>
 
         // Main Cutting Imposition Algorithm
         function calculateYield() {{
-            const sheetW = parseFloat(document.getElementById('sheetW').value) || 320;
-            const sheetH = parseFloat(document.getElementById('sheetH').value) || 450;
-            const cutW = parseFloat(document.getElementById('cutW').value) || 85;
-            const cutH = parseFloat(document.getElementById('cutH').value) || 55;
-            const gripper = parseFloat(document.getElementById('gripperMargin').value) || 0;
-            const bleed = parseFloat(document.getElementById('cutBleed').value) || 0;
+            const toMm = (val) => {{
+                if (currentUnit === 'cm') return val * 10;
+                if (currentUnit === 'in') return val * 25.4;
+                return val;
+            }};
+
+            const sheetW = toMm(parseFloat(document.getElementById('sheetW').value) || 320);
+            const sheetH = toMm(parseFloat(document.getElementById('sheetH').value) || 450);
+            const cutW = toMm(parseFloat(document.getElementById('cutW').value) || 85);
+            const cutH = toMm(parseFloat(document.getElementById('cutH').value) || 55);
+            const gripper = toMm(parseFloat(document.getElementById('gripperMargin').value) || 0);
+            const bleed = toMm(parseFloat(document.getElementById('cutBleed').value) || 0);
             const grain = document.getElementById('grainDirection').value || 'long';
             const targetCopies = parseInt(document.getElementById('targetCopies').value) || 1000;
             const weightGsm = parseFloat(document.getElementById('paperWeight').value) || 350;
