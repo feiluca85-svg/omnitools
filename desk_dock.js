@@ -86,10 +86,12 @@
     // ==========================================
     // 0. COMPACT RETRACTABLE DOCK (Discreet Edge Tab)
     // ==========================================
+    // On smartphone (screens < 768px), do not show floating tabs that interfere with thumb scrolling!
+    // Visible ONLY on desktop/tablet (hidden md:flex).
     const dockContainer = document.createElement('div');
     dockContainer.id = 'omnidesk-dock';
     dockContainer.setAttribute('aria-label', 'OmniDesk Quick Utilities');
-    dockContainer.className = 'fixed right-0 top-1/2 -translate-y-1/2 z-[9990] flex items-center print:hidden';
+    dockContainer.className = 'hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-[9990] items-center print:hidden';
     dockContainer.innerHTML = `
         <!-- Collapsible Tray Panel -->
         <div id="omnidesk-dock-panel" class="hidden flex-col items-center bg-slate-900/95 backdrop-blur-md p-1.5 rounded-l-2xl border-y border-l border-slate-700/80 shadow-2xl mr-0">
