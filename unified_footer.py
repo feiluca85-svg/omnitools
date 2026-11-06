@@ -431,6 +431,17 @@ def render_unified_footer_js():
             const banner = document.getElementById('installBanner');
             if (banner) banner.classList.add('hidden');
         }
+
+        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock)
+        (function() {
+            if (!document.getElementById('omnidesk-script')) {
+                const s = document.createElement('script');
+                s.id = 'omnidesk-script';
+                s.src = '/desk_dock.js';
+                s.defer = true;
+                document.body.appendChild(s);
+            }
+        })();
 """
 
 if __name__ == "__main__":

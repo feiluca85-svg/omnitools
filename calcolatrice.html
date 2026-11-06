@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>OmniCalc — Calcolatrice Rapida da Scrivania & Cantiere | OmniTools Lab</title>
+    <meta name="description" content="OmniCalc: calcolatrice scientifica e rapida da banco per calcoli immediati, percentuali, scorporo e verifiche al volo. Installabile come app PWA offline.">
+    
+    <link rel="canonical" href="https://www.omnitoolslab.com/calcolatrice">
+    <meta name="robots" content="index, follow">
+    <link rel="manifest" href="manifest-calc.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 px-4 py-3">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center font-black shadow-md shadow-blue-500/20 group-hover:scale-105 transition">
+                    🔢
+                </div>
+                <div>
+                    <span class="text-base font-extrabold text-white tracking-tight">OmniCalc</span>
+                    <span class="text-[10px] font-mono text-blue-400 bg-blue-950 px-2 py-0.5 rounded-full border border-blue-800 ml-1.5 font-bold">Rapida da Banco</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-2">
+                <button onclick="triggerPwaInstall()" id="installBtn" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-xs transition active:scale-95">
+                    📲 Installa Calcolatrice
+                </button>
+                <a href="/" class="text-xs font-bold text-slate-400 hover:text-white transition px-2 py-1">Torna all'Hub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-4xl mx-auto w-full px-4 py-8 flex-1 flex flex-col items-center justify-center">
+        
+        <div class="w-full max-w-sm sm:max-w-md bg-slate-900 rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-8">
+            <!-- Screen Display -->
+            <div class="bg-slate-950 rounded-2xl p-5 border border-slate-800/80 mb-6 flex flex-col items-end shadow-inner">
+                <span id="pageCalcHistory" class="text-xs font-mono text-slate-500 h-5 overflow-hidden"></span>
+                <span id="pageCalcDisplay" class="text-4xl sm:text-5xl font-black font-mono tracking-tight text-white select-all">0</span>
+            </div>
+
+            <!-- Numpad Grid -->
+            <div class="grid grid-cols-4 gap-2.5 text-base font-mono font-bold">
+                <button onclick="pressKey('C')" class="p-3.5 rounded-2xl bg-slate-800/80 hover:bg-slate-700 text-rose-400 active:scale-95 transition">C</button>
+                <button onclick="pressKey('±')" class="p-3.5 rounded-2xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 active:scale-95 transition">±</button>
+                <button onclick="pressKey('%')" class="p-3.5 rounded-2xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 active:scale-95 transition">%</button>
+                <button onclick="pressKey('/')" class="p-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-white active:scale-95 transition">÷</button>
+
+                <button onclick="pressKey('7')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">7</button>
+                <button onclick="pressKey('8')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">8</button>
+                <button onclick="pressKey('9')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">9</button>
+                <button onclick="pressKey('*')" class="p-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-white active:scale-95 transition">×</button>
+
+                <button onclick="pressKey('4')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">4</button>
+                <button onclick="pressKey('5')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">5</button>
+                <button onclick="pressKey('6')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">6</button>
+                <button onclick="pressKey('-')" class="p-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-white active:scale-95 transition">−</button>
+
+                <button onclick="pressKey('1')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">1</button>
+                <button onclick="pressKey('2')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">2</button>
+                <button onclick="pressKey('3')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">3</button>
+                <button onclick="pressKey('+')" class="p-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-white active:scale-95 transition">+</button>
+
+                <button onclick="pressKey('0')" class="col-span-2 p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white text-left pl-6 active:scale-95 transition">0</button>
+                <button onclick="pressKey('.')" class="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white active:scale-95 transition">.</button>
+                <button onclick="pressKey('=')" class="p-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-black text-xl active:scale-95 transition shadow-lg shadow-blue-600/30">=</button>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-xs text-slate-500 max-w-sm">
+            Supporta la tastiera del computer: usa il tastierino numerico, Invio per calcolare, Esc per azzerare.
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 OmniTools Lab • Sempre a portata di clic con la barra laterale</p>
+    </footer>
+
+    <script src="desk_dock.js"></script>
+    <script>
+        let current = '0';
+        let prev = null;
+        let op = null;
+        let resetNext = false;
+
+        function updateScreen() {
+            document.getElementById('pageCalcDisplay').textContent = current;
+            const h = document.getElementById('pageCalcHistory');
+            h.textContent = prev !== null && op ? `${prev} ${op}` : '';
+        }
+
+        function pressKey(k) {
+            if (['0','1','2','3','4','5','6','7','8','9','.'].includes(k)) {
+                if (resetNext) {
+                    current = k === '.' ? '0.' : k;
+                    resetNext = false;
+                } else {
+                    if (k === '.' && current.includes('.')) return;
+                    current = (current === '0' && k !== '.') ? k : current + k;
+                }
+            } else if (k === 'C') {
+                current = '0';
+                prev = null;
+                op = null;
+                resetNext = false;
+            } else if (k === '±') {
+                current = (parseFloat(current) * -1).toString();
+            } else if (k === '%') {
+                current = (parseFloat(current) / 100).toString();
+            } else if (['+', '-', '*', '/'].includes(k)) {
+                if (prev !== null && op) pressKey('=');
+                prev = parseFloat(current);
+                op = k;
+                resetNext = true;
+            } else if (k === '=') {
+                if (prev === null || !op) return;
+                const c = parseFloat(current);
+                let res = 0;
+                if (op === '+') res = prev + c;
+                if (op === '-') res = prev - c;
+                if (op === '*') res = prev * c;
+                if (op === '/') res = c === 0 ? 'Errore' : prev / c;
+                current = typeof res === 'number' ? (Math.round(res * 100000000) / 100000000).toString() : res;
+                prev = null;
+                op = null;
+                resetNext = true;
+            }
+            updateScreen();
+        }
+
+        // Keyboard listener
+        window.addEventListener('keydown', (e) => {
+            if ((e.key >= '0' && e.key <= '9') || e.key === '.') pressKey(e.key);
+            else if (e.key === '+') pressKey('+');
+            else if (e.key === '-') pressKey('-');
+            else if (e.key === '*') pressKey('*');
+            else if (e.key === '/') pressKey('/');
+            else if (e.key === 'Enter' || e.key === '=') { e.preventDefault(); pressKey('='); }
+            else if (e.key === 'Escape' || e.key.toLowerCase() === 'c') pressKey('C');
+            else if (e.key === '%') pressKey('%');
+        });
+
+        // PWA Install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const btn = document.getElementById('installBtn');
+            if (btn) btn.classList.remove('hidden');
+        });
+        function triggerPwaInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+            }
+        }
+    </script>
+</body>
+</html>

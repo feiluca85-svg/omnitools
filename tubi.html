@@ -1305,6 +1305,17 @@ document.addEventListener('keydown', function(e) {
             if (banner) banner.classList.add('hidden');
         }
 
+        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock)
+        (function() {
+            if (!document.getElementById('omnidesk-script')) {
+                const s = document.createElement('script');
+                s.id = 'omnidesk-script';
+                s.src = '/desk_dock.js';
+                s.defer = true;
+                document.body.appendChild(s);
+            }
+        })();
+
 
         let currentLang = 'it';
         let currentMode = 'bySlope'; // 'bySlope' or 'byDrop'

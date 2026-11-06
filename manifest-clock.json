@@ -1,0 +1,21 @@
+{
+  "name": "OmniClock — Orologio Vintage Pop Swatch",
+  "short_name": "OmniClock",
+  "start_url": "./orologio.html",
+  "display": "standalone",
+  "background_color": "#0d9488",
+  "theme_color": "#0d9488",
+  "description": "Orologio analogico da scrivania ispirato all'iconico Pop Swatch anni '90 con quadrante a pallini bianchi e ghiera bombata.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

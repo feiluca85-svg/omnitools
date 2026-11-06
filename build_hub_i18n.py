@@ -1013,6 +1013,19 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                     </div>
                 </div>
+
+                <!-- Desk Utilities Strip -->
+                <div class="pt-2 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                    <span class="font-bold text-slate-700 flex items-center gap-1.5">
+                        <span>⚡</span> <strong>OmniDesk — Utilità Rapide & Widget:</strong>
+                    </span>
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        <a href="/memo" class="px-2 py-0.5 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded-md border border-amber-200 font-bold transition">📝 OmniMemo (Post-it)</a>
+                        <a href="/calcolatrice" class="px-2 py-0.5 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-md border border-blue-200 font-bold transition">🔢 OmniCalc (Calcolatrice)</a>
+                        <a href="/orologio" class="px-2 py-0.5 bg-teal-50 hover:bg-teal-100 text-teal-800 rounded-md border border-teal-200 font-bold transition">⏱️ OmniClock (Pop Swatch)</a>
+                    </div>
+                </div>
+            </div>
             </div>
 
             <!-- Disclaimer and Rights -->
@@ -1412,6 +1425,11 @@ html_code = f"""<!DOCTYPE html>
         document.addEventListener('DOMContentLoaded', () => {{
             applyTranslations();
             initFilterFromHash();
+            // Load OmniDesk Dock
+            const deskScript = document.createElement('script');
+            deskScript.src = '/desk_dock.js';
+            deskScript.defer = true;
+            document.body.appendChild(deskScript);
         }});
     </script>
 </body>

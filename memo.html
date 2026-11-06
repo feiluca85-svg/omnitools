@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>OmniMemo — Blocco Note Post-it & Sticker Digitale da Scrivania | OmniTools Lab</title>
+    <meta name="description" content="OmniMemo: il tuo blocco note adesivo colorato (Post-it / Sticker) sempre a portata di mano. Salva note, misure e calcoli in locale senza registrazione. Installabile come app PWA.">
+    
+    <link rel="canonical" href="https://www.omnitoolslab.com/memo">
+    <meta name="robots" content="index, follow">
+    <link rel="manifest" href="manifest-memo.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .paper-grid {
+            background-size: 24px 24px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-amber-400 selection:text-black">
+
+    <!-- Top Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs px-4 py-3">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
+                    📝
+                </div>
+                <div>
+                    <span class="text-base font-extrabold text-slate-900 tracking-tight">OmniMemo</span>
+                    <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 ml-1.5 font-bold">Sticker & Post-it</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-2">
+                <button onclick="copyAllNotes()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 rounded-xl border border-slate-200 shadow-2xs transition active:scale-95">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <span id="copyBtnText">Copia Testo</span>
+                </button>
+                <button onclick="triggerPwaInstall()" id="installBtn" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-amber-900 bg-amber-300 hover:bg-amber-400 rounded-xl shadow-xs transition active:scale-95">
+                    📲 Installa App Desktop
+                </button>
+                <a href="/" class="text-xs font-bold text-slate-500 hover:text-slate-800 transition px-2 py-1">Torna all'Hub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-5xl mx-auto w-full px-4 py-8 flex-1">
+        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Il tuo Blocco Note da Cantiere & Scrivania</h1>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Nessuna registrazione, salvataggio istantaneo su questo browser. Puoi incollare misure, calcoli e checklist.</p>
+            </div>
+            <!-- Color Selector Palette -->
+            <div class="flex items-center gap-2 bg-white px-3 py-2 rounded-2xl border border-slate-200 shadow-xs">
+                <span class="text-xs font-bold text-slate-400 mr-1">Colore:</span>
+                <button onclick="setColor('yellow')" class="w-6 h-6 rounded-full bg-amber-200 border-2 border-amber-400 hover:scale-110 transition shadow-xs" title="Giallo Post-it"></button>
+                <button onclick="setColor('cyan')" class="w-6 h-6 rounded-full bg-cyan-200 border-2 border-cyan-400 hover:scale-110 transition shadow-xs" title="Azzurro Ciano"></button>
+                <button onclick="setColor('pink')" class="w-6 h-6 rounded-full bg-rose-200 border-2 border-rose-400 hover:scale-110 transition shadow-xs" title="Rosa Pastello"></button>
+                <button onclick="setColor('mint')" class="w-6 h-6 rounded-full bg-emerald-200 border-2 border-emerald-400 hover:scale-110 transition shadow-xs" title="Verde Menta"></button>
+                <button onclick="setColor('lavender')" class="w-6 h-6 rounded-full bg-purple-200 border-2 border-purple-400 hover:scale-110 transition shadow-xs" title="Lavanda"></button>
+            </div>
+        </div>
+
+        <!-- Sticky Note Canvas Card -->
+        <div id="stickyPad" class="relative rounded-3xl bg-amber-100 border-2 border-amber-300 shadow-xl overflow-hidden p-6 sm:p-8 paper-grid transition-all duration-300">
+            <!-- Top Sticker Pin / Tape Accent -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-white/60 backdrop-blur-xs border border-black/10 rotate-1 shadow-xs rounded-sm"></div>
+
+            <textarea id="mainNotes" placeholder="Inizia a digitare qui... 
+Es:
+- Quota rampa garage: 120 cm (pendenza max 20%)
+- Dorso catalogo 96 pag 130g: 4.8 mm
+- Preventivo cliente Rossi: 1.450 € + IVA" rows="14" class="w-full bg-transparent border-0 outline-none resize-y text-base sm:text-lg leading-relaxed font-sans placeholder-black/30 font-medium"></textarea>
+
+            <div class="mt-4 pt-4 border-t border-black/10 flex flex-col sm:flex-row sm:items-center justify-between text-xs opacity-75 font-mono gap-2">
+                <span id="saveStatus">Salvataggio automatico locale attivo ✓</span>
+                <div class="flex items-center gap-4">
+                    <span id="wordCount">0 parole | 0 caratteri</span>
+                    <button onclick="clearAll()" class="text-rose-700 hover:underline font-bold">Pulisci Pagina</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Tips Strip -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-500">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
+                <span class="font-bold text-slate-800 block mb-1">💡 Sempre Flottante</span>
+                <p>Mentre usi qualsiasi calcolatore del sito (rampe, dorso, mutui), clicca sull'icona delle note a destra per aprire il post-it flottante.</p>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
+                <span class="font-bold text-slate-800 block mb-1">🔒 100% Privacy</span>
+                <p>Niente server, niente cookie di tracciamento. Tutto rimane salvato esclusivamente nel tuo browser.</p>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
+                <span class="font-bold text-slate-800 block mb-1">📱 Funziona Offline</span>
+                <p>Installalo sul telefono o PC per usarlo anche in cantiere o in aereo senza connessione internet.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>© 2026 OmniTools Lab • Parte della suite di produttività e calcolo</p>
+    </footer>
+
+    <script src="desk_dock.js"></script>
+    <script>
+        const STORAGE_KEY = 'omnidesk_state_v1';
+        let deskState = { memo: { text: '', color: 'yellow' } };
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) deskState = Object.assign(deskState, JSON.parse(saved));
+        } catch(e) {}
+
+        const textarea = document.getElementById('mainNotes');
+        const pad = document.getElementById('stickyPad');
+        const status = document.getElementById('saveStatus');
+        const counter = document.getElementById('wordCount');
+
+        const COLOR_CLASSES = {
+            yellow: 'bg-amber-100 border-amber-300',
+            cyan: 'bg-cyan-100 border-cyan-300',
+            pink: 'bg-rose-100 border-rose-300',
+            mint: 'bg-emerald-100 border-emerald-300',
+            lavender: 'bg-purple-100 border-purple-300'
+        };
+
+        function updateCounter() {
+            const val = textarea.value;
+            const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+            counter.textContent = `${words} parole | ${val.length} caratteri`;
+        }
+
+        function setColor(c) {
+            deskState.memo.color = c;
+            pad.className = `relative rounded-3xl ${COLOR_CLASSES[c] || COLOR_CLASSES.yellow} shadow-xl overflow-hidden p-6 sm:p-8 paper-grid transition-all duration-300 border-2`;
+            save();
+            if (window.OmniDesk) window.OmniDesk.setMemoColor(c);
+        }
+
+        function save() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(deskState));
+                status.textContent = 'Salvataggio automatico locale attivo ✓';
+            } catch(e) {}
+        }
+
+        textarea.value = deskState.memo.text || '';
+        updateCounter();
+        setColor(deskState.memo.color || 'yellow');
+
+        textarea.addEventListener('input', () => {
+            deskState.memo.text = textarea.value;
+            updateCounter();
+            status.textContent = 'Modificato...';
+            save();
+            // sync with floating widget if open
+            const floatArea = document.getElementById('omnidesk-memo-area');
+            if (floatArea && floatArea.value !== textarea.value) floatArea.value = textarea.value;
+        });
+
+        function copyAllNotes() {
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                const btn = document.getElementById('copyBtnText');
+                const orig = btn.textContent;
+                btn.textContent = 'Copiato! ✓';
+                setTimeout(() => { btn.textContent = orig; }, 2000);
+            });
+        }
+
+        function clearAll() {
+            if (confirm('Vuoi davvero cancellare tutte le note?')) {
+                textarea.value = '';
+                deskState.memo.text = '';
+                updateCounter();
+                save();
+            }
+        }
+
+        // PWA Install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const btn = document.getElementById('installBtn');
+            if (btn) btn.classList.remove('hidden');
+        });
+        function triggerPwaInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+            }
+        }
+    </script>
+</body>
+</html>

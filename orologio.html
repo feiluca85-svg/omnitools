@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>OmniClock — Orologio Vintage Pop Swatch da Scrivania | OmniTools Lab</title>
+    <meta name="description" content="OmniClock: l'iconico orologio Pop Swatch con quadrante a pallini bianchi, ghiera bombata e movimento continuo. Installabile come app PWA e flottante su tutta la suite OmniTools.">
+    
+    <link rel="canonical" href="https://www.omnitoolslab.com/orologio">
+    <meta name="robots" content="index, follow">
+    <link rel="manifest" href="manifest-clock.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .pop-bezel {
+            box-shadow: inset 0 4px 8px rgba(255,255,255,0.4), 0 20px 50px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-black">
+
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 px-4 py-3">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center font-black shadow-md shadow-teal-500/20 group-hover:scale-105 transition">
+                    ⏱️
+                </div>
+                <div>
+                    <span class="text-base font-extrabold text-white tracking-tight">OmniClock</span>
+                    <span class="text-[10px] font-mono text-teal-400 bg-teal-950 px-2 py-0.5 rounded-full border border-teal-800 ml-1.5 font-bold">Pop Swatch Edition</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-2">
+                <button onclick="triggerPwaInstall()" id="installBtn" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-slate-950 bg-teal-400 hover:bg-teal-300 rounded-xl shadow-xs transition active:scale-95">
+                    📲 Installa Orologio
+                </button>
+                <a href="/" class="text-xs font-bold text-slate-400 hover:text-white transition px-2 py-1">Torna all'Hub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-5xl mx-auto w-full px-4 py-8 flex-1 flex flex-col items-center justify-center">
+        
+        <div class="text-center mb-6">
+            <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Pop Swatch Desk Clock</h1>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">Ispirato all'icona del design anni '90: 12 pallini bianchi, lancette con inserto luminoso e ghiera bombata.</p>
+        </div>
+
+        <!-- Pop Swatch Watch Case Display -->
+        <div class="relative flex flex-col items-center my-4">
+            
+            <!-- Pop Swatch Clip/Ring -->
+            <div class="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full bg-zinc-950 p-5 sm:p-7 border-8 border-zinc-800 pop-bezel flex items-center justify-center">
+                
+                <!-- Watch Crown / Top Clip Lug -->
+                <div class="absolute -top-6 w-14 h-5 rounded-t-lg bg-zinc-700 border-t-2 border-x-2 border-zinc-500 shadow-md"></div>
+                <div class="absolute -top-3 w-8 h-3 bg-amber-400 rounded-t-xs"></div>
+
+                <!-- Clock Dial Face -->
+                <div id="fullClockFace" class="relative w-full h-full rounded-full transition-colors duration-500 overflow-hidden shadow-inner flex items-center justify-center bg-[#0d9488]">
+                    
+                    <!-- 12 Hour Dots Container -->
+                    <div id="fullClockDots" class="absolute inset-0"></div>
+
+                    <!-- Center Logo Badge -->
+                    <div class="absolute flex flex-col items-center pointer-events-none z-10" style="top: 26%;">
+                        <div class="px-2.5 py-1 rounded-md border border-white/50 bg-black/25 backdrop-blur-xs flex items-center gap-1.5 shadow-sm">
+                            <span class="text-[11px] sm:text-xs font-black tracking-widest text-white uppercase font-sans">OMNI</span>
+                            <span class="text-[9px] sm:text-[10px] font-bold text-amber-300 font-mono">SWISS</span>
+                        </div>
+                    </div>
+
+                    <!-- SVG Hands -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 200 200">
+                        <!-- Hour Hand -->
+                        <g id="fullHourHand" transform="rotate(0 100 100)">
+                            <rect x="93" y="38" width="14" height="72" rx="7" fill="#1c1917" stroke="#000" stroke-width="2" />
+                            <rect x="96.5" y="44" width="7" height="28" rx="3.5" fill="#fef08a" />
+                        </g>
+                        <!-- Minute Hand -->
+                        <g id="fullMinHand" transform="rotate(0 100 100)">
+                            <rect x="94" y="16" width="12" height="96" rx="6" fill="#1c1917" stroke="#000" stroke-width="2" />
+                            <rect x="97" y="22" width="6" height="42" rx="3" fill="#fef08a" />
+                        </g>
+                        <!-- Second Hand -->
+                        <g id="fullSecHand" transform="rotate(0 100 100)">
+                            <line x1="100" y1="125" x2="100" y2="10" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" />
+                            <circle cx="100" cy="100" r="5" fill="#f8fafc" />
+                            <circle cx="100" cy="30" r="4" fill="#f8fafc" />
+                        </g>
+                        <!-- Center Pin -->
+                        <circle cx="100" cy="100" r="6" fill="#18181b" stroke="#ffffff" stroke-width="2.5" />
+                    </svg>
+
+                    <!-- Bottom Retro Dial Text -->
+                    <div class="absolute bottom-7 sm:bottom-9 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase text-white/80 pointer-events-none">
+                        POP QUARTZ
+                    </div>
+                </div>
+            </div>
+
+            <!-- Digital Time Readout -->
+            <div id="digitalTime" class="mt-6 font-mono text-xl sm:text-2xl font-bold text-slate-300 tracking-wider bg-slate-900 px-5 py-2 rounded-2xl border border-slate-800 shadow-md">
+                00:00:00
+            </div>
+        </div>
+
+        <!-- Color Selection Palette -->
+        <div class="mt-4 flex items-center gap-3 bg-slate-900 px-5 py-3 rounded-2xl border border-slate-800 shadow-md">
+            <span class="text-xs font-bold text-slate-400">Scegli Quadrante:</span>
+            <button onclick="setFaceColor('teal')" class="w-7 h-7 rounded-full bg-teal-600 border-2 border-white/80 hover:scale-110 transition shadow-xs" title="Vintage Teal (Originale)"></button>
+            <button onclick="setFaceColor('coral')" class="w-7 h-7 rounded-full bg-rose-600 border-2 border-white/80 hover:scale-110 transition shadow-xs" title="Pop Coral"></button>
+            <button onclick="setFaceColor('yellow')" class="w-7 h-7 rounded-full bg-amber-500 border-2 border-white/80 hover:scale-110 transition shadow-xs" title="Electric Yellow"></button>
+            <button onclick="setFaceColor('violet')" class="w-7 h-7 rounded-full bg-purple-600 border-2 border-white/80 hover:scale-110 transition shadow-xs" title="Ultra Violet"></button>
+            <button onclick="setFaceColor('stealth')" class="w-7 h-7 rounded-full bg-slate-800 border-2 border-white/80 hover:scale-110 transition shadow-xs" title="Dark Stealth"></button>
+        </div>
+
+        <div class="mt-8 text-center text-xs text-slate-500 max-w-md">
+            Puoi attivare l'orologio flottante da qualsiasi calcolatore del sito cliccando sul cerchietto nell'angolo in basso a destra.
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 OmniTools Lab • Design originale con omaggio all'estetica Pop Swatch 1990</p>
+    </footer>
+
+    <script src="desk_dock.js"></script>
+    <script>
+        const THEMES = {
+            teal: '#0d9488',
+            coral: '#f43f5e',
+            yellow: '#eab308',
+            violet: '#8b5cf6',
+            stealth: '#1e293b'
+        };
+
+        const dotsContainer = document.getElementById('fullClockDots');
+        for (let i = 1; i <= 12; i++) {
+            const angle = (i * 30) * (Math.PI / 180);
+            const radius = 40;
+            const x = 50 + radius * Math.sin(angle);
+            const y = 50 - radius * Math.cos(angle);
+            
+            const dot = document.createElement('div');
+            dot.className = 'absolute rounded-full bg-white shadow-xs';
+            dot.style.width = '10%';
+            dot.style.height = '10%';
+            dot.style.left = (x - 5) + '%';
+            dot.style.top = (y - 5) + '%';
+            dotsContainer.appendChild(dot);
+        }
+
+        const face = document.getElementById('fullClockFace');
+        const digital = document.getElementById('digitalTime');
+        const secHand = document.getElementById('fullSecHand');
+        const minHand = document.getElementById('fullMinHand');
+        const hourHand = document.getElementById('fullHourHand');
+
+        function setFaceColor(key) {
+            face.style.backgroundColor = THEMES[key] || THEMES.teal;
+            if (window.OmniDesk) window.OmniDesk.setClockTheme(key);
+        }
+
+        function tick() {
+            const now = new Date();
+            const ms = now.getMilliseconds();
+            const secs = now.getSeconds() + ms / 1000;
+            const mins = now.getMinutes() + secs / 60;
+            const hours = (now.getHours() % 12) + mins / 60;
+
+            const secDeg = secs * 6;
+            const minDeg = mins * 6;
+            const hourDeg = hours * 30;
+
+            secHand.setAttribute('transform', `rotate(${secDeg} 100 100)`);
+            minHand.setAttribute('transform', `rotate(${minDeg} 100 100)`);
+            hourHand.setAttribute('transform', `rotate(${hourDeg} 100 100)`);
+
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            const ss = String(now.getSeconds()).padStart(2, '0');
+            digital.textContent = `${hh}:${mm}:${ss}`;
+
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        // PWA Install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const btn = document.getElementById('installBtn');
+            if (btn) btn.classList.remove('hidden');
+        });
+        function triggerPwaInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+            }
+        }
+    </script>
+</body>
+</html>
