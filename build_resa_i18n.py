@@ -473,6 +473,46 @@ html_code = f"""<!DOCTYPE html>
         let currentCalculation = null;
         let currentUnit = 'mm';
 
+        const SHEET_PRESETS_DATA = [
+            {{ id: '700x1000', w: 700, h: 1000, name: '70 × 100 cm', sub: 'Standard Offset' }},
+            {{ id: '640x880', w: 640, h: 880, name: '64 × 88 cm', sub: 'Editoria Libri' }},
+            {{ id: '500x700', w: 500, h: 700, name: '50 × 70 cm', sub: 'Mezzo Foglio' }},
+            {{ id: '320x450', w: 320, h: 450, name: 'SRA3', sub: 'Digitale Pro' }},
+            {{ id: '330x487', w: 330, h: 487, name: 'SRA3+', sub: 'Digitale Xerox/Canon' }},
+            {{ id: '297x420', w: 297, h: 420, name: 'A3 Standard', sub: 'A3' }}
+        ];
+
+        const CUT_PRESETS_DATA = [
+            {{ id: '85x55', w: 85, h: 55, name: 'Biglietto da Visita' }},
+            {{ id: '105x148', w: 105, h: 148, name: 'Volantino A6' }},
+            {{ id: '148x210', w: 148, h: 210, name: 'Volantino A5' }},
+            {{ id: '210x297', w: 210, h: 297, name: 'Foglio / Scheda A4' }},
+            {{ id: '100x210', w: 100, h: 210, name: 'Pieghevole 1/3 A4' }},
+            {{ id: '100x150', w: 100, h: 150, name: 'Cartolina' }}
+        ];
+
+        function updateResaDropdowns() {{
+            const u = currentUnit;
+            const factor = (u === 'cm' ? 10.0 : (u === 'in' ? 25.4 : 1.0));
+            const dec = (u === 'mm' ? 0 : (u === 'in' ? 2 : 1));
+
+            const curSheet = document.getElementById('sheetPreset').value;
+            document.getElementById('sheetPreset').innerHTML = SHEET_PRESETS_DATA.map(s => {{
+                const dispW = (s.w / factor).toFixed(dec);
+                const dispH = (s.h / factor).toFixed(dec);
+                const sel = (s.id === curSheet) ? 'selected' : '';
+                return `<option value="${{s.id}}" ${{sel}}>${{s.name}} (${{dispW}} × ${{dispH}} ${{u}}) - ${{s.sub}}</option>`;
+            }}).join('') + `<option value="custom" ${{curSheet === 'custom' ? 'selected' : ''}}>Personalizzato...</option>`;
+
+            const curCut = document.getElementById('cutPreset').value;
+            document.getElementById('cutPreset').innerHTML = CUT_PRESETS_DATA.map(c => {{
+                const dispW = (c.w / factor).toFixed(dec);
+                const dispH = (c.h / factor).toFixed(dec);
+                const sel = (c.id === curCut) ? 'selected' : '';
+                return `<option value="${{c.id}}" ${{sel}}>${{c.name}} (${{dispW}} × ${{dispH}} ${{u}})</option>`;
+            }}).join('') + `<option value="custom" ${{curCut === 'custom' ? 'selected' : ''}}>Personalizzato...</option>`;
+        }}
+
         function setUnit(u) {{
             if (u === currentUnit) return;
             const prevUnit = currentUnit;
@@ -512,6 +552,7 @@ html_code = f"""<!DOCTYPE html>
                 }}
             }});
 
+            updateResaDropdowns();
             calculateYield();
         }}
 
@@ -715,7 +756,7 @@ html_code = f"""<!DOCTYPE html>
                 const gripH = p.gripper * scale;
                 svgContent += `
                     <rect x="${{pad}}" y="${{pad}}" width="${{w}}" height="${{gripH}}" fill="rgba(249, 115, 22, 0.15)" stroke="#f97316" stroke-dasharray="3 3" stroke-width="1.5"/>
-                    <text x="${{pad + (w / 2)}}" y="${{pad + (gripH / 2) + 3}}" fill="#fb923c" font-size="9" font-family="monospace" font-weight="bold" text-anchor="middle">ZONA PINZA MACCHINA (${{p.gripper}} mm)</text>
+                    <text x="${{pad + (w / 2)}}" y="${{pad + (gripH / 2) + 3}}" fill="#fb923c" font-size="9" font-family="monospace" font-weight="bold" text-anchor="middle">ZONA PINZA MACCHINA (${{document.getElementById('gripperMargin').value}} ${{currentUnit}})</text>
                 `;
             }}
 
