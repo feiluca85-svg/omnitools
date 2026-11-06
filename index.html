@@ -181,8 +181,8 @@
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
                     <!-- Tab 1: Tutti i Tool -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-white/30">
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-white/30">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                                 <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
@@ -190,15 +190,15 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (12)</span>
-                            <span id="filterAllText" class="hidden sm:block font-black">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">12 Strumenti</span>
+                            <span class="sm:hidden font-black text-xs block text-white">Tutti (12)</span>
+                            <span id="filterAllText" class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">Tutti i Tool</span>
+                            <span class="subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold hidden sm:block">12 Strumenti</span>
                         </div>
                     </button>
 
                     <!-- Tab 2: OmniBuilding -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-amber-300/40">
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-amber-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
                                 <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -207,15 +207,15 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-current">Building (3)</span>
-                            <span class="hidden sm:block font-black">OmniBuilding</span>
-                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">3 Cantiere & Impianti</span>
+                            <span class="sm:hidden font-black text-xs block text-current">Building (3)</span>
+                            <span class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">OmniBuilding</span>
+                            <span class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block">3 Cantiere & Impianti</span>
                         </div>
                     </button>
 
                     <!-- Tab 3: OmniGraph -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-rose-300/40">
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-rose-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
                                 <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
@@ -225,14 +225,15 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-current">Graph (6)</span>
-                            <span class="hidden sm:block font-black">OmniGraph</span>
-                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">6 Grafica & Stampa</span>
+                            <span class="sm:hidden font-black text-xs block text-current">Graph (6)</span>
+                            <span class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">OmniGraph</span>
+                            <span class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block">6 Grafica & Stampa</span>
                         </div>
                     </button>
+
                     <!-- Tab 4: OmniFinance -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-emerald-300/40">
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
                                 <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
@@ -241,9 +242,9 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-current">Finance (3)</span>
-                            <span class="hidden sm:block font-black">OmniFinance</span>
-                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">3 Finanza & Business</span>
+                            <span class="sm:hidden font-black text-xs block text-current">Finance (3)</span>
+                            <span class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">OmniFinance</span>
+                            <span class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block">3 Finanza & Business</span>
                         </div>
                     </button>
 
@@ -1151,14 +1152,18 @@
             if (t.legal_disclaimer) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
         }
 
-        // Filter / Search Management (Tabbed Hub - Proposta 1)
+                // Filter / Search Management (Tabbed Hub - Proposta 1)
         function setFilter(filter, updateHash = true) {
             currentFilter = filter;
             if (updateHash) {
-                if (filter === 'all') {
-                    history.replaceState(null, null, window.location.pathname + window.location.search);
-                } else {
-                    history.replaceState(null, null, '#' + filter);
+                try {
+                    if (filter === 'all') {
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    } else {
+                        history.replaceState(null, null, '#' + filter);
+                    }
+                } catch (e) {
+                    // Ignored on file:// or strict origins
                 }
             }
 
@@ -1167,41 +1172,39 @@
             const btnGraph = document.getElementById('filterGraphBtn');
             const btnFinance = document.getElementById('filterFinanceBtn');
 
-            // Reset base classes
-            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer";
+            // Base inactive classes (fixed dimensions, larger inner content)
+            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer";
 
-            if (btnAll) btnAll.className = filter === 'all' 
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
-                : baseInactive;
-
-            if (btnBuilding) btnBuilding.className = filter === 'building'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
-                : baseInactive;
-
-            if (btnGraph) btnGraph.className = filter === 'graph'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
-                : baseInactive;
-
-            if (btnFinance) btnFinance.className = filter === 'finance'
-                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
-                : baseInactive;
-
-            // Adjust subtext colors
             if (btnAll) {
+                btnAll.className = filter === 'all' 
+                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    : baseInactive;
                 const subAll = btnAll.querySelector('.subtext');
-                if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+                if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
             }
+
             if (btnBuilding) {
+                btnBuilding.className = filter === 'building'
+                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    : baseInactive;
                 const subB = btnBuilding.querySelector('.subtext');
-                if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+                if (subB) subB.className = filter === 'building' ? "subtext text-[10px] sm:text-[11px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
             }
+
             if (btnGraph) {
+                btnGraph.className = filter === 'graph'
+                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    : baseInactive;
                 const subG = btnGraph.querySelector('.subtext');
-                if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+                if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] sm:text-[11px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
             }
+
             if (btnFinance) {
+                btnFinance.className = filter === 'finance'
+                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    : baseInactive;
                 const subF = btnFinance.querySelector('.subtext');
-                if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] text-emerald-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+                if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] sm:text-[11px] text-emerald-100 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
             }
 
             filterTools();
@@ -1307,17 +1310,10 @@
             window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
         }
 
-        function shareReddit() {
+                function shareReddit() {
             const url = encodeURIComponent(window.location.href);
             const title = encodeURIComponent(document.title);
             window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
-        }
-
-        function shareReddit() {
-            const url = encodeURIComponent(window.location.href);
-            const title = encodeURIComponent(document.title);
-            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
-        }`, '_blank');
         }
         function copyCurrentUrl() {
             navigator.clipboard.writeText(window.location.href).then(() => {
