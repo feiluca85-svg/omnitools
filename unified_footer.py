@@ -63,11 +63,127 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
 
     default_legal = disclaimer_default if disclaimer_default else "OmniTools Network fornisce utility di precisione a scopo estimativo, didattico e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il parere vincolante di tecnici abilitati o consulenti finanziari abilitati (TUF / D.Lgs. 58/1998)."
 
+    # Smart Related Tools Matrix (Cross-linking for SEO & viral dwell-time)
+    related_map = {
+        # Building
+        "rampe": [
+            {"id": "scale", "title": "ScalaFacile", "desc": "Formula Blondel gradini", "badge": "Edilizia", "icon": "🪜", "url": "/scale", "color": "amber"},
+            {"id": "tubi", "title": "ScaricoFacile", "desc": "Pendenza tubi UNI EN", "badge": "Impianti", "icon": "🚰", "url": "/tubi", "color": "amber"},
+            {"id": "mutuo", "title": "MutuoFacile", "desc": "Rata mutuo casa & 33%", "badge": "Finanza", "icon": "🏦", "url": "/mutuo", "color": "emerald"},
+        ],
+        "scale": [
+            {"id": "rampe", "title": "RampaFacile", "desc": "Pendenza disabili DM 236", "badge": "Edilizia", "icon": "📐", "url": "/rampe", "color": "amber"},
+            {"id": "tubi", "title": "ScaricoFacile", "desc": "Pendenza scarichi", "badge": "Impianti", "icon": "🚰", "url": "/tubi", "color": "amber"},
+            {"id": "mutuo", "title": "MutuoFacile", "desc": "Preventivo rata mutuo", "badge": "Finanza", "icon": "🏦", "url": "/mutuo", "color": "emerald"},
+        ],
+        "tubi": [
+            {"id": "rampe", "title": "RampaFacile", "desc": "Pendenza cantiere % e °", "badge": "Edilizia", "icon": "📐", "url": "/rampe", "color": "amber"},
+            {"id": "scale", "title": "ScalaFacile", "desc": "Alzata e pedata scale", "badge": "Edilizia", "icon": "🪜", "url": "/scale", "color": "amber"},
+            {"id": "margine", "title": "MargineFacile", "desc": "Margine e ricarico prezzi", "badge": "Business", "icon": "🏷️", "url": "/margine", "color": "emerald"},
+        ],
+        # Graph
+        "dorso": [
+            {"id": "copertura", "title": "CoperturaFacile", "desc": "Analisi CMYK & TAC 300%", "badge": "Stampa", "icon": "🖨️", "url": "/copertura", "color": "rose"},
+            {"id": "resa", "title": "ResaCarta", "desc": "Nesting e taglio foglio", "badge": "Tipografia", "icon": "📑", "url": "/resa", "color": "rose"},
+            {"id": "dpi", "title": "RisoluzioneFacile", "desc": "DPI ottimali per distanza", "badge": "Grafica", "icon": "🖼️", "url": "/dpi", "color": "rose"},
+        ],
+        "dpi": [
+            {"id": "copertura", "title": "CoperturaFacile", "desc": "Limite inchiostro CMYK", "badge": "Stampa", "icon": "🖨️", "url": "/copertura", "color": "rose"},
+            {"id": "dorso", "title": "DorsoFacile", "desc": "Spessore dorso copertina", "badge": "Editoria", "icon": "📕", "url": "/dorso", "color": "rose"},
+            {"id": "barcode", "title": "OmniBarcode", "desc": "Codici a barre vettoriali", "badge": "Packaging", "icon": "🏷️", "url": "/barcode", "color": "rose"},
+        ],
+        "tinta": [
+            {"id": "copertura", "title": "CoperturaFacile", "desc": "Consumo grammi inchiostro", "badge": "Stampa", "icon": "🖨️", "url": "/copertura", "color": "rose"},
+            {"id": "dpi", "title": "RisoluzioneFacile", "desc": "Pixel in cm per stampa", "badge": "Grafica", "icon": "🖼️", "url": "/dpi", "color": "rose"},
+            {"id": "dorso", "title": "DorsoFacile", "desc": "Spessore brossura libro", "badge": "Editoria", "icon": "📕", "url": "/dorso", "color": "rose"},
+        ],
+        "barcode": [
+            {"id": "copertura", "title": "CoperturaFacile", "desc": "Verifica TAC e densità", "badge": "Stampa", "icon": "🖨️", "url": "/copertura", "color": "rose"},
+            {"id": "resa", "title": "ResaCarta", "desc": "Ottimizzazione fogli", "badge": "Tipografia", "icon": "📑", "url": "/resa", "color": "rose"},
+            {"id": "margine", "title": "MargineFacile", "desc": "Prezzo al consumo & IVA", "badge": "Commercio", "icon": "🏷️", "url": "/margine", "color": "emerald"},
+        ],
+        "copertura": [
+            {"id": "dorso", "title": "DorsoFacile", "desc": "Dorso libro & KDP", "badge": "Editoria", "icon": "📕", "url": "/dorso", "color": "rose"},
+            {"id": "resa", "title": "ResaCarta", "desc": "Resa e sfrido di taglio", "badge": "Tipografia", "icon": "📑", "url": "/resa", "color": "rose"},
+            {"id": "tinta", "title": "TintaPerfetta", "desc": "Matrice scarto cromatico", "badge": "Colore", "icon": "🎯", "url": "/tinta", "color": "rose"},
+        ],
+        "resa": [
+            {"id": "copertura", "title": "CoperturaFacile", "desc": "Costo copia & CMYK", "badge": "Stampa", "icon": "🖨️", "url": "/copertura", "color": "rose"},
+            {"id": "dorso", "title": "DorsoFacile", "desc": "Calcolo pagine & mano", "badge": "Editoria", "icon": "📕", "url": "/dorso", "color": "rose"},
+            {"id": "margine", "title": "MargineFacile", "desc": "Ricarico commessa & COGS", "badge": "Pricing", "icon": "🏷️", "url": "/margine", "color": "emerald"},
+        ],
+        # Finance
+        "mutuo": [
+            {"id": "pac", "title": "InteresseComposto", "desc": "Simulatore PAC & Regola 4%", "badge": "Investimenti", "icon": "📈", "url": "/pac", "color": "emerald"},
+            {"id": "margine", "title": "MargineFacile", "desc": "Margine profitto & ricarico", "badge": "Business", "icon": "🏷️", "url": "/margine", "color": "emerald"},
+            {"id": "rampe", "title": "RampaFacile", "desc": "Calcolo pendenza cantiere", "badge": "Edilizia", "icon": "📐", "url": "/rampe", "color": "amber"},
+        ],
+        "pac": [
+            {"id": "mutuo", "title": "MutuoFacile", "desc": "Rata mutuo & ammortamento", "badge": "Finanza", "icon": "🏦", "url": "/mutuo", "color": "emerald"},
+            {"id": "margine", "title": "MargineFacile", "desc": "Prezzo di vendita & markup", "badge": "Business", "icon": "🏷️", "url": "/margine", "color": "emerald"},
+            {"id": "dorso", "title": "DorsoFacile", "desc": "Spessore libro editoria", "badge": "Grafica", "icon": "📕", "url": "/dorso", "color": "rose"},
+        ],
+        "margine": [
+            {"id": "mutuo", "title": "MutuoFacile", "desc": "Sostenibilità rata/reddito", "badge": "Finanza", "icon": "🏦", "url": "/mutuo", "color": "emerald"},
+            {"id": "pac", "title": "InteresseComposto", "desc": "Crescita piano accumulo", "badge": "Investimenti", "icon": "📈", "url": "/pac", "color": "emerald"},
+            {"id": "resa", "title": "ResaCarta", "desc": "Ottimizzazione fogli e sfrido", "badge": "Produzione", "icon": "📑", "url": "/resa", "color": "rose"},
+        ],
+    }
+
+    # Generate Related Cards HTML
+    rel_cards = related_map.get(current_tool_id, [
+        {"id": "rampe", "title": "RampaFacile", "desc": "Calcolo pendenze DM 236", "badge": "Cantiere", "icon": "📐", "url": "/rampe", "color": "amber"},
+        {"id": "dorso", "title": "DorsoFacile", "desc": "Spessore dorso libro", "badge": "Grafica", "icon": "📕", "url": "/dorso", "color": "rose"},
+        {"id": "mutuo", "title": "MutuoFacile", "desc": "Ammortamento rata mutuo", "badge": "Finanza", "icon": "🏦", "url": "/mutuo", "color": "emerald"},
+    ])
+
+    rel_html = ""
+    for r in rel_cards:
+        if r['color'] == 'amber':
+            b_color = "bg-amber-50 text-amber-800 border-amber-200"
+            border_hover = "hover:border-amber-500 hover:bg-amber-50/30"
+        elif r['color'] == 'emerald':
+            b_color = "bg-emerald-50 text-emerald-800 border-emerald-200"
+            border_hover = "hover:border-emerald-500 hover:bg-emerald-50/30"
+        else:
+            b_color = "bg-rose-50 text-rose-800 border-rose-200"
+            border_hover = "hover:border-rose-500 hover:bg-rose-50/30"
+
+        rel_html += f"""
+        <a href="{r['url']}" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 {border_hover} transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">{r['icon']}</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full {b_color} border">{r['badge']}</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">{r['title']}</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">{r['desc']}</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>"""
+
     return f"""
     <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
     <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto px-4 space-y-5">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
             
+            <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
+            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">⚡</span>
+                        <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {rel_html}
+                </div>
+            </div>
+
             <!-- Share & Viral Action Strip -->
             <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <div class="flex items-center gap-2.5">
