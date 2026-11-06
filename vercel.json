@@ -1,13 +1,49 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/risoluzione", "destination": "/dpi" },
-    { "source": "/scarichi", "destination": "/tubi" },
-    { "source": "/fognatura", "destination": "/tubi" },
-    { "source": "/barcodes", "destination": "/barcode" },
-    { "source": "/codiceabarre", "destination": "/barcode" },
-    { "source": "/cmyk", "destination": "/copertura" },
-    { "source": "/inchiostro", "destination": "/copertura" },
-    { "source": "/ink", "destination": "/copertura" }
+    {
+      "source": "/risoluzione",
+      "destination": "/dpi"
+    },
+    {
+      "source": "/scarichi",
+      "destination": "/tubi"
+    },
+    {
+      "source": "/fognatura",
+      "destination": "/tubi"
+    },
+    {
+      "source": "/barcodes",
+      "destination": "/barcode"
+    },
+    {
+      "source": "/codiceabarre",
+      "destination": "/barcode"
+    },
+    {
+      "source": "/cmyk",
+      "destination": "/copertura"
+    },
+    {
+      "source": "/inchiostro",
+      "destination": "/copertura"
+    },
+    {
+      "source": "/ink",
+      "destination": "/copertura"
+    },
+    {
+      "source": "/fogli",
+      "destination": "/resa"
+    },
+    {
+      "source": "/resacarta",
+      "destination": "/resa"
+    },
+    {
+      "source": "/taglio",
+      "destination": "/resa"
+    }
   ]
 }

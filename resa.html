@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Calcolo Resa Carta & Schema di Taglio Online | Imposizione Fogli Macchina</title>
+    <meta name="description" content="Calcolatore professionale di resa carta tipografica. Ottimizza il taglio dei fogli macchina 70x100, 64x88, SRA3, calcola le pose, minimizza lo sfrido e verifica il senso di fibra.">
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/resa">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ResaCarta — Calcolo Resa Carta & Schema di Taglio Tipografico">
+    <meta property="og:description" content="Ottimizza la resa dei fogli macchina, calcola il numero di pose con disposizione dritta o mista, azzera lo sfrido e verifica il senso di fibra per la piega.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/resa">
+    <meta property="og:site_name" content="OmniTools Lab">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-graph.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Schema.org JSON-LD Structured Data (WebApplication + FAQPage) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ResaCarta — Ottimizzazione Taglio Fogli Macchina",
+        "url": "https://www.omnitoolslab.com/resa",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "description": "Applicazione professionale per grafici, tipografi e preventivisti: calcolo della resa di taglio dai fogli macchina, disposizione con e senza rotazione, sfrido % e verifica senso fibra.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Come si calcola la resa di taglio di un foglio macchina?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La resa si calcola confrontando la disposizione dritta con la disposizione ruotata a 90 gradi e la combinazione mista, tenendo conto dei margini di pinza macchina e dei refili tra le pose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Perché il senso di fibra della carta è fondamentale per la piega?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Se la piega viene effettuata in controfibra (perpendicolare alle fibre di cellulosa), il cartoncino si spacca e i volumi resistono all'apertura piatta. La linea di piega deve essere parallela alla fibra."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto spazio bisogna riservare per la pinza macchina?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nelle macchine offset tradizionali il margine di presa pinza è solitamente compreso tra 10 e 15 mm su un lato lungo. Nelle macchine digitali il bordo non stampabile è solitamente tra 3 e 5 mm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Come si calcola il peso della carta da ordinare?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Formula: Peso (kg) = (Base foglio in m × Altezza foglio in m × Grammatura in gsm × Totale fogli) / 1000."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <!-- PWA & Mobile Icons -->
+    <link rel="manifest" href="manifest-graph.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
+    <link rel="apple-touch-icon" href="icon-graph-192.png">
+    <meta name="theme-color" content="#d97706">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ResaCarta">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 7mm 7mm 7mm 7mm;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 8.5pt !important;
+                line-height: 1.25 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .page-container {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            #mainGrid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+            }
+            #svgContainer {
+                max-height: 220px !important;
+            }
+        }
+        .print-only {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+            
+            <!-- Breadcrumb Navigation & Suite Switcher -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <!-- Home Link & Brand Logo -->
+                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
+            <circle cx="16" cy="16" r="6.8" stroke="#ffffff" stroke-width="2" />
+            <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
+        </svg>
+                </a>
+
+                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
+                <div class="relative flex items-center min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
+                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
+                            <span>Omni<span class="text-blue-600">Tools</span></span>
+                        </a>
+                        <span class="text-slate-300 font-normal">/</span>
+                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border-purple-200/80 border shrink-0 hidden xs:inline-block">Graph</span>
+                        <span id="brandBadgeMobile" class="hidden">Nesting Fogli</span>
+                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
+                        
+                        <!-- Dropdown Switcher Button -->
+                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
+                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">ResaCarta</span>
+                            <span id="brandTitleMobile" class="hidden">ResaCarta</span>
+                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Dropdown Popover Menu (All 7 Tools Categorized) -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
+                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools</span>
+                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
+                                Home Hub →
+                            </a>
+                        </div>
+
+                        <!-- Cantiere & Struttura -->
+                        <div class="px-2 pt-2 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
+                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📐</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">DM 236/89</span>
+            </a>
+            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🪜</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+            </a>
+            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🚰</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Grafica & Prestampa -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
+                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📕</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Brossura</span>
+            </a>
+            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🔍</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Pixel/DPI</span>
+            </a>
+            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🎨</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+            </a>
+            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">GS1 / TS</span>
+            </a>
+            <a href="/copertura" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🖨️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">CoperturaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Copertura Inchiostro CMYK & Costi</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">CMYK / TAC</span>
+            </a>
+            <a href="/resa" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-purple-50/80 text-purple-700 border border-purple-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📑</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">ResaCarta</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Ottimizzazione Taglio Fogli Macchina</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-purple-600 text-white shadow-2xs">Attivo</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Link to Hub -->
+                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
+                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
+                                <span>🏠</span> Tutti gli strumenti nella Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
+
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- DEDICATED PRINT HEADER (Strict A4 Print Only) -->
+    <div class="print-only mb-3 border-b-2 border-slate-800 pb-2">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-xl">📑</span>
+                <div>
+                    <h1 class="text-sm font-extrabold uppercase tracking-tight text-slate-900">OmniGraph • ResaCarta</h1>
+                    <p class="text-[8pt] font-semibold text-slate-600">Scheda Tecnica di Taglio & Imposizione Fogli Macchina</p>
+                </div>
+            </div>
+            <div class="text-right text-[8pt] text-slate-600 font-mono">
+                <div>Data: <span id="printDate">--/--/----</span></div>
+                <div class="font-bold text-amber-700">SPECIFICA DI TAGLIO GHIGLIOTTINA</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER (Unified max-w-5xl, Centered Hero, Coherent Suite Padding) -->
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5 page-container">
+        
+        <!-- Hero Header -->
+        <div id="heroContainer" class="no-print text-center max-w-2xl mx-auto space-y-1.5 sm:space-y-2 pt-1 sm:pt-2">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase">
+                <span>📑</span>
+                <span id="badgeText">OmniGraph · Prestampa & Tipografia</span>
+            </div>
+            <h1 id="heroTitle" class="text-2xl sm:text-3xl md:text-4xl font-extrabold font-jakarta text-slate-900 tracking-tight leading-tight">
+                Calcolo Resa Carta & Schema di Taglio
+            </h1>
+            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Ottimizza la resa dei fogli macchina (70x100, 64x88, SRA3), calcola il numero di pose con disposizione dritta o mista, azzera lo sfrido e verifica il senso di fibra.
+            </p>
+            <div class="pt-1">
+                <span id="privacyBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
+                    🔒 100% Riservato — Nessun dato inviato al server
+                </span>
+            </div>
+        </div>
+
+        <!-- MAIN INTERACTIVE GRID -->
+        <div id="mainGrid" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+
+            <!-- LEFT COLUMN: CONTROLS & SETTINGS (5 COLS) -->
+            <div class="lg:col-span-5 flex flex-col gap-4">
+                
+                <!-- FORMAT PRESETS & SIZES -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                            <span>📐</span> Formati & Dimensioni
+                        </span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+                            mm millimetri
+                        </span>
+                    </div>
+
+                    <!-- Sheet Format Selector -->
+                    <div>
+                        <label id="lblSheetFormat" class="block text-xs font-bold text-slate-700 mb-1">Formato Foglio Macchina (Grezzo)</label>
+                        <select id="sheetPreset" onchange="applySheetPreset()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            <option value="700x1000">70 × 100 cm (700 × 1000 mm) - Standard Offset</option>
+                            <option value="640x880">64 × 88 cm (640 × 880 mm) - Editoria Libri</option>
+                            <option value="500x700">50 × 70 cm (500 × 700 mm) - Mezzo Foglio</option>
+                            <option value="320x450" selected>SRA3 (320 × 450 mm) - Digitale Pro</option>
+                            <option value="330x487">SRA3+ (330 × 487 mm) - Digitale Xerox/Canon</option>
+                            <option value="297x420">A3 Standard (297 × 420 mm)</option>
+                            <option value="custom">Personalizzato...</option>
+                        </select>
+                    </div>
+
+                    <!-- Custom Sheet Dimensions -->
+                    <div id="sheetCustomBox" class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label id="lblSheetW" class="block text-[11px] font-bold text-slate-600 mb-0.5">Base Foglio (mm)</label>
+                            <input type="number" id="sheetW" value="320" min="50" max="3000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                        </div>
+                        <div>
+                            <label id="lblSheetH" class="block text-[11px] font-bold text-slate-600 mb-0.5">Altezza Foglio (mm)</label>
+                            <input type="number" id="sheetH" value="450" min="50" max="3000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                        </div>
+                    </div>
+
+                    <!-- Cut Product Format Selector -->
+                    <div>
+                        <label id="lblCutFormat" class="block text-xs font-bold text-slate-700 mb-1">Formato Prodotto Finito (Rifilato)</label>
+                        <select id="cutPreset" onchange="applyCutPreset()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            <option value="85x55" selected>Biglietto da Visita (85 × 55 mm)</option>
+                            <option value="105x148">Volantino A6 (105 × 148 mm)</option>
+                            <option value="148x210">Volantino A5 (148 × 210 mm)</option>
+                            <option value="210x297">Foglio / Scheda A4 (210 × 297 mm)</option>
+                            <option value="100x210">Pieghevole 1/3 A4 (100 × 210 mm)</option>
+                            <option value="100x150">Cartolina (100 × 150 mm)</option>
+                            <option value="custom">Personalizzato...</option>
+                        </select>
+                    </div>
+
+                    <!-- Custom Cut Dimensions -->
+                    <div id="cutCustomBox" class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label id="lblCutW" class="block text-[11px] font-bold text-slate-600 mb-0.5">Base Prodotto (mm)</label>
+                            <input type="number" id="cutW" value="85" min="10" max="2000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                        </div>
+                        <div>
+                            <label id="lblCutH" class="block text-[11px] font-bold text-slate-600 mb-0.5">Altezza Prodotto (mm)</label>
+                            <input type="number" id="cutH" value="55" min="10" max="2000" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRESS & FINISHING PARAMETERS -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-3.5">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5 pb-2 border-b border-slate-100">
+                        <span>⚙️</span> Parametri Macchina & Carta
+                    </span>
+
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label id="lblGripper" class="block text-[11px] font-bold text-slate-600 mb-0.5">Pinza Macchina (mm)</label>
+                            <input type="number" id="gripperMargin" value="10" min="0" max="50" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                        </div>
+                        <div>
+                            <label id="lblBleed" class="block text-[11px] font-bold text-slate-600 mb-0.5">Refilo / Spazio Pose (mm)</label>
+                            <input type="number" id="cutBleed" value="2" min="0" max="20" oninput="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                        </div>
+                    </div>
+
+                    <!-- Grain Direction Selector -->
+                    <div>
+                        <label id="lblGrain" class="block text-[11px] font-bold text-slate-600 mb-1">Senso di Fibra Foglio Madre</label>
+                        <select id="grainDirection" onchange="calculateYield()" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="long" selected>Fibra Lunga (LG - parallela al lato lungo)</option>
+                            <option value="short">Fibra Corta (SG - parallela al lato corto)</option>
+                        </select>
+                    </div>
+
+                    <!-- Target Copies & Weight -->
+                    <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-100">
+                        <div>
+                            <label id="lblCopiesTarget" class="block text-[10px] font-bold text-slate-500 mb-0.5">Tiratura Copie</label>
+                            <input type="number" id="targetCopies" value="1000" min="1" step="100" oninput="calculateYield()" class="w-full p-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 font-mono">
+                        </div>
+                        <div>
+                            <label id="lblPaperWeight" class="block text-[10px] font-bold text-slate-500 mb-0.5">Grammatura (g/m²)</label>
+                            <input type="number" id="paperWeight" value="350" min="40" max="800" oninput="calculateYield()" class="w-full p-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 font-mono">
+                        </div>
+                        <div>
+                            <label id="lblWasteMargin" class="block text-[10px] font-bold text-slate-500 mb-0.5">Avviamento %</label>
+                            <input type="number" id="wasteMargin" value="5" min="0" max="50" oninput="calculateYield()" class="w-full p-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 font-mono">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: RESULTS & INTERACTIVE 2D SVG PREVIEW (7 COLS) -->
+            <div class="lg:col-span-7 flex flex-col gap-4">
+                
+                <!-- KEY METRICS CARDS -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    
+                    <!-- Yield Card (Hero Metric) -->
+                    <div class="p-3.5 bg-gradient-to-br from-amber-50 to-orange-50/80 rounded-2xl border border-amber-200 shadow-xs flex flex-col justify-between">
+                        <span id="lblResBestYield" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-900">Resa per Foglio</span>
+                        <div class="my-1">
+                            <span id="resYieldValue" class="text-3xl sm:text-4xl font-black text-amber-600 font-mono">24</span>
+                            <span id="resYieldUnit" class="text-xs font-bold text-amber-800 ml-1">pose</span>
+                        </div>
+                        <span id="resLayoutMode" class="text-[10px] font-bold text-amber-800/80 truncate">Disposizione Dritta (4×6)</span>
+                    </div>
+
+                    <!-- Waste % Card -->
+                    <div class="p-3.5 bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <span id="lblResWastePct" class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Sfrido / Scarto</span>
+                        <div class="my-1">
+                            <span id="resWasteValue" class="text-3xl sm:text-4xl font-black text-slate-800 font-mono">21.8</span>
+                            <span class="text-xs font-bold text-slate-500 ml-0.5">%</span>
+                        </div>
+                        <span id="resUsableArea" class="text-[10px] font-semibold text-slate-500">78.2% superficie utile</span>
+                    </div>
+
+                    <!-- Sheets to Order Card -->
+                    <div class="col-span-2 sm:col-span-1 p-3.5 bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <span id="lblResSheetsOrder" class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Fogli da Ordinare</span>
+                        <div class="my-1">
+                            <span id="resOrderSheetsValue" class="text-3xl sm:text-4xl font-black text-blue-600 font-mono">44</span>
+                            <span class="text-xs font-bold text-slate-500 ml-0.5">fogli</span>
+                        </div>
+                        <span id="resTotalWeight" class="text-[10px] font-semibold text-slate-500 font-mono">Peso: 2.22 kg</span>
+                    </div>
+                </div>
+
+                <!-- 2D SVG CUT IMPOSITION PREVIEW -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-sm">🖥️</span>
+                            <span id="sheetPreviewTitle" class="text-xs font-bold uppercase tracking-wider text-slate-800">Schema di Taglio & Disposizione Pose</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-slate-500">
+                                <span class="w-2.5 h-2.5 bg-amber-500 rounded-xs inline-block"></span> Pose
+                            </span>
+                            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-slate-500">
+                                <span class="w-2.5 h-2.5 bg-slate-200 rounded-xs inline-block"></span> Sfrido
+                            </span>
+                            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-orange-600">
+                                <span class="w-2.5 h-2.5 border border-dashed border-orange-500 rounded-xs inline-block"></span> Pinza
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Vector Canvas Viewport -->
+                    <div id="svgContainer" class="w-full bg-slate-900 rounded-xl p-3 flex items-center justify-center overflow-hidden border border-slate-800" style="min-height: 280px;">
+                        <svg id="sheetSvg" class="w-full max-h-[320px] transition-all duration-300 drop-shadow-md" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Injected by JavaScript -->
+                        </svg>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+                        <span id="cutSheetNote">Linea tratteggiata arancione: zona pinza macchina non stampabile.</span>
+                        <span id="grainIndicatorBadge" class="px-2 py-0.5 rounded-md font-bold text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            ✓ Fibra Parallela al Taglio
+                        </span>
+                    </div>
+                </div>
+
+                <!-- GRAIN DIRECTION ADVISORY BANNER -->
+                <div id="grainAlertBox" class="p-3.5 rounded-xl border transition-all bg-emerald-50 border-emerald-200 text-emerald-900 text-xs flex items-center gap-3">
+                    <span class="text-2xl shrink-0">🧭</span>
+                    <div>
+                        <span id="grainAlertTitle" class="font-bold block">Senso di Fibra Ottimale</span>
+                        <span id="grainAlertDesc" class="text-[11px] opacity-90">La fibra scorre parallela al lato lungo del prodotto finito: garanzia di piega pulita senza spaccature.</span>
+                    </div>
+                </div>
+
+                <!-- TECHNICAL TIP BANNER -->
+                <div class="p-3 bg-slate-100 rounded-xl text-xs text-slate-600 leading-relaxed border border-slate-200" id="ruleTipBox">
+                    <span id="ruleTipText">💡 <strong>Regola tipografica:</strong> Confronta sempre il taglio dritto e quello incrociato. La piega deve correre parallela al senso della fibra per evitare spaccature della cellulosa.</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FAQ ACCORDION SECTION -->
+        <section id="faqSection" class="no-print pt-4 border-t border-slate-200 space-y-3">
+            <h2 id="faqTitle" class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                <span>❓</span> <span>Domande Frequenti sulla Resa Carta & Taglio Tipografico</span>
+            </h2>
+            <div class="space-y-2">
+                <details class="bg-white rounded-xl border border-slate-200 p-3 sm:p-4 group">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                        <span id="faq1Q">Come si calcola la resa di taglio di un foglio macchina?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p id="faq1A" class="text-xs text-slate-600 mt-2 leading-relaxed">La resa si calcola confrontando la disposizione dritta (Base foglio / Base pezzo × Altezza foglio / Altezza pezzo) con la disposizione ruotata a 90°. Il nostro calcolatore testa automaticamente entrambe le varianti e la combinazione mista, tenendo conto dei millimetri di presa pinza della macchina da stampa e del refilo tra le pose.</p>
+                </details>
+                <details class="bg-white rounded-xl border border-slate-200 p-3 sm:p-4 group">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                        <span id="faq2Q">Perché il senso di fibra della carta è così importante?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p id="faq2A" class="text-xs text-slate-600 mt-2 leading-relaxed">Le fibre di cellulosa si orientano lungo la direzione di scorrimento della macchina continua in cartiera. Se pieghi un cartoncino o la pagina di un libro in controfibra (perpendicolare alle fibre), la carta si spacca sul dorso e offre resistenza alla sfogliatura. La piega deve essere sempre parallela alla direzione della fibra.</p>
+                </details>
+                <details class="bg-white rounded-xl border border-slate-200 p-3 sm:p-4 group">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                        <span id="faq3Q">Quanto spazio bisogna lasciare per la pinza macchina?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p id="faq3A" class="text-xs text-slate-600 mt-2 leading-relaxed">Nelle macchine offset tradizionali (Heidelberg, Komori, KBA) il margine di presa pinza va tipicamente da 10 a 15 mm su uno dei lati lunghi del foglio. Nelle macchine digitali (SRA3) il margine non stampabile perimetrale è solitamente di 3-5 mm.</p>
+                </details>
+                <details class="bg-white rounded-xl border border-slate-200 p-3 sm:p-4 group">
+                    <summary class="font-bold text-xs sm:text-sm text-slate-800 cursor-pointer list-none flex justify-between items-center">
+                        <span id="faq4Q">Come si calcola il peso della carta da ordinare?</span>
+                        <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p id="faq4A" class="text-xs text-slate-600 mt-2 leading-relaxed">La formula standard è: Peso (kg) = (Base foglio in metri × Altezza foglio in metri × Grammatura in g/m² × Numero totale fogli) / 1000. Ad esempio, 1.000 fogli 70x100 cm da 300g pesano: 0.7 × 1.0 × 300 × 1000 / 1000 = 210 kg.</p>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            
+            <!-- Share & Viral Action Strip -->
+            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">📢</span>
+                    <div>
+                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
+                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o clienti</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </button>
+                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su Reddit">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                        <span>Reddit</span>
+                    </button>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
+                        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <span>Condividi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Suggestion Prompt Strip -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore di cantiere o grafica?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- OmniTools Network Ecosystem Bar (All 8 Tools) -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                            ⌘
+                        </div>
+                        <span class="font-black text-sm tracking-tight font-jakarta">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Precisione (Edilizia & Grafica)</span>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2 pt-3 text-[11px]">
+
+                    <a href="/rampe" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">📐 Rampe</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/scale" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🪜 Scale</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/tubi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🚰 Scarichi</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">📕 Dorso</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🖼️ DPI / Pixel</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/tinta" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🎯 Tinta & CMYK</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/barcode" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🏷️ Barcode</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/copertura" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🖨️ Copertura</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <div class="p-2 rounded-xl bg-slate-800 border border-slate-600 flex items-center justify-between transition shadow-xs">
+                        <span class="font-bold text-white text-[11px]">📑 Resa Carta</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-blue-500/20 text-blue-300 font-extrabold rounded">Attivo</span>
+                    </div>
+                </div>
+                <div class="pt-2.5 text-center">
+                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
+                    Nota di conformità tecnica: I calcoli di resa e nesting geometrico si basano sulle formule tipografiche standard di taglio a ghigliottina. Si raccomanda di verificare sempre i margini di pinza minimi richiesti dal produttore della macchina da stampa e le tolleranze di refilo del legatore.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smart Floating PWA Install Banner -->
+    <div id="installBanner" class="no-print fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700/60 z-50 flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-0">
+        <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md">
+                📱
+            </div>
+            <div class="min-w-0">
+                <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools come App</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">Utility di calcolo professionale sempre a portata di mano</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+            <button id="installBannerBtn" onclick="triggerInstall()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-sm">
+                Installa
+            </button>
+            <button onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg text-xs" title="Chiudi">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="hidden no-print fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-slate-800 shadow-2xl border border-slate-100 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-lg font-bold">
+                        💡
+                    </div>
+                    <div>
+                        <h4 id="modalSuggestTitle" class="font-extrabold text-base text-slate-900 leading-tight">Suggerisci uno Strumento</h4>
+                        <span class="text-[10px] text-slate-500 font-medium">OmniTools User Feedback</span>
+                    </div>
+                </div>
+                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 rounded-lg transition">✕</button>
+            </div>
+            
+            <p id="modalSuggestDesc" class="text-xs text-slate-600 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TRANSLATIONS DICTIONARY INJECTED FOR CLIENT-SIDE I18N -->
+    <script>
+        const I18N_DATA = {"it": {"title": "Calcolo Resa Carta, Schema di Taglio & Ottimizzazione Fogli Macchina | OmniTools", "badge": "OmniGraph · Prestampa & Tipografia", "hero_title": "Calcolo Resa Carta & Schema di Taglio", "hero_desc": "Ottimizza la resa dei fogli macchina (70x100, 64x88, SRA3), calcola il numero di pose con disposizione dritta o mista, azzera lo sfrido e verifica il senso di fibra.", "privacy_badge": "🔒 100% Riservato — Nessun dato inviato al server", "sheet_format_label": "Formato Foglio Macchina", "cut_format_label": "Formato Prodotto Finito", "sheet_w_label": "Base Foglio (mm)", "sheet_h_label": "Altezza Foglio (mm)", "cut_w_label": "Base Prodotto (mm)", "cut_h_label": "Altezza Prodotto (mm)", "gripper_label": "Margine Pinza Macchina (mm)", "bleed_label": "Rifilo al Vivo / Spazio Pose (mm)", "grain_label": "Senso Fibra Foglio Madre", "grain_long": "Fibra Lunga (LG - parallela lato lungo)", "grain_short": "Fibra Corta (SG - parallela lato corto)", "copies_target_label": "Tiratura Prodotti Richiesta", "paper_weight_label": "Grammatura Carta (g/m²)", "waste_margin_label": "Scarto Avviamento / Prove (%)", "res_title": "RISULTATI OTTIMIZZAZIONE TAGLIO", "res_best_yield": "Massima Resa Possibile", "res_pieces_per_sheet": "pose per foglio", "res_layout_mode": "Disposizione Ottimale", "res_waste_pct": "Sfrido di Carta (Scarto)", "res_usable_area": "Superficie Utile Stampata", "res_sheets_needed": "Fogli Macchina Necessari", "res_sheets_order": "Fogli Totali da Ordinare (con avviamento)", "res_total_weight": "Peso Totale Carta (kg)", "res_grain_check": "Verifica Senso di Fibra per Piega", "grain_ok": "Conforme per piega sul lato lungo", "grain_warn": "Attenzione: la piega cadrà in controfibra (richiede cordonatura)", "sheet_preview_title": "SCHEMA DI TAGLIO & DISPOSIZIONE POSE", "cut_sheet_note": "Linea tratteggiata arancione: zona pinza macchina non stampabile.", "rule_tip": "💡 <strong>Regola tipografica:</strong> Confronta sempre il taglio dritto e quello incrociato. La piega deve correre parallela al senso della fibra per evitare spaccature della cellulosa.", "legal_disclaimer": "Nota di conformità tecnica: I calcoli di resa e nesting geometrico si basano sulle formule tipografiche standard di taglio a ghigliottina. Si raccomanda di verificare sempre i margini di pinza minimi richiesti dal produttore della macchina da stampa e le tolleranze di refilo del legatore.", "faq_title": "Domande Frequenti sulla Resa Carta & Taglio Tipografico", "faq_1_q": "Come si calcola la resa di taglio di un foglio macchina?", "faq_1_a": "La resa si calcola confrontando la disposizione dritta (Base foglio / Base pezzo × Altezza foglio / Altezza pezzo) con la disposizione ruotata a 90°. Il nostro calcolatore testa automaticamente entrambe le varianti e la combinazione mista, tenendo conto dei millimetri di presa pinza della macchina da stampa e del refilo tra le pose.", "faq_2_q": "Perché il senso di fibra della carta è così importante?", "faq_2_a": "Le fibre di cellulosa si orientano lungo la direzione di scorrimento della macchina continua in cartiera. Se pieghi un cartoncino o la pagina di un libro in controfibra (perpendicolare alle fibre), la carta si spacca sul dorso e offre resistenza alla sfogliatura. La piega deve essere sempre parallela alla direzione della fibra.", "faq_3_q": "Quanto spazio bisogna lasciare per la pinza macchina?", "faq_3_a": "Nelle macchine offset tradizionali (Heidelberg, Komori, KBA) il margine di presa pinza va tipicamente da 10 a 15 mm su uno dei lati lunghi del foglio. Nelle macchine digitali (SRA3) il margine non stampabile perimetrale è solitamente di 3-5 mm.", "faq_4_q": "Come si calcola il peso della carta da ordinare?", "faq_4_a": "La formula standard è: Peso (kg) = (Base foglio in metri × Altezza foglio in metri × Grammatura in g/m² × Numero totale fogli) / 1000. Ad esempio, 1.000 fogli 70x100 cm da 300g pesano: 0.7 × 1.0 × 300 × 1000 / 1000 = 210 kg."}, "en": {"title": "Paper Yield & Cut Imposition Calculator | OmniTools", "badge": "OmniGraph · Prepress & Printing", "hero_title": "Paper Yield & Cut Imposition Calculator", "hero_desc": "Optimize parent press sheet yields (70x100, 64x88, SRA3), calculate optimal cuts with straight or mixed layout, minimize waste and verify grain direction.", "privacy_badge": "🔒 100% Private — Client-side calculation only", "sheet_format_label": "Press Sheet Size", "cut_format_label": "Finished Product Size", "sheet_w_label": "Sheet Width (mm)", "sheet_h_label": "Sheet Height (mm)", "cut_w_label": "Product Width (mm)", "cut_h_label": "Product Height (mm)", "gripper_label": "Gripper Margin (mm)", "bleed_label": "Bleed / Cut Gap (mm)", "grain_label": "Sheet Grain Direction", "grain_long": "Long Grain (LG - parallel to long edge)", "grain_short": "Short Grain (SG - parallel to short edge)", "copies_target_label": "Target Copies Required", "paper_weight_label": "Paper Basis Weight (g/m²)", "waste_margin_label": "Make-ready / Spoilage Allowance (%)", "res_title": "CUT OPTIMIZATION RESULTS", "res_best_yield": "Maximum Yield", "res_pieces_per_sheet": "pieces per sheet", "res_layout_mode": "Optimal Layout", "res_waste_pct": "Paper Waste (Trim)", "res_usable_area": "Usable Printed Area", "res_sheets_needed": "Press Sheets Required", "res_sheets_order": "Total Sheets to Order (with makeready)", "res_total_weight": "Total Paper Weight (kg)", "res_grain_check": "Grain Direction Fold Check", "grain_ok": "Optimal for fold along the long edge", "grain_warn": "Warning: fold will run across grain (scoring/creasing required)", "sheet_preview_title": "CUT IMPOSITION & PIECE LAYOUT", "cut_sheet_note": "Orange dashed line indicates non-printable machine gripper margin.", "rule_tip": "💡 <strong>Printing rule:</strong> Always compare straight vs turned cut layouts. Folds must run parallel to grain direction to prevent fiber cracking.", "legal_disclaimer": "Technical note: Cut calculations and nesting layouts are based on standard guillotine trimming formulas. Always verify machine gripper allowance with your press manufacturer.", "faq_title": "Frequently Asked Questions on Paper Yield & Imposition", "faq_1_q": "How do you calculate press sheet yield?", "faq_1_a": "Yield is calculated by comparing straight arrangement against 90-degree rotated orientation. Our calculator automatically tests both orientations and mixed layouts accounting for gripper margins and cut gaps.", "faq_2_q": "Why does grain direction matter in paper cutting?", "faq_2_a": "Cellulose fibers align with paper machine direction. Folding across grain cracks coatings and makes books resist lay-flat opening. Folds should always run parallel to paper grain.", "faq_3_q": "How much gripper margin should be allowed?", "faq_3_a": "Traditional offset sheet-fed presses require 10 to 15 mm gripper margin along the leading edge. Digital production engines usually require 3 to 5 mm margins.", "faq_4_q": "How is total paper weight calculated?", "faq_4_a": "Formula: Weight (kg) = (Width in m × Height in m × gsm × Total Sheets) / 1000."}, "es": {"title": "Calculadora Rendimiento de Papel y Esquema de Corte | OmniTools", "badge": "OmniGraph · Preimpresión y Tipografía", "hero_title": "Rendimiento de Papel y Esquema de Corte", "hero_desc": "Optimiza el aprovechamiento de pliegos de máquina (70x100, 64x88, SRA3), calcula el número de poses, minimiza la merma y verifica el sentido de fibra.", "privacy_badge": "🔒 100% Privado — Sin envío de datos al servidor", "sheet_format_label": "Formato Pliego de Máquina", "cut_format_label": "Formato Producto Terminado", "sheet_w_label": "Base Pliego (mm)", "sheet_h_label": "Altura Pliego (mm)", "cut_w_label": "Base Producto (mm)", "cut_h_label": "Altura Producto (mm)", "gripper_label": "Margen de Pinza (mm)", "bleed_label": "Sangrado / Calle de Corte (mm)", "grain_label": "Sentido de Fibra del Pliego", "grain_long": "Fibra Larga (paralela al lado mayor)", "grain_short": "Fibra Corta (paralela al lado menor)", "copies_target_label": "Tirada Requerida", "paper_weight_label": "Gramaje del Papel (g/m²)", "waste_margin_label": "Merma de Entrada / Pruebas (%)", "res_title": "RESULTADOS DE OPTIMIZACIÓN DE CORTE", "res_best_yield": "Máximo Rendimiento", "res_pieces_per_sheet": "poses por pliego", "res_layout_mode": "Disposición Óptima", "res_waste_pct": "Merma de Papel (Desperdicio)", "res_usable_area": "Superficie Útil Impresa", "res_sheets_needed": "Pliegos de Máquina Necesarios", "res_sheets_order": "Pliegos a Pedir (con merma)", "res_total_weight": "Peso Total del Papel (kg)", "res_grain_check": "Comprobación Sentido de Fibra", "grain_ok": "Conforme para plegado en el lado largo", "grain_warn": "Atención: el pliegue será contrafibra (requiere hendido)", "sheet_preview_title": "ESQUEMA DE CORTE Y POSICIONAMIENTO", "cut_sheet_note": "Línea discontinua naranja: zona de pinza no imprimible.", "rule_tip": "💡 <strong>Regla tipográfica:</strong> El plegado debe correr paralelo a la fibra para evitar roturas de la celulosa.", "legal_disclaimer": "Nota técnica: Los cálculos se basan en fórmulas estándar de guillotina. Compruebe siempre los requisitos de pinza de su maquinaria.", "faq_title": "Preguntas Frecuentes sobre Rendimiento de Papel y Corte", "faq_1_q": "¿Cómo se calcula el rendimiento de corte de un pliego?", "faq_1_a": "Se calcula comparando la disposición recta con la rotada 90° descontando la pinza de máquina y las calles de corte.", "faq_2_q": "¿Por qué es vital el sentido de la fibra?", "faq_2_a": "Plegar a contrafibra agrieta el papel y deforma lomos y catálogos. El pliegue siempre debe ser paralelo a la fibra.", "faq_3_q": "¿Qué margen de pinza se debe reservar?", "faq_3_a": "En offset se reservan normalmente de 10 a 15 mm en uno de los lados largos. En digital suele bastar con 3 a 5 mm.", "faq_4_q": "¿Cómo se calcula el peso del papel a pedir?", "faq_4_a": "Peso (kg) = (Ancho m × Alto m × Gramaje gsm × Pliegos totales) / 1000."}, "fr": {"title": "Calculateur Rendement Papier & Schéma de Coupe | OmniTools", "badge": "OmniGraph · Prépresse & Imprimerie", "hero_title": "Rendement Papier & Schéma de Coupe", "hero_desc": "Optimisez le rendement des feuilles machine (70x100, 64x88, SRA3), calculez le nombre de poses, minimisez la gâche et vérifiez le sens de fibre.", "privacy_badge": "🔒 100% Confidentiel — Traitement local", "sheet_format_label": "Format Feuille Machine", "cut_format_label": "Format Produit Fini", "sheet_w_label": "Largeur Feuille (mm)", "sheet_h_label": "Hauteur Feuille (mm)", "cut_w_label": "Largeur Produit (mm)", "cut_h_label": "Hauteur Produit (mm)", "gripper_label": "Prise de Pince Machine (mm)", "bleed_label": "Gouttière de Coupe / Bord Perdu (mm)", "grain_label": "Sens de Fibre du Papier", "grain_long": "Sens Long (parallèle au grand côté)", "grain_short": "Sens Court (parallèle au petit côté)", "copies_target_label": "Tirage Souhaité", "paper_weight_label": "Grammage Papier (g/m²)", "waste_margin_label": "Passe d'impression / Gâche (%)", "res_title": "RÉSULTATS D'OPTIMISATION DE COUPE", "res_best_yield": "Rendement Maximal", "res_pieces_per_sheet": "poses par feuille", "res_layout_mode": "Imposition Optimale", "res_waste_pct": "Gâche Papier (Chutes)", "res_usable_area": "Surface Utile Imprimée", "res_sheets_needed": "Feuilles Machine Nécessaires", "res_sheets_order": "Feuilles à Commander (avec passe)", "res_total_weight": "Poids Total du Papier (kg)", "res_grain_check": "Sens de Fibre pour le Pliage", "grain_ok": "Conforme pour pliage sur le grand côté", "grain_warn": "Attention : pliage contre-fibre (rainage obligatoire)", "sheet_preview_title": "SCHÉMA D'IMPOSITION ET DE COUPE", "cut_sheet_note": "Ligne pointillée orange : réserve de pince non imprimable.", "rule_tip": "💡 <strong>Règle d'imprimerie :</strong> Le pli doit toujours être parallèle au sens de la fibre pour éviter les cassures.", "legal_disclaimer": "Note technique : Calculs géométriques basés sur les standards de massicotage. Vérifiez toujours la pince constructeur.", "faq_title": "Questions Fréquentes sur le Rendement Papier", "faq_1_q": "Comment calculer le rendement de coupe d'une feuille ?", "faq_1_a": "En comparant la disposition directe et tournée avec déduction de la pince et des gouttières de coupe.", "faq_2_q": "Pourquoi le sens de fibre est-il crucial ?", "faq_2_a": "Un pli contre-fibre brise le papier couché. Le pli doit toujours suivre les fibres de cellulose.", "faq_3_q": "Combien de marge de pince réserver ?", "faq_3_a": "En offset de 10 à 15 mm le long du bord d'attaque. En numérique souvent 3 à 5 mm.", "faq_4_q": "Comment calculer le poids du papier ?", "faq_4_a": "Poids (kg) = (Largeur m × Hauteur m × Grammage × Nombre de feuilles) / 1000."}, "de": {"title": "Papier Nutzenrechner & Schnittschema | OmniTools", "badge": "OmniGraph · Druckvorstufe & Druck", "hero_title": "Papier Nutzenrechner & Schnittschema", "hero_desc": "Optimieren Sie Druckbogenformate (70x100, 64x88, SRA3), berechnen Sie Nutzenanzahl, minimieren Sie Papierverschnitt und prüfen Sie die Laufrichtung.", "privacy_badge": "🔒 100% Sicher — Keine Serverübertragung", "sheet_format_label": "Druckbogen-Format", "cut_format_label": "Endformat Produkt", "sheet_w_label": "Bogenbreite (mm)", "sheet_h_label": "Bogenhöhe (mm)", "cut_w_label": "Produktbreite (mm)", "cut_h_label": "Produkthöhe (mm)", "gripper_label": "Greiferrand (mm)", "bleed_label": "Beschnittzugabe / Zwischenschnitt (mm)", "grain_label": "Papierlaufrichtung", "grain_long": "Breitbahn / Schmalbahn (Laufrichtung parallel)", "grain_short": "Schmalbahn (Laufrichtung kurz)", "copies_target_label": "Gewünschte Auflage", "paper_weight_label": "Papiergewicht (g/m²)", "waste_margin_label": "Zuschuss / Makulatur (%)", "res_title": "SCHNITT-OPTIMIERUNGSERGEBNISSE", "res_best_yield": "Maximaler Nutzen", "res_pieces_per_sheet": "Nutzen pro Bogen", "res_layout_mode": "Optimale Anordnung", "res_waste_pct": "Verschnitt / Makulatur", "res_usable_area": "Nutzbare Druckfläche", "res_sheets_needed": "Erforderliche Druckbogen", "res_sheets_order": "Bogenbestellung (inkl. Zuschuss)", "res_total_weight": "Gesamtgewicht Papier (kg)", "res_grain_check": "Laufrichtungsprüfung für Falz", "grain_ok": "Optimal für Falzung entlang der Längsseite", "grain_warn": "Achtung: Falz bricht gegen die Laufrichtung (Nutung erforderlich)", "sheet_preview_title": "SCHNITTSCHEMA & BOGENEINTEILUNG", "cut_sheet_note": "Orange gestrichelte Linie: Nicht bedruckbarer Greiferrand.", "rule_tip": "💡 <strong>Drucker-Regel:</strong> Falzkanten müssen immer parallel zur Papierlaufrichtung verlaufen.", "legal_disclaimer": "Technischer Hinweis: Berechnungen nach Normen des Planschneider-Beschnitts. Maschinenspezifische Greiferränder beachten.", "faq_title": "Häufige Fragen zu Bogenberechnung & Schnittschema", "faq_1_q": "Wie wird der Bogennutzen berechnet?", "faq_1_a": "Durch den rechnerischen Vergleich von Längs- und Quereinteilung unter Abzug von Greiferrand und Beschnitt.", "faq_2_q": "Warum ist die Laufrichtung wichtig?", "faq_2_a": "Falzen gegen die Faser führt zu Aufplatzen. Der Falz muss parallel zur Faser liegen.", "faq_3_q": "Wie groß muss der Greiferrand sein?", "faq_3_a": "Im Bogenoffset üblicherweise 10 bis 15 mm am Führungsrand. Im Digitaldruck meist 3 bis 5 mm.", "faq_4_q": "Wie berechnet man das Papiergewicht?", "faq_4_a": "Gewicht (kg) = (Breite m × Höhe m × g/m² × Bogenanzahl) / 1000."}, "pt": {"title": "Calculadora de Rendimento de Papel e Esquema de Corte | OmniTools", "badge": "OmniGraph · Pré-impressão e Gráfica", "hero_title": "Rendimento de Papel e Esquema de Corte", "hero_desc": "Otimize folhas de máquina (70x100, 64x88, SRA3), calcule o número de poses, minimize o desperdício de papel e valide o sentido da fibra.", "privacy_badge": "🔒 100% Privado — Sem envio para servidores", "sheet_format_label": "Formato da Folha de Máquina", "cut_format_label": "Formato do Produto Acabado", "sheet_w_label": "Largura da Folha (mm)", "sheet_h_label": "Altura da Folha (mm)", "cut_w_label": "Largura do Produto (mm)", "cut_h_label": "Altura do Produto (mm)", "gripper_label": "Margem de Pinça (mm)", "bleed_label": "Sangria / Espaço entre Poses (mm)", "grain_label": "Sentido da Fibra da Folha", "grain_long": "Fibra Longa (paralela ao lado maior)", "grain_short": "Fibra Curta (paralela ao lado menor)", "copies_target_label": "Tiragem Desejada", "paper_weight_label": "Gramatura do Papel (g/m²)", "waste_margin_label": "Margem de Acerto / Provas (%)", "res_title": "RESULTADOS DA OTIMIZAÇÃO DE CORTE", "res_best_yield": "Rendimento Máximo", "res_pieces_per_sheet": "poses por folha", "res_layout_mode": "Disposição Ótima", "res_waste_pct": "Desperdício de Papel (Aparas)", "res_usable_area": "Área Útil Impressa", "res_sheets_needed": "Folhas de Máquina Necessárias", "res_sheets_order": "Total de Folhas a Encomendar (com acerto)", "res_total_weight": "Peso Total do Papel (kg)", "res_grain_check": "Validação do Sentido de Fibra", "grain_ok": "Adequado para dobra ao longo do lado maior", "grain_warn": "Atenção: dobra contra a fibra (exige vinco prévio)", "sheet_preview_title": "ESQUEMA DE CORTE E IMPOSIÇÃO", "cut_sheet_note": "Linha tracejada laranja: margem de pinça não imprimível.", "rule_tip": "💡 <strong>Regra gráfica:</strong> A dobra deve sempre correr paralela às fibras de celulose.", "legal_disclaimer": "Nota técnica: Cálculos geométricos baseados nos padrões de guilhotina.", "faq_title": "Perguntas Frequentes sobre Rendimento de Papel", "faq_1_q": "Como calcular o rendimento de corte?", "faq_1_a": "Comparando a distribuição direta e rotacionada com desconto de pinça e sangrias.", "faq_2_q": "Por que a direção da fibra é essencial?", "faq_2_a": "Dobras contra a fibra partem o papel revestido. A dobra deve acompanhar o sentido da celulose.", "faq_3_q": "Quanto deixar para a pinça de máquina?", "faq_3_a": "No offset habitualmente 10 a 15 mm. Em digital costuma ser 3 a 5 mm.", "faq_4_q": "Como calcular o peso do papel?", "faq_4_a": "Peso (kg) = (Largura m × Altura m × g/m² × Folhas totais) / 1000."}};
+        let currentLang = 'it';
+    </script>
+
+    <!-- CORE JAVASCRIPT LOGIC -->
+    <script>
+
+// Soluzione 1: Suite Switcher Dropdown Interaction
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (!menu) return;
+    const isClosed = menu.classList.contains('hidden');
+    if (isClosed) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('suiteMenuDropdown');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            const btn = document.getElementById('suiteMenuBtn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+
+        // Viral Share Functions
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title + " su OmniTools Lab: " + window.location.href);
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}
+
+        function shareReddit() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }`, '_blank');
+        }
+
+        function copyCurrentUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const el = document.getElementById('shareCopyText');
+                if (el) {
+                    const orig = el.textContent;
+                    el.textContent = 'Copiato! ✓';
+                    setTimeout(() => { el.textContent = orig; }, 2000);
+                }
+            }).catch(() => {
+                alert('URL copiato: ' + window.location.href);
+            });
+        }
+
+        function nativeShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: document.title + ' su OmniTools Lab',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                copyCurrentUrl();
+            }
+        }
+
+        // Suggestion Modal Functions
+        function openSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function submitSuggestion() {
+            const msgEl = document.getElementById('suggestMessage');
+            const msg = msgEl ? msgEl.value.trim() : '';
+            if (!msg) {
+                alert('Inserisci la tua idea prima di inviare.');
+                return;
+            }
+            const formBox = document.getElementById('suggestFormContainer');
+            const successBox = document.getElementById('suggestSuccessContainer');
+            if (formBox) formBox.classList.add('hidden');
+            if (successBox) successBox.classList.remove('hidden');
+        }
+
+        function dismissInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+
+        // Global Imposition State
+        let currentCalculation = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initLanguage();
+            calculateYield();
+            updatePrintDate();
+        });
+
+        function updatePrintDate() {
+            const now = new Date();
+            const el = document.getElementById('printDate');
+            if (el) {
+                el.textContent = now.toLocaleDateString(currentLang === 'it' ? 'it-IT' : 'en-US', {
+                    year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
+                });
+            }
+        }
+
+        // Preset Handlers
+        function applySheetPreset() {
+            const val = document.getElementById('sheetPreset').value;
+            if (val !== 'custom') {
+                const [w, h] = val.split('x').map(Number);
+                document.getElementById('sheetW').value = w;
+                document.getElementById('sheetH').value = h;
+            }
+            calculateYield();
+        }
+
+        function applyCutPreset() {
+            const val = document.getElementById('cutPreset').value;
+            if (val !== 'custom') {
+                const [w, h] = val.split('x').map(Number);
+                document.getElementById('cutW').value = w;
+                document.getElementById('cutH').value = h;
+            }
+            calculateYield();
+        }
+
+        // Main Cutting Imposition Algorithm
+        function calculateYield() {
+            const sheetW = parseFloat(document.getElementById('sheetW').value) || 320;
+            const sheetH = parseFloat(document.getElementById('sheetH').value) || 450;
+            const cutW = parseFloat(document.getElementById('cutW').value) || 85;
+            const cutH = parseFloat(document.getElementById('cutH').value) || 55;
+            const gripper = parseFloat(document.getElementById('gripperMargin').value) || 0;
+            const bleed = parseFloat(document.getElementById('cutBleed').value) || 0;
+            const grain = document.getElementById('grainDirection').value || 'long';
+            const targetCopies = parseInt(document.getElementById('targetCopies').value) || 1000;
+            const weightGsm = parseFloat(document.getElementById('paperWeight').value) || 350;
+            const wastePct = parseFloat(document.getElementById('wasteMargin').value) || 5;
+
+            // Effective printable area on parent sheet
+            // We assume gripper is on one of the dimensions (typically sheetH or sheetW)
+            const usableW = Math.max(10, sheetW - bleed);
+            const usableH = Math.max(10, sheetH - gripper - bleed);
+
+            const effectiveCutW = cutW + bleed;
+            const effectiveCutH = cutH + bleed;
+
+            // 1. Straight Orientation (Dir 1)
+            const cols1 = Math.floor(usableW / effectiveCutW);
+            const rows1 = Math.floor(usableH / effectiveCutH);
+            const count1 = cols1 * rows1;
+
+            // 2. Rotated Orientation (Dir 2 - 90 deg)
+            const cols2 = Math.floor(usableW / effectiveCutH);
+            const rows2 = Math.floor(usableH / effectiveCutW);
+            const count2 = cols2 * rows2;
+
+            // 3. Mixed / Guillotine Combo Layout
+            // Test placing main block straight, then filling remaining height with rotated items
+            let count3 = 0;
+            let comboRows1 = rows1;
+            let comboCols1 = cols1;
+            let comboRows2 = 0;
+            let comboCols2 = 0;
+
+            const remH = usableH - (rows1 * effectiveCutH);
+            if (remH >= effectiveCutW) {
+                comboRows2 = Math.floor(remH / effectiveCutW);
+                comboCols2 = Math.floor(usableW / effectiveCutH);
+                count3 = count1 + (comboRows2 * comboCols2);
+            }
+
+            // Select optimal arrangement
+            let bestArrangement = 'straight';
+            let bestCount = count1;
+            let arrangementLabel = `Dritta (${cols1} × ${rows1})`;
+
+            if (count2 > bestCount) {
+                bestCount = count2;
+                bestArrangement = 'rotated';
+                arrangementLabel = `Ruotata 90° (${cols2} × ${rows2})`;
+            }
+            if (count3 > bestCount) {
+                bestCount = count3;
+                bestArrangement = 'mixed';
+                arrangementLabel = `Mista Ottimizzata (${count1} + ${count3 - count1})`;
+            }
+
+            bestCount = Math.max(1, bestCount);
+
+            // Waste & Areas
+            const sheetAreaMm2 = sheetW * sheetH;
+            const totalCutsAreaMm2 = bestCount * (cutW * cutH);
+            const wastePercent = Math.max(0, ((sheetAreaMm2 - totalCutsAreaMm2) / sheetAreaMm2) * 100);
+            const usablePercent = 100 - wastePercent;
+
+            // Sheets needed for target run
+            const netSheets = Math.ceil(targetCopies / bestCount);
+            const grossSheets = Math.ceil(netSheets * (1 + (wastePct / 100)));
+
+            // Weight calculation: Area (m²) * gsm * sheets / 1000
+            const sheetAreaM2 = (sheetW / 1000) * (sheetH / 1000);
+            const totalKg = (sheetAreaM2 * weightGsm * grossSheets) / 1000;
+
+            // Grain Direction Check
+            // Fold is typically parallel to the long edge of the finished piece
+            let isGrainOk = true;
+            if (grain === 'long') {
+                // Sheet long edge is parallel to grain. If piece is rotated, piece long edge may be cross-grain
+                if (bestArrangement === 'rotated') isGrainOk = false;
+            } else {
+                // Sheet short edge is parallel to grain
+                if (bestArrangement === 'straight') isGrainOk = false;
+            }
+
+            // Update UI
+            document.getElementById('resYieldValue').textContent = bestCount;
+            document.getElementById('resLayoutMode').textContent = arrangementLabel;
+            document.getElementById('resWasteValue').textContent = wastePercent.toFixed(1);
+            document.getElementById('resUsableArea').textContent = `${usablePercent.toFixed(1)}% superficie utile`;
+            document.getElementById('resOrderSheetsValue').textContent = grossSheets;
+            document.getElementById('resTotalWeight').textContent = `Peso: ${totalKg.toFixed(2)} kg (${netSheets} netti)`;
+
+            // Grain Alert UI
+            const grainBox = document.getElementById('grainAlertBox');
+            const grainTitle = document.getElementById('grainAlertTitle');
+            const grainDesc = document.getElementById('grainAlertDesc');
+            const grainBadge = document.getElementById('grainIndicatorBadge');
+
+            if (isGrainOk) {
+                grainBox.className = 'p-3.5 rounded-xl border transition-all bg-emerald-50 border-emerald-200 text-emerald-900 text-xs flex items-center gap-3';
+                grainTitle.textContent = 'Senso di Fibra Ottimale';
+                grainDesc.textContent = 'Le fibre di cellulosa scorrono parallele al lato di piega: pieghe pulite e nessun rischio di spaccatura.';
+                grainBadge.className = 'px-2 py-0.5 rounded-md font-bold text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200';
+                grainBadge.textContent = '✓ Fibra Conforme';
+            } else {
+                grainBox.className = 'p-3.5 rounded-xl border transition-all bg-amber-50 border-amber-200 text-amber-900 text-xs flex items-center gap-3';
+                grainTitle.textContent = 'Attenzione: Piega in Controfibra';
+                grainDesc.textContent = 'La disposizione massima orienta le pose perpendicolari alla fibra. È fortemente raccomandata la cordonatura meccanica per evitare spaccature.';
+                grainBadge.className = 'px-2 py-0.5 rounded-md font-bold text-[10px] bg-amber-50 text-amber-700 border border-amber-200';
+                grainBadge.textContent = '⚠️ Possibile Controfibra';
+            }
+
+            // Render 2D SVG
+            renderSheetSvg({
+                sheetW, sheetH, cutW, cutH, gripper, bleed,
+                bestArrangement, cols1, rows1, cols2, rows2,
+                comboRows1, comboCols1, comboRows2, comboCols2
+            });
+        }
+
+        // Render Vector 2D SVG
+        function renderSheetSvg(p) {
+            const svg = document.getElementById('sheetSvg');
+            const pad = 20;
+            const maxW = 560;
+            const maxH = 280;
+
+            const scale = Math.min(maxW / p.sheetW, maxH / p.sheetH);
+            const w = p.sheetW * scale;
+            const h = p.sheetH * scale;
+
+            svg.setAttribute('viewBox', `0 0 ${w + (pad * 2)} ${h + (pad * 2)}`);
+
+            let svgContent = `
+                <!-- Background Shadow & Paper Sheet -->
+                <rect x="${pad}" y="${pad}" width="${w}" height="${h}" rx="4" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+            `;
+
+            // Gripper margin zone (orange dashed)
+            if (p.gripper > 0) {
+                const gripH = p.gripper * scale;
+                svgContent += `
+                    <rect x="${pad}" y="${pad}" width="${w}" height="${gripH}" fill="rgba(249, 115, 22, 0.15)" stroke="#f97316" stroke-dasharray="3 3" stroke-width="1.5"/>
+                    <text x="${pad + (w / 2)}" y="${pad + (gripH / 2) + 3}" fill="#fb923c" font-size="9" font-family="monospace" font-weight="bold" text-anchor="middle">ZONA PINZA MACCHINA (${p.gripper} mm)</text>
+                `;
+            }
+
+            // Draw individual cut pieces
+            const gripOffset = p.gripper * scale;
+            let pieceIndex = 1;
+
+            if (p.bestArrangement === 'straight') {
+                const pw = p.cutW * scale;
+                const ph = p.cutH * scale;
+                const effW = (p.cutW + p.bleed) * scale;
+                const effH = (p.cutH + p.bleed) * scale;
+
+                for (let r = 0; r < p.rows1; r++) {
+                    for (let c = 0; c < p.cols1; c++) {
+                        const x = pad + (c * effW);
+                        const y = pad + gripOffset + (r * effH);
+                        svgContent += `
+                            <g>
+                                <rect x="${x}" y="${y}" width="${pw}" height="${ph}" rx="2" fill="#d97706" stroke="#fbbf24" stroke-width="1.2"/>
+                                <text x="${x + (pw / 2)}" y="${y + (ph / 2) + 3}" fill="#ffffff" font-size="${Math.max(7, Math.min(10, pw / 4))}" font-family="sans-serif" font-weight="bold" text-anchor="middle">${pieceIndex++}</text>
+                            </g>
+                        `;
+                    }
+                }
+            } else if (p.bestArrangement === 'rotated') {
+                const pw = p.cutH * scale;
+                const ph = p.cutW * scale;
+                const effW = (p.cutH + p.bleed) * scale;
+                const effH = (p.cutW + p.bleed) * scale;
+
+                for (let r = 0; r < p.rows2; r++) {
+                    for (let c = 0; c < p.cols2; c++) {
+                        const x = pad + (c * effW);
+                        const y = pad + gripOffset + (r * effH);
+                        svgContent += `
+                            <g>
+                                <rect x="${x}" y="${y}" width="${pw}" height="${ph}" rx="2" fill="#b45309" stroke="#fcd34d" stroke-width="1.2"/>
+                                <text x="${x + (pw / 2)}" y="${y + (ph / 2) + 3}" fill="#ffffff" font-size="${Math.max(7, Math.min(10, pw / 4))}" font-family="sans-serif" font-weight="bold" text-anchor="middle">${pieceIndex++}</text>
+                            </g>
+                        `;
+                    }
+                }
+            } else if (p.bestArrangement === 'mixed') {
+                // Main straight block
+                const pw1 = p.cutW * scale;
+                const ph1 = p.cutH * scale;
+                const effW1 = (p.cutW + p.bleed) * scale;
+                const effH1 = (p.cutH + p.bleed) * scale;
+
+                for (let r = 0; r < p.rows1; r++) {
+                    for (let c = 0; c < p.cols1; c++) {
+                        const x = pad + (c * effW1);
+                        const y = pad + gripOffset + (r * effH1);
+                        svgContent += `
+                            <g>
+                                <rect x="${x}" y="${y}" width="${pw1}" height="${ph1}" rx="2" fill="#d97706" stroke="#fbbf24" stroke-width="1.2"/>
+                                <text x="${x + (pw1 / 2)}" y="${y + (ph1 / 2) + 3}" fill="#ffffff" font-size="${Math.max(7, Math.min(10, pw1 / 4))}" font-family="sans-serif" font-weight="bold" text-anchor="middle">${pieceIndex++}</text>
+                            </g>
+                        `;
+                    }
+                }
+
+                // Rotated extra block in remaining height
+                const pw2 = p.cutH * scale;
+                const ph2 = p.cutW * scale;
+                const effW2 = (p.cutH + p.bleed) * scale;
+                const effH2 = (p.cutW + p.bleed) * scale;
+                const startY = pad + gripOffset + (p.rows1 * effH1);
+
+                for (let r = 0; r < p.comboRows2; r++) {
+                    for (let c = 0; c < p.comboCols2; c++) {
+                        const x = pad + (c * effW2);
+                        const y = startY + (r * effH2);
+                        svgContent += `
+                            <g>
+                                <rect x="${x}" y="${y}" width="${pw2}" height="${ph2}" rx="2" fill="#b45309" stroke="#fcd34d" stroke-width="1.2"/>
+                                <text x="${x + (pw2 / 2)}" y="${y + (ph2 / 2) + 3}" fill="#ffffff" font-size="${Math.max(7, Math.min(10, pw2 / 4))}" font-family="sans-serif" font-weight="bold" text-anchor="middle">${pieceIndex++}</text>
+                            </g>
+                        `;
+                    }
+                }
+            }
+
+            // Dimension indicators
+            svgContent += `
+                <!-- Sheet Dimensions Callout -->
+                <text x="${pad + (w / 2)}" y="${pad - 6}" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold" text-anchor="middle">Base: ${p.sheetW} mm</text>
+                <text x="${pad + w + 8}" y="${pad + (h / 2)}" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold" dominant-baseline="middle">H: ${p.sheetH} mm</text>
+            `;
+
+            svg.innerHTML = svgContent;
+        }
+
+        // Language & Localization Engine
+        function initLanguage() {
+            const saved = localStorage.getItem('omnitools_lang');
+            if (saved && I18N_DATA[saved]) {
+                currentLang = saved;
+            } else {
+                const userLangs = navigator.languages || [navigator.language || 'it'];
+                for (let l of userLangs) {
+                    const prefix = l.split('-')[0].toLowerCase();
+                    if (I18N_DATA[prefix]) {
+                        currentLang = prefix;
+                        break;
+                    }
+                }
+            }
+            const selectEl = document.getElementById('langSelect');
+            if (selectEl) selectEl.value = currentLang;
+            applyTranslations(currentLang);
+        }
+
+        function changeLanguage(lang) {
+            if (I18N_DATA[lang]) {
+                currentLang = lang;
+                localStorage.setItem('omnitools_lang', lang);
+                applyTranslations(lang);
+                calculateYield();
+                updatePrintDate();
+            }
+        }
+
+        function applyTranslations(lang) {
+            const t = I18N_DATA[lang] || I18N_DATA['it'];
+            document.documentElement.lang = lang;
+
+            document.getElementById('heroTitle').textContent = t.hero_title;
+            document.getElementById('heroDesc').textContent = t.hero_desc;
+            document.getElementById('privacyBadge').textContent = t.privacy_badge;
+
+            document.getElementById('lblSheetFormat').textContent = t.sheet_format_label;
+            document.getElementById('lblCutFormat').textContent = t.cut_format_label;
+            document.getElementById('lblSheetW').textContent = t.sheet_w_label;
+            document.getElementById('lblSheetH').textContent = t.sheet_h_label;
+            document.getElementById('lblCutW').textContent = t.cut_w_label;
+            document.getElementById('lblCutH').textContent = t.cut_h_label;
+            document.getElementById('lblGripper').textContent = t.gripper_label;
+            document.getElementById('lblBleed').textContent = t.bleed_label;
+            document.getElementById('lblGrain').textContent = t.grain_label;
+            document.getElementById('lblCopiesTarget').textContent = t.copies_target_label;
+            document.getElementById('lblPaperWeight').textContent = t.paper_weight_label;
+            document.getElementById('lblWasteMargin').textContent = t.waste_margin_label;
+
+            document.getElementById('lblResBestYield').textContent = t.res_best_yield;
+            document.getElementById('resYieldUnit').textContent = t.res_pieces_per_sheet;
+            document.getElementById('lblResWastePct').textContent = t.res_waste_pct;
+            document.getElementById('lblResSheetsOrder').textContent = t.res_sheets_order;
+
+            document.getElementById('sheetPreviewTitle').textContent = t.sheet_preview_title;
+            document.getElementById('cutSheetNote').textContent = t.cut_sheet_note;
+
+            document.getElementById('ruleTipText').innerHTML = t.rule_tip;
+            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+
+            document.getElementById('faqTitle').children[1].textContent = t.faq_title;
+            document.getElementById('faq1Q').textContent = t.faq_1_q;
+            document.getElementById('faq1A').textContent = t.faq_1_a;
+            document.getElementById('faq2Q').textContent = t.faq_2_q;
+            document.getElementById('faq2A').textContent = t.faq_2_a;
+            document.getElementById('faq3Q').textContent = t.faq_3_q;
+            document.getElementById('faq3A').textContent = t.faq_3_a;
+            document.getElementById('faq4Q').textContent = t.faq_4_q;
+            document.getElementById('faq4A').textContent = t.faq_4_a;
+        }
+
+        // PWA Install Prompt Handler
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const btn = document.getElementById('headerInstallBtn');
+            if (btn) btn.classList.remove('hidden');
+        });
+
+        function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    deferredPrompt = null;
+                });
+            } else {
+                alert('Per installare l\'app su iOS: tocca il tasto Condividi e seleziona "Aggiungi alla schermata Home". Su Android/Desktop: menu opzioni del browser -> "Installa applicazione".');
+            }
+        }
+    </script>
+</body>
+</html>

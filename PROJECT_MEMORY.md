@@ -74,7 +74,7 @@ Tutti i tool compilati della suite devono obbligatoriamente utilizzare i moduli 
   1. **FAQ Accordion:** Sezione FAQ con tag `<details>` e frecce SVG rotanti per un'esperienza fluida.
   2. **Share & Viral Strip:** Barra di condivisione social (WhatsApp, LinkedIn, Copia Link, Web Share API nativa).
   3. **Suggestion Strip:** Box di raccolta idee utente (*"Hai un'idea per un nuovo calcolatore?"*) con pulsante collegato a modale interattivo.
-  4. **OmniTools Network Ecosystem Bar:** Box scuro ad alto contrasto con gli 8 tool attivi (`📐 Rampe`, `🪜 Scale`, `🚰 Scarichi`, `📕 Dorso`, `🖼️ DPI`, `🎯 Tinta`, `🏷️ Barcode`, `🖨️ Copertura`) e link Partnership B2B.
+  4. **OmniTools Network Ecosystem Bar:** Box scuro ad alto contrasto con gli 9 tool attivi (`📐 Rampe`, `🪜 Scale`, `🚰 Scarichi`, `📕 Dorso`, `🖼️ DPI`, `🎯 Tinta`, `🏷️ Barcode`, `🖨️ Copertura`) e link Partnership B2B.
   5. **Note Legali & Copyright:** Box disclaimer tecnico e copyright.
   6. **PWA Install Banner & Modale Suggerimenti:** Modale feedback e banner mobile flottante.
 

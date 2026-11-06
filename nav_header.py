@@ -88,6 +88,17 @@ TOOLS = [
         "url": "/copertura",
         "badge": "CMYK / TAC",
         "color": "rose"
+    },
+    {
+        "id": "resa",
+        "category": "OmniGraph",
+        "category_label": "Grafica & Prestampa",
+        "name": "ResaCarta",
+        "desc": "Ottimizzazione Taglio Fogli Macchina",
+        "emoji": "📑",
+        "url": "/resa",
+        "badge": "Nesting Fogli",
+        "color": "amber"
     }
 ]
 
