@@ -10,8 +10,9 @@
     window.__OMNI_DESK_INITIALIZED__ = true;
 
     // Load state from localStorage
-    const STORAGE_KEY = 'omnidesk_state_v1';
+    const STORAGE_KEY = 'omnidesk_state_v2';
     let deskState = {
+        dockExpanded: false,
         clock: { open: false, x: null, y: null, theme: 'teal', size: 'normal' },
         memo: { open: false, x: null, y: null, text: '', color: 'yellow' },
         calc: { open: false, x: null, y: null, current: '0', prev: null, op: null, resetNext: false }
@@ -20,7 +21,13 @@
     try {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
-            deskState = Object.assign(deskState, JSON.parse(saved));
+            const parsed = JSON.parse(saved);
+            // Default open state to false on new page load so it never annoys the user!
+            deskState = Object.assign(deskState, parsed);
+            deskState.clock.open = false;
+            deskState.memo.open = false;
+            deskState.calc.open = false;
+            deskState.dockExpanded = false;
         }
     } catch (e) {
         console.warn('OmniDesk: could not read localStorage', e);
@@ -50,7 +57,7 @@
         lavender: { bg: 'bg-purple-100', border: 'border-purple-300', text: 'text-purple-950', header: 'bg-purple-200/80', dot: '#e9d5ff' }
     };
 
-    // Inject CSS for animations, bezel styling and drag handles
+    // Inject CSS for animations, discreet pill handle and widgets
     const styleEl = document.createElement('style');
     styleEl.textContent = `
         .omnidesk-widget {
@@ -58,16 +65,11 @@
             z-index: 9999;
             touch-action: none;
             user-select: none;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.22));
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
             transition: transform 0.15s ease, opacity 0.15s ease;
         }
         .omnidesk-clock-bezel {
-            box-shadow: inset 0 3px 6px rgba(255,255,255,0.4), 0 8px 24px rgba(0,0,0,0.35);
-        }
-        .omnidesk-dock-btn:hover .omnidesk-tooltip {
-            opacity: 1;
-            transform: translateX(0);
-            pointer-events: auto;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.4), 0 8px 24px rgba(0,0,0,0.4);
         }
         .omnidesk-drag-handle {
             cursor: grab;
@@ -75,45 +77,40 @@
         .omnidesk-drag-handle:active {
             cursor: grabbing;
         }
-        @keyframes popSwatchTick {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        #omnidesk-dock-panel {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
         }
     `;
     document.head.appendChild(styleEl);
 
-    // Build Floating OmniDock HTML
-    const dockContainer = document.createElement('aside');
+    // ==========================================
+    // 0. COMPACT RETRACTABLE DOCK (Discreet Edge Tab)
+    // ==========================================
+    const dockContainer = document.createElement('div');
     dockContainer.id = 'omnidesk-dock';
-    dockContainer.setAttribute('aria-label', 'OmniDesk Strumenti Rapidi');
-    dockContainer.className = 'fixed right-3 bottom-20 z-[9990] flex flex-col items-center gap-2 group print:hidden';
+    dockContainer.setAttribute('aria-label', 'OmniDesk Quick Utilities');
+    dockContainer.className = 'fixed right-0 top-1/2 -translate-y-1/2 z-[9990] flex items-center print:hidden';
     dockContainer.innerHTML = `
-        <div class="flex flex-col items-center bg-slate-900/90 hover:bg-slate-900 backdrop-blur-md p-1.5 rounded-2xl border border-slate-700/80 shadow-2xl transition-all duration-300">
+        <!-- Collapsible Tray Panel -->
+        <div id="omnidesk-dock-panel" class="hidden flex-col items-center bg-slate-900/95 backdrop-blur-md p-1.5 rounded-l-2xl border-y border-l border-slate-700/80 shadow-2xl mr-0">
             <!-- Clock Button -->
-            <button id="omnidesk-btn-clock" class="omnidesk-dock-btn relative w-11 h-11 flex items-center justify-center rounded-xl text-teal-400 hover:bg-slate-800 active:scale-90 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" stroke-width="2" stroke="currentColor"></circle>
+            <button id="omnidesk-btn-clock" title="Orologio da banco" class="w-10 h-10 flex items-center justify-center rounded-xl text-teal-400 hover:bg-slate-800 active:scale-90 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v5l3 2"></path>
-                    <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
                 </svg>
-                <span class="omnidesk-tooltip absolute right-14 bg-slate-900 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 shadow-xl opacity-0 translate-x-2 transition pointer-events-none whitespace-nowrap">
-                    OmniClock Pop Swatch
-                </span>
             </button>
 
             <!-- Memo Button -->
-            <button id="omnidesk-btn-memo" class="omnidesk-dock-btn relative w-11 h-11 flex items-center justify-center rounded-xl text-amber-400 hover:bg-slate-800 active:scale-90 transition mt-1">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="omnidesk-btn-memo" title="Post-it & Note" class="w-10 h-10 flex items-center justify-center rounded-xl text-amber-400 hover:bg-slate-800 active:scale-90 transition mt-1">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                <span class="omnidesk-tooltip absolute right-14 bg-slate-900 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 shadow-xl opacity-0 translate-x-2 transition pointer-events-none whitespace-nowrap">
-                    OmniMemo Post-it
-                </span>
             </button>
 
             <!-- Calc Button -->
-            <button id="omnidesk-btn-calc" class="omnidesk-dock-btn relative w-11 h-11 flex items-center justify-center rounded-xl text-blue-400 hover:bg-slate-800 active:scale-90 transition mt-1">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="omnidesk-btn-calc" title="Calcolatrice rapida" class="w-10 h-10 flex items-center justify-center rounded-xl text-blue-400 hover:bg-slate-800 active:scale-90 transition mt-1">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <rect x="4" y="2" width="16" height="20" rx="2" stroke-width="2"></rect>
                     <line x1="8" y1="6" x2="16" y2="6" stroke-width="2"></line>
                     <line x1="8" y1="10" x2="10" y2="10" stroke-width="2"></line>
@@ -122,13 +119,34 @@
                     <line x1="14" y1="14" x2="16" y2="14" stroke-width="2"></line>
                     <line x1="8" y1="18" x2="16" y2="18" stroke-width="2"></line>
                 </svg>
-                <span class="omnidesk-tooltip absolute right-14 bg-slate-900 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg border border-slate-700 shadow-xl opacity-0 translate-x-2 transition pointer-events-none whitespace-nowrap">
-                    OmniCalc Rapida
-                </span>
             </button>
         </div>
+
+        <!-- Discreet Trigger Tab (Sits on screen edge, minimal footprint) -->
+        <button id="omnidesk-trigger-tab" title="Strumenti da scrivania (Note, Calc, Orologio)" class="bg-slate-900/90 hover:bg-slate-900 text-slate-300 hover:text-white border-y border-l border-slate-700/80 rounded-l-xl px-1.5 py-3 shadow-lg flex flex-col items-center gap-1 active:scale-95 transition">
+            <span class="text-[10px] font-black tracking-widest text-amber-400 font-mono">DESK</span>
+            <svg id="omnidesk-arrow-icon" class="w-3.5 h-3.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
     `;
     document.body.appendChild(dockContainer);
+
+    const dockPanel = dockContainer.querySelector('#omnidesk-dock-panel');
+    const triggerTab = dockContainer.querySelector('#omnidesk-trigger-tab');
+    const arrowIcon = dockContainer.querySelector('#omnidesk-arrow-icon');
+
+    function toggleDockPanel(force) {
+        const isOpen = typeof force === 'boolean' ? force : dockPanel.classList.contains('hidden');
+        if (isOpen) {
+            dockPanel.classList.remove('hidden');
+            arrowIcon.style.transform = 'rotate(180deg)';
+        } else {
+            dockPanel.classList.add('hidden');
+            arrowIcon.style.transform = 'rotate(0deg)';
+        }
+    }
+    triggerTab.addEventListener('click', () => toggleDockPanel());
 
     // ==========================================
     // 1. DRAG ENGINE (Touch & Mouse Support)
@@ -141,7 +159,6 @@
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
             
-            // Ignore if clicking on buttons or inputs
             if (e.target.closest('button, textarea, input, select, a')) return;
 
             isDragging = true;
@@ -170,7 +187,6 @@
             let newLeft = initialLeft + dx;
             let newTop = initialTop + dy;
 
-            // Clamping to screen boundaries
             const maxW = window.innerWidth - element.offsetWidth - 10;
             const maxH = window.innerHeight - element.offsetHeight - 10;
             newLeft = Math.max(10, Math.min(newLeft, maxW));
@@ -256,7 +272,6 @@
 
             <!-- Mini Control Bar Below Watch -->
             <div class="mt-2 flex items-center gap-1.5 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700/80 shadow-lg">
-                <!-- Theme switchers -->
                 <button onclick="window.OmniDesk.setClockTheme('teal')" title="Teal" class="w-4 h-4 rounded-full bg-teal-600 border border-white/60 hover:scale-125 transition"></button>
                 <button onclick="window.OmniDesk.setClockTheme('coral')" title="Coral" class="w-4 h-4 rounded-full bg-rose-600 border border-white/60 hover:scale-125 transition"></button>
                 <button onclick="window.OmniDesk.setClockTheme('yellow')" title="Giallo" class="w-4 h-4 rounded-full bg-amber-500 border border-white/60 hover:scale-125 transition"></button>
@@ -264,11 +279,9 @@
                 <button onclick="window.OmniDesk.setClockTheme('stealth')" title="Stealth" class="w-4 h-4 rounded-full bg-slate-800 border border-white/60 hover:scale-125 transition"></button>
                 
                 <span class="w-[1px] h-3 bg-slate-700 mx-0.5"></span>
-                <!-- Standalone page link -->
                 <a href="/orologio" target="_blank" title="Apri a schermo intero" class="text-slate-400 hover:text-white transition p-0.5">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                 </a>
-                <!-- Close Button -->
                 <button onclick="window.OmniDesk.toggleClock(false)" title="Chiudi" class="text-slate-400 hover:text-rose-400 transition p-0.5">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
@@ -281,7 +294,7 @@
     const dotsContainer = clockWidget.querySelector('#omnidesk-clock-dots');
     for (let i = 1; i <= 12; i++) {
         const angle = (i * 30) * (Math.PI / 180);
-        const radius = 40; // Percentage from center
+        const radius = 40;
         const x = 50 + radius * Math.sin(angle);
         const y = 50 - radius * Math.cos(angle);
         
@@ -332,7 +345,6 @@
                 <span class="text-xs font-bold font-sans tracking-wide">OmniMemo • Appunti</span>
             </div>
             <div class="flex items-center gap-1.5">
-                <!-- Color dots -->
                 <button onclick="window.OmniDesk.setMemoColor('yellow')" class="w-3.5 h-3.5 rounded-full bg-amber-300 border border-amber-400 hover:scale-125 transition"></button>
                 <button onclick="window.OmniDesk.setMemoColor('cyan')" class="w-3.5 h-3.5 rounded-full bg-cyan-300 border border-cyan-400 hover:scale-125 transition"></button>
                 <button onclick="window.OmniDesk.setMemoColor('pink')" class="w-3.5 h-3.5 rounded-full bg-rose-300 border border-rose-400 hover:scale-125 transition"></button>
@@ -429,7 +441,6 @@
     `;
     document.body.appendChild(calcWidget);
 
-
     // Calculator State & Logic
     let calcCurrent = '0';
     let calcPrev = null;
@@ -445,12 +456,54 @@
         }
     }
 
+    // Keyboard & Numpad Listener for Floating Calculator
+    window.addEventListener('keydown', (e) => {
+        const calcEl = document.getElementById('omnidesk-calc');
+        if (!calcEl || calcEl.classList.contains('hidden')) return;
+
+        // Don't intercept if user is typing in a form input or memo textarea
+        const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+        if (['input', 'textarea', 'select'].includes(activeTag)) return;
+
+        if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
+            e.preventDefault();
+            window.OmniDesk.calcDigit(e.key);
+        } else if (e.key === '+') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('+');
+        } else if (e.key === '-') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('-');
+        } else if (e.key === '*' || e.key === 'x') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('*');
+        } else if (e.key === '/') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('/');
+        } else if (e.key === 'Enter' || e.key === '=') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('=');
+        } else if (e.key === 'Escape' || e.key.toLowerCase() === 'c') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('C');
+        } else if (e.key === '%') {
+            e.preventDefault();
+            window.OmniDesk.calcAction('%');
+        } else if (e.key === 'Backspace') {
+            e.preventDefault();
+            if (calcCurrent.length > 1) {
+                calcCurrent = calcCurrent.slice(0, -1);
+            } else {
+                calcCurrent = '0';
+            }
+            updateCalcDisplay();
+        }
+    });
 
     // ==========================================
     // 5. PUBLIC CONTROLLER API
     // ==========================================
     window.OmniDesk = {
-        // Toggle widgets
         toggleClock(force) {
             const el = document.getElementById('omnidesk-clock');
             const state = typeof force === 'boolean' ? force : el.classList.contains('hidden');
@@ -458,13 +511,12 @@
             if (state) {
                 el.classList.remove('hidden');
                 if (deskState.clock.x === null) {
-                    el.style.left = (window.innerWidth - 240) + 'px';
+                    el.style.left = Math.max(15, window.innerWidth - 240) + 'px';
                     el.style.top = '100px';
                 }
             } else {
                 el.classList.add('hidden');
             }
-            saveDeskState();
         },
 
         toggleMemo(force) {
@@ -474,7 +526,7 @@
             if (state) {
                 el.classList.remove('hidden');
                 if (deskState.memo.x === null) {
-                    el.style.left = Math.max(20, window.innerWidth - 350) + 'px';
+                    el.style.left = Math.max(15, window.innerWidth - 350) + 'px';
                     el.style.top = '160px';
                 }
                 const area = document.getElementById('omnidesk-memo-area');
@@ -482,7 +534,6 @@
             } else {
                 el.classList.add('hidden');
             }
-            saveDeskState();
         },
 
         toggleCalc(force) {
@@ -492,23 +543,19 @@
             if (state) {
                 el.classList.remove('hidden');
                 if (deskState.calc.x === null) {
-                    el.style.left = Math.max(20, window.innerWidth - 310) + 'px';
+                    el.style.left = Math.max(15, window.innerWidth - 310) + 'px';
                     el.style.top = '220px';
                 }
             } else {
                 el.classList.add('hidden');
             }
-            saveDeskState();
         },
 
-        // Theme Setters
         setClockTheme(themeKey) {
             const t = CLOCK_THEMES[themeKey] || CLOCK_THEMES.teal;
             deskState.clock.theme = themeKey;
             const face = document.getElementById('omnidesk-clock-face');
-            if (face) {
-                face.style.backgroundColor = t.face;
-            }
+            if (face) face.style.backgroundColor = t.face;
             saveDeskState();
         },
 
@@ -545,7 +592,6 @@
             }
         },
 
-        // Calculator Keys
         calcDigit(d) {
             if (calcResetOnNext) {
                 calcCurrent = d === '.' ? '0.' : d;
@@ -638,8 +684,9 @@
         calcWidget.style.top = deskState.calc.y + 'px';
     }
 
-    if (deskState.clock.open) window.OmniDesk.toggleClock(true);
-    if (deskState.memo.open) window.OmniDesk.toggleMemo(true);
-    if (deskState.calc.open) window.OmniDesk.toggleCalc(true);
+    // Always start with widgets closed on initial page view
+    window.OmniDesk.toggleClock(false);
+    window.OmniDesk.toggleMemo(false);
+    window.OmniDesk.toggleCalc(false);
 
 })();
