@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>InteresseComposto — Simulatore PAC & Rendita Passiva 4% | OmniTools Lab</title>
+    <meta name="description" content="Simula l'interesse composto nel tempo con versamenti mensili (PAC). Calcola il montante finale, gli interessi reinvestiti e la rendita passiva mensile sostenibile (Regola del 4%).">
+    
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/pac">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="InteresseComposto — Simulatore PAC & Rendita Passiva | OmniTools Lab">
+    <meta property="og:description" content="Calcola la crescita esponenziale del tuo capitale con versamenti periodici e la regola del 4% per la rendita da investimento.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/pac">
+    <meta property="og:site_name" content="OmniTools Lab">
+    
+    <!-- Fonts & Styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+            .print-only { display: block !important; }
+            .card-box { border: 1px solid #cbd5e1 !important; box-shadow: none !important; break-inside: avoid; }
+        }
+        .print-only { display: none; }
+    </style>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "InteresseComposto",
+      "url": "https://www.omnitoolslab.com/pac",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "description": "Simulatore di interesse composto, piano di accumulo del capitale (PAC) e calcolo rendita passiva al 4%.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+        <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+            
+            <!-- Breadcrumb Navigation & Suite Switcher -->
+            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                <!-- Home Link & Brand Logo -->
+                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 shadow-emerald-700/20 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+            <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+            <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+            <line x1="16" y1="6.5" x2="16" y2="25.5" stroke="#ffffff" stroke-width="2" />
+            <line x1="12" y1="13.5" x2="16" y2="25.5" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="1.5 1.5" />
+            <line x1="20" y1="13.5" x2="16" y2="25.5" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="1.5 1.5" />
+            <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+        </svg>
+                </a>
+
+                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
+                <div class="relative flex items-center min-w-0">
+                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
+                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
+                            <span>Omni<span class="text-blue-600">Tools</span></span>
+                        </a>
+                        <span class="text-slate-300 font-normal">/</span>
+                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border-emerald-200/80 border shrink-0 hidden xs:inline-block">Finance</span>
+                        <span id="brandBadgeMobile" class="hidden">PAC / FIRE</span>
+                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
+                        
+                        <!-- Dropdown Switcher Button -->
+                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
+                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">InteresseComposto</span>
+                            <span id="brandTitleMobile" class="hidden">InteresseComposto</span>
+                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Dropdown Popover Menu (All 12 Tools Categorized) -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
+                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools (12)</span>
+                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
+                                Home Hub →
+                            </a>
+                        </div>
+
+                        <!-- Cantiere & Struttura -->
+                        <div class="px-2 pt-2 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
+                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📐</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">DM 236/89</span>
+            </a>
+            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🪜</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+            </a>
+            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🚰</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Grafica & Prestampa -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
+                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📕</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Brossura</span>
+            </a>
+            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🔍</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Pixel/DPI</span>
+            </a>
+            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🎨</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+            </a>
+            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">GS1 / TS</span>
+            </a>
+            <a href="/copertura" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🖨️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">CoperturaFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Copertura Inchiostro CMYK & Costi</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">CMYK / TAC</span>
+            </a>
+            <a href="/resa" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📑</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">ResaCarta</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Ottimizzazione Taglio Fogli Macchina</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Nesting Fogli</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Finanza & Business -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 flex items-center gap-1 mb-1">
+                                <span>💼</span> OmniFinance · Finanza & Business
+                            </div>
+                            <div class="space-y-0.5">
+                                
+            <a href="/mutuo" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏦</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">MutuoFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Rata & Ammortamento Francese</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Ammortamento</span>
+            </a>
+            <a href="/pac" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-emerald-50/80 text-emerald-800 border border-emerald-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">📈</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">InteresseComposto</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Simulatore PAC & Rendita 4%</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-emerald-600 text-white shadow-2xs">Attivo</span>
+            </a>
+            <a href="/margine" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">🏷️</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">MargineFacile</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Margine, Ricarico & COGS</div>
+                    </div>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Markup/Pricing</span>
+            </a>
+                            </div>
+                        </div>
+
+                        <!-- Footer Link to Hub -->
+                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
+                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
+                                <span>🏠</span> Tutti i 12 strumenti nella Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
+
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
+                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-3 sm:px-4 py-5 flex-1 w-full space-y-6">
+
+        <!-- Print-only official header -->
+        <div class="print-only mb-6 border-b-2 border-slate-900 pb-3">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-black text-slate-900 uppercase tracking-wide">OmniTools Lab · InteresseComposto</h1>
+                    <p class="text-xs text-slate-600">Prospetto Finanziario di Crescita PAC & Rendita Passiva da Capitale</p>
+                </div>
+                <div class="text-right text-xs text-slate-500 font-mono">
+                    <p>Data Stampa: <span id="printDate"></span></p>
+                    <p>omnitoolslab.com/pac</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Title & Global Currency Bar -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 no-print pb-2 border-b border-slate-200">
+            <div class="text-left space-y-1">
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold border border-emerald-200">
+                        <span>📈</span> SIMULATORE RISPARMIO & PIANO ACCUMULO (PAC)
+                    </span>
+                    <span class="text-xs font-bold text-slate-400">· Crescita Esponenziale & FIRE</span>
+                </div>
+                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Interesse Composto & Montante Futuro</h1>
+            </div>
+
+            <!-- Universal Currency Switcher -->
+            <div class="flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-2xs text-xs font-bold shrink-0" id="currencySwitcher">
+                <span class="text-[10px] text-slate-400 font-bold uppercase px-2 hidden sm:inline">Valuta:</span>
+                <button type="button" onclick="setCurrency('EUR')" id="currEUR" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">€ EUR</button>
+                <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">$ USD</button>
+                <button type="button" onclick="setCurrency('GBP')" id="currGBP" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">£ GBP</button>
+                <button type="button" onclick="setCurrency('CHF')" id="currCHF" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">CHF</button>
+                <button type="button" onclick="setCurrency('JPY')" id="currJPY" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">¥ JPY</button>
+            </div>
+        </div>
+
+        <!-- Main Interactive Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Controls Column (5 cols) -->
+            <div class="lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4 card-box">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-700 block pb-2 border-b border-slate-100 flex items-center justify-between">
+                    <span class="flex items-center gap-1.5"><span>⚙️</span> Parametri del Piano di Accumulo</span>
+                    <button type="button" onclick="resetDefaults()" class="text-[11px] font-semibold text-emerald-700 hover:underline">Reimposta</button>
+                </span>
+
+                <!-- Capitale Iniziale -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-slate-700">Capitale Iniziale (<span class="currencySymbol">€</span>)</label>
+                        <span id="badgeInitial" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">5.000 €</span>
+                    </div>
+                    <input type="number" id="inputInitial" value="5000" min="0" max="10000000" step="500" oninput="syncFromInput('Initial')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="range" id="rangeInitial" min="0" max="50000" step="500" value="5000" oninput="syncFromRange('Initial')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setInitial(0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">0</button>
+                        <button type="button" onclick="setInitial(2000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">2.000</button>
+                        <button type="button" onclick="setInitial(5000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">5.000</button>
+                        <button type="button" onclick="setInitial(10000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">10.000</button>
+                    </div>
+                </div>
+
+                <!-- Versamento Mensile (PAC) -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-slate-700">Versamento Ricorrente Mensile (<span class="currencySymbol">€</span>)</label>
+                        <span id="badgeMonthly" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">250 € / mese</span>
+                    </div>
+                    <input type="number" id="inputMonthly" value="250" min="0" max="100000" step="50" oninput="syncFromInput('Monthly')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="range" id="rangeMonthly" min="0" max="2500" step="50" value="250" oninput="syncFromRange('Monthly')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setMonthly(100)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">100</button>
+                        <button type="button" onclick="setMonthly(250)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">250</button>
+                        <button type="button" onclick="setMonthly(500)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">500</button>
+                        <button type="button" onclick="setMonthly(1000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">1.000</button>
+                    </div>
+                </div>
+
+                <!-- Orizzonte Temporale Anni -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-slate-700">Orizzonte Temporale (Anni)</label>
+                        <span id="badgeYears" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">20 anni</span>
+                    </div>
+                    <input type="number" id="inputYears" value="20" min="1" max="50" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="range" id="rangeYears" min="1" max="40" step="1" value="20" oninput="syncFromRange('Years')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setYears(10)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">10a</button>
+                        <button type="button" onclick="setYears(15)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">15a</button>
+                        <button type="button" onclick="setYears(20)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">20a</button>
+                        <button type="button" onclick="setYears(30)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">30a</button>
+                    </div>
+                </div>
+
+                <!-- Rendimento Medio Annuo Stimato % -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-slate-700">Rendimento Medio Annuo Stimato (%)</label>
+                        <span id="badgeReturn" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">7.00 %</span>
+                    </div>
+                    <input type="number" id="inputReturn" value="7.00" min="0.1" max="25.0" step="0.25" oninput="syncFromInput('Return')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="range" id="rangeReturn" min="1.0" max="15.0" step="0.25" value="7.00" oninput="syncFromRange('Return')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setReturn(4.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">4% (Prud.)</button>
+                        <button type="button" onclick="setReturn(6.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">6% (Bil.)</button>
+                        <button type="button" onclick="setReturn(8.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">8% (Azion.)</button>
+                        <button type="button" onclick="setReturn(10.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">10% (S&P)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results & Visualization Column (7 cols) -->
+            <div class="lg:col-span-7 space-y-4">
+
+                <!-- Primary KPI: Montante Finale Stimato -->
+                <div class="bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 rounded-2xl p-5 text-white shadow-md relative overflow-hidden card-box">
+                    <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Capitale Finale Accumulato</span>
+                            <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resFinalAmount">
+                                151.785 €
+                            </div>
+                            <span class="text-xs text-emerald-100/90 mt-0.5 block" id="resGrowthMultiplier">2.3x il capitale versato</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
+                            <span class="text-[10px] uppercase font-bold text-emerald-200 block">Rendita Perpetua (Regola 4%)</span>
+                            <div class="text-xl font-black font-mono text-white mt-0.5" id="resPassiveIncome">506 € / mese</div>
+                            <span class="text-[10px] font-semibold text-emerald-100">Prelievo sicuro annuo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Metrics Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
+                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Versato da Te</span>
+                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalDeposits">65.000 €</div>
+                        <span class="text-[10px] text-slate-500" id="resInitialVsPac">5k iniziale + 60k versamenti</span>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
+                        <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Interessi Guadagnati (Compound)</span>
+                        <div class="text-lg font-black font-mono text-emerald-700 mt-1" id="resTotalGains">+86.785 €</div>
+                        <span class="text-[10px] text-slate-500" id="resGainsShare">57.2% del patrimonio finale</span>
+                    </div>
+                </div>
+
+                <!-- SVG Exponential Growth Curve Chart -->
+                <div class="bg-slate-900 text-white rounded-2xl p-4 shadow-sm space-y-3 card-box">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="font-bold flex items-center gap-1.5">
+                            <span>📈</span> Curva di Crescita (Capitale Versato vs Interesse Composto)
+                        </span>
+                        <div class="flex items-center gap-3 text-[10px] font-mono">
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-slate-400 rounded-xs"></span> Versamenti</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-emerald-500 rounded-xs"></span> Montante Totale</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full overflow-hidden">
+                        <svg id="compoundSvg" class="w-full h-44" viewBox="0 0 520 200" preserveAspectRatio="none"></svg>
+                    </div>
+                    <p class="text-[10px] text-slate-400 text-center font-mono">
+                        L'area verde rappresenta la ricchezza creata esclusivamente dagli interessi reinvestiti che generano a loro volta nuovi interessi (effetto valanga).
+                    </p>
+                </div>
+
+                <!-- Yearly Breakdown Table -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden card-box">
+                    <div class="p-3.5 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                            <span>📅</span> Tabella di Crescita Annuale
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-500">Versato Cumulativo / Interessi Annuali / Valore Portafoglio</span>
+                    </div>
+                    <div class="max-h-56 overflow-y-auto">
+                        <table class="w-full text-xs text-left">
+                            <thead class="bg-slate-50 text-[10px] font-bold text-slate-500 uppercase sticky top-0 border-b border-slate-200">
+                                <tr>
+                                    <th class="p-2">Anno</th>
+                                    <th class="p-2 text-right">Versato</th>
+                                    <th class="p-2 text-right">Interessi Anno</th>
+                                    <th class="p-2 text-right">Patrimonio</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody" class="divide-y divide-slate-100 font-mono text-[11px]">
+                                <!-- Generato via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Technical Legal Disclaimer Box (TUF / D.Lgs. 58/1998) -->
+        <div class="p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5">
+            <div class="flex items-center gap-1.5 font-bold text-slate-800">
+                <span>⚖️</span>
+                <span>Nota Tecnica & Disclaimer Legale (OmniFinance):</span>
+            </div>
+            <p>
+                La formula utilizzata per il montante futuro con versamenti mensili costanti a capitalizzazione composta è:
+                <span class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200">M = C × (1 + r)^n + PMT × [((1 + r)^n - 1) / r]</span>.
+            </p>
+            <p>
+                I risultati visualizzati sono puramente teorici, didattici ed estimativi. <strong>Non costituiscono in alcun modo consulenza finanziaria, raccomandazione d'investimento personalizzata o offerta di servizi finanziari</strong> ai sensi del D.Lgs. 58/1998 (TUF) e del regolamento intermediari Consob. I rendimenti passati dei mercati finanziari non sono garanzia di rendimenti futuri. Il simulatore assume un rendimento costante annuo non volatile; nella realtà i mercati azionari e obbligazionari subiscono fluttuazioni, drawdown e perdite di capitale. La simulazione non tiene conto di imposte sulle plusvalenze (capital gain al 26% o 12,5% sui titoli di stato), imposta di bollo sul dossier titoli (0,20% annuo), costi di gestione degli strumenti (TER/ETF) o impatto dell'inflazione sul potere d'acquisto reale.
+            </p>
+        </div>
+
+    </main>
+
+    
+    <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-5">
+            
+            <!-- Share & Viral Action Strip -->
+            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">📢</span>
+                    <div>
+                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
+                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o clienti</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </button>
+                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su Reddit">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 8.99c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.56 12 8 12.56 8 13.25c0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm5.5 0c-.69 0-1.25.56-1.25 1.25 0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm-5.465 4.542a.335.335 0 0 0-.232.095.33.33 0 0 0 0 .464c.732.732 2.012.986 2.947.986.935 0 2.215-.254 2.947-.986a.33.33 0 0 0 0-.464.335.335 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                        <span>Reddit</span>
+                    </button>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
+                        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <span>Condividi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Suggestion Prompt Strip -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- Categorized OmniTools Ecosystem Bar (Clean 3-Section Grid) -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs">
+                            ⌘
+                        </div>
+                        <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">12 Strumenti Gratuiti • Precision Utilities Suite</span>
+                </div>
+                
+                <!-- Division 1: OmniBuilding (3 Tools) -->
+                <div class="space-y-1.5">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
+                        <span>🏗️</span> <span>OmniBuilding (3 Cantiere & Impianti)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/rampe" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📐 Rampe</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza & DM 236</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/scale" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪜 Scale</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Gradini & Blondel</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tubi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🚰 Scarichi</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza UNI EN</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Division 2: OmniGraph (6 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1">
+                        <span>🎨</span> <span>OmniGraph (6 Grafica & Stampa)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/dorso" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📕 Dorso</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Spessore & KDP</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/dpi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖼️ DPI / Pixel</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tinta" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Tinta & CMYK</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Calibrazione</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/barcode" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Barcode</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Vettoriale & GS1</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/copertura" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖨️ Copertura</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro & Costi</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/resa" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📑 Resa Carta</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Nesting & Taglio</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Division 3: OmniFinance (3 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
+                        <span>💼</span> <span>OmniFinance (3 Finanza & Business)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/mutuo" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏦 Rata Mutuo</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ammortamento & Sostenibilità</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <div class="p-2 sm:p-2.5 rounded-xl bg-emerald-600/30 border-emerald-400/50 border flex items-center justify-between transition shadow-xs">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-white text-[11px] block truncate">📈 Interesse PAC</span>
+                            <span class="text-[9px] text-emerald-200 block truncate">Crescita & Rendita 4%</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-emerald-500 text-white font-extrabold rounded shrink-0">Attivo</span>
+                    </div>
+                    <a href="/margine" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Margine & Ricarico</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">COGS, Markup & IVA</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="pt-2 text-center border-t border-slate-800/80">
+                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2 pt-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
+                    OmniTools Network fornisce utility di precisione a scopo estimativo, didattico e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il parere vincolante di tecnici abilitati o consulenti finanziari abilitati (TUF / D.Lgs. 58/1998).
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating PWA Install Banner -->
+    <div id="installBanner" class="no-print hidden fixed bottom-4 right-4 max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-xl border border-slate-700 z-50 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+            <span class="text-2xl">📲</span>
+            <div>
+                <span id="installBannerTitle" class="text-xs font-bold block text-white">Installa OmniTools come App</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-400 block">Utility di calcolo professionale sempre a portata di mano</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+            <button type="button" onclick="triggerInstall()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition">
+                Installa
+            </button>
+            <button type="button" onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg transition" title="Chiudi">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="no-print hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">💡</span>
+                    <h3 id="modalSuggestTitle" class="text-base font-extrabold text-slate-900">Suggerisci uno Strumento</h3>
+                </div>
+                <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
+                    ✕
+                </button>
+            </div>
+
+            <p id="modalSuggestDesc" class="text-xs text-slate-600 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        
+// Soluzione 1: Suite Switcher Dropdown Interaction
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (!menu) return;
+    const isClosed = menu.classList.contains('hidden');
+    if (isClosed) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+}
+
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const menu = document.getElementById('suiteMenuDropdown');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+            const btn = document.getElementById('suiteMenuBtn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});
+
+        
+        // Viral Share Functions
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title + " su OmniTools Lab: " + window.location.href);
+            window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+        }
+
+        function shareReddit() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }
+
+        function copyCurrentUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const el = document.getElementById('shareCopyText');
+                if (el) {
+                    const orig = el.textContent;
+                    el.textContent = 'Copiato! ✓';
+                    setTimeout(() => { el.textContent = orig; }, 2000);
+                }
+            }).catch(() => {
+                alert('URL copiato: ' + window.location.href);
+            });
+        }
+
+        function nativeShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: document.title + ' su OmniTools Lab',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                copyCurrentUrl();
+            }
+        }
+
+        // Suggestion Modal Functions
+        function openSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function submitSuggestion() {
+            const msgEl = document.getElementById('suggestMessage');
+            const msg = msgEl ? msgEl.value.trim() : '';
+            if (!msg) {
+                alert('Inserisci la tua idea prima di inviare.');
+                return;
+            }
+            const formBox = document.getElementById('suggestFormContainer');
+            const successBox = document.getElementById('suggestSuccessContainer');
+            if (formBox) formBox.classList.add('hidden');
+            if (successBox) successBox.classList.remove('hidden');
+        }
+
+        function dismissInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+
+        // Universal Multi-Currency Handler
+        const CURRENCIES = {
+            'EUR': { symbol: '€', code: 'EUR', pos: 'after', space: true },
+            'USD': { symbol: '$', code: 'USD', pos: 'before', space: false },
+            'GBP': { symbol: '£', code: 'GBP', pos: 'before', space: false },
+            'CHF': { symbol: 'CHF', code: 'CHF', pos: 'before', space: true },
+            'JPY': { symbol: '¥', code: 'JPY', pos: 'before', space: false }
+        };
+
+        let currentCurrency = 'EUR';
+
+        function setCurrency(curr) {
+            if (!CURRENCIES[curr]) return;
+            currentCurrency = curr;
+
+            document.querySelectorAll('.curr-btn').forEach(btn => {
+                btn.className = 'curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold';
+            });
+            const activeBtn = document.getElementById('curr' + curr);
+            if (activeBtn) {
+                activeBtn.className = 'curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition';
+            }
+
+            const sym = CURRENCIES[curr].symbol;
+            document.querySelectorAll('.currencySymbol').forEach(el => el.textContent = sym);
+
+            calculateCompound();
+        }
+
+        function formatMoney(val) {
+            const c = CURRENCIES[currentCurrency];
+            const formatted = Math.round(val).toLocaleString('it-IT');
+            if (c.pos === 'before') {
+                return c.symbol + (c.space ? ' ' : '') + formatted;
+            } else {
+                return formatted + (c.space ? ' ' : '') + c.symbol;
+            }
+        }
+
+        function setInitial(v) {
+            document.getElementById('inputInitial').value = v;
+            document.getElementById('rangeInitial').value = v;
+            calculateCompound();
+        }
+
+        function setMonthly(v) {
+            document.getElementById('inputMonthly').value = v;
+            document.getElementById('rangeMonthly').value = v;
+            calculateCompound();
+        }
+
+        function setYears(v) {
+            document.getElementById('inputYears').value = v;
+            document.getElementById('rangeYears').value = v;
+            calculateCompound();
+        }
+
+        function setReturn(v) {
+            document.getElementById('inputReturn').value = v.toFixed(2);
+            document.getElementById('rangeReturn').value = v.toFixed(2);
+            calculateCompound();
+        }
+
+        function resetDefaults() {
+            setInitial(5000);
+            setMonthly(250);
+            setYears(20);
+            setReturn(7.00);
+            calculateCompound();
+        }
+
+        function syncFromInput(type) {
+            const val = document.getElementById('input' + type).value;
+            document.getElementById('range' + type).value = val;
+            calculateCompound();
+        }
+
+        function syncFromRange(type) {
+            const val = document.getElementById('range' + type).value;
+            document.getElementById('input' + type).value = val;
+            calculateCompound();
+        }
+
+        function calculateCompound() {
+            const initial = parseFloat(document.getElementById('inputInitial').value) || 0;
+            const monthly = parseFloat(document.getElementById('inputMonthly').value) || 0;
+            const years = parseInt(document.getElementById('inputYears').value) || 1;
+            const annualReturnPercent = parseFloat(document.getElementById('inputReturn').value) || 0;
+
+            const rMonthly = Math.pow(1 + (annualReturnPercent / 100), 1 / 12) - 1; // Tasso equivalente mensile composto
+
+            // Update Badges
+            document.getElementById('badgeInitial').textContent = formatMoney(initial);
+            document.getElementById('badgeMonthly').textContent = formatMoney(monthly) + ' / mese';
+            document.getElementById('badgeYears').textContent = `${years} anni`;
+            document.getElementById('badgeReturn').textContent = `${annualReturnPercent.toFixed(2)} %`;
+
+            let currentTotal = initial;
+            let currentDeposited = initial;
+            let tableData = [];
+
+            for (let y = 1; y <= years; y++) {
+                let startYearTotal = currentTotal;
+                for (let m = 1; m <= 12; m++) {
+                    currentTotal = (currentTotal + monthly) * (1 + rMonthly);
+                    currentDeposited += monthly;
+                }
+                let yearInterest = currentTotal - startYearTotal - (monthly * 12);
+
+                tableData.push({
+                    year: y,
+                    deposited: currentDeposited,
+                    interest: Math.max(0, yearInterest),
+                    total: currentTotal
+                });
+            }
+
+            const finalAmount = currentTotal;
+            const totalDeposited = currentDeposited;
+            const gains = finalAmount - totalDeposited;
+            const multiplier = totalDeposited > 0 ? (finalAmount / totalDeposited) : 1;
+            const gainsShare = finalAmount > 0 ? (gains / finalAmount) * 100 : 0;
+            const monthlyPassive = (finalAmount * 0.04) / 12; // 4% Trinity Rule
+
+            // Aggiorna KPI
+            document.getElementById('resFinalAmount').textContent = formatMoney(finalAmount);
+            document.getElementById('resGrowthMultiplier').textContent = `${multiplier.toFixed(1)}x il capitale totale versato`;
+            document.getElementById('resTotalDeposits').textContent = formatMoney(totalDeposited);
+            document.getElementById('resInitialVsPac').textContent = `${Math.round(initial/1000)}k iniziale + ${Math.round((totalDeposited - initial)/1000)}k PAC`;
+            document.getElementById('resTotalGains').textContent = `+${formatMoney(gains)}`;
+            document.getElementById('resGainsShare').textContent = `${gainsShare.toFixed(1)}% del portafoglio totale`;
+            document.getElementById('resPassiveIncome').textContent = formatMoney(monthlyPassive) + ' / mese';
+
+            // Popola Tabella
+            let tableHtml = '';
+            tableData.forEach(d => {
+                tableHtml += `
+                    <tr class="hover:bg-slate-50/80">
+                        <td class="p-2 font-bold">${d.year}° Anno</td>
+                        <td class="p-2 text-right text-slate-600">${formatMoney(d.deposited)}</td>
+                        <td class="p-2 text-right text-teal-600 font-semibold">+${formatMoney(d.interest)}</td>
+                        <td class="p-2 text-right font-black text-emerald-700">${formatMoney(d.total)}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('tableBody').innerHTML = tableHtml;
+
+            // Render SVG Exponential Curve
+            renderSvgCurve(tableData, years);
+        }
+
+        function renderSvgCurve(data, years) {
+            const svg = document.getElementById('compoundSvg');
+            const W = 520;
+            const H = 200;
+            const padL = 40;
+            const padR = 25;
+            const padB = 30;
+            const padT = 20;
+
+            const maxVal = data[data.length - 1].total;
+            const usableW = W - padL - padR;
+            const usableH = H - padB - padT;
+
+            const getX = (y) => padL + ((y / years) * usableW);
+            const getY = (val) => (H - padB) - ((val / maxVal) * usableH);
+
+            let depPoints = [`${padL},${getY(data[0].deposited)}`];
+            let totPoints = [`${padL},${getY(data[0].total)}`];
+
+            data.forEach(d => {
+                depPoints.push(`${getX(d.year)},${getY(d.deposited)}`);
+                totPoints.push(`${getX(d.year)},${getY(d.total)}`);
+            });
+
+            let svgContent = `
+                <!-- Background Grid -->
+                <line x1="${padL}" y1="${padT}" x2="${W - padR}" y2="${padT}" stroke="#334155" stroke-width="1" stroke-dasharray="2 2" />
+                <line x1="${padL}" y1="${padT + usableH / 2}" x2="${W - padR}" y2="${padT + usableH / 2}" stroke="#334155" stroke-width="1" stroke-dasharray="2 2" />
+                <line x1="${H - padB}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="#64748b" stroke-width="1.5" />
+
+                <!-- Filled Area between Deposited and Total (The Compound Interest Area) -->
+                <polygon points="${totPoints.join(' ')} ${getX(years)},${H - padB} ${padL},${H - padB}" fill="rgba(16, 185, 129, 0.18)" />
+                <polygon points="${depPoints.join(' ')} ${getX(years)},${H - padB} ${padL},${H - padB}" fill="rgba(148, 163, 184, 0.22)" />
+
+                <!-- Lines -->
+                <polyline points="${depPoints.join(' ')}" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="4 2" />
+                <polyline points="${totPoints.join(' ')}" fill="none" stroke="#10b981" stroke-width="3" />
+            `;
+
+            // Data Points on end
+            const lastD = data[data.length - 1];
+            svgContent += `
+                <circle cx="${getX(years)}" cy="${getY(lastD.total)}" r="4.5" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+                <circle cx="${getX(years)}" cy="${getY(lastD.deposited)}" r="4" fill="#94a3b8" stroke="#ffffff" stroke-width="1.5" />
+            `;
+
+            // X Axis Labels
+            for (let y = 0; y <= years; y += Math.max(5, Math.round(years / 5))) {
+                svgContent += `
+                    <text x="${getX(y)}" y="${H - padB + 14}" fill="#94a3b8" font-size="9" font-family="monospace" text-anchor="middle">${y}a</text>
+                `;
+            }
+
+            svg.innerHTML = svgContent;
+        }
+
+        // Print date
+        const pDate = document.getElementById('printDate');
+        if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
+
+        // Initial Run
+        calculateCompound();
+    </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 import json
+import os
 
-with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_hub.json', 'r', encoding='utf-8') as f:
+cur_dir = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(cur_dir, 'translations_hub.json'), 'r', encoding='utf-8') as f:
     t_data = json.load(f)
 
 t_json_str = json.dumps(t_data, ensure_ascii=False)
@@ -10,8 +12,8 @@ html_code = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools Lab — Calcolatori Tecnici Online: Pendenze Rampe, Scale, Tubi e Dorso</title>
-    <meta name="description" content="OmniTools Lab: Suite gratuita di calcolatori tecnici online. RampaFacile (DM 236/89), ScalaFacile (Blondel), ScaricoFacile (UNI EN 12056), DorsoFacile e RisoluzioneFacile.">
+    <title>OmniTools Lab — Calcolatori Tecnici Online: Cantiere, Grafica & Finanza</title>
+    <meta name="description" content="OmniTools Lab: Suite gratuita di 12 calcolatori tecnici e finanziari online: Rampe (DM 236/89), Scale, Tubi, Dorso, DPI, Tinta, Barcode, Copertura, Resa Carta, Mutuo, PAC e Margine/Markup.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/">
@@ -165,7 +167,7 @@ html_code = f"""<!DOCTYPE html>
 
             <!-- Subtitle -->
             <p id="heroSubtitle" class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-                Calcolatori tecnici di precisione per cantiere, impianti e grafica. Formule certificate, zero registrazioni, subito pronti offline.
+                Calcolatori tecnici e quantitativi per cantiere, grafica e finanza. Formule certificate, zero registrazioni, subito pronti offline.
             </p>
 
             <!-- Spotlight Search Bar -->
@@ -176,16 +178,16 @@ html_code = f"""<!DOCTYPE html>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
-                    <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca: rampa, gradini, tubi, dorso libro, dpi..." class="w-full bg-white hover:bg-slate-50/70 focus:bg-white border border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none shadow-xs transition">
+                    <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca: rampa, gradini, tubi, dorso libro, cmyk, mutuo, pac, margine..." class="w-full bg-white hover:bg-slate-50/70 focus:bg-white border border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none shadow-xs transition">
                     <button type="button" id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 text-sm font-bold">
                         ✕
                     </button>
                 </div>
             </div>
 
-            <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (Proposta 1) -->
-            <div class="pt-2 sm:pt-3 max-w-2xl sm:max-w-3xl mx-auto w-full">
-                <div class="grid grid-cols-3 gap-1.5 sm:gap-3 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
+            <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (OmniTools 12-Tool Standard) -->
+            <div class="pt-2 sm:pt-3 max-w-3xl sm:max-w-4xl mx-auto w-full">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
                     <!-- Tab 1: Tutti i Tool -->
                     <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
@@ -197,9 +199,9 @@ html_code = f"""<!DOCTYPE html>
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (8)</span>
+                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (12)</span>
                             <span id="filterAllText" class="hidden sm:block font-black">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">8 Strumenti</span>
+                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">12 Strumenti</span>
                         </div>
                     </button>
 
@@ -232,9 +234,25 @@ html_code = f"""<!DOCTYPE html>
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-current">Graph (5)</span>
+                            <span class="sm:hidden font-black text-[11px] block text-current">Graph (6)</span>
                             <span class="hidden sm:block font-black">OmniGraph</span>
-                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">5 Grafica & Stampa</span>
+                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">6 Grafica & Stampa</span>
+                        </div>
+                    </button>
+                    <!-- Tab 4: OmniFinance -->
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-emerald-300/40">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                            </svg>
+                        </div>
+                        <div class="text-center sm:text-left leading-tight">
+                            <span class="sm:hidden font-black text-[11px] block text-current">Finance (3)</span>
+                            <span class="hidden sm:block font-black">OmniFinance</span>
+                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">3 Finanza & Business</span>
                         </div>
                     </button>
 
@@ -679,8 +697,223 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                     </a>
 
+                    <!-- TOOL 9: ResaCarta -->
+                    <a href="/resa" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-600 to-amber-800 text-white flex items-center justify-center shadow-md shadow-amber-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <rect x="4" y="4" width="24" height="24" rx="3" fill="#78350f" stroke="#fbbf24" stroke-width="1.5" />
+                                        <rect x="7" y="7" width="8" height="6" rx="1" fill="#f59e0b" />
+                                        <rect x="17" y="7" width="8" height="6" rx="1" fill="#f59e0b" />
+                                        <rect x="7" y="15" width="8" height="6" rx="1" fill="#f59e0b" />
+                                        <rect x="17" y="15" width="8" height="6" rx="1" fill="#f59e0b" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200" id="toolResaBadge">Nesting & Taglio</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolResaTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-700 transition">ResaCarta</h3>
+                                <div id="toolResaHook" class="text-xs font-bold text-amber-800 mt-0.5">Quante pose entrano nel foglio macchina?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolResaDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Ottimizzazione taglio da 70x100, 64x88 e SRA3. Calcolo pose con rotazione, sfrido %, peso commessa e verifica senso fibra per la piega.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Schema 2D</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">✂️ Azzera Sfrido</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🧭 Senso Fibra</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-600 text-amber-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolResaCta">Calcola Resa Fogli</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
             </div>
+
+            
+            <!-- ========================================== -->
+            <!-- DIVISION 3: OmniFinance (Finanza & Business) -->
+            <!-- ========================================== -->
+            <div id="sectionFinance" class="space-y-4 pt-4">
+                
+                <!-- Division Department Header -->
+                <div class="flex items-center justify-between pb-2.5 border-b-2 border-emerald-500/20">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0 p-1">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
+                                <span class="text-[9px] font-extrabold uppercase bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full border border-emerald-300">Reparto Finanza</span>
+                            </div>
+                            <p id="divFinanceDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-200 hidden sm:inline-block">3 Tool Attivi</span>
+                </div>
+
+                <!-- 3 Finance Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <!-- TOOL 10: MutuoFacile -->
+                    <a href="/mutuo" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="12" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="17" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="22" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMutuoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MutuoFacile</h3>
+                                <div id="toolMutuoHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto peserà la rata sul tuo stipendio?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMutuoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Rata Mensile</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Tabella Anno/Anno</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Sostenibilità 33%</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMutuoCta">Calcola Rata Mutuo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- TOOL 11: InteresseComposto -->
+                    <a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
+                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
+                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolPacCta">Simula Crescita PAC</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- TOOL 12: MargineFacile -->
+                    <a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <circle cx="21" cy="11" r="2" fill="#ffffff"/>
+                                        <line x1="12" y1="18" x2="18" y2="12" stroke="#ffffff" stroke-width="1.5"/>
+                                        <circle cx="13" cy="13" r="1" fill="#ffffff"/>
+                                        <circle cx="17" cy="17" r="1" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMargineTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MargineFacile</h3>
+                                <div id="toolMargineHook" class="text-xs font-bold text-emerald-800 mt-0.5">Stai calcolando il margine o solo il ricarico?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMargineDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ Margine vs Ricarico</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⚖️ Prezzo da COGS</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏛️ Scorporo Imposte</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMargineCta">Calcola Margine & Prezzo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
 
             <!-- Social Share & Viral Action Strip -->
             <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3.5 text-center sm:text-left mt-6">
@@ -691,23 +924,31 @@ html_code = f"""<!DOCTYPE html>
                         <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividi la suite con colleghi, collaboratori o clienti</span>
                     </div>
                 </div>
-                <div class="flex items-center gap-2 flex-wrap justify-center shrink-0">
-                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
-                        <span>💬</span> <span>WhatsApp</span>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>WhatsApp</span>
                     </button>
-                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#0a66c2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
-                        <span>💼</span> <span>LinkedIn</span>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
                     </button>
-                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
-                        <span>🔗</span> <span id="shareCopyText">Copia Link</span>
+                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su Reddit">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                        <span>Reddit</span>
                     </button>
-                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni">
-                        <span>📤</span> <span>Condividi</span>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
+                        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <span>Condividi</span>
                     </button>
                 </div>
             </div>
 
-        </section>
+            </section>
 
     </main>
 
@@ -728,28 +969,46 @@ html_code = f"""<!DOCTYPE html>
                 </button>
             </div>
 
-            <!-- Suite Navigation & Partner Hook -->
-            <div class="flex items-center justify-center gap-3 text-xs font-bold text-slate-600 flex-wrap pb-1">
-                <a href="/rampe" class="hover:text-blue-600 transition">RampaFacile</a>
-                <span>•</span>
-                <a href="/scale" class="hover:text-blue-600 transition">ScalaFacile</a>
-                <span>•</span>
-                <a href="/tubi" class="hover:text-blue-600 transition">ScaricoFacile</a>
-                <span>•</span>
-                <a href="/dorso" class="hover:text-blue-600 transition">DorsoFacile</a>
-                <span>•</span>
-                <a href="/dpi" class="hover:text-blue-600 transition">RisoluzioneFacile</a>
-                <span>•</span>
-                <a href="/tinta" class="hover:text-rose-900 transition">TintaPerfetta</a>
-                <span>•</span>
-                <a href="/partnership" class="text-indigo-600 hover:underline" id="navPartnerText">🤝 Diventa Partner / Sponsor</a>
+            <!-- Categorized Suite Directory -->
+            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-3 text-xs">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-200">
+                    <span class="font-extrabold text-slate-800">Indice Completo degli Strumenti (12 Tool)</span>
+                    <a href="/partnership" class="font-bold text-indigo-600 hover:text-indigo-800 transition" id="navPartnerText">
+                        🤝 Diventa Partner / Sponsor Ufficiale
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px]">
+                    <div class="space-y-1">
+                        <span class="font-bold text-amber-700 flex items-center gap-1">
+                            <span>🏗️</span> OmniBuilding (3 Cantiere & Impianti)
+                        </span>
+                        <div class="flex flex-wrap gap-1.5 pt-0.5">
+                            <a href="/rampe" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">RampaFacile</a>
+                            <a href="/scale" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">ScalaFacile</a>
+                            <a href="/tubi" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">ScaricoFacile</a>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="font-bold text-rose-700 flex items-center gap-1">
+                            <span>🎨</span> OmniGraph (6 Grafica & Stampa)
+                        </span>
+                        <div class="flex flex-wrap gap-1.5 pt-0.5">
+                            <a href="/dorso" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">DorsoFacile</a>
+                            <a href="/dpi" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">RisoluzioneFacile</a>
+                            <a href="/tinta" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">TintaPerfetta</a>
+                            <a href="/barcode" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">OmniBarcode</a>
+                            <a href="/copertura" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">CoperturaFacile</a>
+                            <a href="/resa" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">ResaCarta</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Disclaimer and Rights -->
             <div class="text-center space-y-1.5">
                 <p id="rightsText" class="font-bold text-slate-600">© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.</p>
                 <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed max-w-2xl mx-auto">
-                    <strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa e didattica. Non sostituiscono il calcolo esecutivo, l'asseverazione o il progetto firmato da un tecnico abilitato.
+                    <strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa, didattica e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il calcolo esecutivo, l'asseverazione di un tecnico abilitato né costituiscono consulenza finanziaria personalizzata (TUF / D.Lgs. 58/1998).
                 </p>
             </div>
         </div>
@@ -834,9 +1093,9 @@ html_code = f"""<!DOCTYPE html>
             if (t.search_placeholder) document.getElementById('searchInput').placeholder = t.search_placeholder;
 
             // Division Titles & Descriptions
-            if (t.division_building_title) document.getElementById('divBuildingTitle').innerHTML = 'Omni<span class=\"text-amber-600\">Building</span>';
+            if (t.division_building_title) document.getElementById('divBuildingTitle').innerHTML = 'Omni<span class="text-amber-600">Building</span>';
             if (t.division_building_desc) document.getElementById('divBuildingDesc').textContent = t.division_building_desc;
-            if (t.division_graph_title) document.getElementById('divGraphTitle').innerHTML = 'Omni<span class=\"text-rose-700\">Graph</span>';
+            if (t.division_graph_title) document.getElementById('divGraphTitle').innerHTML = 'Omni<span class="text-rose-700">Graph</span>';
             if (t.division_graph_desc) document.getElementById('divGraphDesc').textContent = t.division_graph_desc;
 
             // Tool 1: Rampe
@@ -915,38 +1174,51 @@ html_code = f"""<!DOCTYPE html>
             const btnAll = document.getElementById('filterAllBtn');
             const btnBuilding = document.getElementById('filterBuildingBtn');
             const btnGraph = document.getElementById('filterGraphBtn');
+            const btnFinance = document.getElementById('filterFinanceBtn');
 
             // Reset base classes
             const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer";
 
-            btnAll.className = filter === 'all' 
+            if (btnAll) btnAll.className = filter === 'all' 
                 ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
-            btnBuilding.className = filter === 'building'
+            if (btnBuilding) btnBuilding.className = filter === 'building'
                 ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
-            btnGraph.className = filter === 'graph'
+            if (btnGraph) btnGraph.className = filter === 'graph'
                 ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
+            if (btnFinance) btnFinance.className = filter === 'finance'
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
+                : baseInactive;
+
             // Adjust subtext colors
-            const subAll = btnAll.querySelector('.subtext');
-            if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
-
-            const subB = btnBuilding.querySelector('.subtext');
-            if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
-
-            const subG = btnGraph.querySelector('.subtext');
-            if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            if (btnAll) {{
+                const subAll = btnAll.querySelector('.subtext');
+                if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }}
+            if (btnBuilding) {{
+                const subB = btnBuilding.querySelector('.subtext');
+                if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }}
+            if (btnGraph) {{
+                const subG = btnGraph.querySelector('.subtext');
+                if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }}
+            if (btnFinance) {{
+                const subF = btnFinance.querySelector('.subtext');
+                if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] text-emerald-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }}
 
             filterTools();
         }}
 
         function initFilterFromHash() {{
             const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-            if (hash === 'building' || hash === 'graph' || hash === 'all') {{
+            if (hash === 'building' || hash === 'graph' || hash === 'finance' || hash === 'all') {{
                 setFilter(hash, false);
             }} else {{
                 setFilter('all', false);
@@ -968,19 +1240,23 @@ html_code = f"""<!DOCTYPE html>
 
             const secBuilding = document.getElementById('sectionBuilding');
             const secGraph = document.getElementById('sectionGraph');
+            const secFinance = document.getElementById('sectionFinance');
 
             let visibleBuildingCards = 0;
             let visibleGraphCards = 0;
+            let visibleFinanceCards = 0;
 
             const cards = document.querySelectorAll('.tool-card');
             cards.forEach(card => {{
                 const isBuildingCard = card.closest('#sectionBuilding') !== null;
                 const isGraphCard = card.closest('#sectionGraph') !== null;
+                const isFinanceCard = card.closest('#sectionFinance') !== null;
 
                 // Check division filter
                 let allowedByDivision = true;
                 if (currentFilter === 'building' && !isBuildingCard) allowedByDivision = false;
                 if (currentFilter === 'graph' && !isGraphCard) allowedByDivision = false;
+                if (currentFilter === 'finance' && !isFinanceCard) allowedByDivision = false;
 
                 // Check search query
                 const text = card.textContent.toLowerCase();
@@ -991,22 +1267,35 @@ html_code = f"""<!DOCTYPE html>
                     card.classList.remove('hidden');
                     if (isBuildingCard) visibleBuildingCards++;
                     if (isGraphCard) visibleGraphCards++;
+                    if (isFinanceCard) visibleFinanceCards++;
                 }} else {{
                     card.classList.add('hidden');
                 }}
             }});
 
             // Show or hide division containers based on visible cards
-            if (visibleBuildingCards > 0 && (currentFilter === 'all' || currentFilter === 'building')) {{
-                secBuilding.classList.remove('hidden');
-            }} else {{
-                secBuilding.classList.add('hidden');
+            if (secBuilding) {{
+                if (visibleBuildingCards > 0 && (currentFilter === 'all' || currentFilter === 'building')) {{
+                    secBuilding.classList.remove('hidden');
+                }} else {{
+                    secBuilding.classList.add('hidden');
+                }}
             }}
 
-            if (visibleGraphCards > 0 && (currentFilter === 'all' || currentFilter === 'graph')) {{
-                secGraph.classList.remove('hidden');
-            }} else {{
-                secGraph.classList.add('hidden');
+            if (secGraph) {{
+                if (visibleGraphCards > 0 && (currentFilter === 'all' || currentFilter === 'graph')) {{
+                    secGraph.classList.remove('hidden');
+                }} else {{
+                    secGraph.classList.add('hidden');
+                }}
+            }}
+
+            if (secFinance) {{
+                if (visibleFinanceCards > 0 && (currentFilter === 'all' || currentFilter === 'finance')) {{
+                    secFinance.classList.remove('hidden');
+                }} else {{
+                    secFinance.classList.add('hidden');
+                }}
             }}
         }}
 
@@ -1024,7 +1313,20 @@ html_code = f"""<!DOCTYPE html>
         }}
         function shareLinkedIn() {{
             const url = encodeURIComponent(window.location.href);
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${{url}}`, '_blank');
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+        }}
+
+        function shareReddit() {{
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }}
+
+        function shareReddit() {{
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }}`, '_blank');
         }}
         function copyCurrentUrl() {{
             navigator.clipboard.writeText(window.location.href).then(() => {{
@@ -1110,7 +1412,7 @@ html_code = f"""<!DOCTYPE html>
 </html>
 """
 
-with open("/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/index.html", "w", encoding="utf-8") as f:
+with open(os.path.join(cur_dir, 'index.html'), 'w', encoding='utf-8') as f:
     f.write(html_code)
 
-print("index.html compiled with Vibrant Magnetic Child-Proof Hub successfully.")
+print('index.html compiled successfully from build_hub_i18n.py.')

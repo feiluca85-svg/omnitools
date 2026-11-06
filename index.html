@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools Lab — Calcolatori Tecnici Online: Pendenze Rampe, Scale, Tubi e Dorso</title>
-    <meta name="description" content="OmniTools Lab: Suite gratuita di calcolatori tecnici online. RampaFacile (DM 236/89), ScalaFacile (Blondel), ScaricoFacile (UNI EN 12056), DorsoFacile e RisoluzioneFacile.">
+    <title>OmniTools Lab — Calcolatori Tecnici Online: Cantiere, Grafica & Finanza</title>
+    <meta name="description" content="OmniTools Lab: Suite gratuita di 12 calcolatori tecnici e finanziari online: Rampe (DM 236/89), Scale, Tubi, Dorso, DPI, Tinta, Barcode, Copertura, Resa Carta, Mutuo, PAC e Margine/Markup.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/">
@@ -158,7 +158,7 @@
 
             <!-- Subtitle -->
             <p id="heroSubtitle" class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-                Calcolatori tecnici di precisione per cantiere, impianti e grafica. Formule certificate, zero registrazioni, subito pronti offline.
+                Calcolatori tecnici e quantitativi per cantiere, grafica e finanza. Formule certificate, zero registrazioni, subito pronti offline.
             </p>
 
             <!-- Spotlight Search Bar -->
@@ -169,16 +169,16 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
-                    <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca: rampa, gradini, tubi, dorso libro, dpi..." class="w-full bg-white hover:bg-slate-50/70 focus:bg-white border border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none shadow-xs transition">
+                    <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca: rampa, gradini, tubi, dorso libro, cmyk, mutuo, pac, margine..." class="w-full bg-white hover:bg-slate-50/70 focus:bg-white border border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none shadow-xs transition">
                     <button type="button" id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 text-sm font-bold">
                         ✕
                     </button>
                 </div>
             </div>
 
-            <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (Proposta 1) -->
-            <div class="pt-2 sm:pt-3 max-w-2xl sm:max-w-3xl mx-auto w-full">
-                <div class="grid grid-cols-3 gap-1.5 sm:gap-3 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
+            <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (OmniTools 12-Tool Standard) -->
+            <div class="pt-2 sm:pt-3 max-w-3xl sm:max-w-4xl mx-auto w-full">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
                     <!-- Tab 1: Tutti i Tool -->
                     <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
@@ -190,9 +190,9 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (9)</span>
+                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (12)</span>
                             <span id="filterAllText" class="hidden sm:block font-black">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">9 Strumenti</span>
+                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">12 Strumenti</span>
                         </div>
                     </button>
 
@@ -228,6 +228,22 @@
                             <span class="sm:hidden font-black text-[11px] block text-current">Graph (6)</span>
                             <span class="hidden sm:block font-black">OmniGraph</span>
                             <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">6 Grafica & Stampa</span>
+                        </div>
+                    </button>
+                    <!-- Tab 4: OmniFinance -->
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-5 h-5 sm:w-7 sm:h-7 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-0.5 shadow-xs border border-emerald-300/40">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                            </svg>
+                        </div>
+                        <div class="text-center sm:text-left leading-tight">
+                            <span class="sm:hidden font-black text-[11px] block text-current">Finance (3)</span>
+                            <span class="hidden sm:block font-black">OmniFinance</span>
+                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">3 Finanza & Business</span>
                         </div>
                     </button>
 
@@ -720,6 +736,176 @@
                 </div>
             </div>
 
+            
+            <!-- ========================================== -->
+            <!-- DIVISION 3: OmniFinance (Finanza & Business) -->
+            <!-- ========================================== -->
+            <div id="sectionFinance" class="space-y-4 pt-4">
+                
+                <!-- Division Department Header -->
+                <div class="flex items-center justify-between pb-2.5 border-b-2 border-emerald-500/20">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0 p-1">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
+                                <span class="text-[9px] font-extrabold uppercase bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full border border-emerald-300">Reparto Finanza</span>
+                            </div>
+                            <p id="divFinanceDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-200 hidden sm:inline-block">3 Tool Attivi</span>
+                </div>
+
+                <!-- 3 Finance Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <!-- TOOL 10: MutuoFacile -->
+                    <a href="/mutuo" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="12" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="17" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="22" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMutuoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MutuoFacile</h3>
+                                <div id="toolMutuoHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto peserà la rata sul tuo stipendio?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMutuoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Rata Mensile</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Tabella Anno/Anno</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Sostenibilità 33%</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMutuoCta">Calcola Rata Mutuo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- TOOL 11: InteresseComposto -->
+                    <a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
+                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
+                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolPacCta">Simula Crescita PAC</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- TOOL 12: MargineFacile -->
+                    <a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <circle cx="21" cy="11" r="2" fill="#ffffff"/>
+                                        <line x1="12" y1="18" x2="18" y2="12" stroke="#ffffff" stroke-width="1.5"/>
+                                        <circle cx="13" cy="13" r="1" fill="#ffffff"/>
+                                        <circle cx="17" cy="17" r="1" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMargineTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MargineFacile</h3>
+                                <div id="toolMargineHook" class="text-xs font-bold text-emerald-800 mt-0.5">Stai calcolando il margine o solo il ricarico?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMargineDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ Margine vs Ricarico</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⚖️ Prezzo da COGS</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏛️ Scorporo Imposte</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMargineCta">Calcola Margine & Prezzo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+
             <!-- Social Share & Viral Action Strip -->
             <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3.5 text-center sm:text-left mt-6">
                 <div class="flex items-center gap-3">
@@ -777,12 +963,12 @@
             <!-- Categorized Suite Directory -->
             <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-3 text-xs">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-200">
-                    <span class="font-extrabold text-slate-800">Indice Completo degli Strumenti (9 Tool)</span>
+                    <span class="font-extrabold text-slate-800">Indice Completo degli Strumenti (12 Tool)</span>
                     <a href="/partnership" class="font-bold text-indigo-600 hover:text-indigo-800 transition" id="navPartnerText">
                         🤝 Diventa Partner / Sponsor Ufficiale
                     </a>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px]">
                     <div class="space-y-1">
                         <span class="font-bold text-amber-700 flex items-center gap-1">
                             <span>🏗️</span> OmniBuilding (3 Cantiere & Impianti)
@@ -813,7 +999,7 @@
             <div class="text-center space-y-1.5">
                 <p id="rightsText" class="font-bold text-slate-600">© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.</p>
                 <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed max-w-2xl mx-auto">
-                    <strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa e didattica. Non sostituiscono il calcolo esecutivo, l'asseverazione o il progetto firmato da un tecnico abilitato.
+                    <strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa, didattica e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il calcolo esecutivo, l'asseverazione di un tecnico abilitato né costituiscono consulenza finanziaria personalizzata (TUF / D.Lgs. 58/1998).
                 </p>
             </div>
         </div>
@@ -862,7 +1048,7 @@
 
     <!-- Translations & Client Logic -->
     <script>
-        const TRANSLATIONS = {"it": {"title": "OmniTools Lab — Calcolatori Tecnici Online: Pendenze Rampe, Scale, Tubi e Dorso", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratuito • Zero Registrazione • 100% Offline", "hero_title": "Cosa vuoi calcolare oggi?", "hero_subtitle": "Calcolatori tecnici di precisione per cantiere, impianti e grafica. Formule certificate, zero registrazioni, subito pronti offline.", "search_placeholder": "Cerca uno strumento (es. pendenza, rampa, scala, tubi, scarico, dorso, dpi)...", "filter_all": "Tutti i Tool", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Apri Strumento", "division_building_title": "OmniBuilding", "division_building_desc": "Edilizia, cantiere e impianti", "division_graph_title": "OmniGraph", "division_graph_desc": "Grafica, prestampa e tipografia", "tool_rampe_title": "RampaFacile", "tool_rampe_badge": "DM 236/89 & Garage", "tool_rampe_desc": "Calcola pendenza %, gradi e lunghezza a terra per disabili (DM 236/89) e garage in 1 secondo.", "tool_scale_title": "ScalaFacile", "tool_scale_badge": "Legge di Blondel", "tool_scale_desc": "Trova numero di gradini, alzata e pedata perfetti con la formula ergonomica di Blondel.", "tool_tubi_title": "ScaricoFacile", "tool_tubi_badge": "UNI EN 12056 & Fognature", "tool_tubi_desc": "Pendenza corretta, dislivello al metro e verifica autopulizia per tubazioni di scarico (UNI EN 12056).", "tool_dorso_title": "DorsoFacile", "tool_dorso_badge": "Copertina & InDesign", "tool_dorso_desc": "Calcola lo spessore esatto del dorso per la copertina in base a pagine, grammatura e carta.", "tool_dpi_title": "RisoluzioneFacile", "tool_dpi_badge": "DPI ↔ cm ↔ Pixel", "tool_dpi_desc": "Converti Pixel in Centimetri e verifica i DPI ideali in base alla distanza di visione dell'occhio.", "nav_partner": "Diventa Partner / Sponsor", "share_title": "Ti sono utili questi strumenti?", "share_sub": "Condividi la suite con colleghi, collaboratori o clienti", "share_copy": "Copia Link", "share_copied": "Copiato! ✓", "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore tecnico?", "suggest_btn": "Suggerisci Tool", "legal_disclaimer": "<strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa e didattica. Non sostituiscono il calcolo esecutivo, l'asseverazione o il progetto firmato da un tecnico abilitato.", "rights_reserved": "© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.", "tool_rampe_hook": "La rampa è a norma?", "tool_rampe_cta": "Calcola Rampa Ora", "tool_scale_hook": "Quanti gradini servono?", "tool_scale_cta": "Progetta Scala Ora", "tool_tubi_hook": "L'acqua scorre o si intasa?", "tool_tubi_cta": "Calcola Pendenza Tubo", "tool_dorso_hook": "Quanto è spesso il libro?", "tool_dorso_cta": "Calcola Spessore Dorso", "tool_dpi_hook": "Verrà sgranato in stampa?", "tool_dpi_cta": "Verifica Risoluzione", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "Il colore non torna in stampa?", "tool_tinta_desc": "Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Rotativa e stampanti digitali.", "tool_tinta_cta": "Genera Matrice Prova", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Il codice passerà alla cassa?", "tool_barcode_desc": "Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.", "tool_barcode_cta": "Genera Codice a Barre", "tool_barcode_badge": "GS1 & Vettoriale", "tool_copertura_title": "CoperturaFacile", "tool_copertura_hook": "Quanto inchiostro consumerà la commessa?", "tool_copertura_desc": "Analisi densitometrica CMYK e TAC (Total Area Coverage) in tempo reale. Calcola il consumo in grammi e il costo copia con privacy totale.", "tool_copertura_cta": "Calcola Copertura & Costi", "tool_copertura_badge": "CMYK & Costo Copia"}, "en": {"title": "OmniTools Lab — Free Engineering & Graphic Calculators: Ramp Slope, Stairs, Pipe Fall", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Free • No Sign-Up • 100% Offline", "hero_title": "What do you want to calculate today?", "hero_subtitle": "Instant precision calculators for construction, MEP drainage and print. Certified formulas, zero sign-up, offline-ready.", "search_placeholder": "Search any tool (e.g. slope, ramp, stair, pipe, drain, spine, dpi)...", "filter_all": "All Tools", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Open Tool", "division_building_title": "OmniBuilding", "division_building_desc": "Construction, site & MEP drainage", "division_graph_title": "OmniGraph", "division_graph_desc": "Graphic design, prepress & print", "tool_rampe_title": "EasyRamp", "tool_rampe_badge": "ADA & DM 236/89", "tool_rampe_desc": "Calculate slope %, angle and ground run for accessibility (ADA / DM 236) and driveway ramps.", "tool_scale_title": "EasyStairs", "tool_scale_badge": "Blondel's Rule", "tool_scale_desc": "Find step count, ergonomic riser and tread dimensions with Blondel's formula (2R + T = 63 cm).", "tool_tubi_title": "EasyDrain", "tool_tubi_badge": "EN 12056 & EN 752", "tool_tubi_desc": "Sewer pipe fall, gradient and self-cleansing velocity compliance check (EN 12056 & EN 752).", "tool_dorso_title": "EasySpine", "tool_dorso_badge": "Spine & Bleed", "tool_dorso_desc": "Exact book spine thickness calculation for covers based on page count, paper weight and bulk.", "tool_dpi_title": "EasyResolution", "tool_dpi_badge": "Optical Acuity", "tool_dpi_desc": "Convert Pixels to cm and discover ideal DPI based on human eye viewing distance.", "nav_partner": "Partner / Advertise", "share_title": "Finding these tools useful?", "share_sub": "Share the suite with fellow engineers, designers or clients", "share_copy": "Copy Link", "share_copied": "Copied! ✓", "suggest_banner": "💡 Have an idea for a new technical calculator?", "suggest_btn": "Suggest a Tool", "legal_disclaimer": "<strong>Legal Disclaimer:</strong> OmniTools Lab calculators provide indicative technical guidelines. They do not replace certified engineering calculations.", "rights_reserved": "© 2026 OmniTools Lab — Precision Utilities Suite. All rights reserved.", "tool_rampe_hook": "Is your ramp compliant?", "tool_rampe_cta": "Calculate Ramp Now", "tool_scale_hook": "How many steps do you need?", "tool_scale_cta": "Design Stairs Now", "tool_tubi_hook": "Will it flow or clog?", "tool_tubi_cta": "Calculate Pipe Fall", "tool_dorso_hook": "How thick is the book?", "tool_dorso_cta": "Calculate Spine Width", "tool_dpi_hook": "Will it print blurry?", "tool_dpi_cta": "Check Print Quality", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "Color mismatch on press?", "tool_tinta_desc": "Generate CMYK bracketing test grids to match exact spot colors on Rotativa web presses, digital and offset.", "tool_tinta_cta": "Generate Color Target", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Will your barcode scan at checkout?", "tool_barcode_desc": "Generate pure vector SVG barcodes (EAN-13, Health Card Code 39, Code 128) with official GS1 670 nm laser contrast verification.", "tool_barcode_cta": "Generate Barcode", "tool_barcode_badge": "GS1 & Vector", "tool_copertura_title": "InkCoverage", "tool_copertura_hook": "How much ink will the print run consume?", "tool_copertura_desc": "Real-time CMYK densitometric and TAC (Total Area Coverage) analysis. Calculate consumption in grams and cost per copy client-side.", "tool_copertura_cta": "Calculate Coverage & Cost", "tool_copertura_badge": "CMYK & Cost per Copy"}, "es": {"title": "OmniTools Lab — Suite de Calculadoras Técnicas de Precisión", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratis • Sin Registro • 100% Offline", "hero_title": "¿Qué necesitas calcular hoy?", "hero_subtitle": "Calculadoras técnicas de precisión para obras, tuberías y diseño. Fórmulas normativas, sin registro, 100% offline.", "search_placeholder": "Buscar herramienta (rampa, escalera, tubos, desagüe, lomo, dpi)...", "filter_all": "Todas", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Abrir", "division_building_title": "OmniBuilding", "division_building_desc": "Construcción, obra y saneamiento", "division_graph_title": "OmniGraph", "division_graph_desc": "Diseño gráfico, preimpresión e imprenta", "tool_rampe_title": "RampaFácil", "tool_rampe_badge": "Accesibilidad & CTE", "tool_rampe_desc": "Calcula pendiente %, grados y longitud en planta para personas con discapacidad y rampas de garaje.", "tool_scale_title": "EscaleraFácil", "tool_scale_badge": "Ley de Blondel", "tool_scale_desc": "Calcula número de peldaños, huella y contrahuella con la ley ergonómica de Blondel.", "tool_tubi_title": "DesagüeFácil", "tool_tubi_badge": "CTE DB-HS & EN 12056", "tool_tubi_desc": "Pendiente y caída por metro de tuberías de desagüe con verificación de autolimpieza (EN 12056).", "tool_dorso_title": "LomoFácil", "tool_dorso_badge": "Lomo & Sangrado", "tool_dorso_desc": "Grosor exacto del lomo para cubiertas según páginas, gramaje y mano del papel.", "tool_dpi_title": "ResoluciónFácil", "tool_dpi_badge": "Agudeza Visual", "tool_dpi_desc": "Convierte Píxeles a cm y calcula los DPI óptimos según la distancia de visualización del ojo.", "nav_partner": "Patrocinios y Colaboraciones", "share_title": "¿Te resultan útiles estas herramientas?", "share_sub": "Comparte la suite con colegas o clientes", "share_copy": "Copiar Enlace", "share_copied": "¡Copiado! ✓", "suggest_banner": "💡 ¿Tienes una idea para una nueva calculadora?", "suggest_btn": "Sugerir Herramienta", "legal_disclaimer": "<strong>Aviso Legal:</strong> Las calculadoras tienen fines orientativos.", "rights_reserved": "© 2026 OmniTools Lab. Todos los derechos reservados.", "tool_rampe_hook": "¿Tu rampa cumple la norma?", "tool_rampe_cta": "Calcular Rampa Ahora", "tool_scale_hook": "¿Cuántos peldaños necesitas?", "tool_scale_cta": "Diseñar Escalera Ahora", "tool_tubi_hook": "¿El agua fluye o se atasca?", "tool_tubi_cta": "Calcular Pendiente Tubo", "tool_dorso_hook": "¿Qué grosor tiene el libro?", "tool_dorso_cta": "Calcular Grosor Lomo", "tool_dpi_hook": "¿Se verá pixelado al imprimir?", "tool_dpi_cta": "Verificar Resolución", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "¿El color no coincide en máquina?", "tool_tinta_desc": "Genera matrices de calibración CMYK para clavar la tinta a la primera en rotativas Rotativa y prensas digitales.", "tool_tinta_cta": "Generar Matriz de Prueba", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "¿Tu código pasará por la caja?", "tool_barcode_desc": "Genera códigos de barras SVG vectoriales puros (EAN-13, Tarjeta Sanitaria Code 39, Code 128) con verificación láser 670 nm GS1.", "tool_barcode_cta": "Generar Código de Barras", "tool_barcode_badge": "GS1 y Vectorial", "tool_copertura_title": "CoberturaFacil", "tool_copertura_hook": "¿Cuánta tinta consumirá la tirada?", "tool_copertura_desc": "Análisis densitométrico CMYK y TAC en tiempo real. Calcula el consumo en gramos y coste por copia con total privacidad.", "tool_copertura_cta": "Calcular Cobertura y Costes", "tool_copertura_badge": "CMYK y Coste Copia"}, "fr": {"title": "OmniTools Lab — Suite de Calculateurs Techniques de Précision", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratuit • Sans Inscription • 100% Hors-ligne", "hero_title": "Que souhaitez-vous calculer aujourd'hui ?", "hero_subtitle": "Calculateurs techniques de précision pour le bâtiment, la plomberie et l'édition. Sans inscription, 100% hors ligne.", "search_placeholder": "Rechercher (rampe, escalier, canalisation, pente, dos, dpi)...", "filter_all": "Tous les Outils", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Ouvrir", "division_building_title": "OmniBuilding", "division_building_desc": "Bâtiment, chantier et assainissement", "division_graph_title": "OmniGraph", "division_graph_desc": "Graphisme, prépresse et imprimerie", "tool_rampe_title": "RampeFacile", "tool_rampe_badge": "Norme PMR & ERP", "tool_rampe_desc": "Calcul de pente %, degrés et longueur au sol pour rampes PMR / handicapés et parkings.", "tool_scale_title": "EscalierFacile", "tool_scale_badge": "Loi de Blondel", "tool_scale_desc": "Nombre de marches, hauteur et giron avec la formule ergonomique de Blondel (2h + g = 63 cm).", "tool_tubi_title": "ÉvacuationFacile", "tool_tubi_badge": "DTU 60.11 & EN 12056", "tool_tubi_desc": "Pente et chute au mètre linéaire pour tuyaux d'évacuation selon les normes EN 12056 et EN 752.", "tool_dorso_title": "DosLivreFacile", "tool_dorso_badge": "Dos & Fonds perdus", "tool_dorso_desc": "Épaisseur exacte du dos de livre pour couverture selon pages, grammage et main du papier.", "tool_dpi_title": "RésolutionFacile", "tool_dpi_badge": "Acuité Visuelle", "tool_dpi_desc": "Conversion Pixels en cm et calcul des DPI idéaux selon la distance de vision de l'œil humain.", "nav_partner": "Partenariat & Sponsoring", "share_title": "Ces outils vous sont utiles ?", "share_sub": "Partagez la suite avec vos collègues ou clients", "share_copy": "Copier le Lien", "share_copied": "Copié ! ✓", "suggest_banner": "💡 Une idée de nouveau calculateur technique ?", "suggest_btn": "Suggérer un Outil", "legal_disclaimer": "<strong>Mentions Légales :</strong> Les outils sont à vocation indicative.", "rights_reserved": "© 2026 OmniTools Lab. Tous droits réservés.", "tool_rampe_hook": "Votre rampe est-elle aux normes ?", "tool_rampe_cta": "Calculer la Rampe", "tool_scale_hook": "Combien de marches faut-il ?", "tool_scale_cta": "Concevoir l'Escalier", "tool_tubi_hook": "L'eau s'écoule-t-elle sans bouchon ?", "tool_tubi_cta": "Calculer la Pente Tuyau", "tool_dorso_hook": "Quelle est l'épaisseur du livre ?", "tool_dorso_cta": "Calculer le Dos de Livre", "tool_dpi_hook": "L'impression sera-t-elle nette ou floue ?", "tool_dpi_cta": "Vérifier la Résolution", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "La couleur dérive à l'impression ?", "tool_tinta_desc": "Générez des mires de bracketing CMJN pour caler la teinte exacte dès le premier tirage sur Rotativa et numérique.", "tool_tinta_cta": "Générer la Mire", "tool_tinta_badge": "CMJN & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Votre code passera-t-il en caisse ?", "tool_barcode_desc": "Générez des codes-barres SVG vectoriels purs (EAN-13, Carte Vitale Code 39, Code 128) avec vérification de contraste laser 670 nm GS1.", "tool_barcode_cta": "Générer Code-Barres", "tool_barcode_badge": "GS1 & Vectoriel", "tool_copertura_title": "CouvertureEncre", "tool_copertura_hook": "Combien d'encre consommera le tirage ?", "tool_copertura_desc": "Analyse densitométrique CMJN et TAC en temps réel. Calcule la consommation en grammes et le coût par tirage en toute confidentialité.", "tool_copertura_cta": "Calculer Couverture & Coûts", "tool_copertura_badge": "CMJN & Coût Copie"}, "de": {"title": "OmniTools Lab — Suite für Technische Präzisionsrechner", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Kostenlos • Ohne Registrierung • 100% Offline", "hero_title": "Was möchten Sie heute berechnen?", "hero_subtitle": "Präzise technische Rechner für Baustelle, Entwässerung und Druck. Zertifizierte Formeln, ohne Anmeldung, offline nutzbar.", "search_placeholder": "Rechner suchen (Rampe, Treppe, Gefälle, Abwasserrohr, Buchrücken, DPI)...", "filter_all": "Alle Tools", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Öffnen", "division_building_title": "OmniBuilding", "division_building_desc": "Bauwesen, Baustelle und Entwässerung", "division_graph_title": "OmniGraph", "division_graph_desc": "Grafikdesign, Druckvorstufe und Print", "tool_rampe_title": "RampeEinfach", "tool_rampe_badge": "DIN 18040 & Barrierefrei", "tool_rampe_desc": "Steigung in %, Winkel und Grundrisslänge für barrierefreie Rampen (DIN 18040) und Garagen.", "tool_scale_title": "TreppeEinfach", "tool_scale_badge": "Blondel-Formel", "tool_scale_desc": "Stufenanzahl, Steigung und Auftritt nach der ergonomischen Schrittmaßregel von Blondel (DIN 18065).", "tool_tubi_title": "AbflussEinfach", "tool_tubi_badge": "DIN 1986-100", "tool_tubi_desc": "Rohrgefälle in % und cm/m mit Fließgeschwindigkeitsprüfung nach DIN EN 12056 und DIN EN 752.", "tool_dorso_title": "BuchrückenEinfach", "tool_dorso_badge": "Rücken & Beschnitt", "tool_dorso_desc": "Exakte Buchrückenstärke für Umschlaggestaltung nach Seitenzahl, Flächengewicht und Papiervolumen.", "tool_dpi_title": "AuflösungEinfach", "tool_dpi_badge": "Sehschärfe", "tool_dpi_desc": "Pixel in Zentimeter umrechnen und ideale DPI-Zahl anhand des Betrachtungsabstands ermitteln.", "nav_partner": "Partner / Sponsoring", "share_title": "Sind diese Werkzeuge hilfreich?", "share_sub": "Teilen Sie die Suite mit Kollegen und Partnern", "share_copy": "Link kopieren", "share_copied": "Kopiert! ✓", "suggest_banner": "💡 Haben Sie eine Idee für einen neuen Rechner?", "suggest_btn": "Tool vorschlagen", "legal_disclaimer": "<strong>Rechtlicher Hinweis:</strong> Orientierungswerte ohne Gewähr.", "rights_reserved": "© 2026 OmniTools Lab. Alle Rechte vorbehalten.", "tool_rampe_hook": "Ist die Rampe normgerecht?", "tool_rampe_cta": "Rampe Jetzt Berechnen", "tool_scale_hook": "Wie viele Stufen werden benötigt?", "tool_scale_cta": "Treppe Jetzt Planen", "tool_tubi_hook": "Fließt das Wasser sauber ab?", "tool_tubi_cta": "Rohrgefälle Berechnen", "tool_dorso_hook": "Wie dick ist das Buch?", "tool_dorso_cta": "Buchrücken Berechnen", "tool_dpi_hook": "Wird der Druck gestochen scharf?", "tool_dpi_cta": "Auflösung Prüfen", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "Farbe stimmt im Druck nicht?", "tool_tinta_desc": "Erzeugen Sie CMYK-Kalibriermatrizen für exakte Farbtreue beim ersten Durchlauf auf Rotativa und Digitaldruck.", "tool_tinta_cta": "Prüfbogen Generieren", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Wird Ihr Barcode an der Kasse gelesen?", "tool_barcode_desc": "Erstellen Sie reine Vektor-SVG-Barcodes (EAN-13, Gesundheitskarte Code 39, Code 128) mit offizieller GS1-Laserkontrastprüfung bei 670 nm.", "tool_barcode_cta": "Barcode Generieren", "tool_barcode_badge": "GS1 & Vektor", "tool_copertura_title": "FarbdeckungRechner", "tool_copertura_hook": "Wie viel Farbe verbraucht der Druckauftrag?", "tool_copertura_desc": "Echtzeit-Densitometrie für CMYK & TAC (Total Area Coverage). Berechnet Farbverbrauch in Gramm und Stückkosten lokal im Browser.", "tool_copertura_cta": "Farbdeckung Berechnen", "tool_copertura_badge": "CMYK & Stückkosten"}, "pt": {"title": "OmniTools Lab — Suite de Calculadores Técnicos de Precisão", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratuito • Sem Registo • 100% Offline", "hero_title": "O que pretende calcular hoje?", "hero_subtitle": "Calculadoras técnicas de precisão para obras, saneamento e artes gráficas. Normas certificadas, sem registo, 100% offline.", "search_placeholder": "Pesquisar ferramenta (rampa, escada, esgoto, tubagem, lombada, dpi)...", "filter_all": "Todas as Ferramentas", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Abrir", "division_building_title": "OmniBuilding", "division_building_desc": "Construção civil, obra e saneamento", "division_graph_title": "OmniGraph", "division_graph_desc": "Design gráfico, pré-impressão e tipografia", "tool_rampe_title": "RampaFácil", "tool_rampe_badge": "Acessibilidade & DL 163/06", "tool_rampe_desc": "Cálculo de inclinação %, graus e comprimento em planta para rampas de acessibilidade e garagens.", "tool_scale_title": "EscadaFácil", "tool_scale_badge": "Lei de Blondel", "tool_scale_desc": "Dimensione número de degraus, espelho e piso pela fórmula ergonómica de Blondel (2E + P = 63 cm).", "tool_tubi_title": "EsgotoFácil", "tool_tubi_badge": "EN 12056 & RG", "tool_tubi_desc": "Inclinação e queda por metro para tubagens de esgoto e águas residuais segundo a norma EN 12056.", "tool_dorso_title": "LombadaFácil", "tool_dorso_badge": "Lombada & Sangria", "tool_dorso_desc": "Espessura exata da lombada para capa com base no número de páginas, gramagem e mão do papel.", "tool_dpi_title": "ResoluçãoFácil", "tool_dpi_badge": "Acuidade Visual", "tool_dpi_desc": "Conversão de Píxeis em cm e cálculo dos DPI ideais com base na distância de observação visual.", "nav_partner": "Seja Parceiro / Patrocinador", "share_title": "Estas ferramentas são úteis?", "share_sub": "Partilhe a suite com colegas ou clientes", "share_copy": "Copiar Ligação", "share_copied": "Copiado! ✓", "suggest_banner": "💡 Tem uma ideia para um novo calculador técnico?", "suggest_btn": "Sugerir Ferramenta", "legal_disclaimer": "<strong>Aviso Legal:</strong> As ferramentas têm caráter indicativo.", "rights_reserved": "© 2026 OmniTools Lab. Todos os direitos reservados.", "tool_rampe_hook": "A sua rampa cumpre as normas?", "tool_rampe_cta": "Calcular Rampa Agora", "tool_scale_hook": "Quantos degraus são necessários?", "tool_scale_cta": "Projetar Escada Agora", "tool_tubi_hook": "A água escoa ou entope?", "tool_tubi_cta": "Calcular Inclinação Tubo", "tool_dorso_hook": "Qual a espessura do livro?", "tool_dorso_cta": "Calcular Lombada Livro", "tool_dpi_hook": "Vai ficar pixelizado na impressão?", "tool_dpi_cta": "Verificar Resolução", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "A cor sai errada na impressão?", "tool_tinta_desc": "Gere matrizes cromáticas de variação CMYK para acertar no tom logo na primeira passagem em Rotativa e digital.", "tool_tinta_cta": "Gerar Matriz de Prova", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "O código passará na caixa?", "tool_barcode_desc": "Gere códigos de barras vetoriais SVG (EAN-13, Cartão de Saúde Code 39, Code 128) com verificação de contraste a laser 670 nm GS1.", "tool_barcode_cta": "Gerar Código de Barras", "tool_barcode_badge": "GS1 & Vetorial", "tool_copertura_title": "CoberturaTinta", "tool_copertura_hook": "Quanta tinta gastará a tiragem?", "tool_copertura_desc": "Análise densitométrica CMYK e TAC em tempo real. Calcule o consumo em gramas e o custo por cópia com total privacidade.", "tool_copertura_cta": "Calcular Cobertura e Custos", "tool_copertura_badge": "CMYK e Custo Cópia"}};
+        const TRANSLATIONS = {"it": {"title": "OmniTools Lab — Calcolatori Tecnici Online: Pendenze Rampe, Scale, Tubi e Dorso", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratuito • Zero Registrazione • 100% Offline", "hero_title": "Cosa vuoi calcolare oggi?", "hero_subtitle": "Calcolatori tecnici di precisione per cantiere, impianti e grafica. Formule certificate, zero registrazioni, subito pronti offline.", "search_placeholder": "Cerca uno strumento (es. pendenza, rampa, scala, tubi, scarico, dorso, dpi)...", "filter_all": "Tutti i Tool", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Apri Strumento", "division_building_title": "OmniBuilding", "division_building_desc": "Edilizia, cantiere e impianti", "division_graph_title": "OmniGraph", "division_graph_desc": "Grafica, prestampa e tipografia", "tool_rampe_title": "RampaFacile", "tool_rampe_badge": "DM 236/89 & Garage", "tool_rampe_desc": "Calcola pendenza %, gradi e lunghezza a terra per disabili (DM 236/89) e garage in 1 secondo.", "tool_scale_title": "ScalaFacile", "tool_scale_badge": "Legge di Blondel", "tool_scale_desc": "Trova numero di gradini, alzata e pedata perfetti con la formula ergonomica di Blondel.", "tool_tubi_title": "ScaricoFacile", "tool_tubi_badge": "UNI EN 12056 & Fognature", "tool_tubi_desc": "Pendenza corretta, dislivello al metro e verifica autopulizia per tubazioni di scarico (UNI EN 12056).", "tool_dorso_title": "DorsoFacile", "tool_dorso_badge": "Copertina & InDesign", "tool_dorso_desc": "Calcola lo spessore esatto del dorso per la copertina in base a pagine, grammatura e carta.", "tool_dpi_title": "RisoluzioneFacile", "tool_dpi_badge": "DPI ↔ cm ↔ Pixel", "tool_dpi_desc": "Converti Pixel in Centimetri e verifica i DPI ideali in base alla distanza di visione dell'occhio.", "nav_partner": "Diventa Partner / Sponsor", "share_title": "Ti sono utili questi strumenti?", "share_sub": "Condividi la suite con colleghi, collaboratori o clienti", "share_copy": "Copia Link", "share_copied": "Copiato! ✓", "suggest_banner": "💡 Hai un'idea per un nuovo calcolatore tecnico?", "suggest_btn": "Suggerisci Tool", "legal_disclaimer": "<strong>Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa e didattica. Non sostituiscono il calcolo esecutivo, l'asseverazione o il progetto firmato da un tecnico abilitato.", "rights_reserved": "© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati.", "tool_rampe_hook": "La rampa è a norma?", "tool_rampe_cta": "Calcola Rampa Ora", "tool_scale_hook": "Quanti gradini servono?", "tool_scale_cta": "Progetta Scala Ora", "tool_tubi_hook": "L'acqua scorre o si intasa?", "tool_tubi_cta": "Calcola Pendenza Tubo", "tool_dorso_hook": "Quanto è spesso il libro?", "tool_dorso_cta": "Calcola Spessore Dorso", "tool_dpi_hook": "Verrà sgranato in stampa?", "tool_dpi_cta": "Verifica Risoluzione", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "Il colore non torna in stampa?", "tool_tinta_desc": "Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su rotative Rotativa e stampanti digitali.", "tool_tinta_cta": "Genera Matrice Prova", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Il codice passerà alla cassa?", "tool_barcode_desc": "Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.", "tool_barcode_cta": "Genera Codice a Barre", "tool_barcode_badge": "GS1 & Vettoriale", "tool_copertura_title": "CoperturaFacile", "tool_copertura_hook": "Quanto inchiostro consumerà la commessa?", "tool_copertura_desc": "Analisi densitometrica CMYK e TAC (Total Area Coverage) in tempo reale. Calcola il consumo in grammi e il costo copia con privacy totale.", "tool_copertura_cta": "Calcola Copertura & Costi", "tool_copertura_badge": "CMYK & Costo Copia", "filter_finance": "💼 OmniFinance", "division_finance_title": "OmniFinance", "division_finance_desc": "Finanza quantitativa, mutui, investimenti e pricing commerciale", "tool_mutuo_title": "MutuoFacile", "tool_mutuo_hook": "Quanto peserà la rata sul tuo stipendio?", "tool_mutuo_badge": "Ammortamento Francese", "tool_mutuo_desc": "Calcola la rata costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.", "tool_mutuo_cta": "Calcola Rata Mutuo", "tool_pac_title": "InteresseComposto", "tool_pac_hook": "Quanto varrà il tuo piano di accumulo tra 20 anni?", "tool_pac_badge": "PAC & Rendita 4%", "tool_pac_desc": "Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).", "tool_pac_cta": "Simula Crescita PAC", "tool_margine_title": "MargineFacile", "tool_margine_hook": "Stai calcolando il margine o solo il ricarico?", "tool_margine_badge": "Markup & Gross Margin", "tool_margine_desc": "Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.", "tool_margine_cta": "Calcola Margine & Prezzo"}, "en": {"title": "OmniTools Lab — Free Engineering & Graphic Calculators: Ramp Slope, Stairs, Pipe Fall", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Free • No Sign-Up • 100% Offline", "hero_title": "What do you want to calculate today?", "hero_subtitle": "Instant precision calculators for construction, MEP drainage and print. Certified formulas, zero sign-up, offline-ready.", "search_placeholder": "Search any tool (e.g. slope, ramp, stair, pipe, drain, spine, dpi)...", "filter_all": "All Tools", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Open Tool", "division_building_title": "OmniBuilding", "division_building_desc": "Construction, site & MEP drainage", "division_graph_title": "OmniGraph", "division_graph_desc": "Graphic design, prepress & print", "tool_rampe_title": "EasyRamp", "tool_rampe_badge": "ADA & DM 236/89", "tool_rampe_desc": "Calculate slope %, angle and ground run for accessibility (ADA / DM 236) and driveway ramps.", "tool_scale_title": "EasyStairs", "tool_scale_badge": "Blondel's Rule", "tool_scale_desc": "Find step count, ergonomic riser and tread dimensions with Blondel's formula (2R + T = 63 cm).", "tool_tubi_title": "EasyDrain", "tool_tubi_badge": "EN 12056 & EN 752", "tool_tubi_desc": "Sewer pipe fall, gradient and self-cleansing velocity compliance check (EN 12056 & EN 752).", "tool_dorso_title": "EasySpine", "tool_dorso_badge": "Spine & Bleed", "tool_dorso_desc": "Exact book spine thickness calculation for covers based on page count, paper weight and bulk.", "tool_dpi_title": "EasyResolution", "tool_dpi_badge": "Optical Acuity", "tool_dpi_desc": "Convert Pixels to cm and discover ideal DPI based on human eye viewing distance.", "nav_partner": "Partner / Advertise", "share_title": "Finding these tools useful?", "share_sub": "Share the suite with fellow engineers, designers or clients", "share_copy": "Copy Link", "share_copied": "Copied! ✓", "suggest_banner": "💡 Have an idea for a new technical calculator?", "suggest_btn": "Suggest a Tool", "legal_disclaimer": "<strong>Legal Disclaimer:</strong> OmniTools Lab calculators provide indicative technical guidelines. They do not replace certified engineering calculations.", "rights_reserved": "© 2026 OmniTools Lab — Precision Utilities Suite. All rights reserved.", "tool_rampe_hook": "Is your ramp compliant?", "tool_rampe_cta": "Calculate Ramp Now", "tool_scale_hook": "How many steps do you need?", "tool_scale_cta": "Design Stairs Now", "tool_tubi_hook": "Will it flow or clog?", "tool_tubi_cta": "Calculate Pipe Fall", "tool_dorso_hook": "How thick is the book?", "tool_dorso_cta": "Calculate Spine Width", "tool_dpi_hook": "Will it print blurry?", "tool_dpi_cta": "Check Print Quality", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "Color mismatch on press?", "tool_tinta_desc": "Generate CMYK bracketing test grids to match exact spot colors on Rotativa web presses, digital and offset.", "tool_tinta_cta": "Generate Color Target", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Will your barcode scan at checkout?", "tool_barcode_desc": "Generate pure vector SVG barcodes (EAN-13, Health Card Code 39, Code 128) with official GS1 670 nm laser contrast verification.", "tool_barcode_cta": "Generate Barcode", "tool_barcode_badge": "GS1 & Vector", "tool_copertura_title": "InkCoverage", "tool_copertura_hook": "How much ink will the print run consume?", "tool_copertura_desc": "Real-time CMYK densitometric and TAC (Total Area Coverage) analysis. Calculate consumption in grams and cost per copy client-side.", "tool_copertura_cta": "Calculate Coverage & Cost", "tool_copertura_badge": "CMYK & Cost per Copy", "filter_finance": "💼 OmniFinance", "division_finance_title": "OmniFinance", "division_finance_desc": "Quantitative finance, mortgages, compound growth and commercial pricing", "tool_mutuo_title": "MortgageEasy", "tool_mutuo_hook": "How much will the installment impact your income?", "tool_mutuo_badge": "French Amortization", "tool_mutuo_desc": "Calculate monthly payments, total bank interest, full amortization schedule, and 33% debt-to-income feasibility.", "tool_mutuo_cta": "Calculate Mortgage", "tool_pac_title": "CompoundInterest", "tool_pac_hook": "How much will your recurring deposits be worth in 20 years?", "tool_pac_badge": "DCA & 4% Rule", "tool_pac_desc": "Simulate compound interest over time with monthly contributions. Estimate future net portfolio value and safe monthly passive income.", "tool_pac_cta": "Simulate Compound Growth", "tool_margine_title": "MarginEasy", "tool_margine_hook": "Are you calculating margin or just markup?", "tool_margine_badge": "Markup & Gross Margin", "tool_margine_desc": "End the confusion between margin and markup. Determine optimal selling price from COGS and unbundle VAT/Sales Tax.", "tool_margine_cta": "Calculate Margin & Pricing"}, "es": {"title": "OmniTools Lab — Suite de Calculadoras Técnicas de Precisión", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratis • Sin Registro • 100% Offline", "hero_title": "¿Qué necesitas calcular hoy?", "hero_subtitle": "Calculadoras técnicas de precisión para obras, tuberías y diseño. Fórmulas normativas, sin registro, 100% offline.", "search_placeholder": "Buscar herramienta (rampa, escalera, tubos, desagüe, lomo, dpi)...", "filter_all": "Todas", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Abrir", "division_building_title": "OmniBuilding", "division_building_desc": "Construcción, obra y saneamiento", "division_graph_title": "OmniGraph", "division_graph_desc": "Diseño gráfico, preimpresión e imprenta", "tool_rampe_title": "RampaFácil", "tool_rampe_badge": "Accesibilidad & CTE", "tool_rampe_desc": "Calcula pendiente %, grados y longitud en planta para personas con discapacidad y rampas de garaje.", "tool_scale_title": "EscaleraFácil", "tool_scale_badge": "Ley de Blondel", "tool_scale_desc": "Calcula número de peldaños, huella y contrahuella con la ley ergonómica de Blondel.", "tool_tubi_title": "DesagüeFácil", "tool_tubi_badge": "CTE DB-HS & EN 12056", "tool_tubi_desc": "Pendiente y caída por metro de tuberías de desagüe con verificación de autolimpieza (EN 12056).", "tool_dorso_title": "LomoFácil", "tool_dorso_badge": "Lomo & Sangrado", "tool_dorso_desc": "Grosor exacto del lomo para cubiertas según páginas, gramaje y mano del papel.", "tool_dpi_title": "ResoluciónFácil", "tool_dpi_badge": "Agudeza Visual", "tool_dpi_desc": "Convierte Píxeles a cm y calcula los DPI óptimos según la distancia de visualización del ojo.", "nav_partner": "Patrocinios y Colaboraciones", "share_title": "¿Te resultan útiles estas herramientas?", "share_sub": "Comparte la suite con colegas o clientes", "share_copy": "Copiar Enlace", "share_copied": "¡Copiado! ✓", "suggest_banner": "💡 ¿Tienes una idea para una nueva calculadora?", "suggest_btn": "Sugerir Herramienta", "legal_disclaimer": "<strong>Aviso Legal:</strong> Las calculadoras tienen fines orientativos.", "rights_reserved": "© 2026 OmniTools Lab. Todos los derechos reservados.", "tool_rampe_hook": "¿Tu rampa cumple la norma?", "tool_rampe_cta": "Calcular Rampa Ahora", "tool_scale_hook": "¿Cuántos peldaños necesitas?", "tool_scale_cta": "Diseñar Escalera Ahora", "tool_tubi_hook": "¿El agua fluye o se atasca?", "tool_tubi_cta": "Calcular Pendiente Tubo", "tool_dorso_hook": "¿Qué grosor tiene el libro?", "tool_dorso_cta": "Calcular Grosor Lomo", "tool_dpi_hook": "¿Se verá pixelado al imprimir?", "tool_dpi_cta": "Verificar Resolución", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "¿El color no coincide en máquina?", "tool_tinta_desc": "Genera matrices de calibración CMYK para clavar la tinta a la primera en rotativas Rotativa y prensas digitales.", "tool_tinta_cta": "Generar Matriz de Prueba", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "¿Tu código pasará por la caja?", "tool_barcode_desc": "Genera códigos de barras SVG vectoriales puros (EAN-13, Tarjeta Sanitaria Code 39, Code 128) con verificación láser 670 nm GS1.", "tool_barcode_cta": "Generar Código de Barras", "tool_barcode_badge": "GS1 y Vectorial", "tool_copertura_title": "CoberturaFacil", "tool_copertura_hook": "¿Cuánta tinta consumirá la tirada?", "tool_copertura_desc": "Análisis densitométrico CMYK y TAC en tiempo real. Calcula el consumo en gramos y coste por copia con total privacidad.", "tool_copertura_cta": "Calcular Cobertura y Costes", "tool_copertura_badge": "CMYK y Coste Copia"}, "fr": {"title": "OmniTools Lab — Suite de Calculateurs Techniques de Précision", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratuit • Sans Inscription • 100% Hors-ligne", "hero_title": "Que souhaitez-vous calculer aujourd'hui ?", "hero_subtitle": "Calculateurs techniques de précision pour le bâtiment, la plomberie et l'édition. Sans inscription, 100% hors ligne.", "search_placeholder": "Rechercher (rampe, escalier, canalisation, pente, dos, dpi)...", "filter_all": "Tous les Outils", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Ouvrir", "division_building_title": "OmniBuilding", "division_building_desc": "Bâtiment, chantier et assainissement", "division_graph_title": "OmniGraph", "division_graph_desc": "Graphisme, prépresse et imprimerie", "tool_rampe_title": "RampeFacile", "tool_rampe_badge": "Norme PMR & ERP", "tool_rampe_desc": "Calcul de pente %, degrés et longueur au sol pour rampes PMR / handicapés et parkings.", "tool_scale_title": "EscalierFacile", "tool_scale_badge": "Loi de Blondel", "tool_scale_desc": "Nombre de marches, hauteur et giron avec la formule ergonomique de Blondel (2h + g = 63 cm).", "tool_tubi_title": "ÉvacuationFacile", "tool_tubi_badge": "DTU 60.11 & EN 12056", "tool_tubi_desc": "Pente et chute au mètre linéaire pour tuyaux d'évacuation selon les normes EN 12056 et EN 752.", "tool_dorso_title": "DosLivreFacile", "tool_dorso_badge": "Dos & Fonds perdus", "tool_dorso_desc": "Épaisseur exacte du dos de livre pour couverture selon pages, grammage et main du papier.", "tool_dpi_title": "RésolutionFacile", "tool_dpi_badge": "Acuité Visuelle", "tool_dpi_desc": "Conversion Pixels en cm et calcul des DPI idéaux selon la distance de vision de l'œil humain.", "nav_partner": "Partenariat & Sponsoring", "share_title": "Ces outils vous sont utiles ?", "share_sub": "Partagez la suite avec vos collègues ou clients", "share_copy": "Copier le Lien", "share_copied": "Copié ! ✓", "suggest_banner": "💡 Une idée de nouveau calculateur technique ?", "suggest_btn": "Suggérer un Outil", "legal_disclaimer": "<strong>Mentions Légales :</strong> Les outils sont à vocation indicative.", "rights_reserved": "© 2026 OmniTools Lab. Tous droits réservés.", "tool_rampe_hook": "Votre rampe est-elle aux normes ?", "tool_rampe_cta": "Calculer la Rampe", "tool_scale_hook": "Combien de marches faut-il ?", "tool_scale_cta": "Concevoir l'Escalier", "tool_tubi_hook": "L'eau s'écoule-t-elle sans bouchon ?", "tool_tubi_cta": "Calculer la Pente Tuyau", "tool_dorso_hook": "Quelle est l'épaisseur du livre ?", "tool_dorso_cta": "Calculer le Dos de Livre", "tool_dpi_hook": "L'impression sera-t-elle nette ou floue ?", "tool_dpi_cta": "Vérifier la Résolution", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "La couleur dérive à l'impression ?", "tool_tinta_desc": "Générez des mires de bracketing CMJN pour caler la teinte exacte dès le premier tirage sur Rotativa et numérique.", "tool_tinta_cta": "Générer la Mire", "tool_tinta_badge": "CMJN & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Votre code passera-t-il en caisse ?", "tool_barcode_desc": "Générez des codes-barres SVG vectoriels purs (EAN-13, Carte Vitale Code 39, Code 128) avec vérification de contraste laser 670 nm GS1.", "tool_barcode_cta": "Générer Code-Barres", "tool_barcode_badge": "GS1 & Vectoriel", "tool_copertura_title": "CouvertureEncre", "tool_copertura_hook": "Combien d'encre consommera le tirage ?", "tool_copertura_desc": "Analyse densitométrique CMJN et TAC en temps réel. Calcule la consommation en grammes et le coût par tirage en toute confidentialité.", "tool_copertura_cta": "Calculer Couverture & Coûts", "tool_copertura_badge": "CMJN & Coût Copie"}, "de": {"title": "OmniTools Lab — Suite für Technische Präzisionsrechner", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Kostenlos • Ohne Registrierung • 100% Offline", "hero_title": "Was möchten Sie heute berechnen?", "hero_subtitle": "Präzise technische Rechner für Baustelle, Entwässerung und Druck. Zertifizierte Formeln, ohne Anmeldung, offline nutzbar.", "search_placeholder": "Rechner suchen (Rampe, Treppe, Gefälle, Abwasserrohr, Buchrücken, DPI)...", "filter_all": "Alle Tools", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Öffnen", "division_building_title": "OmniBuilding", "division_building_desc": "Bauwesen, Baustelle und Entwässerung", "division_graph_title": "OmniGraph", "division_graph_desc": "Grafikdesign, Druckvorstufe und Print", "tool_rampe_title": "RampeEinfach", "tool_rampe_badge": "DIN 18040 & Barrierefrei", "tool_rampe_desc": "Steigung in %, Winkel und Grundrisslänge für barrierefreie Rampen (DIN 18040) und Garagen.", "tool_scale_title": "TreppeEinfach", "tool_scale_badge": "Blondel-Formel", "tool_scale_desc": "Stufenanzahl, Steigung und Auftritt nach der ergonomischen Schrittmaßregel von Blondel (DIN 18065).", "tool_tubi_title": "AbflussEinfach", "tool_tubi_badge": "DIN 1986-100", "tool_tubi_desc": "Rohrgefälle in % und cm/m mit Fließgeschwindigkeitsprüfung nach DIN EN 12056 und DIN EN 752.", "tool_dorso_title": "BuchrückenEinfach", "tool_dorso_badge": "Rücken & Beschnitt", "tool_dorso_desc": "Exakte Buchrückenstärke für Umschlaggestaltung nach Seitenzahl, Flächengewicht und Papiervolumen.", "tool_dpi_title": "AuflösungEinfach", "tool_dpi_badge": "Sehschärfe", "tool_dpi_desc": "Pixel in Zentimeter umrechnen und ideale DPI-Zahl anhand des Betrachtungsabstands ermitteln.", "nav_partner": "Partner / Sponsoring", "share_title": "Sind diese Werkzeuge hilfreich?", "share_sub": "Teilen Sie die Suite mit Kollegen und Partnern", "share_copy": "Link kopieren", "share_copied": "Kopiert! ✓", "suggest_banner": "💡 Haben Sie eine Idee für einen neuen Rechner?", "suggest_btn": "Tool vorschlagen", "legal_disclaimer": "<strong>Rechtlicher Hinweis:</strong> Orientierungswerte ohne Gewähr.", "rights_reserved": "© 2026 OmniTools Lab. Alle Rechte vorbehalten.", "tool_rampe_hook": "Ist die Rampe normgerecht?", "tool_rampe_cta": "Rampe Jetzt Berechnen", "tool_scale_hook": "Wie viele Stufen werden benötigt?", "tool_scale_cta": "Treppe Jetzt Planen", "tool_tubi_hook": "Fließt das Wasser sauber ab?", "tool_tubi_cta": "Rohrgefälle Berechnen", "tool_dorso_hook": "Wie dick ist das Buch?", "tool_dorso_cta": "Buchrücken Berechnen", "tool_dpi_hook": "Wird der Druck gestochen scharf?", "tool_dpi_cta": "Auflösung Prüfen", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "Farbe stimmt im Druck nicht?", "tool_tinta_desc": "Erzeugen Sie CMYK-Kalibriermatrizen für exakte Farbtreue beim ersten Durchlauf auf Rotativa und Digitaldruck.", "tool_tinta_cta": "Prüfbogen Generieren", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "Wird Ihr Barcode an der Kasse gelesen?", "tool_barcode_desc": "Erstellen Sie reine Vektor-SVG-Barcodes (EAN-13, Gesundheitskarte Code 39, Code 128) mit offizieller GS1-Laserkontrastprüfung bei 670 nm.", "tool_barcode_cta": "Barcode Generieren", "tool_barcode_badge": "GS1 & Vektor", "tool_copertura_title": "FarbdeckungRechner", "tool_copertura_hook": "Wie viel Farbe verbraucht der Druckauftrag?", "tool_copertura_desc": "Echtzeit-Densitometrie für CMYK & TAC (Total Area Coverage). Berechnet Farbverbrauch in Gramm und Stückkosten lokal im Browser.", "tool_copertura_cta": "Farbdeckung Berechnen", "tool_copertura_badge": "CMYK & Stückkosten"}, "pt": {"title": "OmniTools Lab — Suite de Calculadores Técnicos de Precisão", "tagline": "Precision Utilities Suite", "hero_badge": "⚡ Gratuito • Sem Registo • 100% Offline", "hero_title": "O que pretende calcular hoje?", "hero_subtitle": "Calculadoras técnicas de precisão para obras, saneamento e artes gráficas. Normas certificadas, sem registo, 100% offline.", "search_placeholder": "Pesquisar ferramenta (rampa, escada, esgoto, tubagem, lombada, dpi)...", "filter_all": "Todas as Ferramentas", "filter_building": "🏗️ OmniBuilding", "filter_graph": "🎨 OmniGraph", "btn_open": "Abrir", "division_building_title": "OmniBuilding", "division_building_desc": "Construção civil, obra e saneamento", "division_graph_title": "OmniGraph", "division_graph_desc": "Design gráfico, pré-impressão e tipografia", "tool_rampe_title": "RampaFácil", "tool_rampe_badge": "Acessibilidade & DL 163/06", "tool_rampe_desc": "Cálculo de inclinação %, graus e comprimento em planta para rampas de acessibilidade e garagens.", "tool_scale_title": "EscadaFácil", "tool_scale_badge": "Lei de Blondel", "tool_scale_desc": "Dimensione número de degraus, espelho e piso pela fórmula ergonómica de Blondel (2E + P = 63 cm).", "tool_tubi_title": "EsgotoFácil", "tool_tubi_badge": "EN 12056 & RG", "tool_tubi_desc": "Inclinação e queda por metro para tubagens de esgoto e águas residuais segundo a norma EN 12056.", "tool_dorso_title": "LombadaFácil", "tool_dorso_badge": "Lombada & Sangria", "tool_dorso_desc": "Espessura exata da lombada para capa com base no número de páginas, gramagem e mão do papel.", "tool_dpi_title": "ResoluçãoFácil", "tool_dpi_badge": "Acuidade Visual", "tool_dpi_desc": "Conversão de Píxeis em cm e cálculo dos DPI ideais com base na distância de observação visual.", "nav_partner": "Seja Parceiro / Patrocinador", "share_title": "Estas ferramentas são úteis?", "share_sub": "Partilhe a suite com colegas ou clientes", "share_copy": "Copiar Ligação", "share_copied": "Copiado! ✓", "suggest_banner": "💡 Tem uma ideia para um novo calculador técnico?", "suggest_btn": "Sugerir Ferramenta", "legal_disclaimer": "<strong>Aviso Legal:</strong> As ferramentas têm caráter indicativo.", "rights_reserved": "© 2026 OmniTools Lab. Todos os direitos reservados.", "tool_rampe_hook": "A sua rampa cumpre as normas?", "tool_rampe_cta": "Calcular Rampa Agora", "tool_scale_hook": "Quantos degraus são necessários?", "tool_scale_cta": "Projetar Escada Agora", "tool_tubi_hook": "A água escoa ou entope?", "tool_tubi_cta": "Calcular Inclinação Tubo", "tool_dorso_hook": "Qual a espessura do livro?", "tool_dorso_cta": "Calcular Lombada Livro", "tool_dpi_hook": "Vai ficar pixelizado na impressão?", "tool_dpi_cta": "Verificar Resolução", "tool_tinta_title": "TintaPerfetta", "tool_tinta_hook": "A cor sai errada na impressão?", "tool_tinta_desc": "Gere matrizes cromáticas de variação CMYK para acertar no tom logo na primeira passagem em Rotativa e digital.", "tool_tinta_cta": "Gerar Matriz de Prova", "tool_tinta_badge": "CMYK & Rotativa", "tool_barcode_title": "OmniBarcode", "tool_barcode_hook": "O código passará na caixa?", "tool_barcode_desc": "Gere códigos de barras vetoriais SVG (EAN-13, Cartão de Saúde Code 39, Code 128) com verificação de contraste a laser 670 nm GS1.", "tool_barcode_cta": "Gerar Código de Barras", "tool_barcode_badge": "GS1 & Vetorial", "tool_copertura_title": "CoberturaTinta", "tool_copertura_hook": "Quanta tinta gastará a tiragem?", "tool_copertura_desc": "Análise densitométrica CMYK e TAC em tempo real. Calcule o consumo em gramas e o custo por cópia com total privacidade.", "tool_copertura_cta": "Calcular Cobertura e Custos", "tool_copertura_badge": "CMYK e Custo Cópia"}};
 
         function detectInitialLanguage() {
             const saved = localStorage.getItem('omnitools_lang');
@@ -979,38 +1165,51 @@
             const btnAll = document.getElementById('filterAllBtn');
             const btnBuilding = document.getElementById('filterBuildingBtn');
             const btnGraph = document.getElementById('filterGraphBtn');
+            const btnFinance = document.getElementById('filterFinanceBtn');
 
             // Reset base classes
             const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer";
 
-            btnAll.className = filter === 'all' 
+            if (btnAll) btnAll.className = filter === 'all' 
                 ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
-            btnBuilding.className = filter === 'building'
+            if (btnBuilding) btnBuilding.className = filter === 'building'
                 ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
-            btnGraph.className = filter === 'graph'
+            if (btnGraph) btnGraph.className = filter === 'graph'
                 ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
                 : baseInactive;
 
+            if (btnFinance) btnFinance.className = filter === 'finance'
+                ? "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 py-2 sm:py-3 px-1 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold text-xs sm:text-sm transition-all duration-200 active:scale-95 cursor-pointer"
+                : baseInactive;
+
             // Adjust subtext colors
-            const subAll = btnAll.querySelector('.subtext');
-            if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
-
-            const subB = btnBuilding.querySelector('.subtext');
-            if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
-
-            const subG = btnGraph.querySelector('.subtext');
-            if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            if (btnAll) {
+                const subAll = btnAll.querySelector('.subtext');
+                if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }
+            if (btnBuilding) {
+                const subB = btnBuilding.querySelector('.subtext');
+                if (subB) subB.className = filter === 'building' ? "subtext text-[10px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }
+            if (btnGraph) {
+                const subG = btnGraph.querySelector('.subtext');
+                if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }
+            if (btnFinance) {
+                const subF = btnFinance.querySelector('.subtext');
+                if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] text-emerald-100 font-semibold hidden sm:block" : "subtext text-[10px] text-slate-500 font-semibold hidden sm:block";
+            }
 
             filterTools();
         }
 
         function initFilterFromHash() {
             const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-            if (hash === 'building' || hash === 'graph' || hash === 'all') {
+            if (hash === 'building' || hash === 'graph' || hash === 'finance' || hash === 'all') {
                 setFilter(hash, false);
             } else {
                 setFilter('all', false);
@@ -1032,19 +1231,23 @@
 
             const secBuilding = document.getElementById('sectionBuilding');
             const secGraph = document.getElementById('sectionGraph');
+            const secFinance = document.getElementById('sectionFinance');
 
             let visibleBuildingCards = 0;
             let visibleGraphCards = 0;
+            let visibleFinanceCards = 0;
 
             const cards = document.querySelectorAll('.tool-card');
             cards.forEach(card => {
                 const isBuildingCard = card.closest('#sectionBuilding') !== null;
                 const isGraphCard = card.closest('#sectionGraph') !== null;
+                const isFinanceCard = card.closest('#sectionFinance') !== null;
 
                 // Check division filter
                 let allowedByDivision = true;
                 if (currentFilter === 'building' && !isBuildingCard) allowedByDivision = false;
                 if (currentFilter === 'graph' && !isGraphCard) allowedByDivision = false;
+                if (currentFilter === 'finance' && !isFinanceCard) allowedByDivision = false;
 
                 // Check search query
                 const text = card.textContent.toLowerCase();
@@ -1055,22 +1258,35 @@
                     card.classList.remove('hidden');
                     if (isBuildingCard) visibleBuildingCards++;
                     if (isGraphCard) visibleGraphCards++;
+                    if (isFinanceCard) visibleFinanceCards++;
                 } else {
                     card.classList.add('hidden');
                 }
             });
 
             // Show or hide division containers based on visible cards
-            if (visibleBuildingCards > 0 && (currentFilter === 'all' || currentFilter === 'building')) {
-                secBuilding.classList.remove('hidden');
-            } else {
-                secBuilding.classList.add('hidden');
+            if (secBuilding) {
+                if (visibleBuildingCards > 0 && (currentFilter === 'all' || currentFilter === 'building')) {
+                    secBuilding.classList.remove('hidden');
+                } else {
+                    secBuilding.classList.add('hidden');
+                }
             }
 
-            if (visibleGraphCards > 0 && (currentFilter === 'all' || currentFilter === 'graph')) {
-                secGraph.classList.remove('hidden');
-            } else {
-                secGraph.classList.add('hidden');
+            if (secGraph) {
+                if (visibleGraphCards > 0 && (currentFilter === 'all' || currentFilter === 'graph')) {
+                    secGraph.classList.remove('hidden');
+                } else {
+                    secGraph.classList.add('hidden');
+                }
+            }
+
+            if (secFinance) {
+                if (visibleFinanceCards > 0 && (currentFilter === 'all' || currentFilter === 'finance')) {
+                    secFinance.classList.remove('hidden');
+                } else {
+                    secFinance.classList.add('hidden');
+                }
             }
         }
 

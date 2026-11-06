@@ -44,6 +44,42 @@
     {
       "source": "/taglio",
       "destination": "/resa"
+    },
+    {
+      "source": "/ammortamento",
+      "destination": "/mutuo"
+    },
+    {
+      "source": "/rata",
+      "destination": "/mutuo"
+    },
+    {
+      "source": "/finanziamento",
+      "destination": "/mutuo"
+    },
+    {
+      "source": "/interessecomposto",
+      "destination": "/pac"
+    },
+    {
+      "source": "/risparmio",
+      "destination": "/pac"
+    },
+    {
+      "source": "/fire",
+      "destination": "/pac"
+    },
+    {
+      "source": "/markup",
+      "destination": "/margine"
+    },
+    {
+      "source": "/ricarico",
+      "destination": "/margine"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/margine"
     }
   ]
 }

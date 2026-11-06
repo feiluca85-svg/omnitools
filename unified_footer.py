@@ -14,19 +14,37 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
         {"id": "copertura", "name": "🖨️ Copertura", "desc": "Inchiostro & Costi", "url": "/copertura"},
         {"id": "resa", "name": "📑 Resa Carta", "desc": "Nesting & Taglio", "url": "/resa"},
     ]
+    finance_tools = [
+        {"id": "mutuo", "name": "🏦 Rata Mutuo", "desc": "Ammortamento & Sostenibilità", "url": "/mutuo"},
+        {"id": "pac", "name": "📈 Interesse PAC", "desc": "Crescita & Rendita 4%", "url": "/pac"},
+        {"id": "margine", "name": "🏷️ Margine & Ricarico", "desc": "COGS, Markup & IVA", "url": "/margine"},
+    ]
 
-    def render_pills(tool_list):
+    def render_pills(tool_list, division_type):
         html = ""
         for t in tool_list:
             is_active = t["id"] == current_tool_id
             if is_active:
+                if division_type == "building":
+                    bg_active = "bg-blue-600/30 border-blue-400/50"
+                    txt_desc = "text-blue-200"
+                    badge_bg = "bg-blue-500"
+                elif division_type == "finance":
+                    bg_active = "bg-emerald-600/30 border-emerald-400/50"
+                    txt_desc = "text-emerald-200"
+                    badge_bg = "bg-emerald-500"
+                else:
+                    bg_active = "bg-rose-600/30 border-rose-400/50"
+                    txt_desc = "text-rose-200"
+                    badge_bg = "bg-rose-500"
+
                 html += f"""
-                    <div class="p-2 sm:p-2.5 rounded-xl bg-blue-600/30 border border-blue-400/50 flex items-center justify-between transition shadow-xs">
+                    <div class="p-2 sm:p-2.5 rounded-xl {bg_active} border flex items-center justify-between transition shadow-xs">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-white text-[11px] block truncate">{t['name']}</span>
-                            <span class="text-[9px] text-blue-200 block truncate">{t['desc']}</span>
+                            <span class="text-[9px] {txt_desc} block truncate">{t['desc']}</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-blue-500 text-white font-extrabold rounded shrink-0">Attivo</span>
+                        <span class="text-[9px] px-1.5 py-0.5 {badge_bg} text-white font-extrabold rounded shrink-0">Attivo</span>
                     </div>"""
             else:
                 html += f"""
@@ -39,8 +57,11 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                     </a>"""
         return html
 
-    building_pills = render_pills(building_tools)
-    graph_pills = render_pills(graph_tools)
+    building_pills = render_pills(building_tools, "building")
+    graph_pills = render_pills(graph_tools, "graph")
+    finance_pills = render_pills(finance_tools, "finance")
+
+    default_legal = disclaimer_default if disclaimer_default else "OmniTools Network fornisce utility di precisione a scopo estimativo, didattico e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il parere vincolante di tecnici abilitati o consulenti finanziari abilitati (TUF / D.Lgs. 58/1998)."
 
     return f"""
     <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
@@ -66,7 +87,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                         <span>LinkedIn</span>
                     </button>
                     <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su Reddit">
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 8.99c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.56 12 8 12.56 8 13.25c0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm5.5 0c-.69 0-1.25.56-1.25 1.25 0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm-5.465 4.542a.335.335 0 0 0-.232.095.33.33 0 0 0 0 .464c.732.732 2.012.986 2.947.986.935 0 2.215-.254 2.947-.986a.33.33 0 0 0 0-.464.335.335 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
                         <span>Reddit</span>
                     </button>
                     <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
@@ -85,7 +106,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 <div class="flex items-center gap-2.5">
                     <span class="text-xl">💡</span>
                     <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
-                        Hai un'idea per un nuovo calcolatore di cantiere o grafica?
+                        Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?
                     </span>
                 </div>
                 <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
@@ -94,7 +115,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 </button>
             </div>
 
-            <!-- Categorized OmniTools Ecosystem Bar (Clean 2-Section Grid) -->
+            <!-- Categorized OmniTools Ecosystem Bar (Clean 3-Section Grid) -->
             <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800 space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800">
                     <div class="flex items-center gap-2">
@@ -103,7 +124,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">9 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span class="text-[11px] text-slate-400 font-medium">12 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (3 Tools) -->
@@ -126,6 +147,16 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                     </div>
                 </div>
 
+                <!-- Division 3: OmniFinance (3 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
+                        <span>💼</span> <span>OmniFinance (3 Finanza & Business)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        {finance_pills}
+                    </div>
+                </div>
+
                 <div class="pt-2 text-center border-t border-slate-800/80">
                     <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
                         <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
@@ -137,7 +168,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
             <div class="text-center space-y-2 pt-2">
                 <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
                 <p id="{disclaimer_id}" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
-                    {disclaimer_default}
+                    {default_legal}
                 </p>
             </div>
         </div>
@@ -285,3 +316,6 @@ def render_unified_footer_js():
             if (banner) banner.classList.add('hidden');
         }
 """
+
+if __name__ == "__main__":
+    print("unified_footer.py module compiled successfully with 3 divisions (12 tools).")

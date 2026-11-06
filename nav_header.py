@@ -99,6 +99,39 @@ TOOLS = [
         "url": "/resa",
         "badge": "Nesting Fogli",
         "color": "amber"
+    },
+    {
+        "id": "mutuo",
+        "category": "OmniFinance",
+        "category_label": "Finanza & Business",
+        "name": "MutuoFacile",
+        "desc": "Rata & Ammortamento Francese",
+        "emoji": "🏦",
+        "url": "/mutuo",
+        "badge": "Ammortamento",
+        "color": "emerald"
+    },
+    {
+        "id": "pac",
+        "category": "OmniFinance",
+        "category_label": "Finanza & Business",
+        "name": "InteresseComposto",
+        "desc": "Simulatore PAC & Rendita 4%",
+        "emoji": "📈",
+        "url": "/pac",
+        "badge": "PAC / FIRE",
+        "color": "emerald"
+    },
+    {
+        "id": "margine",
+        "category": "OmniFinance",
+        "category_label": "Finanza & Business",
+        "name": "MargineFacile",
+        "desc": "Margine, Ricarico & COGS",
+        "emoji": "🏷️",
+        "url": "/margine",
+        "badge": "Markup/Pricing",
+        "color": "emerald"
     }
 ]
 
@@ -110,8 +143,17 @@ def get_tool_icon_svg(tool_id):
             <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
             <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
         </svg>"""
-
-    else: # dorso, dpi, tinta
+    elif tool_id in ["mutuo", "pac", "margine"]:
+        return """<svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+            <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+            <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+            <line x1="16" y1="6.5" x2="16" y2="25.5" stroke="#ffffff" stroke-width="2" />
+            <line x1="12" y1="13.5" x2="16" y2="25.5" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="1.5 1.5" />
+            <line x1="20" y1="13.5" x2="16" y2="25.5" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="1.5 1.5" />
+            <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+        </svg>"""
+    else: # dorso, dpi, tinta, barcode, copertura, resa
         return """<svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
             <circle cx="16" cy="16" r="6.8" stroke="#ffffff" stroke-width="2" />
@@ -123,12 +165,20 @@ def get_tool_icon_svg(tool_id):
 def render_suite_header(current_id):
     current = next((t for t in TOOLS if t["id"] == current_id), TOOLS[0])
     is_building = current["category"] == "OmniBuilding"
+    is_finance = current["category"] == "OmniFinance"
     
-    brand_gradient = "bg-gradient-to-br from-amber-500 to-amber-700 shadow-amber-500/20" if is_building else "bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20"
-
-        
-    cat_tag_class = "bg-blue-100 text-blue-800 border-blue-200/80" if is_building else "bg-purple-100 text-purple-800 border-purple-200/80"
-    cat_name = "Building" if is_building else "Graph"
+    if is_building:
+        brand_gradient = "bg-gradient-to-br from-amber-500 to-amber-700 shadow-amber-500/20"
+        cat_tag_class = "bg-blue-100 text-blue-800 border-blue-200/80"
+        cat_name = "Building"
+    elif is_finance:
+        brand_gradient = "bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 shadow-emerald-700/20"
+        cat_tag_class = "bg-emerald-100 text-emerald-800 border-emerald-200/80"
+        cat_name = "Finance"
+    else:
+        brand_gradient = "bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20"
+        cat_tag_class = "bg-purple-100 text-purple-800 border-purple-200/80"
+        cat_name = "Graph"
     
     building_tools_html = ""
     for t in [x for x in TOOLS if x["category"] == "OmniBuilding"]:
@@ -158,6 +208,23 @@ def render_suite_header(current_id):
                     <span class="text-base shrink-0">{t['emoji']}</span>
                     <div class="text-left">
                         <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">{t['name']}</div>
+                        <div class="text-[10px] text-slate-500 font-normal leading-tight">{t['desc']}</div>
+                    </div>
+                </div>
+                {badge_html}
+            </a>"""
+
+    finance_tools_html = ""
+    for t in [x for x in TOOLS if x["category"] == "OmniFinance"]:
+        is_active = t["id"] == current_id
+        active_class = "bg-emerald-50/80 text-emerald-800 border border-emerald-200" if is_active else "hover:bg-slate-50 text-slate-700"
+        badge_html = '<span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-emerald-600 text-white shadow-2xs">Attivo</span>' if is_active else f'<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">{t["badge"]}</span>'
+        finance_tools_html += f"""
+            <a href="{t['url']}" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group {active_class}">
+                <div class="flex items-center gap-2">
+                    <span class="text-base shrink-0">{t['emoji']}</span>
+                    <div class="text-left">
+                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">{t['name']}</div>
                         <div class="text-[10px] text-slate-500 font-normal leading-tight">{t['desc']}</div>
                     </div>
                 </div>
@@ -198,10 +265,10 @@ def render_suite_header(current_id):
                         </button>
                     </div>
 
-                    <!-- Dropdown Popover Menu (All 7 Tools Categorized) -->
+                    <!-- Dropdown Popover Menu (All 12 Tools Categorized) -->
                     <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
                         <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools (12)</span>
                             <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
                                 Home Hub →
                             </a>
@@ -229,10 +296,22 @@ def render_suite_header(current_id):
                             </div>
                         </div>
 
+                        <div class="border-t border-slate-100 my-1"></div>
+
+                        <!-- Finanza & Business -->
+                        <div class="px-2 pt-1 pb-1">
+                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 flex items-center gap-1 mb-1">
+                                <span>💼</span> OmniFinance · Finanza & Business
+                            </div>
+                            <div class="space-y-0.5">
+                                {finance_tools_html}
+                            </div>
+                        </div>
+
                         <!-- Footer Link to Hub -->
                         <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
                             <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
-                                <span>🏠</span> Tutti gli strumenti nella Home
+                                <span>🏠</span> Tutti i 12 strumenti nella Home
                             </a>
                         </div>
                     </div>
@@ -317,4 +396,4 @@ document.addEventListener('keydown', function(e) {
 """
 
 if __name__ == "__main__":
-    print("nav_header.py module compiled successfully.")
+    print("nav_header.py module compiled successfully with OmniFinance support.")
