@@ -345,7 +345,7 @@ html_code = f"""<!DOCTYPE html>
                                 <option value="sra3">SRA3 (320 × 450 mm)</option>
                                 <option value="70x100">70 × 100 cm (Foglio Offset)</option>
                                 <option value="64x88">64 × 88 cm (Foglio Macchina)</option>
-                                <option value="custom">Personalizzato (mm)</option>
+                                <option value="custom">Personalizzato...</option>
                             </select>
                         </div>
 

@@ -679,9 +679,14 @@ html_code = f"""<!DOCTYPE html>
                 grainBadge.textContent = '⚠️ Possibile Controfibra';
             }}
 
+            // Raw display values from inputs
+            const dispSheetW = document.getElementById('sheetW').value;
+            const dispSheetH = document.getElementById('sheetH').value;
+
             // Render 2D SVG
             renderSheetSvg({{
                 sheetW, sheetH, cutW, cutH, gripper, bleed,
+                dispSheetW, dispSheetH,
                 bestArrangement, cols1, rows1, cols2, rows2,
                 comboRows1, comboCols1, comboRows2, comboCols2
             }});
@@ -798,8 +803,8 @@ html_code = f"""<!DOCTYPE html>
             // Dimension indicators
             svgContent += `
                 <!-- Sheet Dimensions Callout -->
-                <text x="${{pad + (w / 2)}}" y="${{pad - 6}}" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold" text-anchor="middle">Base: ${{p.sheetW}} mm</text>
-                <text x="${{pad + w + 8}}" y="${{pad + (h / 2)}}" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold" dominant-baseline="middle">H: ${{p.sheetH}} mm</text>
+                <text x="${{pad + (w / 2)}}" y="${{pad - 6}}" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold" text-anchor="middle">Base: ${{p.dispSheetW}} ${{currentUnit}}</text>
+                <text x="${{pad + w + 8}}" y="${{pad + (h / 2)}}" fill="#94a3b8" font-size="10" font-family="monospace" font-weight="bold" dominant-baseline="middle">H: ${{p.dispSheetH}} ${{currentUnit}}</text>
             `;
 
             svg.innerHTML = svgContent;
@@ -845,12 +850,12 @@ html_code = f"""<!DOCTYPE html>
 
             document.getElementById('lblSheetFormat').textContent = t.sheet_format_label;
             document.getElementById('lblCutFormat').textContent = t.cut_format_label;
-            document.getElementById('lblSheetW').textContent = t.sheet_w_label;
-            document.getElementById('lblSheetH').textContent = t.sheet_h_label;
-            document.getElementById('lblCutW').textContent = t.cut_w_label;
-            document.getElementById('lblCutH').textContent = t.cut_h_label;
-            document.getElementById('lblGripper').textContent = t.gripper_label;
-            document.getElementById('lblBleed').textContent = t.bleed_label;
+            document.getElementById('lblSheetW').innerHTML = `${{t.sheet_w_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            document.getElementById('lblSheetH').innerHTML = `${{t.sheet_h_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            document.getElementById('lblCutW').innerHTML = `${{t.cut_w_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            document.getElementById('lblCutH').innerHTML = `${{t.cut_h_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            document.getElementById('lblGripper').innerHTML = `${{t.gripper_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            document.getElementById('lblBleed').innerHTML = `${{t.bleed_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
             document.getElementById('lblGrain').textContent = t.grain_label;
             document.getElementById('lblCopiesTarget').textContent = t.copies_target_label;
             document.getElementById('lblPaperWeight').textContent = t.paper_weight_label;

@@ -1591,8 +1591,12 @@ document.addEventListener('keydown', function(e) {
             }
 
             // Dim Callouts
-            topDimText.textContent = `L: ${flatWidthMm.toFixed(1)} mm (Stesa Chiusa) • Dorso: ${spineMm.toFixed(1)} mm`;
-            rightDimText.textContent = `H: ${bookHeightMm} mm`;
+            const dispFlatW = (flatWidthMm / factor).toFixed(dec);
+            const dispSpine = (spineMm / factor).toFixed(dec);
+            const dispH = (bookHeightMm / factor).toFixed(dec);
+            topDimText.textContent = `L: ${dispFlatW} ${u} (Stesa) • Dorso: ${dispSpine} ${u}`;
+            rightDimText.textContent = `H: ${dispH} ${u}`;
+            if (spineLabelSvg) spineLabelSvg.textContent = `DORSO ${dispSpine} ${u}`;
         }
 
         function downloadSvgDima() {
