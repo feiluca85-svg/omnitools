@@ -230,7 +230,7 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                         <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                             <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
-                            <div>Refilo 3 mm • Brossura PUR</div>
+                            <div id="printReportSub">Refilo 3 mm • Brossura PUR</div>
                             <div class="text-blue-600 font-bold">omnitoolslab.com/dorso</div>
                         </div>
                     </div>
@@ -329,7 +329,7 @@ html_code = f"""<!DOCTYPE html>
 
                             <!-- Outer Bleed Zone (Red Dashed Box +3mm) -->
                             <rect id="bleedRect" x="30" y="30" width="480" height="150" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 4" />
-                            <text x="32" y="24" fill="#ef4444" font-size="9" font-family="monospace" font-weight="bold">LINEA REFILO (+3 mm Bleed)</text>
+                            <text id="bleedSvgText" x="32" y="24" fill="#ef4444" font-size="9" font-family="monospace" font-weight="bold">LINEA REFILO (+3 mm Bleed)</text>
 
                             <!-- Trim Line (Solid Slate Box) -->
                             <rect id="trimRect" x="40" y="40" width="460" height="130" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5" />
@@ -699,6 +699,7 @@ html_code = f"""<!DOCTYPE html>
         const flapRightText = document.getElementById('flapRightText');
         const topDimText = document.getElementById('topDimText');
         const rightDimText = document.getElementById('rightDimText');
+        const bleedSvgText = document.getElementById('bleedSvgText');
 
         function changeLanguage(lang) {{
             if (!TRANSLATIONS[lang]) return;
@@ -767,6 +768,7 @@ html_code = f"""<!DOCTYPE html>
             }}
 
             renderFaqs();
+            updateDropdownUnits();
         }}
 
                 function renderFaqs() {{
@@ -819,6 +821,50 @@ html_code = f"""<!DOCTYPE html>
             'pt': 0.352778
         }};
 
+        const BOOK_FORMAT_PRESETS = [
+            {{ id: '148x210', name: 'A5', w: 148, h: 210 }},
+            {{ id: '120x190', name: 'Tascabile', w: 120, h: 190 }},
+            {{ id: '150x230', name: 'Saggio', w: 150, h: 230 }},
+            {{ id: '170x240', name: 'Standard', w: 170, h: 240 }},
+            {{ id: '210x297', name: 'A4', w: 210, h: 297 }},
+            {{ id: '210x210', name: 'Quadrato', w: 210, h: 210 }}
+        ];
+
+        const FLAP_PRESETS = [
+            {{ val: 0, label: 'Nessuna Aletta' }},
+            {{ val: 70, label: 'Alette' }},
+            {{ val: 85, label: 'Alette' }},
+            {{ val: 100, label: 'Alette' }}
+        ];
+
+        function updateDropdownUnits() {{
+            const u = currentUnit;
+            const factor = UNIT_FACTORS_MM[u] || 1.0;
+            const dec = (u === 'mm' ? 0 : (u === 'pt' ? 0 : 1));
+
+            // Aggiorna Formato Chiuso Dropdown
+            const curFmt = formatSelect.value;
+            formatSelect.innerHTML = BOOK_FORMAT_PRESETS.map(f => {{
+                const dispW = (f.w / factor).toFixed(dec);
+                const dispH = (f.h / factor).toFixed(dec);
+                const selected = (f.id === curFmt) ? 'selected' : '';
+                return `<option value="${{f.id}}" ${{selected}}>${{f.name}} (${{dispW}} × ${{dispH}} ${{u}})</option>`;
+            }}).join('');
+
+            // Aggiorna Alette Dropdown
+            const curFlap = parseFloat(flapsSelect.value) || 0;
+            flapsSelect.innerHTML = FLAP_PRESETS.map(fl => {{
+                if (fl.val === 0) {{
+                    const sel = (curFlap === 0) ? 'selected' : '';
+                    return `<option value="0" ${{sel}}>Nessuna Aletta</option>`;
+                }} else {{
+                    const dispFl = (fl.val / factor).toFixed(dec);
+                    const sel = (curFlap === fl.val) ? 'selected' : '';
+                    return `<option value="${{fl.val}}" ${{sel}}>${{fl.label}} ${{dispFl}} ${{u}}</option>`;
+                }}
+            }}).join('');
+        }}
+
         function setUnit(newUnit) {{
             if (newUnit === currentUnit) return;
             currentUnit = newUnit;
@@ -833,6 +879,7 @@ html_code = f"""<!DOCTYPE html>
                     }}
                 }}
             }});
+            updateDropdownUnits();
             updateCalculations();
         }}
 
@@ -939,7 +986,9 @@ html_code = f"""<!DOCTYPE html>
             totalWidthOutput.textContent = `${{flatWStr}} ${{u}}`;
             totalHeightOutput.textContent = `${{bleedHStr}} ${{u}}`;
 
-            document.getElementById('widthSubLabel').textContent = `+ Refilo = ${{bleedWVal.toFixed(dec)}} ${{u}}`;
+            const bleedUnitVal = (3.0 / factor).toFixed(dec);
+            const bleedTotalUnitVal = (6.0 / factor).toFixed(dec);
+            document.getElementById('widthSubLabel').textContent = `+ ${{bleedTotalUnitVal}} ${{u}} Refilo = ${{bleedWVal.toFixed(dec)}} ${{u}}`;
             document.getElementById('heightSubLabel').textContent = `Taglio netto: ${{flatHVal.toFixed(dec)}} ${{u}}`;
 
             // Aggiorna stato brossurabilità
@@ -954,7 +1003,16 @@ html_code = f"""<!DOCTYPE html>
             const ppw = document.getElementById('printPaperVal');
             if (ppw) ppw.textContent = `${{weight}}g (Mano ${{bulk}})`;
             const ppf = document.getElementById('printFormatVal');
-            if (ppf) ppf.textContent = `${{bookWidthMm}} × ${{bookHeightMm}} mm`;
+            if (ppf) {{
+                const dispBookW = (bookWidthMm / factor).toFixed(dec);
+                const dispBookH = (bookHeightMm / factor).toFixed(dec);
+                ppf.textContent = `${{dispBookW}} × ${{dispBookH}} ${{u}}`;
+            }}
+            const prs = document.getElementById('printReportSub');
+            if (prs) {{
+                const bindingText = (currentBinding === 'softcover' ? 'Brossura PUR' : 'Cartonato');
+                prs.textContent = `Refilo ${{bleedUnitVal}} ${{u}} • ${{bindingText}}`;
+            }}
             const ppb = document.getElementById('printBindingVal');
             if (ppb) ppb.textContent = (currentBinding === 'softcover' ? 'Brossura Fresata / PUR' : 'Cartonato / Hardcover');
         }}
@@ -1066,9 +1124,11 @@ html_code = f"""<!DOCTYPE html>
             const dispFlatW = (flatWidthMm / factor).toFixed(dec);
             const dispSpine = (spineMm / factor).toFixed(dec);
             const dispH = (bookHeightMm / factor).toFixed(dec);
+            const dispBleed = (3.0 / factor).toFixed(dec);
             topDimText.textContent = `L: ${{dispFlatW}} ${{u}} (Stesa) • Dorso: ${{dispSpine}} ${{u}}`;
             rightDimText.textContent = `H: ${{dispH}} ${{u}}`;
             if (spineLabelSvg) spineLabelSvg.textContent = `DORSO ${{dispSpine}} ${{u}}`;
+            if (bleedSvgText) bleedSvgText.textContent = `LINEA REFILO (+${{dispBleed}} ${{u}} Bleed)`;
         }}
 
         function downloadSvgDima() {{
@@ -1158,7 +1218,10 @@ html_code = f"""<!DOCTYPE html>
             let flatW = document.getElementById('totalWidthOutput').textContent;
             let flatH = document.getElementById('totalHeightOutput').textContent;
             let spine = document.getElementById('spineOutput').textContent;
-            let textToCopy = `Dimensioni Copertina OmniTools: Stesa: ${{flatW}} x ${{flatH}} (Dorso: ${{spine}} • Refilo: 3 mm su 4 lati)`;
+            const factor = UNIT_FACTORS_MM[currentUnit] || 1.0;
+            const dec = (currentUnit === 'mm' ? 1 : (currentUnit === 'pt' ? 0 : 2));
+            const dispBleed = (3.0 / factor).toFixed(dec);
+            let textToCopy = `Dimensioni Copertina OmniTools: Stesa: ${{flatW}} x ${{flatH}} (Dorso: ${{spine}} • Refilo: ${{dispBleed}} ${{currentUnit}} su 4 lati)`;
             
             navigator.clipboard.writeText(textToCopy).then(() => {{
                 const btn = document.getElementById('copyBtnText');
