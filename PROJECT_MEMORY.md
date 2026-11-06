@@ -67,6 +67,17 @@ Prima di iniziare, durante lo sviluppo e dopo il rilascio di QUALSIASI nuovo too
 
 ## 4. STANDARD TECNICI INTOCCABILI
 
+### 🧩 Architettura Modulare Header & Footer Unificati
+Tutti i tool compilati della suite devono obbligatoriamente utilizzare i moduli centralizzati:
+* `nav_header.py`: Header reattivo con menu a tendina categorizzato (OmniBuilding & OmniGraph), selezione lingua, tasto installa PWA e stampa rapida.
+* `unified_footer.py`: Standard uniforme immutabile per tutti i tool:
+  1. **FAQ Accordion:** Sezione FAQ con tag `<details>` e frecce SVG rotanti per un'esperienza fluida.
+  2. **Share & Viral Strip:** Barra di condivisione social (WhatsApp, LinkedIn, Copia Link, Web Share API nativa).
+  3. **Suggestion Strip:** Box di raccolta idee utente (*"Hai un'idea per un nuovo calcolatore?"*) con pulsante collegato a modale interattivo.
+  4. **OmniTools Network Ecosystem Bar:** Box scuro ad alto contrasto con gli 8 tool attivi (`📐 Rampe`, `🪜 Scale`, `🚰 Scarichi`, `📕 Dorso`, `🖼️ DPI`, `🎯 Tinta`, `🏷️ Barcode`, `🖨️ Copertura`) e link Partnership B2B.
+  5. **Note Legali & Copyright:** Box disclaimer tecnico e copyright.
+  6. **PWA Install Banner & Modale Suggerimenti:** Modale feedback e banner mobile flottante.
+
 ### 📄 Standard Scheda Stampa A4
 Ogni tool include una funzione di esportazione stampa/PDF che rispetta deterministicamente:
 * **Esattamente 1 Pagina A4 Portrait:** Nessun overflow su seconda pagina (`@page { size: A4 portrait; margin: 8mm 10mm; }`).
