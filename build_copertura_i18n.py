@@ -227,24 +227,22 @@ html_code = f"""<!DOCTYPE html>
     </div>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 w-full page-container flex-grow space-y-6">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5 page-container">
         
-        <!-- HERO / INTRO -->
-        <div class="no-print mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200 pb-5">
-            <div>
-                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200 mb-2">
-                    <span>🖨️</span>
-                    <span id="badgeText">OmniGraph — Prestampa & Tipografia</span>
-                </div>
-                <h1 id="heroTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    {it_t["hero_title"]}
-                </h1>
-                <p id="heroDesc" class="text-slate-600 text-sm sm:text-base mt-1 max-w-3xl leading-relaxed">
-                    {it_t["hero_desc"]}
-                </p>
+        <!-- Hero Header -->
+        <div id="heroContainer" class="no-print text-center max-w-2xl mx-auto space-y-1.5 sm:space-y-2 pt-1 sm:pt-2">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200/80 text-[11px] font-extrabold text-rose-800 tracking-wide uppercase">
+                <span>🖨️</span>
+                <span id="badgeText">OmniGraph · Prestampa & Tipografia</span>
             </div>
-            <div class="mt-3 sm:mt-0 shrink-0">
-                <span id="privacyBadge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
+            <h1 id="heroTitle" class="text-2xl sm:text-3xl md:text-4xl font-extrabold font-jakarta text-slate-900 tracking-tight leading-tight">
+                {it_t["hero_title"]}
+            </h1>
+            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                {it_t["hero_desc"]}
+            </p>
+            <div class="pt-1">
+                <span id="privacyBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
                     {it_t["privacy_badge"]}
                 </span>
             </div>
