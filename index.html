@@ -190,9 +190,9 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (8)</span>
+                            <span class="sm:hidden font-black text-[11px] block text-white">Tutti (9)</span>
                             <span id="filterAllText" class="hidden sm:block font-black">Tutti i Tool</span>
-                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">8 Strumenti</span>
+                            <span class="subtext text-[10px] text-blue-100 font-semibold hidden sm:block">9 Strumenti</span>
                         </div>
                     </button>
 
@@ -225,9 +225,9 @@
                             </svg>
                         </div>
                         <div class="text-center sm:text-left leading-tight">
-                            <span class="sm:hidden font-black text-[11px] block text-current">Graph (5)</span>
+                            <span class="sm:hidden font-black text-[11px] block text-current">Graph (6)</span>
                             <span class="hidden sm:block font-black">OmniGraph</span>
-                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">5 Grafica & Stampa</span>
+                            <span class="subtext text-[10px] text-slate-500 font-semibold hidden sm:block">6 Grafica & Stampa</span>
                         </div>
                     </button>
 
@@ -774,21 +774,39 @@
                 </button>
             </div>
 
-            <!-- Suite Navigation & Partner Hook -->
-            <div class="flex items-center justify-center gap-3 text-xs font-bold text-slate-600 flex-wrap pb-1">
-                <a href="/rampe" class="hover:text-blue-600 transition">RampaFacile</a>
-                <span>•</span>
-                <a href="/scale" class="hover:text-blue-600 transition">ScalaFacile</a>
-                <span>•</span>
-                <a href="/tubi" class="hover:text-blue-600 transition">ScaricoFacile</a>
-                <span>•</span>
-                <a href="/dorso" class="hover:text-blue-600 transition">DorsoFacile</a>
-                <span>•</span>
-                <a href="/dpi" class="hover:text-blue-600 transition">RisoluzioneFacile</a>
-                <span>•</span>
-                <a href="/tinta" class="hover:text-rose-900 transition">TintaPerfetta</a>
-                <span>•</span>
-                <a href="/partnership" class="text-indigo-600 hover:underline" id="navPartnerText">🤝 Diventa Partner / Sponsor</a>
+            <!-- Categorized Suite Directory -->
+            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-3 text-xs">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-200">
+                    <span class="font-extrabold text-slate-800">Indice Completo degli Strumenti (9 Tool)</span>
+                    <a href="/partnership" class="font-bold text-indigo-600 hover:text-indigo-800 transition" id="navPartnerText">
+                        🤝 Diventa Partner / Sponsor Ufficiale
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+                    <div class="space-y-1">
+                        <span class="font-bold text-amber-700 flex items-center gap-1">
+                            <span>🏗️</span> OmniBuilding (3 Cantiere & Impianti)
+                        </span>
+                        <div class="flex flex-wrap gap-1.5 pt-0.5">
+                            <a href="/rampe" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">RampaFacile</a>
+                            <a href="/scale" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">ScalaFacile</a>
+                            <a href="/tubi" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">ScaricoFacile</a>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="font-bold text-rose-700 flex items-center gap-1">
+                            <span>🎨</span> OmniGraph (6 Grafica & Stampa)
+                        </span>
+                        <div class="flex flex-wrap gap-1.5 pt-0.5">
+                            <a href="/dorso" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">DorsoFacile</a>
+                            <a href="/dpi" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">RisoluzioneFacile</a>
+                            <a href="/tinta" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">TintaPerfetta</a>
+                            <a href="/barcode" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">OmniBarcode</a>
+                            <a href="/copertura" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">CoperturaFacile</a>
+                            <a href="/resa" class="px-2.5 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 font-semibold transition">ResaCarta</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Disclaimer and Rights -->
@@ -1070,7 +1088,14 @@
         }
         function shareLinkedIn() {
             const url = encodeURIComponent(window.location.href);
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+        }
+
+        function shareReddit() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }
 
         function shareReddit() {
             const url = encodeURIComponent(window.location.href);
