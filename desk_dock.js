@@ -210,22 +210,19 @@
             <!-- Pop Swatch Outer Shell / Bezel -->
             <div id="omnidesk-clock-body" class="omnidesk-drag-handle relative w-[180px] h-[180px] sm:w-[210px] sm:h-[210px] rounded-full bg-zinc-950 p-3 sm:p-3.5 border-4 border-zinc-800 shadow-2xl omnidesk-clock-bezel flex items-center justify-center cursor-grab active:cursor-grabbing">
                 
-                <!-- Watch Crown / Clip Top Hook (Vintage Pop Swatch Accent) -->
-                <div class="absolute -top-3 w-8 h-3 rounded-t-md bg-zinc-700 border-t border-x border-zinc-500/80 shadow-xs"></div>
-                <div class="absolute -top-1.5 w-4 h-2 bg-amber-400/90 rounded-t-xs"></div>
+                <!-- Watch Crown / Clip Lug on RIGHT Side (Ore 3) -->
+                <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-8 rounded-r-md bg-zinc-700 border-r border-y border-zinc-500/80 shadow-xs"></div>
+                <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-2 h-4 bg-amber-400/90 rounded-r-xs"></div>
 
                 <!-- Clock Dial Face -->
                 <div id="omnidesk-clock-face" class="relative w-full h-full rounded-full transition-colors duration-300 overflow-hidden shadow-inner flex items-center justify-center">
                     
-                    <!-- White Dots for 12 Hours (True Pop Swatch Dial) -->
+                    <!-- White Dots for 12 Hours (Clean Dial) -->
                     <div id="omnidesk-clock-dots" class="absolute inset-0"></div>
 
-                    <!-- Center OmniTools Brand Badge -->
-                    <div class="absolute flex flex-col items-center pointer-events-none z-10" style="top: 26%;">
-                        <div class="px-2 py-0.5 rounded border border-white/40 bg-black/20 backdrop-blur-xs flex items-center gap-1 shadow-xs">
-                            <span class="text-[9px] font-black tracking-widest text-white uppercase font-sans">OMNI</span>
-                            <span class="text-[8px] font-bold text-amber-300 font-mono">SWISS</span>
-                        </div>
+                    <!-- Center OmniTools Brand Text (Perfect Visibility) -->
+                    <div class="absolute flex flex-col items-center pointer-events-none z-10" style="top: 27%;">
+                        <span class="text-[11px] sm:text-[13px] font-black tracking-wider text-white uppercase font-sans drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">OmniTools</span>
                     </div>
 
                     <!-- Hands Canvas / SVG -->
@@ -250,9 +247,9 @@
                         <circle cx="100" cy="100" r="5" fill="#18181b" stroke="#ffffff" stroke-width="2" />
                     </svg>
 
-                    <!-- Bottom Accent Text -->
-                    <div class="absolute bottom-5 text-[7px] font-mono tracking-widest uppercase text-white/70 pointer-events-none">
-                        POP QUARTZ
+                    <!-- Bottom Accent Text (Above 6 o'clock dot) -->
+                    <div class="absolute bottom-11 sm:bottom-12 text-[8px] sm:text-[9px] font-mono tracking-widest uppercase text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] pointer-events-none font-bold">
+                        PRECISION LAB
                     </div>
                 </div>
             </div>

@@ -61,9 +61,9 @@
             <!-- Pop Swatch Clip/Ring -->
             <div class="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full bg-zinc-950 p-5 sm:p-7 border-8 border-zinc-800 pop-bezel flex items-center justify-center">
                 
-                <!-- Watch Crown / Top Clip Lug -->
-                <div class="absolute -top-6 w-14 h-5 rounded-t-lg bg-zinc-700 border-t-2 border-x-2 border-zinc-500 shadow-md"></div>
-                <div class="absolute -top-3 w-8 h-3 bg-amber-400 rounded-t-xs"></div>
+                <!-- Watch Crown / Clip Lug on RIGHT Side (Ore 3) -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-5 h-14 rounded-r-lg bg-zinc-700 border-r-2 border-y-2 border-zinc-500 shadow-md"></div>
+                <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-8 bg-amber-400 rounded-r-xs"></div>
 
                 <!-- Clock Dial Face -->
                 <div id="fullClockFace" class="relative w-full h-full rounded-full transition-colors duration-500 overflow-hidden shadow-inner flex items-center justify-center bg-[#0d9488]">
@@ -71,12 +71,9 @@
                     <!-- 12 Hour Dots Container -->
                     <div id="fullClockDots" class="absolute inset-0"></div>
 
-                    <!-- Center Logo Badge -->
-                    <div class="absolute flex flex-col items-center pointer-events-none z-10" style="top: 26%;">
-                        <div class="px-2.5 py-1 rounded-md border border-white/50 bg-black/25 backdrop-blur-xs flex items-center gap-1.5 shadow-sm">
-                            <span class="text-[11px] sm:text-xs font-black tracking-widest text-white uppercase font-sans">OMNI</span>
-                            <span class="text-[9px] sm:text-[10px] font-bold text-amber-300 font-mono">SWISS</span>
-                        </div>
+                    <!-- Center OmniTools Brand Text (Perfect Visibility) -->
+                    <div class="absolute flex flex-col items-center pointer-events-none z-10" style="top: 27%;">
+                        <span class="text-base sm:text-xl font-black tracking-wider text-white uppercase font-sans drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">OmniTools</span>
                     </div>
 
                     <!-- SVG Hands -->
@@ -101,9 +98,9 @@
                         <circle cx="100" cy="100" r="6" fill="#18181b" stroke="#ffffff" stroke-width="2.5" />
                     </svg>
 
-                    <!-- Bottom Retro Dial Text -->
-                    <div class="absolute bottom-7 sm:bottom-9 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase text-white/80 pointer-events-none">
-                        POP QUARTZ
+                    <!-- Bottom Retro Dial Text (Above 6 o'clock dot) -->
+                    <div class="absolute bottom-16 sm:bottom-20 text-[10px] sm:text-xs font-mono tracking-widest uppercase text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] pointer-events-none font-bold">
+                        PRECISION LAB
                     </div>
                 </div>
             </div>
