@@ -1,4 +1,5 @@
 from nav_header import render_suite_header, render_suite_header_js
+from unified_footer import render_unified_footer, render_unified_footer_js
 import json
 
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations.json', 'r', encoding='utf-8') as f:
@@ -32,6 +33,8 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 
 header_html = render_suite_header("rampe")
 header_js = render_suite_header_js()
+footer_html = render_unified_footer("rampe")
+footer_js = render_unified_footer_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -605,198 +608,13 @@ html_code = f"""<!DOCTYPE html>
 
     </main>
 
-    <!-- Footer with OmniTools Suite & Ironclad Legal Disclaimer -->
-    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto px-4 space-y-6">
-            
-            <!-- Share & Viral Action Strip -->
-            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                <div class="flex items-center gap-2.5">
-                    <span class="text-xl">📢</span>
-                    <div>
-                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
-                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o sui canali di settore</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
-                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
-                        <span>💬</span> <span>WhatsApp</span>
-                    </button>
-                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0a66c2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
-                        <span>💼</span> <span>LinkedIn</span>
-                    </button>
-                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
-                        <span>🔗</span> <span id="shareCopyText">Copia Link</span>
-                    </button>
-                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
-                        <span>📤</span> <span>Condividi</span>
-                    </button>
-                </div>
-            </div>
+    {footer_html}
 
-            <!-- Suggestion Prompt Strip (Zero Distraction / High Utility) -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
-                <div class="flex items-center gap-2.5">
-                    <span class="text-xl">💡</span>
-                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
-                        Hai un'idea per un nuovo calcolatore o un miglioramento?
-                    </span>
-                </div>
-                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
-                    <span id="suggestBtnText">Suggerisci</span>
-                    <span>→</span>
-                </button>
-            </div>
-
-            <!-- OmniTools Network Ecosystem Bar -->
-            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-                    <div class="flex items-center gap-2">
-                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                            ⌘
-                        </div>
-                        <span class="font-black text-sm tracking-tight">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
-                    </div>
-                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Cantiere ad Alta Precisione</span>
-                </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pt-3 text-[11px]">
-<div class="p-2 rounded-xl bg-slate-800/80 border border-blue-500/30 flex items-center justify-between">
-                        <span class="font-bold text-white">📐 Rampe & Pendenze</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </div>
-                    <a href="/scale" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-indigo-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🪜 Scale & Blondel</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-purple-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎨 Dorso Libro</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-emerald-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🖼️ Risoluzione & DPI</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/tubi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🚰 ScaricoFacile</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-cyan-500/20 text-cyan-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/tinta" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-rose-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎯 Tinta & CMYK</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-rose-500/20 text-rose-300 font-bold rounded">Attivo</span>
-                    </a>
-                </div>
-                <div class="pt-2.5 text-center">
-                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
-                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Disclaimer and Copyright -->
-            <div class="text-center space-y-2">
-                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
-                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
-                    <strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (DM 236/89, D.M. 01/02/1986, ADA, CTE, PMR, DIN 18040, NBR 9050) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi di legge (D.P.R. 380/2001 e standard esteri). Lo sviluppatore e il gestore della piattaforma declinano espressamente ogni responsabilità per errori, inesattezze o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Smart Floating PWA Install Banner -->
-    <div id="installBanner" class="no-print fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700/60 z-50 flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-0">
-        <div class="flex items-center gap-2.5 min-w-0">
-            <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md">
-                📱
-            </div>
-            <div class="min-w-0">
-                <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools come App</span>
-                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">Sempre pronta in cantiere anche offline</span>
-            </div>
-        </div>
-        <div class="flex items-center gap-1.5 shrink-0">
-            <button id="installBannerBtn" onclick="triggerInstall()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-sm">
-                Installa
-            </button>
-            <button onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg text-xs" title="Chiudi">
-                ✕
-            </button>
-        </div>
-    </div>
-
-    <!-- iOS Install Helper Modal -->
-    <div id="iosModal" class="hidden no-print fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center p-3 backdrop-blur-xs">
-        <div class="bg-white rounded-2xl p-5 max-w-sm w-full text-slate-800 shadow-2xl space-y-3">
-            <div class="flex justify-between items-center">
-                <h4 class="font-extrabold text-base text-slate-900">Come installare su iPhone:</h4>
-                <button onclick="closeIosModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
-            </div>
-            <ol class="text-xs space-y-2 text-slate-600 list-decimal list-inside leading-relaxed">
-                <li>Tocca l'icona di <strong>Condivisione</strong> in basso su Safari (il quadrato con la freccia ⎋).</li>
-                <li>Scorri il menu e tocca <strong>"Aggiungi alla schermata Home"</strong> ➕.</li>
-                <li>Conferma premendo <strong>"Aggiungi"</strong> in alto a destra.</li>
-            </ol>
-            <button onclick="closeIosModal()" class="w-full py-2 bg-blue-600 text-white rounded-xl text-xs font-bold">Ho capito</button>
-        </div>
-    </div>
-
-    <!-- Suggestion Modal Pop-up -->
-    <div id="suggestModal" class="hidden no-print fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
-        <div class="bg-white rounded-3xl p-5 sm:p-6 max-w-md w-full text-slate-800 shadow-2xl border border-slate-100 space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
-            <div class="flex justify-between items-start">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center text-lg font-bold">
-                        💡
-                    </div>
-                    <div>
-                        <h4 id="modalSuggestTitle" class="font-extrabold text-base text-slate-900 leading-tight">Suggerisci uno Strumento</h4>
-                        <span class="text-[10px] text-slate-700 font-medium">OmniTools User Feedback</span>
-                    </div>
-                </div>
-                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 rounded-lg transition">✕</button>
-            </div>
-            
-            <p id="modalSuggestDesc" class="text-xs text-slate-700 leading-relaxed">
-                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
-            </p>
-
-            <div id="suggestFormContainer" class="space-y-3">
-                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
-                
-                <div class="flex items-center justify-between text-[10px] text-slate-700">
-                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
-                </div>
-
-                <div class="flex gap-2 pt-1">
-                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
-                        Annulla
-                    </button>
-                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
-                        Invia
-                    </button>
-                </div>
-            </div>
-
-            <!-- Success State -->
-            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
-                    ✓
-                </div>
-                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
-                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
-                </p>
-                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
-                    Fatto
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script & Multi-Language Logic -->
     <script>
         const TRANSLATIONS = {t_json_str};
 
         {header_js}
+{footer_js}
 
 
         function detectInitialLanguage() {{

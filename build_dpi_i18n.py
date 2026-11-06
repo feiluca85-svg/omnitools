@@ -1,4 +1,5 @@
 from nav_header import render_suite_header, render_suite_header_js
+from unified_footer import render_unified_footer, render_unified_footer_js
 import json
 
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_dpi.json', 'r', encoding='utf-8') as f:
@@ -8,6 +9,8 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 
 header_html = render_suite_header("dpi")
 header_js = render_suite_header_js()
+footer_html = render_unified_footer("dpi")
+footer_js = render_unified_footer_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -588,156 +591,13 @@ html_code = f"""<!DOCTYPE html>
 
     </main>
 
-    <!-- Footer with OmniTools Suite & Ironclad Legal Disclaimer -->
-    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto px-4 space-y-6">
-            
-            <!-- Share & Viral Action Strip -->
-            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                <div class="flex items-center gap-2.5">
-                    <span class="text-xl">📢</span>
-                    <div>
-                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
-                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con grafici, fotografi o colleghi di stampa</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
-                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
-                        <span>💬</span> <span>WhatsApp</span>
-                    </button>
-                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0a66c2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
-                        <span>💼</span> <span>LinkedIn</span>
-                    </button>
-                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
-                        <span>🔗</span> <span id="shareCopyText">Copia Link</span>
-                    </button>
-                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
-                        <span>📤</span> <span>Condividi</span>
-                    </button>
-                </div>
-            </div>
+    {footer_html}
 
-            <!-- Suggestion Prompt Strip -->
-            <div class="bg-gradient-to-r from-emerald-50 to-teal-50/70 border border-emerald-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
-                <div class="flex items-center gap-2.5">
-                    <span class="text-xl">💡</span>
-                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
-                        Hai un'idea per un nuovo calcolatore grafico o un miglioramento?
-                    </span>
-                </div>
-                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
-                    <span id="suggestBtnText">Suggerisci</span>
-                    <span>→</span>
-                </button>
-            </div>
-
-            <!-- OmniTools Network Ecosystem Bar (All Active Tools) -->
-            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-                    <div class="flex items-center gap-2">
-                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                            ⌘
-                        </div>
-                        <span class="font-black text-sm tracking-tight font-jakarta">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
-                    </div>
-                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Precisione (Edilizia & Grafica)</span>
-                </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pt-3 text-[11px]">
-<a href="/rampe" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">📐 Rampe</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-blue-500/20 text-blue-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/scale" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🪜 Scale</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎨 Dorso Libro</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800 border border-emerald-500/50 flex items-center justify-between transition">
-                        <span class="font-bold text-white">🖼️ Risoluzione & DPI</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-300 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/tubi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🚰 ScaricoFacile</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-cyan-500/20 text-cyan-400 font-bold rounded">Attivo</span>
-                    </a>
-                    <a href="/tinta" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-rose-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎯 Tinta & CMYK</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-rose-500/20 text-rose-300 font-bold rounded">Attivo</span>
-                    </a>
-                </div>
-                <div class="pt-2.5 text-center">
-                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
-                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Disclaimer and Copyright -->
-            <div class="text-center space-y-2">
-                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
-                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
-                    <strong>Note Tecniche di Prestampa:</strong> I calcoli di conversione pixel/cm si basano sullo standard internazionale 1 pollice = 2.54 cm. Il peso del file stimato fa riferimento a immagini raster non compresse (TIFF a 8-bit per canale in spazio colore RGB o CMYK). Verificare sempre le schede tecniche del fornitore di stampa o RIP per retini speciali o stampe Fine Art.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Smart Floating PWA Install Banner -->
-    <div id="installBanner" class="no-print fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700/60 z-50 flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-0">
-        <div class="flex items-center gap-2.5 min-w-0">
-            <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md">
-                📱
-            </div>
-            <div class="min-w-0">
-                <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools su Smartphone</span>
-                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">Utility di prestampa e grafica sempre offline</span>
-            </div>
-        </div>
-        <div class="flex items-center gap-1.5 shrink-0">
-            <button onclick="triggerInstall()" id="installBannerBtn" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-xs">
-                Installa
-            </button>
-            <button onclick="dismissInstallBanner()" class="p-1.5 text-slate-400 hover:text-white rounded-lg transition" title="Chiudi">
-                ✕
-            </button>
-        </div>
-    </div>
-
-    <!-- Suggestion Modal -->
-    <div id="suggestModal" class="no-print fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="text-xl">💡</span>
-                    <h3 id="suggestModalTitle" class="text-sm sm:text-base font-bold text-slate-900">Suggerisci una Ferramenta o Calcolatore</h3>
-                </div>
-                <button onclick="closeSuggestModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg">✕</button>
-            </div>
-            <p id="suggestModalDesc" class="text-xs text-slate-600">
-                Quale calcolatore grafico o funzione tecnica vorresti vedere in OmniTools?
-            </p>
-            <textarea id="suggestIdeaInput" rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-900 focus:bg-white focus:border-emerald-600 outline-none transition" placeholder="Es. Calcolo peso bancale carta, calcolo resa foglio macchina, etc."></textarea>
-            <div class="flex items-center justify-between pt-1">
-                <span class="text-[10px] text-slate-600">🔒 Invio 100% anonimo</span>
-                <button type="button" onclick="sendSuggestion()" id="suggestSendBtn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition shadow-xs">
-                    Invia Suggerimento
-                </button>
-            </div>
-            <div id="suggestFeedback" class="hidden text-xs font-bold text-emerald-700 bg-emerald-50 p-2.5 rounded-xl border border-emerald-200 text-center">
-                🎉 Grazie mille! Il tuo suggerimento guiderà i prossimi sviluppi.
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT CALCULATION & UI ENGINE -->
     <script>
         const TRANSLATIONS = {t_json_str};
 
         {header_js}
+{footer_js}
 
 
         function detectInitialLanguage() {{

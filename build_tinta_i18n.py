@@ -1,4 +1,5 @@
 from nav_header import render_suite_header, render_suite_header_js
+from unified_footer import render_unified_footer, render_unified_footer_js
 import json
 
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_tinta.json', 'r', encoding='utf-8') as f:
@@ -8,6 +9,8 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 
 header_html = render_suite_header("tinta")
 header_js = render_suite_header_js()
+footer_html = render_unified_footer("tinta")
+footer_js = render_unified_footer_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -690,38 +693,10 @@ html_code = f"""<!DOCTYPE html>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 text-xs text-slate-500">
-        <div class="max-w-5xl mx-auto px-4 space-y-5">
-            <!-- Suite Navigation -->
-            <div class="flex items-center justify-center gap-3 text-xs font-bold text-slate-600 flex-wrap pb-1">
-                <a href="/rampe" class="hover:text-blue-600 transition">RampaFacile</a>
-                <span>•</span>
-                <a href="/scale" class="hover:text-blue-600 transition">ScalaFacile</a>
-                <span>•</span>
-                <a href="/tubi" class="hover:text-blue-600 transition">ScaricoFacile</a>
-                <span>•</span>
-                <a href="/dorso" class="hover:text-blue-600 transition">DorsoFacile</a>
-                <span>•</span>
-                <a href="/dpi" class="hover:text-blue-600 transition">RisoluzioneFacile</a>
-                <span>•</span>
-                <a href="/tinta" class="text-rose-900 font-extrabold">TintaPerfetta</a>
-                <span>•</span>
-                <a href="/partnership" class="text-indigo-600 hover:underline">🤝 Diventa Partner / Sponsor</a>
-            </div>
+    {footer_html}
 
-            <!-- Disclaimer and Rights -->
-            <div class="text-center space-y-1.5">
-                <p id="rightsText" class="font-bold text-slate-600">© 2026 OmniTools Lab — Divisione OmniGraph. Tutti i diritti riservati.</p>
-                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed max-w-2xl mx-auto">
-                    <strong>Note Tecniche di Laboratorio:</strong> La presente matrice genera valori percentuali CMYK matematici standard. La resa finale effettiva dipende dal profilo ICC di macchina, dalla calibrazione del RIP, dal punto termico e dalla porosità del supporto di stampa.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Logic Script -->
     <script>
+{footer_js}
         const TRANSLATIONS = {t_json_str};
 
         {header_js}

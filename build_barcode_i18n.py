@@ -1,6 +1,7 @@
 import json
 import os
 from nav_header import render_suite_header, render_suite_header_js
+from unified_footer import render_unified_footer, render_unified_footer_js
 
 # Load barcode translations
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_barcode.json', 'r', encoding='utf-8') as f:
@@ -17,6 +18,8 @@ header_html = render_suite_header("barcode")
 header_js = render_suite_header_js()
 
 it_t = t_data["it"]
+footer_html = render_unified_footer("barcode", disclaimer_id="legalDisclaimer", disclaimer_default=it_t["legal_disclaimer"])
+footer_js = render_unified_footer_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -633,34 +636,13 @@ html_code = f"""<!DOCTYPE html>
             </div>
         </section>
 
-        <!-- Technical Disclaimer -->
-        <div class="text-[11px] text-slate-500 text-center leading-relaxed max-w-3xl mx-auto px-2">
-            <span id="legalDisclaimer">
-                {it_t['legal_disclaimer']}
-            </span>
-        </div>
+        </main>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 mt-8">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-            <div class="flex items-center gap-2">
-                <span class="font-jakarta font-black text-slate-900">Omni<span class="text-blue-600">Tools</span></span>
-                <span>© 2026 OmniTools Lab • Precision Utilities Suite</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <a href="/" class="hover:text-blue-600 transition">Tutti gli strumenti</a>
-                <span>•</span>
-                <a href="/partnership" class="hover:text-blue-600 transition">Partnership B2B</a>
-                <span>•</span>
-                <a href="/privacy" class="hover:text-blue-600 transition">Privacy</a>
-            </div>
-        </div>
-    </footer>
+    {footer_html}
 
     <!-- App Script Logic -->
     <script>
+{footer_js}
         const TRANSLATIONS = {t_json_str};
         let currentLang = 'it';
 

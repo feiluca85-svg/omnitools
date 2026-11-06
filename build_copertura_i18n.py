@@ -1,6 +1,7 @@
 import json
 import os
 from nav_header import render_suite_header, render_suite_header_js
+from unified_footer import render_unified_footer, render_unified_footer_js
 
 # Load translations
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/translations_copertura.json', 'r', encoding='utf-8') as f:
@@ -10,6 +11,9 @@ t_json_str = json.dumps(t_data, ensure_ascii=False)
 
 header_html = render_suite_header("copertura")
 header_js = render_suite_header_js()
+
+footer_html = render_unified_footer("copertura", disclaimer_id="legalDisclaimerText", disclaimer_default=t_data["it"]["legal_disclaimer"])
+footer_js = render_unified_footer_js()
 
 it_t = t_data["it"]
 
@@ -119,8 +123,11 @@ html_code = f"""<!DOCTYPE html>
         .font-mono {{
             font-family: 'JetBrains Mono', monospace;
         }}
+        .font-jakarta {{
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }}
         
-        /* A4 Professional Print Standard (1 Page Strict) */
+        /* A4 Professional Print Standard (Strictly 1 Page) */
         @media print {{
             @page {{
                 size: A4 portrait;
@@ -220,10 +227,10 @@ html_code = f"""<!DOCTYPE html>
     </div>
 
     <!-- MAIN CONTAINER -->
-    <main class="max-w-6xl mx-auto px-4 py-6 sm:py-8 w-full page-container flex-grow">
+    <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8 w-full page-container flex-grow space-y-6">
         
         <!-- HERO / INTRO -->
-        <div class="no-print mb-6 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200 pb-5">
+        <div class="no-print mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200 pb-5">
             <div>
                 <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200 mb-2">
                     <span>🖨️</span>
@@ -232,7 +239,7 @@ html_code = f"""<!DOCTYPE html>
                 <h1 id="heroTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                     {it_t["hero_title"]}
                 </h1>
-                <p id="heroDesc" class="text-slate-600 text-sm sm:text-base mt-1 max-w-3xl">
+                <p id="heroDesc" class="text-slate-600 text-sm sm:text-base mt-1 max-w-3xl leading-relaxed">
                     {it_t["hero_desc"]}
                 </p>
             </div>
@@ -250,7 +257,7 @@ html_code = f"""<!DOCTYPE html>
             <div class="lg:col-span-7 flex flex-col gap-5">
                 
                 <!-- UPLOAD DROPZONE -->
-                <div class="no-print bg-white rounded-2xl p-5 border-2 border-dashed border-slate-300 hover:border-rose-400 transition-all cursor-pointer text-center relative group" id="dropArea">
+                <div class="no-print bg-white rounded-2xl p-5 border-2 border-dashed border-slate-300 hover:border-rose-400 transition-all cursor-pointer text-center relative group shadow-xs" id="dropArea">
                     <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp, application/pdf" class="hidden">
                     <div class="py-4">
                         <div class="w-14 h-14 mx-auto rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl mb-3 group-hover:scale-105 transition">
@@ -269,7 +276,7 @@ html_code = f"""<!DOCTYPE html>
                 </div>
 
                 <!-- PRESET BUTTONS FOR QUICK TESTING -->
-                <div class="no-print bg-white rounded-2xl p-4 border border-slate-200">
+                <div class="no-print bg-white rounded-2xl p-4 border border-slate-200 shadow-xs">
                     <label id="presetLabel" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">
                         {it_t["sample_presets_label"]}
                     </label>
@@ -562,65 +569,80 @@ html_code = f"""<!DOCTYPE html>
 
         </div>
 
-        <!-- EDUCATIONAL RULE TIP -->
-        <div class="no-print mt-8 p-4 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs text-amber-900 leading-relaxed flex items-start gap-3">
+        <!-- EDUCATIONAL RULE TIP BOX -->
+        <div class="no-print bg-rose-50/70 border border-rose-200/80 rounded-2xl p-4 text-xs text-rose-950 leading-relaxed shadow-2xs flex items-start gap-3">
             <span class="text-xl shrink-0">💡</span>
             <div id="ruleTipText">
                 {it_t["rule_tip"]}
             </div>
         </div>
 
-        <!-- FAQ SECTION -->
-        <section class="no-print mt-10 bg-white rounded-2xl p-6 border border-slate-200">
-            <h2 id="faqTitle" class="text-lg font-extrabold text-slate-900 mb-4 flex items-center gap-2">
-                <span>❓</span>
-                <span>{it_t["faq_title"]}</span>
-            </h2>
-            <div class="space-y-4">
-                <div class="border-b border-slate-100 pb-3">
-                    <h3 id="faq1Q" class="text-sm font-bold text-slate-800 mb-1">{it_t["faq_1_q"]}</h3>
-                    <p id="faq1A" class="text-xs text-slate-600 leading-relaxed">{it_t["faq_1_a"]}</p>
+        <!-- FAQ ACCORDION SECTION (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">❓</span>
+                    <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                        <span>Domande Frequenti su Copertura CMYK e TAC</span>
+                    </h2>
                 </div>
-                <div class="border-b border-slate-100 pb-3">
-                    <h3 id="faq2Q" class="text-sm font-bold text-slate-800 mb-1">{it_t["faq_2_q"]}</h3>
-                    <p id="faq2A" class="text-xs text-slate-600 leading-relaxed">{it_t["faq_2_a"]}</p>
-                </div>
-                <div class="border-b border-slate-100 pb-3">
-                    <h3 id="faq3Q" class="text-sm font-bold text-slate-800 mb-1">{it_t["faq_3_q"]}</h3>
-                    <p id="faq3A" class="text-xs text-slate-600 leading-relaxed">{it_t["faq_3_a"]}</p>
-                </div>
-                <div>
-                    <h3 id="faq4Q" class="text-sm font-bold text-slate-800 mb-1">{it_t["faq_4_q"]}</h3>
-                    <p id="faq4A" class="text-xs text-slate-600 leading-relaxed">{it_t["faq_4_a"]}</p>
-                </div>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150" open>
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq1Q">{it_t["faq_1_q"]}</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        {it_t["faq_1_a"]}
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq2Q">{it_t["faq_2_q"]}</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        {it_t["faq_2_a"]}
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq3Q">{it_t["faq_3_q"]}</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        {it_t["faq_3_a"]}
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq4Q">{it_t["faq_4_q"]}</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq4A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        {it_t["faq_4_a"]}
+                    </div>
+                </details>
             </div>
         </section>
 
-        <!-- LEGAL DISCLAIMER -->
-        <div class="no-print mt-6 p-4 rounded-2xl bg-slate-100 border border-slate-200 text-[11px] text-slate-500 leading-relaxed">
-            <p id="legalDisclaimerText">
-                {it_t["legal_disclaimer"]}
-            </p>
-        </div>
-
     </main>
 
-    <!-- FOOTER -->
-    <footer class="no-print w-full bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-                <span class="font-bold text-slate-700">OmniTools Lab</span>
-                <span>• Suite di Calcolatori Tecnici Gratuiti & Senza Pubblicità</span>
-            </div>
-            <div class="flex items-center gap-4 text-xs font-semibold">
-                <a href="/" class="hover:text-blue-600 transition">Tutti gli Strumenti</a>
-                <a href="/tinta" class="hover:text-rose-600 transition">TintaPerfetta</a>
-                <a href="/barcode" class="hover:text-indigo-600 transition">OmniBarcode</a>
-                <a href="/dorso" class="hover:text-rose-600 transition">DorsoFacile</a>
-            </div>
-        </div>
-    </footer>
+    {footer_html}
 
     <!-- EMBEDDED TRANSLATION DATA -->
     <script>
@@ -631,11 +653,12 @@ html_code = f"""<!DOCTYPE html>
     <!-- CORE JAVASCRIPT LOGIC -->
     <script>
 {header_js}
+{footer_js}
 
         // Global State
         let currentImage = null;
         let cmykData = {{ c: 0, m: 0, y: 0, k: 0, tacAvg: 0, tacPeak: 0 }};
-        let pixelMap = null; // cached pixel data for instant heatmap toggle
+        let pixelMap = null;
         let isHeatmapActive = false;
 
         // Paper area lookup (in square meters m²)
@@ -780,15 +803,13 @@ html_code = f"""<!DOCTYPE html>
 
             if (type === 'flyer') {{
                 if (badge) badge.textContent = 'Volantino Full Color (Test)';
-                // Heavy background solids
                 const grad = ctx.createLinearGradient(0, 0, 600, 800);
-                grad.addColorStop(0, '#0047AB');  // Deep blue (High C & M)
-                grad.addColorStop(0.5, '#C70039'); // Deep crimson (High M & Y)
-                grad.addColorStop(1, '#1A1A1A');  // Deep black (Rich black)
+                grad.addColorStop(0, '#0047AB');
+                grad.addColorStop(0.5, '#C70039');
+                grad.addColorStop(1, '#1A1A1A');
                 ctx.fillStyle = grad;
                 ctx.fillRect(0, 0, 600, 800);
 
-                // Add yellow accents and white typography
                 ctx.fillStyle = '#FFC300';
                 ctx.fillRect(50, 600, 500, 120);
 
@@ -803,19 +824,16 @@ html_code = f"""<!DOCTYPE html>
                 ctx.fillStyle = '#FFFFFF';
                 ctx.fillRect(0, 0, 600, 800);
 
-                // Editorial Photo box
                 const photoGrad = ctx.createLinearGradient(60, 80, 540, 380);
                 photoGrad.addColorStop(0, '#2E8B57');
                 photoGrad.addColorStop(1, '#D2691E');
                 ctx.fillStyle = photoGrad;
                 ctx.fillRect(60, 80, 480, 280);
 
-                // Headline
                 ctx.fillStyle = '#111827';
                 ctx.font = 'bold 28px serif';
                 ctx.fillText('Architettura & Paesaggio Contemporaneo', 60, 410);
 
-                // Two columns of simulated black body text
                 ctx.fillStyle = '#374151';
                 for (let y = 450; y < 740; y += 18) {{
                     ctx.fillRect(60, y, 220, 6);
@@ -827,7 +845,6 @@ html_code = f"""<!DOCTYPE html>
                 ctx.fillStyle = '#FFFFFF';
                 ctx.fillRect(0, 0, 600, 800);
 
-                // Minimal lines and pure black text
                 ctx.fillStyle = '#000000';
                 ctx.font = 'bold 24px sans-serif';
                 ctx.fillText('STUDIO GRAFICO & PRESTAMPA', 70, 120);
@@ -853,7 +870,6 @@ html_code = f"""<!DOCTYPE html>
             const mainCanvas = document.getElementById('mainCanvas');
             const heatmapCanvas = document.getElementById('heatmapCanvas');
 
-            // Limit calculation resolution to max 700px width/height for instant real-time performance
             let scale = Math.min(1, 700 / Math.max(img.width, img.height));
             const w = Math.round(img.width * scale);
             const h = Math.round(img.height * scale);
@@ -878,14 +894,12 @@ html_code = f"""<!DOCTYPE html>
             const heatImgData = heatCtx.createImageData(w, h);
             const heatPixels = heatImgData.data;
 
-            // Iterate over all pixels
             for (let i = 0; i < pixels.length; i += 4) {{
                 const r = pixels[i];
                 const g = pixels[i + 1];
                 const b = pixels[i + 2];
                 const a = pixels[i + 3] / 255;
 
-                // Colorimetric RGB to CMYK standard conversion
                 let r_p = r / 255;
                 let g_p = g / 255;
                 let b_p = b / 255;
@@ -899,7 +913,6 @@ html_code = f"""<!DOCTYPE html>
                     y = (1 - b_p - k) / (1 - k);
                 }}
 
-                // Apply alpha channel weighting
                 c *= a;
                 m *= a;
                 y *= a;
@@ -915,31 +928,26 @@ html_code = f"""<!DOCTYPE html>
 
                 if (tac > maxTac) maxTac = tac;
 
-                // Heatmap Overlay Color Mapping
-                // If TAC > 3.10 -> Red overlay
-                // If TAC 2.60 - 3.10 -> Amber overlay
-                // If TAC < 2.60 -> Green transparent overlay
                 if (tac > 3.10) {{
-                    heatPixels[i] = 239;     // R
-                    heatPixels[i + 1] = 68;  // G
-                    heatPixels[i + 2] = 68;  // B
-                    heatPixels[i + 3] = 190; // Alpha
+                    heatPixels[i] = 239;
+                    heatPixels[i + 1] = 68;
+                    heatPixels[i + 2] = 68;
+                    heatPixels[i + 3] = 190;
                 }} else if (tac >= 2.60) {{
-                    heatPixels[i] = 245;     // R
-                    heatPixels[i + 1] = 158; // G
-                    heatPixels[i + 2] = 11;  // B
-                    heatPixels[i + 3] = 150; // Alpha
+                    heatPixels[i] = 245;
+                    heatPixels[i + 1] = 158;
+                    heatPixels[i + 2] = 11;
+                    heatPixels[i + 3] = 150;
                 }} else {{
-                    heatPixels[i] = 16;      // R
-                    heatPixels[i + 1] = 185; // G
-                    heatPixels[i + 2] = 129; // B
-                    heatPixels[i + 3] = 40;  // Subtle Green
+                    heatPixels[i] = 16;
+                    heatPixels[i + 1] = 185;
+                    heatPixels[i + 2] = 129;
+                    heatPixels[i + 3] = 40;
                 }}
             }}
 
             heatCtx.putImageData(heatImgData, 0, 0);
 
-            // Calculate final averages in percentages
             cmykData = {{
                 c: (sumC / totalPixels) * 100,
                 m: (sumM / totalPixels) * 100,
@@ -970,7 +978,6 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('valTacAvg').textContent = cmykData.tacAvg.toFixed(1) + '%';
             document.getElementById('valTacPeak').textContent = cmykData.tacPeak.toFixed(0) + '%';
 
-            // TAC Compliance Threshold Evaluation
             const t = I18N_DATA[currentLang] || I18N_DATA['it'];
             const statusBox = document.getElementById('tacStatusBox');
             const titleEl = document.getElementById('tacStatusTitle');
@@ -1036,24 +1043,20 @@ html_code = f"""<!DOCTYPE html>
 
             const copies = parseInt(document.getElementById('copiesCount').value, 10) || 1;
             const tech = document.getElementById('techPreset').value;
-            const factor = TECH_FACTORS[tech] || 1.5; // grams of ink/toner per m² at 100% coverage
+            const factor = TECH_FACTORS[tech] || 1.5;
             const pricePerKg = parseFloat(document.getElementById('inkPricePerKg').value) || 45.00;
 
-            // Total printed surface area for the run in m²
             const totalAreaM2 = sheetAreaM2 * copies;
 
-            // Calculate grams per channel: (Area in m²) * (Coverage % / 100) * (factor g/m²)
             const gramC = totalAreaM2 * (cmykData.c / 100) * factor;
             const gramM = totalAreaM2 * (cmykData.m / 100) * factor;
             const gramY = totalAreaM2 * (cmykData.y / 100) * factor;
             const gramK = totalAreaM2 * (cmykData.k / 100) * factor;
             const gramTotal = gramC + gramM + gramY + gramK;
 
-            // Cost calculation: (grams / 1000 kg) * pricePerKg
             const totalCost = (gramTotal / 1000) * pricePerKg;
             const costPerCopy = copies > 0 ? (totalCost / copies) : 0;
 
-            // Update UI elements
             document.getElementById('gramC').textContent = gramC.toFixed(1) + ' g';
             document.getElementById('gramM').textContent = gramM.toFixed(1) + ' g';
             document.getElementById('gramY').textContent = gramY.toFixed(1) + ' g';
@@ -1136,7 +1139,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('ruleTipText').innerHTML = t.rule_tip;
             document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
 
-            document.getElementById('faqTitle').children[1].textContent = t.faq_title;
+            document.getElementById('faqTitle').children[0].textContent = t.faq_title;
             document.getElementById('faq1Q').textContent = t.faq_1_q;
             document.getElementById('faq1A').textContent = t.faq_1_a;
             document.getElementById('faq2Q').textContent = t.faq_2_q;
@@ -1145,6 +1148,22 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('faq3A').textContent = t.faq_3_a;
             document.getElementById('faq4Q').textContent = t.faq_4_q;
             document.getElementById('faq4A').textContent = t.faq_4_a;
+
+            // Footer, Share & Modals
+            if (t.share_title && document.getElementById('shareTitleText')) document.getElementById('shareTitleText').textContent = t.share_title;
+            if (t.share_sub && document.getElementById('shareSubText')) document.getElementById('shareSubText').textContent = t.share_sub;
+            if (t.share_copy && document.getElementById('shareCopyText')) document.getElementById('shareCopyText').textContent = t.share_copy;
+            if (t.suggest_banner && document.getElementById('suggestBannerText')) document.getElementById('suggestBannerText').textContent = t.suggest_banner;
+            if (t.suggest_btn && document.getElementById('suggestBtnText')) document.getElementById('suggestBtnText').textContent = t.suggest_btn;
+            if (t.suggest_modal_title && document.getElementById('modalSuggestTitle')) document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
+            if (t.suggest_modal_desc && document.getElementById('modalSuggestDesc')) document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
+            if (t.suggest_placeholder && document.getElementById('suggestMessage')) document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
+            if (t.suggest_privacy_note && document.getElementById('modalPrivacyNote')) document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
+            if (t.suggest_close && document.getElementById('modalCloseBtn')) document.getElementById('modalCloseBtn').textContent = t.suggest_close;
+            if (t.suggest_send && document.getElementById('modalSubmitBtn')) document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
+            if (t.suggest_thanks && document.getElementById('modalSuccessText')) document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
+            if (t.install_banner_title && document.getElementById('installBannerTitle')) document.getElementById('installBannerTitle').textContent = t.install_banner_title;
+            if (t.install_banner_sub && document.getElementById('installBannerSub')) document.getElementById('installBannerSub').textContent = t.install_banner_sub;
         }}
 
         // PWA Install Prompt Handler
@@ -1173,4 +1192,4 @@ html_code = f"""<!DOCTYPE html>
 with open('/Users/ilalu/Documents/Altenative Businnes/Calcolatore_Pendenza/copertura.html', 'w', encoding='utf-8') as f:
     f.write(html_code)
 
-print("copertura.html generated successfully.")
+print("copertura.html recompiled successfully with unified_footer.")

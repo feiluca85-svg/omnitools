@@ -740,7 +740,8 @@
 
     </main>
 
-    <!-- Footer with OmniTools Suite & Legal Disclaimer (Identical across all tools) -->
+    
+    <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
     <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
         <div class="max-w-4xl mx-auto px-4 space-y-6">
             
@@ -750,7 +751,7 @@
                     <span class="text-xl">📢</span>
                     <div>
                         <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
-                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o sui canali di settore</span>
+                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o clienti</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
@@ -783,7 +784,7 @@
                 </button>
             </div>
 
-            <!-- OmniTools Network Ecosystem Bar -->
+            <!-- OmniTools Network Ecosystem Bar (All 8 Tools) -->
             <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
                     <div class="flex items-center gap-2">
@@ -792,33 +793,42 @@
                         </div>
                         <span class="font-black text-sm tracking-tight font-jakarta">OMNITOOLS <span class="text-blue-400">NETWORK</span></span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Cantiere ad Alta Precisione</span>
+                    <span class="text-[11px] text-slate-400 font-medium">Suite di Calcolatori & Utility di Precisione (Edilizia & Grafica)</span>
                 </div>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 pt-3 text-[11px]">
-<a href="/rampe" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">📐 Rampe & Pendenze</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-blue-500/20 text-blue-400 font-bold rounded">Attivo</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2 pt-3 text-[11px]">
+
+                    <a href="/rampe" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">📐 Rampe</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
                     </a>
-                    <a href="/scale" class="p-2 rounded-xl bg-slate-800 border border-indigo-500/40 flex items-center justify-between transition">
-                        <span class="font-bold text-white">🪜 Scale & Blondel</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    <div class="p-2 rounded-xl bg-slate-800 border border-slate-600 flex items-center justify-between transition shadow-xs">
+                        <span class="font-bold text-white text-[11px]">🪜 Scale</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-blue-500/20 text-blue-300 font-extrabold rounded">Attivo</span>
+                    </div>
+                    <a href="/tubi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🚰 Scarichi</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
                     </a>
-                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-purple-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎨 Dorso Libro</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-purple-500/20 text-purple-300 font-bold rounded">Attivo</span>
+                    <a href="/dorso" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">📕 Dorso</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
                     </a>
-                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🖼️ Risoluzione & DPI</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 font-bold rounded">Attivo</span>
+                    <a href="/dpi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🖼️ DPI / Pixel</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
                     </a>
-                    <a href="/tubi" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🚰 ScaricoFacile</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-cyan-500/20 text-cyan-400 font-bold rounded">Attivo</span>
+                    <a href="/tinta" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🎯 Tinta & CMYK</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
                     </a>
-                    <a href="/tinta" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-rose-500/30 flex items-center justify-between transition group">
-                        <span class="font-bold text-slate-300 group-hover:text-white">🎯 Tinta & CMYK</span>
-                        <span class="text-[9px] px-1.5 py-0.2 bg-rose-500/20 text-rose-300 font-bold rounded">Attivo</span>
+                    <a href="/barcode" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🏷️ Barcode</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
+                    </a>
+                    <a href="/copertura" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-500 flex items-center justify-between transition group">
+                        <span class="font-bold text-slate-300 group-hover:text-white text-[11px]">🖨️ Copertura</span>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/50 text-slate-400 group-hover:text-slate-200 font-bold rounded">Apri</span>
                     </a>
                 </div>
                 <div class="pt-2.5 text-center">
@@ -832,7 +842,7 @@
             <div class="text-center space-y-2">
                 <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
                 <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center">
-                    <strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti (Legge di Blondel, D.M. 236/89, D.P.R. 380/2001, IRC, DIN 18065) forniti da questo strumento online hanno finalità puramente geometrica ed orientativa. Non costituiscono progetto esecutivo o perizia tecnica ai sensi di legge.
+                    
                 </p>
             </div>
         </div>
@@ -846,7 +856,7 @@
             </div>
             <div class="min-w-0">
                 <span id="installBannerTitle" class="text-xs font-bold block text-white truncate">Installa OmniTools come App</span>
-                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">I tuoi calcolatori di cantiere pronti anche offline</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-300 block truncate">Utility di calcolo professionale sempre a portata di mano</span>
             </div>
         </div>
         <div class="flex items-center gap-1.5 shrink-0">
@@ -896,7 +906,6 @@
                 </div>
             </div>
 
-            <!-- Success State -->
             <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
                 <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
                     ✓
@@ -911,7 +920,7 @@
         </div>
     </div>
 
-    <!-- Script & Calculation Engine for Scale & Blondel -->
+
     <script>
         const TRANSLATIONS = {"it": {"title": "ScalaFacile", "badge": "Legge di Blondel", "hero_title": "Calcolo Scala, Alzata & Pedata", "hero_desc": "Calcola all'istante numero gradini, alzata, pedata e ingombro a terra con verifica comfort e conformità alla Legge di Blondel (2a + p = 62-64 cm).", "mode_direct": "📏 Da Spazio a Terra", "mode_reverse": "📐 Da Alzata Ideale", "unit_label": "Imposta Misure", "height_label": "Dislivello totale piano-piano (H)", "length_label": "Spazio a terra disponibile (L)", "target_riser_label": "Alzata ideale desiderata (a)", "target_16": "16 cm Comoda", "target_175": "17.5 cm Standard", "target_19": "19 cm Salvaspazio", "presets_title": "Preset rapidi:", "preset_1": "Scala Interna (H 270 cm)", "preset_1_sub": "15 gradini comfort", "preset_2": "Piano Alto (H 300 cm)", "preset_2_sub": "17 gradini con sosta", "preset_3": "Soppalco (H 220 cm)", "preset_3_sub": "Salvaspazio 12 gradini", "preset_4": "Scala Esterna (H 120 cm)", "preset_4_sub": "Pedata ampia 30 cm", "col_riser": "Alzata (a)", "col_tread": "Pedata (p)", "col_steps": "Gradini / Blondel", "schema_title": "Sezione Scala in Scala", "schema_scale": "In scala vettoriale", "rule_tip": "💡 <strong>Legge di Blondel:</strong> <code>2a + p = 62 ÷ 64 cm</code>. Il doppio dell'alzata sommato alla pedata garantisce il passo naturale senza affaticare le ginocchia.", "print_btn": "Stampa", "install_btn": "Installa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "Calcolatori di cantiere pronti anche offline", "legal_disclaimer": "<strong>Disclaimer Tecnico:</strong> I calcoli e i riferimenti (Legge di Blondel, D.M. 236/89, D.P.R. 380/2001, IRC, DIN 18065) hanno finalità puramente didattica e di predimensionamento geometrico.", "faq_title": "Domande Frequenti sul Calcolo Scale e Legge di Blondel", "status_opt_title": "Comfort Ottimale & a Norma", "status_opt_tag": "Perfetta", "status_opt_desc": "La scala rispetta la regola aurea di Blondel (2a + p tra 62 e 64 cm) con alzata agevole.", "status_warn_title": "Scala Agibile / Secondaria", "status_warn_tag": "Accettabile", "status_warn_desc": "Rapporto alzata/pedata leggermente ripido o allungato, idoneo per usi secondari o ristrutturazioni.", "status_danger_title": "Scala Scomoda / Fuori Norma", "status_danger_tag": "Attenzione", "status_danger_desc": "Pedata troppo stretta (< 25 cm) o alzata eccessiva (> 20 cm). Rischio inciampo o fatica eccessiva.", "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere o grafica?", "suggest_btn": "Suggerisci", "suggest_modal_title": "Suggerisci uno Strumento", "suggest_modal_desc": "Quale formula o calcolatore vorresti su OmniTools?", "suggest_placeholder": "Scrivi la tua idea...", "suggest_privacy_note": "🔒 Invio 100% anonimo. Non serve registrarsi.", "suggest_send": "Invia", "suggest_close": "Annulla", "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.", "faq_1_q": "Cos'è la formula di Blondel per il dimensionamento delle scale?", "faq_1_a": "L'architetto François Blondel stabilì che il rapporto biomeccanico ideale per salire una scala senza affaticare le articolazioni è: <code>2 Alzate + 1 Pedata = 62 ÷ 64 cm</code> (valore ideale <strong>63 cm</strong>). Questa equazione riproduce esattamente il passo naturale di una persona sul piano.", "faq_2_q": "Quali sono le misure ideali di alzata e pedata per una scala comoda?", "faq_2_a": "Nelle abitazioni private l'alzata ideale è di <strong>16.5 ÷ 17.5 cm</strong> (massimo 18 cm), mentre la pedata perfetta è di <strong>28 ÷ 30 cm</strong> (mai inferiore a 25 cm a norma di legge). Alzate superiori a 19 cm rendono la scala faticosa e pericolosa in discesa.", "faq_3_q": "Quanti gradini consecutivi si possono fare senza pianerottolo?", "faq_3_a": "Le norme di sicurezza architettonica (D.M. 236/89) vietano rampe di scale continue con più di <strong>15 gradini consecutivi</strong>. Oltre questa soglia è obbligatorio inserire un pianerottolo di sosta orizzontale lungo almeno quanto la larghezza della rampa.", "faq_4_q": "Qual è l'inclinazione ideale di una scala in gradi?", "faq_4_a": "L'inclinazione ottimale per scale interne è compresa tra <strong>30° e 37°</strong>. Sotto i 26° la pendenza è troppo dolce (diventa rampa a gradoni), mentre sopra i 42° la scala diventa a pioli o marinara, inadatta all'uso residenziale quotidiano."}, "en": {"title": "StairMaster", "badge": "Blondel's Rule", "hero_title": "Stair Calculator: Rise, Run & Blondel Formula", "hero_desc": "Instantly calculate number of steps, rise, run and total stringer length with comfort and building code compliance check (2R + T = 24-25 in / 62-64 cm).", "mode_direct": "📏 From Available Run", "mode_reverse": "📐 From Target Riser", "unit_label": "Set Units", "height_label": "Total Floor-to-Floor Height (H)", "length_label": "Available Horizontal Run (L)", "target_riser_label": "Desired Target Riser (R)", "target_16": "6.3 in (16 cm) Easy", "target_175": "7.0 in (17.5 cm) Standard", "target_19": "7.5 in (19 cm) Compact", "presets_title": "Quick presets:", "preset_1": "Main Residential (H 270 cm)", "preset_1_sub": "15 comfort steps", "preset_2": "High Ceiling (H 300 cm)", "preset_2_sub": "17 steps with landing", "preset_3": "Loft / Attic (H 220 cm)", "preset_3_sub": "Compact 12 steps", "preset_4": "Exterior Garden (H 120 cm)", "preset_4_sub": "Wide 30 cm tread", "col_riser": "Riser Height (R)", "col_tread": "Tread Depth (T)", "col_steps": "Steps / Blondel", "schema_title": "Stair Cross-Section View", "schema_scale": "Scale Vector Diagram", "rule_tip": "💡 <strong>Blondel's Rule:</strong> <code>2R + T = 62 ÷ 64 cm (24.5-25.5 in)</code>. Two risers plus one tread matches natural walking cadence with zero strain.", "print_btn": "Print", "install_btn": "Install", "install_banner_title": "Install OmniTools as App", "install_banner_sub": "Jobsite calculators ready offline", "legal_disclaimer": "<strong>Technical Disclaimer:</strong> Calculations and building references (Blondel's Law, IRC, IBC, OSHA, DIN 18065) are for geometric pre-dimensioning.", "faq_title": "Frequently Asked Questions on Stair Dimensions & Blondel's Rule", "status_opt_title": "Optimal Comfort & Code Compliant", "status_opt_tag": "Ideal", "status_opt_desc": "The staircase perfectly satisfies Blondel's rule with safe and natural walking ergonomics.", "status_warn_title": "Secondary / Utility Stair", "status_warn_tag": "Acceptable", "status_warn_desc": "Slightly steep rise or compact tread, recommended for secondary access or attic conversions.", "status_danger_title": "Uncomfortable / Out of Code", "status_danger_tag": "Caution", "status_danger_desc": "Tread depth too shallow (< 25 cm) or rise too steep (> 20 cm). Risk of tripping or leg strain.", "suggest_banner": "Have an idea for a new jobsite or print calculator?", "suggest_btn": "Suggest", "suggest_modal_title": "Suggest a Tool", "suggest_modal_desc": "What formula or utility would you like on OmniTools?", "suggest_placeholder": "Type your idea here...", "suggest_privacy_note": "🔒 100% anonymous submission.", "suggest_send": "Send", "suggest_close": "Cancel", "suggest_thanks": "Thank you! Your idea will guide upcoming tools.", "faq_1_q": "What is Blondel's Formula for building comfortable stairs?", "faq_1_a": "Architect François Blondel determined that two risers plus one tread should equal natural walking pace: <code>2 Risers + 1 Tread = 62 to 64 cm (24.5 to 25.5 inches)</code>. Ideal target is <strong>63 cm</strong> for effortless ergonomics.", "faq_2_q": "What are the ideal riser and tread dimensions for private homes?", "faq_2_a": "Under international building codes (IRC / IBC / UK Building Regs Part K), ideal riser height is <strong>16.5 to 17.8 cm (6.5 to 7 inches)</strong>, while ideal tread run is <strong>28 to 30 cm (11 inches)</strong>, with 25 cm being legal minimum.", "faq_3_q": "What is the maximum number of steps allowed without a landing?", "faq_3_a": "Building codes restrict continuous stair flights to a maximum of <strong>14 to 16 risers</strong> (or 12 feet / 3.6 meters vertical rise) before requiring a level rest landing equal to stair width.", "faq_4_q": "What is the optimal stair pitch / slope angle in degrees?", "faq_4_a": "The most comfortable internal stair pitch is between <strong>30° and 37°</strong>. Angles above 42° become too steep for safe everyday descent."}, "es": {"title": "EscaleraFácil", "badge": "Ley de Blondel", "hero_title": "Cálculo de Escaleras: Huella, Contrahuella y Blondel", "hero_desc": "Calcula instantáneamente número de peldaños, contrahuella, huella y desarrollo horizontal con verificación del Código Técnico (CTE DB-SUA).", "mode_direct": "📏 Por Espacio Disponible", "mode_reverse": "📐 Por Contrahuella Ideal", "unit_label": "Unidades", "height_label": "Altura total entre plantas (H)", "length_label": "Longitud horizontal disponible (L)", "target_riser_label": "Contrahuella deseada (c)", "target_16": "16 cm Cómoda", "target_175": "17.5 cm Estándar", "target_19": "19 cm Compacta", "presets_title": "Ajustes rápidos:", "preset_1": "Interior Vivienda (H 270 cm)", "preset_1_sub": "15 peldaños confort", "preset_2": "Techo Alto (H 300 cm)", "preset_2_sub": "17 peldaños con rellano", "preset_3": "Altillo / Buhardilla (H 220 cm)", "preset_3_sub": "Espacio reducido 12 peldaños", "preset_4": "Exterior Jardín (H 120 cm)", "preset_4_sub": "Huella ancha 30 cm", "col_riser": "Contrahuella (c)", "col_tread": "Huella (h)", "col_steps": "Peldaños / Blondel", "schema_title": "Sección de Escalera", "schema_scale": "A escala vectorial", "rule_tip": "💡 <strong>Ley de Blondel:</strong> <code>2c + h = 62 ÷ 64 cm</code>. Garantiza una pisada segura y ergonómica según el CTE DB-SUA.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instala OmniTools como App", "install_banner_sub": "Herramientas de obra listas sin conexión", "legal_disclaimer": "<strong>Aviso Legal:</strong> Los cálculos y referencias normativas (CTE DB-SUA, Blondel) son orientativos.", "faq_title": "Preguntas Frecuentes sobre Cálculo de Escaleras y Regla de Blondel", "status_opt_title": "Confort Óptimo y Conforme", "status_opt_tag": "Excelente", "status_opt_desc": "Cumple rigurosamente la Ley de Blondel con pendiente ergonómica.", "status_warn_title": "Escalera Secundaria", "status_warn_tag": "Aceptable", "status_warn_desc": "Pendiente algo pronunciada, válida para buhardillas o uso esporádico.", "status_danger_title": "Escalera Incómoda / Fuera de Norma", "status_danger_tag": "Atención", "status_danger_desc": "Huella demasiado corta (< 25 cm) o contrahuella excesiva (> 20 cm).", "suggest_banner": "¿Tienes una idea para una nueva herramienta de obra?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Herramienta", "suggest_modal_desc": "¿Qué calculadora te gustaría ver en OmniTools?", "suggest_placeholder": "Escribe tu idea aquí...", "suggest_privacy_note": "🔒 100% anónimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "¡Gracias! Tu propuesta guiará las próximas herramientas.", "faq_1_q": "¿Qué es la Ley de Blondel para el diseño de escaleras?", "faq_1_a": "Es la relación ergonómica universal: <code>2 Contrahuellas + 1 Huella = 62 a 64 cm</code> (óptimo 63 cm), que garantiza un paso cómodo y seguro.", "faq_2_q": "¿Cuáles son las medidas ideales de huella y contrahuella?", "faq_2_a": "En viviendas, la contrahuella ideal mide <strong>17 a 17.5 cm</strong> (máximo 18.5 cm) y la huella entre <strong>28 y 30 cm</strong> (mínimo legal 28 cm en España según CTE).", "faq_3_q": "¿Cuántos peldaños seguidos se pueden construir sin rellano?", "faq_3_a": "El CTE español exige un rellano intermedio tras un máximo de <strong>16 peldaños consecutivos</strong> en uso general y 12 en accesibilidad.", "faq_4_q": "¿Cuál es el ángulo de inclinación idóneo?", "faq_4_a": "El ángulo óptimo para escaleras de interior se sitúa entre <strong>30° y 36°</strong>."}, "fr": {"title": "EscalierFacile", "badge": "Loi de Blondel", "hero_title": "Calcul d'Escalier : Marche, Giron & Formule de Blondel", "hero_desc": "Calculez instantanément le nombre de marches, hauteur, giron et recul avec vérification ergonomique (2M + G = 60-64 cm).", "mode_direct": "📏 Par Recul Disponible", "mode_reverse": "📐 Par Hauteur de Marche", "unit_label": "Unités", "height_label": "Hauteur totale sol à sol (H)", "length_label": "Recul horizontal disponible (L)", "target_riser_label": "Hauteur de marche cible (M)", "target_16": "16 cm Confort", "target_175": "17.5 cm Standard", "target_19": "19 cm Gain de place", "presets_title": "Préréglages :", "preset_1": "Intérieur Maison (H 270 cm)", "preset_1_sub": "15 marches confort", "preset_2": "Grand Étage (H 300 cm)", "preset_2_sub": "17 marches avec palier", "preset_3": "Mezzanine (H 220 cm)", "preset_3_sub": "12 marches compactes", "preset_4": "Extérieur Jardin (H 120 cm)", "preset_4_sub": "Giron large 30 cm", "col_riser": "Marche / Hauteur (M)", "col_tread": "Giron (G)", "col_steps": "Marches / Blondel", "schema_title": "Coupe de l'Escalier", "schema_scale": "Échelle vectorielle", "rule_tip": "💡 <strong>Loi de Blondel :</strong> <code>2M + G = 60 ÷ 64 cm</code>. Respecte le pas naturel sans fatigue articulaire.", "print_btn": "Imprimer", "install_btn": "Installer", "install_banner_title": "Installer OmniTools sur Smartphone", "install_banner_sub": "Outils de chantier hors-ligne", "legal_disclaimer": "<strong>Mentions Légales :</strong> Calculs indicatifs selon les règles de l'art.", "faq_title": "Foire Aux Questions sur le Calcul d'Escalier et la Formule de Blondel", "status_opt_title": "Confort Optimal & Conforme", "status_opt_tag": "Parfait", "status_opt_desc": "Loi de Blondel respectée avec giron et hauteur confortables.", "status_warn_title": "Escalier Secondaire / Mezzanine", "status_warn_tag": "Acceptable", "status_warn_desc": "Pente un peu raide, adapté pour combles ou accès secondaire.", "status_danger_title": "Escalier Dangereux / Trop Raide", "status_danger_tag": "Attention", "status_danger_desc": "Giron trop court (< 25 cm) ou marche trop haute (> 20 cm).", "suggest_banner": "Une idée d'outil pour OmniTools ?", "suggest_btn": "Suggérer", "suggest_modal_title": "Suggérer un Outil", "suggest_modal_desc": "Quelle formule aimeriez-vous voir ?", "suggest_placeholder": "Votre idée...", "suggest_privacy_note": "🔒 100% anonyme.", "suggest_send": "Envoyer", "suggest_close": "Annuler", "suggest_thanks": "Merci ! Votre retour nous aide.", "faq_1_q": "Qu'est-ce que la loi de Blondel pour un escalier confortable ?", "faq_1_a": "La formule de Blondel établit que : <code>2 Hauteurs + 1 Giron = 60 à 64 cm</code> (valeur idéale <strong>63 cm</strong>) pour respecter le pas de marche naturel.", "faq_2_q": "Quelles sont les dimensions idéales d'un escalier d'intérieur ?", "faq_2_a": "La hauteur de marche idéale est de <strong>16.5 à 17.5 cm</strong> (max 18 cm) et le giron (profondeur) doit être compris entre <strong>27 et 30 cm</strong>.", "faq_3_q": "Combien de marches consécutives peut-on poser sans palier ?", "faq_3_a": "Les normes de sécurité recommandent de ne pas dépasser <strong>15 à 16 marches d'affilée</strong> avant d'insérer un palier de repos.", "faq_4_q": "Quel est l'angle d'inclinaison recommandé ?", "faq_4_a": "L'inclinaison idéale d'un escalier confortable se situe entre <strong>30° et 35°</strong>."}, "de": {"title": "TreppenRechner", "badge": "DIN 18065", "hero_title": "Treppenrechner: Steigung, Auftritt & Schrittmaßregel", "hero_desc": "Berechnen Sie Stufenanzahl, Steigung (s), Auftritt (a) und Lauflänge nach der DIN 18065 und Schrittmaßformel (2s + a = 63 cm).", "mode_direct": "📏 Nach Grundfläche", "mode_reverse": "📐 Nach Idealsteigung", "unit_label": "Maßeinheiten", "height_label": "Geschosshöhe gesamt (H)", "length_label": "Verfügbare Ausladung (L)", "target_riser_label": "Gewünschte Steigung (s)", "target_16": "16 cm Bequem", "target_175": "17.5 cm Standard", "target_19": "19 cm Platzsparend", "presets_title": "Schnellvorlagen:", "preset_1": "Wohnungstreppe (H 270 cm)", "preset_1_sub": "15 Stufen Komfort", "preset_2": "Hohe Decke (H 300 cm)", "preset_2_sub": "17 Stufen mit Podest", "preset_3": "Dachboden / Galerie (H 220 cm)", "preset_3_sub": "Kompakt 12 Stufen", "preset_4": "Gartentreppe (H 120 cm)", "preset_4_sub": "Breiter Auftritt 30 cm", "col_riser": "Steigung (s)", "col_tread": "Auftritt (a)", "col_steps": "Stufen / Schrittmaß", "schema_title": "Treppen-Querschnitt", "schema_scale": "Maßstabsgetreu", "rule_tip": "💡 <strong>Schrittmaßformel:</strong> <code>2s + a = 62 ÷ 64 cm (DIN 18065)</code>. Idealwert ist 63 cm.", "print_btn": "Drucken", "install_btn": "Installieren", "install_banner_title": "OmniTools als App nutzen", "install_banner_sub": "Baurechner offline verfügbar", "legal_disclaimer": "<strong>Technischer Hinweis:</strong> Berechnungen dienen der Vordimensionierung nach DIN 18065.", "faq_title": "Häufig gestellte Fragen zur Treppenberechnung nach DIN 18065", "status_opt_title": "Optimaler Komfort & DIN-konform", "status_opt_tag": "Ideal", "status_opt_desc": "Schrittmaßregel exakt erfüllt mit sicherem und ermüdungsfreiem Aufstieg.", "status_warn_title": "Nebentreppe / Steiltreppe", "status_warn_tag": "Akzeptabel", "status_warn_desc": "Leicht erhöhtes Steigungsverhältnis für Dachausbauten.", "status_danger_title": "Unbequem / Außerhalb der Norm", "status_danger_tag": "Achtung", "status_danger_desc": "Auftritt zu schmal (< 25 cm) oder Steigung zu hoch (> 20 cm).", "suggest_banner": "Idee für einen neuen Baurechner?", "suggest_btn": "Vorschlagen", "suggest_modal_title": "Werkzeug vorschlagen", "suggest_modal_desc": "Welche Funktion wünschen Sie sich?", "suggest_placeholder": "Ihre Idee...", "suggest_privacy_note": "🔒 100% anonym.", "suggest_send": "Absenden", "suggest_close": "Abbrechen", "suggest_thanks": "Vielen Dank für Ihre Anregung.", "faq_1_q": "Was besagt die Schrittmaßregel nach François Blondel?", "faq_1_a": "Nach <strong>DIN 18065</strong> gilt die Schrittmaßformel: <code>2 Steigungen + 1 Auftritt = 62 bis 64 cm</code> (Idealwert <strong>63 cm</strong>).", "faq_2_q": "Was sind die optimalen Maße für Steigung und Auftritt?", "faq_2_a": "Für Wohnhäuser gilt eine Steigung (s) von <strong>16.5 bis 17.5 cm</strong> und ein Auftritt (a) von <strong>28 bis 30 cm</strong> als ergonomisches Optimum.", "faq_3_q": "Wie viele Stufen sind ohne Zwischenpodest zulässig?", "faq_3_a": "Nach maximal <strong>18 Stufen</strong> ist nach baurechtlichen Vorschriften zwingend ein Treppenabsatz (Podest) vorzusehen.", "faq_4_q": "Welcher Neigungswinkel ist optimal?", "faq_4_a": "Der komfortabelste Neigungswinkel für Haupttreppen liegt zwischen <strong>30° und 37°</strong>."}, "pt": {"title": "EscadaFácil", "badge": "Fórmula de Blondel", "hero_title": "Cálculo de Escadas: Espelho, Piso e Fórmula de Blondel", "hero_desc": "Calcule número de degraus, espelho (E), piso (P) e comprimento horizontal conforme a NBR 9050 e Blondel (2E + P = 63 cm).", "mode_direct": "📏 Por Espaço em Planta", "mode_reverse": "📐 Por Espelho Desejado", "unit_label": "Definir Medidas", "height_label": "Desnível total piso a piso (H)", "length_label": "Espaço horizontal disponível (L)", "target_riser_label": "Espelho ideal desejado (E)", "target_16": "16 cm Confortável", "target_175": "17.5 cm Padrão", "target_19": "19 cm Compacta", "presets_title": "Predefinições:", "preset_1": "Escada Residencial (H 270 cm)", "preset_1_sub": "15 degraus conforto", "preset_2": "Pé-direito Alto (H 300 cm)", "preset_2_sub": "17 degraus com patamar", "preset_3": "Mezanino / Sotão (H 220 cm)", "preset_3_sub": "12 degraus compactos", "preset_4": "Escada Externa (H 120 cm)", "preset_4_sub": "Piso largo 30 cm", "col_riser": "Espelho (E)", "col_tread": "Piso / Pisada (P)", "col_steps": "Degraus / Blondel", "schema_title": "Corte da Escada em Escala", "schema_scale": "Escala vetorial", "rule_tip": "💡 <strong>Fórmula de Blondel:</strong> <code>2E + P = 63 ÷ 64 cm</code>. Proporciona passada confortável e segura.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instalar OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de obra offline", "legal_disclaimer": "<strong>Aviso Legal:</strong> Cálculos geométricos conforme normas técnicas.", "faq_title": "Perguntas Frequentes sobre Cálculo de Escadas e Fórmula de Blondel", "status_opt_title": "Conforto Ideal e Conforme", "status_opt_tag": "Excelente", "status_opt_desc": "Atende com perfeição à Fórmula de Blondel com ergonomia natural.", "status_warn_title": "Escada Secundária / Acesso", "status_warn_tag": "Aceitável", "status_warn_desc": "Inclinação um pouco acentuada para mezaninos.", "status_danger_title": "Escada Desconfortável / Fora da Norma", "status_danger_tag": "Cuidado", "status_danger_desc": "Piso insuficiente (< 25 cm) ou espelho excessivo (> 20 cm).", "suggest_banner": "Sugira uma nova ferramenta de obra:", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Ferramenta", "suggest_modal_desc": "Qual calculadora gostaria de ver?", "suggest_placeholder": "Digite sua ideia...", "suggest_privacy_note": "🔒 Envio 100% anônimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "Obrigado! Sua ideia guiará as próximas ferramentas.", "faq_1_q": "O que é a Fórmula de Blondel para dimensionamento de escadas?", "faq_1_a": "É a relação ergonômica: <code>2 Espelhos + 1 Piso = 62 a 64 cm</code> (ideal <strong>63 cm</strong>), reproduzindo a passada humana natural.", "faq_2_q": "Quais são as medidas ideais de espelho e piso?", "faq_2_a": "O espelho ideal situa-se entre <strong>16.5 e 17.5 cm</strong> (máximo 18 cm) e o piso entre <strong>28 e 30 cm</strong> (mínimo 25 cm).", "faq_3_q": "Quantos degraus consecutivos podem ser construídos sem patamar?", "faq_3_a": "A legislação técnica restringe lances contínuos a um máximo de <strong>15 a 16 degraus</strong> antes de exigir um patamar de descanso.", "faq_4_q": "Qual é a inclinação ideal de uma escada?", "faq_4_a": "A inclinação mais confortável e segura para escadas internas está entre <strong>30° e 36°</strong>."}};
 
@@ -960,6 +969,73 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+
+        // Viral Share Functions
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title + " su OmniTools Lab: " + window.location.href);
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function copyCurrentUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const el = document.getElementById('shareCopyText');
+                if (el) {
+                    const orig = el.textContent;
+                    el.textContent = 'Copiato! ✓';
+                    setTimeout(() => { el.textContent = orig; }, 2000);
+                }
+            }).catch(() => {
+                alert('URL copiato: ' + window.location.href);
+            });
+        }
+
+        function nativeShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: document.title + ' su OmniTools Lab',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                copyCurrentUrl();
+            }
+        }
+
+        // Suggestion Modal Functions
+        function openSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function submitSuggestion() {
+            const msgEl = document.getElementById('suggestMessage');
+            const msg = msgEl ? msgEl.value.trim() : '';
+            if (!msg) {
+                alert('Inserisci la tua idea prima di inviare.');
+                return;
+            }
+            const formBox = document.getElementById('suggestFormContainer');
+            const successBox = document.getElementById('suggestSuccessContainer');
+            if (formBox) formBox.classList.add('hidden');
+            if (successBox) successBox.classList.remove('hidden');
+        }
+
+        function dismissInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.classList.add('hidden');
+        }
 
 
 
