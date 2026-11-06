@@ -56,11 +56,12 @@ Prima di iniziare, durante lo sviluppo e dopo il rilascio di QUALSIASI nuovo too
 ### 🔴 Divisione 2: OmniGraph (Grafica, Prestampa, Tipografie, Editori, Packaging)
 * **Colore Identificativo:** Carminio Tipografico / Rosso Bordeaux (`#881337` / `#be123c` / sfondo `#fff1f2`).
 * **PWA:** `manifest-graph.json` installabile come Web App indipendente.
-* **Tool Attivi (4):**
+* **Tool Attivi (5):**
   1. `dorso.html` (**DorsoFacile**): Spessore millimetrico dorso per brossura fresata/cucita, calcolo copertina stesa e refilo 3mm.
   2. `dpi.html` (**RisoluzioneFacile**): Risoluzione ottimale (DPI) in base alla distanza di visione umana, megapixel e grandezza di stampa.
-  3. `tinta.html` (**RicettaInchiostro**): Miscelatore inchiostri per stampa offset/serigrafica, proporzioni ricette (fino a 5 componenti), stima consumo per mq e matrice dinamica 5x5 di sfumature.
+  3. `tinta.html` (**RicettaInchiostro / TintaPerfetta**): Miscelatore inchiostri per stampa offset/serigrafica, proporzioni ricette (fino a 5 componenti), stima consumo per mq e matrice dinamica 5x5 di sfumature.
   4. `barcode.html` (**OmniBarcode**): Generatore codici a barre vettoriali SVG ad altissima precisione (EAN-13, EAN-8, Code 128, ITF-14, GS1-128 con Bearer Bars industriali e simulatore scanner laser).
+  5. `copertura.html` (**CoperturaFacile**): Analisi densitometrica percentuale dei canali C, M, Y, K, Total Area Coverage (TAC con heatmap visiva termica delle zone critiche >310%), calcolo grammi consumo e preventivatore costo copia e tiratura.
 
 ---
 
