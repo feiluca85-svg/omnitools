@@ -5,7 +5,9 @@ import os
 from nav_header import render_suite_header, render_suite_header_js
 from unified_footer import render_unified_footer, render_unified_footer_js
 
-with open("Calcolatore_Pendenza/translations_tetto.json", "r", encoding="utf-8") as f:
+cur_dir = os.path.dirname(os.path.abspath(__file__))
+json_path = os.path.join(cur_dir, "translations_tetto.json")
+with open(json_path, "r", encoding="utf-8") as f:
     t_data = json.load(f)
 
 t_json_str = json.dumps(t_data, ensure_ascii=False)
@@ -638,7 +640,8 @@ html_code = f"""<!DOCTYPE html>
 </html>
 """
 
-with open("Calcolatore_Pendenza/tetto.html", "w", encoding="utf-8") as f:
+out_path = os.path.join(cur_dir, "tetto.html")
+with open(out_path, "w", encoding="utf-8") as f:
     f.write(html_code)
 
 print("tetto.html built successfully!")

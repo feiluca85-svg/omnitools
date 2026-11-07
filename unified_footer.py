@@ -20,6 +20,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
         {"id": "mutuo", "name": "🏦 Rata Mutuo", "desc": "Ammortamento & Sostenibilità", "url": "/mutuo"},
         {"id": "pac", "name": "📈 Interesse PAC", "desc": "Crescita & Rendita 4%", "url": "/pac"},
         {"id": "margine", "name": "🏷️ Margine & Ricarico", "desc": "COGS, Markup & IVA", "url": "/margine"},
+        {"id": "fire", "name": "🔥 FIRE & Rendita", "desc": "Libertà & Trinity 4%", "url": "/fire"},
     ]
 
     def render_pills(tool_list, division_type):
@@ -242,7 +243,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">14 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span class="text-[11px] text-slate-400 font-medium">15 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (5 Tools) -->
@@ -265,12 +266,12 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                     </div>
                 </div>
 
-                <!-- Division 3: OmniFinance (3 Tools) -->
+                <!-- Division 3: OmniFinance (4 Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                        <span>💼</span> <span>OmniFinance (3 Finanza & Business)</span>
+                        <span>💼</span> <span>OmniFinance (4 Finanza & Libertà)</span>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
                         {finance_pills}
                     </div>
                 </div>

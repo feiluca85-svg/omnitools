@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>FIRE Calculator - Calcolo Rendita Passiva & Libertà Finanziaria (Regola del 4%)</title>
+    <meta name="description" content="Calcola in quanti anni puoi raggiungere la libertà finanziaria e vivere di rendita con la Regola del 4% (Trinity Study). Simula Lean, Regular e Fat FIRE con interesse composto.">
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/fire">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OmniTools - Calcolatore FIRE & Libertà Finanziaria">
+    <meta property="og:description" content="Scopri tra quanti anni puoi vivere di rendita. Calcolo Numero FIRE, Regola del 4% e traiettoria con interesse composto.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/fire">
+    <meta property="og:site_name" content="OmniTools Lab">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-fire.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-fire.png">
+
+    <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "FIRE Calculator — Libertà Finanziaria & Rendita Passiva",
+          "url": "https://www.omnitoolslab.com/fire",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+          },
+          "description": "Calcolatore accademico basato sul Trinity Study e la Regola del 4% per pianificare la pensione anticipata, il numero FIRE e la rendita passiva."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "FIRE Freedom Calculator",
+          "operatingSystem": "Web Browser",
+          "applicationCategory": "FinanceApplication",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "210"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .metric-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-emerald-600 selection:text-white">
+
+    <!-- Universal Header with Chrome Tabs & Tool Picker -->
+    
+    
+    <!-- TOP CHROME-STYLE TABS STRIP (DESKTOP ONLY: sticky top-0, always visible) -->
+    <div id="omniChromeTabsBar" class="hidden md:flex bg-slate-950 px-3 pt-2 pb-0 items-center justify-between border-b border-slate-800 text-xs select-none sticky top-0 z-50 shadow-md">
+        
+        <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
+        <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
+            <!-- Fixed Home Hub Tab -->
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Torna alla Home Hub">
+                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
+                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </span>
+                <span>Home Hub</span>
+            </a>
+        </div>
+
+        <!-- Right Side: DESK Menu & Nuovo Tool -->
+        <div class="flex items-center gap-2 shrink-0 pb-1.5 pr-1">
+            
+            <!-- DESK Dropdown Trigger Button -->
+            <div class="relative">
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
+                    <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black text-[9px]">⚡</span>
+                    <span class="tracking-wider">DESK</span>
+                    <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+
+                <!-- DESK Menu Dropdown in Top Bar -->
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
+                    <div class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
+                        Strumenti da Scrivania
+                    </div>
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
+                        <span>OmniMemo (Post-it)</span>
+                    </button>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
+                        <span>OmniCalc (Calcolatrice)</span>
+                    </button>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
+                        <span>OmniClock (Orologio)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
+            <div class="relative">
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
+                    <span>➕</span>
+                    <span class="hidden lg:inline">Nuovo Tool</span>
+                </button>
+
+                <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
+                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
+                    <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
+                        <span>Scegli Calcolatore</span>
+                        <span class="text-blue-600 font-bold font-mono">15 Tool</span>
+                    </div>
+
+                    <!-- Category: OmniBuilding -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                        </div>
+                        
+            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="font-bold">RampaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+            </a>
+            
+            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="font-bold">ScalaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+            </a>
+            
+            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="font-bold">TubiFacili</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+            </a>
+            
+            <a href="/tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="font-bold">TettoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
+            </a>
+            
+            <a href="/taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="font-bold">TaglioOttimo</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+            </a>
+            
+                    </div>
+
+                    <!-- Category: OmniGraph -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph
+                        </div>
+                        
+            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="font-bold">DorsoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+            </a>
+            
+            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="font-bold">RisoluzioneFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+            </a>
+            
+            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="font-bold">TintaPerfetta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+            </a>
+            
+            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="font-bold">OmniBarcode</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+            </a>
+            
+            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="font-bold">CoperturaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+            </a>
+            
+            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="font-bold">ResaCarta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+            </a>
+            
+                    </div>
+
+                    <!-- Category: OmniFinance -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance (4)
+                        </div>
+                        
+            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="font-bold">MutuoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+            </a>
+            
+            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="font-bold">InteresseComposto</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+            </a>
+            
+            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="font-bold">MargineFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+            </a>
+            
+            <a href="/fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
+                    <span class="font-bold">FIRE & Rendita</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
+            </a>
+            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-3">
+            
+            <!-- Logo & Suite Switcher -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-2.5 group shrink-0">
+                    <div class="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
+                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                            <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-jakarta font-black text-sm sm:text-base tracking-tight text-slate-900">OmniTools</span>
+                            <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Lab</span>
+                        </div>
+                    </div>
+                </a>
+
+                <span class="text-slate-300">/</span>
+
+                <!-- Current Tool Dropdown Button -->
+                <div class="relative">
+                    <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+                        <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
+                        <span class="hidden sm:inline">FIRE & Rendita</span>
+                        <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <!-- Dropdown Menu Panel -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
+                        <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
+                            <span>Scegli Calcolatore</span>
+                            <span>15 Strumenti</span>
+                        </div>
+
+                        <div class="space-y-0.5">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                            </div>
+                            
+            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="font-bold">RampaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+            </a>
+            
+            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="font-bold">ScalaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+            </a>
+            
+            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="font-bold">TubiFacili</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+            </a>
+            
+            <a href="/tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="font-bold">TettoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
+            </a>
+            
+            <a href="/taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="font-bold">TaglioOttimo</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+            </a>
+            
+                        </div>
+
+                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph
+                            </div>
+                            
+            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="font-bold">DorsoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+            </a>
+            
+            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="font-bold">RisoluzioneFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+            </a>
+            
+            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="font-bold">TintaPerfetta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+            </a>
+            
+            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="font-bold">OmniBarcode</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+            </a>
+            
+            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="font-bold">CoperturaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+            </a>
+            
+            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="font-bold">ResaCarta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+            </a>
+            
+                        </div>
+
+                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance (4)
+                            </div>
+                            
+            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="font-bold">MutuoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+            </a>
+            
+            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="font-bold">InteresseComposto</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+            </a>
+            
+            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="font-bold">MargineFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+            </a>
+            
+            <a href="/fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
+                    <span class="font-bold">FIRE & Rendita</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
+            </a>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline">Installa</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+                    <span>🖨️</span>
+                    <span class="hidden sm:inline">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 flex-grow w-full">
+        <!-- Main Tool Intro Header -->
+        <div class="mb-8 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-6">
+            <div>
+                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-xs font-semibold mb-3">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="badgeCategory">OmniFinance • Indipendenza & Libertà Finanziaria</span>
+                </div>
+                <h1 id="mainTitle" class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Calcolatore FIRE & Rendita Passiva</h1>
+                <p id="mainSubtitle" class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl">
+                    Scopri tra quanti anni puoi smettere di lavorare e vivere dei rendimenti del tuo patrimonio con la Regola del 4% (Trinity Study).
+                </p>
+            </div>
+            <!-- Currency Selector -->
+            <div class="mt-4 sm:mt-0 flex items-center justify-center sm:justify-end gap-2 shrink-0">
+                <div class="inline-flex p-1 bg-slate-200/80 rounded-xl text-xs font-bold text-slate-600">
+                    <button type="button" id="currEurBtn" onclick="setCurrency('€')" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition">€ EUR</button>
+                    <button type="button" id="currUsdBtn" onclick="setCurrency('$')" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">$ USD</button>
+                    <button type="button" id="currGbpBtn" onclick="setCurrency('£')" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">£ GBP</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presets Bar -->
+        <div class="mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
+            <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Stili di Vita FIRE:
+            </span>
+            <button onclick="applyPreset('lean')" class="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 text-xs font-semibold transition">
+                🌱 <span id="presetLeanText">Lean FIRE (1.200 €/m)</span>
+            </button>
+            <button onclick="applyPreset('regular')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-semibold transition">
+                ☕ <span id="presetRegularText">Regular FIRE (2.200 €/m)</span>
+            </button>
+            <button onclick="applyPreset('fat')" class="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 text-xs font-semibold transition">
+                🏖️ <span id="presetFatText">Fat FIRE (4.500 €/m)</span>
+            </button>
+        </div>
+
+        <!-- Layout Grid: Inputs Form & Visual Analytics -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Inputs Form (5 cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-5">
+                    <div class="flex items-center gap-2.5 pb-3 border-b border-slate-100">
+                        <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold text-sm">1</span>
+                        <h2 id="sectionInputsTitle" class="text-base font-bold text-slate-900">1. Parametri di Risparmio & Spese</h2>
+                    </div>
+
+                    <!-- Input 1: Spese Mensili Desiderate -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                            <label id="monthlyExpenseLabel" for="monthlyExpenseInput">Spese Mensili Desiderate da Rendita</label>
+                            <span class="text-slate-400 font-mono currLabel">€/mese</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="monthlyExpenseInput" min="100" step="50" value="2000" oninput="calculateFire()"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                            <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none currSymbol">€</span>
+                        </div>
+                        <span class="text-[11px] text-slate-400 mt-1 block">Spese annuali previste: <strong id="annualExpenseTag" class="text-slate-700 font-mono">24.000 €/anno</strong></span>
+                    </div>
+
+                    <!-- Input 2: Capitale Attuale -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                            <label id="currentSavingsLabel" for="currentSavingsInput">Capitale Attuale Risparmiato / Investito</label>
+                            <span class="text-slate-400 font-mono currLabel">€</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="currentSavingsInput" min="0" step="500" value="25000" oninput="calculateFire()"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                            <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none currSymbol">€</span>
+                        </div>
+                    </div>
+
+                    <!-- Input 3: Risparmio Mensile Aggiuntivo -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                            <label id="monthlySavingsLabel" for="monthlySavingsInput">Risparmio Mensile Aggiuntivo</label>
+                            <span class="text-slate-400 font-mono currLabel">€/mese</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="monthlySavingsInput" min="0" step="50" value="750" oninput="calculateFire()"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                            <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none currSymbol">€</span>
+                        </div>
+                    </div>
+
+                    <!-- Input 4: Rendimento Medio Annuo (%) -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                            <label id="returnRateLabel" for="returnRateInput">Rendimento Medio Annuo Atteso (%)</label>
+                            <span class="text-slate-400 font-mono">% / anno</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="returnRateInput" min="0.1" max="25" step="0.5" value="7.0" oninput="calculateFire()"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                            <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none">%</span>
+                        </div>
+                        <span class="text-[11px] text-slate-400 mt-1 block">Rendimento tipico azionario globale (es. MSCI World / S&P 500 post-inflazione: 6-8%).</span>
+                    </div>
+
+                    <!-- Input 5: Tasso di Prelievo Sicuro (SWR) -->
+                    <div>
+                        <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                            <label id="swrLabel" for="swrInput">Tasso di Prelievo Sicuro (SWR %)</label>
+                            <span class="text-slate-400 font-mono" id="multiplierTag">25.0×</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="swrInput" min="2.0" max="8.0" step="0.1" value="4.0" oninput="calculateFire()"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                            <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none">%</span>
+                        </div>
+                        <p id="swrHint" class="text-[11px] text-slate-500 mt-1.5 leading-relaxed">
+                            4.0% = Regola classica Trinity Study (Patrimonio = 25× Spese Annue). 3.5% = Approccio conservativo a lunghissimo termine.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Right Column: Results KPIs, Chart & Breakdown (7 cols) -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- KPI Results Dashboard Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiFireNumberLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Numero FIRE</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resFireNumber" class="text-xl sm:text-2xl font-extrabold text-emerald-600 font-mono">0</span>
+                            <span class="text-xs font-bold text-slate-400 currSymbol">€</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiYearsLeftLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Tempo alla Libertà</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resYearsLeft" class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono">0</span>
+                            <span class="text-xs font-bold text-slate-400" id="resYearsUnit">anni</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiProgressLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Progresso Target</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resProgressPct" class="text-xl sm:text-2xl font-extrabold text-blue-600 font-mono">0.0</span>
+                            <span class="text-xs font-bold text-slate-400">%</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiAnnualIncomeLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Rendita Annua</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resAnnualPassive" class="text-xl sm:text-2xl font-extrabold text-slate-900 font-mono">0</span>
+                            <span class="text-xs font-bold text-slate-400 currSymbol">€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Wealth Trajectory Chart Container -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                            <h3 id="chartTitle" class="text-base font-bold text-slate-900">Traiettoria di Accumulo & Interesse Composto nel Tempo</h3>
+                        </div>
+                        <!-- Legend -->
+                        <div class="flex items-center gap-3 text-[11px] font-medium text-slate-600">
+                            <span class="inline-flex items-center gap-1">
+                                <span class="w-3 h-3 rounded-xs bg-slate-400"></span> <span id="legendDepositsLabel">Versamenti</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1">
+                                <span class="w-3 h-3 rounded-xs bg-emerald-500"></span> <span id="legendInterestLabel">Interesse</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1">
+                                <span class="w-3.5 h-0.5 bg-amber-500"></span> <span id="legendFireLineLabel">Target FIRE</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- SVG Chart Area -->
+                    <div id="svgChartWrapper" class="w-full h-64 sm:h-72 bg-slate-50/60 rounded-2xl border border-slate-200/80 p-2 relative flex items-center justify-center">
+                        <svg id="fireTrajectorySvg" class="w-full h-full" viewBox="0 0 600 240" preserveAspectRatio="none">
+                            <!-- Injected by calculateFire() -->
+                        </svg>
+                    </div>
+
+                    <!-- Milestone Summary Note -->
+                    <div id="milestoneNote" class="mt-4 p-3 bg-emerald-50/80 border border-emerald-200/70 rounded-2xl text-xs text-emerald-900 flex items-center gap-2">
+                        <span class="text-lg">🎯</span>
+                        <span>Raggiungerai l'indipendenza finanziaria con un capitale di <strong id="milestoneTargetText" class="font-mono">600.000 €</strong> garantendo una rendita mensile netta a vita.</span>
+                    </div>
+                </div>
+
+                <!-- Breakdown Projection Table -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                        <h3 id="breakdownTitle" class="text-base font-bold text-slate-900">Proiezione Anno per Anno</h3>
+                        <button type="button" onclick="window.print()" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            Stampa Proiezione
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto max-h-72 overflow-y-auto pr-1">
+                        <table class="w-full text-left text-xs font-mono">
+                            <thead class="sticky top-0 bg-white">
+                                <tr class="text-slate-400 border-b border-slate-100">
+                                    <th class="pb-2 font-semibold">Anno</th>
+                                    <th class="pb-2 font-semibold">Capitale Versato</th>
+                                    <th class="pb-2 font-semibold text-emerald-600">Interessi Totali</th>
+                                    <th class="pb-2 font-semibold text-right font-bold text-slate-800">Patrimonio Totale</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fireTableBody" class="divide-y divide-slate-100">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FAQ Section -->
+        <section id="faqSection" class="no-print mt-16 bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                    <span id="faqTitle">Domande Frequenti sul Movimento FIRE e la Libertà Finanziaria</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ1">Cos'è il movimento FIRE e come funziona la Regola del 4%?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA1" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        FIRE è l'acronimo di "Financial Independence, Retire Early" (Indipendenza Finanziaria, Pensione Anticipata). La Regola del 4%, derivata dal celebre studio accademico Trinity Study dell'Università Trinity (Texas), dimostra che prelevando annualmente non più del 4% da un portafoglio diversificato di azioni e obbligazioni, il capitale ha una probabilità superiore al 95% di durare per almeno 30 anni senza mai esaurirsi.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ2">Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA2" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Lean FIRE punta a uno stile di vita frugale con spese coperte al minimo (es. 1.000 - 1.400 €/mese), richiedendo un capitale accumulato più piccolo. Regular FIRE garantisce il mantenimento del tenore di vita medio attuale (2.000 - 2.500 €/mese). Fat FIRE è pensato per chi desidera una pensione anticipata di lusso con viaggi frequenti e spese elevate (oltre 4.000 - 5.000 €/mese).
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ3">Come si calcola il Numero FIRE?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA3" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La formula matematica universale è: Spese Annue ÷ Tasso di Prelievo (SWR). Se applichi la regola classica del 4% (0.04), equivale semplicemente a moltiplicare le tue spese annuali per 25. Ad esempio: 20.000 € di spese all'anno × 25 = 500.000 € di patrimonio target.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Universal Footer -->
+    
+    <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            
+            <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
+            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">⚡</span>
+                        <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    
+        <a href="/rampe" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">📐</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200 border">Cantiere</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">RampaFacile</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Calcolo pendenze DM 236</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>
+        <a href="/dorso" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-rose-500 hover:bg-rose-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">📕</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border-rose-200 border">Grafica</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">DorsoFacile</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Spessore dorso libro</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>
+        <a href="/mutuo" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">🏦</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 border">Finanza</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">MutuoFacile</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Ammortamento rata mutuo</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>
+                </div>
+            </div>
+
+            <!-- Share & Viral Action Strip -->
+            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">📢</span>
+                    <div>
+                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
+                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o clienti</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </button>
+                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su Reddit">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 8.99c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.56 12 8 12.56 8 13.25c0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm5.5 0c-.69 0-1.25.56-1.25 1.25 0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm-5.465 4.542a.335.335 0 0 0-.232.095.33.33 0 0 0 0 .464c.732.732 2.012.986 2.947.986.935 0 2.215-.254 2.947-.986a.33.33 0 0 0 0-.464.335.335 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                        <span>Reddit</span>
+                    </button>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
+                        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <span>Condividi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Suggestion Prompt Strip -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- Categorized OmniTools Ecosystem Bar (Clean 3-Section Grid) -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs">
+                            ⌘
+                        </div>
+                        <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">15 Strumenti Gratuiti • Precision Utilities Suite</span>
+                </div>
+                
+                <!-- Division 1: OmniBuilding (5 Tools) -->
+                <div class="space-y-1.5">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
+                        <span>🏗️</span> <span>OmniBuilding (5 Cantiere & Fabbricazione)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+                        
+                    <a href="/rampe" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📐 Rampe</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza & DM 236</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/scale" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪜 Scale</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Gradini & Blondel</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tubi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🚰 Scarichi</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza UNI EN</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tetto" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏠 Tetto & Falda</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza, Gradi & Trave</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/taglio" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪚 Taglio 1D</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ottimizzatore Barre & Sfrido</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Division 2: OmniGraph (6 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1">
+                        <span>🎨</span> <span>OmniGraph (6 Grafica & Stampa)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/dorso" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📕 Dorso</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Spessore & KDP</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/dpi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖼️ DPI / Pixel</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tinta" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Tinta & CMYK</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Calibrazione</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/barcode" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Barcode</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Vettoriale & GS1</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/copertura" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖨️ Copertura</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro & Costi</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/resa" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📑 Resa Carta</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Nesting & Taglio</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Division 3: OmniFinance (4 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
+                        <span>💼</span> <span>OmniFinance (4 Finanza & Libertà)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                        
+                    <a href="/mutuo" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏦 Rata Mutuo</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ammortamento & Sostenibilità</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/pac" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📈 Interesse PAC</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Crescita & Rendita 4%</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/margine" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Margine & Ricarico</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">COGS, Markup & IVA</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <div class="p-2 sm:p-2.5 rounded-xl bg-emerald-600/30 border-emerald-400/50 border flex items-center justify-between transition shadow-xs">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-white text-[11px] block truncate">🔥 FIRE & Rendita</span>
+                            <span class="text-[9px] text-emerald-200 block truncate">Libertà & Trinity 4%</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-emerald-500 text-white font-extrabold rounded shrink-0">Attivo</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Division 4: OmniDesk Utilities (Quick Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1">
+                        <span>⚡</span> <span>OmniDesk — Strumenti Rapidi da Scrivania</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-[11px] text-center font-bold">
+                        <a href="/memo" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
+                            <span>📝</span> <span>Memo</span>
+                        </a>
+                        <a href="/calcolatrice" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-blue-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
+                            <span>🔢</span> <span>Calcolatrice</span>
+                        </a>
+                        <a href="/orologio" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-teal-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
+                            <span>⏱️</span> <span>Orologio</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pt-2 text-center border-t border-slate-800/80">
+                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2 pt-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
+                    OmniTools Network fornisce utility di precisione a scopo estimativo, didattico e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il parere vincolante di tecnici abilitati o consulenti finanziari abilitati (TUF / D.Lgs. 58/1998).
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating PWA Install Banner -->
+    <div id="installBanner" class="no-print hidden fixed bottom-4 right-4 max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-xl border border-slate-700 z-50 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+            <span class="text-2xl">📲</span>
+            <div>
+                <span id="installBannerTitle" class="text-xs font-bold block text-white">Installa OmniTools come App</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-400 block">Utility di calcolo professionale sempre a portata di mano</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+            <button type="button" onclick="triggerInstall()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition">
+                Installa
+            </button>
+            <button type="button" onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg transition" title="Chiudi">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="no-print hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">💡</span>
+                    <h3 id="modalSuggestTitle" class="text-base font-extrabold text-slate-900">Suggerisci uno Strumento</h3>
+                </div>
+                <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
+                    ✕
+                </button>
+            </div>
+
+            <p id="modalSuggestDesc" class="text-xs text-slate-600 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Universal Scripts -->
+    
+// Top DESK Dropdown
+function toggleTopDeskMenu(e) {
+    if (e) e.stopPropagation();
+    const drop = document.getElementById('topDeskDropdown');
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    if (newToolDrop) newToolDrop.classList.add('hidden');
+    if (drop) drop.classList.toggle('hidden');
+}
+
+// Top Nuovo Tool Dropdown (aligned right)
+function toggleTopNewToolMenu(e) {
+    if (e) e.stopPropagation();
+    const drop = document.getElementById('topNewToolDropdown');
+    const deskDrop = document.getElementById('topDeskDropdown');
+    if (deskDrop) deskDrop.classList.add('hidden');
+    if (drop) drop.classList.toggle('hidden');
+}
+
+function openDeskTool(toolType) {
+    const drop = document.getElementById('topDeskDropdown');
+    if (drop) drop.classList.add('hidden');
+    if (window.OmniDesk) {
+        if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
+        else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
+        else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+    } else {
+        // Fallback open standalone page
+        const map = { memo: '/memo', calc: '/calcolatrice', clock: '/orologio' };
+        window.open(map[toolType], '_blank');
+    }
+}
+
+// Suite Menu Dropdown (header)
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    if (!menu) return;
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+    }
+}
+
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+    }
+    const deskDrop = document.getElementById('topDeskDropdown');
+    const topDeskBtn = document.getElementById('topDeskBtn');
+    if (deskDrop && !deskDrop.classList.contains('hidden')) {
+        if (!deskDrop.contains(e.target) && (!topDeskBtn || !topDeskBtn.contains(e.target))) {
+            deskDrop.classList.add('hidden');
+        }
+    }
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    const topNewToolBtn = document.getElementById('topNewToolBtn');
+    if (newToolDrop && !newToolDrop.classList.contains('hidden')) {
+        if (!newToolDrop.contains(e.target) && (!topNewToolBtn || !topNewToolBtn.contains(e.target))) {
+            newToolDrop.classList.add('hidden');
+        }
+    }
+});
+
+// Dynamic Chrome Tabs & Multi-Window Detach Engine
+(function() {
+    const TOOL_ICONS_JS = {
+        'rampe': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>`,
+        'scale': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
+        'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
+        'tetto': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
+        'taglio': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>`,
+        'dorso': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
+        'dpi': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
+        'tinta': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
+        'barcode': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>`,
+        'copertura': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>`,
+        'resa': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
+        'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
+        'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
+        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
+        'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
+    };
+
+    const TOOLS_MAP = {
+        'rampe': { name: 'RampaFacile', url: '/rampe', color: 'bg-amber-500' },
+        'scale': { name: 'ScalaFacile', url: '/scale', color: 'bg-amber-500' },
+        'tubi': { name: 'TubiFacili', url: '/tubi', color: 'bg-amber-500' },
+        'tetto': { name: 'TettoFacile', url: '/tetto', color: 'bg-amber-500' },
+        'taglio': { name: 'TaglioOttimo', url: '/taglio', color: 'bg-amber-500' },
+        'dorso': { name: 'DorsoFacile', url: '/dorso', color: 'bg-rose-700' },
+        'dpi': { name: 'Risoluzione', url: '/dpi', color: 'bg-rose-700' },
+        'tinta': { name: 'TintaPerfetta', url: '/tinta', color: 'bg-rose-700' },
+        'barcode': { name: 'OmniBarcode', url: '/barcode', color: 'bg-rose-700' },
+        'copertura': { name: 'Copertura', url: '/copertura', color: 'bg-rose-700' },
+        'resa': { name: 'ResaCarta', url: '/resa', color: 'bg-rose-700' },
+        'mutuo': { name: 'MutuoFacile', url: '/mutuo', color: 'bg-emerald-600' },
+        'pac': { name: 'Interesse', url: '/pac', color: 'bg-emerald-600' },
+        'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' },
+        'fire': { name: 'FIRE & Rendita', url: '/fire', color: 'bg-emerald-600' }
+    };
+
+    const TABS_KEY = 'omni_open_tabs_v1';
+    let openTabs = [];
+    try {
+        openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
+    } catch(e) {}
+
+    const pathname = window.location.pathname.replace('.html', '').replace('/', '');
+    if (pathname && TOOLS_MAP[pathname]) {
+        if (!openTabs.includes(pathname)) {
+            openTabs.push(pathname);
+            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+        }
+    }
+
+    let detachedWindows = {};
+
+    window.OmniMultiWindow = {
+        detachTool(id) {
+            const tool = TOOLS_MAP[id];
+            if (!tool) return;
+            if (detachedWindows[id]) return;
+
+            const win = document.createElement('div');
+            win.id = `detached-win-${id}`;
+            win.className = 'fixed z-[9992] bg-white rounded-2xl shadow-2xl border-2 border-slate-700/80 overflow-hidden flex flex-col';
+            win.style.width = 'min(760px, 92vw)';
+            win.style.height = 'min(580px, 82vh)';
+            win.style.minWidth = '360px';
+            win.style.minHeight = '260px';
+            win.style.resize = 'both';
+            win.style.minHeight = '300px';
+            win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
+            win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
+
+            win.innerHTML = `
+                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`}
+                        <span class="text-xs font-bold tracking-tight">${tool.name}</span>
+                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 rounded text-white font-bold">Finestra Staccata</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1">
+                            <span>⤶</span>
+                            <span>Riancora</span>
+                        </button>
+                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1 w-full bg-slate-50 relative overflow-hidden flex flex-col">
+                    <iframe src="${tool.url}" class="w-full flex-1 border-0"></iframe>
+                    <!-- Resize grip bar at bottom -->
+                    <div class="h-4 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between px-2 text-[10px] text-slate-400 select-none">
+                        <span class="font-mono">Ridimensiona finestra trascinando i bordi</span>
+                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-blue-600 transition" title="Trascina per ridimensionare larghezza e altezza">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 19H5m14-6H11m8-6H17"/></svg>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
+            detachedWindows[id] = win;
+
+            makeWindowDraggable(win, win.querySelector('.window-header'));
+            makeWindowResizable(win, win.querySelector('.window-resize-grip'));
+
+            openTabs = openTabs.filter(x => x !== id);
+            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            renderChromeTabs();
+        },
+
+        dockBack(id) {
+            const win = detachedWindows[id];
+            if (win) {
+                win.remove();
+                delete detachedWindows[id];
+            }
+            if (!openTabs.includes(id)) {
+                openTabs.push(id);
+                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            }
+            renderChromeTabs();
+        },
+
+        closeDetached(id) {
+            const win = detachedWindows[id];
+            if (win) {
+                win.remove();
+                delete detachedWindows[id];
+            }
+        }
+    };
+
+    function makeWindowDraggable(el, handle) {
+        let isDrag = false, startX, startY, initL, initT;
+        function onStart(e) {
+            if (e.target.closest('button, select, input, a')) return;
+            isDrag = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            const r = el.getBoundingClientRect();
+            initL = r.left;
+            initT = r.top;
+            // Prevent iframe swallowing mouse events while dragging
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'none';
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+        }
+        function onMove(e) {
+            if (!isDrag) return;
+            el.style.left = Math.max(10, Math.min(window.innerWidth - el.offsetWidth - 10, initL + (e.clientX - startX))) + 'px';
+            el.style.top = Math.max(10, Math.min(window.innerHeight - el.offsetHeight - 10, initT + (e.clientY - startY))) + 'px';
+        }
+        function onEnd() {
+            isDrag = false;
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'auto';
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', onEnd);
+        }
+        handle.addEventListener('mousedown', onStart);
+    }
+
+    function makeWindowResizable(el, handle) {
+        let isResizing = false, startX, startY, startW, startH;
+        function onResizeStart(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            isResizing = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startW = el.offsetWidth;
+            startH = el.offsetHeight;
+            // Temporarily disable iframe pointer events so smooth mousemove works over iframe
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'none';
+            document.body.style.cursor = 'se-resize';
+            document.addEventListener('mousemove', onResizeMove);
+            document.addEventListener('mouseup', onResizeEnd);
+        }
+        function onResizeMove(e) {
+            if (!isResizing) return;
+            const newW = Math.max(380, Math.min(window.innerWidth - el.offsetLeft - 10, startW + (e.clientX - startX)));
+            const newH = Math.max(280, Math.min(window.innerHeight - el.offsetTop - 10, startH + (e.clientY - startY)));
+            el.style.width = newW + 'px';
+            el.style.height = newH + 'px';
+        }
+        function onResizeEnd() {
+            isResizing = false;
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'auto';
+            document.body.style.cursor = 'default';
+            document.removeEventListener('mousemove', onResizeMove);
+            document.removeEventListener('mouseup', onResizeEnd);
+        }
+        if (handle) {
+            handle.addEventListener('mousedown', onResizeStart);
+        }
+    }
+
+    function renderChromeTabs() {
+        const track = document.getElementById('omniChromeTabsTrack');
+        if (!track) return;
+
+        const homeTab = document.getElementById('omniTabHome');
+        const isHome = (!pathname || pathname === 'index');
+        if (homeTab) {
+            homeTab.className = isHome 
+                ? 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-white text-slate-900 font-extrabold border-t-2 border-blue-600 transition shrink-0 text-[11px] shadow-xs'
+                : 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]';
+        }
+
+        track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
+
+        openTabs.forEach(id => {
+            const tool = TOOLS_MAP[id];
+            if (!tool) return;
+            const isActive = (id === pathname);
+
+            const tab = document.createElement('div');
+            tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
+            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
+            
+            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
+            tab.innerHTML = `
+                <a href="${tool.url}" class="flex items-center gap-2 text-inherit no-underline">
+                    ${iconMarkup}
+                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${tool.name}</span>
+                </a>
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
+                    ↗
+                </button>
+                <span class="close-tab hover:text-rose-500 hover:bg-black/10 rounded px-1.5 py-0.5 transition text-slate-400 font-bold" title="Chiudi scheda">✕</span>
+            `;
+
+            let tabDragY = 0;
+            tab.addEventListener('mousedown', (e) => {
+                if (e.target.closest('button, span.close-tab')) return;
+                tabDragY = e.clientY;
+                function checkDetach(evt) {
+                    if (evt.clientY - tabDragY > 40) {
+                        document.removeEventListener('mousemove', checkDetach);
+                        window.OmniMultiWindow.detachTool(id);
+                    }
+                }
+                function stopCheck() {
+                    document.removeEventListener('mousemove', checkDetach);
+                    document.removeEventListener('mouseup', stopCheck);
+                }
+                document.addEventListener('mousemove', checkDetach);
+                document.addEventListener('mouseup', stopCheck);
+            });
+
+            tab.querySelector('.close-tab').addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openTabs = openTabs.filter(x => x !== id);
+                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
+                if (isActive) {
+                    const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
+                    window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
+                } else {
+                    renderChromeTabs();
+                }
+            });
+
+            track.appendChild(tab);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderChromeTabs);
+})();
+
+    
+        // Viral Share Functions
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title + " su OmniTools Lab: " + window.location.href);
+            window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+        }
+
+        function shareReddit() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }
+
+        function copyCurrentUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const el = document.getElementById('shareCopyText');
+                if (el) {
+                    const orig = el.textContent;
+                    el.textContent = 'Copiato! ✓';
+                    setTimeout(() => { el.textContent = orig; }, 2000);
+                }
+            }).catch(() => {
+                alert('URL copiato: ' + window.location.href);
+            });
+        }
+
+        function nativeShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: document.title + ' su OmniTools Lab',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                copyCurrentUrl();
+            }
+        }
+
+        // Suggestion Modal Functions
+        function openSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function submitSuggestion() {
+            const msgEl = document.getElementById('suggestMessage');
+            const msg = msgEl ? msgEl.value.trim() : '';
+            if (!msg) {
+                alert('Inserisci la tua idea prima di inviare.');
+                return;
+            }
+            const formBox = document.getElementById('suggestFormContainer');
+            const successBox = document.getElementById('suggestSuccessContainer');
+            if (formBox) formBox.classList.add('hidden');
+            if (successBox) successBox.classList.remove('hidden');
+        }
+
+        function dismissInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock)
+        (function() {
+            if (!document.getElementById('omnidesk-script')) {
+                const s = document.createElement('script');
+                s.id = 'omnidesk-script';
+                s.src = '/desk_dock.js';
+                s.defer = true;
+                document.body.appendChild(s);
+            }
+        })();
+
+
+    <!-- FIRE Engine Logic & I18N Script -->
+    <script>
+        const TRANSLATIONS = {"meta_title": {"it": "FIRE Calculator - Calcolo Rendita Passiva & Libertà Finanziaria (Regola del 4%)", "en": "FIRE Calculator - Financial Independence & Early Retirement (4% Rule)", "es": "Calculadora FIRE - Libertad Financiera y Jubilación Anticipada (Regla del 4%)", "fr": "Calculateur FIRE - Indépendance Financière et Rente Passive (Règle des 4%)", "de": "FIRE Rechner - Finanzielle Freiheit & Vorruhestand (4% Regel)", "pt": "Calculadora FIRE - Independência Financeira e Renda Passiva (Regra dos 4%)"}, "meta_desc": {"it": "Calcola in quanti anni puoi raggiungere la libertà finanziaria e vivere di rendita con la Regola del 4% (Trinity Study). Simula Lean, Regular e Fat FIRE con interesse composto.", "en": "Calculate how many years until you achieve financial independence and live off passive income with the 4% Rule. Simulate Lean, Regular, and Fat FIRE with compound interest.", "es": "Calcula en cuántos años alcanzarás la libertad financiera con la Regla del 4%. Simula Lean, Regular y Fat FIRE con interés compuesto.", "fr": "Calculez en combien d'années vous pouvez atteindre l'indépendance financière avec la règle des 4%. Simulez Lean, Regular et Fat FIRE.", "de": "Berechnen Sie, in wie vielen Jahren Sie finanzielle Freiheit und Vorruhestand mit der 4%-Regel erreichen. Simulieren Sie Lean, Regular und Fat FIRE.", "pt": "Calcule em quantos anos pode alcançar a independência financeira com a Regra dos 4%. Simule Lean, Regular e Fat FIRE com juros compostos."}, "title": {"it": "Calcolatore FIRE & Rendita Passiva", "en": "FIRE & Passive Income Calculator", "es": "Calculadora FIRE y Renta Pasiva", "fr": "Calculateur FIRE & Rente Passive", "de": "FIRE-Rechner & Finanzielle Freiheit", "pt": "Calculadora FIRE e Renda Passiva"}, "subtitle": {"it": "Scopri tra quanti anni puoi smettere di lavorare e vivere dei rendimenti del tuo patrimonio con la Regola del 4% (Trinity Study).", "en": "Find out how many years until you can retire early and live off investment returns using the 4% Safe Withdrawal Rule.", "es": "Descubre en cuántos años puedes jubilarte y vivir de tus inversiones usando la regla de retiro seguro del 4%.", "fr": "Découvrez dans combien d'années vous pouvez vivre de vos rentes grâce à la règle des 4% de retrait sécurisé.", "de": "Ermitteln Sie, wann Sie von Kapitalerträgen leben können mit der wissenschaftlichen 4%-Entnahmerate.", "pt": "Descubra em quantos anos pode viver de rendimentos passivos usando a regra de saque seguro de 4%."}, "section_inputs": {"it": "1. Parametri di Risparmio & Spese", "en": "1. Savings & Expense Parameters", "es": "1. Parámetros de Ahorro y Gastos", "fr": "1. Paramètres d'Épargne et Dépenses", "de": "1. Spar- und Ausgaben-Parameter", "pt": "1. Parâmetros de Poupança e Despesas"}, "monthly_expense_label": {"it": "Spese Mensili Desiderate da Rendita", "en": "Target Monthly Expenses in Retirement", "es": "Gastos Mensuales Deseados de Renta", "fr": "Dépenses Mensuelles Cibles à la Rente", "de": "Gewünschte monatliche Ausgaben", "pt": "Despesas Mensais Desejadas"}, "current_savings_label": {"it": "Capitale Attuale Risparmiato / Investito", "en": "Current Portfolio Net Worth", "es": "Capital Actual Ahorrado / Invertido", "fr": "Patrimoine Actuel Investi", "de": "Aktuelles Anlagevermögen", "pt": "Patrimônio Atual Investido"}, "monthly_savings_label": {"it": "Risparmio Mensile Aggiuntivo", "en": "Monthly New Savings / Contribution", "es": "Ahorro Mensual Adicional", "fr": "Épargne Mensuelle Supplémentaire", "de": "Monatliche Sparrate", "pt": "Aporte Mensal Adicional"}, "return_rate_label": {"it": "Rendimento Medio Annuo Atteso (%)", "en": "Expected Annual Investment Return (%)", "es": "Rendimiento Anual Esperado (%)", "fr": "Rendement Annuel Moyen Espéré (%)", "de": "Erwartete jährliche Rendite (%)", "pt": "Rentabilidade Anual Esperada (%)"}, "swr_label": {"it": "Tasso di Prelievo Sicuro (SWR %)", "en": "Safe Withdrawal Rate (SWR %)", "es": "Tasa de Retiro Seguro (SWR %)", "fr": "Taux de Retrait Sûr (SWR %)", "de": "Sichere Entnahmerate (SWR %)", "pt": "Taxa de Saque Seguro (SWR %)"}, "swr_hint": {"it": "4.0% = Regola classica Trinity Study. 3.5% = Approccio conservativo a lunghissimo termine.", "en": "4.0% = Standard Trinity Study rule. 3.5% = Conservative horizon (>35 years).", "es": "4.0% = Regla clásica Trinity Study. 3.5% = Enfoque conservador a muy largo plazo.", "fr": "4,0% = Règle classique Trinity Study. 3,5% = Approche conservatrice long terme.", "de": "4,0% = Klassische Trinity-Studie. 3,5% = Konservativer Ansatz für sehr lange Zeiträume.", "pt": "4.0% = Regra clássica Trinity Study. 3.5% = Abordagem conservadora a longo prazo."}, "presets_title": {"it": "Stili di Vita FIRE:", "en": "FIRE Lifestyles:", "es": "Estilos FIRE:", "fr": "Profils FIRE :", "de": "FIRE-Lebensstile:", "pt": "Estilos FIRE:"}, "preset_lean": {"it": "Lean FIRE (1.200 €/m)", "en": "Lean FIRE (,200/mo)", "es": "Lean FIRE (1.200 €/m)", "fr": "Lean FIRE (1 200 €/m)", "de": "Lean FIRE (1.200 €/M)", "pt": "Lean FIRE (1.200 €/m)"}, "preset_regular": {"it": "Regular FIRE (2.200 €/m)", "en": "Regular FIRE (,200/mo)", "es": "Regular FIRE (2.200 €/m)", "fr": "Regular FIRE (2 200 €/m)", "de": "Regular FIRE (2.200 €/M)", "pt": "Regular FIRE (2.200 €/m)"}, "preset_fat": {"it": "Fat FIRE (4.500 €/m)", "en": "Fat FIRE (,500/mo)", "es": "Fat FIRE (4.500 €/m)", "fr": "Fat FIRE (4 500 €/m)", "de": "Fat FIRE (4.500 €/M)", "pt": "Fat FIRE (4.500 €/m)"}, "kpi_fire_number": {"it": "Il tuo Numero FIRE", "en": "Your FIRE Number", "es": "Tu Número FIRE", "fr": "Votre Montant FIRE", "de": "Ihre FIRE-Zielsumme", "pt": "Seu Número FIRE"}, "kpi_years_left": {"it": "Tempo alla Libertà", "en": "Years to Freedom", "es": "Años para la Libertad", "fr": "Années Restantes", "de": "Jahre bis zur Freiheit", "pt": "Tempo até a Liberdade"}, "kpi_progress": {"it": "Progresso Patrimonio", "en": "Target Progress", "es": "Progreso del Objetivo", "fr": "Progression Patrimoine", "de": "Vermögensfortschritt", "pt": "Progresso do Objetivo"}, "kpi_annual_income": {"it": "Rendita Annua Generata", "en": "Passive Annual Income", "es": "Renta Anual Pasiva", "fr": "Rente Annuelle Nette", "de": "Jährliche Entnahme", "pt": "Renda Anual Passiva"}, "chart_title": {"it": "Traiettoria di Accumulo & Interesse Composto nel Tempo", "en": "Wealth Accumulation & Compound Interest Trajectory", "es": "Trayectoria de Acumulación e Interés Compuesto", "fr": "Trajectoire d'Accumulation et Intérêts Composés", "de": "Vermögensaufbau & Zinseszins-Verlauf", "pt": "Trajetória de Acumulação e Juros Compostos"}, "legend_deposits": {"it": "Capitale Versato di Tasca Tua", "en": "Your Actual Deposits", "es": "Capital Aportado de Tu Bolsillo", "fr": "Épargne Directe Versée", "de": "Eigenes eingezahltes Kapital", "pt": "Aportes Diretos"}, "legend_interest": {"it": "Rendimento da Interesse Composto", "en": "Compound Interest Gains", "es": "Rendimiento por Interés Compuesto", "fr": "Plus-values d'Intérêts Composés", "de": "Zinseszins-Gewinn", "pt": "Ganhos de Juros Compostos"}, "legend_fire_line": {"it": "Soglia Obiettivo FIRE", "en": "FIRE Target Threshold", "es": "Umbral Objetivo FIRE", "fr": "Seuil Objectif FIRE", "de": "FIRE-Ziellinie", "pt": "Meta FIRE"}, "breakdown_title": {"it": "Proiezione Anno per Anno", "en": "Year-by-Year Growth Table", "es": "Proyección Año a Año", "fr": "Projection Année par Année", "de": "Jahr-für-Jahr Projektionstabelle", "pt": "Projeção Ano a Ano"}, "faq_title": {"it": "Domande Frequenti sul Movimento FIRE e la Libertà Finanziaria", "en": "Frequently Asked Questions about FIRE & Financial Independence", "es": "Preguntas Frecuentes sobre el Movimiento FIRE y Libertad Financiera", "fr": "Foire Aux Questions sur le Mouvement FIRE et les Rentes", "de": "Häufige Fragen zu FIRE und Finanzieller Freiheit", "pt": "Perguntas Frequentes sobre o Movimento FIRE e Renda Passiva"}, "faq_q1": {"it": "Cos'è il movimento FIRE e come funziona la Regola del 4%?", "en": "What is the FIRE movement and how does the 4% rule work?", "es": "¿Qué es el movimiento FIRE y cómo funciona la regla del 4%?", "fr": "Qu'est-ce que le mouvement FIRE et la règle des 4% ?", "de": "Was ist die FIRE-Bewegung und wie funktioniert die 4%-Regel?", "pt": "O que é o movimento FIRE e como funciona a Regra dos 4%?"}, "faq_a1": {"it": "FIRE è l'acronimo di \"Financial Independence, Retire Early\" (Indipendenza Finanziaria, Pensione Anticipata). La Regola del 4%, derivata dal celebre studio accademico Trinity Study dell'Università Trinity (Texas), dimostra che prelevando annualmente non più del 4% da un portafoglio diversificato di azioni e obbligazioni, il capitale ha una probabilità superiore al 95% di durare per almeno 30 anni senza mai esaurirsi.", "en": "FIRE stands for Financial Independence, Retire Early. The 4% Rule stems from the landmark Trinity Study, which proved that withdrawing 4% annually from a balanced portfolio (adjusted for inflation) had over a 95% historical success rate of never depleting over 30+ years.", "es": "FIRE significa Independencia Financiera, Jubilación Temprana. La Regla del 4% proviene del estudio Trinity Study: retirando un 4% anual de una cartera diversificada ajustada a la inflación, el capital tiene un 95%+ de probabilidad de no agotarse jamás en 30 años o más.", "fr": "FIRE signifie Financial Independence, Retire Early. La règle des 4% est issue de l'étude académique Trinity Study : en retirant 4% par an d'un portefeuille diversifié, vous avez plus de 95% de chances de ne jamais épuiser votre capital sur 30 ans.", "de": "FIRE steht für Financial Independence, Retire Early. Die 4%-Regel basiert auf der Trinity-Studie: Wer jährlich 4% seines Portfolios entnimmt, hat eine über 95-prozentige Chance, dass das Vermögen über mehr als 30 Jahre hinweg niemals aufgebraucht wird.", "pt": "FIRE significa Independência Financeira, Aposentadoria Precoce. A Regra dos 4% deriva do Trinity Study: retirando 4% ao ano de um portfólio diversificado, a probabilidade do capital durar 30 anos ou mais é superior a 95%."}, "faq_q2": {"it": "Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?", "en": "What is the difference between Lean FIRE, Regular FIRE, and Fat FIRE?", "es": "¿Cuál es la diferencia entre Lean FIRE, Regular FIRE y Fat FIRE?", "fr": "Quelle est la différence entre Lean FIRE, Regular FIRE et Fat FIRE ?", "de": "Was unterscheidet Lean FIRE, Regular FIRE und Fat FIRE?", "pt": "Qual a diferença entre Lean FIRE, Regular FIRE e Fat FIRE?"}, "faq_a2": {"it": "Lean FIRE punta a uno stile di vita frugale con spese coperte al minimo (es. 1.000 - 1.400 €/mese), richiedendo un capitale accumulato più piccolo. Regular FIRE garantisce il mantenimento del tenore di vita medio attuale (2.000 - 2.500 €/mese). Fat FIRE è pensato per chi desidera una pensione anticipata di lusso con viaggi frequenti e spese elevate (oltre 4.000 - 5.000 €/mese).", "en": "Lean FIRE targets a minimalist lifestyle with lean living costs (,000-,500/mo), requiring a much smaller nest egg. Regular FIRE maintains an average comfortable lifestyle (,000-,000/mo). Fat FIRE is for abundant lifestyles with luxury and extensive travel (,500+/mo).", "es": "Lean FIRE busca un estilo de vida minimalista con gastos bajos (1.000-1.400 €/m). Regular FIRE mantiene un nivel de vida medio cómodo (2.000-2.500 €/m). Fat FIRE está diseñado para un retiro holgado y viajes frecuentes (más de 4.000 €/m).", "fr": "Lean FIRE vise un mode de vie frugal (1 000 - 1 400 €/m). Regular FIRE permet de maintenir un confort de vie moyen (2 000 - 2 500 €/m). Fat FIRE s'adresse à ceux qui veulent voyager et vivre sans contrainte budgétaire (4 000 €/m+).", "de": "Lean FIRE bedeutet einen genügsamen Lebensstil mit niedrigen Ausgaben (1.000-1.400 €/M). Regular FIRE deckt den gewohnten Lebensstandard ab (2.000-2.500 €/M). Fat FIRE ermöglicht einen gehobenen Lebensstil mit Luxus und Reisen (ab 4.000 €/M).", "pt": "Lean FIRE foca em estilo minimalista (1.000 a 1.400 €/m). Regular FIRE mantém o padrão de vida médio atual (2.000 a 2.500 €/m). Fat FIRE é voltado a um padrão de vida luxuoso e viagens frequentes (acima de 4.000 €/m)."}, "faq_q3": {"it": "Come si calcola il Numero FIRE?", "en": "How is the FIRE Number calculated?", "es": "¿Cómo se calcula el Número FIRE?", "fr": "Comment calcule-t-on le Montant FIRE ?", "de": "Wie berechnet sich die FIRE-Zahl?", "pt": "Como é calculado o Número FIRE?"}, "faq_a3": {"it": "La formula matematica universale è: Spese Annue ÷ Tasso di Prelievo (SWR). Se applichi la regola classica del 4% (0.04), equivale semplicemente a moltiplicare le tue spese annuali per 25. Ad esempio: 20.000 € di spese all'anno × 25 = 500.000 € di patrimonio target.", "en": "The formula is: Annual Expenses ÷ Safe Withdrawal Rate. Using the classic 4% rule (0.04), this simply means multiplying your annual living expenses by 25. Example: ,000/year × 25 = ,000 target nest egg.", "es": "La fórmula es: Gastos Anuales ÷ Tasa de Retiro. Con la regla del 4%, equivale a multiplicar tus gastos anuales por 25. Ejemplo: 24.000 €/año × 25 = 600.000 € de capital objetivo.", "fr": "La formule est : Dépenses Annuelles ÷ Taux de Retrait. Avec la règle des 4%, cela revient à multiplier vos dépenses annuelles par 25. Exemple : 24 000 €/an × 25 = 600 000 € de capital nécessaire.", "de": "Die Formel lautet: Jahresausgaben ÷ Entnahmerate. Bei der 4%-Regel multipliziert man die jährlichen Ausgaben einfach mit 25. Beispiel: 24.000 € Jahresausgaben × 25 = 600.000 € Zielvermögen.", "pt": "A fórmula é: Despesas Anuais ÷ Taxa de Saque. Com a regra dos 4%, basta multiplicar seus gastos anuais por 25. Exemplo: 24.000 €/ano × 25 = 600.000 € de patrimônio alvo."}};
+        let currentLang = 'it';
+        let currentCurrency = '€';
+
+        function setCurrency(curr) {
+            currentCurrency = curr;
+            document.querySelectorAll('.currSymbol').forEach(el => el.textContent = curr);
+            document.querySelectorAll('.currLabel').forEach(el => {
+                el.textContent = el.textContent.includes('/mese') ? `${curr}/mese` : curr;
+            });
+
+            const eurBtn = document.getElementById('currEurBtn');
+            const usdBtn = document.getElementById('currUsdBtn');
+            const gbpBtn = document.getElementById('currGbpBtn');
+
+            [eurBtn, usdBtn, gbpBtn].forEach(b => b.className = 'px-3 py-1.5 rounded-lg hover:text-slate-900 transition');
+            if (curr === '€') eurBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+            if (curr === '$') usdBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+            if (curr === '£') gbpBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+
+            calculateFire();
+        }
+
+        function applyPreset(type) {
+            if (type === 'lean') {
+                document.getElementById('monthlyExpenseInput').value = 1200;
+                document.getElementById('monthlySavingsInput').value = 600;
+            } else if (type === 'regular') {
+                document.getElementById('monthlyExpenseInput').value = 2200;
+                document.getElementById('monthlySavingsInput').value = 900;
+            } else if (type === 'fat') {
+                document.getElementById('monthlyExpenseInput').value = 4500;
+                document.getElementById('monthlySavingsInput').value = 2000;
+            }
+            calculateFire();
+        }
+
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('it-IT', { maximumFractionDigits: 0 }).format(amount);
+        }
+
+        function calculateFire() {
+            const monthlyExpense = parseFloat(document.getElementById('monthlyExpenseInput').value) || 0;
+            const currentSavings = parseFloat(document.getElementById('currentSavingsInput').value) || 0;
+            const monthlySavings = parseFloat(document.getElementById('monthlySavingsInput').value) || 0;
+            const annualReturnPct = parseFloat(document.getElementById('returnRateInput').value) || 7.0;
+            const swrPct = parseFloat(document.getElementById('swrInput').value) || 4.0;
+
+            const annualExpense = monthlyExpense * 12;
+            document.getElementById('annualExpenseTag').textContent = `${formatMoney(annualExpense)} ${currentCurrency}/anno`;
+
+            const multiplier = swrPct > 0 ? (100 / swrPct) : 25;
+            document.getElementById('multiplierTag').textContent = `${multiplier.toFixed(1)}×`;
+
+            // FIRE Number = Annual Expenses / SWR
+            const fireNumber = swrPct > 0 ? (annualExpense / (swrPct / 100)) : 0;
+            document.getElementById('resFireNumber').textContent = formatMoney(fireNumber);
+            document.getElementById('resAnnualPassive').textContent = formatMoney(annualExpense);
+
+            const progressPct = fireNumber > 0 ? Math.min(100, (currentSavings / fireNumber) * 100) : 0;
+            document.getElementById('resProgressPct').textContent = progressPct.toFixed(1);
+
+            // Simulation of month-by-month compound growth
+            const rMonth = Math.pow(1 + (annualReturnPct / 100), 1 / 12) - 1;
+            let balance = currentSavings;
+            let totalDeposited = currentSavings;
+            let months = 0;
+            const maxMonths = 12 * 70; // 70 years maximum cap
+
+            let trajectory = [{
+                year: 0,
+                balance: currentSavings,
+                deposited: totalDeposited,
+                interest: 0
+            }];
+
+            let reachedMonth = null;
+            if (balance >= fireNumber) {
+                reachedMonth = 0;
+            }
+
+            while (months < maxMonths && balance < fireNumber) {
+                months++;
+                balance = balance * (1 + rMonth) + monthlySavings;
+                totalDeposited += monthlySavings;
+
+                if (balance >= fireNumber && reachedMonth === null) {
+                    reachedMonth = months;
+                }
+
+                if (months % 12 === 0 || balance >= fireNumber) {
+                    trajectory.push({
+                        year: (months / 12).toFixed(1),
+                        balance: Math.round(balance),
+                        deposited: Math.round(totalDeposited),
+                        interest: Math.round(Math.max(0, balance - totalDeposited))
+                    });
+                }
+            }
+
+            // Render Years left
+            if (reachedMonth === 0) {
+                document.getElementById('resYearsLeft').textContent = '0';
+                document.getElementById('resYearsUnit').textContent = '🎉 GIÀ LIBERO!';
+            } else if (reachedMonth !== null) {
+                const yrs = Math.floor(reachedMonth / 12);
+                const mos = reachedMonth % 12;
+                document.getElementById('resYearsLeft').textContent = (reachedMonth / 12).toFixed(1);
+                document.getElementById('resYearsUnit').textContent = `anni (${yrs}a ${mos}m)`;
+            } else {
+                document.getElementById('resYearsLeft').textContent = '> 70';
+                document.getElementById('resYearsUnit').textContent = 'anni';
+            }
+
+            document.getElementById('milestoneTargetText').textContent = `${formatMoney(fireNumber)} ${currentCurrency}`;
+
+            renderChart(trajectory, fireNumber);
+            renderTable(trajectory);
+        }
+
+        function renderChart(trajectory, fireNumber) {
+            const svg = document.getElementById('fireTrajectorySvg');
+            if (trajectory.length === 0) return;
+
+            const width = 600;
+            const height = 240;
+            const padL = 60;
+            const padR = 20;
+            const padT = 25;
+            const padB = 30;
+
+            const maxVal = Math.max(fireNumber * 1.15, trajectory[trajectory.length - 1].balance * 1.05);
+            const maxYears = Math.max(1, parseFloat(trajectory[trajectory.length - 1].year));
+
+            const scaleX = (yr) => padL + (yr / maxYears) * (width - padL - padR);
+            const scaleY = (val) => height - padB - (val / maxVal) * (height - padT - padB);
+
+            // Generate Path points
+            let dBalance = '';
+            let dDeposited = '';
+            let dAreaInterest = '';
+
+            trajectory.forEach((pt, i) => {
+                const x = scaleX(parseFloat(pt.year));
+                const yBal = scaleY(pt.balance);
+                const yDep = scaleY(pt.deposited);
+
+                if (i === 0) {
+                    dBalance = `M ${x} ${yBal}`;
+                    dDeposited = `M ${x} ${yDep}`;
+                    dAreaInterest = `M ${x} ${yBal}`;
+                } else {
+                    dBalance += ` L ${x} ${yBal}`;
+                    dDeposited += ` L ${x} ${yDep}`;
+                }
+            });
+
+            // Area path for compound interest (between balance and deposited)
+            let areaPath = dBalance;
+            for (let i = trajectory.length - 1; i >= 0; i--) {
+                const x = scaleX(parseFloat(trajectory[i].year));
+                const yDep = scaleY(trajectory[i].deposited);
+                areaPath += ` L ${x} ${yDep}`;
+            }
+            areaPath += ' Z';
+
+            // Base deposited area
+            let depAreaPath = dDeposited;
+            depAreaPath += ` L ${scaleX(maxYears)} ${scaleY(0)} L ${scaleX(0)} ${scaleY(0)} Z`;
+
+            const yFireLine = scaleY(fireNumber);
+
+            svg.innerHTML = `
+                <!-- Background Grid -->
+                <line x1="${padL}" y1="${scaleY(0)}" x2="${width - padR}" y2="${scaleY(0)}" stroke="#cbd5e1" stroke-width="1.5" />
+                <line x1="${padL}" y1="${scaleY(maxVal * 0.5)}" x2="${width - padR}" y2="${scaleY(maxVal * 0.5)}" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="4" />
+                
+                <!-- Target FIRE Line -->
+                <line x1="${padL}" y1="${yFireLine}" x2="${width - padR}" y2="${yFireLine}" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 3" />
+                <text x="${padL + 8}" y="${yFireLine - 6}" fill="#d97706" font-size="10" font-family="JetBrains Mono" font-weight="bold">Target FIRE: ${formatMoney(fireNumber)} ${currentCurrency}</text>
+
+                <!-- Deposited Area (Gray) -->
+                <path d="${depAreaPath}" fill="#94a3b8" fill-opacity="0.25" />
+
+                <!-- Compound Interest Area (Emerald) -->
+                <path d="${areaPath}" fill="#10b981" fill-opacity="0.35" />
+
+                <!-- Lines -->
+                <path d="${dDeposited}" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="3 3" />
+                <path d="${dBalance}" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" />
+
+                <!-- Axes Labels -->
+                <text x="${padL - 6}" y="${scaleY(0)}" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">0</text>
+                <text x="${padL - 6}" y="${scaleY(maxVal * 0.5)}" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">${formatMoney(maxVal * 0.5)}</text>
+                <text x="${padL - 6}" y="${scaleY(maxVal)}" fill="#64748b" font-size="9" text-anchor="end" font-family="JetBrains Mono">${formatMoney(maxVal)}</text>
+
+                <text x="${scaleX(0)}" y="${height - 10}" fill="#64748b" font-size="10" text-anchor="middle" font-family="JetBrains Mono">Oggi</text>
+                <text x="${scaleX(maxYears)}" y="${height - 10}" fill="#64748b" font-size="10" text-anchor="middle" font-family="JetBrains Mono">${maxYears}a</text>
+            `;
+        }
+
+        function renderTable(trajectory) {
+            const tbody = document.getElementById('fireTableBody');
+            tbody.innerHTML = '';
+
+            trajectory.forEach(pt => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition';
+                tr.innerHTML = `
+                    <td class="py-2 text-slate-800 font-bold">${pt.year === 0 ? 'Oggi' : 'Anno ' + pt.year}</td>
+                    <td class="py-2 text-slate-600">${formatMoney(pt.deposited)} ${currentCurrency}</td>
+                    <td class="py-2 text-emerald-600 font-semibold">+${formatMoney(pt.interest)} ${currentCurrency}</td>
+                    <td class="py-2 text-right font-extrabold text-slate-900">${formatMoney(pt.balance)} ${currentCurrency}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateTexts(lang) {
+            currentLang = lang;
+            const t = (key) => TRANSLATIONS[key]?.[lang] || TRANSLATIONS[key]?.['it'] || '';
+
+            document.title = t('meta_title');
+            document.querySelector('meta[name="description"]').setAttribute('content', t('meta_desc'));
+
+            document.getElementById('mainTitle').textContent = t('title');
+            document.getElementById('mainSubtitle').textContent = t('subtitle');
+            document.getElementById('sectionInputsTitle').textContent = t('section_inputs');
+            document.getElementById('monthlyExpenseLabel').textContent = t('monthly_expense_label');
+            document.getElementById('currentSavingsLabel').textContent = t('current_savings_label');
+            document.getElementById('monthlySavingsLabel').textContent = t('monthly_savings_label');
+            document.getElementById('returnRateLabel').textContent = t('return_rate_label');
+            document.getElementById('swrLabel').textContent = t('swr_label');
+            document.getElementById('swrHint').textContent = t('swr_hint');
+
+            document.getElementById('presetTitleLabel').innerHTML = `
+                <svg class="w-4 h-4 text-emerald-600 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                ${t('presets_title')}
+            `;
+            document.getElementById('presetLeanText').textContent = t('preset_lean');
+            document.getElementById('presetRegularText').textContent = t('preset_regular');
+            document.getElementById('presetFatText').textContent = t('preset_fat');
+
+            document.getElementById('kpiFireNumberLabel').textContent = t('kpi_fire_number');
+            document.getElementById('kpiYearsLeftLabel').textContent = t('kpi_years_left');
+            document.getElementById('kpiProgressLabel').textContent = t('kpi_progress');
+            document.getElementById('kpiAnnualIncomeLabel').textContent = t('kpi_annual_income');
+            document.getElementById('chartTitle').textContent = t('chart_title');
+            document.getElementById('legendDepositsLabel').textContent = t('legend_deposits');
+            document.getElementById('legendInterestLabel').textContent = t('legend_interest');
+            document.getElementById('legendFireLineLabel').textContent = t('legend_fire_line');
+            document.getElementById('breakdownTitle').textContent = t('breakdown_title');
+
+            document.getElementById('faqTitle').textContent = t('faq_title');
+            document.getElementById('faqQ1').textContent = t('faq_q1');
+            document.getElementById('faqA1').textContent = t('faq_a1');
+            document.getElementById('faqQ2').textContent = t('faq_q2');
+            document.getElementById('faqA2').textContent = t('faq_a2');
+            document.getElementById('faqQ3').textContent = t('faq_q3');
+            document.getElementById('faqA3').textContent = t('faq_a3');
+
+            calculateFire();
+        }
+
+        window.addEventListener('omni_lang_change', (e) => {
+            if (e.detail && e.detail.lang) updateTexts(e.detail.lang);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('omni_pref_lang') || 'it';
+            updateTexts(savedLang);
+            calculateFire();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+{
+  "meta_title": {
+    "it": "FIRE Calculator - Calcolo Rendita Passiva & Libertà Finanziaria (Regola del 4%)",
+    "en": "FIRE Calculator - Financial Independence & Early Retirement (4% Rule)",
+    "es": "Calculadora FIRE - Libertad Financiera y Jubilación Anticipada (Regla del 4%)",
+    "fr": "Calculateur FIRE - Indépendance Financière et Rente Passive (Règle des 4%)",
+    "de": "FIRE Rechner - Finanzielle Freiheit & Vorruhestand (4% Regel)",
+    "pt": "Calculadora FIRE - Independência Financeira e Renda Passiva (Regra dos 4%)"
+  },
+  "meta_desc": {
+    "it": "Calcola in quanti anni puoi raggiungere la libertà finanziaria e vivere di rendita con la Regola del 4% (Trinity Study). Simula Lean, Regular e Fat FIRE con interesse composto.",
+    "en": "Calculate how many years until you achieve financial independence and live off passive income with the 4% Rule. Simulate Lean, Regular, and Fat FIRE with compound interest.",
+    "es": "Calcula en cuántos años alcanzarás la libertad financiera con la Regla del 4%. Simula Lean, Regular y Fat FIRE con interés compuesto.",
+    "fr": "Calculez en combien d'années vous pouvez atteindre l'indépendance financière avec la règle des 4%. Simulez Lean, Regular et Fat FIRE.",
+    "de": "Berechnen Sie, in wie vielen Jahren Sie finanzielle Freiheit und Vorruhestand mit der 4%-Regel erreichen. Simulieren Sie Lean, Regular und Fat FIRE.",
+    "pt": "Calcule em quantos anos pode alcançar a independência financeira com a Regra dos 4%. Simule Lean, Regular e Fat FIRE com juros compostos."
+  },
+  "title": {
+    "it": "Calcolatore FIRE & Rendita Passiva",
+    "en": "FIRE & Passive Income Calculator",
+    "es": "Calculadora FIRE y Renta Pasiva",
+    "fr": "Calculateur FIRE & Rente Passive",
+    "de": "FIRE-Rechner & Finanzielle Freiheit",
+    "pt": "Calculadora FIRE e Renda Passiva"
+  },
+  "subtitle": {
+    "it": "Scopri tra quanti anni puoi smettere di lavorare e vivere dei rendimenti del tuo patrimonio con la Regola del 4% (Trinity Study).",
+    "en": "Find out how many years until you can retire early and live off investment returns using the 4% Safe Withdrawal Rule.",
+    "es": "Descubre en cuántos años puedes jubilarte y vivir de tus inversiones usando la regla de retiro seguro del 4%.",
+    "fr": "Découvrez dans combien d'années vous pouvez vivre de vos rentes grâce à la règle des 4% de retrait sécurisé.",
+    "de": "Ermitteln Sie, wann Sie von Kapitalerträgen leben können mit der wissenschaftlichen 4%-Entnahmerate.",
+    "pt": "Descubra em quantos anos pode viver de rendimentos passivos usando a regra de saque seguro de 4%."
+  },
+  "section_inputs": {
+    "it": "1. Parametri di Risparmio & Spese",
+    "en": "1. Savings & Expense Parameters",
+    "es": "1. Parámetros de Ahorro y Gastos",
+    "fr": "1. Paramètres d'Épargne et Dépenses",
+    "de": "1. Spar- und Ausgaben-Parameter",
+    "pt": "1. Parâmetros de Poupança e Despesas"
+  },
+  "monthly_expense_label": {
+    "it": "Spese Mensili Desiderate da Rendita",
+    "en": "Target Monthly Expenses in Retirement",
+    "es": "Gastos Mensuales Deseados de Renta",
+    "fr": "Dépenses Mensuelles Cibles à la Rente",
+    "de": "Gewünschte monatliche Ausgaben",
+    "pt": "Despesas Mensais Desejadas"
+  },
+  "current_savings_label": {
+    "it": "Capitale Attuale Risparmiato / Investito",
+    "en": "Current Portfolio Net Worth",
+    "es": "Capital Actual Ahorrado / Invertido",
+    "fr": "Patrimoine Actuel Investi",
+    "de": "Aktuelles Anlagevermögen",
+    "pt": "Patrimônio Atual Investido"
+  },
+  "monthly_savings_label": {
+    "it": "Risparmio Mensile Aggiuntivo",
+    "en": "Monthly New Savings / Contribution",
+    "es": "Ahorro Mensual Adicional",
+    "fr": "Épargne Mensuelle Supplémentaire",
+    "de": "Monatliche Sparrate",
+    "pt": "Aporte Mensal Adicional"
+  },
+  "return_rate_label": {
+    "it": "Rendimento Medio Annuo Atteso (%)",
+    "en": "Expected Annual Investment Return (%)",
+    "es": "Rendimiento Anual Esperado (%)",
+    "fr": "Rendement Annuel Moyen Espéré (%)",
+    "de": "Erwartete jährliche Rendite (%)",
+    "pt": "Rentabilidade Anual Esperada (%)"
+  },
+  "swr_label": {
+    "it": "Tasso di Prelievo Sicuro (SWR %)",
+    "en": "Safe Withdrawal Rate (SWR %)",
+    "es": "Tasa de Retiro Seguro (SWR %)",
+    "fr": "Taux de Retrait Sûr (SWR %)",
+    "de": "Sichere Entnahmerate (SWR %)",
+    "pt": "Taxa de Saque Seguro (SWR %)"
+  },
+  "swr_hint": {
+    "it": "4.0% = Regola classica Trinity Study. 3.5% = Approccio conservativo a lunghissimo termine.",
+    "en": "4.0% = Standard Trinity Study rule. 3.5% = Conservative horizon (>35 years).",
+    "es": "4.0% = Regla clásica Trinity Study. 3.5% = Enfoque conservador a muy largo plazo.",
+    "fr": "4,0% = Règle classique Trinity Study. 3,5% = Approche conservatrice long terme.",
+    "de": "4,0% = Klassische Trinity-Studie. 3,5% = Konservativer Ansatz für sehr lange Zeiträume.",
+    "pt": "4.0% = Regra clássica Trinity Study. 3.5% = Abordagem conservadora a longo prazo."
+  },
+  "presets_title": {
+    "it": "Stili di Vita FIRE:",
+    "en": "FIRE Lifestyles:",
+    "es": "Estilos FIRE:",
+    "fr": "Profils FIRE :",
+    "de": "FIRE-Lebensstile:",
+    "pt": "Estilos FIRE:"
+  },
+  "preset_lean": {
+    "it": "Lean FIRE (1.200 €/m)",
+    "en": "Lean FIRE (,200/mo)",
+    "es": "Lean FIRE (1.200 €/m)",
+    "fr": "Lean FIRE (1 200 €/m)",
+    "de": "Lean FIRE (1.200 €/M)",
+    "pt": "Lean FIRE (1.200 €/m)"
+  },
+  "preset_regular": {
+    "it": "Regular FIRE (2.200 €/m)",
+    "en": "Regular FIRE (,200/mo)",
+    "es": "Regular FIRE (2.200 €/m)",
+    "fr": "Regular FIRE (2 200 €/m)",
+    "de": "Regular FIRE (2.200 €/M)",
+    "pt": "Regular FIRE (2.200 €/m)"
+  },
+  "preset_fat": {
+    "it": "Fat FIRE (4.500 €/m)",
+    "en": "Fat FIRE (,500/mo)",
+    "es": "Fat FIRE (4.500 €/m)",
+    "fr": "Fat FIRE (4 500 €/m)",
+    "de": "Fat FIRE (4.500 €/M)",
+    "pt": "Fat FIRE (4.500 €/m)"
+  },
+  "kpi_fire_number": {
+    "it": "Il tuo Numero FIRE",
+    "en": "Your FIRE Number",
+    "es": "Tu Número FIRE",
+    "fr": "Votre Montant FIRE",
+    "de": "Ihre FIRE-Zielsumme",
+    "pt": "Seu Número FIRE"
+  },
+  "kpi_years_left": {
+    "it": "Tempo alla Libertà",
+    "en": "Years to Freedom",
+    "es": "Años para la Libertad",
+    "fr": "Années Restantes",
+    "de": "Jahre bis zur Freiheit",
+    "pt": "Tempo até a Liberdade"
+  },
+  "kpi_progress": {
+    "it": "Progresso Patrimonio",
+    "en": "Target Progress",
+    "es": "Progreso del Objetivo",
+    "fr": "Progression Patrimoine",
+    "de": "Vermögensfortschritt",
+    "pt": "Progresso do Objetivo"
+  },
+  "kpi_annual_income": {
+    "it": "Rendita Annua Generata",
+    "en": "Passive Annual Income",
+    "es": "Renta Anual Pasiva",
+    "fr": "Rente Annuelle Nette",
+    "de": "Jährliche Entnahme",
+    "pt": "Renda Anual Passiva"
+  },
+  "chart_title": {
+    "it": "Traiettoria di Accumulo & Interesse Composto nel Tempo",
+    "en": "Wealth Accumulation & Compound Interest Trajectory",
+    "es": "Trayectoria de Acumulación e Interés Compuesto",
+    "fr": "Trajectoire d'Accumulation et Intérêts Composés",
+    "de": "Vermögensaufbau & Zinseszins-Verlauf",
+    "pt": "Trajetória de Acumulação e Juros Compostos"
+  },
+  "legend_deposits": {
+    "it": "Capitale Versato di Tasca Tua",
+    "en": "Your Actual Deposits",
+    "es": "Capital Aportado de Tu Bolsillo",
+    "fr": "Épargne Directe Versée",
+    "de": "Eigenes eingezahltes Kapital",
+    "pt": "Aportes Diretos"
+  },
+  "legend_interest": {
+    "it": "Rendimento da Interesse Composto",
+    "en": "Compound Interest Gains",
+    "es": "Rendimiento por Interés Compuesto",
+    "fr": "Plus-values d'Intérêts Composés",
+    "de": "Zinseszins-Gewinn",
+    "pt": "Ganhos de Juros Compostos"
+  },
+  "legend_fire_line": {
+    "it": "Soglia Obiettivo FIRE",
+    "en": "FIRE Target Threshold",
+    "es": "Umbral Objetivo FIRE",
+    "fr": "Seuil Objectif FIRE",
+    "de": "FIRE-Ziellinie",
+    "pt": "Meta FIRE"
+  },
+  "breakdown_title": {
+    "it": "Proiezione Anno per Anno",
+    "en": "Year-by-Year Growth Table",
+    "es": "Proyección Año a Año",
+    "fr": "Projection Année par Année",
+    "de": "Jahr-für-Jahr Projektionstabelle",
+    "pt": "Projeção Ano a Ano"
+  },
+  "faq_title": {
+    "it": "Domande Frequenti sul Movimento FIRE e la Libertà Finanziaria",
+    "en": "Frequently Asked Questions about FIRE & Financial Independence",
+    "es": "Preguntas Frecuentes sobre el Movimiento FIRE y Libertad Financiera",
+    "fr": "Foire Aux Questions sur le Mouvement FIRE et les Rentes",
+    "de": "Häufige Fragen zu FIRE und Finanzieller Freiheit",
+    "pt": "Perguntas Frequentes sobre o Movimento FIRE e Renda Passiva"
+  },
+  "faq_q1": {
+    "it": "Cos'è il movimento FIRE e come funziona la Regola del 4%?",
+    "en": "What is the FIRE movement and how does the 4% rule work?",
+    "es": "¿Qué es el movimiento FIRE y cómo funciona la regla del 4%?",
+    "fr": "Qu'est-ce que le mouvement FIRE et la règle des 4% ?",
+    "de": "Was ist die FIRE-Bewegung und wie funktioniert die 4%-Regel?",
+    "pt": "O que é o movimento FIRE e como funciona a Regra dos 4%?"
+  },
+  "faq_a1": {
+    "it": "FIRE è l'acronimo di \"Financial Independence, Retire Early\" (Indipendenza Finanziaria, Pensione Anticipata). La Regola del 4%, derivata dal celebre studio accademico Trinity Study dell'Università Trinity (Texas), dimostra che prelevando annualmente non più del 4% da un portafoglio diversificato di azioni e obbligazioni, il capitale ha una probabilità superiore al 95% di durare per almeno 30 anni senza mai esaurirsi.",
+    "en": "FIRE stands for Financial Independence, Retire Early. The 4% Rule stems from the landmark Trinity Study, which proved that withdrawing 4% annually from a balanced portfolio (adjusted for inflation) had over a 95% historical success rate of never depleting over 30+ years.",
+    "es": "FIRE significa Independencia Financiera, Jubilación Temprana. La Regla del 4% proviene del estudio Trinity Study: retirando un 4% anual de una cartera diversificada ajustada a la inflación, el capital tiene un 95%+ de probabilidad de no agotarse jamás en 30 años o más.",
+    "fr": "FIRE signifie Financial Independence, Retire Early. La règle des 4% est issue de l'étude académique Trinity Study : en retirant 4% par an d'un portefeuille diversifié, vous avez plus de 95% de chances de ne jamais épuiser votre capital sur 30 ans.",
+    "de": "FIRE steht für Financial Independence, Retire Early. Die 4%-Regel basiert auf der Trinity-Studie: Wer jährlich 4% seines Portfolios entnimmt, hat eine über 95-prozentige Chance, dass das Vermögen über mehr als 30 Jahre hinweg niemals aufgebraucht wird.",
+    "pt": "FIRE significa Independência Financeira, Aposentadoria Precoce. A Regra dos 4% deriva do Trinity Study: retirando 4% ao ano de um portfólio diversificado, a probabilidade do capital durar 30 anos ou mais é superior a 95%."
+  },
+  "faq_q2": {
+    "it": "Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?",
+    "en": "What is the difference between Lean FIRE, Regular FIRE, and Fat FIRE?",
+    "es": "¿Cuál es la diferencia entre Lean FIRE, Regular FIRE y Fat FIRE?",
+    "fr": "Quelle est la différence entre Lean FIRE, Regular FIRE et Fat FIRE ?",
+    "de": "Was unterscheidet Lean FIRE, Regular FIRE und Fat FIRE?",
+    "pt": "Qual a diferença entre Lean FIRE, Regular FIRE e Fat FIRE?"
+  },
+  "faq_a2": {
+    "it": "Lean FIRE punta a uno stile di vita frugale con spese coperte al minimo (es. 1.000 - 1.400 €/mese), richiedendo un capitale accumulato più piccolo. Regular FIRE garantisce il mantenimento del tenore di vita medio attuale (2.000 - 2.500 €/mese). Fat FIRE è pensato per chi desidera una pensione anticipata di lusso con viaggi frequenti e spese elevate (oltre 4.000 - 5.000 €/mese).",
+    "en": "Lean FIRE targets a minimalist lifestyle with lean living costs (,000-,500/mo), requiring a much smaller nest egg. Regular FIRE maintains an average comfortable lifestyle (,000-,000/mo). Fat FIRE is for abundant lifestyles with luxury and extensive travel (,500+/mo).",
+    "es": "Lean FIRE busca un estilo de vida minimalista con gastos bajos (1.000-1.400 €/m). Regular FIRE mantiene un nivel de vida medio cómodo (2.000-2.500 €/m). Fat FIRE está diseñado para un retiro holgado y viajes frecuentes (más de 4.000 €/m).",
+    "fr": "Lean FIRE vise un mode de vie frugal (1 000 - 1 400 €/m). Regular FIRE permet de maintenir un confort de vie moyen (2 000 - 2 500 €/m). Fat FIRE s'adresse à ceux qui veulent voyager et vivre sans contrainte budgétaire (4 000 €/m+).",
+    "de": "Lean FIRE bedeutet einen genügsamen Lebensstil mit niedrigen Ausgaben (1.000-1.400 €/M). Regular FIRE deckt den gewohnten Lebensstandard ab (2.000-2.500 €/M). Fat FIRE ermöglicht einen gehobenen Lebensstil mit Luxus und Reisen (ab 4.000 €/M).",
+    "pt": "Lean FIRE foca em estilo minimalista (1.000 a 1.400 €/m). Regular FIRE mantém o padrão de vida médio atual (2.000 a 2.500 €/m). Fat FIRE é voltado a um padrão de vida luxuoso e viagens frequentes (acima de 4.000 €/m)."
+  },
+  "faq_q3": {
+    "it": "Come si calcola il Numero FIRE?",
+    "en": "How is the FIRE Number calculated?",
+    "es": "¿Cómo se calcula el Número FIRE?",
+    "fr": "Comment calcule-t-on le Montant FIRE ?",
+    "de": "Wie berechnet sich die FIRE-Zahl?",
+    "pt": "Como é calculado o Número FIRE?"
+  },
+  "faq_a3": {
+    "it": "La formula matematica universale è: Spese Annue ÷ Tasso di Prelievo (SWR). Se applichi la regola classica del 4% (0.04), equivale semplicemente a moltiplicare le tue spese annuali per 25. Ad esempio: 20.000 € di spese all'anno × 25 = 500.000 € di patrimonio target.",
+    "en": "The formula is: Annual Expenses ÷ Safe Withdrawal Rate. Using the classic 4% rule (0.04), this simply means multiplying your annual living expenses by 25. Example: ,000/year × 25 = ,000 target nest egg.",
+    "es": "La fórmula es: Gastos Anuales ÷ Tasa de Retiro. Con la regla del 4%, equivale a multiplicar tus gastos anuales por 25. Ejemplo: 24.000 €/año × 25 = 600.000 € de capital objetivo.",
+    "fr": "La formule est : Dépenses Annuelles ÷ Taux de Retrait. Avec la règle des 4%, cela revient à multiplier vos dépenses annuelles par 25. Exemple : 24 000 €/an × 25 = 600 000 € de capital nécessaire.",
+    "de": "Die Formel lautet: Jahresausgaben ÷ Entnahmerate. Bei der 4%-Regel multipliziert man die jährlichen Ausgaben einfach mit 25. Beispiel: 24.000 € Jahresausgaben × 25 = 600.000 € Zielvermögen.",
+    "pt": "A fórmula é: Despesas Anuais ÷ Taxa de Saque. Com a regra dos 4%, basta multiplicar seus gastos anuais por 25. Exemplo: 24.000 €/ano × 25 = 600.000 € de patrimônio alvo."
+  }
+}

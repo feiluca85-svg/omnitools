@@ -22,7 +22,8 @@ TOOL_ICONS = {
     
     "mutuo": """<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>""",
     "pac": """<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>""",
-    "margine": """<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>"""
+    "margine": """<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>""",
+    "fire": """<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>"""
 }
 
 TOOLS = [
@@ -151,6 +152,15 @@ TOOLS = [
         "desc": "Margine di Profitto vs Ricarico & Prezzo COGS",
         "url": "/margine",
         "badge": "Markup / IVA"
+    },
+    {
+        "id": "fire",
+        "category": "OmniFinance",
+        "category_label": "Finanza & Business",
+        "name": "FIRE & Rendita",
+        "desc": "Libertà Finanziaria & Regola del 4%",
+        "url": "/fire",
+        "badge": "Trinity Study"
     }
 ]
 
@@ -235,7 +245,7 @@ def render_chrome_tabs_strip(current_id="home"):
                 <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                         <span>Scegli Calcolatore</span>
-                        <span class="text-blue-600 font-bold font-mono">14 Tool</span>
+                        <span class="text-blue-600 font-bold font-mono">15 Tool</span>
                     </div>
 
                     <!-- Category: OmniBuilding -->
@@ -257,7 +267,7 @@ def render_chrome_tabs_strip(current_id="home"):
                     <!-- Category: OmniFinance -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance (4)
                         </div>
                         {f_tools}
                     </div>
@@ -343,7 +353,7 @@ def render_suite_header(current_id):
                     <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                             <span>Scegli Calcolatore</span>
-                            <span>14 Strumenti</span>
+                            <span>15 Strumenti</span>
                         </div>
 
                         <div class="space-y-0.5">
@@ -362,7 +372,7 @@ def render_suite_header(current_id):
 
                         <div class="space-y-0.5 pt-1 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance (4)
                             </div>
                             {finance_tools_html}
                         </div>
@@ -478,7 +488,8 @@ document.addEventListener('click', (e) => {
         'resa': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
         'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
         'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
-        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`
+        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
+        'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
     };
 
     const TOOLS_MAP = {
@@ -495,7 +506,8 @@ document.addEventListener('click', (e) => {
         'resa': { name: 'ResaCarta', url: '/resa', color: 'bg-rose-700' },
         'mutuo': { name: 'MutuoFacile', url: '/mutuo', color: 'bg-emerald-600' },
         'pac': { name: 'Interesse', url: '/pac', color: 'bg-emerald-600' },
-        'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' }
+        'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' },
+        'fire': { name: 'FIRE & Rendita', url: '/fire', color: 'bg-emerald-600' }
     };
 
     const TABS_KEY = 'omni_open_tabs_v1';

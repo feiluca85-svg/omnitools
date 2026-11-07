@@ -120,6 +120,22 @@
     {
       "source": "/sfrido",
       "destination": "/taglio"
+    },
+    {
+      "source": "/fire",
+      "destination": "/fire"
+    },
+    {
+      "source": "/rendita",
+      "destination": "/fire"
+    },
+    {
+      "source": "/libertafinanziaria",
+      "destination": "/fire"
+    },
+    {
+      "source": "/trinity",
+      "destination": "/fire"
     }
   ]
 }
