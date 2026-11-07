@@ -115,7 +115,7 @@ html_content = f"""<!DOCTYPE html>
 
     {render_suite_header('margine')}
 
-    <main class="max-w-6xl mx-auto px-3 sm:px-4 py-5 flex-1 w-full space-y-6">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
 
         <!-- Print-only official header -->
         <div class="print-only mb-6 border-b-2 border-slate-900 pb-3">

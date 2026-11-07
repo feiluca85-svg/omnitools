@@ -281,7 +281,7 @@ def render_chrome_tabs_strip(current_id="home"):
 def render_suite_header(current_id):
     # Match the exact main container width of the current tool:
     # OmniFinance tools (mutuo, pac, margine) use max-w-6xl, while OmniBuilding & OmniGraph use max-w-5xl
-    container_max_w = "max-w-6xl" if current_id in ["mutuo", "pac", "margine"] else "max-w-5xl"
+    container_max_w = "max-w-5xl"
     current_tool = next((t for t in TOOLS if t["id"] == current_id), None)
     if not current_tool:
         current_tool = {

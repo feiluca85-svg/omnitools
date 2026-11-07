@@ -271,6 +271,22 @@
     "de": "Ja, selbstverständlich! Jedes linienförmige Werkstück (Holzleisten, Kabelkanäle, Rohre, Alu- und Stahlprofile, Sockelleisten) folgt den exakt gleichen mathematischen 1D-Gesetzen.",
     "pt": "Com certeza! Qualquer material linear contínuo (ripas de madeira, canaletas elétricas, canos de esgoto, perfis metálicos, rodapés e sancas) obedece às mesmas regras da geometria 1D."
   },
+  "faq_q4": {
+    "it": "Come gestire lo sfrido finale residuo per non sprecare materiale nei progetti futuri?",
+    "en": "How should offcuts and leftovers be stored or reused for future jobs?",
+    "es": "¿Cómo gestionar los retales sobrantes para aprovecharlos en proyectos futuros?",
+    "fr": "Comment gérer et réutiliser les chutes pour de futurs chantiers ?",
+    "de": "Wie lassen sich Reststücke und Verschnitt sinnvoll für spätere Projekte lagern?",
+    "pt": "Como aproveitar as sobras de corte para não desperdiçar material em projetos futuros?"
+  },
+  "faq_a4": {
+    "it": "Lo schema visivo colorato evidenzia in grigio chiaro lo sfrido esatto di ogni barra. Gli spezzoni riutilizzabili (es. oltre 40-50 cm) possono essere etichettati e conservati in rastrelliera come 'scorte corte'. Nei progetti successivi basterà inserire la loro lunghezza effettiva come barra master per utilizzarli prioritariamente prima di intaccare barre nuove intere.",
+    "en": "The visual diagram highlights exact offcuts in light gray. Useful offcuts (e.g. over 40-50 cm or 16-20 inches) can be labeled and stored on an offcut rack. In future projects, simply input their custom length as stock bars to use them before cutting into fresh new stock.",
+    "es": "El diagrama resalta el sobrante exacto de cada barra. Los trozos aprovechables (por ejemplo de más de 40-50 cm) pueden guardarse etiquetados. En próximos proyectos, basta con introducirlos como barras madre disponibles para consumirlos antes de cortar material nuevo.",
+    "fr": "Le schéma visuel indique clairement la longueur restante de chaque barre. Les chutes exploitables (ex. plus de 40-50 cm) peuvent être étiquetées et rangées. Lors de futurs travaux, vous pouvez renseigner leur taille exacte comme barre brute pour les recycler en priorité.",
+    "de": "Die Farbgrafik zeigt den Verschnitt jedes Rohlings transparent an. Längere Reststücke (z.B. über 40-50 cm) sollten beschriftet im Reste-Regal gelagert werden. Bei künftigen Projekten können diese Maße einfach als verfügbare Rohlinge eingegeben werden, um Neumaterial zu schonen.",
+    "pt": "O diagrama visual destaca em cinza o retalho exato de cada barra. Sobras aproveitáveis (ex. acima de 40-50 cm) podem ser guardadas e identificadas. Em projetos futuros, basta inserir o comprimento delas como barra master para consumi-las antes de cortar peças novas."
+  },
   "unit_label": {
     "it": "Imposta Misure",
     "en": "Units",

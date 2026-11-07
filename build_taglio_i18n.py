@@ -99,11 +99,11 @@ html_code = f"""<!DOCTYPE html>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {{
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-font-smoothing: antialiased;
         }}
         .font-mono {{
@@ -122,6 +122,13 @@ html_code = f"""<!DOCTYPE html>
         .cut-bar-segment:hover {{
             filter: brightness(1.1);
         }}
+        @media print {{
+            .no-print {{ display: none !important; }}
+            body {{ background: white; color: black; }}
+            .print-only {{ display: block !important; }}
+            .card-box {{ border: 1px solid #cbd5e1 !important; box-shadow: none !important; break-inside: avoid; }}
+        }}
+        .print-only {{ display: none; }}
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-amber-500 selection:text-white">
@@ -129,16 +136,16 @@ html_code = f"""<!DOCTYPE html>
     <!-- Universal Header with Chrome Tabs & Tool Picker -->
     {header_html}
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 flex-grow w-full">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
         <!-- Main Tool Intro Header -->
-        <div class="mb-8 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-6">
+        <div class="mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
             <div>
-                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold mb-3">
+                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold mb-2">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
                     <span id="badgeCategory">OmniBuilding • Taglio 1D & Falegnameria</span>
                 </div>
-                <h1 id="mainTitle" class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Ottimizzatore di Taglio 1D</h1>
-                <p id="mainSubtitle" class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl">
+                <h1 id="mainTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Ottimizzatore di Taglio 1D</h1>
+                <p id="mainSubtitle" class="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl">
                     Pianifica tagli per legno, profilati e tubi minimizzando lo sfrido di materiale con compensazione spessore lama (Kerf).
                 </p>
             </div>
@@ -354,11 +361,11 @@ html_code = f"""<!DOCTYPE html>
         </div>
 
         <!-- FAQ Section -->
-        <section id="faqSection" class="no-print mt-16 bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
-            <div class="flex items-center gap-2.5 mb-1">
+        <section id="faqSection" class="no-print mt-12 bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
                 <span class="text-xl">❓</span>
-                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
-                    <span>Domande Frequenti sull'Ottimizzazione di Taglio 1D</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                    <span id="faqTitle">Domande Frequenti sull'Ottimizzazione di Taglio 1D</span>
                 </h2>
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
             </div>
@@ -399,6 +406,18 @@ html_code = f"""<!DOCTYPE html>
                         Certamente! Qualsiasi materiale lineare continuo (travi in legno, canaline elettriche, tubi idraulici, profilati d'alluminio o acciaio, cornici e battiscopa) segue esattamente la stessa geometria lineare 1D.
                     </div>
                 </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ4">Come gestire lo sfrido finale residuo per non sprecare materiale nei progetti futuri?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA4" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Lo schema visivo colorato evidenzia in grigio chiaro lo sfrido esatto di ogni barra. Gli spezzoni riutilizzabili (es. oltre 40-50 cm) possono essere etichettati e conservati in rastrelliera come 'scorte corte'. Nei progetti successivi basterà inserire la loro lunghezza effettiva come barra master per utilizzarli prioritariamente prima di intaccare barre nuove intere.
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -408,8 +427,10 @@ html_code = f"""<!DOCTYPE html>
     {footer_html}
 
     <!-- Universal Scripts -->
-    {header_js}
-    {footer_js}
+    <script>
+        {header_js}
+        {footer_js}
+    </script>
 
     <!-- Translations & Taglio Logic Script -->
     <script>
@@ -835,13 +856,18 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('legendKerfLabel').textContent = t('legend_kerf');
             document.getElementById('detailedCutlistTableTitle').textContent = t('detailed_cutlist_table');
 
-            document.getElementById('faqTitle').childNodes[2].nodeValue = ' ' + t('faq_title');
+            const fTitle = document.getElementById('faqTitle');
+            if (fTitle) fTitle.textContent = t('faq_title');
             document.getElementById('faqQ1').textContent = t('faq_q1');
             document.getElementById('faqA1').textContent = t('faq_a1');
             document.getElementById('faqQ2').textContent = t('faq_q2');
             document.getElementById('faqA2').textContent = t('faq_a2');
             document.getElementById('faqQ3').textContent = t('faq_q3');
             document.getElementById('faqA3').textContent = t('faq_a3');
+            const q4 = document.getElementById('faqQ4');
+            if (q4) q4.textContent = t('faq_q4');
+            const a4 = document.getElementById('faqA4');
+            if (a4) a4.textContent = t('faq_a4');
 
             calculateCutList();
         }}
