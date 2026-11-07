@@ -162,246 +162,365 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header -->
-        <!-- Top Navigation Header (Soluzione 1: Breadcrumb + Suite Dropdown) -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-3 sm:px-4 py-1 flex items-center justify-between gap-2">
+    
+    
+    <!-- TOP CHROME-STYLE TABS STRIP (DESKTOP ONLY: sticky top-0, always visible) -->
+    <div id="omniChromeTabsBar" class="hidden md:flex bg-slate-950 px-3 pt-2 pb-0 items-center justify-between border-b border-slate-800 text-xs select-none sticky top-0 z-50 shadow-md">
+        
+        <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
+        <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
+            <!-- Fixed Home Hub Tab -->
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Torna alla Home Hub">
+                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
+                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </span>
+                <span>Home Hub</span>
+            </a>
+        </div>
+
+        <!-- Right Side: DESK Menu & Nuovo Tool -->
+        <div class="flex items-center gap-2 shrink-0 pb-1.5 pr-1">
             
-            <!-- Breadcrumb Navigation & Suite Switcher -->
-            <div class="flex items-center gap-2 sm:gap-2.5 min-w-0">
-                <!-- Home Link & Brand Logo -->
-                <a href="/" class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 shadow-rose-900/20 flex items-center justify-center text-white shadow-md shrink-0 p-1 transition hover:opacity-95 active:scale-95" title="Torna alla Home di OmniTools">
-                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
-            <circle cx="16" cy="16" r="6.8" stroke="#ffffff" stroke-width="2" />
-            <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
-            <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
-            <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-        </svg>
+            <!-- DESK Dropdown Trigger Button -->
+            <div class="relative">
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
+                    <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black text-[9px]">⚡</span>
+                    <span class="tracking-wider">DESK</span>
+                    <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+
+                <!-- DESK Menu Dropdown in Top Bar -->
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
+                    <div class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
+                        Strumenti da Scrivania
+                    </div>
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
+                        <span>OmniMemo (Post-it)</span>
+                    </button>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
+                        <span>OmniCalc (Calcolatrice)</span>
+                    </button>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
+                        <span>OmniClock (Orologio)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
+            <div class="relative">
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
+                    <span>➕</span>
+                    <span class="hidden lg:inline">Nuovo Tool</span>
+                </button>
+
+                <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
+                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
+                    <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
+                        <span>Scegli Calcolatore</span>
+                        <span class="text-blue-600 font-bold font-mono">12 Tool</span>
+                    </div>
+
+                    <!-- Category: OmniBuilding -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding
+                        </div>
+                        
+            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="font-bold">RampaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+            </a>
+            
+            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="font-bold">ScalaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+            </a>
+            
+            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="font-bold">TubiFacili</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+            </a>
+            
+                    </div>
+
+                    <!-- Category: OmniGraph -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph
+                        </div>
+                        
+            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="font-bold">DorsoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+            </a>
+            
+            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="font-bold">RisoluzioneFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+            </a>
+            
+            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="font-bold">TintaPerfetta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+            </a>
+            
+            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="font-bold">OmniBarcode</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+            </a>
+            
+            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="font-bold">CoperturaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+            </a>
+            
+            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="font-bold">ResaCarta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+            </a>
+            
+                    </div>
+
+                    <!-- Category: OmniFinance -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance
+                        </div>
+                        
+            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="font-bold">MutuoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+            </a>
+            
+            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="font-bold">InteresseComposto</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+            </a>
+            
+            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="font-bold">MargineFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+            </a>
+            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-3">
+            
+            <!-- Logo & Suite Switcher -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-2.5 group shrink-0">
+                    <div class="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
+                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                            <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-jakarta font-black text-sm sm:text-base tracking-tight text-slate-900">OmniTools</span>
+                            <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Lab</span>
+                        </div>
+                    </div>
                 </a>
 
-                <!-- Breadcrumb Title with Integrated Dropdown Switcher -->
-                <div class="relative flex items-center min-w-0">
-                    <div class="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-jakarta font-bold text-slate-900 leading-none">
-                        <a href="/" class="hover:text-blue-600 transition flex items-center shrink-0" title="Home Hub">
-                            <span>Omni<span class="text-blue-600">Tools</span></span>
-                        </a>
-                        <span class="text-slate-300 font-normal">/</span>
-                        <span id="brandBadge" class="text-[9px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border-purple-200/80 border shrink-0 hidden xs:inline-block">Graph</span>
-                        <span id="brandBadgeMobile" class="hidden">Brossura</span>
-                        <span class="text-slate-300 font-normal hidden xs:inline-block">/</span>
-                        
-                        <!-- Dropdown Switcher Button -->
-                        <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 text-slate-800 font-bold transition border border-slate-200/70" aria-label="Cambia strumento" aria-expanded="false" title="Cambia strumento della suite">
-                            <span id="brandTitle" class="truncate max-w-[110px] sm:max-w-none">DorsoFacile</span>
-                            <span id="brandTitleMobile" class="hidden">DorsoFacile</span>
-                            <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                    </div>
+                <span class="text-slate-300">/</span>
 
-                    <!-- Dropdown Popover Menu (All 12 Tools Categorized) -->
-                    <div id="suiteMenuDropdown" class="hidden absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200/90 py-2 z-50 transition-all duration-150">
-                        <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Strumenti OmniTools (12)</span>
-                            <a href="/" class="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5">
-                                Home Hub →
-                            </a>
+                <!-- Current Tool Dropdown Button -->
+                <div class="relative">
+                    <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+                        <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                        <span class="hidden sm:inline">DorsoFacile</span>
+                        <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <!-- Dropdown Menu Panel -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
+                        <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
+                            <span>Scegli Calcolatore</span>
+                            <span>12 Strumenti</span>
                         </div>
 
-                        <!-- Cantiere & Struttura -->
-                        <div class="px-2 pt-2 pb-1">
-                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-amber-700 flex items-center gap-1 mb-1">
-                                <span>🏗️</span> OmniBuilding · Cantiere & Struttura
+                        <div class="space-y-0.5">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding
                             </div>
-                            <div class="space-y-0.5">
-                                
-            <a href="/rampe" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                            
+            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">📐</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">RampaFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza & D.M. 236/89</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="font-bold">RampaFacile</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">DM 236/89</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
             </a>
-            <a href="/scale" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🪜</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">ScalaFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Gradini & Legge di Blondel</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="font-bold">ScalaFacile</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Blondel</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
             </a>
-            <a href="/tubi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🚰</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-blue-600">TubiFacili</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pendenza Scarichi Idraulici</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="font-bold">TubiFacili</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Scarichi</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
             </a>
-                            </div>
+            
                         </div>
 
-                        <div class="border-t border-slate-100 my-1"></div>
-
-                        <!-- Grafica & Prestampa -->
-                        <div class="px-2 pt-1 pb-1">
-                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-purple-700 flex items-center gap-1 mb-1">
-                                <span>🎯</span> OmniGraph · Grafica & Stampa
+                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph
                             </div>
-                            <div class="space-y-0.5">
-                                
-            <a href="/dorso" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group bg-purple-50/80 text-purple-700 border border-purple-200">
+                            
+            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">📕</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">DorsoFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Spessore Dorso & Copertina KDP</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="font-bold">DorsoFacile</span>
                 </div>
-                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-purple-600 text-white shadow-2xs">Attivo</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
             </a>
-            <a href="/dpi" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🔍</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">RisoluzioneFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Pixel, DPI & Acuità Visiva</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="font-bold">RisoluzioneFacile</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Pixel/DPI</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
             </a>
-            <a href="/tinta" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🎨</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">TintaFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Resa Inchiostri & Bobine Stampa</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="font-bold">TintaPerfetta</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Inchiostri</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
             </a>
-            <a href="/barcode" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🏷️</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">OmniBarcode Studio</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">EAN-13, Tessera Sanitaria & GS1</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="font-bold">OmniBarcode</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">GS1 / TS</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
             </a>
-            <a href="/copertura" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🖨️</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">CoperturaFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Copertura Inchiostro CMYK & Costi</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="font-bold">CoperturaFacile</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">CMYK / TAC</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
             </a>
-            <a href="/resa" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">📑</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-purple-600">ResaCarta</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Ottimizzazione Taglio Fogli Macchina</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="font-bold">ResaCarta</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Nesting Fogli</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
             </a>
-                            </div>
+            
                         </div>
 
-                        <div class="border-t border-slate-100 my-1"></div>
-
-                        <!-- Finanza & Business -->
-                        <div class="px-2 pt-1 pb-1">
-                            <div class="px-1 text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 flex items-center gap-1 mb-1">
-                                <span>💼</span> OmniFinance · Finanza & Business
+                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance
                             </div>
-                            <div class="space-y-0.5">
-                                
-            <a href="/mutuo" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+                            
+            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🏦</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">MutuoFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Rata & Ammortamento Francese</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="font-bold">MutuoFacile</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Ammortamento</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
             </a>
-            <a href="/pac" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">📈</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">InteresseComposto</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Simulatore PAC & Rendita 4%</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="font-bold">InteresseComposto</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">PAC / FIRE</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
             </a>
-            <a href="/margine" class="flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs font-semibold transition group hover:bg-slate-50 text-slate-700">
+            
+            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-base shrink-0">🏷️</span>
-                    <div class="text-left">
-                        <div class="font-bold text-slate-900 leading-tight group-hover:text-emerald-700">MargineFacile</div>
-                        <div class="text-[10px] text-slate-500 font-normal leading-tight">Margine, Ricarico & COGS</div>
-                    </div>
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="font-bold">MargineFacile</span>
                 </div>
-                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-500">Markup/Pricing</span>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
             </a>
-                            </div>
-                        </div>
-
-                        <!-- Footer Link to Hub -->
-                        <div class="border-t border-slate-100 mt-1 pt-1.5 px-3 pb-1">
-                            <a href="/" class="flex items-center justify-center gap-1.5 w-full py-1.5 text-center text-xs font-bold text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition">
-                                <span>🏠</span> Tutti i 12 strumenti nella Home
-                            </a>
+            
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Quick Actions on Right: Clean & Zero Mobile Clutter -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- Language Selector Dropdown -->
-                <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="pt">🇵🇹 PT</option>
-                    </select>
-                </div>
 
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition" title="Installa come App">
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline ml-1">App</span>
+                    <span id="headerInstallText" class="hidden sm:inline">Installa</span>
                 </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center justify-center p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl transition shadow-2xs" title="Stampa Scheda Tecnica">
-                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    <span id="printBtnText" class="hidden sm:inline ml-1">Stampa</span>
+                <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+                    <span>🖨️</span>
+                    <span class="hidden sm:inline">Stampa</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
         
         <!-- Hero Header -->
@@ -1205,26 +1324,55 @@
         const TRANSLATIONS = {"it": {"title": "DorsoFacile", "badge": "OmniGraph", "hero_title": "Calcolo Spessore Dorso Libro & Copertina Stesa", "hero_desc": "Calcola all'istante lo spessore esatto del dorso, l'ingombro della copertina stesa con refili da 3 mm e le quote pronte per InDesign, Illustrator e Amazon KDP.", "mode_direct": "📖 Brossura Fresata / PUR", "mode_reverse": "🧵 Brossura Filo Refe / Hardcover", "unit_label": "Unità", "pages_label": "Numero totale di pagine (facciate)", "paper_weight_label": "Grammatura carta interna", "paper_bulk_label": "Mano della carta (Volume / Bulk)", "book_format_label": "Formato libro chiuso (Base × Altezza)", "flaps_label": "Alette / Bandelle copertina", "presets_title": "Preset editoriali rapidi:", "preset_1": "Romanzo Narrativa (240 pag)", "preset_1_sub": "Usomano 80g • Mano 1.3", "preset_2": "Catalogo / Rivista (96 pag)", "preset_2_sub": "Patinata 130g • Mano 0.95", "preset_3": "Saggio / Manuale (360 pag)", "preset_3_sub": "Uso mano 90g • Mano 1.2", "preset_4": "Libro Fotografico (160 pag)", "preset_4_sub": "Patinata 170g • Mano 1.0", "col_spine": "Spessore Dorso", "col_total_width": "Copertina Stesa", "col_total_height": "Altezza con Refilo", "schema_title": "Tracciato Fustella Copertina Stesa", "schema_scale": "In scala tipografica", "rule_tip": "💡 <strong>Formula tipografica:</strong> <code>Dorso = (Pagine / 2) × (Grammatura / 1000) × Mano + Tolleranza Colla (0.5 mm)</code>. Linea tratteggiata rossa: refilo obbligatorio di 3 mm per lato.", "print_btn": "Stampa", "install_btn": "Installa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "Utility per grafici e tipografi sempre a portata di mano", "legal_disclaimer": "<strong>Note Tecniche Tipografiche:</strong> Lo spessore effettivo del dorso può variare del ±3-5% in base all'umidità della carta, alla pressione della piega e al tipo di colla impiegata (Hotmelt o PUR). Si consiglia sempre di richiedere al service di stampa il valore di mano esatto della cartiera.", "faq_title": "Domande Frequenti sul Calcolo del Dorso e Stampa Editoriale", "status_opt_title": "Spessore Ottimale per Brossura", "status_opt_tag": "Brossurabile", "status_opt_desc": "Il dorso supera i 3 mm minimi: perfetto per brossura fresata, grecata o colla PUR con titolo leggibile.", "status_warn_title": "Dorso Molto Sottile", "status_warn_tag": "Limite Critico", "status_warn_desc": "Spessore inferiore a 3 mm. Si sconsiglia il testo sul dorso: valutare la rilegatura a Punto Metallico.", "status_danger_title": "Dorso Troppo Sottile per Brossura", "status_danger_tag": "Punto Metallico", "status_danger_desc": "Dorso inferiore a 2 mm: impossibile fresare e incollare. Rilegare a 2 punti metallici a sella.", "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere o grafica?", "suggest_btn": "Suggerisci", "suggest_modal_title": "Suggerisci uno Strumento", "suggest_modal_desc": "Quale formula o utility vorresti su OmniTools?", "suggest_placeholder": "Scrivi qui la tua idea...", "suggest_privacy_note": "🔒 Invio 100% anonimo.", "suggest_send": "Invia", "suggest_close": "Annulla", "suggest_thanks": "Grazie! La tua proposta guiderà i prossimi strumenti di OmniTools.", "copy_btn": "Copia Quote InDesign", "copied_text": "Copiato!", "download_svg_dima": "Scarica Dima SVG (Illustrator)", "faq_1_q": "Come si calcola esattamente lo spessore del dorso di un libro?", "faq_1_a": "La formula tipografica professionale è: <code>Dorso (mm) = (Pagine / 2) × (Grammatura / 1000) × Mano della carta + Spessore Colla (0.5 mm)</code>. Esempio per 240 pagine su carta usomano 80g a mano 1.3: (120 fogli) × 0.080 × 1.3 = 12.48 mm + 0.5 mm = circa 13 mm.", "faq_2_q": "Cosa significa la \"Mano\" (Bulk / Volume) della carta?", "faq_2_a": "La \"Mano\" è il rapporto matematico tra spessore in micron e grammatura in grammi/m². Una carta da fotocopie ha mano 1.0 (80g = 80 µm). Le carte per romanzi (usomano avorio) hanno mano elevata (1.3 - 1.5) per dare corpo al libro, mentre le patinate hanno mano compatta (0.85 - 0.95).", "faq_3_q": "Qual è lo spessore minimo di dorso per stampare un titolo leggibile?", "faq_3_a": "Il limite tecnico raccomandato è di almeno <strong>6 mm</strong>. Tra 3 e 5 mm il testo è possibile ma richiede centrature millimetriche per non scivolare sui piatti a causa delle tolleranze di brossura (±1 mm). Sotto i 3 mm è sconsigliato stampare scritte sul dorso.", "faq_4_q": "Quanti millimetri di abbondanza (refilo/bleed) servono per la copertina?", "faq_4_a": "Nelle tipografie professionali e su piattaforme come Amazon KDP, il refilo perimetrale obbligatorio è di <strong>3 mm su tutti e 4 i lati esterni</strong> (6 mm complessivi su larghezza e altezza stese)."}, "en": {"title": "SpineMaster", "badge": "OmniGraph", "hero_title": "Book Spine & Wrap-Around Cover Calculator", "hero_desc": "Instantly calculate exact spine width, full flat cover dimensions with 3 mm (0.125 in) bleed, and layout specs ready for Adobe InDesign, Illustrator, and Amazon KDP.", "mode_direct": "📖 Perfect Bound / PUR", "mode_reverse": "🧵 Casebound / Hardcover", "unit_label": "Units", "pages_label": "Total Page Count (Sides)", "paper_weight_label": "Interior Paper Weight", "paper_bulk_label": "Paper Caliper / Bulk Factor", "book_format_label": "Trim Size (Width × Height)", "flaps_label": "Cover French Flaps", "presets_title": "Quick publishing presets:", "preset_1": "Trade Paperback (240 pgs)", "preset_1_sub": "Uncoated 80gsm • Bulk 1.3", "preset_2": "Catalog / Magazine (96 pgs)", "preset_2_sub": "Coated 130gsm • Bulk 0.95", "preset_3": "Hardcover Novel (360 pgs)", "preset_3_sub": "Offset 90gsm • Bulk 1.2", "preset_4": "Art / Photo Book (160 pgs)", "preset_4_sub": "Silk 170gsm • Bulk 1.0", "col_spine": "Spine Width", "col_total_width": "Total Flat Width", "col_total_height": "Height with Bleed", "schema_title": "Cover Template Layout Blueprint", "schema_scale": "Scale Graphic Vector", "rule_tip": "💡 <strong>Formula:</strong> <code>Spine = (Pages / 2) × (Weight / 1000) × Bulk + Glue Allowance (0.5 mm)</code>. Red dotted line: 3 mm (0.125 in) bleed area.", "print_btn": "Print", "install_btn": "Install", "install_banner_title": "Install OmniTools as App", "install_banner_sub": "Print production tools always ready offline", "legal_disclaimer": "<strong>Technical Disclaimer:</strong> Spine width can vary by ±3-5% based on paper moisture, grain direction, and bindery clamp pressure. Always confirm exact paper caliper with your commercial printer.", "faq_title": "Frequently Asked Questions on Book Spine Width & Cover Layout", "status_opt_title": "Ideal Spine for Perfect Binding", "status_opt_tag": "Perfect Bound", "status_opt_desc": "Spine exceeds 3 mm (0.12 in): ideal for PUR gluing, hotmelt binding, and legible spine text.", "status_warn_title": "Very Thin Spine", "status_warn_tag": "Borderline", "status_warn_desc": "Spine under 3 mm (0.12 in). Avoid spine text or switch to saddle-stitch booklet binding.", "status_danger_title": "Too Thin for Perfect Binding", "status_danger_tag": "Saddle Stitch", "status_danger_desc": "Spine under 2 mm: cannot be glued. Use saddle-stitch wire staples instead.", "suggest_banner": "Have an idea for a new calculator?", "suggest_btn": "Suggest", "suggest_modal_title": "Suggest a Tool", "suggest_modal_desc": "What formula or utility would you like on OmniTools?", "suggest_placeholder": "Type your idea here...", "suggest_privacy_note": "🔒 100% anonymous submission.", "suggest_send": "Send", "suggest_close": "Cancel", "suggest_thanks": "Thank you! Your feedback guides upcoming tools.", "copy_btn": "Copy InDesign Specs", "copied_text": "Copied!", "download_svg_dima": "Download SVG Template (Illustrator)", "faq_1_q": "How do you calculate exact book spine width?", "faq_1_a": "The industry formula is: <code>Spine Width = (Page Count / 2) × (Paper Weight in GSM / 1000) × Paper Bulk + Glue Hinge (0.5 mm)</code>. Example: 240 pages on 80 gsm bulk 1.3 paper yields (120) × 0.080 × 1.3 + 0.5 = 13.0 mm.", "faq_2_q": "What does Paper Bulk / Volume mean?", "faq_2_a": "Paper bulk is the thickness-to-weight ratio (caliper in microns divided by grammage). High-bulk book papers (bulk 1.3 - 1.5) create thicker books without adding weight, while glossy coated papers are compact (0.85 - 0.95).", "faq_3_q": "What is the minimum spine thickness for readable text?", "faq_3_a": "The industry rule of thumb is at least <strong>6 mm (0.24 in)</strong>. Between 3 and 5 mm, text is possible with strict centering tolerances (±1 mm). Under 3 mm, text should be avoided; saddle-stitching is recommended.", "faq_4_q": "What bleed margin is required for full wrap-around covers?", "faq_4_a": "Commercial printing and print-on-demand platforms (Amazon KDP, IngramSpark) require a mandatory <strong>3 mm (0.125 in) bleed</strong> on all outer edges."}, "es": {"title": "LomoFácil", "badge": "OmniGraph", "hero_title": "Cálculo de Lomo de Libro y Cubierta Extendida", "hero_desc": "Calcula el grosor exacto del lomo, dimensiones de cubierta extendida con sangrado de 3 mm y especificaciones para InDesign y Amazon KDP.", "mode_direct": "📖 Rústica Fresada / Cola PUR", "mode_reverse": "🧵 Tapa Dura / Cosido", "unit_label": "Unidades", "pages_label": "Número total de páginas", "paper_weight_label": "Gramaje del papel interior", "paper_bulk_label": "Mano / Volumen del papel", "book_format_label": "Formato cerrado (Ancho × Alto)", "flaps_label": "Solapas de cubierta", "presets_title": "Ajustes rápidos:", "preset_1": "Novela Bolsillo (240 págs)", "preset_1_sub": "Offset 80g • Mano 1.3", "preset_2": "Catálogo Comercial (96 págs)", "preset_2_sub": "Estucado 130g • Mano 0.95", "preset_3": "Manual / Ensayo (360 págs)", "preset_3_sub": "Offset 90g • Mano 1.2", "preset_4": "Libro de Fotos (160 págs)", "preset_4_sub": "Estucado 170g • Mano 1.0", "col_spine": "Grosor del Lomo", "col_total_width": "Ancho Extendido", "col_total_height": "Alto con Sangrado", "schema_title": "Plantilla de Cubierta Extendida", "schema_scale": "A escala vectorial", "rule_tip": "💡 <strong>Fórmula:</strong> <code>Lomo = (Páginas / 2) × (Gramaje / 1000) × Mano + Cola</code>. Línea punteada roja: sangrado exterior de 3 mm.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instala OmniTools como App", "install_banner_sub": "Herramientas de artes gráficas sin conexión", "legal_disclaimer": "<strong>Nota Técnica:</strong> El grosor puede variar ligeramente según la humedad y fabricante del papel.", "faq_title": "Preguntas Frecuentes sobre Lomo de Libros y Cubierta Abierta", "status_opt_title": "Lomo Óptimo para Rústica", "status_opt_tag": "Encuadernable", "status_opt_desc": "Grosor superior a 3 mm: perfecto para fresado y texto visible en el lomo.", "status_warn_title": "Lomo Muy Fino", "status_warn_tag": "Límite", "status_warn_desc": "Menos de 3 mm: evite texto en el lomo o use grapa a caballo.", "status_danger_title": "No Apto para Rústica", "status_danger_tag": "Grapa", "status_danger_desc": "Menos de 2 mm: encuadernar con dos grapas.", "suggest_banner": "¿Tienes una idea para una herramienta de diseño?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Herramienta", "suggest_modal_desc": "¿Qué calculadora te gustaría ver?", "suggest_placeholder": "Tu idea...", "suggest_privacy_note": "🔒 100% anónimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "¡Gracias por tu aporte!", "copy_btn": "Copiar Medidas InDesign", "copied_text": "¡Copiado!", "download_svg_dima": "Descargar Plantilla SVG", "faq_1_q": "¿Cómo se calcula el grosor del lomo de un libro?", "faq_1_a": "Fórmula editorial: <code>Lomo (mm) = (Páginas / 2) × (Gramaje / 1000) × Mano del papel + Cola (0.5 mm)</code>.", "faq_2_q": "¿Qué significa el volumen o mano del papel?", "faq_2_a": "Es la relación entre espesor en micras y peso. Un papel de novela (mano 1.3-1.5) aporta más grosor que un papel estucado (mano 0.9).", "faq_3_q": "¿Cuál es el grosor mínimo para incluir texto en el lomo?", "faq_3_a": "Se recomienda un mínimo de <strong>6 mm</strong>. Con menos de 3 mm no se debe poner texto y conviene grapar a caballete.", "faq_4_q": "¿Cuánta sangría exterior se debe aplicar?", "faq_4_a": "El estándar editorial internacional exige <strong>3 mm de sangría</strong> en todo el perímetro."}, "fr": {"title": "DosFacile", "badge": "OmniGraph", "hero_title": "Calcul de Dos de Livre & Couverture Ouverte", "hero_desc": "Calculez l'épaisseur exacte du dos, le gabarit de couverture à plat avec 3 mm de fond perdu pour InDesign, Illustrator et KDP.", "mode_direct": "📖 Dos Carré Collé / PUR", "mode_reverse": "🧵 Livre Relié / Cartonné", "unit_label": "Unités", "pages_label": "Nombre total de pages", "paper_weight_label": "Grammage du papier", "paper_bulk_label": "Main du papier (Bouffant)", "book_format_label": "Format fermé (Largeur × Hauteur)", "flaps_label": "Rabats de couverture", "presets_title": "Préréglages d'édition :", "preset_1": "Roman (240 pages)", "preset_1_sub": "Bouffant 80g • Main 1.3", "preset_2": "Magazine (96 pages)", "preset_2_sub": "Couché 130g • Main 0.95", "preset_3": "Essai / Manuel (360 pages)", "preset_3_sub": "Offset 90g • Main 1.2", "preset_4": "Livre d'Art (160 pages)", "preset_4_sub": "Couché 170g • Main 1.0", "col_spine": "Épaisseur du Dos", "col_total_width": "Largeur à Plat", "col_total_height": "Hauteur avec Fond Perdu", "schema_title": "Gabarit de Couverture à Plat", "schema_scale": "Échelle vectorielle", "rule_tip": "💡 <strong>Formule :</strong> <code>Dos = (Pages / 2) × (Grammage / 1000) × Main + Tolérance Colle (0.5 mm)</code>. Pointillés rouges : 3 mm de fond perdu.", "print_btn": "Imprimer", "install_btn": "Installer", "install_banner_title": "Installer OmniTools sur Smartphone", "install_banner_sub": "Outils de prépresse et PAO hors-ligne", "legal_disclaimer": "<strong>Mentions Techniques :</strong> L'épaisseur peut varier de ±3-5% selon l'humidité du papier et le collage.", "faq_title": "Foire Aux Questions sur le Dos de Livre et Couverture Dépliée", "status_opt_title": "Épaisseur Idéale pour Dos Carré", "status_opt_tag": "Reliure Parfaite", "status_opt_desc": "Le dos dépasse 3 mm : idéal pour le dos carré collé avec texte lisible.", "status_warn_title": "Dos Très Fin", "status_warn_tag": "Limite", "status_warn_desc": "Moins de 3 mm : éviter le texte sur le dos ou choisir la reliure piqûre.", "status_danger_title": "Trop Fin pour Dos Carré", "status_danger_tag": "Piqûre Métal", "status_danger_desc": "Moins de 2 mm : relier avec deux agrafes métal à cheval.", "suggest_banner": "Une idée pour OmniTools ?", "suggest_btn": "Suggérer", "suggest_modal_title": "Suggérer un Outil", "suggest_modal_desc": "Quelle formule aimeriez-vous voir ?", "suggest_placeholder": "Votre idée...", "suggest_privacy_note": "🔒 100% anonyme.", "suggest_send": "Envoyer", "suggest_close": "Annuler", "suggest_thanks": "Merci pour votre idée !", "copy_btn": "Copier Dimensions InDesign", "copied_text": "Copié !", "download_svg_dima": "Télécharger Gabarit SVG", "faq_1_q": "Comment calculer l'épaisseur exacte du dos d'un livre ?", "faq_1_a": "Formule typographique : <code>Épaisseur Dos (mm) = (Nombre de Pages / 2) × (Grammage / 1000) × Main du papier + Colle (0.5 mm)</code>.", "faq_2_q": "Que signifie la \"Main\" d'un papier ?", "faq_2_a": "La main représente le volume spécifique d'un papier (épaisseur divisée par le grammage). Les papiers bouffants (main 1.3 à 1.5) donnent du volume aux romans.", "faq_3_q": "Quelle est l'épaisseur minimale pour imprimer un titre sur le dos ?", "faq_3_a": "Un minimum de <strong>6 mm</strong> est conseillé. En dessous de 3 mm, le titrage est déconseillé en raison des tolérances de pliage.", "faq_4_q": "Combien de millimètres de fond perdu ajouter ?", "faq_4_a": "Le fond perdu standard est de <strong>3 mm sur les 4 côtés extérieurs</strong>."}, "de": {"title": "BuchrückenRechner", "badge": "OmniGraph", "hero_title": "Buchrücken berechnen & Umschlag-Maße", "hero_desc": "Berechnen Sie die exakte Buchrückenbreite und das offene Umschlagformat mit 3 mm Beschnitt für InDesign, KDP und Druckereien.", "mode_direct": "📖 Klebebindung / PUR", "mode_reverse": "🧵 Fadenheftung / Hardcover", "unit_label": "Maßeinheiten", "pages_label": "Gesamtseitenzahl (Umfang)", "paper_weight_label": "Papiergrammatur (g/m²)", "paper_bulk_label": "Papiervolumen (Bulk)", "book_format_label": "Buchformat (Breite × Höhe)", "flaps_label": "Umschlagklappen", "presets_title": "Schnellvorlagen Verlagswesen:", "preset_1": "Taschenbuch (240 Seiten)", "preset_1_sub": "Werkdruck 80g • Volumen 1.3", "preset_2": "Katalog / Magazin (96 Seiten)", "preset_2_sub": "Bilderdruck 130g • Vol. 0.95", "preset_3": "Sachbuch (360 Seiten)", "preset_3_sub": "Offset 90g • Volumen 1.2", "preset_4": "Bildband (160 Seiten)", "preset_4_sub": "Bilderdruck 170g • Vol. 1.0", "col_spine": "Rückenbreite", "col_total_width": "Umschlagbreite offen", "col_total_height": "Höhe inkl. Beschnitt", "schema_title": "Umschlag-Bogen Layout", "schema_scale": "Maßstabsgetreu", "rule_tip": "💡 <strong>Formel:</strong> <code>Rücken = (Seiten / 2) × (Grammatur / 1000) × Volumen + Leimzugabe (0.5 mm)</code>. Rote Linie: 3 mm Beschnittzugabe.", "print_btn": "Drucken", "install_btn": "Installieren", "install_banner_title": "OmniTools als App nutzen", "install_banner_sub": "Druck- und Grafikwerkzeuge jederzeit offline", "legal_disclaimer": "<strong>Hinweis:</strong> Rückenbreite kann um ±3-5% je nach Papierfeuchte und Klebeart abweichen.", "faq_title": "Häufig gestellte Fragen zur Buchrückenberechnung & Klebebindung", "status_opt_title": "Optimale Rückenbreite für Klebebindung", "status_opt_tag": "Klebebindung", "status_opt_desc": "Der Rücken ist breiter als 3 mm: ideal für PUR-Klebebindung mit lesbarem Rückentext.", "status_warn_title": "Sehr schmaler Rücken", "status_warn_tag": "Grenzwertig", "status_warn_desc": "Unter 3 mm: Rückentext vermeiden oder Rückstichheftung wählen.", "status_danger_title": "Zu dünn für Klebebindung", "status_danger_tag": "Klammerheftung", "status_danger_desc": "Unter 2 mm: Bindung mit Drahtklammern (Broschüre) empfohlen.", "suggest_banner": "Idee für ein neues Druckwerkzeug?", "suggest_btn": "Vorschlagen", "suggest_modal_title": "Werkzeug vorschlagen", "suggest_modal_desc": "Welche Funktion wünschen Sie sich?", "suggest_placeholder": "Ihre Idee...", "suggest_privacy_note": "🔒 100% anonym.", "suggest_send": "Absenden", "suggest_close": "Abbrechen", "suggest_thanks": "Vielen Dank für Ihre Anregung.", "copy_btn": "InDesign-Maße kopieren", "copied_text": "Kopiert!", "download_svg_dima": "SVG-Vorlage herunterladen", "faq_1_q": "Wie berechnet man die Buchrückenstärke exakt?", "faq_1_a": "Druckformel: <code>Rückenstärke (mm) = (Seiten / 2) × (Grammatur / 1000) × Papiervolumen + Klebstoff (0.5 mm)</code>.", "faq_2_q": "Was bedeutet das Papiervolumen (Bulk)?", "faq_2_a": "Das Volumen beschreibt das Verhältnis von Papierstärke zum Flächengewicht. Werkdruckpapiere mit 1.3- bis 1.5-fachem Volumen ergeben dickere Bücher.", "faq_3_q": "Ab welcher Rückenbreite ist Rückentext lesbar?", "faq_3_a": "Empfohlen werden mindestens <strong>6 mm</strong>. Unter 3 mm sollte kein Rückentext gedruckt werden (Klammerheftung empfohlen).", "faq_4_q": "Wie viel Beschnittzugabe ist erforderlich?", "faq_4_a": "Der Standard für Druckereien und Amazon KDP beträgt <strong>3 mm Beschnitt ringsum</strong>."}, "pt": {"title": "LombadaFácil", "badge": "OmniGraph", "hero_title": "Cálculo de Lombada de Livro & Capa Aberta", "hero_desc": "Calcule a espessura da lombada, medidas da capa aberta com 3 mm de sangria e especificações para Adobe InDesign e Amazon KDP.", "mode_direct": "📖 Brochura / Cola PUR", "mode_reverse": "🧵 Capa Dura / Costurado", "unit_label": "Unidades", "pages_label": "Número total de páginas", "paper_weight_label": "Gramatura do papel miolo", "paper_bulk_label": "Mão / Volume do papel", "book_format_label": "Formato fechado (Largura × Altura)", "flaps_label": "Orelhas da capa", "presets_title": "Predefinições de publicação:", "preset_1": "Romance Literatura (240 págs)", "preset_1_sub": "Pólen 80g • Mão 1.3", "preset_2": "Catálogo Comercial (96 págs)", "preset_2_sub": "Couché 130g • Mão 0.95", "preset_3": "Ensaio Acadêmico (360 págs)", "preset_3_sub": "Offset 90g • Mão 1.2", "preset_4": "Livro de Arte (160 págs)", "preset_4_sub": "Couché 170g • Mão 1.0", "col_spine": "Espessura da Lombada", "col_total_width": "Largura Capa Aberta", "col_total_height": "Altura com Sangria", "schema_title": "Gabarito da Capa Aberta", "schema_scale": "Escala gráfica vetorial", "rule_tip": "💡 <strong>Fórmula:</strong> <code>Lombada = (Páginas / 2) × (Gramatura / 1000) × Mão + Cola (0.5 mm)</code>. Linha vermelha: 3 mm de sangria.", "print_btn": "Imprimir", "install_btn": "Instalar", "install_banner_title": "Instalar OmniTools no Telemóvel", "install_banner_sub": "Ferramentas de pré-impressão offline", "legal_disclaimer": "<strong>Nota Técnica:</strong> A espessura pode variar ±3-5% conforme a umidade e a prensagem gráfica.", "faq_title": "Perguntas Frequentes sobre Lombada de Livro e Capa Aberta", "status_opt_title": "Lombada Ideal para Brochura", "status_opt_tag": "Brochura PUR", "status_opt_desc": "Lombada superior a 3 mm: ideal para cola PUR com texto legível.", "status_warn_title": "Lombada Muito Estreita", "status_warn_tag": "Limite", "status_warn_desc": "Menos de 3 mm: evite texto na lombada ou opte por grampo canoa.", "status_danger_title": "Muito Fino para Brochura", "status_danger_tag": "Grampo Canoa", "status_danger_desc": "Menos de 2 mm: encadernar com grampo de sela.", "suggest_banner": "Tem ideia para nova ferramenta?", "suggest_btn": "Sugerir", "suggest_modal_title": "Sugerir Ferramenta", "suggest_modal_desc": "Qual calculadora gostaria de ver?", "suggest_placeholder": "Digite sua ideia...", "suggest_privacy_note": "🔒 100% anônimo.", "suggest_send": "Enviar", "suggest_close": "Cancelar", "suggest_thanks": "Obrigado! Sua ideia guiará os próximos passos.", "copy_btn": "Copiar Medidas InDesign", "copied_text": "Copiado!", "download_svg_dima": "Baixar Gabarito SVG", "faq_1_q": "Como calcular a espessura exata da lombada de um livro?", "faq_1_a": "Fórmula gráfica: <code>Lombada (mm) = (Páginas / 2) × (Gramatura / 1000) × Mão do papel + Cola (0.5 mm)</code>.", "faq_2_q": "O que significa a \"Mão\" ou volume do papel?", "faq_2_a": "É a relação entre espessura em micra e peso em g/m². Papéis pólen para literatura têm mão 1.3 a 1.5, conferindo corpo ao livro.", "faq_3_q": "Qual é a espessura mínima para colocar texto na lombada?", "faq_3_a": "Recomenda-se no mínimo <strong>6 mm</strong>. Abaixo de 3 mm desaconselha-se texto (optar por grampo canoa).", "faq_4_q": "Qual é a sangria obrigatória na capa?", "faq_4_a": "O padrão gráfico internacional é de <strong>3 mm de sangria</strong> em todo o perímetro."}};
 
         
-// Soluzione 1: Suite Switcher Dropdown Interaction
+// Top DESK Dropdown
+function toggleTopDeskMenu(e) {
+    if (e) e.stopPropagation();
+    const drop = document.getElementById('topDeskDropdown');
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    if (newToolDrop) newToolDrop.classList.add('hidden');
+    if (drop) drop.classList.toggle('hidden');
+}
+
+// Top Nuovo Tool Dropdown (aligned right)
+function toggleTopNewToolMenu(e) {
+    if (e) e.stopPropagation();
+    const drop = document.getElementById('topNewToolDropdown');
+    const deskDrop = document.getElementById('topDeskDropdown');
+    if (deskDrop) deskDrop.classList.add('hidden');
+    if (drop) drop.classList.toggle('hidden');
+}
+
+function openDeskTool(toolType) {
+    const drop = document.getElementById('topDeskDropdown');
+    if (drop) drop.classList.add('hidden');
+    if (window.OmniDesk) {
+        if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
+        else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
+        else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+    } else {
+        // Fallback open standalone page
+        const map = { memo: '/memo', calc: '/calcolatrice', clock: '/orologio' };
+        window.open(map[toolType], '_blank');
+    }
+}
+
+// Suite Menu Dropdown (header)
 function toggleSuiteMenu(e) {
     if (e) e.stopPropagation();
     const menu = document.getElementById('suiteMenuDropdown');
     const chevron = document.getElementById('suiteMenuChevron');
-    const btn = document.getElementById('suiteMenuBtn');
     if (!menu) return;
-    const isClosed = menu.classList.contains('hidden');
-    if (isClosed) {
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
         menu.classList.remove('hidden');
         if (chevron) chevron.classList.add('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'true');
     } else {
         menu.classList.add('hidden');
         if (chevron) chevron.classList.remove('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
     }
 }
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', (e) => {
     const menu = document.getElementById('suiteMenuDropdown');
     const btn = document.getElementById('suiteMenuBtn');
     if (menu && !menu.classList.contains('hidden')) {
@@ -1232,23 +1380,291 @@ document.addEventListener('click', function(e) {
             menu.classList.add('hidden');
             const chevron = document.getElementById('suiteMenuChevron');
             if (chevron) chevron.classList.remove('rotate-180');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    }
+    const deskDrop = document.getElementById('topDeskDropdown');
+    const topDeskBtn = document.getElementById('topDeskBtn');
+    if (deskDrop && !deskDrop.classList.contains('hidden')) {
+        if (!deskDrop.contains(e.target) && (!topDeskBtn || !topDeskBtn.contains(e.target))) {
+            deskDrop.classList.add('hidden');
+        }
+    }
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    const topNewToolBtn = document.getElementById('topNewToolBtn');
+    if (newToolDrop && !newToolDrop.classList.contains('hidden')) {
+        if (!newToolDrop.contains(e.target) && (!topNewToolBtn || !topNewToolBtn.contains(e.target))) {
+            newToolDrop.classList.add('hidden');
         }
     }
 });
 
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const menu = document.getElementById('suiteMenuDropdown');
-        if (menu && !menu.classList.contains('hidden')) {
-            menu.classList.add('hidden');
-            const chevron = document.getElementById('suiteMenuChevron');
-            if (chevron) chevron.classList.remove('rotate-180');
-            const btn = document.getElementById('suiteMenuBtn');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
+// Dynamic Chrome Tabs & Multi-Window Detach Engine
+(function() {
+    const TOOL_ICONS_JS = {
+        'rampe': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>`,
+        'scale': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
+        'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
+        'dorso': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
+        'dpi': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
+        'tinta': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
+        'barcode': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>`,
+        'copertura': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>`,
+        'resa': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
+        'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
+        'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
+        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`
+    };
+
+    const TOOLS_MAP = {
+        'rampe': { name: 'RampaFacile', url: '/rampe', color: 'bg-amber-500' },
+        'scale': { name: 'ScalaFacile', url: '/scale', color: 'bg-amber-500' },
+        'tubi': { name: 'TubiFacili', url: '/tubi', color: 'bg-amber-500' },
+        'dorso': { name: 'DorsoFacile', url: '/dorso', color: 'bg-rose-700' },
+        'dpi': { name: 'Risoluzione', url: '/dpi', color: 'bg-rose-700' },
+        'tinta': { name: 'TintaPerfetta', url: '/tinta', color: 'bg-rose-700' },
+        'barcode': { name: 'OmniBarcode', url: '/barcode', color: 'bg-rose-700' },
+        'copertura': { name: 'Copertura', url: '/copertura', color: 'bg-rose-700' },
+        'resa': { name: 'ResaCarta', url: '/resa', color: 'bg-rose-700' },
+        'mutuo': { name: 'MutuoFacile', url: '/mutuo', color: 'bg-emerald-600' },
+        'pac': { name: 'Interesse', url: '/pac', color: 'bg-emerald-600' },
+        'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' }
+    };
+
+    const TABS_KEY = 'omni_open_tabs_v1';
+    let openTabs = [];
+    try {
+        openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
+    } catch(e) {}
+
+    const pathname = window.location.pathname.replace('.html', '').replace('/', '');
+    if (pathname && TOOLS_MAP[pathname]) {
+        if (!openTabs.includes(pathname)) {
+            openTabs.push(pathname);
+            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
         }
     }
-});
+
+    let detachedWindows = {};
+
+    window.OmniMultiWindow = {
+        detachTool(id) {
+            const tool = TOOLS_MAP[id];
+            if (!tool) return;
+            if (detachedWindows[id]) return;
+
+            const win = document.createElement('div');
+            win.id = `detached-win-${id}`;
+            win.className = 'fixed z-[9992] bg-white rounded-2xl shadow-2xl border-2 border-slate-700/80 overflow-hidden flex flex-col';
+            win.style.width = 'min(760px, 92vw)';
+            win.style.height = 'min(580px, 82vh)';
+            win.style.minWidth = '360px';
+            win.style.minHeight = '260px';
+            win.style.resize = 'both';
+            win.style.minHeight = '300px';
+            win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
+            win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
+
+            win.innerHTML = `
+                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`}
+                        <span class="text-xs font-bold tracking-tight">${tool.name}</span>
+                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 rounded text-white font-bold">Finestra Staccata</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1">
+                            <span>⤶</span>
+                            <span>Riancora</span>
+                        </button>
+                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1 w-full bg-slate-50 relative overflow-hidden flex flex-col">
+                    <iframe src="${tool.url}" class="w-full flex-1 border-0"></iframe>
+                    <!-- Resize grip bar at bottom -->
+                    <div class="h-4 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between px-2 text-[10px] text-slate-400 select-none">
+                        <span class="font-mono">Ridimensiona finestra trascinando i bordi</span>
+                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-blue-600 transition" title="Trascina per ridimensionare larghezza e altezza">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 19H5m14-6H11m8-6H17"/></svg>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
+            detachedWindows[id] = win;
+
+            makeWindowDraggable(win, win.querySelector('.window-header'));
+            makeWindowResizable(win, win.querySelector('.window-resize-grip'));
+
+            openTabs = openTabs.filter(x => x !== id);
+            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            renderChromeTabs();
+        },
+
+        dockBack(id) {
+            const win = detachedWindows[id];
+            if (win) {
+                win.remove();
+                delete detachedWindows[id];
+            }
+            if (!openTabs.includes(id)) {
+                openTabs.push(id);
+                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            }
+            renderChromeTabs();
+        },
+
+        closeDetached(id) {
+            const win = detachedWindows[id];
+            if (win) {
+                win.remove();
+                delete detachedWindows[id];
+            }
+        }
+    };
+
+    function makeWindowDraggable(el, handle) {
+        let isDrag = false, startX, startY, initL, initT;
+        function onStart(e) {
+            if (e.target.closest('button, select, input, a')) return;
+            isDrag = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            const r = el.getBoundingClientRect();
+            initL = r.left;
+            initT = r.top;
+            // Prevent iframe swallowing mouse events while dragging
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'none';
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+        }
+        function onMove(e) {
+            if (!isDrag) return;
+            el.style.left = Math.max(10, Math.min(window.innerWidth - el.offsetWidth - 10, initL + (e.clientX - startX))) + 'px';
+            el.style.top = Math.max(10, Math.min(window.innerHeight - el.offsetHeight - 10, initT + (e.clientY - startY))) + 'px';
+        }
+        function onEnd() {
+            isDrag = false;
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'auto';
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', onEnd);
+        }
+        handle.addEventListener('mousedown', onStart);
+    }
+
+    function makeWindowResizable(el, handle) {
+        let isResizing = false, startX, startY, startW, startH;
+        function onResizeStart(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            isResizing = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startW = el.offsetWidth;
+            startH = el.offsetHeight;
+            // Temporarily disable iframe pointer events so smooth mousemove works over iframe
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'none';
+            document.body.style.cursor = 'se-resize';
+            document.addEventListener('mousemove', onResizeMove);
+            document.addEventListener('mouseup', onResizeEnd);
+        }
+        function onResizeMove(e) {
+            if (!isResizing) return;
+            const newW = Math.max(380, Math.min(window.innerWidth - el.offsetLeft - 10, startW + (e.clientX - startX)));
+            const newH = Math.max(280, Math.min(window.innerHeight - el.offsetTop - 10, startH + (e.clientY - startY)));
+            el.style.width = newW + 'px';
+            el.style.height = newH + 'px';
+        }
+        function onResizeEnd() {
+            isResizing = false;
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'auto';
+            document.body.style.cursor = 'default';
+            document.removeEventListener('mousemove', onResizeMove);
+            document.removeEventListener('mouseup', onResizeEnd);
+        }
+        if (handle) {
+            handle.addEventListener('mousedown', onResizeStart);
+        }
+    }
+
+    function renderChromeTabs() {
+        const track = document.getElementById('omniChromeTabsTrack');
+        if (!track) return;
+
+        const homeTab = document.getElementById('omniTabHome');
+        const isHome = (!pathname || pathname === 'index');
+        if (homeTab) {
+            homeTab.className = isHome 
+                ? 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-white text-slate-900 font-extrabold border-t-2 border-blue-600 transition shrink-0 text-[11px] shadow-xs'
+                : 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]';
+        }
+
+        track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
+
+        openTabs.forEach(id => {
+            const tool = TOOLS_MAP[id];
+            if (!tool) return;
+            const isActive = (id === pathname);
+
+            const tab = document.createElement('div');
+            tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
+            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
+            
+            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
+            tab.innerHTML = `
+                <a href="${tool.url}" class="flex items-center gap-2 text-inherit no-underline">
+                    ${iconMarkup}
+                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${tool.name}</span>
+                </a>
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
+                    ↗
+                </button>
+                <span class="close-tab hover:text-rose-500 hover:bg-black/10 rounded px-1.5 py-0.5 transition text-slate-400 font-bold" title="Chiudi scheda">✕</span>
+            `;
+
+            let tabDragY = 0;
+            tab.addEventListener('mousedown', (e) => {
+                if (e.target.closest('button, span.close-tab')) return;
+                tabDragY = e.clientY;
+                function checkDetach(evt) {
+                    if (evt.clientY - tabDragY > 40) {
+                        document.removeEventListener('mousemove', checkDetach);
+                        window.OmniMultiWindow.detachTool(id);
+                    }
+                }
+                function stopCheck() {
+                    document.removeEventListener('mousemove', checkDetach);
+                    document.removeEventListener('mouseup', stopCheck);
+                }
+                document.addEventListener('mousemove', checkDetach);
+                document.addEventListener('mouseup', stopCheck);
+            });
+
+            tab.querySelector('.close-tab').addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openTabs = openTabs.filter(x => x !== id);
+                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
+                if (isActive) {
+                    const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
+                    window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
+                } else {
+                    renderChromeTabs();
+                }
+            });
+
+            track.appendChild(tab);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderChromeTabs);
+})();
 
 
         // Viral Share Functions

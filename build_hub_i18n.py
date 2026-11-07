@@ -1,3 +1,4 @@
+from nav_header import render_chrome_tabs_strip, render_suite_header_js
 import json
 import os
 
@@ -6,6 +7,10 @@ with open(os.path.join(cur_dir, 'translations_hub.json'), 'r', encoding='utf-8')
     t_data = json.load(f)
 
 t_json_str = json.dumps(t_data, ensure_ascii=False)
+
+
+tabs_strip_html = render_chrome_tabs_strip('home')
+tabs_strip_js = render_suite_header_js()
 
 html_code = f"""<!DOCTYPE html>
 <html lang="it">
@@ -106,7 +111,8 @@ html_code = f"""<!DOCTYPE html>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
     <!-- Top Navigation Header -->
-    <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+    {tabs_strip_html}
+    <header class="bg-white/95 border-b border-slate-200 sticky top-0 md:top-[38px] z-40 backdrop-blur-md shadow-2xs" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="max-w-5xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
             
             <!-- Brand Identity -->
@@ -1432,6 +1438,9 @@ html_code = f"""<!DOCTYPE html>
             document.body.appendChild(deskScript);
         }});
     </script>
+<script>
+{tabs_strip_js}
+</script>
 </body>
 </html>
 """
