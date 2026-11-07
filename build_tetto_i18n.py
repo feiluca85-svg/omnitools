@@ -502,7 +502,7 @@ html_code = f"""<!DOCTYPE html>
             updateRoofStatus(angleDeg, slopePct);
 
             // Render Section SVG
-            renderRoofSvg(baseCm, heightCm, overhangCm, angleDeg);
+            renderRoofSvg(baseCm, heightCm, overhangCm, angleDeg, rafterTheoreticalCm);
         }}
 
         function updateRoofStatus(deg, pct) {{
@@ -536,9 +536,13 @@ html_code = f"""<!DOCTYPE html>
             }}
         }}
 
-        function renderRoofSvg(baseCm, heightCm, overhangCm, angleDeg) {{
+        function renderRoofSvg(baseCm, heightCm, overhangCm, angleDeg, rafterTheoreticalCm) {{
             const svg = document.getElementById('roofSvgCanvas');
             if (!svg) return;
+
+            if (!rafterTheoreticalCm) {{
+                rafterTheoreticalCm = Math.sqrt((baseCm * baseCm) + (heightCm * heightCm));
+            }}
 
             // Coordinate space: 500w x 240h
             // Origin corner at bottom-left: x=60, y=190
