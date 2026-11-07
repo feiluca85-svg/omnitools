@@ -430,6 +430,8 @@ html_content = f"""<!DOCTYPE html>
 
         let currentCurrency = 'EUR';
 
+        let lastCalculatedPacData = [];
+
         function setCurrency(curr) {{
             if (!CURRENCIES[curr]) return;
             currentCurrency = curr;
@@ -630,8 +632,6 @@ html_content = f"""<!DOCTYPE html>
 
             updateUrlParams();
         }}
-
-        let lastCalculatedPacData = [];
 
         function exportPacCsv() {{
             if (!lastCalculatedPacData || lastCalculatedPacData.length === 0) {{

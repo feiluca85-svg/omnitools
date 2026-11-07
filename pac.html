@@ -1612,6 +1612,8 @@ document.addEventListener('click', (e) => {
 
         let currentCurrency = 'EUR';
 
+        let lastCalculatedPacData = [];
+
         function setCurrency(curr) {
             if (!CURRENCIES[curr]) return;
             currentCurrency = curr;
@@ -1812,8 +1814,6 @@ document.addEventListener('click', (e) => {
 
             updateUrlParams();
         }
-
-        let lastCalculatedPacData = [];
 
         function exportPacCsv() {
             if (!lastCalculatedPacData || lastCalculatedPacData.length === 0) {

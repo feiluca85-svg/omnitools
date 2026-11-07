@@ -457,6 +457,8 @@ html_content = f"""<!DOCTYPE html>
 
         let currentCurrency = 'EUR';
 
+        let lastCalculatedMortgageYears = [];
+
         function setCurrency(curr) {{
             if (!CURRENCIES[curr]) return;
             currentCurrency = curr;
@@ -702,8 +704,6 @@ html_content = f"""<!DOCTYPE html>
         loadMortgageState();
         initFromUrl();
         calculateMortgage();
-
-        let lastCalculatedMortgageYears = [];
 
         function exportMortgageCsv() {{
             if (!lastCalculatedMortgageYears || lastCalculatedMortgageYears.length === 0) {{

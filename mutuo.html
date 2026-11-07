@@ -1639,6 +1639,8 @@ document.addEventListener('click', (e) => {
 
         let currentCurrency = 'EUR';
 
+        let lastCalculatedMortgageYears = [];
+
         function setCurrency(curr) {
             if (!CURRENCIES[curr]) return;
             currentCurrency = curr;
@@ -1884,8 +1886,6 @@ document.addEventListener('click', (e) => {
         loadMortgageState();
         initFromUrl();
         calculateMortgage();
-
-        let lastCalculatedMortgageYears = [];
 
         function exportMortgageCsv() {
             if (!lastCalculatedMortgageYears || lastCalculatedMortgageYears.length === 0) {
