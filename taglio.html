@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>TaglioOttimo - Ottimizzatore di Taglio Lineare 1D, Barre & Travi</title>
+    <meta name="description" content="Calcola la disposizione di taglio ottimale per travi, assi di legno, barre metalliche e tubi. Riduci al minimo lo sfrido con algoritmo bin-packing 1D e spessore lama (kerf).">
+    
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/taglio">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OmniTools - TaglioOttimo: Ottimizzatore di Taglio 1D">
+    <meta property="og:description" content="Pianifica tagli per legno, ferro e alluminio con zero sprechi. Calcola barre necessarie, sfrido e sequenza di taglio con compensazione lama.">
+    <meta property="og:url" content="https://www.omnitoolslab.com/taglio">
+    <meta property="og:site_name" content="OmniTools Lab">
+    <meta property="og:image" content="https://www.omnitoolslab.com/og-taglio.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-taglio.png">
+
+    <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "TaglioOttimo — Ottimizzatore di Taglio Lineare 1D",
+          "url": "https://www.omnitoolslab.com/taglio",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+          },
+          "description": "Applicazione professionale per ottimizzare il piano di taglio 1D di travi in legno, profilati in metallo e tubi idraulici con compensazione dello spessore lama."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "TaglioOttimo Cut List Optimizer",
+          "operatingSystem": "Web Browser",
+          "applicationCategory": "DesignApplication",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "184"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .metric-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        .cut-bar-segment {
+            transition: all 0.2s ease;
+        }
+        .cut-bar-segment:hover {
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Universal Header with Chrome Tabs & Tool Picker -->
+    
+    
+    <!-- TOP CHROME-STYLE TABS STRIP (DESKTOP ONLY: sticky top-0, always visible) -->
+    <div id="omniChromeTabsBar" class="hidden md:flex bg-slate-950 px-3 pt-2 pb-0 items-center justify-between border-b border-slate-800 text-xs select-none sticky top-0 z-50 shadow-md">
+        
+        <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
+        <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
+            <!-- Fixed Home Hub Tab -->
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Torna alla Home Hub">
+                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
+                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </span>
+                <span>Home Hub</span>
+            </a>
+        </div>
+
+        <!-- Right Side: DESK Menu & Nuovo Tool -->
+        <div class="flex items-center gap-2 shrink-0 pb-1.5 pr-1">
+            
+            <!-- DESK Dropdown Trigger Button -->
+            <div class="relative">
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
+                    <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black text-[9px]">⚡</span>
+                    <span class="tracking-wider">DESK</span>
+                    <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+
+                <!-- DESK Menu Dropdown in Top Bar -->
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
+                    <div class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
+                        Strumenti da Scrivania
+                    </div>
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
+                        <span>OmniMemo (Post-it)</span>
+                    </button>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
+                        <span>OmniCalc (Calcolatrice)</span>
+                    </button>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
+                        <span>OmniClock (Orologio)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
+            <div class="relative">
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
+                    <span>➕</span>
+                    <span class="hidden lg:inline">Nuovo Tool</span>
+                </button>
+
+                <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
+                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
+                    <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
+                        <span>Scegli Calcolatore</span>
+                        <span class="text-blue-600 font-bold font-mono">13 Tool</span>
+                    </div>
+
+                    <!-- Category: OmniBuilding -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding
+                        </div>
+                        
+            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="font-bold">RampaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+            </a>
+            
+            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="font-bold">ScalaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+            </a>
+            
+            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="font-bold">TubiFacili</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+            </a>
+            
+            <a href="/tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="font-bold">TettoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
+            </a>
+            
+            <a href="/taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="font-bold">TaglioOttimo</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+            </a>
+            
+                    </div>
+
+                    <!-- Category: OmniGraph -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph
+                        </div>
+                        
+            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="font-bold">DorsoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+            </a>
+            
+            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="font-bold">RisoluzioneFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+            </a>
+            
+            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="font-bold">TintaPerfetta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+            </a>
+            
+            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="font-bold">OmniBarcode</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+            </a>
+            
+            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="font-bold">CoperturaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+            </a>
+            
+            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="font-bold">ResaCarta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+            </a>
+            
+                    </div>
+
+                    <!-- Category: OmniFinance -->
+                    <div>
+                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance
+                        </div>
+                        
+            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="font-bold">MutuoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+            </a>
+            
+            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="font-bold">InteresseComposto</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+            </a>
+            
+            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="font-bold">MargineFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+            </a>
+            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-3">
+            
+            <!-- Logo & Suite Switcher -->
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-2.5 group shrink-0">
+                    <div class="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
+                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                            <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-jakarta font-black text-sm sm:text-base tracking-tight text-slate-900">OmniTools</span>
+                            <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Lab</span>
+                        </div>
+                    </div>
+                </a>
+
+                <span class="text-slate-300">/</span>
+
+                <!-- Current Tool Dropdown Button -->
+                <div class="relative">
+                    <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+                        <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                        <span class="hidden sm:inline">TaglioOttimo</span>
+                        <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <!-- Dropdown Menu Panel -->
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
+                        <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
+                            <span>Scegli Calcolatore</span>
+                            <span>13 Strumenti</span>
+                        </div>
+
+                        <div class="space-y-0.5">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding
+                            </div>
+                            
+            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="font-bold">RampaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+            </a>
+            
+            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="font-bold">ScalaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+            </a>
+            
+            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="font-bold">TubiFacili</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+            </a>
+            
+            <a href="/tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="font-bold">TettoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
+            </a>
+            
+            <a href="/taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="font-bold">TaglioOttimo</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+            </a>
+            
+                        </div>
+
+                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph
+                            </div>
+                            
+            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="font-bold">DorsoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+            </a>
+            
+            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="font-bold">RisoluzioneFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+            </a>
+            
+            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="font-bold">TintaPerfetta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+            </a>
+            
+            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="font-bold">OmniBarcode</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+            </a>
+            
+            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="font-bold">CoperturaFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+            </a>
+            
+            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="font-bold">ResaCarta</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+            </a>
+            
+                        </div>
+
+                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance
+                            </div>
+                            
+            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="font-bold">MutuoFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+            </a>
+            
+            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="font-bold">InteresseComposto</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+            </a>
+            
+            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="font-bold">MargineFacile</span>
+                </div>
+                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+            </a>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
+                    <span>📲</span>
+                    <span id="headerInstallText" class="hidden sm:inline">Installa</span>
+                </button>
+                <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+                    <span>🖨️</span>
+                    <span class="hidden sm:inline">Stampa</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 flex-grow w-full">
+        <!-- Main Tool Intro Header -->
+        <div class="mb-8 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-6">
+            <div>
+                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold mb-3">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span id="badgeCategory">OmniBuilding • Taglio 1D & Falegnameria</span>
+                </div>
+                <h1 id="mainTitle" class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Ottimizzatore di Taglio 1D</h1>
+                <p id="mainSubtitle" class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl">
+                    Pianifica tagli per legno, profilati e tubi minimizzando lo sfrido di materiale con compensazione spessore lama (Kerf).
+                </p>
+            </div>
+            <!-- Unit & Quick Controls -->
+            <div class="mt-4 sm:mt-0 flex items-center justify-center sm:justify-end gap-2 shrink-0">
+                <div class="inline-flex p-1 bg-slate-200/80 rounded-xl text-xs font-bold text-slate-600">
+                    <button type="button" id="unitCmBtn" onclick="setUnit('cm')" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition">cm</button>
+                    <button type="button" id="unitMmBtn" onclick="setUnit('mm')" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">mm</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presets Bar -->
+        <div class="mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
+            <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
+                <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Esempi Rapidi:
+            </span>
+            <button onclick="applyPreset('wood_diy')" class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-xs font-semibold transition">
+                🪵 <span id="presetWoodDiyText">Scaffale Legno (Travetti 200cm)</span>
+            </button>
+            <button onclick="applyPreset('metal_frame')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-semibold transition">
+                🔩 <span id="presetMetalFrameText">Telaio Ferro (Barre 600cm)</span>
+            </button>
+            <button onclick="applyPreset('pergola')" class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-xs font-semibold transition">
+                🏡 <span id="presetPergolaText">Pergola Giardino (Travi 300cm)</span>
+            </button>
+        </div>
+
+        <!-- Layout Grid: Left Inputs / Right Results & Visuals -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Inputs Form (5 cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Stock Material & Kerf Card -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex items-center gap-2.5 mb-5 pb-3 border-b border-slate-100">
+                        <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold text-sm">1</span>
+                        <h2 id="stockSettingsTitle" class="text-base font-bold text-slate-900">1. Barre Master di Partenza</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                                <label id="stockLengthLabel" for="stockLengthInput">Lunghezza Barra Standard</label>
+                                <span class="text-slate-400 font-mono" id="stockLengthUnit">cm</span>
+                            </div>
+                            <div class="relative">
+                                <input type="number" id="stockLengthInput" min="10" step="any" value="200" oninput="calculateCutList()"
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+                                <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none" id="stockLengthBadge">cm</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center text-xs font-semibold text-slate-700 mb-1.5">
+                                <label id="kerfLabel" for="kerfInput">Spessore Lama (Kerf)</label>
+                                <span class="text-slate-400 font-mono" id="kerfUnit">mm</span>
+                            </div>
+                            <div class="relative">
+                                <input type="number" id="kerfInput" min="0" max="20" step="0.1" value="3.0" oninput="calculateCutList()"
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+                                <span class="absolute right-3.5 top-2.5 text-slate-400 text-xs font-bold font-mono pointer-events-none">mm</span>
+                            </div>
+                            <p id="kerfHint" class="text-[11px] text-slate-500 mt-1.5">Materiale asportato da ogni taglio (es. 3 mm per banco sega, 1.5 mm ferro).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Required Cuts (Parts Table) Card -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold text-sm">2</span>
+                            <h2 id="requiredCutsTitle" class="text-base font-bold text-slate-900">2. Pezzi Richiesti (Distinta)</h2>
+                        </div>
+                        <button type="button" onclick="addCutRow()" class="px-3 py-1 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center gap-1 shadow-xs">
+                            <span id="addRowBtn">+ Aggiungi</span>
+                        </button>
+                    </div>
+
+                    <!-- Cuts Input Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-500 border-b border-slate-100">
+                                    <th class="pb-2 font-semibold" id="colLengthHeader">Lunghezza (<span class="unitLabel">cm</span>)</th>
+                                    <th class="pb-2 font-semibold w-20" id="colQtyHeader">Quantità</th>
+                                    <th class="pb-2 font-semibold" id="colLabelHeader">Nome / Repere</th>
+                                    <th class="pb-2 w-8"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cutsTableBody" class="divide-y divide-slate-100">
+                                <!-- Dynamic Rows Injected Here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-medium">Totale pezzi inseriti: <strong id="totalPartsDemanded" class="text-slate-800 font-mono">0</strong></span>
+                        <button type="button" onclick="clearAllCuts()" class="text-[11px] text-rose-500 hover:text-rose-700 font-semibold underline">Svuota lista</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Visual Diagram, KPIs & Workshop Cut Guide (7 cols) -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- KPI Results Dashboard Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiBarsNeededLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Barre Master</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resBarsCount" class="text-2xl sm:text-3xl font-extrabold text-amber-600 font-mono">0</span>
+                            <span class="text-xs font-bold text-slate-400">pz</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiEfficiencyLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Efficienza</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resEfficiency" class="text-2xl sm:text-3xl font-extrabold text-emerald-600 font-mono">0.0</span>
+                            <span class="text-xs font-bold text-slate-400">%</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiTotalWasteLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Sfrido Scartato</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resWastePct" class="text-2xl sm:text-3xl font-extrabold text-rose-600 font-mono">0.0</span>
+                            <span class="text-xs font-bold text-slate-400">%</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white p-4 rounded-2xl border border-slate-200/90 shadow-xs">
+                        <span id="kpiCutsCountLabel" class="block text-slate-500 text-[11px] font-semibold uppercase tracking-wider mb-1">Tagli Totali</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="resTotalCuts" class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">0</span>
+                            <span class="text-xs font-bold text-slate-400">passaggi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Cutting Stock Diagram -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg>
+                            <h3 id="visualCuttingMapTitle" class="text-base font-bold text-slate-900">Mappa Visiva del Piano di Taglio</h3>
+                        </div>
+                        <!-- Legend -->
+                        <div class="flex items-center gap-3 text-[11px] font-medium text-slate-600">
+                            <span class="inline-flex items-center gap-1">
+                                <span class="w-3 h-3 rounded-xs bg-amber-500"></span> <span id="legendUsedLabel">Pezzo</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1">
+                                <span class="w-3 h-3 rounded-xs bg-slate-800"></span> <span id="legendKerfLabel">Kerf</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1">
+                                <span class="w-3 h-3 rounded-xs bg-slate-200 border border-slate-300"></span> <span id="legendWasteLabel">Sfrido</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Bars Container -->
+                    <div id="visualBarsContainer" class="space-y-4 max-h-[500px] overflow-y-auto pr-1">
+                        <!-- Bars dynamically rendered here -->
+                    </div>
+
+                    <!-- Summary Footnote -->
+                    <div class="mt-5 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-500 font-mono">
+                        <div>Metri acquistati: <span id="summaryStockLength" class="font-bold text-slate-800">0 m</span></div>
+                        <div>Metri utili netti: <span id="summaryUsedLength" class="font-bold text-emerald-600">0 m</span></div>
+                        <div>Sfrido puro: <span id="summaryWasteLength" class="font-bold text-rose-600">0 m</span></div>
+                    </div>
+                </div>
+
+                <!-- Sequential Cut List (Workshop Guide) Table -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                        <h3 id="detailedCutlistTableTitle" class="text-base font-bold text-slate-900">Distinta di Taglio Sequenziale (Guida per Officina)</h3>
+                        <button type="button" onclick="window.print()" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                            Stampa Distinta
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-100">
+                                    <th class="pb-2 font-semibold w-16">Barra</th>
+                                    <th class="pb-2 font-semibold">Tagli da Eseguire in Sequenza</th>
+                                    <th class="pb-2 font-semibold text-right w-24">Sfrido Residuo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="workshopTableBody" class="divide-y divide-slate-100">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="mt-16 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-xs">
+            <h2 id="faqTitle" class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Domande Frequenti sull'Ottimizzazione di Taglio 1D
+            </h2>
+            <div class="space-y-6">
+                <div class="border-b border-slate-100 pb-5">
+                    <h3 id="faqQ1" class="text-base font-bold text-slate-900 mb-2">Cos'è lo spessore lama (Kerf) e perché è fondamentale considerarlo?</h3>
+                    <p id="faqA1" class="text-sm text-slate-600 leading-relaxed">
+                        Ogni volta che una lama circolare, una sega a nastro o una troncatrice taglia un pezzo di materiale, trasforma una striscia di materiale in trucioli o limatura. Questa larghezza asportata si chiama *Kerf* (solitamente tra 2.4 mm e 3.2 mm per il legno, 1.2-2.0 mm per metalli). Se devi ricavare quattro pezzi da 50 cm da una barra da 200 cm, senza considerare il kerf l'ultimo pezzo risulterà corto di circa 1 cm!
+                    </p>
+                </div>
+                <div class="border-b border-slate-100 pb-5">
+                    <h3 id="faqQ2" class="text-base font-bold text-slate-900 mb-2">Come funziona l'algoritmo di calcolo (First Fit Decreasing)?</h3>
+                    <p id="faqA2" class="text-sm text-slate-600 leading-relaxed">
+                        Il problema dell'ottimizzazione del taglio 1D (Cutting Stock Problem) è un classico problema combinatorio matematico. L'algoritmo ordina tutti i pezzi richiesti in ordine decrescente dal più lungo al più corto, e li alloca nella prima barra master in cui entrano, tenendo conto ad ogni passaggio dello spessore della lama. Questa euristica garantisce una riduzione drastica dello sfrido e richiede pochissimi millisecondi di calcolo.
+                    </p>
+                </div>
+                <div>
+                    <h3 id="faqQ3" class="text-base font-bold text-slate-900 mb-2">Posso usare questo calcolatore per profilati metallici, tubi in PVC e battiscopa?</h3>
+                    <p id="faqA3" class="text-sm text-slate-600 leading-relaxed">
+                        Certamente! Qualsiasi materiale lineare continuo (travi in legno, canaline elettriche, tubi idraulici, profilati d'alluminio o acciaio, cornici e battiscopa) segue esattamente la stessa geometria lineare 1D.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Universal Footer -->
+    
+    <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
+    <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            
+            <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
+            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">⚡</span>
+                        <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    
+        <a href="/rampe" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">📐</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200 border">Cantiere</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">RampaFacile</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Calcolo pendenze DM 236</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>
+        <a href="/dorso" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-rose-500 hover:bg-rose-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">📕</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border-rose-200 border">Grafica</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">DorsoFacile</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Spessore dorso libro</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>
+        <a href="/mutuo" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xl group-hover:scale-110 transition-transform">🏦</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 border">Finanza</span>
+            </div>
+            <div>
+                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">MutuoFacile</span>
+                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Ammortamento rata mutuo</span>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+                <span>Apri Calcolatore</span>
+                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+            </div>
+        </a>
+                </div>
+            </div>
+
+            <!-- Share & Viral Action Strip -->
+            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">📢</span>
+                    <div>
+                        <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
+                        <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o clienti</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su WhatsApp">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su LinkedIn">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </button>
+                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Condividi su Reddit">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 8.99c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.56 12 8 12.56 8 13.25c0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm5.5 0c-.69 0-1.25.56-1.25 1.25 0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm-5.465 4.542a.335.335 0 0 0-.232.095.33.33 0 0 0 0 .464c.732.732 2.012.986 2.947.986.935 0 2.215-.254 2.947-.986a.33.33 0 0 0 0-.464.335.335 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                        <span>Reddit</span>
+                    </button>
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copia Link">
+                        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span id="shareCopyText">Copia Link</span>
+                    </button>
+                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni di condivisione">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <span>Condividi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Suggestion Prompt Strip -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl">💡</span>
+                    <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
+                        Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?
+                    </span>
+                </div>
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                    <span id="suggestBtnText">Suggerisci</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- Categorized OmniTools Ecosystem Bar (Clean 3-Section Grid) -->
+            <div class="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-slate-800 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs">
+                            ⌘
+                        </div>
+                        <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">12 Strumenti Gratuiti • Precision Utilities Suite</span>
+                </div>
+                
+                <!-- Division 1: OmniBuilding (3 Tools) -->
+                <div class="space-y-1.5">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
+                        <span>🏗️</span> <span>OmniBuilding (3 Cantiere & Impianti)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/rampe" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📐 Rampe</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza & DM 236</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/scale" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪜 Scale</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Gradini & Blondel</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tubi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🚰 Scarichi</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza UNI EN</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tetto" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏠 Tetto & Falda</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza, Gradi & Trave</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <div class="p-2 sm:p-2.5 rounded-xl bg-blue-600/30 border-blue-400/50 border flex items-center justify-between transition shadow-xs">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-white text-[11px] block truncate">🪚 Taglio 1D</span>
+                            <span class="text-[9px] text-blue-200 block truncate">Ottimizzatore Barre & Sfrido</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-blue-500 text-white font-extrabold rounded shrink-0">Attivo</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Division 2: OmniGraph (6 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1">
+                        <span>🎨</span> <span>OmniGraph (6 Grafica & Stampa)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/dorso" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📕 Dorso</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Spessore & KDP</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/dpi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖼️ DPI / Pixel</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/tinta" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Tinta & CMYK</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Calibrazione</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/barcode" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Barcode</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Vettoriale & GS1</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/copertura" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖨️ Copertura</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro & Costi</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/resa" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📑 Resa Carta</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Nesting & Taglio</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Division 3: OmniFinance (3 Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
+                        <span>💼</span> <span>OmniFinance (3 Finanza & Business)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                    <a href="/mutuo" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏦 Rata Mutuo</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ammortamento & Sostenibilità</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/pac" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📈 Interesse PAC</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Crescita & Rendita 4%</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    <a href="/margine" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Margine & Ricarico</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">COGS, Markup & IVA</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Division 4: OmniDesk Utilities (Quick Tools) -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1">
+                        <span>⚡</span> <span>OmniDesk — Strumenti Rapidi da Scrivania</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-[11px] text-center font-bold">
+                        <a href="/memo" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
+                            <span>📝</span> <span>Memo</span>
+                        </a>
+                        <a href="/calcolatrice" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-blue-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
+                            <span>🔢</span> <span>Calcolatrice</span>
+                        </a>
+                        <a href="/orologio" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-teal-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
+                            <span>⏱️</span> <span>Orologio</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pt-2 text-center border-t border-slate-800/80">
+                    <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Disclaimer and Copyright -->
+            <div class="text-center space-y-2 pt-2">
+                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
+                    OmniTools Network fornisce utility di precisione a scopo estimativo, didattico e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il parere vincolante di tecnici abilitati o consulenti finanziari abilitati (TUF / D.Lgs. 58/1998).
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating PWA Install Banner -->
+    <div id="installBanner" class="no-print hidden fixed bottom-4 right-4 max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-xl border border-slate-700 z-50 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+            <span class="text-2xl">📲</span>
+            <div>
+                <span id="installBannerTitle" class="text-xs font-bold block text-white">Installa OmniTools come App</span>
+                <span id="installBannerSub" class="text-[10px] text-slate-400 block">Utility di calcolo professionale sempre a portata di mano</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+            <button type="button" onclick="triggerInstall()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition">
+                Installa
+            </button>
+            <button type="button" onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg transition" title="Chiudi">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal Pop-up -->
+    <div id="suggestModal" class="no-print hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">💡</span>
+                    <h3 id="modalSuggestTitle" class="text-base font-extrabold text-slate-900">Suggerisci uno Strumento</h3>
+                </div>
+                <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
+                    ✕
+                </button>
+            </div>
+
+            <p id="modalSuggestDesc" class="text-xs text-slate-600 leading-relaxed">
+                Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?
+            </p>
+
+            <div id="suggestFormContainer" class="space-y-3">
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Scrivi qui la tua idea..."></textarea>
+                
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                    <span id="modalPrivacyNote">🔒 Invio 100% anonimo. Non serve registrarsi.</span>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                        Annulla
+                    </button>
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                        Invia
+                    </button>
+                </div>
+            </div>
+
+            <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
+                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                    ✓
+                </div>
+                <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
+                    Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
+                </p>
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                    Fatto
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Universal Scripts -->
+    
+// Top DESK Dropdown
+function toggleTopDeskMenu(e) {
+    if (e) e.stopPropagation();
+    const drop = document.getElementById('topDeskDropdown');
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    if (newToolDrop) newToolDrop.classList.add('hidden');
+    if (drop) drop.classList.toggle('hidden');
+}
+
+// Top Nuovo Tool Dropdown (aligned right)
+function toggleTopNewToolMenu(e) {
+    if (e) e.stopPropagation();
+    const drop = document.getElementById('topNewToolDropdown');
+    const deskDrop = document.getElementById('topDeskDropdown');
+    if (deskDrop) deskDrop.classList.add('hidden');
+    if (drop) drop.classList.toggle('hidden');
+}
+
+function openDeskTool(toolType) {
+    const drop = document.getElementById('topDeskDropdown');
+    if (drop) drop.classList.add('hidden');
+    if (window.OmniDesk) {
+        if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
+        else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
+        else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+    } else {
+        // Fallback open standalone page
+        const map = { memo: '/memo', calc: '/calcolatrice', clock: '/orologio' };
+        window.open(map[toolType], '_blank');
+    }
+}
+
+// Suite Menu Dropdown (header)
+function toggleSuiteMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('suiteMenuDropdown');
+    const chevron = document.getElementById('suiteMenuChevron');
+    if (!menu) return;
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+    }
+}
+
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('suiteMenuDropdown');
+    const btn = document.getElementById('suiteMenuBtn');
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
+            menu.classList.add('hidden');
+            const chevron = document.getElementById('suiteMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+    }
+    const deskDrop = document.getElementById('topDeskDropdown');
+    const topDeskBtn = document.getElementById('topDeskBtn');
+    if (deskDrop && !deskDrop.classList.contains('hidden')) {
+        if (!deskDrop.contains(e.target) && (!topDeskBtn || !topDeskBtn.contains(e.target))) {
+            deskDrop.classList.add('hidden');
+        }
+    }
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    const topNewToolBtn = document.getElementById('topNewToolBtn');
+    if (newToolDrop && !newToolDrop.classList.contains('hidden')) {
+        if (!newToolDrop.contains(e.target) && (!topNewToolBtn || !topNewToolBtn.contains(e.target))) {
+            newToolDrop.classList.add('hidden');
+        }
+    }
+});
+
+// Dynamic Chrome Tabs & Multi-Window Detach Engine
+(function() {
+    const TOOL_ICONS_JS = {
+        'rampe': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>`,
+        'scale': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
+        'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
+        'tetto': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
+        'taglio': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>`,
+        'dorso': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
+        'dpi': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
+        'tinta': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
+        'barcode': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>`,
+        'copertura': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>`,
+        'resa': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
+        'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
+        'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
+        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`
+    };
+
+    const TOOLS_MAP = {
+        'rampe': { name: 'RampaFacile', url: '/rampe', color: 'bg-amber-500' },
+        'scale': { name: 'ScalaFacile', url: '/scale', color: 'bg-amber-500' },
+        'tubi': { name: 'TubiFacili', url: '/tubi', color: 'bg-amber-500' },
+        'tetto': { name: 'TettoFacile', url: '/tetto', color: 'bg-amber-500' },
+        'taglio': { name: 'TaglioOttimo', url: '/taglio', color: 'bg-amber-500' },
+        'dorso': { name: 'DorsoFacile', url: '/dorso', color: 'bg-rose-700' },
+        'dpi': { name: 'Risoluzione', url: '/dpi', color: 'bg-rose-700' },
+        'tinta': { name: 'TintaPerfetta', url: '/tinta', color: 'bg-rose-700' },
+        'barcode': { name: 'OmniBarcode', url: '/barcode', color: 'bg-rose-700' },
+        'copertura': { name: 'Copertura', url: '/copertura', color: 'bg-rose-700' },
+        'resa': { name: 'ResaCarta', url: '/resa', color: 'bg-rose-700' },
+        'mutuo': { name: 'MutuoFacile', url: '/mutuo', color: 'bg-emerald-600' },
+        'pac': { name: 'Interesse', url: '/pac', color: 'bg-emerald-600' },
+        'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' }
+    };
+
+    const TABS_KEY = 'omni_open_tabs_v1';
+    let openTabs = [];
+    try {
+        openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
+    } catch(e) {}
+
+    const pathname = window.location.pathname.replace('.html', '').replace('/', '');
+    if (pathname && TOOLS_MAP[pathname]) {
+        if (!openTabs.includes(pathname)) {
+            openTabs.push(pathname);
+            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+        }
+    }
+
+    let detachedWindows = {};
+
+    window.OmniMultiWindow = {
+        detachTool(id) {
+            const tool = TOOLS_MAP[id];
+            if (!tool) return;
+            if (detachedWindows[id]) return;
+
+            const win = document.createElement('div');
+            win.id = `detached-win-${id}`;
+            win.className = 'fixed z-[9992] bg-white rounded-2xl shadow-2xl border-2 border-slate-700/80 overflow-hidden flex flex-col';
+            win.style.width = 'min(760px, 92vw)';
+            win.style.height = 'min(580px, 82vh)';
+            win.style.minWidth = '360px';
+            win.style.minHeight = '260px';
+            win.style.resize = 'both';
+            win.style.minHeight = '300px';
+            win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
+            win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
+
+            win.innerHTML = `
+                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`}
+                        <span class="text-xs font-bold tracking-tight">${tool.name}</span>
+                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 rounded text-white font-bold">Finestra Staccata</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1">
+                            <span>⤶</span>
+                            <span>Riancora</span>
+                        </button>
+                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1 w-full bg-slate-50 relative overflow-hidden flex flex-col">
+                    <iframe src="${tool.url}" class="w-full flex-1 border-0"></iframe>
+                    <!-- Resize grip bar at bottom -->
+                    <div class="h-4 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between px-2 text-[10px] text-slate-400 select-none">
+                        <span class="font-mono">Ridimensiona finestra trascinando i bordi</span>
+                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-blue-600 transition" title="Trascina per ridimensionare larghezza e altezza">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 19H5m14-6H11m8-6H17"/></svg>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(win);
+            detachedWindows[id] = win;
+
+            makeWindowDraggable(win, win.querySelector('.window-header'));
+            makeWindowResizable(win, win.querySelector('.window-resize-grip'));
+
+            openTabs = openTabs.filter(x => x !== id);
+            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            renderChromeTabs();
+        },
+
+        dockBack(id) {
+            const win = detachedWindows[id];
+            if (win) {
+                win.remove();
+                delete detachedWindows[id];
+            }
+            if (!openTabs.includes(id)) {
+                openTabs.push(id);
+                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            }
+            renderChromeTabs();
+        },
+
+        closeDetached(id) {
+            const win = detachedWindows[id];
+            if (win) {
+                win.remove();
+                delete detachedWindows[id];
+            }
+        }
+    };
+
+    function makeWindowDraggable(el, handle) {
+        let isDrag = false, startX, startY, initL, initT;
+        function onStart(e) {
+            if (e.target.closest('button, select, input, a')) return;
+            isDrag = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            const r = el.getBoundingClientRect();
+            initL = r.left;
+            initT = r.top;
+            // Prevent iframe swallowing mouse events while dragging
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'none';
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+        }
+        function onMove(e) {
+            if (!isDrag) return;
+            el.style.left = Math.max(10, Math.min(window.innerWidth - el.offsetWidth - 10, initL + (e.clientX - startX))) + 'px';
+            el.style.top = Math.max(10, Math.min(window.innerHeight - el.offsetHeight - 10, initT + (e.clientY - startY))) + 'px';
+        }
+        function onEnd() {
+            isDrag = false;
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'auto';
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', onEnd);
+        }
+        handle.addEventListener('mousedown', onStart);
+    }
+
+    function makeWindowResizable(el, handle) {
+        let isResizing = false, startX, startY, startW, startH;
+        function onResizeStart(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            isResizing = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            startW = el.offsetWidth;
+            startH = el.offsetHeight;
+            // Temporarily disable iframe pointer events so smooth mousemove works over iframe
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'none';
+            document.body.style.cursor = 'se-resize';
+            document.addEventListener('mousemove', onResizeMove);
+            document.addEventListener('mouseup', onResizeEnd);
+        }
+        function onResizeMove(e) {
+            if (!isResizing) return;
+            const newW = Math.max(380, Math.min(window.innerWidth - el.offsetLeft - 10, startW + (e.clientX - startX)));
+            const newH = Math.max(280, Math.min(window.innerHeight - el.offsetTop - 10, startH + (e.clientY - startY)));
+            el.style.width = newW + 'px';
+            el.style.height = newH + 'px';
+        }
+        function onResizeEnd() {
+            isResizing = false;
+            const ifr = el.querySelector('iframe');
+            if (ifr) ifr.style.pointerEvents = 'auto';
+            document.body.style.cursor = 'default';
+            document.removeEventListener('mousemove', onResizeMove);
+            document.removeEventListener('mouseup', onResizeEnd);
+        }
+        if (handle) {
+            handle.addEventListener('mousedown', onResizeStart);
+        }
+    }
+
+    function renderChromeTabs() {
+        const track = document.getElementById('omniChromeTabsTrack');
+        if (!track) return;
+
+        const homeTab = document.getElementById('omniTabHome');
+        const isHome = (!pathname || pathname === 'index');
+        if (homeTab) {
+            homeTab.className = isHome 
+                ? 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-white text-slate-900 font-extrabold border-t-2 border-blue-600 transition shrink-0 text-[11px] shadow-xs'
+                : 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]';
+        }
+
+        track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
+
+        openTabs.forEach(id => {
+            const tool = TOOLS_MAP[id];
+            if (!tool) return;
+            const isActive = (id === pathname);
+
+            const tab = document.createElement('div');
+            tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
+            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
+            
+            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
+            tab.innerHTML = `
+                <a href="${tool.url}" class="flex items-center gap-2 text-inherit no-underline">
+                    ${iconMarkup}
+                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${tool.name}</span>
+                </a>
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
+                    ↗
+                </button>
+                <span class="close-tab hover:text-rose-500 hover:bg-black/10 rounded px-1.5 py-0.5 transition text-slate-400 font-bold" title="Chiudi scheda">✕</span>
+            `;
+
+            let tabDragY = 0;
+            tab.addEventListener('mousedown', (e) => {
+                if (e.target.closest('button, span.close-tab')) return;
+                tabDragY = e.clientY;
+                function checkDetach(evt) {
+                    if (evt.clientY - tabDragY > 40) {
+                        document.removeEventListener('mousemove', checkDetach);
+                        window.OmniMultiWindow.detachTool(id);
+                    }
+                }
+                function stopCheck() {
+                    document.removeEventListener('mousemove', checkDetach);
+                    document.removeEventListener('mouseup', stopCheck);
+                }
+                document.addEventListener('mousemove', checkDetach);
+                document.addEventListener('mouseup', stopCheck);
+            });
+
+            tab.querySelector('.close-tab').addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openTabs = openTabs.filter(x => x !== id);
+                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
+                if (isActive) {
+                    const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
+                    window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
+                } else {
+                    renderChromeTabs();
+                }
+            });
+
+            track.appendChild(tab);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderChromeTabs);
+})();
+
+    
+        // Viral Share Functions
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title + " su OmniTools Lab: " + window.location.href);
+            window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+        }
+
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
+        }
+
+        function shareReddit() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
+        }
+
+        function copyCurrentUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const el = document.getElementById('shareCopyText');
+                if (el) {
+                    const orig = el.textContent;
+                    el.textContent = 'Copiato! ✓';
+                    setTimeout(() => { el.textContent = orig; }, 2000);
+                }
+            }).catch(() => {
+                alert('URL copiato: ' + window.location.href);
+            });
+        }
+
+        function nativeShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: document.title + ' su OmniTools Lab',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                copyCurrentUrl();
+            }
+        }
+
+        // Suggestion Modal Functions
+        function openSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSuggestModal() {
+            const modal = document.getElementById('suggestModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function submitSuggestion() {
+            const msgEl = document.getElementById('suggestMessage');
+            const msg = msgEl ? msgEl.value.trim() : '';
+            if (!msg) {
+                alert('Inserisci la tua idea prima di inviare.');
+                return;
+            }
+            const formBox = document.getElementById('suggestFormContainer');
+            const successBox = document.getElementById('suggestSuccessContainer');
+            if (formBox) formBox.classList.add('hidden');
+            if (successBox) successBox.classList.remove('hidden');
+        }
+
+        function dismissInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock)
+        (function() {
+            if (!document.getElementById('omnidesk-script')) {
+                const s = document.createElement('script');
+                s.id = 'omnidesk-script';
+                s.src = '/desk_dock.js';
+                s.defer = true;
+                document.body.appendChild(s);
+            }
+        })();
+
+
+    <!-- Translations & Taglio Logic Script -->
+    <script>
+        const TRANSLATIONS = {"meta_title": {"it": "TaglioOttimo - Ottimizzatore di Taglio Lineare 1D, Barre & Travi", "en": "CutListOptimizer - 1D Linear Cutting Stock & Waste Optimizer", "es": "CorteOptimo - Optimizador de Corte Lineal 1D de Barras y Perfiles", "fr": "CoupeOptima - Optimiseur de Découpe Linéaire 1D Bois & Métal", "de": "SchnittOpti - 1D Zuschnittoptimierer für Holzleisten & Profile", "pt": "CorteOtimo - Otimizador de Corte Linear 1D para Madeira e Tubos"}, "meta_desc": {"it": "Calcola la disposizione di taglio ottimale per travi, assi di legno, barre metalliche e tubi. Riduci al minimo lo sfrido con algoritmo bin-packing 1D e spessore lama (kerf).", "en": "Calculate optimal cutting patterns for lumber, metal bars, and pipes. Minimize material waste using 1D bin-packing algorithm and blade kerf compensation.", "es": "Calcula la disposición de corte óptima para listones, perfiles y tubos. Minimiza el desperdicio con algoritmo bin-packing 1D y sangría de corte (kerf).", "fr": "Calculez le plan de débit optimal pour liteaux, barres métalliques et tuyaux. Réduisez les chutes avec l'algorithme bin-packing 1D et l'épaisseur de trait de scie.", "de": "Berechnen Sie optimale Schnittpläne für Holzbalken, Profile und Rohre. Minimieren Sie Verschnitt mit 1D-Bin-Packing-Algorithmus und Schnittfugenbreite.", "pt": "Calcule o plano de corte ideal para ripas, tubos e perfis metálicos. Minimize sobras e desperdício com algoritmo bin-packing 1D e espessura do corte (kerf)."}, "title": {"it": "Ottimizzatore di Taglio 1D", "en": "1D Linear Cut List Optimizer", "es": "Optimizador de Corte 1D", "fr": "Optimiseur de Découpe 1D", "de": "1D Zuschnittoptimierer", "pt": "Otimizador de Corte 1D"}, "subtitle": {"it": "Pianifica tagli per legno, profilati e tubi minimizzando lo sfrido di materiale con compensazione spessore lama (Kerf).", "en": "Plan cuts for lumber, metal profiles, and pipes while minimizing scrap waste with saw kerf compensation.", "es": "Planifica cortes de madera, perfiles y tuberías minimizando el desperdicio con compensación de sangría de corte.", "fr": "Planifiez vos débits de bois, profilés et tuyaux en minimisant les chutes avec compensation de trait de scie.", "de": "Zuschnitte für Kanthölzer, Profile und Rohre verlustarm berechnen inklusive Schnittfugenberücksichtigung.", "pt": "Planeie cortes de madeira, perfis e tubos minimizando o desperdício com compensação de espessura de corte."}, "stock_settings_title": {"it": "1. Barre Master di Partenza", "en": "1. Stock Material Length", "es": "1. Longitud de Barras Madre", "fr": "1. Barres / Pièces d'Origine", "de": "1. Ausgangsmaterial / Rohlinge", "pt": "1. Comprimento das Barras Master"}, "stock_length": {"it": "Lunghezza Barra Standard", "en": "Standard Stock Bar Length", "es": "Longitud de Barra Estándar", "fr": "Longueur de Barre Standard", "de": "Standard-Stangenlänge", "pt": "Comprimento da Barra Padrão"}, "kerf_label": {"it": "Spessore Lama (Kerf)", "en": "Blade Kerf (Cut Thickness)", "es": "Espesor de Hoja / Corte (Kerf)", "fr": "Trait de Scie (Kerf)", "de": "Schnittfuge / Sägeblattstärke", "pt": "Espessura da Lâmina / Traço (Kerf)"}, "kerf_hint": {"it": "Materiale asportato da ogni taglio (es. 3 mm per banco sega, 1.5 mm ferro)", "en": "Width of material removed by each saw cut (e.g. 3 mm for table saw, 1.5 mm hacksaw)", "es": "Espesor consumido por cada corte de sierra (ej. 3 mm madera, 1.5 mm sierra cinta)", "fr": "Épaisseur de matière retirée à chaque passe (ex. 3 mm scie circulaire, 1.5 mm métaux)", "de": "Materialabtrag pro Schnitt durch das Sägeblatt (z.B. 3 mm Tischkreissäge, 1.5 mm Metall)", "pt": "Material consumido a cada corte da serra (ex. 3 mm serra de mesa, 1.5 mm serra de fita)"}, "required_cuts_title": {"it": "2. Pezzi Richiesti (Distinta di Taglio)", "en": "2. Required Parts (Cut List)", "es": "2. Piezas Necesarias (Lista de Cortes)", "fr": "2. Pièces Requises (Feuille de Débit)", "de": "2. Benötigte Teile (Stückliste)", "pt": "2. Peças Necessárias (Lista de Cortes)"}, "col_length": {"it": "Lunghezza", "en": "Length", "es": "Longitud", "fr": "Longueur", "de": "Länge", "pt": "Comprimento"}, "col_quantity": {"it": "Quantità", "en": "Quantity", "es": "Cantidad", "fr": "Quantité", "de": "Menge / Anzahl", "pt": "Quantidade"}, "col_label": {"it": "Etichetta / Nome (Opzionale)", "en": "Label / Note (Optional)", "es": "Etiqueta / Nota (Opcional)", "fr": "Repère / Note (Facultatif)", "de": "Bezeichnung (Optional)", "pt": "Etiqueta / Nota (Opcional)"}, "add_row_btn": {"it": "+ Aggiungi Misura", "en": "+ Add Cut Size", "es": "+ Añadir Medida", "fr": "+ Ajouter une Dimension", "de": "+ Teil Hinzufügen", "pt": "+ Adicionar Medida"}, "presets_title": {"it": "Esempi Rapidi & Preset:", "en": "Quick Presets:", "es": "Ejemplos Rápidos:", "fr": "Exemples Prédéfinis :", "de": "Schnell-Vorlagen:", "pt": "Exemplos Rápidos:"}, "preset_wood_diy": {"it": "Scaffale Legno Fai-da-Te (Travetti 200cm)", "en": "DIY Wood Bookshelf (200cm Studs)", "es": "Estantería de Madera DIY (Listones 200cm)", "fr": "Étagère Bois DIY (Tasseaux 200cm)", "de": "DIY Holzregal (200cm Kantholz)", "pt": "Estante de Madeira DIY (Ripas 200cm)"}, "preset_metal_frame": {"it": "Telaio Ferro Tubolare (Barre 600cm)", "en": "Steel Frame Tubing (600cm Stock)", "es": "Bastidor Metálico (Barras 600cm)", "fr": "Cadre Tube Acier (Barres 600cm)", "de": "Stahl-Rahmenprofil (600cm Rohre)", "pt": "Estrutura Tubo Aço (Barras 600cm)"}, "preset_pergola": {"it": "Pergola Giardino (Travi 300cm)", "en": "Garden Pergola Rafters (300cm Beams)", "es": "Pérgola de Jardín (Vigas 300cm)", "fr": "Pergola de Jardin (Poutres 300cm)", "de": "Garten-Pergola (300cm Balken)", "pt": "Pérgula de Jardim (Vigas 300cm)"}, "kpi_bars_needed": {"it": "Barre Master Richieste", "en": "Stock Bars Required", "es": "Barras Madre Necesarias", "fr": "Barres Requises", "de": "Benötigte Rohlinge", "pt": "Barras Master Necessárias"}, "kpi_efficiency": {"it": "Efficienza Materiale", "en": "Material Efficiency", "es": "Eficiencia del Material", "fr": "Efficacité Matière", "de": "Materialausbeute", "pt": "Eficiência do Material"}, "kpi_total_waste": {"it": "Sfrido Totale Scartato", "en": "Total Scrap / Waste", "es": "Desperdicio Total", "fr": "Chutes Totales", "de": "Gesamter Verschnitt", "pt": "Sobra / Desperdício Total"}, "kpi_cuts_count": {"it": "Numero Totale Tagli", "en": "Total Number of Cuts", "es": "Cortes Totales a Realizar", "fr": "Nombre Total de Découpes", "de": "Gesamtzahl der Schnitte", "pt": "Total de Cortes a Realizar"}, "visual_cutting_map": {"it": "Mappa Visiva del Piano di Taglio", "en": "Visual Cutting Pattern Diagram", "es": "Mapa Visual del Plan de Corte", "fr": "Schéma Visuel du Plan de Débit", "de": "Visuelle Schnittplan-Darstellung", "pt": "Mapa Visual do Plano de Corte"}, "legend_used": {"it": "Pezzo Utile", "en": "Useful Part", "es": "Pieza Útil", "fr": "Pièce Utile", "de": "Nutzteil", "pt": "Peça Útil"}, "legend_waste": {"it": "Sfrido Residuo", "en": "Offcut / Scrap Waste", "es": "Desperdicio", "fr": "Chute", "de": "Restverschnitt", "pt": "Sobra Residual"}, "legend_kerf": {"it": "Lama (Kerf)", "en": "Saw Kerf", "es": "Corte Hoja (Kerf)", "fr": "Trait de Scie", "de": "Schnittfuge", "pt": "Corte Lâmina"}, "bar_label": {"it": "Barra Master", "en": "Stock Bar", "es": "Barra Madre", "fr": "Barre Master", "de": "Stange / Rohling", "pt": "Barra Master"}, "detailed_cutlist_table": {"it": "Distinta di Taglio Sequenziale (Guida per Officina)", "en": "Sequential Cut List (Workshop Guide)", "es": "Lista de Corte Secuencial (Guía de Taller)", "fr": "Fiche de Découpe Pas-à-Pas (Atelier)", "de": "Schritt-für-Schritt Werkstatt-Schnittliste", "pt": "Lista de Corte Sequencial (Guia de Oficina)"}, "faq_title": {"it": "Domande Frequenti sull'Ottimizzazione di Taglio 1D", "en": "Frequently Asked Questions on 1D Cut Optimization", "es": "Preguntas Frecuentes sobre Optimización de Corte 1D", "fr": "Foire Aux Questions sur le Débit Linéaire 1D", "de": "Häufige Fragen zur 1D-Schnittoptimierung", "pt": "Perguntas Frequentes sobre Otimização de Corte 1D"}, "faq_q1": {"it": "Cos'è lo spessore lama (Kerf) e perché è fondamentale considerarlo?", "en": "What is saw blade kerf and why is it crucial in cut lists?", "es": "¿Qué es el kerf o sangría de corte y por qué es fundamental considerarlo?", "fr": "Qu'est-ce que le trait de scie (kerf) et pourquoi est-il essentiel ?", "de": "Was ist die Schnittfugenbreite (Kerf) und warum ist sie entscheidend?", "pt": "O que é o kerf (espessura do corte) e por que é fundamental considerá-lo?"}, "faq_a1": {"it": "Ogni volta che una lama circolare, una sega a nastro o una troncatrice taglia un pezzo di materiale, trasforma una striscia di materiale in trucioli o limatura. Questa larghezza asportata si chiama *Kerf* (solitamente tra 2.4 mm e 3.2 mm per il legno, 1.2-2.0 mm per metalli). Se devi ricavare quattro pezzi da 50 cm da una barra da 200 cm, senza considerare il kerf l'ultimo pezzo risulterà corto di circa 1 cm!", "en": "Every time a saw blade cuts through material, it turns a slit of that material into sawdust or chips. This removed width is called the kerf (typically 2.4 mm to 3.2 mm for woodworking, 1.2 mm to 2.0 mm for metals). If you cut four 50 cm parts from a 200 cm bar without accounting for kerf, your last piece will be almost a centimeter too short!", "es": "Cada vez que una sierra corta material, convierte una ranura en viruta o serrín. Este ancho consumido se llama kerf (generalmente entre 2.4 y 3.2 mm en madera, y 1.2 a 2.0 mm en metal). Si necesitas 4 piezas de 50 cm de una barra de 200 cm, sin descontar el kerf la última pieza medirá casi 1 cm menos de lo previsto.", "fr": "Chaque passe de lame retire une épaisseur de matière transformée en sciure. Cette largeur perdue est le trait de scie (environ 2,4 à 3,2 mm en menuiserie, 1,2 à 2,0 mm en métallerie). Sans tenir compte du trait de scie, le dernier morceau d'une série risque d'être trop court de près d'un centimètre.", "de": "Bei jedem Schnitt trägt das Sägeblatt Material ab, das zu Sägemehl oder Spänen wird. Diese Schnittfugenbreite (meist 2,4 bis 3,2 mm bei Holz, 1,2 bis 2,0 mm bei Metall) summiert sich: Wer vier 50-cm-Stücke aus einer 200-cm-Leiste schneidet, stellt am Ende fest, dass das letzte Teil knapp 1 cm zu kurz ist.", "pt": "A cada corte com a serra, uma porção de material vira serragem ou limalha. Essa perda é o kerf (geralmente 2.4 mm a 3.2 mm para madeira e 1.2 a 2.0 mm para metais). Se cortar quatro peças de 50 cm de uma barra de 200 cm sem considerar o kerf, a última peça ficará cerca de 1 cm menor do que o necessário."}, "faq_q2": {"it": "Come funziona l'algoritmo di calcolo (First Fit Decreasing)?", "en": "How does the 1D Bin-Packing calculation algorithm work?", "es": "¿Cómo funciona el algoritmo de empaquetado 1D (First Fit Decreasing)?", "fr": "Comment fonctionne l'algorithme d'optimisation de découpe 1D ?", "de": "Wie funktioniert der 1D-Zuschnitt-Optimierungsalgorithmus?", "pt": "Como funciona o algoritmo de empacotamento 1D (First Fit Decreasing)?"}, "faq_a2": {"it": "Il problema dell'ottimizzazione del taglio 1D (Cutting Stock Problem) è un classico problema combinatorio matematico. L'algoritmo ordina tutti i pezzi richiesti in ordine decrescente dal più lungo al più corto, e li alloca nella prima barra master in cui entrano, tenendo conto ad ogni passaggio dello spessore della lama. Questa euristica garantisce una riduzione drastica dello sfrido e richiede pochissimi millisecondi di calcolo.", "en": "1D cutting stock optimization is a classic combinatorial problem. The engine sorts all demanded cuts in descending order from longest to shortest and greedily assigns each piece to the best-fitting stock bar while subtracting kerf loss. This proven heuristic minimizes offcuts and delivers instant results right in your browser.", "es": "El problema del corte de material 1D (Cutting Stock Problem) es un problema matemático clásico. El algoritmo ordena todas las piezas de mayor a menor y las asigna a la primera barra madre con espacio suficiente, descontando la sangría de corte. Este método garantiza un aprovechamiento óptimo del material.", "fr": "Le problème de découpe de stock 1D est un problème mathématique éprouvé. L'outil trie toutes vos pièces par longueur décroissante et les place intelligemment dans les barres d'origine en soustrayant le trait de scie, assurant un taux de chute minimal.", "de": "Das 1D-Zuschnittproblem ist ein klassisches Optimierungsproblem. Die Stücke werden absteigend nach Länge sortiert und nacheinander in die Rohlinge eingepasst, wobei der Schnittverlust jedes Mal abgezogen wird. Dies minimiert den Ausschuss effektiv.", "pt": "O problema do corte de materiais 1D é um desafio matemático clássico. O algoritmo ordena todas as peças solicitadas da maior para a menor e as aloca na barra master com melhor encaixe, subtraindo o kerf a cada corte para evitar desperdício de matéria-prima."}, "faq_q3": {"it": "Posso usare questo calcolatore per profilati metallici, tubi in PVC e battiscopa?", "en": "Can I use this calculator for aluminum extrusions, PVC pipes, and baseboards?", "es": "¿Se puede utilizar para perfiles de aluminio, tuberías PVC y rodapiés?", "fr": "Puis-je l'utiliser pour des profilés aluminium, tubes PVC et plinthes ?", "de": "Funktioniert das Tool auch für Aluprofile, PVC-Rohre und Sockelleisten?", "pt": "Posso usar esta ferramenta para perfis de alumínio, tubos de PVC e rodapés?"}, "faq_a3": {"it": "Certamente! Qualsiasi materiale lineare continuo (travi in legno, canaline elettriche, tubi idraulici, profilati d'alluminio o acciaio, cornici e battiscopa) segue esattamente la stessa geometria lineare 1D.", "en": "Absolutely! Any linear continuous stock material (lumber studs, electrical conduits, plumbing pipes, aluminum/steel extrusions, moldings, and trim) obeys the identical 1D geometric rules.", "es": "¡Por supuesto! Cualquier material lineal continuo (listones de madera, canaletas eléctricas, tubos fontanería, perfiles de acero o aluminio) comparte la misma geometría matemática 1D.", "fr": "Absolument ! Tout matériau linéaire continu (tasseaux, goulottes électriques, tuyaux de plomberie, profilés acier ou alu, plinthes) suit exactement les mêmes règles géométriques 1D.", "de": "Ja, selbstverständlich! Jedes linienförmige Werkstück (Holzleisten, Kabelkanäle, Rohre, Alu- und Stahlprofile, Sockelleisten) folgt den exakt gleichen mathematischen 1D-Gesetzen.", "pt": "Com certeza! Qualquer material linear contínuo (ripas de madeira, canaletas elétricas, canos de esgoto, perfis metálicos, rodapés e sancas) obedece às mesmas regras da geometria 1D."}};
+        let currentLang = 'it';
+        let currentUnit = 'cm'; // 'cm' or 'mm'
+
+        // Piece palette colors for distinctive visualization
+        const PIECE_COLORS = [
+            'bg-amber-500 text-white border-amber-600',
+            'bg-blue-500 text-white border-blue-600',
+            'bg-emerald-500 text-white border-emerald-600',
+            'bg-purple-500 text-white border-purple-600',
+            'bg-rose-500 text-white border-rose-600',
+            'bg-teal-500 text-white border-teal-600',
+            'bg-indigo-500 text-white border-indigo-600',
+            'bg-orange-500 text-white border-orange-600',
+            'bg-cyan-600 text-white border-cyan-700'
+        ];
+
+        // Cuts Data Model
+        let cutsList = [
+            { length: 120, qty: 4, label: "Montante A" },
+            { length: 75, qty: 6, label: "Traversa B" },
+            { length: 42, qty: 4, label: "Rinforzo C" }
+        ];
+
+        function setUnit(newUnit) {
+            if (currentUnit === newUnit) return;
+            const factor = newUnit === 'mm' ? 10 : 0.1;
+            
+            // Convert stock length
+            const stockIn = document.getElementById('stockLengthInput');
+            stockIn.value = (parseFloat(stockIn.value) * factor).toFixed(1).replace(/\.0$/, '');
+            
+            // Convert cut lengths
+            cutsList.forEach(c => {
+                c.length = (c.length * factor).toFixed(1).replace(/\.0$/, '');
+                c.length = parseFloat(c.length);
+            });
+
+            currentUnit = newUnit;
+
+            // Update UI buttons
+            const cmBtn = document.getElementById('unitCmBtn');
+            const mmBtn = document.getElementById('unitMmBtn');
+            if (currentUnit === 'cm') {
+                cmBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+                mmBtn.className = 'px-3 py-1.5 rounded-lg hover:text-slate-900 transition';
+            } else {
+                mmBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
+                cmBtn.className = 'px-3 py-1.5 rounded-lg hover:text-slate-900 transition';
+            }
+
+            document.getElementById('stockLengthUnit').textContent = currentUnit;
+            document.getElementById('stockLengthBadge').textContent = currentUnit;
+            document.querySelectorAll('.unitLabel').forEach(el => el.textContent = currentUnit);
+
+            renderCutsTable();
+            calculateCutList();
+        }
+
+        function renderCutsTable() {
+            const tbody = document.getElementById('cutsTableBody');
+            tbody.innerHTML = '';
+            let totalDemanded = 0;
+
+            cutsList.forEach((cut, idx) => {
+                totalDemanded += (parseInt(cut.qty) || 0);
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition';
+                tr.innerHTML = `
+                    <td class="py-2 pr-2">
+                        <input type="number" step="any" min="1" value="${cut.length}" onchange="updateCutRow(${idx}, 'length', this.value)"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 text-xs font-mono font-bold text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    </td>
+                    <td class="py-2 pr-2 w-20">
+                        <input type="number" step="1" min="1" value="${cut.qty}" onchange="updateCutRow(${idx}, 'qty', this.value)"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 text-xs font-mono font-bold text-slate-800 text-center focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    </td>
+                    <td class="py-2 pr-2">
+                        <input type="text" value="${cut.label || ''}" placeholder="Pezzo #${idx + 1}" onchange="updateCutRow(${idx}, 'label', this.value)"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-700 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    </td>
+                    <td class="py-2 text-right">
+                        <button type="button" onclick="removeCutRow(${idx})" class="text-slate-300 hover:text-rose-500 transition p-1" title="Elimina">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('totalPartsDemanded').textContent = totalDemanded;
+        }
+
+        function addCutRow() {
+            const defaultLength = currentUnit === 'cm' ? 50 : 500;
+            cutsList.push({ length: defaultLength, qty: 2, label: `Pezzo #${cutsList.length + 1}` });
+            renderCutsTable();
+            calculateCutList();
+        }
+
+        function updateCutRow(idx, field, val) {
+            if (field === 'length') cutsList[idx].length = Math.max(0.1, parseFloat(val) || 0.1);
+            if (field === 'qty') cutsList[idx].qty = Math.max(1, parseInt(val) || 1);
+            if (field === 'label') cutsList[idx].label = val;
+            renderCutsTable();
+            calculateCutList();
+        }
+
+        function removeCutRow(idx) {
+            if (cutsList.length <= 1) {
+                cutsList = [{ length: currentUnit === 'cm' ? 50 : 500, qty: 1, label: "Pezzo #1" }];
+            } else {
+                cutsList.splice(idx, 1);
+            }
+            renderCutsTable();
+            calculateCutList();
+        }
+
+        function clearAllCuts() {
+            cutsList = [{ length: currentUnit === 'cm' ? 50 : 500, qty: 1, label: "Pezzo #1" }];
+            renderCutsTable();
+            calculateCutList();
+        }
+
+        function applyPreset(presetKey) {
+            if (presetKey === 'wood_diy') {
+                if (currentUnit === 'mm') setUnit('cm');
+                document.getElementById('stockLengthInput').value = 200;
+                document.getElementById('kerfInput').value = 3.0;
+                cutsList = [
+                    { length: 120, qty: 4, label: "Montante Legno" },
+                    { length: 70, qty: 6, label: "Ripiano" },
+                    { length: 35, qty: 4, label: "Traverso" }
+                ];
+            } else if (presetKey === 'metal_frame') {
+                if (currentUnit === 'mm') setUnit('cm');
+                document.getElementById('stockLengthInput').value = 600;
+                document.getElementById('kerfInput').value = 2.0;
+                cutsList = [
+                    { length: 240, qty: 4, label: "Longherone" },
+                    { length: 150, qty: 8, label: "Crociera" },
+                    { length: 80, qty: 6, label: "Piedino" }
+                ];
+            } else if (presetKey === 'pergola') {
+                if (currentUnit === 'mm') setUnit('cm');
+                document.getElementById('stockLengthInput').value = 300;
+                document.getElementById('kerfInput').value = 3.2;
+                cutsList = [
+                    { length: 280, qty: 4, label: "Arcata Trave" },
+                    { length: 190, qty: 6, label: "Listello Ombra" },
+                    { length: 95, qty: 8, label: "Staffa Diagonale" }
+                ];
+            }
+            renderCutsTable();
+            calculateCutList();
+        }
+
+        // Bin Packing First Fit Decreasing with Kerf
+        function calculateCutList() {
+            const stockLengthVal = parseFloat(document.getElementById('stockLengthInput').value) || 200;
+            const kerfMm = parseFloat(document.getElementById('kerfInput').value) || 0;
+            
+            // Normalize kerf to current unit
+            const kerfInUnit = currentUnit === 'cm' ? (kerfMm / 10) : kerfMm;
+
+            // Expand all requested pieces into an array of individual items
+            let itemsToCut = [];
+            cutsList.forEach((c, catIdx) => {
+                const len = parseFloat(c.length) || 0;
+                const qty = parseInt(c.qty) || 0;
+                const colorClass = PIECE_COLORS[catIdx % PIECE_COLORS.length];
+                for (let i = 0; i < qty; i++) {
+                    itemsToCut.push({
+                        length: len,
+                        label: c.label || `Pz #${catIdx + 1}`,
+                        color: colorClass,
+                        catIdx: catIdx
+                    });
+                }
+            });
+
+            // Sort descending: First Fit Decreasing heuristic
+            itemsToCut.sort((a, b) => b.length - a.length);
+
+            // Check if any piece exceeds master bar
+            const oversized = itemsToCut.filter(it => it.length > stockLengthVal);
+            if (oversized.length > 0) {
+                alert(`Attenzione: il pezzo "${oversized[0].label}" (${oversized[0].length} ${currentUnit}) è più lungo della barra standard (${stockLengthVal} ${currentUnit})!`);
+            }
+
+            // Bin Packing Simulation
+            // Each bin represents one stock bar
+            let bars = [];
+
+            itemsToCut.forEach(item => {
+                if (item.length > stockLengthVal) return; // skip impossible pieces
+
+                let placed = false;
+                for (let b = 0; b < bars.length; b++) {
+                    const bar = bars[b];
+                    // If adding item, we need item.length + kerf (if not first cut)
+                    const extraKerf = bar.cuts.length > 0 ? kerfInUnit : 0;
+                    if (bar.remainingLength >= (item.length + extraKerf)) {
+                        bar.cuts.push(item);
+                        bar.remainingLength -= (item.length + extraKerf);
+                        bar.totalKerf += extraKerf;
+                        bar.totalUsedLength += item.length;
+                        placed = true;
+                        break;
+                    }
+                }
+
+                if (!placed) {
+                    // Start new stock bar
+                    bars.push({
+                        stockLength: stockLengthVal,
+                        remainingLength: stockLengthVal - item.length,
+                        totalUsedLength: item.length,
+                        totalKerf: 0,
+                        cuts: [item]
+                    });
+                }
+            });
+
+            // KPIs calculation
+            const barsCount = bars.length;
+            const totalStockBought = barsCount * stockLengthVal;
+            let totalUsefulLength = 0;
+            let totalKerfConsumed = 0;
+            let totalCutsCount = 0;
+
+            bars.forEach(b => {
+                totalUsefulLength += b.totalUsedLength;
+                totalKerfConsumed += b.totalKerf;
+                totalCutsCount += b.cuts.length; // 1 cut per piece separated
+            });
+
+            const pureWasteLength = Math.max(0, totalStockBought - totalUsefulLength - totalKerfConsumed);
+            const totalOffcut = totalStockBought - totalUsefulLength;
+            const efficiencyPct = totalStockBought > 0 ? ((totalUsefulLength / totalStockBought) * 100).toFixed(1) : 0;
+            const wastePct = totalStockBought > 0 ? ((totalOffcut / totalStockBought) * 100).toFixed(1) : 0;
+
+            // Render KPIs
+            document.getElementById('resBarsCount').textContent = barsCount;
+            document.getElementById('resEfficiency').textContent = efficiencyPct;
+            document.getElementById('resWastePct').textContent = wastePct;
+            document.getElementById('resTotalCuts').textContent = totalCutsCount;
+
+            // Render Footnote Summaries in meters
+            const toMeters = (val) => (currentUnit === 'cm' ? (val / 100) : (val / 1000)).toFixed(2);
+            document.getElementById('summaryStockLength').textContent = `${toMeters(totalStockBought)} m (${barsCount} barre)`;
+            document.getElementById('summaryUsedLength').textContent = `${toMeters(totalUsefulLength)} m`;
+            document.getElementById('summaryWasteLength').textContent = `${toMeters(totalOffcut)} m (${wastePct}%)`;
+
+            // Render Visual Bars
+            renderVisualBars(bars, stockLengthVal, kerfInUnit);
+            renderWorkshopTable(bars);
+        }
+
+        function renderVisualBars(bars, stockLength, kerfInUnit) {
+            const container = document.getElementById('visualBarsContainer');
+            container.innerHTML = '';
+
+            if (bars.length === 0) {
+                container.innerHTML = '<div class="p-8 text-center text-slate-400 text-xs italic">Nessun taglio da visualizzare. Aggiungi i pezzi alla lista.</div>';
+                return;
+            }
+
+            bars.forEach((bar, barIdx) => {
+                const barWrapper = document.createElement('div');
+                barWrapper.className = 'bg-slate-50 border border-slate-200/90 rounded-2xl p-3 sm:p-4';
+
+                // Bar Header info
+                const barEfficiency = ((bar.totalUsedLength / bar.stockLength) * 100).toFixed(1);
+                const barWaste = Math.max(0, bar.remainingLength).toFixed(1);
+                
+                barWrapper.innerHTML = `
+                    <div class="flex items-center justify-between text-xs font-semibold mb-2 text-slate-700">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            <span class="font-bold text-slate-900">Barra #${barIdx + 1} (${bar.stockLength} ${currentUnit})</span>
+                            <span class="text-slate-400 text-[11px] font-normal">• ${bar.cuts.length} pezzi</span>
+                        </div>
+                        <div class="flex items-center gap-3 font-mono text-[11px]">
+                            <span class="text-emerald-700 font-bold">${barEfficiency}% utile</span>
+                            <span class="text-rose-600">Sfrido: ${barWaste} ${currentUnit}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Outer progress bar representing physical stock length
+                const visualStrip = document.createElement('div');
+                visualStrip.className = 'w-full h-10 sm:h-11 bg-slate-200 rounded-xl overflow-hidden flex items-stretch border border-slate-300 relative shadow-inner';
+
+                bar.cuts.forEach((piece, pIdx) => {
+                    // Piece segment
+                    const piecePct = (piece.length / bar.stockLength) * 100;
+                    const pieceDiv = document.createElement('div');
+                    pieceDiv.className = `cut-bar-segment relative h-full flex flex-col justify-center items-center font-mono font-bold text-[10px] sm:text-xs overflow-hidden px-1 border-r border-black/20 ${piece.color}`;
+                    pieceDiv.style.width = `${piecePct}%`;
+                    pieceDiv.title = `${piece.label}: ${piece.length} ${currentUnit}`;
+                    pieceDiv.innerHTML = `
+                        <span class="truncate w-full text-center leading-tight">${piece.length}</span>
+                        <span class="truncate w-full text-center text-[9px] opacity-80 font-normal leading-tight hidden sm:block">${piece.label}</span>
+                    `;
+                    visualStrip.appendChild(pieceDiv);
+
+                    // Blade Kerf separator (if not the last piece or if remaining scrap exists)
+                    if (pIdx < bar.cuts.length - 1 || bar.remainingLength > 0) {
+                        const kerfPct = (kerfInUnit / bar.stockLength) * 100;
+                        if (kerfPct > 0) {
+                            const kerfDiv = document.createElement('div');
+                            kerfDiv.className = 'h-full bg-slate-900 shrink-0';
+                            kerfDiv.style.width = `${Math.max(kerfPct, 0.4)}%`;
+                            kerfDiv.title = `Lama / Kerf`;
+                            visualStrip.appendChild(kerfDiv);
+                        }
+                    }
+                });
+
+                // Offcut / Waste remnant segment
+                const wastePct = (Math.max(0, bar.remainingLength) / bar.stockLength) * 100;
+                if (wastePct > 0.05) {
+                    const wasteDiv = document.createElement('div');
+                    wasteDiv.className = 'h-full bg-repeating-linear-to-r from-slate-200 to-slate-300 text-slate-500 font-mono text-[10px] flex items-center justify-center italic px-1 overflow-hidden';
+                    wasteDiv.style.width = `${wastePct}%`;
+                    wasteDiv.title = `Sfrido residuo: ${bar.remainingLength.toFixed(1)} ${currentUnit}`;
+                    if (wastePct > 8) {
+                        wasteDiv.textContent = `${bar.remainingLength.toFixed(1)} ${currentUnit}`;
+                    }
+                    visualStrip.appendChild(wasteDiv);
+                }
+
+                barWrapper.appendChild(visualStrip);
+                container.appendChild(barWrapper);
+            });
+        }
+
+        function renderWorkshopTable(bars) {
+            const tbody = document.getElementById('workshopTableBody');
+            tbody.innerHTML = '';
+
+            bars.forEach((bar, bIdx) => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition font-mono';
+                
+                const cutsText = bar.cuts.map((c, i) => `<strong>${c.length} ${currentUnit}</strong> <span class="text-slate-400 font-sans">(${c.label})</span>`).join(' <span class="text-amber-500 font-bold mx-1">→</span> ');
+
+                tr.innerHTML = `
+                    <td class="py-2.5 font-bold text-slate-800">#${bIdx + 1}</td>
+                    <td class="py-2.5 text-slate-700">${cutsText}</td>
+                    <td class="py-2.5 text-right font-bold text-rose-600">${bar.remainingLength.toFixed(1)} ${currentUnit}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateTexts(lang) {
+            currentLang = lang;
+            const t = (key) => TRANSLATIONS[key]?.[lang] || TRANSLATIONS[key]?.['it'] || '';
+
+            document.title = t('meta_title');
+            document.querySelector('meta[name="description"]').setAttribute('content', t('meta_desc'));
+
+            document.getElementById('mainTitle').textContent = t('title');
+            document.getElementById('mainSubtitle').textContent = t('subtitle');
+            document.getElementById('stockSettingsTitle').textContent = t('stock_settings_title');
+            document.getElementById('stockLengthLabel').textContent = t('stock_length');
+            document.getElementById('kerfLabel').textContent = t('kerf_label');
+            document.getElementById('kerfHint').textContent = t('kerf_hint');
+            document.getElementById('requiredCutsTitle').textContent = t('required_cuts_title');
+            document.getElementById('colLengthHeader').childNodes[0].nodeValue = t('col_length') + ' ';
+            document.getElementById('colQtyHeader').textContent = t('col_quantity');
+            document.getElementById('colLabelHeader').textContent = t('col_label');
+            document.getElementById('addRowBtn').textContent = t('add_row_btn');
+            
+            document.getElementById('presetTitleLabel').childNodes[2].nodeValue = ' ' + t('presets_title');
+            document.getElementById('presetWoodDiyText').textContent = t('preset_wood_diy');
+            document.getElementById('presetMetalFrameText').textContent = t('preset_metal_frame');
+            document.getElementById('presetPergolaText').textContent = t('preset_pergola');
+
+            document.getElementById('kpiBarsNeededLabel').textContent = t('kpi_bars_needed');
+            document.getElementById('kpiEfficiencyLabel').textContent = t('kpi_efficiency');
+            document.getElementById('kpiTotalWasteLabel').textContent = t('kpi_total_waste');
+            document.getElementById('kpiCutsCountLabel').textContent = t('kpi_cuts_count');
+            document.getElementById('visualCuttingMapTitle').textContent = t('visual_cutting_map');
+            document.getElementById('legendUsedLabel').textContent = t('legend_used');
+            document.getElementById('legendWasteLabel').textContent = t('legend_waste');
+            document.getElementById('legendKerfLabel').textContent = t('legend_kerf');
+            document.getElementById('detailedCutlistTableTitle').textContent = t('detailed_cutlist_table');
+
+            document.getElementById('faqTitle').childNodes[2].nodeValue = ' ' + t('faq_title');
+            document.getElementById('faqQ1').textContent = t('faq_q1');
+            document.getElementById('faqA1').textContent = t('faq_a1');
+            document.getElementById('faqQ2').textContent = t('faq_q2');
+            document.getElementById('faqA2').textContent = t('faq_a2');
+            document.getElementById('faqQ3').textContent = t('faq_q3');
+            document.getElementById('faqA3').textContent = t('faq_a3');
+
+            calculateCutList();
+        }
+
+        // Listen for universal language changes
+        window.addEventListener('omni_lang_change', (e) => {
+            if (e.detail && e.detail.lang) updateTexts(e.detail.lang);
+        });
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('omni_pref_lang') || 'it';
+            updateTexts(savedLang);
+            renderCutsTable();
+            calculateCutList();
+        });
+    </script>
+</body>
+</html>

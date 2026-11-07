@@ -42,7 +42,7 @@
       "destination": "/resa"
     },
     {
-      "source": "/taglio",
+      "source": "/tagliocarta",
       "destination": "/resa"
     },
     {
@@ -100,6 +100,26 @@
     {
       "source": "/pendenza-falda",
       "destination": "/tetto"
+    },
+    {
+      "source": "/taglio",
+      "destination": "/taglio"
+    },
+    {
+      "source": "/taglio-ottimo",
+      "destination": "/taglio"
+    },
+    {
+      "source": "/taglioottimo",
+      "destination": "/taglio"
+    },
+    {
+      "source": "/cutlist",
+      "destination": "/taglio"
+    },
+    {
+      "source": "/sfrido",
+      "destination": "/taglio"
     }
   ]
 }

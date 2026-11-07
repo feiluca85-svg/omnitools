@@ -1,0 +1,274 @@
+{
+  "meta_title": {
+    "it": "TaglioOttimo - Ottimizzatore di Taglio Lineare 1D, Barre & Travi",
+    "en": "CutListOptimizer - 1D Linear Cutting Stock & Waste Optimizer",
+    "es": "CorteOptimo - Optimizador de Corte Lineal 1D de Barras y Perfiles",
+    "fr": "CoupeOptima - Optimiseur de Découpe Linéaire 1D Bois & Métal",
+    "de": "SchnittOpti - 1D Zuschnittoptimierer für Holzleisten & Profile",
+    "pt": "CorteOtimo - Otimizador de Corte Linear 1D para Madeira e Tubos"
+  },
+  "meta_desc": {
+    "it": "Calcola la disposizione di taglio ottimale per travi, assi di legno, barre metalliche e tubi. Riduci al minimo lo sfrido con algoritmo bin-packing 1D e spessore lama (kerf).",
+    "en": "Calculate optimal cutting patterns for lumber, metal bars, and pipes. Minimize material waste using 1D bin-packing algorithm and blade kerf compensation.",
+    "es": "Calcula la disposición de corte óptima para listones, perfiles y tubos. Minimiza el desperdicio con algoritmo bin-packing 1D y sangría de corte (kerf).",
+    "fr": "Calculez le plan de débit optimal pour liteaux, barres métalliques et tuyaux. Réduisez les chutes avec l'algorithme bin-packing 1D et l'épaisseur de trait de scie.",
+    "de": "Berechnen Sie optimale Schnittpläne für Holzbalken, Profile und Rohre. Minimieren Sie Verschnitt mit 1D-Bin-Packing-Algorithmus und Schnittfugenbreite.",
+    "pt": "Calcule o plano de corte ideal para ripas, tubos e perfis metálicos. Minimize sobras e desperdício com algoritmo bin-packing 1D e espessura do corte (kerf)."
+  },
+  "title": {
+    "it": "Ottimizzatore di Taglio 1D",
+    "en": "1D Linear Cut List Optimizer",
+    "es": "Optimizador de Corte 1D",
+    "fr": "Optimiseur de Découpe 1D",
+    "de": "1D Zuschnittoptimierer",
+    "pt": "Otimizador de Corte 1D"
+  },
+  "subtitle": {
+    "it": "Pianifica tagli per legno, profilati e tubi minimizzando lo sfrido di materiale con compensazione spessore lama (Kerf).",
+    "en": "Plan cuts for lumber, metal profiles, and pipes while minimizing scrap waste with saw kerf compensation.",
+    "es": "Planifica cortes de madera, perfiles y tuberías minimizando el desperdicio con compensación de sangría de corte.",
+    "fr": "Planifiez vos débits de bois, profilés et tuyaux en minimisant les chutes avec compensation de trait de scie.",
+    "de": "Zuschnitte für Kanthölzer, Profile und Rohre verlustarm berechnen inklusive Schnittfugenberücksichtigung.",
+    "pt": "Planeie cortes de madeira, perfis e tubos minimizando o desperdício com compensação de espessura de corte."
+  },
+  "stock_settings_title": {
+    "it": "1. Barre Master di Partenza",
+    "en": "1. Stock Material Length",
+    "es": "1. Longitud de Barras Madre",
+    "fr": "1. Barres / Pièces d'Origine",
+    "de": "1. Ausgangsmaterial / Rohlinge",
+    "pt": "1. Comprimento das Barras Master"
+  },
+  "stock_length": {
+    "it": "Lunghezza Barra Standard",
+    "en": "Standard Stock Bar Length",
+    "es": "Longitud de Barra Estándar",
+    "fr": "Longueur de Barre Standard",
+    "de": "Standard-Stangenlänge",
+    "pt": "Comprimento da Barra Padrão"
+  },
+  "kerf_label": {
+    "it": "Spessore Lama (Kerf)",
+    "en": "Blade Kerf (Cut Thickness)",
+    "es": "Espesor de Hoja / Corte (Kerf)",
+    "fr": "Trait de Scie (Kerf)",
+    "de": "Schnittfuge / Sägeblattstärke",
+    "pt": "Espessura da Lâmina / Traço (Kerf)"
+  },
+  "kerf_hint": {
+    "it": "Materiale asportato da ogni taglio (es. 3 mm per banco sega, 1.5 mm ferro)",
+    "en": "Width of material removed by each saw cut (e.g. 3 mm for table saw, 1.5 mm hacksaw)",
+    "es": "Espesor consumido por cada corte de sierra (ej. 3 mm madera, 1.5 mm sierra cinta)",
+    "fr": "Épaisseur de matière retirée à chaque passe (ex. 3 mm scie circulaire, 1.5 mm métaux)",
+    "de": "Materialabtrag pro Schnitt durch das Sägeblatt (z.B. 3 mm Tischkreissäge, 1.5 mm Metall)",
+    "pt": "Material consumido a cada corte da serra (ex. 3 mm serra de mesa, 1.5 mm serra de fita)"
+  },
+  "required_cuts_title": {
+    "it": "2. Pezzi Richiesti (Distinta di Taglio)",
+    "en": "2. Required Parts (Cut List)",
+    "es": "2. Piezas Necesarias (Lista de Cortes)",
+    "fr": "2. Pièces Requises (Feuille de Débit)",
+    "de": "2. Benötigte Teile (Stückliste)",
+    "pt": "2. Peças Necessárias (Lista de Cortes)"
+  },
+  "col_length": {
+    "it": "Lunghezza",
+    "en": "Length",
+    "es": "Longitud",
+    "fr": "Longueur",
+    "de": "Länge",
+    "pt": "Comprimento"
+  },
+  "col_quantity": {
+    "it": "Quantità",
+    "en": "Quantity",
+    "es": "Cantidad",
+    "fr": "Quantité",
+    "de": "Menge / Anzahl",
+    "pt": "Quantidade"
+  },
+  "col_label": {
+    "it": "Etichetta / Nome (Opzionale)",
+    "en": "Label / Note (Optional)",
+    "es": "Etiqueta / Nota (Opcional)",
+    "fr": "Repère / Note (Facultatif)",
+    "de": "Bezeichnung (Optional)",
+    "pt": "Etiqueta / Nota (Opcional)"
+  },
+  "add_row_btn": {
+    "it": "+ Aggiungi Misura",
+    "en": "+ Add Cut Size",
+    "es": "+ Añadir Medida",
+    "fr": "+ Ajouter une Dimension",
+    "de": "+ Teil Hinzufügen",
+    "pt": "+ Adicionar Medida"
+  },
+  "presets_title": {
+    "it": "Esempi Rapidi & Preset:",
+    "en": "Quick Presets:",
+    "es": "Ejemplos Rápidos:",
+    "fr": "Exemples Prédéfinis :",
+    "de": "Schnell-Vorlagen:",
+    "pt": "Exemplos Rápidos:"
+  },
+  "preset_wood_diy": {
+    "it": "Scaffale Legno Fai-da-Te (Travetti 200cm)",
+    "en": "DIY Wood Bookshelf (200cm Studs)",
+    "es": "Estantería de Madera DIY (Listones 200cm)",
+    "fr": "Étagère Bois DIY (Tasseaux 200cm)",
+    "de": "DIY Holzregal (200cm Kantholz)",
+    "pt": "Estante de Madeira DIY (Ripas 200cm)"
+  },
+  "preset_metal_frame": {
+    "it": "Telaio Ferro Tubolare (Barre 600cm)",
+    "en": "Steel Frame Tubing (600cm Stock)",
+    "es": "Bastidor Metálico (Barras 600cm)",
+    "fr": "Cadre Tube Acier (Barres 600cm)",
+    "de": "Stahl-Rahmenprofil (600cm Rohre)",
+    "pt": "Estrutura Tubo Aço (Barras 600cm)"
+  },
+  "preset_pergola": {
+    "it": "Pergola Giardino (Travi 300cm)",
+    "en": "Garden Pergola Rafters (300cm Beams)",
+    "es": "Pérgola de Jardín (Vigas 300cm)",
+    "fr": "Pergola de Jardin (Poutres 300cm)",
+    "de": "Garten-Pergola (300cm Balken)",
+    "pt": "Pérgula de Jardim (Vigas 300cm)"
+  },
+  "kpi_bars_needed": {
+    "it": "Barre Master Richieste",
+    "en": "Stock Bars Required",
+    "es": "Barras Madre Necesarias",
+    "fr": "Barres Requises",
+    "de": "Benötigte Rohlinge",
+    "pt": "Barras Master Necessárias"
+  },
+  "kpi_efficiency": {
+    "it": "Efficienza Materiale",
+    "en": "Material Efficiency",
+    "es": "Eficiencia del Material",
+    "fr": "Efficacité Matière",
+    "de": "Materialausbeute",
+    "pt": "Eficiência do Material"
+  },
+  "kpi_total_waste": {
+    "it": "Sfrido Totale Scartato",
+    "en": "Total Scrap / Waste",
+    "es": "Desperdicio Total",
+    "fr": "Chutes Totales",
+    "de": "Gesamter Verschnitt",
+    "pt": "Sobra / Desperdício Total"
+  },
+  "kpi_cuts_count": {
+    "it": "Numero Totale Tagli",
+    "en": "Total Number of Cuts",
+    "es": "Cortes Totales a Realizar",
+    "fr": "Nombre Total de Découpes",
+    "de": "Gesamtzahl der Schnitte",
+    "pt": "Total de Cortes a Realizar"
+  },
+  "visual_cutting_map": {
+    "it": "Mappa Visiva del Piano di Taglio",
+    "en": "Visual Cutting Pattern Diagram",
+    "es": "Mapa Visual del Plan de Corte",
+    "fr": "Schéma Visuel du Plan de Débit",
+    "de": "Visuelle Schnittplan-Darstellung",
+    "pt": "Mapa Visual do Plano de Corte"
+  },
+  "legend_used": {
+    "it": "Pezzo Utile",
+    "en": "Useful Part",
+    "es": "Pieza Útil",
+    "fr": "Pièce Utile",
+    "de": "Nutzteil",
+    "pt": "Peça Útil"
+  },
+  "legend_waste": {
+    "it": "Sfrido Residuo",
+    "en": "Offcut / Scrap Waste",
+    "es": "Desperdicio",
+    "fr": "Chute",
+    "de": "Restverschnitt",
+    "pt": "Sobra Residual"
+  },
+  "legend_kerf": {
+    "it": "Lama (Kerf)",
+    "en": "Saw Kerf",
+    "es": "Corte Hoja (Kerf)",
+    "fr": "Trait de Scie",
+    "de": "Schnittfuge",
+    "pt": "Corte Lâmina"
+  },
+  "bar_label": {
+    "it": "Barra Master",
+    "en": "Stock Bar",
+    "es": "Barra Madre",
+    "fr": "Barre Master",
+    "de": "Stange / Rohling",
+    "pt": "Barra Master"
+  },
+  "detailed_cutlist_table": {
+    "it": "Distinta di Taglio Sequenziale (Guida per Officina)",
+    "en": "Sequential Cut List (Workshop Guide)",
+    "es": "Lista de Corte Secuencial (Guía de Taller)",
+    "fr": "Fiche de Découpe Pas-à-Pas (Atelier)",
+    "de": "Schritt-für-Schritt Werkstatt-Schnittliste",
+    "pt": "Lista de Corte Sequencial (Guia de Oficina)"
+  },
+  "faq_title": {
+    "it": "Domande Frequenti sull'Ottimizzazione di Taglio 1D",
+    "en": "Frequently Asked Questions on 1D Cut Optimization",
+    "es": "Preguntas Frecuentes sobre Optimización de Corte 1D",
+    "fr": "Foire Aux Questions sur le Débit Linéaire 1D",
+    "de": "Häufige Fragen zur 1D-Schnittoptimierung",
+    "pt": "Perguntas Frequentes sobre Otimização de Corte 1D"
+  },
+  "faq_q1": {
+    "it": "Cos'è lo spessore lama (Kerf) e perché è fondamentale considerarlo?",
+    "en": "What is saw blade kerf and why is it crucial in cut lists?",
+    "es": "¿Qué es el kerf o sangría de corte y por qué es fundamental considerarlo?",
+    "fr": "Qu'est-ce que le trait de scie (kerf) et pourquoi est-il essentiel ?",
+    "de": "Was ist die Schnittfugenbreite (Kerf) und warum ist sie entscheidend?",
+    "pt": "O que é o kerf (espessura do corte) e por que é fundamental considerá-lo?"
+  },
+  "faq_a1": {
+    "it": "Ogni volta che una lama circolare, una sega a nastro o una troncatrice taglia un pezzo di materiale, trasforma una striscia di materiale in trucioli o limatura. Questa larghezza asportata si chiama *Kerf* (solitamente tra 2.4 mm e 3.2 mm per il legno, 1.2-2.0 mm per metalli). Se devi ricavare quattro pezzi da 50 cm da una barra da 200 cm, senza considerare il kerf l'ultimo pezzo risulterà corto di circa 1 cm!",
+    "en": "Every time a saw blade cuts through material, it turns a slit of that material into sawdust or chips. This removed width is called the kerf (typically 2.4 mm to 3.2 mm for woodworking, 1.2 mm to 2.0 mm for metals). If you cut four 50 cm parts from a 200 cm bar without accounting for kerf, your last piece will be almost a centimeter too short!",
+    "es": "Cada vez que una sierra corta material, convierte una ranura en viruta o serrín. Este ancho consumido se llama kerf (generalmente entre 2.4 y 3.2 mm en madera, y 1.2 a 2.0 mm en metal). Si necesitas 4 piezas de 50 cm de una barra de 200 cm, sin descontar el kerf la última pieza medirá casi 1 cm menos de lo previsto.",
+    "fr": "Chaque passe de lame retire une épaisseur de matière transformée en sciure. Cette largeur perdue est le trait de scie (environ 2,4 à 3,2 mm en menuiserie, 1,2 à 2,0 mm en métallerie). Sans tenir compte du trait de scie, le dernier morceau d'une série risque d'être trop court de près d'un centimètre.",
+    "de": "Bei jedem Schnitt trägt das Sägeblatt Material ab, das zu Sägemehl oder Spänen wird. Diese Schnittfugenbreite (meist 2,4 bis 3,2 mm bei Holz, 1,2 bis 2,0 mm bei Metall) summiert sich: Wer vier 50-cm-Stücke aus einer 200-cm-Leiste schneidet, stellt am Ende fest, dass das letzte Teil knapp 1 cm zu kurz ist.",
+    "pt": "A cada corte com a serra, uma porção de material vira serragem ou limalha. Essa perda é o kerf (geralmente 2.4 mm a 3.2 mm para madeira e 1.2 a 2.0 mm para metais). Se cortar quatro peças de 50 cm de uma barra de 200 cm sem considerar o kerf, a última peça ficará cerca de 1 cm menor do que o necessário."
+  },
+  "faq_q2": {
+    "it": "Come funziona l'algoritmo di calcolo (First Fit Decreasing)?",
+    "en": "How does the 1D Bin-Packing calculation algorithm work?",
+    "es": "¿Cómo funciona el algoritmo de empaquetado 1D (First Fit Decreasing)?",
+    "fr": "Comment fonctionne l'algorithme d'optimisation de découpe 1D ?",
+    "de": "Wie funktioniert der 1D-Zuschnitt-Optimierungsalgorithmus?",
+    "pt": "Como funciona o algoritmo de empacotamento 1D (First Fit Decreasing)?"
+  },
+  "faq_a2": {
+    "it": "Il problema dell'ottimizzazione del taglio 1D (Cutting Stock Problem) è un classico problema combinatorio matematico. L'algoritmo ordina tutti i pezzi richiesti in ordine decrescente dal più lungo al più corto, e li alloca nella prima barra master in cui entrano, tenendo conto ad ogni passaggio dello spessore della lama. Questa euristica garantisce una riduzione drastica dello sfrido e richiede pochissimi millisecondi di calcolo.",
+    "en": "1D cutting stock optimization is a classic combinatorial problem. The engine sorts all demanded cuts in descending order from longest to shortest and greedily assigns each piece to the best-fitting stock bar while subtracting kerf loss. This proven heuristic minimizes offcuts and delivers instant results right in your browser.",
+    "es": "El problema del corte de material 1D (Cutting Stock Problem) es un problema matemático clásico. El algoritmo ordena todas las piezas de mayor a menor y las asigna a la primera barra madre con espacio suficiente, descontando la sangría de corte. Este método garantiza un aprovechamiento óptimo del material.",
+    "fr": "Le problème de découpe de stock 1D est un problème mathématique éprouvé. L'outil trie toutes vos pièces par longueur décroissante et les place intelligemment dans les barres d'origine en soustrayant le trait de scie, assurant un taux de chute minimal.",
+    "de": "Das 1D-Zuschnittproblem ist ein klassisches Optimierungsproblem. Die Stücke werden absteigend nach Länge sortiert und nacheinander in die Rohlinge eingepasst, wobei der Schnittverlust jedes Mal abgezogen wird. Dies minimiert den Ausschuss effektiv.",
+    "pt": "O problema do corte de materiais 1D é um desafio matemático clássico. O algoritmo ordena todas as peças solicitadas da maior para a menor e as aloca na barra master com melhor encaixe, subtraindo o kerf a cada corte para evitar desperdício de matéria-prima."
+  },
+  "faq_q3": {
+    "it": "Posso usare questo calcolatore per profilati metallici, tubi in PVC e battiscopa?",
+    "en": "Can I use this calculator for aluminum extrusions, PVC pipes, and baseboards?",
+    "es": "¿Se puede utilizar para perfiles de aluminio, tuberías PVC y rodapiés?",
+    "fr": "Puis-je l'utiliser pour des profilés aluminium, tubes PVC et plinthes ?",
+    "de": "Funktioniert das Tool auch für Aluprofile, PVC-Rohre und Sockelleisten?",
+    "pt": "Posso usar esta ferramenta para perfis de alumínio, tubos de PVC e rodapés?"
+  },
+  "faq_a3": {
+    "it": "Certamente! Qualsiasi materiale lineare continuo (travi in legno, canaline elettriche, tubi idraulici, profilati d'alluminio o acciaio, cornici e battiscopa) segue esattamente la stessa geometria lineare 1D.",
+    "en": "Absolutely! Any linear continuous stock material (lumber studs, electrical conduits, plumbing pipes, aluminum/steel extrusions, moldings, and trim) obeys the identical 1D geometric rules.",
+    "es": "¡Por supuesto! Cualquier material lineal continuo (listones de madera, canaletas eléctricas, tubos fontanería, perfiles de acero o aluminio) comparte la misma geometría matemática 1D.",
+    "fr": "Absolument ! Tout matériau linéaire continu (tasseaux, goulottes électriques, tuyaux de plomberie, profilés acier ou alu, plinthes) suit exactement les mêmes règles géométriques 1D.",
+    "de": "Ja, selbstverständlich! Jedes linienförmige Werkstück (Holzleisten, Kabelkanäle, Rohre, Alu- und Stahlprofile, Sockelleisten) folgt den exakt gleichen mathematischen 1D-Gesetzen.",
+    "pt": "Com certeza! Qualquer material linear contínuo (ripas de madeira, canaletas elétricas, canos de esgoto, perfis metálicos, rodapés e sancas) obedece às mesmas regras da geometria 1D."
+  }
+}
