@@ -688,11 +688,18 @@
 
                 <!-- Yearly Breakdown Table -->
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden card-box">
-                    <div class="p-3.5 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between">
+                    <div class="p-3.5 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between flex-wrap gap-2">
                         <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
                             <span>📅</span> Tabella di Crescita Annuale
                         </span>
-                        <span class="text-[10px] font-mono text-slate-500">Versato Cumulativo / Interessi Annuali / Valore Portafoglio</span>
+                        <div class="flex items-center gap-2 no-print">
+                            <button type="button" onclick="exportPacCsv()" class="text-xs text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer" title="Scarica piano di accumulo in formato CSV/Excel">
+                                <span>📥</span> Esporta CSV
+                            </button>
+                            <button type="button" onclick="window.print()" class="text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer">
+                                <span>🖨️</span> Stampa
+                            </button>
+                        </div>
                     </div>
                     <div class="max-h-56 overflow-y-auto">
                         <table class="w-full text-xs text-left">
@@ -1743,6 +1750,9 @@ document.addEventListener('click', (e) => {
 
             // Render SVG Exponential Curve
             renderSvgCurve(tableData, years);
+            lastCalculatedPacData = tableData;
+            updateUrlParams();
+            savePacState();
         }
 
         function renderSvgCurve(data, years) {
@@ -1803,11 +1813,72 @@ document.addEventListener('click', (e) => {
             updateUrlParams();
         }
 
+        let lastCalculatedPacData = [];
+
+        function exportPacCsv() {
+            if (!lastCalculatedPacData || lastCalculatedPacData.length === 0) {
+                alert('Nessun dato da esportare.');
+                return;
+            }
+
+            const initial = parseFloat(document.getElementById('inputInitial').value) || 0;
+            const monthly = parseFloat(document.getElementById('inputMonthly').value) || 0;
+            const years = parseInt(document.getElementById('inputYears').value) || 1;
+            const ret = parseFloat(document.getElementById('inputReturn').value) || 0;
+
+            const rows = [
+                [`Simulazione Piano di Accumulo (PAC) - InteresseComposto (Iniziale: €${initial} - Mensile: €${monthly} - Anni: ${years} - Rendimento: ${ret}%)`],
+                ["Anno", "Versato Cumulativo (€)", "Interessi Guadagnati Anno (€)", "Patrimonio Totale Portafoglio (€)"]
+            ];
+
+            lastCalculatedPacData.forEach(item => {
+                rows.push([`${item.year}° Anno`, Math.round(item.deposited), Math.round(item.interest), Math.round(item.total)]);
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(";")).join("\r\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Proiezione_PAC_${monthly}E_mese_${years}anni.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function savePacState() {
+            try {
+                const state = {
+                    initial: document.getElementById('inputInitial').value,
+                    monthly: document.getElementById('inputMonthly').value,
+                    years: document.getElementById('inputYears').value,
+                    returnVal: document.getElementById('inputReturn').value,
+                    curr: currentCurrency
+                };
+                localStorage.setItem('omni_pac_state', JSON.stringify(state));
+            } catch(e) {}
+        }
+
+        function loadPacState() {
+            try {
+                const saved = localStorage.getItem('omni_pac_state');
+                if (saved) {
+                    const state = JSON.parse(saved);
+                    if (state.initial) document.getElementById('inputInitial').value = state.initial;
+                    if (state.monthly) document.getElementById('inputMonthly').value = state.monthly;
+                    if (state.years) document.getElementById('inputYears').value = state.years;
+                    if (state.returnVal) document.getElementById('inputReturn').value = state.returnVal;
+                    if (state.curr) setCurrency(state.curr);
+                }
+            } catch(e) {}
+        }
+
         // Print date
         const pDate = document.getElementById('printDate');
         if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
 
         // Initial Run
+        loadPacState();
         initFromUrl();
         calculateCompound();
 

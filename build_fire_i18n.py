@@ -374,11 +374,16 @@ html_code = f"""<!DOCTYPE html>
 
                 <!-- Projection Breakdown Table -->
                 <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs card-box">
-                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3 flex-wrap gap-2">
                         <h3 id="breakdownTitle" class="text-sm font-bold text-slate-900 uppercase tracking-wider">Proiezione Anno per Anno</h3>
-                        <button onclick="window.print()" class="text-xs text-slate-500 hover:text-slate-800 font-semibold flex items-center gap-1 no-print">
-                            <span>🖨️</span> Stampa Proiezione
-                        </button>
+                        <div class="flex items-center gap-2 no-print">
+                            <button type="button" onclick="exportFireCsv()" class="text-xs text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer" title="Scarica tabella in formato Excel / CSV">
+                                <span>📥</span> Esporta CSV
+                            </button>
+                            <button type="button" onclick="window.print()" class="text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer">
+                                <span>🖨️</span> Stampa
+                            </button>
+                        </div>
                     </div>
 
                     <div class="overflow-x-auto max-h-72 overflow-y-auto">
@@ -530,6 +535,64 @@ html_code = f"""<!DOCTYPE html>
             calculateFire();
         }}
 
+        let lastCalculatedTrajectory = [];
+
+        function exportFireCsv() {{
+            if (!lastCalculatedTrajectory || lastCalculatedTrajectory.length === 0) {{
+                alert('Nessun dato da esportare.');
+                return;
+            }}
+
+            const currSymbol = CURRENCIES[currentCurrency]?.symbol || '€';
+            const rows = [
+                ["Anno", "Capitale Versato (" + currSymbol + ")", "Interessi Totali (" + currSymbol + ")", "Patrimonio Totale (" + currSymbol + ")"]
+            ];
+
+            lastCalculatedTrajectory.forEach(pt => {{
+                const annoStr = pt.year === 0 ? "Oggi (Anno 0)" : "Anno " + pt.year;
+                rows.push([annoStr, pt.deposited, pt.interest, pt.balance]);
+            }});
+
+            const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(";")).join("\\r\\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Proiezione_FIRE_${{new Date().toISOString().slice(0,10)}}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }}
+
+        function saveFireState() {{
+            try {{
+                const state = {{
+                    monthlyExp: document.getElementById('monthlyExpenseInput').value,
+                    currentSavings: document.getElementById('currentSavingsInput').value,
+                    monthlySavings: document.getElementById('monthlySavingsInput').value,
+                    returnRate: document.getElementById('returnRateInput').value,
+                    swr: document.getElementById('swrInput').value,
+                    currency: currentCurrency
+                }};
+                localStorage.setItem('omni_fire_state', JSON.stringify(state));
+            }} catch(e) {{}}
+        }}
+
+        function loadFireState() {{
+            try {{
+                const saved = localStorage.getItem('omni_fire_state');
+                if (saved) {{
+                    const state = JSON.parse(saved);
+                    if (state.monthlyExp) document.getElementById('monthlyExpenseInput').value = state.monthlyExp;
+                    if (state.currentSavings) document.getElementById('currentSavingsInput').value = state.currentSavings;
+                    if (state.monthlySavings) document.getElementById('monthlySavingsInput').value = state.monthlySavings;
+                    if (state.returnRate) document.getElementById('returnRateInput').value = state.returnRate;
+                    if (state.swr) document.getElementById('swrInput').value = state.swr;
+                    if (state.currency) setCurrency(state.currency);
+                }}
+            }} catch(e) {{}}
+        }}
+
         function calculateFire() {{
             const monthlyExp = parseFloat(document.getElementById('monthlyExpenseInput').value) || 0;
             const currentSavings = parseFloat(document.getElementById('currentSavingsInput').value) || 0;
@@ -617,6 +680,8 @@ html_code = f"""<!DOCTYPE html>
 
             renderChart(trajectory, fireNumber);
             renderTable(trajectory);
+            lastCalculatedTrajectory = trajectory;
+            saveFireState();
         }}
 
         function renderChart(trajectory, targetFire) {{
@@ -864,6 +929,7 @@ html_code = f"""<!DOCTYPE html>
         document.addEventListener('DOMContentLoaded', () => {{
             const pDate = document.getElementById('printDate');
             if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
+            loadFireState();
             const savedLang = localStorage.getItem('omni_pref_lang') || 'it';
             updateTexts(savedLang);
             calculateFire();

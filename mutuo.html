@@ -708,11 +708,18 @@
 
                 <!-- Amortization Schedule Table Accordion -->
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden card-box">
-                    <div class="p-3.5 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between">
+                    <div class="p-3.5 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between flex-wrap gap-2">
                         <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
                             <span>📅</span> Prospetto di Ammortamento Sintetico (Anno per Anno)
                         </span>
-                        <span class="text-[10px] font-mono text-slate-500">Quota Capitale / Quota Interessi / Debito Residuo</span>
+                        <div class="flex items-center gap-2 no-print">
+                            <button type="button" onclick="exportMortgageCsv()" class="text-xs text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer" title="Scarica piano di ammortamento in formato CSV/Excel">
+                                <span>📥</span> Esporta CSV
+                            </button>
+                            <button type="button" onclick="window.print()" class="text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer">
+                                <span>🖨️</span> Stampa
+                            </button>
+                        </div>
                     </div>
                     <div class="max-h-60 overflow-y-auto">
                         <table class="w-full text-xs text-left">
@@ -1812,6 +1819,7 @@ document.addEventListener('click', (e) => {
             }
 
             document.getElementById('tableBody').innerHTML = tableHtml;
+            lastCalculatedMortgageYears = yearData;
 
             // Render SVG Stacked Bar Chart
             const svg = document.getElementById('mortgageSvg');
@@ -1865,6 +1873,7 @@ document.addEventListener('click', (e) => {
             svg.innerHTML = svgContent;
 
             updateUrlParams();
+            saveMortgageState();
         }
 
         // Print date
@@ -1872,8 +1881,68 @@ document.addEventListener('click', (e) => {
         if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
 
         // Initial Run
+        loadMortgageState();
         initFromUrl();
         calculateMortgage();
+
+        let lastCalculatedMortgageYears = [];
+
+        function exportMortgageCsv() {
+            if (!lastCalculatedMortgageYears || lastCalculatedMortgageYears.length === 0) {
+                alert('Nessun dato da esportare.');
+                return;
+            }
+
+            const principal = parseFloat(document.getElementById('inputAmount').value) || 0;
+            const years = parseInt(document.getElementById('inputYears').value) || 1;
+            const rate = parseFloat(document.getElementById('inputRate').value) || 0;
+
+            const rows = [
+                [`Piano Ammortamento Francese - MutuoFacile (Importo: €${principal} - Anni: ${years} - Tasso: ${rate}%)`],
+                ["Anno", "Quota Capitale Annua (€)", "Quota Interessi Annua (€)", "Debito Residuo (€)"]
+            ];
+
+            lastCalculatedMortgageYears.forEach(item => {
+                rows.push([`${item.year}° Anno`, Math.round(item.principalPart), Math.round(item.interestPart), Math.round(item.remaining)]);
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(";")).join("\r\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Ammortamento_Mutuo_${principal}E_${years}anni.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function saveMortgageState() {
+            try {
+                const state = {
+                    amount: document.getElementById('inputAmount').value,
+                    years: document.getElementById('inputYears').value,
+                    rate: document.getElementById('inputRate').value,
+                    income: document.getElementById('inputIncome').value,
+                    curr: currentCurrency
+                };
+                localStorage.setItem('omni_mutuo_state', JSON.stringify(state));
+            } catch(e) {}
+        }
+
+        function loadMortgageState() {
+            try {
+                const saved = localStorage.getItem('omni_mutuo_state');
+                if (saved) {
+                    const state = JSON.parse(saved);
+                    if (state.amount) document.getElementById('inputAmount').value = state.amount;
+                    if (state.years) document.getElementById('inputYears').value = state.years;
+                    if (state.rate) document.getElementById('inputRate').value = state.rate;
+                    if (state.income) document.getElementById('inputIncome').value = state.income;
+                    if (state.curr) setCurrency(state.curr);
+                }
+            } catch(e) {}
+        }
 
         function updateUrlParams() {
             try {
