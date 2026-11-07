@@ -80,6 +80,26 @@
     {
       "source": "/pricing",
       "destination": "/margine"
+    },
+    {
+      "source": "/tetto",
+      "destination": "/tetto"
+    },
+    {
+      "source": "/tettofacile",
+      "destination": "/tetto"
+    },
+    {
+      "source": "/pendenza-tetto",
+      "destination": "/tetto"
+    },
+    {
+      "source": "/falda",
+      "destination": "/tetto"
+    },
+    {
+      "source": "/pendenza-falda",
+      "destination": "/tetto"
     }
   ]
 }
