@@ -235,13 +235,13 @@ def render_chrome_tabs_strip(current_id="home"):
                 <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                         <span>Scegli Calcolatore</span>
-                        <span class="text-blue-600 font-bold font-mono">13 Tool</span>
+                        <span class="text-blue-600 font-bold font-mono">14 Tool</span>
                     </div>
 
                     <!-- Category: OmniBuilding -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding (5)
                         </div>
                         {b_tools}
                     </div>
@@ -343,12 +343,12 @@ def render_suite_header(current_id):
                     <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                             <span>Scegli Calcolatore</span>
-                            <span>13 Strumenti</span>
+                            <span>14 Strumenti</span>
                         </div>
 
                         <div class="space-y-0.5">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding (5)
                             </div>
                             {building_tools_html}
                         </div>

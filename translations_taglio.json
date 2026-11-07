@@ -270,5 +270,13 @@
     "fr": "Absolument ! Tout matériau linéaire continu (tasseaux, goulottes électriques, tuyaux de plomberie, profilés acier ou alu, plinthes) suit exactement les mêmes règles géométriques 1D.",
     "de": "Ja, selbstverständlich! Jedes linienförmige Werkstück (Holzleisten, Kabelkanäle, Rohre, Alu- und Stahlprofile, Sockelleisten) folgt den exakt gleichen mathematischen 1D-Gesetzen.",
     "pt": "Com certeza! Qualquer material linear contínuo (ripas de madeira, canaletas elétricas, canos de esgoto, perfis metálicos, rodapés e sancas) obedece às mesmas regras da geometria 1D."
+  },
+  "unit_label": {
+    "it": "Imposta Misure",
+    "en": "Units",
+    "es": "Unidades",
+    "fr": "Unités",
+    "de": "Maßeinheit",
+    "pt": "Unidades"
   }
 }

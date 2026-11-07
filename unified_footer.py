@@ -242,15 +242,15 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">12 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span class="text-[11px] text-slate-400 font-medium">14 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
-                <!-- Division 1: OmniBuilding (3 Tools) -->
+                <!-- Division 1: OmniBuilding (5 Tools) -->
                 <div class="space-y-1.5">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
-                        <span>🏗️</span> <span>OmniBuilding (3 Cantiere & Impianti)</span>
+                        <span>🏗️</span> <span>OmniBuilding (5 Cantiere & Fabbricazione)</span>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                         {building_pills}
                     </div>
                 </div>

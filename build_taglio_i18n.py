@@ -144,9 +144,14 @@ html_code = f"""<!DOCTYPE html>
             </div>
             <!-- Unit & Quick Controls -->
             <div class="mt-4 sm:mt-0 flex items-center justify-center sm:justify-end gap-2 shrink-0">
-                <div class="inline-flex p-1 bg-slate-200/80 rounded-xl text-xs font-bold text-slate-600">
-                    <button type="button" id="unitCmBtn" onclick="setUnit('cm')" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition">cm</button>
-                    <button type="button" id="unitMmBtn" onclick="setUnit('mm')" class="px-3 py-1.5 rounded-lg hover:text-slate-900 transition">mm</button>
+                <div class="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-2xl border border-slate-200 shadow-xs">
+                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mr-1 hidden sm:inline">Misure:</span>
+                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-0.5 text-xs font-bold">
+                        <button type="button" id="unitCmBtn" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                        <button type="button" id="unitMmBtn" onclick="setUnit('mm')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">mm</button>
+                        <button type="button" id="unitInBtn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
+                        <button type="button" id="unitFtBtn" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -349,30 +354,51 @@ html_code = f"""<!DOCTYPE html>
         </div>
 
         <!-- FAQ Section -->
-        <section class="mt-16 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-xs">
-            <h2 id="faqTitle" class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Domande Frequenti sull'Ottimizzazione di Taglio 1D
-            </h2>
-            <div class="space-y-6">
-                <div class="border-b border-slate-100 pb-5">
-                    <h3 id="faqQ1" class="text-base font-bold text-slate-900 mb-2">Cos'è lo spessore lama (Kerf) e perché è fondamentale considerarlo?</h3>
-                    <p id="faqA1" class="text-sm text-slate-600 leading-relaxed">
+        <section id="faqSection" class="no-print mt-16 bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
+                    <span>Domande Frequenti sull'Ottimizzazione di Taglio 1D</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ1">Cos'è lo spessore lama (Kerf) e perché è fondamentale considerarlo?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA1" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Ogni volta che una lama circolare, una sega a nastro o una troncatrice taglia un pezzo di materiale, trasforma una striscia di materiale in trucioli o limatura. Questa larghezza asportata si chiama *Kerf* (solitamente tra 2.4 mm e 3.2 mm per il legno, 1.2-2.0 mm per metalli). Se devi ricavare quattro pezzi da 50 cm da una barra da 200 cm, senza considerare il kerf l'ultimo pezzo risulterà corto di circa 1 cm!
-                    </p>
-                </div>
-                <div class="border-b border-slate-100 pb-5">
-                    <h3 id="faqQ2" class="text-base font-bold text-slate-900 mb-2">Come funziona l'algoritmo di calcolo (First Fit Decreasing)?</h3>
-                    <p id="faqA2" class="text-sm text-slate-600 leading-relaxed">
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ2">Come funziona l'algoritmo di calcolo (First Fit Decreasing)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA2" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Il problema dell'ottimizzazione del taglio 1D (Cutting Stock Problem) è un classico problema combinatorio matematico. L'algoritmo ordina tutti i pezzi richiesti in ordine decrescente dal più lungo al più corto, e li alloca nella prima barra master in cui entrano, tenendo conto ad ogni passaggio dello spessore della lama. Questa euristica garantisce una riduzione drastica dello sfrido e richiede pochissimi millisecondi di calcolo.
-                    </p>
-                </div>
-                <div>
-                    <h3 id="faqQ3" class="text-base font-bold text-slate-900 mb-2">Posso usare questo calcolatore per profilati metallici, tubi in PVC e battiscopa?</h3>
-                    <p id="faqA3" class="text-sm text-slate-600 leading-relaxed">
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ3">Posso usare questo calcolatore per profilati metallici, tubi in PVC e battiscopa?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA3" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Certamente! Qualsiasi materiale lineare continuo (travi in legno, canaline elettriche, tubi idraulici, profilati d'alluminio o acciaio, cornici e battiscopa) segue esattamente la stessa geometria lineare 1D.
-                    </p>
-                </div>
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -411,32 +437,54 @@ html_code = f"""<!DOCTYPE html>
             {{ length: 42, qty: 4, label: "Rinforzo C" }}
         ];
 
+        // Unit Conversion Factors from CM (base internal unit)
+        // 1 cm = 10 mm
+        // 1 cm = 0.393701 in (1 in = 2.54 cm)
+        // 1 cm = 0.0328084 ft (1 ft = 30.48 cm)
+        const UNIT_TO_CM = {{
+            'cm': 1,
+            'mm': 0.1,
+            'in': 2.54,
+            'ft': 30.48
+        }};
+
         function setUnit(newUnit) {{
-            if (currentUnit === newUnit) return;
-            const factor = newUnit === 'mm' ? 10 : 0.1;
+            if (currentUnit === newUnit || !UNIT_TO_CM[newUnit]) return;
             
+            // Conversion ratio: from currentUnit to newUnit
+            // val_in_cm = val * UNIT_TO_CM[currentUnit]
+            // val_new = val_in_cm / UNIT_TO_CM[newUnit]
+            const toNewUnit = (val) => {{
+                const inCm = val * UNIT_TO_CM[currentUnit];
+                const res = inCm / UNIT_TO_CM[newUnit];
+                if (newUnit === 'in' || newUnit === 'ft') {{
+                    return parseFloat(res.toFixed(2));
+                }}
+                return parseFloat(res.toFixed(1));
+            }};
+
             // Convert stock length
             const stockIn = document.getElementById('stockLengthInput');
-            stockIn.value = (parseFloat(stockIn.value) * factor).toFixed(1).replace(/\\.0$/, '');
+            stockIn.value = toNewUnit(parseFloat(stockIn.value) || 200);
             
             // Convert cut lengths
             cutsList.forEach(c => {{
-                c.length = (c.length * factor).toFixed(1).replace(/\\.0$/, '');
-                c.length = parseFloat(c.length);
+                c.length = toNewUnit(parseFloat(c.length) || 1);
             }});
 
             currentUnit = newUnit;
 
-            // Update UI buttons
-            const cmBtn = document.getElementById('unitCmBtn');
-            const mmBtn = document.getElementById('unitMmBtn');
-            if (currentUnit === 'cm') {{
-                cmBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
-                mmBtn.className = 'px-3 py-1.5 rounded-lg hover:text-slate-900 transition';
-            }} else {{
-                mmBtn.className = 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-xs transition';
-                cmBtn.className = 'px-3 py-1.5 rounded-lg hover:text-slate-900 transition';
-            }}
+            // Update UI buttons styling
+            ['cm', 'mm', 'in', 'ft'].forEach(u => {{
+                const btn = document.getElementById(`unit${{u.charAt(0).toUpperCase() + u.slice(1)}}Btn`);
+                if (btn) {{
+                    if (u === currentUnit) {{
+                        btn.className = 'w-10 sm:w-11 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center';
+                    }} else {{
+                        btn.className = 'w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold';
+                    }}
+                }}
+            }});
 
             document.getElementById('stockLengthUnit').textContent = currentUnit;
             document.getElementById('stockLengthBadge').textContent = currentUnit;
@@ -549,8 +597,14 @@ html_code = f"""<!DOCTYPE html>
             const stockLengthVal = parseFloat(document.getElementById('stockLengthInput').value) || 200;
             const kerfMm = parseFloat(document.getElementById('kerfInput').value) || 0;
             
-            // Normalize kerf to current unit
-            const kerfInUnit = currentUnit === 'cm' ? (kerfMm / 10) : kerfMm;
+            // Normalize kerf (input is in mm) to current unit
+            // 1 mm = 0.1 cm
+            // 1 mm = 0.0393701 in
+            // 1 mm = 0.00328084 ft
+            let kerfInUnit = kerfMm;
+            if (currentUnit === 'cm') kerfInUnit = kerfMm * 0.1;
+            else if (currentUnit === 'in') kerfInUnit = kerfMm / 25.4;
+            else if (currentUnit === 'ft') kerfInUnit = kerfMm / 304.8;
 
             // Expand all requested pieces into an array of individual items
             let itemsToCut = [];
@@ -636,7 +690,10 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('resTotalCuts').textContent = totalCutsCount;
 
             // Render Footnote Summaries in meters
-            const toMeters = (val) => (currentUnit === 'cm' ? (val / 100) : (val / 1000)).toFixed(2);
+            const toMeters = (val) => {{
+                const inCm = val * (UNIT_TO_CM[currentUnit] || 1);
+                return (inCm / 100).toFixed(2);
+            }};
             document.getElementById('summaryStockLength').textContent = `${{toMeters(totalStockBought)}} m (${{barsCount}} barre)`;
             document.getElementById('summaryUsedLength').textContent = `${{toMeters(totalUsefulLength)}} m`;
             document.getElementById('summaryWasteLength').textContent = `${{toMeters(totalOffcut)}} m (${{wastePct}}%)`;
