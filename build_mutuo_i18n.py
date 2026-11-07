@@ -14,6 +14,7 @@ html_content = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <title>MutuoFacile — Calcolo Rata Mutuo & Piano di Ammortamento Francese | OmniTools Lab</title>
     <meta name="description" content="Calcola la rata mensile del mutuo, il piano di ammortamento alla francese rata per rata, il totale interessi bancari e la sostenibilità rata/reddito al 33%.">
     

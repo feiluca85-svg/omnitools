@@ -14,6 +14,7 @@ html_content = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <title>MargineFacile — Calcolatore Margine di Profitto, Ricarico (Markup) & Prezzo di Vendita | OmniTools Lab</title>
     <meta name="description" content="Calcola il margine di profitto lordo, il ricarico percentuale (markup) e il prezzo di vendita ottimale partendo dal costo di produzione o acquisto (COGS). Con scorporo IVA.">
     
