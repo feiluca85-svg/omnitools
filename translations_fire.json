@@ -241,10 +241,26 @@
   },
   "faq_a3": {
     "it": "La formula matematica universale è: Spese Annue ÷ Tasso di Prelievo (SWR). Se applichi la regola classica del 4% (0.04), equivale semplicemente a moltiplicare le tue spese annuali per 25. Ad esempio: 20.000 € di spese all'anno × 25 = 500.000 € di patrimonio target.",
-    "en": "The formula is: Annual Expenses ÷ Safe Withdrawal Rate. Using the classic 4% rule (0.04), this simply means multiplying your annual living expenses by 25. Example: ,000/year × 25 = ,000 target nest egg.",
+    "en": "The formula is: Annual Expenses ÷ Safe Withdrawal Rate. Using the classic 4% rule (0.04), this simply means multiplying your annual living expenses by 25. Example: 24,000/year × 25 = 600,000 target nest egg.",
     "es": "La fórmula es: Gastos Anuales ÷ Tasa de Retiro. Con la regla del 4%, equivale a multiplicar tus gastos anuales por 25. Ejemplo: 24.000 €/año × 25 = 600.000 € de capital objetivo.",
     "fr": "La formule est : Dépenses Annuelles ÷ Taux de Retrait. Avec la règle des 4%, cela revient à multiplier vos dépenses annuelles par 25. Exemple : 24 000 €/an × 25 = 600 000 € de capital nécessaire.",
     "de": "Die Formel lautet: Jahresausgaben ÷ Entnahmerate. Bei der 4%-Regel multipliziert man die jährlichen Ausgaben einfach mit 25. Beispiel: 24.000 € Jahresausgaben × 25 = 600.000 € Zielvermögen.",
     "pt": "A fórmula é: Despesas Anuais ÷ Taxa de Saque. Com a regra dos 4%, basta multiplicar seus gastos anuais por 25. Exemplo: 24.000 €/ano × 25 = 600.000 € de patrimônio alvo."
+  },
+  "faq_q4": {
+    "it": "Cosa succede se il mercato affronta una recessione subito dopo il mio ritiro (Sequence of Returns Risk)?",
+    "en": "What happens if markets crash right after I retire (Sequence of Returns Risk)?",
+    "es": "¿Qué ocurre si el mercado cae justo después de jubilarme (Sequence of Returns Risk)?",
+    "fr": "Que se passe-t-il si les marchés chutent juste après mon départ en retraite (Sequence of Returns Risk) ?",
+    "de": "Was passiert bei einem Börsencrash kurz nach dem Renteneintritt (Rendite-Reihenfolge-Risiko)?",
+    "pt": "O que acontece se o mercado cair logo após a minha aposentadoria (Sequence of Returns Risk)?"
+  },
+  "faq_a4": {
+    "it": "Il rischio della sequenza dei rendimenti si verifica quando una flessione del mercato colpisce i primi anni di ritiro. Per proteggersi, la strategia FIRE raccomanda di mantenere un cuscinetto di liquidità o obbligazioni a breve termine pari a 1-2 anni di spese vive (Cash Buffer), oppure di adottare un tasso di prelievo variabile riducendo temporaneamente le spese discrezionali durante i mercati orso.",
+    "en": "Sequence of Returns Risk occurs when negative market returns strike early in retirement. To mitigate this, the FIRE community recommends keeping a 1 to 2-year cash or short-term bond cushion (Cash Buffer), or using a dynamic withdrawal strategy that temporarily trims discretionary spending during market downturns.",
+    "es": "El riesgo de secuencia ocurre cuando hay pérdidas de mercado en los primeros años de jubilación. Para mitigarlo, se recomienda mantener un colchón de liquidez de 1 a 2 años de gastos (Cash Buffer) o flexibilizar los retiros recortando gastos superfluos en mercados bajistas.",
+    "fr": "Le risque de séquence des rendimenti survient lorsqu'une baisse des marchés intervient dès les premières années de rente. Pour s'en prémunir, la communauté FIRE conseille de conserver 1 à 2 ans de dépenses en liquidités (Cash Buffer) ou d'ajuster temporairement ses dépenses discrétionnaires à la baisse.",
+    "de": "Das Rendite-Reihenfolge-Risiko beschreibt Verluste in den ersten Jahren der Entnahmephase. Zum Schutz empfiehlt die FIRE-Strategie einen Notgroschen von 1 bis 2 Jahresausgaben auf Festgeld/Tagesgeld (Cash-Puffer) oder flexible Entnahmen bei Bärenmärkten.",
+    "pt": "O risco da sequência de retornos ocorre quando o mercado passa por quedas logo no início da aposentadoria. Para proteção, recomenda-se manter uma reserva de 1 a 2 anos de despesas em liquidez (Cash Buffer) ou flexibilizar os saques em momentos de crise."
   }
 }
