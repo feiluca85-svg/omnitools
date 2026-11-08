@@ -1144,11 +1144,14 @@ html_code = f"""<!DOCTYPE html>
             if (I18N_DATA[lang]) {{
                 currentLang = lang;
                 localStorage.setItem('omnitools_lang', lang);
+                const selectEl = document.getElementById('langSelect');
+                if (selectEl) selectEl.value = lang;
                 applyTranslations(lang);
                 updateDensitometricUI();
                 updatePrintDate();
             }}
         }}
+        window.changeLanguage = changeLanguage;
 
         function applyTranslations(lang) {{
             const t = I18N_DATA[lang] || I18N_DATA['it'];

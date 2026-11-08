@@ -8,6 +8,12 @@ if current_dir not in sys.path:
 
 from nav_header import render_suite_header, render_suite_header_js
 from unified_footer import render_unified_footer, render_unified_footer_js
+import json
+
+with open(os.path.join(current_dir, 'translations_pac.json'), 'r', encoding='utf-8') as f:
+    t_data = json.load(f)
+t_json_str = json.dumps(t_data, ensure_ascii=False)
+
 
 html_content = f"""<!DOCTYPE html>
 <html lang="it">
@@ -137,11 +143,11 @@ html_content = f"""<!DOCTYPE html>
             <div class="text-left space-y-1">
                 <div class="flex items-center gap-2">
                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold border border-emerald-200">
-                        <span>📈</span> SIMULATORE RISPARMIO & PIANO ACCUMULO (PAC)
+                        <span>📈</span> <span id="heroBadge">SIMULATORE RISPARMIO & PIANO ACCUMULO (PAC)</span>
                     </span>
                     <span class="text-xs font-bold text-slate-400">· Crescita Esponenziale & FIRE</span>
                 </div>
-                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Interesse Composto & Montante Futuro</h1>
+                <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Interesse Composto & Montante Futuro</h1>
             </div>
 
             <!-- Universal Currency Switcher -->
@@ -173,7 +179,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Capitale Iniziale -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Capitale Iniziale (<span class="currencySymbol">€</span>)</label>
+                        <label id="labelInitial" class="text-xs font-bold text-slate-700">Capitale Iniziale (<span class="currencySymbol">€</span>)</label>
                         <span id="badgeInitial" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">5.000 €</span>
                     </div>
                     <input type="number" id="inputInitial" value="5000" min="0" max="10000000" step="500" oninput="syncFromInput('Initial')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -189,7 +195,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Versamento Mensile (PAC) -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Versamento Ricorrente Mensile (<span class="currencySymbol">€</span>)</label>
+                        <label id="labelMonthly" class="text-xs font-bold text-slate-700">Versamento Ricorrente Mensile (<span class="currencySymbol">€</span>)</label>
                         <span id="badgeMonthly" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">250 € / mese</span>
                     </div>
                     <input type="number" id="inputMonthly" value="250" min="0" max="100000" step="50" oninput="syncFromInput('Monthly')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -205,7 +211,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Orizzonte Temporale Anni -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Orizzonte Temporale (Anni)</label>
+                        <label id="labelYears" class="text-xs font-bold text-slate-700">Orizzonte Temporale (Anni)</label>
                         <span id="badgeYears" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">20 anni</span>
                     </div>
                     <input type="number" id="inputYears" value="20" min="1" max="50" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -221,7 +227,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Rendimento Medio Annuo Stimato % -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Rendimento Medio Annuo Stimato (%)</label>
+                        <label id="labelReturn" class="text-xs font-bold text-slate-700">Rendimento Medio Annuo Stimato (%)</label>
                         <span id="badgeReturn" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">7.00 %</span>
                     </div>
                     <input type="number" id="inputReturn" value="7.00" min="0.1" max="25.0" step="0.25" oninput="syncFromInput('Return')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -242,14 +248,14 @@ html_content = f"""<!DOCTYPE html>
                 <div class="bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 rounded-2xl p-5 text-white shadow-md relative overflow-hidden card-box">
                     <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Capitale Finale Accumulato</span>
+                            <span id="labelFinalAmount" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Capitale Finale Accumulato</span>
                             <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resFinalAmount">
                                 151.785 €
                             </div>
                             <span class="text-xs text-emerald-100/90 mt-0.5 block" id="resGrowthMultiplier">2.3x il capitale versato</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
-                            <span class="text-[10px] uppercase font-bold text-emerald-200 block">Rendita Perpetua (Regola 4%)</span>
+                            <span id="labelPassiveIncome" class="text-[10px] uppercase font-bold text-emerald-200 block">Rendita Perpetua (Regola 4%)</span>
                             <div class="text-xl font-black font-mono text-white mt-0.5" id="resPassiveIncome">506 € / mese</div>
                             <span class="text-[10px] font-semibold text-emerald-100">Prelievo sicuro annuo</span>
                         </div>
@@ -259,13 +265,13 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Secondary Metrics Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
-                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Versato da Te</span>
+                        <span id="labelTotalDeposits" class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Versato da Te</span>
                         <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalDeposits">65.000 €</div>
                         <span class="text-[10px] text-slate-500" id="resInitialVsPac">5k iniziale + 60k versamenti</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
-                        <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Interessi Guadagnati (Compound)</span>
+                        <span id="labelTotalGains" class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Interessi Guadagnati (Compound)</span>
                         <div class="text-lg font-black font-mono text-emerald-700 mt-1" id="resTotalGains">+86.785 €</div>
                         <span class="text-[10px] text-slate-500" id="resGainsShare">57.2% del patrimonio finale</span>
                     </div>
@@ -368,19 +374,19 @@ html_content = f"""<!DOCTYPE html>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Il PAC sfrutta la celebre metodologia del <strong>Dollar-Cost Averaging (DCA)</strong>. Investire una somma fissa e costante ogni mese abbatte il rischio di <em>market timing</em> (ovvero la paura di investire al picco massimo di mercato): quando i corsi azionari calano, la rata mensile compra un numero maggiore di quote a sconto; quando salgono compra meno quote, mediando efficacemente il prezzo medio di carico nel tempo con disciplina psicologica.
                     </div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Cos'è la regola del 4% (Trinity Study) per la rendita da capitale?</span>
+                        <span id="faq3Q">Cos'è la regola del 4% (Trinity Study) per la rendita da capitale?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         La <strong>Regola del 4%</strong> (Safe Withdrawal Rate - SWR) è il pilastro del movimento FIRE (Financial Independence, Retire Early), derivata da un rigoroso studio scientifico condotto dall'Università Trinity (Texas). Dimostra che, con un portafoglio diversificato tra azioni globali e obbligazioni, prelevando il 4% del capitale accumulato durante il primo anno di pensione anticipata (e adeguando il prelievo all'inflazione gli anni successivi), il capitale ha una probabilità superiore al <strong>95% di non estinguersi</strong> nell'arco di un orizzonte trentennale.
                     </div>
                 </details>
@@ -399,12 +405,12 @@ html_content = f"""<!DOCTYPE html>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Quanto tempo occorre affinché l'interesse composto mostri la sua vera forza?</span>
+                        <span id="faq4Q">Quanto tempo occorre affinché l'interesse composto mostri la sua vera forza?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq4A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         La variabile fondamentale dell'equazione dell'interesse composto è l'<strong>esponente tempo</strong> (gli anni di investimento). Nei primi 5-8 anni, oltre l'80% del valore del conto è costituito semplicemente dai risparmi versati di tasca propria. Tra il decimo e il ventesimo anno si verifica il sorpasso: i guadagni generati dagli interessi reinvestiti superano il valore totale dei versamenti mensili, provocando una vera e propria impennata parabolica del conto.
                     </div>
                 </details>
@@ -416,6 +422,45 @@ html_content = f"""<!DOCTYPE html>
     {render_unified_footer('pac')}
 
     <script>
+        const TRANSLATIONS = {t_json_str};
+        let currentLang = 'it';
+
+        function changeLanguage(lang) {{
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
+            applyTranslations();
+            calculateCompound();
+        }}
+        window.changeLanguage = changeLanguage;
+
+        function applyTranslations() {{
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const el = (id) => document.getElementById(id);
+            if (el('heroBadge')) el('heroBadge').textContent = t.badge;
+            if (el('heroTitle')) el('heroTitle').textContent = t.hero_title;
+            if (el('labelInitial')) el('labelInitial').innerHTML = `${{t.input_initial}} (<span class="currencySymbol">${{CURRENCIES[currentCurrency].symbol}}</span>)`;
+            if (el('labelMonthly')) el('labelMonthly').innerHTML = `${{t.input_monthly}} (<span class="currencySymbol">${{CURRENCIES[currentCurrency].symbol}}</span>)`;
+            if (el('labelYears')) el('labelYears').textContent = t.input_years;
+            if (el('labelReturn')) el('labelReturn').textContent = t.input_rate;
+            if (el('labelFinalAmount')) el('labelFinalAmount').textContent = t.res_final_balance;
+            if (el('labelPassiveIncome')) el('labelPassiveIncome').textContent = t.res_fire_monthly;
+            if (el('labelTotalDeposits')) el('labelTotalDeposits').textContent = t.res_total_invested;
+            if (el('labelTotalGains')) el('labelTotalGains').textContent = t.res_total_interest;
+            if (el('faqTitle')) el('faqTitle').textContent = t.faq_title;
+            if (el('faq1Q')) el('faq1Q').textContent = t.faq1_q;
+            if (el('faq1A')) el('faq1A').innerHTML = t.faq1_a;
+            if (el('faq2Q')) el('faq2Q').textContent = t.faq2_q;
+            if (el('faq2A')) el('faq2A').innerHTML = t.faq2_a;
+            if (el('faq3Q')) el('faq3Q').textContent = t.faq3_q;
+            if (el('faq3A')) el('faq3A').innerHTML = t.faq3_a;
+            if (el('faq4Q')) el('faq4Q').textContent = t.faq4_q;
+            if (el('faq4A')) el('faq4A').innerHTML = t.faq4_a;
+        }}
+
         {render_suite_header_js()}
         {render_unified_footer_js()}
 
@@ -695,10 +740,16 @@ html_content = f"""<!DOCTYPE html>
         const pDate = document.getElementById('printDate');
         if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
 
-        // Initial Run
-        loadPacState();
-        initFromUrl();
-        calculateCompound();
+        document.addEventListener('DOMContentLoaded', () => {{
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            if (TRANSLATIONS[savedLang]) currentLang = savedLang;
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = currentLang;
+            loadPacState();
+            initFromUrl();
+            applyTranslations();
+            calculateCompound();
+        }});
 
         function updateUrlParams() {{
             try {{

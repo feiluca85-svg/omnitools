@@ -931,14 +931,25 @@ html_code = f"""<!DOCTYPE html>
             calculateCutList();
         }}
 
+        function changeLanguage(lang) {{
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
+            updateTexts(lang);
+        }}
+        window.changeLanguage = changeLanguage;
+
         // Listen for universal language changes
         window.addEventListener('omni_lang_change', (e) => {{
-            if (e.detail && e.detail.lang) updateTexts(e.detail.lang);
+            if (e.detail && e.detail.lang) changeLanguage(e.detail.lang);
         }});
 
         // Initialization
         document.addEventListener('DOMContentLoaded', () => {{
-            const savedLang = localStorage.getItem('omni_pref_lang') || 'it';
+            const savedLang = localStorage.getItem('omnitools_lang') || localStorage.getItem('omni_pref_lang') || 'it';
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = savedLang;
             updateTexts(savedLang);
             renderCutsTable();
             calculateCutList();

@@ -577,6 +577,17 @@
 
             <!-- Right Actions -->
             <div class="flex items-center gap-2">
+                <!-- Language Selector Dropdown -->
+                <div class="relative inline-block text-left">
+                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="pt">🇵🇹 PT</option>
+                    </select>
+                </div>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
                     <span>📲</span>
                     <span id="headerInstallText" class="hidden sm:inline">Installa</span>
@@ -1327,6 +1338,15 @@ document.addEventListener('click', (e) => {
         if (!newToolDrop.contains(e.target) && (!topNewToolBtn || !topNewToolBtn.contains(e.target))) {
             newToolDrop.classList.add('hidden');
         }
+    }
+});
+
+// Auto-Sync Language Selector
+document.addEventListener('DOMContentLoaded', () => {
+    const sel = document.getElementById('langSelect');
+    if (sel) {
+        const saved = localStorage.getItem('omnitools_lang') || 'it';
+        sel.value = saved;
     }
 });
 
@@ -2099,11 +2119,14 @@ document.addEventListener('click', (e) => {
             if (I18N_DATA[lang]) {
                 currentLang = lang;
                 localStorage.setItem('omnitools_lang', lang);
+                const selectEl = document.getElementById('langSelect');
+                if (selectEl) selectEl.value = lang;
                 applyTranslations(lang);
                 calculateYield();
                 updatePrintDate();
             }
         }
+        window.changeLanguage = changeLanguage;
 
         function applyTranslations(lang) {
             const t = I18N_DATA[lang] || I18N_DATA['it'];

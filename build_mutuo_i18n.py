@@ -8,6 +8,12 @@ if current_dir not in sys.path:
 
 from nav_header import render_suite_header, render_suite_header_js
 from unified_footer import render_unified_footer, render_unified_footer_js
+import json
+
+with open(os.path.join(current_dir, 'translations_mutuo.json'), 'r', encoding='utf-8') as f:
+    t_data = json.load(f)
+t_json_str = json.dumps(t_data, ensure_ascii=False)
+
 
 html_content = f"""<!DOCTYPE html>
 <html lang="it">
@@ -137,11 +143,11 @@ html_content = f"""<!DOCTYPE html>
             <div class="text-left space-y-1">
                 <div class="flex items-center gap-2">
                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold border border-emerald-200">
-                        <span>🏦</span> SIMULATORE MUTUO & AMMORTAMENTO
+                        <span>🏦</span> <span id="heroBadge">SIMULATORE MUTUO & AMMORTAMENTO</span>
                     </span>
                     <span class="text-xs font-bold text-slate-400">· Formula Francese Rata Costante</span>
                 </div>
-                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Rata Mutuo & Sostenibilità Bancaria</h1>
+                <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Rata Mutuo & Sostenibilità Bancaria</h1>
             </div>
 
             <!-- Universal Currency Switcher -->
@@ -189,7 +195,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Importo Mutuo -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Importo Richiesto (<span class="currencySymbol">€</span>)</label>
+                        <label id="labelAmount" class="text-xs font-bold text-slate-700">Importo Richiesto (<span class="currencySymbol">€</span>)</label>
                         <span id="badgeAmount" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">180.000 €</span>
                     </div>
                     <div class="relative">
@@ -207,7 +213,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Durata Anni -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Durata Mutuo (Anni)</label>
+                        <label id="labelYears" class="text-xs font-bold text-slate-700">Durata Mutuo (Anni)</label>
                         <span id="badgeYears" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">25 anni (300 rate)</span>
                     </div>
                     <input type="number" id="inputYears" value="25" min="5" max="40" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -223,7 +229,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Tasso di Interesse Annuo (TAN) -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Tasso di Interesse Annuo (TAN %)</label>
+                        <label id="labelRate" class="text-xs font-bold text-slate-700">Tasso di Interesse Annuo (TAN %)</label>
                         <span id="badgeRate" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">3.20 %</span>
                     </div>
                     <input type="number" id="inputRate" value="3.20" min="0.05" max="18.00" step="0.05" oninput="syncFromInput('Rate')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -239,9 +245,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Reddito Netto Mensile (Per Sostenibilità Rata/Reddito 33%) -->
                 <div class="pt-2 border-t border-slate-100">
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700 flex items-center gap-1">
-                            <span>🛡️</span> Reddito Netto Mensile (<span class="currencySymbol">€</span>)
-                        </label>
+                        <label id="labelIncome" class="text-xs font-bold text-slate-700 flex items-center gap-1"><span>🛡️</span> <span>Reddito Netto Mensile</span> (<span class="currencySymbol">€</span>)</label>
                         <span id="badgeIncome" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">2.600 €</span>
                     </div>
                     <input type="number" id="inputIncome" value="2600" min="500" max="50000" step="50" oninput="calculateMortgage()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -256,14 +260,14 @@ html_content = f"""<!DOCTYPE html>
                 <div class="bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 rounded-2xl p-5 text-white shadow-md relative overflow-hidden card-box">
                     <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Rata Mensile Costante</span>
+                            <span id="labelMonthly" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Rata Mensile Costante</span>
                             <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resMonthlyPayment">
                                 872,75 €
                             </div>
                             <span class="text-xs text-emerald-100/90 mt-0.5 block">per <span id="resTotalInstallments" class="font-bold">300</span> mensilità</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
-                            <span class="text-[10px] uppercase font-bold text-emerald-200 block">Incidenza su Reddito</span>
+                            <span id="labelDti" class="text-[10px] uppercase font-bold text-emerald-200 block">Incidenza su Reddito</span>
                             <div class="text-xl font-black font-mono text-white mt-0.5" id="resDebtToIncome">33.5%</div>
                             <span class="text-[10px] font-semibold text-emerald-100" id="resDebtToIncomeTag">In Linea (≤ 35%)</span>
                         </div>
@@ -273,19 +277,19 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Secondary KPI Metrics Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
-                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Richiesto</span>
+                        <span id="labelPrincipal" class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Richiesto</span>
                         <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resPrincipal">180.000 €</div>
                         <span class="text-[10px] text-slate-500">100% finanziato</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
-                        <span class="text-[11px] font-bold text-rose-600 uppercase tracking-wider block">Totale Interessi</span>
+                        <span id="labelInterest" class="text-[11px] font-bold text-rose-600 uppercase tracking-wider block">Totale Interessi</span>
                         <div class="text-lg font-black font-mono text-rose-600 mt-1" id="resTotalInterest">81.826 €</div>
                         <span class="text-[10px] text-slate-500" id="resInterestRatio">+45.5% sul prestito</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
-                        <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">Costo Totale Mutuo</span>
+                        <span id="labelTotalCost" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">Costo Totale Mutuo</span>
                         <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalCost">261.826 €</div>
                         <span class="text-[10px] text-slate-500">Capitale + Interessi</span>
                     </div>
@@ -295,7 +299,7 @@ html_content = f"""<!DOCTYPE html>
                 <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-2xs space-y-2 card-box" id="affordabilityCard">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                            <span>🏛️</span> Valutazione Bancaria di Fattibilità (Regola del Terzo)
+                            <span>🏛️</span> <span id="affordTitle">Valutazione Bancaria di Fattibilità (Regola del Terzo)</span>
                         </span>
                         <span id="affordTag" class="text-[10px] font-extrabold uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300">
                             Fattibile (33%)
@@ -385,7 +389,7 @@ html_content = f"""<!DOCTYPE html>
                         ❓
                     </div>
                     <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
-                        <span>Domande Frequenti su Rata Mutuo & Ammortamento</span>
+                        <span id="faqTitle">Domande Frequenti su Rata Mutuo & Ammortamento</span>
                     </h2>
                 </div>
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
@@ -394,7 +398,7 @@ html_content = f"""<!DOCTYPE html>
             <div class="space-y-2.5">
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150" open>
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Come funziona l'ammortamento progressivo alla francese?</span>
+                        <span id="faq1Q">Come funziona l'ammortamento progressivo alla francese?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -406,7 +410,7 @@ html_content = f"""<!DOCTYPE html>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Cos'è la regola bancaria del 33% (rapporto rata/reddito)?</span>
+                        <span id="faq2Q">Cos'è la regola bancaria del 33% (rapporto rata/reddito)?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -418,7 +422,7 @@ html_content = f"""<!DOCTYPE html>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Qual è la differenza tra TAN e TAEG nel calcolo del mutuo?</span>
+                        <span id="faq3Q">Qual è la differenza tra TAN e TAEG nel calcolo del mutuo?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -442,7 +446,7 @@ html_content = f"""<!DOCTYPE html>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>L'estinzione anticipata o la surroga del mutuo comportano penali?</span>
+                        <span id="faq4Q">L'estinzione anticipata o la surroga del mutuo comportano penali?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -716,10 +720,16 @@ html_content = f"""<!DOCTYPE html>
         const pDate = document.getElementById('printDate');
         if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
 
-        // Initial Run
-        loadMortgageState();
-        initFromUrl();
-        calculateMortgage();
+        document.addEventListener('DOMContentLoaded', () => {{
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            if (TRANSLATIONS[savedLang]) currentLang = savedLang;
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = currentLang;
+            loadMortgageState();
+            initFromUrl();
+            applyTranslations();
+            calculateMortgage();
+        }});
 
         function exportMortgageCsv() {{
             if (!lastCalculatedMortgageYears || lastCalculatedMortgageYears.length === 0) {{

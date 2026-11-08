@@ -909,10 +909,13 @@ html_code = f"""<!DOCTYPE html>
         }}
 
         function changeLanguage(lang) {{
-            renderFaqs();
             if (!TRANSLATIONS[lang]) return;
             currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
             document.documentElement.lang = lang;
+            renderFaqs();
             const t = TRANSLATIONS[lang];
 
             document.title = t.title;

@@ -922,15 +922,26 @@ html_code = f"""<!DOCTYPE html>
             calculateFire();
         }}
 
+        function changeLanguage(lang) {{
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
+            updateTexts(lang);
+        }}
+        window.changeLanguage = changeLanguage;
+
         window.addEventListener('omni_lang_change', (e) => {{
-            if (e.detail && e.detail.lang) updateTexts(e.detail.lang);
+            if (e.detail && e.detail.lang) changeLanguage(e.detail.lang);
         }});
 
         document.addEventListener('DOMContentLoaded', () => {{
             const pDate = document.getElementById('printDate');
             if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
             loadFireState();
-            const savedLang = localStorage.getItem('omni_pref_lang') || 'it';
+            const savedLang = localStorage.getItem('omnitools_lang') || localStorage.getItem('omni_pref_lang') || 'it';
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = savedLang;
             updateTexts(savedLang);
             calculateFire();
         }});

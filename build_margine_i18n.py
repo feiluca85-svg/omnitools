@@ -8,6 +8,12 @@ if current_dir not in sys.path:
 
 from nav_header import render_suite_header, render_suite_header_js
 from unified_footer import render_unified_footer, render_unified_footer_js
+import json
+
+with open(os.path.join(current_dir, 'translations_margine.json'), 'r', encoding='utf-8') as f:
+    t_data = json.load(f)
+t_json_str = json.dumps(t_data, ensure_ascii=False)
+
 
 html_content = f"""<!DOCTYPE html>
 <html lang="it">
@@ -137,11 +143,11 @@ html_content = f"""<!DOCTYPE html>
             <div class="text-left space-y-1">
                 <div class="flex items-center gap-2">
                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold border border-emerald-200">
-                        <span>🏷️</span> PRICING & REDDITIVITÀ COMMERCIALE
+                        <span>🏷️</span> <span id="heroBadge">PRICING & REDDITIVITÀ COMMERCIALE</span>
                     </span>
                     <span class="text-xs font-bold text-slate-400">· Risolvi la confusione Margine vs Markup</span>
                 </div>
-                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Margine di Profitto, Ricarico (Markup) & Prezzo</h1>
+                <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Margine di Profitto, Ricarico (Markup) & Prezzo</h1>
             </div>
 
             <!-- Universal Currency Switcher -->
@@ -179,7 +185,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Costo Unitario del Prodotto (COGS) -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Costo di Acquisto / Produzione (<span class="currencySymbol">€</span>)</label>
+                        <label id="labelCost" class="text-xs font-bold text-slate-700">Costo di Acquisto / Produzione (<span class="currencySymbol">€</span>)</label>
                         <span id="badgeCost" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">45,00 €</span>
                     </div>
                     <input type="number" id="inputCost" value="45" min="0.01" max="1000000" step="1" oninput="calculateMargin()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -194,7 +200,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Campo Variabile in base al Modo: Margine Obiettivo vs Prezzo Effettivo -->
                 <div id="boxTargetMargin">
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Margine di Profitto Desiderato (%)</label>
+                        <label id="labelMargin" class="text-xs font-bold text-slate-700">Margine di Profitto Desiderato (%)</label>
                         <span id="badgeMargin" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">35.0 %</span>
                     </div>
                     <input type="number" id="inputMargin" value="35" min="1" max="99" step="1" oninput="syncFromInput('Margin')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -210,7 +216,7 @@ html_content = f"""<!DOCTYPE html>
                 <!-- Modo B: Inserimento Prezzo di Vendita (nascosto di default) -->
                 <div id="boxSellingPrice" class="hidden">
                     <div class="flex justify-between items-center mb-1">
-                        <label class="text-xs font-bold text-slate-700">Prezzo di Vendita Effettivo (<span class="currencySymbol">€</span>)</label>
+                        <label id="labelSellingPrice" class="text-xs font-bold text-slate-700">Prezzo di Vendita Effettivo (<span class="currencySymbol">€</span>)</label>
                         <span id="badgeSellingPrice" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">69,23 €</span>
                     </div>
                     <input type="number" id="inputSellingPrice" value="69.23" min="0.01" max="1000000" step="0.5" oninput="calculateMargin()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -239,14 +245,14 @@ html_content = f"""<!DOCTYPE html>
                 <div class="bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 rounded-2xl p-5 text-white shadow-md relative overflow-hidden card-box">
                     <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Prezzo di Vendita Suggerito (Netto)</span>
+                            <span id="labelSellingPriceKpi" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Prezzo di Vendita Suggerito (Netto)</span>
                             <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resSellingPrice">
                                 69,23 €
                             </div>
                             <span class="text-xs text-emerald-100/90 mt-0.5 block" id="resPriceWithVat">84,46 € con IVA 22% inclusa</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
-                            <span class="text-[10px] uppercase font-bold text-emerald-200 block">Utile Lordo Unitario</span>
+                            <span id="labelGrossProfit" class="text-[10px] uppercase font-bold text-emerald-200 block">Utile Lordo Unitario</span>
                             <div class="text-xl font-black font-mono text-white mt-0.5" id="resGrossProfit">+24,23 €</div>
                             <span class="text-[10px] font-semibold text-emerald-100" id="resMarginKpi">Margine: 35.0%</span>
                         </div>
@@ -371,43 +377,43 @@ html_content = f"""<!DOCTYPE html>
             <div class="space-y-3">
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150" open>
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Qual è la differenza sostanziale tra margine di profitto e ricarico (markup)?</span>
+                        <span id="faq1Q">Qual è la differenza sostanziale tra margine di profitto e ricarico (markup)?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         La differenza fondamentale risiede nella base imponibile del calcolo. Il <strong>margine di profitto lordo</strong> (Margin) misura la percentuale di utile rispetto al ricavo totale (prezzo di vendita finale): non può mai eccedere il 100%. Il <strong>ricarico</strong> (Markup) misura invece l'incremento percentuale applicato sopra il costo del prodotto: un ricarico del 100% raddoppia il prezzo e corrisponde a un margine del 50%.
                     </div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Cosa include esattamente il costo del venduto (COGS)?</span>
+                        <span id="faq2Q">Cosa include esattamente il costo del venduto (COGS)?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Il <strong>COGS</strong> (Cost of Goods Sold) raggruppa tutti i costi direttamente imputabili alla fabbricazione o all'acquisizione del prodotto finito: prezzo netto d'acquisto da fornitore o terzista, materie prime, manodopera diretta, packaging primario e oneri di spedizione o dogana sostenuti per l'approvvigionamento. Non comprende spese generali, affitti aziendali o costi promozionali indiretti.
                     </div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Perché il margine di profitto non può mai superare il 100%?</span>
+                        <span id="faq3Q">Perché il margine di profitto non può mai superare il 100%?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Per definizione matematica, l'utile lordo è dato da <code>Prezzo di Vendita - Costo</code>. Dividendo l'utile per il prezzo di vendita, si ottiene un rapporto che raggiungerebbe il 100% solo se il costo fosse pari a zero. Superare il 100% significherebbe che il fornitore ti paga per ricevere il prodotto. Se desideri moltiplicare il costo per 3 o 4 volte, devi impostare un <em>ricarico (markup)</em> del 200% o 300%, non un margine.
                     </div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Come funziona lo scorporo dell'IVA dal prezzo al consumo?</span>
+                        <span id="faq4Q">Come funziona lo scorporo dell'IVA dal prezzo al consumo?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -436,6 +442,42 @@ html_content = f"""<!DOCTYPE html>
     {render_unified_footer('margine')}
 
     <script>
+        const TRANSLATIONS = {t_json_str};
+        let currentLang = 'it';
+
+        function changeLanguage(lang) {{
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
+            applyTranslations();
+            calculateMargin();
+        }}
+        window.changeLanguage = changeLanguage;
+
+        function applyTranslations() {{
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const el = (id) => document.getElementById(id);
+            if (el('heroBadge')) el('heroBadge').textContent = t.badge;
+            if (el('heroTitle')) el('heroTitle').textContent = t.hero_title;
+            if (el('labelCost')) el('labelCost').innerHTML = `${{t.input_cogs}} (<span class="currencySymbol">${{CURRENCIES[currentCurrency].symbol}}</span>)`;
+            if (el('labelMargin')) el('labelMargin').textContent = t.input_margin;
+            if (el('labelSellingPrice')) el('labelSellingPrice').innerHTML = `${{t.res_sell_price_net}} (<span class="currencySymbol">${{CURRENCIES[currentCurrency].symbol}}</span>)`;
+            if (el('labelSellingPriceKpi')) el('labelSellingPriceKpi').textContent = t.res_sell_price_net;
+            if (el('labelGrossProfit')) el('labelGrossProfit').textContent = t.res_gross_profit;
+            if (el('faqTitle')) el('faqTitle').textContent = t.faq_title;
+            if (el('faq1Q')) el('faq1Q').textContent = t.faq1_q;
+            if (el('faq1A')) el('faq1A').innerHTML = t.faq1_a;
+            if (el('faq2Q')) el('faq2Q').textContent = t.faq2_q;
+            if (el('faq2A')) el('faq2A').innerHTML = t.faq2_a;
+            if (el('faq3Q')) el('faq3Q').textContent = t.faq3_q;
+            if (el('faq3A')) el('faq3A').innerHTML = t.faq3_a;
+            if (el('faq4Q')) el('faq4Q').textContent = t.faq4_q;
+            if (el('faq4A')) el('faq4A').innerHTML = t.faq4_a;
+        }}
+
         {render_suite_header_js()}
         {render_unified_footer_js()}
 
@@ -607,9 +649,15 @@ html_content = f"""<!DOCTYPE html>
         const pDate = document.getElementById('printDate');
         if (pDate) pDate.textContent = new Date().toLocaleDateString('it-IT');
 
-        // Initial Run
-        initFromUrl();
-        calculateMargin();
+        document.addEventListener('DOMContentLoaded', () => {{
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            if (TRANSLATIONS[savedLang]) currentLang = savedLang;
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = currentLang;
+            initFromUrl();
+            applyTranslations();
+            calculateMargin();
+        }});
 
         function updateUrlParams() {{
             try {{

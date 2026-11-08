@@ -652,6 +652,10 @@ html_code = f"""<!DOCTYPE html>
 
         function changeLanguage(lang) {{
             currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
             const t = TRANSLATIONS[lang] || TRANSLATIONS['it'];
             if (!t) return;
 
@@ -679,9 +683,17 @@ html_code = f"""<!DOCTYPE html>
 
             calculateRoof();
         }}
+        window.changeLanguage = changeLanguage;
 
         document.addEventListener('DOMContentLoaded', () => {{
-            calculateRoof();
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = savedLang;
+            if (savedLang !== 'it') {{
+                changeLanguage(savedLang);
+            }} else {{
+                calculateRoof();
+            }}
         }});
     </script>
 

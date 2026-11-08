@@ -749,14 +749,24 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('faq4A').innerHTML = t.faq_4_a;
         }}
 
-        function switchLang(lang) {{
+        function changeLanguage(lang) {{
             if (!TRANSLATIONS[lang]) return;
             currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
             applyTranslations();
             recalc();
         }}
+        window.changeLanguage = changeLanguage;
+        window.switchLang = changeLanguage;
 
         document.addEventListener('DOMContentLoaded', () => {{
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            if (TRANSLATIONS[savedLang]) currentLang = savedLang;
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = currentLang;
             loadState();
             recalc();
             applyTranslations();

@@ -1264,6 +1264,10 @@ html_code = f"""<!DOCTYPE html>
         function changeLanguage(lang) {{
             if (!TRANSLATIONS[lang]) return;
             currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
             const t = TRANSLATIONS[lang];
 
             document.getElementById('heroTitle').innerHTML = t.hero_title;
@@ -1294,11 +1298,19 @@ html_code = f"""<!DOCTYPE html>
 
             updateBarcode();
         }}
+        window.changeLanguage = changeLanguage;
 
         // Initialize on load
         window.addEventListener('DOMContentLoaded', () => {{
             selectColorTarget('bar');
-            updateBarcode();
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = savedLang;
+            if (savedLang !== 'it') {{
+                changeLanguage(savedLang);
+            }} else {{
+                updateBarcode();
+            }}
         }});
     </script>
 </body>
