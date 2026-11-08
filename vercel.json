@@ -180,6 +180,26 @@
     {
       "source": "/prepayment",
       "destination": "/estinzione"
+    },
+    {
+      "source": "/obiettivorisparmio",
+      "destination": "/risparmio"
+    },
+    {
+      "source": "/sinkingfund",
+      "destination": "/risparmio"
+    },
+    {
+      "source": "/sinking-fund",
+      "destination": "/risparmio"
+    },
+    {
+      "source": "/savingsgoal",
+      "destination": "/risparmio"
+    },
+    {
+      "source": "/sparziel",
+      "destination": "/risparmio"
     }
   ]
 }

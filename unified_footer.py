@@ -21,6 +21,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
         {"id": "pac", "name": "📈 Interesse PAC", "desc": "Crescita & Rendita 4%", "url": "/pac"},
         {"id": "margine", "name": "🏷️ Margine & Ricarico", "desc": "COGS, Markup & IVA", "url": "/margine"},
         {"id": "estinzione", "name": "⚡ Estinzione Mutuo", "desc": "Rata vs Anni & Bersani", "url": "/estinzione"},
+        {"id": "risparmio", "name": "🎯 Obiettivo Risparmio", "desc": "Sinking Fund & Piano Mensile", "url": "/risparmio"},
         {"id": "fire", "name": "🔥 FIRE & Rendita", "desc": "Libertà & Trinity 4%", "url": "/fire"},
     ]
 
@@ -252,7 +253,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
                         <span>🏗️</span> <span>OmniBuilding (5 Cantiere & Fabbricazione)</span>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         {building_pills}
                     </div>
                 </div>
@@ -267,12 +268,12 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                     </div>
                 </div>
 
-                <!-- Division 3: OmniFinance (5 Tools) -->
+                <!-- Division 3: OmniFinance (6 Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                        <span>💼</span> <span>OmniFinance (5 Finanza & Libertà)</span>
+                        <span>💼</span> <span>OmniFinance (6 Finanza & Libertà)</span>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         {finance_pills}
                     </div>
                 </div>
