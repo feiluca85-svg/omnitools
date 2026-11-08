@@ -2,6 +2,30 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/rampa",
+      "destination": "/rampe"
+    },
+    {
+      "source": "/pendenza",
+      "destination": "/rampe"
+    },
+    {
+      "source": "/pendenza-rampa",
+      "destination": "/rampe"
+    },
+    {
+      "source": "/scala",
+      "destination": "/scale"
+    },
+    {
+      "source": "/gradini",
+      "destination": "/scale"
+    },
+    {
+      "source": "/tubo",
+      "destination": "/tubi"
+    },
+    {
       "source": "/risoluzione",
       "destination": "/dpi"
     },
@@ -63,10 +87,6 @@
     },
     {
       "source": "/risparmio",
-      "destination": "/pac"
-    },
-    {
-      "source": "/fire",
       "destination": "/pac"
     },
     {
