@@ -23,15 +23,15 @@ html_code = f"""<!DOCTYPE html>
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Calcolo Pendenza Tetto, Falda & Superficie Online — Gradi, % e Sviluppo Trave</title>
-    <meta name="description" content="Calcolatore professionale per la pendenza del tetto. Calcola istantaneamente pendenza percentuale, angolo in gradi, quota del colmo, lunghezza reale della trave e superficie della falda.">
+    <title>Calcolo Pendenza Tetto, Falda & Superficie Online — Gradi, Percentuale & Trave | TettoFacile</title>
+    <meta name="description" content="Calcolatore professionale per pendenza tetto in gradi e percentuale (%). Calcola altezza del colmo, lunghezza reale della trave (incluso sporto di gronda) e metri quadri effettivi della falda per tegole, lamiere e coppi.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tetto">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="OmniTools - Calcolo Pendenza Tetto, Falda & Superficie">
-    <meta property="og:description" content="Calcola all'istante l'inclinazione in gradi e %, l'altezza del colmo, la lunghezza della trave e la superficie reale del tetto.">
+    <meta property="og:title" content="TettoFacile — Calcolo Pendenza Tetto, Falda & Superficie Online">
+    <meta property="og:description" content="Calcola pendenza in gradi e %, altezza colmo, sviluppo reale della trave e superficie del tetto in mq.">
     <meta property="og:url" content="https://www.omnitoolslab.com/tetto">
     <meta property="og:site_name" content="OmniTools Lab">
     <meta property="og:image" content="https://www.omnitoolslab.com/og-tetto.png">
@@ -74,6 +74,43 @@ html_code = f"""<!DOCTYPE html>
               "position": 2,
               "name": "TettoFacile",
               "item": "https://www.omnitoolslab.com/tetto"
+            }}
+          ]
+        }},
+        {{
+          "@type": "FAQPage",
+          "mainEntity": [
+            {{
+              "@type": "Question",
+              "name": "Qual è la formula per convertire la pendenza del tetto da percentuale a gradi?",
+              "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "La formula è: Gradi = arctan(Pendenza % / 100) × (180 / π). Ad esempio, una pendenza del 30% corrisponde a circa 16.7°."
+              }}
+            }},
+            {{
+              "@type": "Question",
+              "name": "Qual è la pendenza minima consigliata per un tetto in tegole o coppi?",
+              "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Per tegole e coppi tradizionali la pendenza minima raccomandata è del 30-35% (circa 17°-19°). Per lamiere continue e pannelli sandwich si può scendere fino al 7-10% con opportuna impermeabilizzazione."
+              }}
+            }},
+            {{
+              "@type": "Question",
+              "name": "Come si calcola la superficie effettiva della falda di un tetto?",
+              "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "La superficie effettiva si ottiene moltiplicando la lunghezza reale della trave inclinata (incluso lo sporto di gronda) per la larghezza dell'edificio lungo la linea di gronda."
+              }}
+            }},
+            {{
+              "@type": "Question",
+              "name": "Cos'è lo sporto di gronda e come influisce sulla lunghezza della trave?",
+              "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Lo sporto è la parte di copertura che sporge dai muri perimetrali per deviare l'acqua piovana. Va sommato all'ipotenusa del triangolo di falda per ricavare la lunghezza commerciale del legname."
+              }}
             }}
           ]
         }}

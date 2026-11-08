@@ -18,14 +18,14 @@ html_code = f"""<!DOCTYPE html>
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Calcolo Spessore Dorso Libro e Copertina Stesa Online — InDesign & KDP</title>
-    <meta name="description" content="Calcolatore professionale di spessore del dorso libro e copertina aperta con refili 3 mm per brossura fresata, colla PUR e filo refe. Calcolo esatto da numero pagine, grammatura e mano carta con quote per Adobe InDesign e Amazon KDP.">
+    <title>Calcolo Spessore Dorso Libro e Copertina Stesa Online — InDesign, Illustrator & KDP | DorsoFacile</title>
+    <meta name="description" content="Calcola lo spessore del dorso libro, copertina aperta e gabbia di sicurezza con refili 3 mm per brossura fresata, colla PUR e filo refe. Calcolo automatico da numero pagine, grammatura e mano carta. Esporta quote per InDesign e Amazon KDP.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/dorso">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="OmniTools - Calcolo Spessore Dorso Libro & Copertina Stesa">
+    <meta property="og:title" content="DorsoFacile — Calcolo Spessore Dorso Libro & Copertina Stesa">
     <meta property="og:description" content="Calcola al millimetro lo spessore del dorso, la copertina aperta con refili da 3 mm e le quote pronte per InDesign, Illustrator e KDP.">
     <meta property="og:url" content="https://www.omnitoolslab.com/dorso">
     <meta property="og:site_name" content="OmniTools Lab">
@@ -97,6 +97,14 @@ html_code = f"""<!DOCTYPE html>
             "acceptedAnswer": {{
               "@type": "Answer",
               "text": "È fortemente consigliato avere un dorso di almeno 3.0 mm (circa 80-100 pagine a seconda della carta). Sotto i 3 mm, le tolleranze meccaniche della macchina piegatrice e brossuratrice rendono quasi impossibile centrare il testo, con il rischio concreto che il titolo scivoli sulla prima o sulla quarta di copertina."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Che cos'è la 'mano' della carta e quanto incide sullo spessore del volume?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "La mano della carta (bulk) è il rapporto tra spessore in micron e grammatura in g/mq. Una carta con mano 1.5 (es. carta edizioni da romanzo o bookwove) a parità di grammatura (80g) produce un dorso del 50% più spesso rispetto a una carta patinata lucida con mano 1.0."
             }}
           }}
         ]

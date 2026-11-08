@@ -15,14 +15,14 @@ html_content = f"""<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
-    <title>MutuoFacile — Calcolo Rata Mutuo & Piano di Ammortamento Francese | OmniTools Lab</title>
-    <meta name="description" content="Calcola la rata mensile del mutuo, il piano di ammortamento alla francese rata per rata, il totale interessi bancari e la sostenibilità rata/reddito al 33%.">
+    <title>Calcolo Rata Mutuo e Piano di Ammortamento Francese Online — Regola del 33% | MutuoFacile</title>
+    <meta name="description" content="Calcola la rata mensile del mutuo, il piano di ammortamento alla francese rata per rata, il totale interessi bancari e la sostenibilità rata/reddito al 33%. Esporta prospetto in CSV.">
     
     <!-- Canonical & SEO -->
     <link rel="canonical" href="https://www.omnitoolslab.com/mutuo">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MutuoFacile — Calcolo Rata Mutuo & Ammortamento Francese | OmniTools">
+    <meta property="og:title" content="MutuoFacile — Calcolo Rata Mutuo & Ammortamento Francese">
     <meta property="og:description" content="Simulatore professionale gratuito di ammortamento mutuo, quota capitale/interessi e rapporto di sostenibilità reddituale.">
     <meta property="og:url" content="https://www.omnitoolslab.com/mutuo">
     <meta property="og:site_name" content="OmniTools Lab">

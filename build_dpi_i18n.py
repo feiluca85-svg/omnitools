@@ -98,6 +98,14 @@ html_code = f"""<!DOCTYPE html>
               "@type": "Answer",
               "text": "La formula esatta è: Centimetri = (Pixel / DPI) × 2.54. Ad esempio, per un file di 3000 pixel di larghezza stampato a 300 DPI: (3000 / 300) × 2.54 = 25.4 cm."
             }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "Quanti megapixel servono per stampare una foto in formato A4 o A3 a 300 DPI?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Per un foglio A4 (21×29.7 cm) a 300 DPI servono 2480×3508 pixel (circa 8.7 Megapixel). Per un foglio A3 (29.7×42 cm) a 300 DPI occorrono 3508×4961 pixel (circa 17.4 Megapixel). Qualsiasi fotocamera recente o smartphone moderno scatta file ampiamente sufficienti per la stampa di qualità."
+            }}
           }}
         ]
       }}

@@ -17,15 +17,15 @@ html_code = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>OmniTools Lab — Calcolatori Tecnici Online: Cantiere, Grafica & Finanza</title>
-    <meta name="description" content="OmniTools Lab: Suite gratuita di 12 calcolatori tecnici e finanziari online: Rampe (DM 236/89), Scale, Tubi, Dorso, DPI, Tinta, Barcode, Copertura, Resa Carta, Mutuo, PAC e Margine/Markup.">
+    <title>OmniTools Lab — 15 Calcolatori Tecnici Online: Cantiere, Grafica & Finanza</title>
+    <meta name="description" content="OmniTools Lab: Suite professionale di 15 calcolatori tecnici e finanziari gratuiti senza registrazione: Rampe (DM 236/89), Scale (Blondel), Taglio 1D, Tetto, Tubazioni, Dorso Libro, DPI, Copertura CMYK, Resa Carta, Mutuo, PAC e FIRE.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="OmniTools Lab — Suite di Calcolatori Tecnici di Precisione">
-    <meta property="og:description" content="Precisione millimetrica per cantiere, grafica ed editoria. Strumenti gratuiti, senza registrazione, funzionanti offline.">
+    <meta property="og:title" content="OmniTools Lab — Suite di 15 Calcolatori Tecnici & Finanziari">
+    <meta property="og:description" content="Calcolatori di precisione per cantiere, falegnameria, grafica ed editoria, finanza personale. Strumenti gratuiti, no-ads, esportazione CSV e funzionanti offline.">
     <meta property="og:url" content="https://www.omnitoolslab.com/">
     <meta property="og:site_name" content="OmniTools Lab">
     <meta property="og:image" content="https://www.omnitoolslab.com/og-hub.png">

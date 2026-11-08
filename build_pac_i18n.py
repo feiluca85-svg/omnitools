@@ -15,14 +15,14 @@ html_content = f"""<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
-    <title>InteresseComposto — Simulatore PAC & Rendita Passiva 4% | OmniTools Lab</title>
-    <meta name="description" content="Simula l'interesse composto nel tempo con versamenti mensili (PAC). Calcola il montante finale, gli interessi reinvestiti e la rendita passiva mensile sostenibile (Regola del 4%).">
+    <title>Calcolo Interesse Composto e Simulatore PAC Online — Regola del 4% | InteresseComposto</title>
+    <meta name="description" content="Simula l'interesse composto nel tempo con versamenti mensili (PAC). Calcola il montante finale, gli interessi reinvestiti e la rendita passiva mensile sostenibile (Regola del 4%). Esporta tabella in CSV.">
     
     <!-- Canonical & SEO -->
     <link rel="canonical" href="https://www.omnitoolslab.com/pac">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="InteresseComposto — Simulatore PAC & Rendita Passiva | OmniTools Lab">
+    <meta property="og:title" content="InteresseComposto — Simulatore PAC & Rendita Passiva">
     <meta property="og:description" content="Calcola la crescita esponenziale del tuo capitale con versamenti periodici e la regola del 4% per la rendita da investimento.">
     <meta property="og:url" content="https://www.omnitoolslab.com/pac">
     <meta property="og:site_name" content="OmniTools Lab">
