@@ -223,6 +223,22 @@ html_code = f"""<!DOCTYPE html>
             </button>
         </div>
 
+        
+        <!-- Google Featured Snippet (Position 0) Callout Box -->
+        <section aria-label="Formula Ottimizzazione Taglio 1D" class="no-print bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-3">
+            <div class="flex items-start gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
+                <div class="text-xs sm:text-sm space-y-1">
+                    <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
+                        Formula Ottimizzazione Taglio 1D (Bin Packing & Spessore Lama): <code class="bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">Lunghezza Utile = L_barra - ∑(Pezzi) - [ (N_tagli - 1) × Kerf ]</code>
+                    </p>
+                    <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
+                        <strong>Esempio pratico:</strong> Da una barra di legno grezza da <code class="font-bold">300 cm</code> ricavando 2 pezzi da 100 cm e 1 pezzo da 90 cm con lama circolare (Kerf) da <code class="font-bold">3 mm (0,3 cm)</code>: ingombro netto = <code class="font-mono text-slate-800 font-bold">290 cm + (2 × 0,3 cm) = 290,6 cm</code>. Sfrido residuo finale = <code class="font-mono text-amber-900 font-bold">9,4 cm (3,1%)</code>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Layout Grid: Left Inputs / Right Results & Visuals -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             

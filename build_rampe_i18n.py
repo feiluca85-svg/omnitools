@@ -215,6 +215,22 @@ html_code = f"""<!DOCTYPE html>
             </p>
         </div>
 
+        
+        <!-- Google Featured Snippet (Position 0) Callout Box -->
+        <section aria-label="Formula Pendenza Rampa" class="no-print bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-3">
+            <div class="flex items-start gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
+                <div class="text-xs sm:text-sm space-y-1">
+                    <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
+                        Formula Pendenza Rampa (%): <code class="bg-white px-2 py-0.5 rounded-md border border-blue-200 text-blue-700 font-mono font-black">Pendenza % = (Dislivello / Spazio a Terra) × 100</code>
+                    </p>
+                    <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
+                        <strong>Esempio pratico:</strong> Per superare un dislivello di <strong>30 cm</strong> con uno spazio orizzontale a terra di <strong>500 cm</strong>, la pendenza è: <code class="font-mono text-slate-800 font-bold">(30 / 500) × 100 = 6,0%</code> (perfettamente a norma <strong>DM 236/89</strong> per disabili).
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Mode Selector -->
         <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
             <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center">
