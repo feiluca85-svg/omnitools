@@ -399,26 +399,64 @@ html_code = f"""<!DOCTYPE html>
             </div>
         </div>
 
-        <!-- FAQ SECTION -->
-        <section class="mt-8 pt-6 border-t border-slate-200 no-print" id="faqSection">
-            <h2 class="text-lg font-bold text-slate-900 mb-4" id="faqTitle">Domande Frequenti su Obiettivi di Risparmio & Sinking Fund</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq1Q">Cos'è un Sinking Fund (Fondo Spese Future)?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq1A">Un <strong>Sinking Fund</strong> è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota, evitando di intaccare il fondo emergenza o ricorrere a prestiti bancari.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq2Q">Quanto dovrebbe essere grande un Fondo di Emergenza?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq2A">La regola generale raccomanda di accantonare tra i <strong>3 e i 6 mesi di spese vive essenziali</strong> (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi è consigliabile raggiungere 6-9 mesi.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq3Q">Conviene tenere i risparmi sul conto corrente o su un conto deposito?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq3A">I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri come i conti deposito svincolabili permettono di maturare interessi senza rischi.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq4Q">Come calcolare la quota mensile corretta?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq4A">La formula sottrae il capitale iniziale dall'obiettivo e divide per i mesi disponibili, riducendo l'importo necessario qualora i fondi vengano remunerati da un rendimento composto.</p>
-                </div>
+        <!-- FAQ SECTION (Standard OmniTools Accordion Style) -->
+        <section id="faqSection" class="no-print mt-10 bg-white rounded-2xl border border-slate-200 shadow-xs p-5 sm:p-6 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                    <span id="faqTitle">Domande Frequenti su Obiettivi di Risparmio & Sinking Fund</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq1Q">Cos'è un Sinking Fund (Fondo Spese Future)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Un <strong>Sinking Fund</strong> è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota, evitando di intaccare il fondo emergenza o ricorrere a prestiti bancari.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq2Q">Quanto dovrebbe essere grande un Fondo di Emergenza?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La regola generale raccomanda di accantonare tra i <strong>3 e i 6 mesi di spese vive essenziali</strong> (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi è consigliabile raggiungere 6-9 mesi.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq3Q">Conviene tenere i risparmi sul conto corrente o su un conto deposito?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri come i conti deposito svincolabili permettono di maturare interessi senza rischi.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq4Q">Come calcolare la quota mensile corretta?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq4A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La formula sottrae il capitale iniziale dall'obiettivo e divide per i mesi disponibili, riducendo l'importo necessario qualora i fondi vengano remunerati da un rendimento composto.
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -426,10 +464,10 @@ html_code = f"""<!DOCTYPE html>
 
     {footer_html}
 
-    {header_js}
-    {footer_js}
-
     <script>
+        {header_js}
+        {footer_js}
+
         const TRANSLATIONS = {t_json_str};
         let currentLang = 'it';
         let currentCurrency = 'EUR';

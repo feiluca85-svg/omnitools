@@ -245,7 +245,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">15 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (5 Tools) -->

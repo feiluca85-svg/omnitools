@@ -209,7 +209,7 @@
                 <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                         <span>Scegli Calcolatore</span>
-                        <span class="text-blue-600 font-bold font-mono">15 Tool</span>
+                        <span class="text-blue-600 font-bold font-mono">17 Tool</span>
                     </div>
 
                     <!-- Category: OmniBuilding -->
@@ -263,7 +263,7 @@
                     <!-- Category: OmniGraph -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph (6)
                         </div>
                         
             <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
@@ -413,7 +413,7 @@
                     <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                             <span>Scegli Calcolatore</span>
-                            <span>15 Strumenti</span>
+                            <span>17 Strumenti</span>
                         </div>
 
                         <div class="space-y-0.5">
@@ -465,7 +465,7 @@
 
                         <div class="space-y-0.5 pt-1 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph
+                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph (6)
                             </div>
                             
             <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
@@ -816,26 +816,64 @@
             </div>
         </div>
 
-        <!-- FAQ SECTION -->
-        <section class="mt-8 pt-6 border-t border-slate-200 no-print" id="faqSection">
-            <h2 class="text-lg font-bold text-slate-900 mb-4" id="faqTitle">Domande Frequenti su Obiettivi di Risparmio & Sinking Fund</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq1Q">Cos'è un Sinking Fund (Fondo Spese Future)?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq1A">Un <strong>Sinking Fund</strong> è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota, evitando di intaccare il fondo emergenza o ricorrere a prestiti bancari.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq2Q">Quanto dovrebbe essere grande un Fondo di Emergenza?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq2A">La regola generale raccomanda di accantonare tra i <strong>3 e i 6 mesi di spese vive essenziali</strong> (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi è consigliabile raggiungere 6-9 mesi.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq3Q">Conviene tenere i risparmi sul conto corrente o su un conto deposito?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq3A">I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri come i conti deposito svincolabili permettono di maturare interessi senza rischi.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq4Q">Come calcolare la quota mensile corretta?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq4A">La formula sottrae il capitale iniziale dall'obiettivo e divide per i mesi disponibili, riducendo l'importo necessario qualora i fondi vengano remunerati da un rendimento composto.</p>
-                </div>
+        <!-- FAQ SECTION (Standard OmniTools Accordion Style) -->
+        <section id="faqSection" class="no-print mt-10 bg-white rounded-2xl border border-slate-200 shadow-xs p-5 sm:p-6 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                    <span id="faqTitle">Domande Frequenti su Obiettivi di Risparmio & Sinking Fund</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq1Q">Cos'è un Sinking Fund (Fondo Spese Future)?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Un <strong>Sinking Fund</strong> è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota, evitando di intaccare il fondo emergenza o ricorrere a prestiti bancari.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq2Q">Quanto dovrebbe essere grande un Fondo di Emergenza?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La regola generale raccomanda di accantonare tra i <strong>3 e i 6 mesi di spese vive essenziali</strong> (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi è consigliabile raggiungere 6-9 mesi.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq3Q">Conviene tenere i risparmi sul conto corrente o su un conto deposito?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri come i conti deposito svincolabili permettono di maturare interessi senza rischi.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq4Q">Come calcolare la quota mensile corretta?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq4A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La formula sottrae il capitale iniziale dall'obiettivo e divide per i mesi disponibili, riducendo l'importo necessario qualora i fondi vengano remunerati da un rendimento composto.
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -958,7 +996,7 @@
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">15 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (5 Tools) -->
@@ -1213,7 +1251,8 @@
     </div>
 
 
-    
+    <script>
+        
 // Top DESK Dropdown
 function toggleTopDeskMenu(e) {
     if (e) e.stopPropagation();
@@ -1305,6 +1344,8 @@ document.addEventListener('click', (e) => {
         'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
         'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
         'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
+        'estinzione': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>`,
+        'risparmio': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>`,
         'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
     };
 
@@ -1323,6 +1364,8 @@ document.addEventListener('click', (e) => {
         'mutuo': { name: 'MutuoFacile', url: '/mutuo', color: 'bg-emerald-600' },
         'pac': { name: 'Interesse', url: '/pac', color: 'bg-emerald-600' },
         'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' },
+        'estinzione': { name: 'Estinzione', url: '/estinzione', color: 'bg-emerald-600' },
+        'risparmio': { name: 'Risparmio', url: '/risparmio', color: 'bg-emerald-600' },
         'fire': { name: 'FIRE & Rendita', url: '/fire', color: 'bg-emerald-600' }
     };
 
@@ -1562,7 +1605,7 @@ document.addEventListener('click', (e) => {
     document.addEventListener('DOMContentLoaded', renderChromeTabs);
 })();
 
-    
+        
         // Viral Share Functions
         function shareWhatsApp() {
             const url = encodeURIComponent(window.location.href);
@@ -1647,7 +1690,6 @@ document.addEventListener('click', (e) => {
         })();
 
 
-    <script>
         const TRANSLATIONS = {"it": {"title": "ObiettivoRisparmio", "badge": "Sinking Fund", "hero_title": "Calcolatore Obiettivo di Risparmio", "hero_desc": "Quanto devi mettere da parte al mese per raggiungere il tuo traguardo economico? Pianifica anticipo casa, fondo emergenza o grandi spese con o senza rendimento.", "input_target": "Obiettivo da Raggiungere", "input_initial": "Somma Già Disponibile", "input_time": "Tempo Disponibile", "input_rate": "Rendimento Annuo Stimato", "card_monthly_needed": "Quota Mensile da Accantonare", "card_total_put": "Capitale Versato da Te", "card_interest_earned": "Interessi / Rendita Guadagnata", "card_progress": "Avanzamento Obiettivo", "verdict_title": "Piano di Risparmio & Sostenibilità", "csv_export_btn": "Esporta Piano di Risparmio CSV", "print_btn": "Stampa Scheda A4", "faq_title": "Domande Frequenti su Obiettivi di Risparmio & Sinking Fund", "faq_1_q": "Cos'è un Sinking Fund (Fondo Spese Future)?", "faq_1_a": "Un <strong>Sinking Fund</strong> è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota (es. acquisto auto, tasse annuali, vacanza o anticipo mutuo), evitando di intaccare il fondo emergenza o ricorrere a prestiti.", "faq_2_q": "Quanto dovrebbe essere grande un Fondo di Emergenza?", "faq_2_a": "La regola generale raccomanda di accantonare tra i <strong>3 e i 6 mesi di spese vive essenziali</strong> (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi o famiglie monoreddito è consigliabile raggiungere 6-9 mesi.", "faq_3_q": "Conviene tenere i risparmi sul conto corrente o su un conto deposito?", "faq_3_a": "I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri e garantiti come i <strong>conti deposito svincolabili</strong> o titoli di stato a breve scadenza permettono di maturare interessi senza rischi sul capitale.", "faq_4_q": "Come calcolare la quota mensile corretta?", "faq_4_a": "La formula base sottrae la somma iniziale dall'obiettivo e divide per i mesi disponibili. Se i fondi vengono investiti a un rendimento attivo, la quota mensile richiesta diminuisce grazie alla capitalizzazione composta degli interessi."}, "en": {"title": "SavingsGoal", "badge": "Sinking Fund", "hero_title": "Savings Goal & Target Calculator", "hero_desc": "How much do you need to save each month to reach your financial target? Plan house down payment, emergency fund, or major purchases.", "input_target": "Target Savings Amount", "input_initial": "Current Initial Savings", "input_time": "Time Horizon", "input_rate": "Estimated Annual Return", "card_monthly_needed": "Monthly Savings Required", "card_total_put": "Total Out-of-Pocket Saved", "card_interest_earned": "Compound Interest Earned", "card_progress": "Target Completion", "verdict_title": "Savings Roadmap & Feasibility", "csv_export_btn": "Export Savings Plan CSV", "print_btn": "Print A4 Summary", "faq_title": "Frequently Asked Questions on Savings Goals & Sinking Funds", "faq_1_q": "What is a Sinking Fund?", "faq_1_a": "A <strong>sinking fund</strong> is a dedicated savings bucket where you set aside a fixed amount of money every month towards a planned future expense without touching emergency reserves.", "faq_2_q": "How large should an emergency fund be?", "faq_2_a": "Financial experts generally advise keeping <strong>3 to 6 months of necessary living expenses</strong> in an accessible, liquid account.", "faq_3_q": "Should I keep target savings in checking or high-yield savings?", "faq_3_a": "For short-to-medium goals (1 to 5 years), high-yield savings accounts (HYSA) or short-term treasury bills provide guaranteed yield while safeguarding your principal from market volatility.", "faq_4_q": "How is the monthly contribution calculated?", "faq_4_a": "The calculator computes the present value of initial funds compounded over time, subtracting it from your goal and dividing by the monthly annuity factor."}, "es": {"title": "MetaAhorro", "badge": "Fondo de Ahorro", "hero_title": "Calculadora de Meta de Ahorro", "hero_desc": "¿Cuánto necesitas ahorrar al mes para lograr tu objetivo financiero? Planifica la entrada de una casa, fondo de emergencia o grandes compras.", "input_target": "Objetivo de Ahorro", "input_initial": "Ahorros Iniciales", "input_time": "Plazo de Tiempo", "input_rate": "Rentabilidad Anual Estimada", "card_monthly_needed": "Ahorro Mensual Necesario", "card_total_put": "Total Aportado por Ti", "card_interest_earned": "Intereses Ganados", "card_progress": "Progreso del Objetivo", "verdict_title": "Plan de Ahorro y Sostenibilidad", "csv_export_btn": "Exportar Plan CSV", "print_btn": "Imprimir Informe A4", "faq_title": "Preguntas Frecuentes sobre Metas de Ahorro", "faq_1_q": "¿Qué es un fondo de amortización o 'sinking fund'?", "faq_1_a": "Es una reserva de dinero que se acumula mes a mes para un gasto previsto específico (coche, vacaciones, impuestos), protegiendo tu presupuesto diario.", "faq_2_q": "¿Cuánto debe tener un fondo de emergencia?", "faq_2_a": "Lo ideal es disponer de entre <strong>3 y 6 meses de gastos fijos</strong> en una cuenta remunerada de total disponibilidad.", "faq_3_q": "¿Dónde conviene guardar el dinero ahorrado?", "faq_3_a": "En cuentas remuneradas o depósitos bancarios a plazo garantizados para mitigar el impacto de la inflación.", "faq_4_q": "¿Cómo se calcula la cuota mensual?", "faq_4_a": "Se calcula la diferencia entre la meta y el capital inicial, amortizada a lo largo de los meses con capitalización compuesta."}, "fr": {"title": "ObjectifEpargne", "badge": "Plan d'Épargne", "hero_title": "Calculateur d'Objectif d'Épargne", "hero_desc": "Combien devez-vous épargner chaque mois pour atteindre votre objectif ? Planifiez l'apport pour un achat immobilier, un fonds d'urgence ou un projet.", "input_target": "Montant Visé", "input_initial": "Épargne Déjà Disponible", "input_time": "Durée du Projet", "input_rate": "Rendement Annuel Estimé", "card_monthly_needed": "Épargne Mensuelle Requise", "card_total_put": "Montant Total Versé par Vous", "card_interest_earned": "Intérêts Cumulés", "card_progress": "Progression de l'Objectif", "verdict_title": "Plan d'Épargne & Faisabilité", "csv_export_btn": "Exporter Plan CSV", "print_btn": "Imprimer Fiche A4", "faq_title": "Questions Fréquentes sur l'Épargne Ciblée", "faq_1_q": "Qu'est-ce qu'un fonds dédié (Sinking Fund) ?", "faq_1_a": "C'est une réserve d'argent alimentée mensuellement pour financer une dépense prévisible sans recourir au crédit ni vider son épargne de précaution.", "faq_2_q": "Quel montant pour un fonds d'urgence ?", "faq_2_a": "Il est généralement conseillé de mettre de côté l'équivalent de <strong>3 à 6 mois de dépenses courantes</strong>.", "faq_3_q": "Où placer cette épargne court terme ?", "faq_3_a": "Sur des livrets réglementés ou des comptes à terme sans risque de perte en capital.", "faq_4_q": "Comment est calculée la mensualité ?", "faq_4_a": "La formule prend en compte le capital initial, la durée en mois et le taux de rendement composé pour calculer l'effort d'épargne net."}, "de": {"title": "SparzielRechner", "badge": "Sparplan", "hero_title": "Sparziel Rechner: Monatliche Sparrate ermitteln", "hero_desc": "Wie viel müssen Sie monatlich sparen, um Ihr finanzielles Ziel zu erreichen? Planen Sie Eigenkapital für Immobilien, Notgroschen oder Anschaffungen.", "input_target": "Zielbetrag", "input_initial": "Bereits vorhandenes Startkapital", "input_time": "Sparzeitraum", "input_rate": "Geschätzte jährliche Rendite", "card_monthly_needed": "Erforderliche monatliche Sparrate", "card_total_put": "Eigene Einzahlungen", "card_interest_earned": "Erzielte Zinsen", "card_progress": "Zielerreichung", "verdict_title": "Sparplan & Machbarkeit", "csv_export_btn": "Sparplan als CSV exportieren", "print_btn": "A4-Bericht drucken", "faq_title": "Häufige Fragen zu Sparzielen & Rücklagen", "faq_1_q": "Was ist ein Sinking Fund (zweckgebundene Rücklage)?", "faq_1_a": "Ein Sinking Fund ist ein Sparziel für vorhersehbare künftige Ausgaben (z.B. Autokauf, Urlaub), das durch monatliche Raten bedient wird.", "faq_2_q": "Wie hoch sollte der Notgroschen sein?", "faq_2_a": "Empfohlen werden <strong>3 bis 6 Monatsausgaben</strong> als eiserne Reserve auf einem Tagesgeldkonto.", "faq_3_q": "Wo sollte das Geld geparkt werden?", "faq_3_a": "Für mittelfristige Ziele sind Festgeld oder Tagesgeld ideal, um die Inflation ohne Kursrisiko abzufedern.", "faq_4_q": "Wie berechnet sich die Sparrate?", "faq_4_a": "Unter Berücksichtigung von Startkapital, Zinseszinseffekt und Laufzeit wird die exakte monatliche Annuität berechnet."}, "pt": {"title": "MetaPoupanca", "badge": "Fundo de Poupança", "hero_title": "Calculadora de Meta de Poupança", "hero_desc": "Quanto precisa de poupar por mês para atingir o seu objetivo financeiro? Planeie a entrada para habitação, fundo de emergência ou grandes compras.", "input_target": "Objetivo de Poupança", "input_initial": "Poupança Inicial Existente", "input_time": "Prazo Temporal", "input_rate": "Rentabilidade Anual Estimada", "card_monthly_needed": "Poupança Mensal Necessária", "card_total_put": "Total Pago por Si", "card_interest_earned": "Juros Ganhos", "card_progress": "Conclusão do Objetivo", "verdict_title": "Plano de Poupança & Viabilidade", "csv_export_btn": "Exportar Plano CSV", "print_btn": "Imprimir Relatório A4", "faq_title": "Perguntas Frequentes sobre Metas de Poupança", "faq_1_q": "O que é um fundo de amortização (Sinking Fund)?", "faq_1_a": "É uma conta de poupança dedicada onde coloca um valor mensal fixo para uma despesa futura conhecida, sem mexer no fundo de emergência.", "faq_2_q": "De quanto deve ser o fundo de emergência?", "faq_2_a": "A recomendação padrão é manter entre <strong>3 e 6 meses de despesas essenciais</strong> num produto de capital garantido.", "faq_3_q": "Onde guardar o dinheiro da poupança?", "faq_3_a": "Em contas poupança remuneradas ou certificados de aforro para proteger o valor da inflação.", "faq_4_q": "Como é calculada a prestação mensal?", "faq_4_a": "A fórmula abate o valor inicial com juros compostos ao objetivo final e divide pelo fator de anuidade mensal."}};
         let currentLang = 'it';
         let currentCurrency = 'EUR';

@@ -433,26 +433,64 @@ html_code = f"""<!DOCTYPE html>
             </div>
         </div>
 
-        <!-- FAQ SECTION -->
-        <section class="mt-8 pt-6 border-t border-slate-200 no-print" id="faqSection">
-            <h2 class="text-lg font-bold text-slate-900 mb-4" id="faqTitle">Domande Frequenti su Estinzione Anticipata Mutuo</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq1Q">L'estinzione anticipata parziale del mutuo prevede penali o costi bancari?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq1A">No. In Italia, grazie al <strong>Decreto Bersani (Legge 40/2007)</strong>, per tutti i mutui stipulati o rinegoziati per l'acquisto o la ristrutturazione di immobili adibiti ad abitazione (prima casa o meno) o ad attività professionale, <strong>le penali di estinzione anticipata totale o parziale sono nulle per legge</strong>.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq2Q">Conviene di più abbassare la rata mensile o diminuire gli anni del mutuo?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq2A">Dal punto di vista puramente economico e matematico, <strong>ridurre gli anni del mutuo (durata) genera un risparmio di interessi molto più elevato</strong>. Tuttavia, se la famiglia desidera maggiore serenità mese per mese, ridurre la rata offre un beneficio immediato sulla liquidità mensile.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq3Q">Come viene ricalcolato l'ammortamento dopo un versamento anticipato?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq3A">La somma versata va ad abbattere direttamente il <strong>debito residuo in quota capitale</strong>. Da quel momento, gli interessi futuri verranno conteggiati dalla banca esclusivamente sul nuovo debito ridotto, ricalcolando la rata o la durata secondo la formula di ammortamento alla francese.</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1">
-                    <h3 class="font-bold text-slate-900" id="faq4Q">Esiste un importo minimo obbligatorio per l'estinzione parziale?</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed" id="faq4A">La legge non impone una soglia minima, ma molti contratti di mutuo o regolamenti interni bancari indicano un importo minimo per singola richiesta (spesso 1.000 € o l'equivalente di una rata mensile). Non c'è limite al numero di versamenti anticipati eseguibili.</p>
-                </div>
+        <!-- FAQ SECTION (Standard OmniTools Accordion Style) -->
+        <section id="faqSection" class="no-print mt-10 bg-white rounded-2xl border border-slate-200 shadow-xs p-5 sm:p-6 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
+                <span class="text-xl">❓</span>
+                <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                    <span id="faqTitle">Domande Frequenti su Estinzione Anticipata Mutuo</span>
+                </h2>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
+            </div>
+            
+            <div id="faqContainer" class="space-y-3">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq1Q">L'estinzione anticipata parziale del mutuo prevede penali o costi bancari?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        No. In Italia, grazie al <strong>Decreto Bersani (Legge 40/2007)</strong>, per tutti i mutui stipulati o rinegoziati per l'acquisto o la ristrutturazione di immobili adibiti ad abitazione (prima casa o meno) o ad attività professionale, <strong>le penali di estinzione anticipata totale o parziale sono nulle per legge</strong>.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq2Q">Conviene di più abbassare la rata mensile o diminuire gli anni del mutuo?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Dal punto di vista puramente economico e matematico, <strong>ridurre gli anni del mutuo (durata) genera un risparmio di interessi molto più elevato</strong>. Tuttavia, se la famiglia desidera maggiore serenità mese per mese, ridurre la rata offre un beneficio immediato sulla liquidità mensile.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq3Q">Come viene ricalcolato l'ammortamento dopo un versamento anticipato?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La somma versata va ad abbattere direttamente il <strong>debito residuo in quota capitale</strong>. Da quel momento, gli interessi futuri verranno conteggiati dalla banca esclusivamente sul nuovo debito ridotto, ricalcolando la rata o la durata secondo la formula di ammortamento alla francese.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faq4Q">Esiste un importo minimo obbligatorio per l'estinzione parziale?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faq4A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La legge non impone una soglia minima, ma molti contratti di mutuo o regolamenti interni bancari indicano un importo minimo per singola richiesta (spesso 1.000 € o l'equivalente di una rata mensile). Non c'è limite al numero di versamenti anticipati eseguibili.
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -460,10 +498,10 @@ html_code = f"""<!DOCTYPE html>
 
     {footer_html}
 
-    {header_js}
-    {footer_js}
-
     <script>
+        {header_js}
+        {footer_js}
+
         const TRANSLATIONS = {t_json_str};
         let currentLang = 'it';
         let currentCurrency = 'EUR';
