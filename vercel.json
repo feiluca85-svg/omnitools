@@ -156,6 +156,30 @@
     {
       "source": "/trinity",
       "destination": "/fire"
+    },
+    {
+      "source": "/estinzione",
+      "destination": "/estinzione"
+    },
+    {
+      "source": "/estinzionemutuo",
+      "destination": "/estinzione"
+    },
+    {
+      "source": "/estinzione-mutuo",
+      "destination": "/estinzione"
+    },
+    {
+      "source": "/estinzione-anticipata",
+      "destination": "/estinzione"
+    },
+    {
+      "source": "/sondertilgung",
+      "destination": "/estinzione"
+    },
+    {
+      "source": "/prepayment",
+      "destination": "/estinzione"
     }
   ]
 }
