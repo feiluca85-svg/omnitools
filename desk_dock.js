@@ -115,53 +115,104 @@
         /* Docked strictly in Top-Right Corner */
         .memo-docked {
             position: fixed !important;
-            right: 16px !important;
-            top: 72px !important;
+            right: 12px !important;
+            top: 68px !important;
             left: auto !important;
             bottom: auto !important;
             z-index: 9995 !important;
+            box-shadow: none !important;
+            background: transparent !important;
         }
 
         /* Resizable Post-it Memo box */
         .omnidesk-resizable {
             resize: both;
             overflow: hidden;
-            min-width: 280px;
-            min-height: 220px;
+            min-width: 260px;
+            min-height: 200px;
             max-width: 90vw;
             max-height: 85vh;
         }
 
-        /* OmniMemo Integrated Post-it Tab Flags */
-        #memoTabsContainer::-webkit-scrollbar {
-            display: none;
-        }
-        #memoTabsContainer {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .memo-flag-tab {
-            display: inline-flex;
+        /* Adaptive Left or Right Bookmark Tabs (in normal flex flow) */
+        .memo-tab-wrapper {
+            display: flex;
             align-items: center;
-            gap: 4px;
-            padding: 3px 8px;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: 6px;
+        }
+        /* Default: Left Tabs (protruding towards the left) */
+        .memo-bookmark-tab {
+            width: 36px;
+            height: 38px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 9px;
+            box-shadow: -4px 4px 10px rgba(0,0,0,0.18);
             cursor: pointer;
+            transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+            overflow: hidden;
             white-space: nowrap;
-            transition: all 0.15s ease;
-            border: 1px solid rgba(0,0,0,0.15);
-            flex-shrink: 0;
-            user-select: none;
+            z-index: 30;
+            border: 1px solid rgba(0,0,0,0.2);
+            border-right: none;
+            margin-right: -1px;
         }
-        .memo-flag-tab:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        .memo-bookmark-tab .memo-tab-title {
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            pointer-events: none;
         }
-        .memo-flag-tab.active-tab {
-            box-shadow: 0 2px 6px rgba(0,0,0,0.18);
-            transform: translateY(-1px);
+        .memo-bookmark-tab:hover {
+            width: 175px;
+            padding-right: 10px;
+            box-shadow: -8px 8px 18px rgba(0,0,0,0.28);
+            z-index: 50;
+        }
+        .memo-bookmark-tab:hover .memo-tab-title {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .memo-bookmark-tab.active-tab {
+            font-weight: 900;
+            border-left: 3px solid #000;
+            box-shadow: -3px 0 0 rgba(0,0,0,0.85) inset, -4px 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Right Tabs (when memo is on the left half of the screen) */
+        .memo-tabs-right .memo-bookmark-tab {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.2);
+            border-left: none;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.18);
+            margin-left: -1px;
+            margin-right: 0;
+            padding-left: 9px;
+        }
+        .memo-tabs-right .memo-bookmark-tab:hover {
+            width: 175px;
+            padding-right: 10px;
+            box-shadow: 8px 8px 18px rgba(0,0,0,0.28);
+        }
+        .memo-tabs-right .memo-bookmark-tab .memo-tab-title {
+            opacity: 0;
+            transform: translateX(4px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+        .memo-tabs-right .memo-bookmark-tab:hover .memo-tab-title {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .memo-tabs-right .memo-bookmark-tab.active-tab {
+            font-weight: 900;
+            border-right: 3px solid #000;
+            border-left: none;
+            box-shadow: 3px 0 0 rgba(0,0,0,0.85) inset, 4px 4px 10px rgba(0,0,0,0.2);
         }
     `;
     document.head.appendChild(styleEl);
@@ -319,14 +370,17 @@
 
 
     // ==========================================
-    // 2. OMNIMEMO ADVANCED (RESIZABLE, TOP-RIGHT PIN, INTEGRATED TAB STRIP)
+    // 2. OMNIMEMO ADVANCED (RESIZABLE, TOP-RIGHT PIN, LEFT SLIDING TABS)
     // ==========================================
     const memoWidget = document.createElement('div');
     memoWidget.id = 'omnidesk-memo';
-    memoWidget.className = 'omnidesk-widget hidden fixed z-[9993]';
+    memoWidget.className = 'omnidesk-widget hidden fixed flex items-start z-[9993]';
     memoWidget.innerHTML = `
+        <!-- Smart Adaptive Bookmarks Container -->
+        <div id="memoTabsContainer" class="flex flex-col gap-1.5 pt-12 shrink-0 pointer-events-auto"></div>
+
         <!-- Resizable Post-it Pad Body -->
-        <div id="memoPadBody" class="omnidesk-resizable w-80 sm:w-88 rounded-2xl shadow-2xl border flex flex-col transition-colors duration-150 relative">
+        <div id="memoPadBody" class="omnidesk-resizable w-80 sm:w-88 rounded-2xl shadow-2xl border flex flex-col transition-all duration-150 relative">
             <!-- Memo Window Header (Draggable) -->
             <div id="memoWindowHeader" class="omnidesk-drag-handle flex items-center justify-between px-3 py-2 border-b border-black/10 select-none cursor-grab active:cursor-grabbing shrink-0">
                 <div class="flex items-center gap-1.5">
@@ -338,11 +392,11 @@
                 <div class="flex items-center gap-1.5 shrink-0">
                     <!-- Color Selector Dots -->
                     <div class="flex items-center gap-1 mr-1">
-                        <button onclick="window.OmniDesk.setCurMemoColor('yellow')" title="Giallo" class="w-3.5 h-3.5 rounded-full bg-amber-300 border border-amber-400 hover:scale-125 transition cursor-pointer"></button>
-                        <button onclick="window.OmniDesk.setCurMemoColor('cyan')" title="Azzurro" class="w-3.5 h-3.5 rounded-full bg-cyan-300 border border-cyan-400 hover:scale-125 transition cursor-pointer"></button>
-                        <button onclick="window.OmniDesk.setCurMemoColor('pink')" title="Rosa" class="w-3.5 h-3.5 rounded-full bg-rose-300 border border-rose-400 hover:scale-125 transition cursor-pointer"></button>
-                        <button onclick="window.OmniDesk.setCurMemoColor('mint')" title="Menta" class="w-3.5 h-3.5 rounded-full bg-emerald-300 border border-emerald-400 hover:scale-125 transition cursor-pointer"></button>
-                        <button onclick="window.OmniDesk.setCurMemoColor('lavender')" title="Lavanda" class="w-3.5 h-3.5 rounded-full bg-purple-300 border border-purple-400 hover:scale-125 transition cursor-pointer"></button>
+                        <button onclick="window.OmniDesk.setCurMemoColor('yellow')" title="Giallo" class="w-3.5 h-3.5 rounded-full bg-amber-300 border border-amber-400 hover:scale-125 transition"></button>
+                        <button onclick="window.OmniDesk.setCurMemoColor('cyan')" title="Azzurro" class="w-3.5 h-3.5 rounded-full bg-cyan-300 border border-cyan-400 hover:scale-125 transition"></button>
+                        <button onclick="window.OmniDesk.setCurMemoColor('pink')" title="Rosa" class="w-3.5 h-3.5 rounded-full bg-rose-300 border border-rose-400 hover:scale-125 transition"></button>
+                        <button onclick="window.OmniDesk.setCurMemoColor('mint')" title="Menta" class="w-3.5 h-3.5 rounded-full bg-emerald-300 border border-emerald-400 hover:scale-125 transition"></button>
+                        <button onclick="window.OmniDesk.setCurMemoColor('lavender')" title="Lavanda" class="w-3.5 h-3.5 rounded-full bg-purple-300 border border-purple-400 hover:scale-125 transition"></button>
                     </div>
 
                     <span class="w-[1px] h-3 bg-black/20 mx-0.5"></span>
@@ -361,9 +415,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Integrated Post-it Note Index Tab Flags Strip -->
-            <div id="memoTabsContainer" class="flex items-center gap-1.5 px-2.5 py-1.5 border-b border-black/10 overflow-x-auto no-scrollbar shrink-0 select-none bg-black/5"></div>
 
             <!-- Editable Title Bar -->
             <div class="px-3 pt-2 pb-1 border-b border-black/10 shrink-0">
@@ -391,46 +442,61 @@
         return deskState.memos.find(m => m.id === deskState.activeMemoId) || deskState.memos[0];
     }
 
-    function updateMemoTabsSide() {}
+    // Helper to detect if tabs should be on the Left or Right
+    function getMemoTabsPlacement(leftPos) {
+        if (deskState.isMemoDocked) return 'left';
+        let curLeft = leftPos;
+        if (typeof curLeft !== 'number') {
+            const r = memoWidget.getBoundingClientRect();
+            curLeft = r.left;
+        }
+        // If memo is moved to the left half of the screen, place tabs on the right!
+        return curLeft < (window.innerWidth / 2) ? 'right' : 'left';
+    }
+
+    function updateMemoTabsSide(leftPos) {
+        const side = getMemoTabsPlacement(leftPos);
+        const cont = document.getElementById('memoTabsContainer');
+        if (!cont) return;
+
+        if (side === 'right') {
+            memoWidget.style.flexDirection = 'row-reverse';
+            cont.classList.add('memo-tabs-right');
+        } else {
+            memoWidget.style.flexDirection = 'row';
+            cont.classList.remove('memo-tabs-right');
+        }
+    }
 
     function renderTabsInto(container) {
         container.innerHTML = '';
         deskState.memos.forEach((item, idx) => {
             const itemCol = MEMO_COLORS[item.color || 'yellow'];
+            const wrap = document.createElement('div');
+            wrap.className = 'memo-tab-wrapper';
+
+            const tab = document.createElement('div');
             const isActive = (item.id === deskState.activeMemoId);
             
-            const tab = document.createElement('button');
-            tab.type = 'button';
-            tab.className = `memo-flag-tab ${itemCol.tab} ${isActive ? 'active-tab ring-2 ring-black/30' : 'opacity-70 hover:opacity-100'}`;
+            tab.className = `memo-bookmark-tab ${itemCol.bg} ${itemCol.text} ${isActive ? 'active-tab' : 'opacity-85 hover:opacity-100'}`;
             tab.title = item.title || `Nota #${idx + 1}`;
             
-            const tabIcon = isActive ? '📌' : '🔖';
             tab.innerHTML = `
-                <span class="text-xs shrink-0">${tabIcon}</span>
-                <span class="text-[11px] font-bold truncate max-w-[100px]">${item.title || `Nota #${idx + 1}`}</span>
+                <span class="text-xs mr-2 shrink-0">🔖</span>
+                <span class="memo-tab-title text-[11px] font-bold truncate max-w-[125px]">${item.title || `Nota #${idx + 1}`}</span>
             `;
 
             tab.addEventListener('click', (e) => {
                 e.stopPropagation();
                 deskState.activeMemoId = item.id;
+                // Switching tab preserves docking state!
                 saveDeskState();
                 renderActiveMemo();
             });
 
-            container.appendChild(tab);
+            wrap.appendChild(tab);
+            container.appendChild(wrap);
         });
-
-        // Quick add button at the end of tab strip
-        const addBtn = document.createElement('button');
-        addBtn.type = 'button';
-        addBtn.className = 'w-6 h-6 rounded-md bg-black/10 hover:bg-black/20 text-slate-800 flex items-center justify-center text-xs font-black shrink-0 transition cursor-pointer';
-        addBtn.title = 'Aggiungi nuovo foglietto';
-        addBtn.innerHTML = '＋';
-        addBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            window.OmniDesk.addNewMemo();
-        });
-        container.appendChild(addBtn);
     }
 
     function renderActiveMemo() {
@@ -449,7 +515,7 @@
         }
 
         // Apply dock or drag classes to memoWidget
-        memoWidget.className = `omnidesk-widget ${deskState.isMemoOpen ? '' : 'hidden'} fixed z-[9993] ${deskState.isMemoDocked ? 'memo-docked' : ''}`;
+        memoWidget.className = `omnidesk-widget ${deskState.isMemoOpen ? '' : 'hidden'} fixed flex items-start z-[9993] ${deskState.isMemoDocked ? 'memo-docked' : ''}`;
         if (deskState.isMemoDocked) {
             memoWidget.style.left = 'auto';
             memoWidget.style.top = '68px';
@@ -859,6 +925,23 @@
             element.style.top = newTop + 'px';
             element.style.right = 'auto';
             element.style.bottom = 'auto';
+
+            // Smart adaptive tabs position check during drag!
+            if (element.id === 'omnidesk-memo') {
+                const prevSide = getMemoTabsPlacement();
+                const newSide = (newLeft < (window.innerWidth / 2)) ? 'right' : 'left';
+                if (prevSide !== newSide) {
+                    const cont = document.getElementById('memoTabsContainer');
+                    const tabW = cont ? (cont.offsetWidth || 36) : 36;
+                    updateMemoTabsSide(newLeft);
+                    // Adjust initialLeft to maintain cursor position seamlessly across the flex-direction change
+                    if (newSide === 'right') {
+                        initialLeft += tabW;
+                    } else {
+                        initialLeft -= tabW;
+                    }
+                }
+            }
         }
 
         function endDrag() {
@@ -910,12 +993,12 @@
     window.OmniDesk.toggleMemo(false);
     window.OmniDesk.toggleCalc(false);
 
+})();
+
     // Load Universal Runtime i18n Engine on every page that loads desk_dock.js
-    if (!document.getElementById('omni-i18n-universal-script')) {
-        const i18nScript = document.createElement('script');
-        i18nScript.id = 'omni-i18n-universal-script';
-        i18nScript.src = '/omni_i18n_universal.js';
+    if (!document.getElementById("omni-i18n-universal-script")) {
+        const i18nScript = document.createElement("script");
+        i18nScript.id = "omni-i18n-universal-script";
+        i18nScript.src = "/omni_i18n_universal.js";
         document.head.appendChild(i18nScript);
     }
-
-})();
