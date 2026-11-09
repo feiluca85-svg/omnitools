@@ -303,9 +303,13 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 </div>
             </div>
 
-            <!-- Disclaimer and Copyright -->
+            <!-- Disclaimer, Copyright and Legal Links -->
             <div class="text-center space-y-2 pt-2">
-                <p id="footerRights" class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-[11px] font-bold text-slate-600">
+                    <span id="footerRights">© 2026 OmniTools Lab — Tutti i diritti riservati.</span>
+                    <span class="text-slate-300">•</span>
+                    <a href="/legal" class="text-indigo-600 hover:text-indigo-800 underline transition" id="footerLegalLink">Termini, Copyright & Proprietà Riservata (L. 633/1941)</a>
+                </div>
                 <p id="{disclaimer_id}" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
                     {default_legal}
                 </p>
