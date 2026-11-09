@@ -403,7 +403,7 @@ html_content = f"""<!DOCTYPE html>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <divid="faq1A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         L'ammortamento alla francese è il piano più diffuso in Italia ed Europa. Prevede una <strong>rata periodica costante</strong> per tutta la durata del finanziamento. Ogni rata è suddivisa in <em>quota interessi</em> (calcolata sul debito residuo) e <em>quota capitale</em>. Nei primi anni, poiché il debito residuo è elevato, la rata è composta prevalentemente da interessi; col passare del tempo il capitale viene via via rimborsato, riducendo gli interessi e aumentando progressivamente la quota di capitale restituita ogni mese.
                     </div>
                 </details>
@@ -415,7 +415,7 @@ html_content = f"""<!DOCTYPE html>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <divid="faq2A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         È il parametro prudenziale cardine (Debt-to-Income / DTI) utilizzato dagli istituti bancari per valutare il merito creditizio. Di norma, l'importo della rata mensile non deve superare un terzo (<strong>30% - 35%</strong>) del reddito netto mensile complessivo dei richiedenti (al netto di altri prestiti personali o finanziamenti auto già in essere), garantendo una soglia minima di sussistenza per le spese correnti e imprevisti.
                     </div>
                 </details>
@@ -427,7 +427,7 @@ html_content = f"""<!DOCTYPE html>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <divid="faq3A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Il <strong>TAN</strong> (Tasso Annuo Nominale) misura il tasso di interesse puro applicato al prestito. Il <strong>TAEG</strong> (Tasso Annuo Effettivo Globale) è invece l'indicatore reale del costo complessivo del finanziamento: include obbligatoriamente per legge tutte le spese accessorie, tra cui imposta sostitutiva statale, spese di istruttoria, perizia dell'immobile, polizza assicurativa incendio e scoppio obbligatoria e spese di incasso rata. È il TAEG il valore da confrontare tra diverse banche.
                     </div>
                 </details>
@@ -451,7 +451,7 @@ html_content = f"""<!DOCTYPE html>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <divid="faq4A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         <strong>No.</strong> In virtù della Legge Bersani (D.L. 7/2007, Legge 40/2007), per i mutui stipulati da persone fisiche per l'acquisto o ristrutturazione della prima casa è <em>vietata qualsiasi penale o costo di estinzione anticipata</em> (sia parziale che totale). Inoltre, con la portabilità o surroga gratuita, è possibile trasferire il debito residuo a un nuovo istituto di credito a costo zero (spese di atto notarile e perizia a carico della nuova banca subentrante).
                     </div>
                 </details>
@@ -463,6 +463,54 @@ html_content = f"""<!DOCTYPE html>
     {render_unified_footer('mutuo')}
 
     <script>
+        const TRANSLATIONS = {t_json_str};
+        let currentLang = 'it';
+
+        function changeLanguage(lang) {{
+            if (!TRANSLATIONS[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
+            applyTranslations();
+            calculateMortgage();
+        }}
+        window.changeLanguage = changeLanguage;
+
+        function applyTranslations() {{
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const el = (id) => document.getElementById(id);
+            if (!t) return;
+            
+            if (el('heroBadge')) el('heroBadge').textContent = t.badge || 'Simulatore Finanziario';
+            if (el('heroTitle')) el('heroTitle').textContent = t.hero_title;
+            if (el('heroDesc')) el('heroDesc').textContent = t.hero_desc;
+            
+            if (el('labelAmount')) el('labelAmount').textContent = t.amount_label;
+            if (el('labelYears')) el('labelYears').textContent = t.years_label;
+            if (el('labelRate')) el('labelRate').textContent = t.rate_label;
+            if (el('labelSalary')) el('labelSalary').textContent = t.salary_label;
+            
+            if (el('presetsTitle')) el('presetsTitle').textContent = t.presets_title;
+            
+            if (el('colPayment')) el('colPayment').textContent = t.col_payment;
+            if (el('colInterest')) el('colInterest').textContent = t.col_interest;
+            if (el('colTotal')) el('colTotal').textContent = t.col_total;
+            if (el('colIncomeRatio')) el('colIncomeRatio').textContent = t.col_income_ratio;
+
+            if (el('faqTitle')) el('faqTitle').textContent = t.faq_title;
+            if (el('faq1Q')) el('faq1Q').textContent = t.faq1_q || t.faq_1_q;
+            if (el('faq1A')) el('faq1A').innerHTML = t.faq1_a || t.faq_1_a;
+            if (el('faq2Q')) el('faq2Q').textContent = t.faq2_q || t.faq_2_q;
+            if (el('faq2A')) el('faq2A').innerHTML = t.faq2_a || t.faq_2_a;
+            if (el('faq3Q')) el('faq3Q').textContent = t.faq3_q || t.faq_3_q;
+            if (el('faq3A')) el('faq3A').innerHTML = t.faq3_a || t.faq_3_a;
+            if (el('faq4Q')) el('faq4Q').textContent = t.faq4_q || t.faq_4_q;
+            if (el('faq4A')) el('faq4A').innerHTML = t.faq4_a || t.faq_4_a;
+        }}
+
+        let chartInstance = null;
         {render_suite_header_js()}
         {render_unified_footer_js()}
 

@@ -739,15 +739,15 @@ html_code = f"""<!DOCTYPE html>
             const diam = selDiameter.value;
 
             // Update UI metrics
-            document.getElementById('resSlope').textContent = slopePercent.toFixed(2) + ' %';
-            document.getElementById('resRatio').textContent = '1 : ' + ratio + ' (1 cm ogni ' + ratio + ' cm)';
-            document.getElementById('resDrop').textContent = dropCm.toFixed(1) + ' cm';
+            if (document.getElementById('resSlope')) document.getElementById('resSlope').textContent = slopePercent.toFixed(2) + ' %';
+            if (document.getElementById('resRatio')) document.getElementById('resRatio').textContent = '1 : ' + ratio + ' (1 cm ogni ' + ratio + ' cm)';
+            if (document.getElementById('resDrop')) document.getElementById('resDrop').textContent = dropCm.toFixed(1) + ' cm';
             const rld = document.getElementById('resLaserDrop'); if (rld) rld.textContent = 'ΔH = ' + dropCm.toFixed(1) + ' cm';
-            document.getElementById('resDropMm').textContent = Math.round(dropMm) + ' mm';
-            document.getElementById('resDropMeter').textContent = dropPerMeterCm.toFixed(1) + ' cm/m';
-            document.getElementById('resDropMeterMm').textContent = dropPerMeterMm.toFixed(0) + ' mm al metro';
-            document.getElementById('resAngle').textContent = angleDeg.toFixed(2) + ' °';
-            document.getElementById('resDiamBadge').textContent = 'Ø ' + diam + ' mm';
+            if (document.getElementById('resDropMm')) document.getElementById('resDropMm').textContent = Math.round(dropMm) + ' mm';
+            if (document.getElementById('resDropMeter')) document.getElementById('resDropMeter').textContent = dropPerMeterCm.toFixed(1) + ' cm/m';
+            if (document.getElementById('resDropMeterMm')) document.getElementById('resDropMeterMm').textContent = dropPerMeterMm.toFixed(0) + ' mm al metro';
+            if (document.getElementById('resAngle')) document.getElementById('resAngle').textContent = angleDeg.toFixed(2) + ' °';
+            if (document.getElementById('resDiamBadge')) document.getElementById('resDiamBadge').textContent = 'Ø ' + diam + ' mm';
             
             // Manning-Gauckler-Strickler hydraulic velocity estimation for half-full pipe (V = (1/n) * Rh^(2/3) * S^(1/2))
             // Rh = D / 4 for half full
@@ -919,61 +919,61 @@ html_code = f"""<!DOCTYPE html>
             const t = TRANSLATIONS[lang];
 
             document.title = t.title;
-            document.getElementById('toolBadge').textContent = t.tool_badge;
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('tabModeBySlope').textContent = t.mode_by_slope;
-            document.getElementById('tabModeByDrop').textContent = t.mode_by_drop;
-            document.getElementById('lblPipeLength').textContent = t.pipe_length_label;
-            document.getElementById('lblPipeSlope').textContent = t.pipe_slope_label;
-            document.getElementById('lblPipeDrop').textContent = t.pipe_drop_label;
-            document.getElementById('lblPipeDiameter').textContent = t.pipe_diameter_label;
+            if (document.getElementById('toolBadge')) document.getElementById('toolBadge').textContent = t.tool_badge;
+            if (document.getElementById('heroTitle')) document.getElementById('heroTitle').textContent = t.hero_title;
+            if (document.getElementById('heroDesc')) document.getElementById('heroDesc').textContent = t.hero_desc;
+            if (document.getElementById('tabModeBySlope')) document.getElementById('tabModeBySlope').textContent = t.mode_by_slope;
+            if (document.getElementById('tabModeByDrop')) document.getElementById('tabModeByDrop').textContent = t.mode_by_drop;
+            if (document.getElementById('lblPipeLength')) document.getElementById('lblPipeLength').textContent = t.pipe_length_label;
+            if (document.getElementById('lblPipeSlope')) document.getElementById('lblPipeSlope').textContent = t.pipe_slope_label;
+            if (document.getElementById('lblPipeDrop')) document.getElementById('lblPipeDrop').textContent = t.pipe_drop_label;
+            if (document.getElementById('lblPipeDiameter')) document.getElementById('lblPipeDiameter').textContent = t.pipe_diameter_label;
 
-            document.getElementById('optD40').textContent = t.opt_d40;
-            document.getElementById('optD50').textContent = t.opt_d50;
-            document.getElementById('optD90').textContent = t.opt_d90;
-            document.getElementById('optD110').textContent = t.opt_d110;
-            document.getElementById('optD125').textContent = t.opt_d125;
-            document.getElementById('optD160').textContent = t.opt_d160;
-            document.getElementById('optD200').textContent = t.opt_d200;
+            if (document.getElementById('optD40')) document.getElementById('optD40').textContent = t.opt_d40;
+            if (document.getElementById('optD50')) document.getElementById('optD50').textContent = t.opt_d50;
+            if (document.getElementById('optD90')) document.getElementById('optD90').textContent = t.opt_d90;
+            if (document.getElementById('optD110')) document.getElementById('optD110').textContent = t.opt_d110;
+            if (document.getElementById('optD125')) document.getElementById('optD125').textContent = t.opt_d125;
+            if (document.getElementById('optD160')) document.getElementById('optD160').textContent = t.opt_d160;
+            if (document.getElementById('optD200')) document.getElementById('optD200').textContent = t.opt_d200;
 
-            document.getElementById('presetsTitle').textContent = t.presets_title;
-            document.getElementById('p1Title').textContent = t.preset_1;
-            document.getElementById('p1Sub').textContent = t.preset_1_sub;
-            document.getElementById('p2Title').textContent = t.preset_2;
-            document.getElementById('p2Sub').textContent = t.preset_2_sub;
-            document.getElementById('p3Title').textContent = t.preset_3;
-            document.getElementById('p3Sub').textContent = t.preset_3_sub;
-            document.getElementById('p4Title').textContent = t.preset_4;
-            document.getElementById('p4Sub').textContent = t.preset_4_sub;
+            if (document.getElementById('presetsTitle')) document.getElementById('presetsTitle').textContent = t.presets_title;
+            if (document.getElementById('p1Title')) document.getElementById('p1Title').textContent = t.preset_1;
+            if (document.getElementById('p1Sub')) document.getElementById('p1Sub').textContent = t.preset_1_sub;
+            if (document.getElementById('p2Title')) document.getElementById('p2Title').textContent = t.preset_2;
+            if (document.getElementById('p2Sub')) document.getElementById('p2Sub').textContent = t.preset_2_sub;
+            if (document.getElementById('p3Title')) document.getElementById('p3Title').textContent = t.preset_3;
+            if (document.getElementById('p3Sub')) document.getElementById('p3Sub').textContent = t.preset_3_sub;
+            if (document.getElementById('p4Title')) document.getElementById('p4Title').textContent = t.preset_4;
+            if (document.getElementById('p4Sub')) document.getElementById('p4Sub').textContent = t.preset_4_sub;
 
-            document.getElementById('colSlope').textContent = t.col_slope;
-            document.getElementById('colDrop').textContent = t.col_drop;
-            document.getElementById('colDropPerMeter').textContent = t.col_drop_per_meter;
-            document.getElementById('colAngle').textContent = t.col_angle;
-            document.getElementById('schemaTitle').textContent = t.schema_title;
+            if (document.getElementById('colSlope')) document.getElementById('colSlope').textContent = t.col_slope;
+            if (document.getElementById('colDrop')) document.getElementById('colDrop').textContent = t.col_drop;
+            if (document.getElementById('colDropPerMeter')) document.getElementById('colDropPerMeter').textContent = t.col_drop_per_meter;
+            if (document.getElementById('colAngle')) document.getElementById('colAngle').textContent = t.col_angle;
+            if (document.getElementById('schemaTitle')) document.getElementById('schemaTitle').textContent = t.schema_title;
 
-            document.getElementById('normTitle').textContent = t.norm_title;
-            document.getElementById('normP1').innerHTML = t.norm_p1;
-            document.getElementById('thDest').textContent = t.norm_table_th_dest;
-            document.getElementById('thDiam').textContent = t.norm_table_th_diam;
-            document.getElementById('thSlope').textContent = t.norm_table_th_slope;
-            document.getElementById('thNote').textContent = t.norm_table_th_note;
+            if (document.getElementById('normTitle')) document.getElementById('normTitle').textContent = t.norm_title;
+            if (document.getElementById('normP1')) document.getElementById('normP1').innerHTML = t.norm_p1;
+            if (document.getElementById('thDest')) document.getElementById('thDest').textContent = t.norm_table_th_dest;
+            if (document.getElementById('thDiam')) document.getElementById('thDiam').textContent = t.norm_table_th_diam;
+            if (document.getElementById('thSlope')) document.getElementById('thSlope').textContent = t.norm_table_th_slope;
+            if (document.getElementById('thNote')) document.getElementById('thNote').textContent = t.norm_table_th_note;
 
-            document.getElementById('row1Dest').textContent = t.norm_row1_dest;
-            document.getElementById('row1Diam').textContent = t.norm_row1_diam;
-            document.getElementById('row1Slope').textContent = t.norm_row1_slope;
-            document.getElementById('row1Note').textContent = t.norm_row1_note;
+            if (document.getElementById('row1Dest')) document.getElementById('row1Dest').textContent = t.norm_row1_dest;
+            if (document.getElementById('row1Diam')) document.getElementById('row1Diam').textContent = t.norm_row1_diam;
+            if (document.getElementById('row1Slope')) document.getElementById('row1Slope').textContent = t.norm_row1_slope;
+            if (document.getElementById('row1Note')) document.getElementById('row1Note').textContent = t.norm_row1_note;
 
-            document.getElementById('row2Dest').textContent = t.norm_row2_dest;
-            document.getElementById('row2Diam').textContent = t.norm_row2_diam;
-            document.getElementById('row2Slope').textContent = t.norm_row2_slope;
-            document.getElementById('row2Note').textContent = t.norm_row2_note;
+            if (document.getElementById('row2Dest')) document.getElementById('row2Dest').textContent = t.norm_row2_dest;
+            if (document.getElementById('row2Diam')) document.getElementById('row2Diam').textContent = t.norm_row2_diam;
+            if (document.getElementById('row2Slope')) document.getElementById('row2Slope').textContent = t.norm_row2_slope;
+            if (document.getElementById('row2Note')) document.getElementById('row2Note').textContent = t.norm_row2_note;
 
-            document.getElementById('row3Dest').textContent = t.norm_row3_dest;
-            document.getElementById('row3Diam').textContent = t.norm_row3_diam;
-            document.getElementById('row3Slope').textContent = t.norm_row3_slope;
-            document.getElementById('row3Note').textContent = t.norm_row3_note;
+            if (document.getElementById('row3Dest')) document.getElementById('row3Dest').textContent = t.norm_row3_dest;
+            if (document.getElementById('row3Diam')) document.getElementById('row3Diam').textContent = t.norm_row3_diam;
+            if (document.getElementById('row3Slope')) document.getElementById('row3Slope').textContent = t.norm_row3_slope;
+            if (document.getElementById('row3Note')) document.getElementById('row3Note').textContent = t.norm_row3_note;
 
             
             

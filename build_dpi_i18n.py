@@ -640,40 +640,40 @@ html_code = f"""<!DOCTYPE html>
             const t = TRANSLATIONS[currentLang];
             if (!t) return;
 
-            document.getElementById('brandTitle').textContent = t.title;
-            document.getElementById('brandTitleMobile').textContent = t.title;
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('modeDirectBtn').textContent = t.mode_direct;
-            document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
-            document.getElementById('unitLabelText').textContent = t.unit_label;
-            document.getElementById('pixelsWLabel').textContent = t.pixels_w_label;
-            document.getElementById('pixelsHLabel').textContent = t.pixels_h_label;
-            document.getElementById('printWLabel').innerHTML = `${{t.print_w_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
-            document.getElementById('printHLabel').innerHTML = `${{t.print_h_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
-            document.getElementById('dpiTargetLabel').textContent = t.dpi_target_label;
-            document.getElementById('viewDistLabel').textContent = t.view_dist_label;
-            document.getElementById('presetsTitle').textContent = t.presets_title;
-            document.getElementById('preset1Title').textContent = t.preset_1;
-            document.getElementById('preset1Sub').textContent = t.preset_1_sub;
-            document.getElementById('preset2Title').textContent = t.preset_2;
-            document.getElementById('preset2Sub').textContent = t.preset_2_sub;
-            document.getElementById('preset3Title').textContent = t.preset_3;
-            document.getElementById('preset3Sub').textContent = t.preset_3_sub;
-            document.getElementById('preset4Title').textContent = t.preset_4;
-            document.getElementById('preset4Sub').textContent = t.preset_4_sub;
-            document.getElementById('colDimLabel').textContent = t.col_dimensions;
-            document.getElementById('colPixLabel').textContent = t.col_pixels;
-            document.getElementById('colMegaLabel').textContent = t.col_megapixels;
-            document.getElementById('schemaTitle').textContent = t.schema_title;
-            document.getElementById('printBtnText').textContent = t.print_btn;
-            document.getElementById('installBannerTitle').textContent = t.install_banner_title;
-            document.getElementById('installBannerSub').textContent = t.install_banner_sub;
-            document.getElementById('installBannerBtn').textContent = t.install_btn;
-            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            if (document.getElementById('brandTitle')) document.getElementById('brandTitle').textContent = t.title;
+            if (document.getElementById('brandTitleMobile')) document.getElementById('brandTitleMobile').textContent = t.title;
+            if (document.getElementById('heroTitle')) document.getElementById('heroTitle').textContent = t.hero_title;
+            if (document.getElementById('heroDesc')) document.getElementById('heroDesc').textContent = t.hero_desc;
+            if (document.getElementById('modeDirectBtn')) document.getElementById('modeDirectBtn').textContent = t.mode_direct;
+            if (document.getElementById('modeReverseBtn')) document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
+            if (document.getElementById('unitLabelText')) document.getElementById('unitLabelText').textContent = t.unit_label;
+            if (document.getElementById('pixelsWLabel')) document.getElementById('pixelsWLabel').textContent = t.pixels_w_label;
+            if (document.getElementById('pixelsHLabel')) document.getElementById('pixelsHLabel').textContent = t.pixels_h_label;
+            if (document.getElementById('printWLabel')) document.getElementById('printWLabel').innerHTML = `${{t.print_w_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            if (document.getElementById('printHLabel')) document.getElementById('printHLabel').innerHTML = `${{t.print_h_label}} (<span class="unitBadge">${{currentUnit}}</span>)`;
+            if (document.getElementById('dpiTargetLabel')) document.getElementById('dpiTargetLabel').textContent = t.dpi_target_label;
+            if (document.getElementById('viewDistLabel')) document.getElementById('viewDistLabel').textContent = t.view_dist_label;
+            if (document.getElementById('presetsTitle')) document.getElementById('presetsTitle').textContent = t.presets_title;
+            if (document.getElementById('preset1Title')) document.getElementById('preset1Title').textContent = t.preset_1;
+            if (document.getElementById('preset1Sub')) document.getElementById('preset1Sub').textContent = t.preset_1_sub;
+            if (document.getElementById('preset2Title')) document.getElementById('preset2Title').textContent = t.preset_2;
+            if (document.getElementById('preset2Sub')) document.getElementById('preset2Sub').textContent = t.preset_2_sub;
+            if (document.getElementById('preset3Title')) document.getElementById('preset3Title').textContent = t.preset_3;
+            if (document.getElementById('preset3Sub')) document.getElementById('preset3Sub').textContent = t.preset_3_sub;
+            if (document.getElementById('preset4Title')) document.getElementById('preset4Title').textContent = t.preset_4;
+            if (document.getElementById('preset4Sub')) document.getElementById('preset4Sub').textContent = t.preset_4_sub;
+            if (document.getElementById('colDimLabel')) document.getElementById('colDimLabel').textContent = t.col_dimensions;
+            if (document.getElementById('colPixLabel')) document.getElementById('colPixLabel').textContent = t.col_pixels;
+            if (document.getElementById('colMegaLabel')) document.getElementById('colMegaLabel').textContent = t.col_megapixels;
+            if (document.getElementById('schemaTitle')) document.getElementById('schemaTitle').textContent = t.schema_title;
+            if (document.getElementById('printBtnText')) document.getElementById('printBtnText').textContent = t.print_btn;
+            if (document.getElementById('installBannerTitle')) document.getElementById('installBannerTitle').textContent = t.install_banner_title;
+            if (document.getElementById('installBannerSub')) document.getElementById('installBannerSub').textContent = t.install_banner_sub;
+            if (document.getElementById('installBannerBtn')) document.getElementById('installBannerBtn').textContent = t.install_btn;
+            if (document.getElementById('legalDisclaimerText')) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
             const fmt = document.getElementById('faqTitle') || document.getElementById('faqMainTitle'); if (fmt && t.faq_title) fmt.innerHTML = `<span>${{t.faq_title}}</span>`;
-            document.getElementById('ruleTipText').innerHTML = t.rule_tip;
-            document.getElementById('copyBtnText').textContent = t.copy_btn;
+            if (document.getElementById('ruleTipText')) document.getElementById('ruleTipText').innerHTML = t.rule_tip;
+            if (document.getElementById('copyBtnText')) document.getElementById('copyBtnText').textContent = t.copy_btn;
 
             // Update FAQs
             renderFaqs();
@@ -746,20 +746,20 @@ html_code = f"""<!DOCTYPE html>
 
         function updateDpiFromRange(val) {{
             currentDpi = parseInt(val) || 300;
-            document.getElementById('dpiBadge').textContent = currentDpi + ' DPI';
+            if (document.getElementById('dpiBadge')) document.getElementById('dpiBadge').textContent = currentDpi + ' DPI';
             calculateResolution();
         }}
 
         function setDpi(dpi) {{
             currentDpi = dpi;
             document.getElementById('dpiRange').value = dpi;
-            document.getElementById('dpiBadge').textContent = dpi + ' DPI';
+            if (document.getElementById('dpiBadge')) document.getElementById('dpiBadge').textContent = dpi + ' DPI';
             calculateResolution();
         }}
 
         function updateDistFromRange(val) {{
             currentDist = parseInt(val) || 40;
-            document.getElementById('distBadge').textContent = currentDist + ' cm';
+            if (document.getElementById('distBadge')) document.getElementById('distBadge').textContent = currentDist + ' cm';
             calculateResolution();
         }}
 
@@ -900,18 +900,18 @@ html_code = f"""<!DOCTYPE html>
                 displayH = printH_in.toFixed(2) + ' in';
             }}
 
-            document.getElementById('valPrintDim').textContent = `${{displayW}} × ${{displayH}}`;
-            document.getElementById('valPrintDimIn').textContent = `${{printW_in.toFixed(2)}} × ${{printH_in.toFixed(2)}} in (${{printW_cm.toFixed(1)}} × ${{printH_cm.toFixed(1)}} cm)`;
-            document.getElementById('valPixelDim').textContent = `${{pxW}} × ${{pxH}} px`;
+            if (document.getElementById('valPrintDim')) document.getElementById('valPrintDim').textContent = `${{displayW}} × ${{displayH}}`;
+            if (document.getElementById('valPrintDimIn')) document.getElementById('valPrintDimIn').textContent = `${{printW_in.toFixed(2)}} × ${{printH_in.toFixed(2)}} in (${{printW_cm.toFixed(1)}} × ${{printH_cm.toFixed(1)}} cm)`;
+            if (document.getElementById('valPixelDim')) document.getElementById('valPixelDim').textContent = `${{pxW}} × ${{pxH}} px`;
             
             const ratioStr = getAspectRatioString(pxW, pxH);
-            document.getElementById('valAspectRatio').textContent = `Ratio: ${{ratioStr}}`;
-            document.getElementById('valMegapixels').textContent = `${{megapixels.toFixed(2)}} MP`;
-            document.getElementById('valFileSize').textContent = `RGB ${{rgbMB.toFixed(1)}} MB • CMYK ${{cmykMB.toFixed(1)}} MB`;
+            if (document.getElementById('valAspectRatio')) document.getElementById('valAspectRatio').textContent = `Ratio: ${{ratioStr}}`;
+            if (document.getElementById('valMegapixels')) document.getElementById('valMegapixels').textContent = `${{megapixels.toFixed(2)}} MP`;
+            if (document.getElementById('valFileSize')) document.getElementById('valFileSize').textContent = `RGB ${{rgbMB.toFixed(1)}} MB • CMYK ${{cmykMB.toFixed(1)}} MB`;
 
             // Update Acuity Metrics in Verdict
-            document.getElementById('curDpiMetric').textContent = `${{dpi}} DPI`;
-            document.getElementById('minDpiMetric').textContent = `${{minAcuityDpi}} DPI (${{currentDist}} cm)`;
+            if (document.getElementById('curDpiMetric')) document.getElementById('curDpiMetric').textContent = `${{dpi}} DPI`;
+            if (document.getElementById('minDpiMetric')) document.getElementById('minDpiMetric').textContent = `${{minAcuityDpi}} DPI (${{currentDist}} cm)`;
 
             // Verdict State
             const verdictBox = document.getElementById('verdictBox');

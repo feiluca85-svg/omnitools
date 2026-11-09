@@ -816,21 +816,21 @@ html_code = f"""<!DOCTYPE html>
         function applyTranslations() {{
             renderFaqs();
             const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
-            if (t.hero_title) document.getElementById('heroTitle').textContent = t.hero_title;
-            if (t.hero_desc) document.getElementById('heroDesc').textContent = t.hero_desc;
-            if (t.input_section_title) document.getElementById('inputSectionTitle').textContent = t.input_section_title;
-            if (t.input_section_sub) document.getElementById('inputSectionSub').textContent = t.input_section_sub;
-            if (t.preset_label) document.getElementById('presetLabel').textContent = t.preset_label;
-            if (t.config_section_title) document.getElementById('configSectionTitle').textContent = t.config_section_title;
-            if (t.grid_title) document.getElementById('gridTitle').textContent = t.grid_title;
-            if (t.grid_sub) document.getElementById('gridSub').textContent = t.grid_sub;
-            if (t.btn_print) document.getElementById('btnPrintMatrix').textContent = t.btn_print;
-            if (t.share_title) document.getElementById('shareTitleText').textContent = t.share_title;
-            if (t.share_sub) document.getElementById('shareSubText').textContent = t.share_sub;
-            if (t.share_copy) document.getElementById('shareCopyText').textContent = t.share_copy;
-            if (t.rights_reserved) document.getElementById('rightsText').textContent = t.rights_reserved;
-            if (t.legal_disclaimer) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
-            if (t.print_sheet_title) document.getElementById('printSheetTitle').textContent = t.print_sheet_title;
+            if (t.hero_title) if (document.getElementById('heroTitle')) document.getElementById('heroTitle').textContent = t.hero_title;
+            if (t.hero_desc) if (document.getElementById('heroDesc')) document.getElementById('heroDesc').textContent = t.hero_desc;
+            if (t.input_section_title) if (document.getElementById('inputSectionTitle')) document.getElementById('inputSectionTitle').textContent = t.input_section_title;
+            if (t.input_section_sub) if (document.getElementById('inputSectionSub')) document.getElementById('inputSectionSub').textContent = t.input_section_sub;
+            if (t.preset_label) if (document.getElementById('presetLabel')) document.getElementById('presetLabel').textContent = t.preset_label;
+            if (t.config_section_title) if (document.getElementById('configSectionTitle')) document.getElementById('configSectionTitle').textContent = t.config_section_title;
+            if (t.grid_title) if (document.getElementById('gridTitle')) document.getElementById('gridTitle').textContent = t.grid_title;
+            if (t.grid_sub) if (document.getElementById('gridSub')) document.getElementById('gridSub').textContent = t.grid_sub;
+            if (t.btn_print) if (document.getElementById('btnPrintMatrix')) document.getElementById('btnPrintMatrix').textContent = t.btn_print;
+            if (t.share_title) if (document.getElementById('shareTitleText')) document.getElementById('shareTitleText').textContent = t.share_title;
+            if (t.share_sub) if (document.getElementById('shareSubText')) document.getElementById('shareSubText').textContent = t.share_sub;
+            if (t.share_copy) if (document.getElementById('shareCopyText')) document.getElementById('shareCopyText').textContent = t.share_copy;
+            if (t.rights_reserved) if (document.getElementById('rightsText')) document.getElementById('rightsText').textContent = t.rights_reserved;
+            if (t.legal_disclaimer) if (document.getElementById('legalDisclaimerText')) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            if (t.print_sheet_title) if (document.getElementById('printSheetTitle')) document.getElementById('printSheetTitle').textContent = t.print_sheet_title;
 
             const fqTitle = document.getElementById('faqTitle'); if (fqTitle && t.faq_title) fqTitle.textContent = t.faq_title;
             const f1q = document.getElementById('faq1Q'); if (f1q && t.faq_1_q) f1q.textContent = t.faq_1_q;
@@ -986,8 +986,8 @@ html_code = f"""<!DOCTYPE html>
             const cmyk = rgbToCmyk(r, g, b);
 
             document.getElementById('hoverColorBox').style.backgroundColor = hex;
-            document.getElementById('hoverHexText').textContent = hex;
-            document.getElementById('hoverCmykText').textContent = `C:${{cmyk.c}}% M:${{cmyk.m}}% Y:${{cmyk.y}}% K:${{cmyk.k}}%`;
+            if (document.getElementById('hoverHexText')) document.getElementById('hoverHexText').textContent = hex;
+            if (document.getElementById('hoverCmykText')) document.getElementById('hoverCmykText').textContent = `C:${{cmyk.c}}% M:${{cmyk.m}}% Y:${{cmyk.y}}% K:${{cmyk.k}}%`;
 
             const loupe = document.getElementById('magnifierLoupe');
             loupe.classList.remove('hidden');
@@ -1181,9 +1181,9 @@ html_code = f"""<!DOCTYPE html>
             const hCmStr = (hMm / 10).toFixed(1).replace('.0', '');
             const dimText = `${{wCmStr}} × ${{hCmStr}} cm`;
 
-            document.getElementById('liveSizeIndicator').textContent = dimText;
-            document.getElementById('printFormatName').textContent = dimText;
-            document.getElementById('matrixDimFooter').textContent = `Dimensioni Foglio: ${{dimText}} • FOGRA39`;
+            if (document.getElementById('liveSizeIndicator')) document.getElementById('liveSizeIndicator').textContent = dimText;
+            if (document.getElementById('printFormatName')) document.getElementById('printFormatName').textContent = dimText;
+            if (document.getElementById('matrixDimFooter')) document.getElementById('matrixDimFooter').textContent = `Dimensioni Foglio: ${{dimText}} • FOGRA39`;
             const badgeEl = document.getElementById('badgeFormatIndicator');
             if (badgeEl) badgeEl.textContent = dimText;
 
@@ -1251,7 +1251,7 @@ html_code = f"""<!DOCTYPE html>
                 el.className = "py-1.5 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition font-bold";
             }});
             document.getElementById(`step${{step}}Btn`).className = "py-1.5 px-2 rounded-xl bg-rose-900 text-white shadow-2xs transition font-bold";
-            document.getElementById('printStepName').textContent = `±${{step}}%`;
+            if (document.getElementById('printStepName')) document.getElementById('printStepName').textContent = `±${{step}}%`;
             generateMatrix();
         }}
 
@@ -1261,19 +1261,19 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('ySlider').value = baseY;
             document.getElementById('kSlider').value = baseK;
 
-            document.getElementById('cValText').textContent = baseC + '%';
-            document.getElementById('mValText').textContent = baseM + '%';
-            document.getElementById('yValText').textContent = baseY + '%';
-            document.getElementById('kValText').textContent = baseK + '%';
+            if (document.getElementById('cValText')) document.getElementById('cValText').textContent = baseC + '%';
+            if (document.getElementById('mValText')) document.getElementById('mValText').textContent = baseM + '%';
+            if (document.getElementById('yValText')) document.getElementById('yValText').textContent = baseY + '%';
+            if (document.getElementById('kValText')) document.getElementById('kValText').textContent = baseK + '%';
 
             updatePreviewAndTac();
         }}
 
         function updatePreviewAndTac() {{
-            document.getElementById('cValText').textContent = baseC + '%';
-            document.getElementById('mValText').textContent = baseM + '%';
-            document.getElementById('yValText').textContent = baseY + '%';
-            document.getElementById('kValText').textContent = baseK + '%';
+            if (document.getElementById('cValText')) document.getElementById('cValText').textContent = baseC + '%';
+            if (document.getElementById('mValText')) document.getElementById('mValText').textContent = baseM + '%';
+            if (document.getElementById('yValText')) document.getElementById('yValText').textContent = baseY + '%';
+            if (document.getElementById('kValText')) document.getElementById('kValText').textContent = baseK + '%';
 
             const rgb = cmykToRgb(baseC, baseM, baseY, baseK);
             const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
@@ -1282,7 +1282,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('hexInput').value = hex.toUpperCase();
 
             const tac = baseC + baseM + baseY + baseK;
-            document.getElementById('tacValue').textContent = tac + '%';
+            if (document.getElementById('tacValue')) document.getElementById('tacValue').textContent = tac + '%';
 
             const badge = document.getElementById('tacStatusBadge');
             if (tac > 320) {{
@@ -1302,9 +1302,9 @@ html_code = f"""<!DOCTYPE html>
             const press = document.getElementById('pressInput').value.trim() || 'Rotativa a Bobina';
             const paper = document.getElementById('paperInput').value.trim() || 'Patinata Lucida';
 
-            document.getElementById('printJobName').textContent = job;
-            document.getElementById('printPressName').textContent = press;
-            document.getElementById('printPaperName').textContent = paper;
+            if (document.getElementById('printJobName')) document.getElementById('printJobName').textContent = job;
+            if (document.getElementById('printPressName')) document.getElementById('printPressName').textContent = press;
+            if (document.getElementById('printPaperName')) document.getElementById('printPaperName').textContent = paper;
         }}
 
         // Matrix calculation cache for PDF download
@@ -1484,13 +1484,13 @@ html_code = f"""<!DOCTYPE html>
 
         function updateInspector(cell) {{
             document.getElementById('inspectorSwatch').style.backgroundColor = cell.hex;
-            document.getElementById('inspectorCoord').textContent = `${{cell.coord}} ${{cell.isCenter ? '(Centro)' : ''}}`;
-            document.getElementById('inspectorTac').textContent = `TAC: ${{cell.tac}}%`;
+            if (document.getElementById('inspectorCoord')) document.getElementById('inspectorCoord').textContent = `${{cell.coord}} ${{cell.isCenter ? '(Centro)' : ''}}`;
+            if (document.getElementById('inspectorTac')) document.getElementById('inspectorTac').textContent = `TAC: ${{cell.tac}}%`;
 
-            document.getElementById('inspectC').textContent = cell.c + '%';
-            document.getElementById('inspectM').textContent = cell.m + '%';
-            document.getElementById('inspectY').textContent = cell.y + '%';
-            document.getElementById('inspectK').textContent = cell.k + '%';
+            if (document.getElementById('inspectC')) document.getElementById('inspectC').textContent = cell.c + '%';
+            if (document.getElementById('inspectM')) document.getElementById('inspectM').textContent = cell.m + '%';
+            if (document.getElementById('inspectY')) document.getElementById('inspectY').textContent = cell.y + '%';
+            if (document.getElementById('inspectK')) document.getElementById('inspectK').textContent = cell.k + '%';
         }}
 
         function recenterOnSelected() {{

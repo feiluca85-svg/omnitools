@@ -1479,7 +1479,18 @@
             document.getElementById('schemaTitle').textContent = t.schema_title;
             document.getElementById('schemaScale').textContent = t.schema_scale;
             document.getElementById('ruleTip').innerHTML = t.rule_tip;
-            document.getElementById('faqTitle').textContent = t.faq_title;
+            if (document.getElementById('faqTitle')) document.getElementById('faqTitle').textContent = t.faq_title;
+
+            for (let i = 1; i <= 4; i++) {
+                const qEl = document.getElementById('faq' + i + 'Q');
+                const aEl = document.getElementById('faq' + i + 'A');
+                if (qEl && t['faq_' + i + '_q']) {
+                    const span = qEl.querySelector('span');
+                    if (span) span.textContent = t['faq_' + i + '_q'];
+                    else qEl.textContent = t['faq_' + i + '_q'];
+                }
+                if (aEl && t['faq_' + i + '_a']) aEl.innerHTML = t['faq_' + i + '_a'];
+            }
 
             calculateRoof();
         }

@@ -721,58 +721,58 @@ html_code = f"""<!DOCTYPE html>
 
         function applyTranslations() {{
             const t = TRANSLATIONS[currentLang];
-            document.getElementById('brandTitle').textContent = t.title;
+            if (document.getElementById('brandTitle')) document.getElementById('brandTitle').textContent = t.title;
             const btm = document.getElementById('brandTitleMobile');
             if (btm) btm.textContent = t.title;
-            document.getElementById('brandBadge').textContent = t.badge;
+            if (document.getElementById('brandBadge')) document.getElementById('brandBadge').textContent = t.badge;
             const bbm = document.getElementById('brandBadgeMobile');
             if (bbm) bbm.textContent = t.badge;
 
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('modeDirectBtn').textContent = t.mode_direct;
-            document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
-            document.getElementById('unitLabelText').textContent = t.unit_label;
+            if (document.getElementById('heroTitle')) document.getElementById('heroTitle').textContent = t.hero_title;
+            if (document.getElementById('heroDesc')) document.getElementById('heroDesc').textContent = t.hero_desc;
+            if (document.getElementById('modeDirectBtn')) document.getElementById('modeDirectBtn').textContent = t.mode_direct;
+            if (document.getElementById('modeReverseBtn')) document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
+            if (document.getElementById('unitLabelText')) document.getElementById('unitLabelText').textContent = t.unit_label;
 
-            document.getElementById('pagesLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span> ${{t.pages_label}}`;
-            document.getElementById('paperWeightLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> ${{t.paper_weight_label}}`;
-            document.getElementById('paperBulkLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span> ${{t.paper_bulk_label}}`;
-            document.getElementById('flapsLabel').textContent = t.flaps_label;
+            if (document.getElementById('pagesLabel')) document.getElementById('pagesLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span> ${{t.pages_label}}`;
+            if (document.getElementById('paperWeightLabel')) document.getElementById('paperWeightLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span> ${{t.paper_weight_label}}`;
+            if (document.getElementById('paperBulkLabel')) document.getElementById('paperBulkLabel').innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span> ${{t.paper_bulk_label}}`;
+            if (document.getElementById('flapsLabel')) document.getElementById('flapsLabel').textContent = t.flaps_label;
 
-            document.getElementById('presetsTitleText').textContent = t.presets_title;
-            document.getElementById('preset1Title').textContent = t.preset_1;
-            document.getElementById('preset1Sub').textContent = t.preset_1_sub;
-            document.getElementById('preset2Title').textContent = t.preset_2;
-            document.getElementById('preset2Sub').textContent = t.preset_2_sub;
-            document.getElementById('preset3Title').textContent = t.preset_3;
-            document.getElementById('preset3Sub').textContent = t.preset_3_sub;
-            document.getElementById('preset4Title').textContent = t.preset_4;
-            document.getElementById('preset4Sub').textContent = t.preset_4_sub;
+            if (document.getElementById('presetsTitleText')) document.getElementById('presetsTitleText').textContent = t.presets_title;
+            if (document.getElementById('preset1Title')) document.getElementById('preset1Title').textContent = t.preset_1;
+            if (document.getElementById('preset1Sub')) document.getElementById('preset1Sub').textContent = t.preset_1_sub;
+            if (document.getElementById('preset2Title')) document.getElementById('preset2Title').textContent = t.preset_2;
+            if (document.getElementById('preset2Sub')) document.getElementById('preset2Sub').textContent = t.preset_2_sub;
+            if (document.getElementById('preset3Title')) document.getElementById('preset3Title').textContent = t.preset_3;
+            if (document.getElementById('preset3Sub')) document.getElementById('preset3Sub').textContent = t.preset_3_sub;
+            if (document.getElementById('preset4Title')) document.getElementById('preset4Title').textContent = t.preset_4;
+            if (document.getElementById('preset4Sub')) document.getElementById('preset4Sub').textContent = t.preset_4_sub;
 
-            document.getElementById('colSpineLabel').textContent = t.col_spine;
-            document.getElementById('colTotalWidthLabel').textContent = t.col_total_width;
-            document.getElementById('colTotalHeightLabel').textContent = t.col_total_height;
-            document.getElementById('schemaTitle').textContent = t.schema_title;
-            document.getElementById('printBtnText').textContent = t.print_btn;
-            document.getElementById('copyBtnText').textContent = t.copy_btn;
+            if (document.getElementById('colSpineLabel')) document.getElementById('colSpineLabel').textContent = t.col_spine;
+            if (document.getElementById('colTotalWidthLabel')) document.getElementById('colTotalWidthLabel').textContent = t.col_total_width;
+            if (document.getElementById('colTotalHeightLabel')) document.getElementById('colTotalHeightLabel').textContent = t.col_total_height;
+            if (document.getElementById('schemaTitle')) document.getElementById('schemaTitle').textContent = t.schema_title;
+            if (document.getElementById('printBtnText')) document.getElementById('printBtnText').textContent = t.print_btn;
+            if (document.getElementById('copyBtnText')) document.getElementById('copyBtnText').textContent = t.copy_btn;
             const ddt = document.getElementById('downloadDimaText'); if (ddt && t.download_svg_dima) ddt.textContent = t.download_svg_dima;
 
-            document.getElementById('installBannerTitle').textContent = t.install_banner_title;
-            document.getElementById('installBannerSub').textContent = t.install_banner_sub;
-            document.getElementById('installBannerBtn').textContent = t.install_btn;
-            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            if (document.getElementById('installBannerTitle')) document.getElementById('installBannerTitle').textContent = t.install_banner_title;
+            if (document.getElementById('installBannerSub')) document.getElementById('installBannerSub').textContent = t.install_banner_sub;
+            if (document.getElementById('installBannerBtn')) document.getElementById('installBannerBtn').textContent = t.install_btn;
+            if (document.getElementById('legalDisclaimerText')) document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
             const ft = document.getElementById('faqTitle'); if (ft && t.faq_title) ft.innerHTML = `<span>${{t.faq_title}}</span>`;
 
             if (document.getElementById('suggestBannerText')) {{
-                document.getElementById('suggestBannerText').textContent = t.suggest_banner;
-                document.getElementById('suggestBtnText').textContent = t.suggest_btn;
-                document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
-                document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
+                if (document.getElementById('suggestBannerText')) document.getElementById('suggestBannerText').textContent = t.suggest_banner;
+                if (document.getElementById('suggestBtnText')) document.getElementById('suggestBtnText').textContent = t.suggest_btn;
+                if (document.getElementById('modalSuggestTitle')) document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
+                if (document.getElementById('modalSuggestDesc')) document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
                 document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
-                document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
-                document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
-                document.getElementById('modalCloseBtn').textContent = t.suggest_close;
-                document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
+                if (document.getElementById('modalPrivacyNote')) document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
+                if (document.getElementById('modalSubmitBtn')) document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
+                if (document.getElementById('modalCloseBtn')) document.getElementById('modalCloseBtn').textContent = t.suggest_close;
+                if (document.getElementById('modalSuccessText')) document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
             }}
 
             renderFaqs();
@@ -904,7 +904,7 @@ html_code = f"""<!DOCTYPE html>
         }}
 
         function updateBulkFromSelect(val) {{
-            document.getElementById('bulkValBadge').textContent = 'Mano ' + val;
+            if (document.getElementById('bulkValBadge')) document.getElementById('bulkValBadge').textContent = 'Mano ' + val;
             updateCalculations();
         }}
 
@@ -949,8 +949,8 @@ html_code = f"""<!DOCTYPE html>
             let weight = parseFloat(weightInput.value) || 80;
             let bulk = parseFloat(bulkSelect.value) || 1.3;
 
-            document.getElementById('pagesBadge').textContent = `${{pages}} pag (${{Math.ceil(pages/2)}} fogli)`;
-            document.getElementById('weightBadge').textContent = `${{weight}} g/m²`;
+            if (document.getElementById('pagesBadge')) document.getElementById('pagesBadge').textContent = `${{pages}} pag (${{Math.ceil(pages/2)}} fogli)`;
+            if (document.getElementById('weightBadge')) document.getElementById('weightBadge').textContent = `${{weight}} g/m²`;
 
             // Calcolo Spessore Blocco Libro: (Pagine/2) * (Grammatura / 1000) * Mano
             let sheets = Math.ceil(pages / 2);
@@ -996,8 +996,8 @@ html_code = f"""<!DOCTYPE html>
 
             const bleedUnitVal = (3.0 / factor).toFixed(dec);
             const bleedTotalUnitVal = (6.0 / factor).toFixed(dec);
-            document.getElementById('widthSubLabel').textContent = `+ ${{bleedTotalUnitVal}} ${{u}} Refilo = ${{bleedWVal.toFixed(dec)}} ${{u}}`;
-            document.getElementById('heightSubLabel').textContent = `Taglio netto: ${{flatHVal.toFixed(dec)}} ${{u}}`;
+            if (document.getElementById('widthSubLabel')) document.getElementById('widthSubLabel').textContent = `+ ${{bleedTotalUnitVal}} ${{u}} Refilo = ${{bleedWVal.toFixed(dec)}} ${{u}}`;
+            if (document.getElementById('heightSubLabel')) document.getElementById('heightSubLabel').textContent = `Taglio netto: ${{flatHVal.toFixed(dec)}} ${{u}}`;
 
             // Aggiorna stato brossurabilità
             updateSpineStatus(spineMm, t);
@@ -1129,6 +1129,8 @@ html_code = f"""<!DOCTYPE html>
             }}
 
             // Dim Callouts
+            const factor = UNIT_FACTORS_MM[u] || 1.0;
+            const dec = (u === 'mm' ? 1 : (u === 'cm' ? 2 : (u === 'pt' ? 0 : 2)));
             const dispFlatW = (flatWidthMm / factor).toFixed(dec);
             const dispSpine = (spineMm / factor).toFixed(dec);
             const dispH = (bookHeightMm / factor).toFixed(dec);
