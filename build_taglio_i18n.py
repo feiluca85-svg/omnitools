@@ -933,6 +933,7 @@ html_code = f"""<!DOCTYPE html>
 
         function changeLanguage(lang) {{
             localStorage.setItem('omnitools_lang', lang);
+            try {{ window.dispatchEvent(new CustomEvent('omnitools_lang_changed', {{ detail: {{ lang: lang }} }})); }} catch(e) {{}}
             const sel = document.getElementById('langSelect');
             if (sel) sel.value = lang;
             document.documentElement.lang = lang;

@@ -630,6 +630,7 @@ html_code = f"""<!DOCTYPE html>
             if (!TRANSLATIONS[lang]) return;
             currentLang = lang;
             localStorage.setItem('omnitools_lang', lang);
+            try {{ window.dispatchEvent(new CustomEvent('omnitools_lang_changed', {{ detail: {{ lang: lang }} }})); }} catch(e) {{}}
             document.documentElement.lang = lang;
             document.getElementById('langSelect').value = lang;
             applyTranslations();

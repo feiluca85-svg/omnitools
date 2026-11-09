@@ -194,12 +194,12 @@ def render_chrome_tabs_strip(current_id="home"):
             active_badge = 'bg-blue-600 text-white font-bold' if is_active else 'text-slate-700 hover:bg-slate-100'
             icon_svg = TOOL_ICONS.get(tool["id"], "")
             html_out += f"""
-            <a href="{tool['url']}" class="flex items-center justify-between p-2 rounded-xl text-xs transition {active_badge}">
+            <a href="{tool['url']}" data-nav-tool-id="{tool['id']}" class="flex items-center justify-between p-2 rounded-xl text-xs transition {active_badge}">
                 <div class="flex items-center gap-2">
                     {icon_svg}
-                    <span class="font-bold">{tool['name']}</span>
+                    <span class="nav-tool-name font-bold">{tool['name']}</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">{tool['badge']}</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">{tool['badge']}</span>
             </a>
             """
         return html_out
@@ -219,7 +219,7 @@ def render_chrome_tabs_strip(current_id="home"):
                 <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                 </span>
-                <span>Home Hub</span>
+                <span id="navTabHomeText">Home Hub</span>
             </a>
         </div>
 
@@ -236,20 +236,20 @@ def render_chrome_tabs_strip(current_id="home"):
 
                 <!-- DESK Menu Dropdown in Top Bar -->
                 <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
-                    <div class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
+                    <div id="navDeskTitle" class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
                         Strumenti da Scrivania
                     </div>
                     <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
                         <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
-                        <span>OmniMemo (Post-it)</span>
+                        <span id="navDeskMemo">OmniMemo (Post-it)</span>
                     </button>
                     <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
                         <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
-                        <span>OmniCalc (Calcolatrice)</span>
+                        <span id="navDeskCalc">OmniCalc (Calcolatrice)</span>
                     </button>
                     <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
                         <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
-                        <span>OmniClock (Orologio)</span>
+                        <span id="navDeskClock">OmniClock (Orologio)</span>
                     </button>
                 </div>
             </div>
@@ -258,20 +258,20 @@ def render_chrome_tabs_strip(current_id="home"):
             <div class="relative">
                 <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
                     <span>➕</span>
-                    <span class="hidden lg:inline">Nuovo Tool</span>
+                    <span id="topNewToolBtnText" class="hidden lg:inline">Nuovo Tool</span>
                 </button>
 
                 <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
                 <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
-                        <span>Scegli Calcolatore</span>
-                        <span class="text-blue-600 font-bold font-mono">17 Tool</span>
+                        <span id="topDropChooseCalc">Scegli Calcolatore</span>
+                        <span id="topDropToolCount" class="text-blue-600 font-bold font-mono">17 Tool</span>
                     </div>
 
                     <!-- Category: OmniBuilding -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> <span id="topDropBuildingTitle">OmniBuilding (5)</span>
                         </div>
                         {b_tools}
                     </div>
@@ -279,7 +279,7 @@ def render_chrome_tabs_strip(current_id="home"):
                     <!-- Category: OmniGraph -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph (6)
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> <span id="topDropGraphTitle">OmniGraph (6)</span>
                         </div>
                         {g_tools}
                     </div>
@@ -287,7 +287,7 @@ def render_chrome_tabs_strip(current_id="home"):
                     <!-- Category: OmniFinance -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance (6)
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> <span id="topDropFinanceTitle">OmniFinance (6)</span>
                         </div>
                         {f_tools}
                     </div>
@@ -320,12 +320,12 @@ def render_suite_header(current_id):
             active_badge = 'bg-blue-600 text-white font-bold' if is_active else 'text-slate-700 hover:bg-slate-100'
             icon_svg = TOOL_ICONS.get(tool["id"], "")
             html_out += f"""
-            <a href="{tool['url']}" class="flex items-center justify-between p-2 rounded-xl text-xs transition {active_badge}">
+            <a href="{tool['url']}" data-nav-tool-id="{tool['id']}" class="flex items-center justify-between p-2 rounded-xl text-xs transition {active_badge}">
                 <div class="flex items-center gap-2">
                     {icon_svg}
-                    <span class="font-bold">{tool['name']}</span>
+                    <span class="nav-tool-name font-bold">{tool['name']}</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">{tool['badge']}</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">{tool['badge']}</span>
             </a>
             """
         return html_out
@@ -372,27 +372,27 @@ def render_suite_header(current_id):
                     <!-- Dropdown Menu Panel -->
                     <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
-                            <span>Scegli Calcolatore</span>
-                            <span>17 Strumenti</span>
+                            <span id="suiteDropChooseCalc">Scegli Calcolatore</span>
+                            <span id="suiteDropToolCount">17 Strumenti</span>
                         </div>
 
                         <div class="space-y-0.5">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> <span id="suiteDropBuildingTitle">OmniBuilding (5)</span>
                             </div>
                             {building_tools_html}
                         </div>
 
                         <div class="space-y-0.5 pt-1 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph (6)
+                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> <span id="suiteDropGraphTitle">OmniGraph (6)</span>
                             </div>
                             {graph_tools_html}
                         </div>
 
                         <div class="space-y-0.5 pt-1 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance (6)
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> <span id="suiteDropFinanceTitle">OmniFinance (6)</span>
                             </div>
                             {finance_tools_html}
                         </div>
@@ -404,7 +404,7 @@ def render_suite_header(current_id):
             <div class="flex items-center gap-2">
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{{detail:{{lang:this.value}}}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -419,7 +419,7 @@ def render_suite_header(current_id):
                 </button>
                 <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
                     <span>🖨️</span>
-                    <span class="hidden sm:inline">Stampa</span>
+                    <span id="headerPrintText" class="hidden sm:inline">Stampa</span>
                 </button>
             </div>
         </div>
@@ -503,13 +503,227 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+// Global Navigation I18N Engine (6 Languages)
+const NAV_TRANSLATIONS = {
+    it: {
+        tab_home: 'Home Hub',
+        desk_title: 'Strumenti da Scrivania',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calcolatrice)',
+        desk_clock: 'OmniClock (Orologio)',
+        new_tool_btn: 'Nuovo Tool',
+        choose_calc: 'Scegli Calcolatore',
+        tool_count: '17 Tool',
+        tool_count_long: '17 Strumenti',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Stampa',
+        btn_install: 'Installa',
+        dock_back: 'Riancora',
+        detached_tag: 'Finestra Staccata',
+        resize_hint: 'Ridimensiona finestra trascinando i bordi'
+    },
+    en: {
+        tab_home: 'Home Hub',
+        desk_title: 'Desktop Utilities',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculator)',
+        desk_clock: 'OmniClock (Clock)',
+        new_tool_btn: 'New Tool',
+        choose_calc: 'Choose Calculator',
+        tool_count: '17 Tools',
+        tool_count_long: '17 Tools',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Print',
+        btn_install: 'Install',
+        dock_back: 'Dock back',
+        detached_tag: 'Detached Window',
+        resize_hint: 'Resize window by dragging borders'
+    },
+    es: {
+        tab_home: 'Home Hub',
+        desk_title: 'Herramientas de Escritorio',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculadora)',
+        desk_clock: 'OmniClock (Reloj)',
+        new_tool_btn: 'Nueva Herramienta',
+        choose_calc: 'Elegir Calculadora',
+        tool_count: '17 Herramientas',
+        tool_count_long: '17 Herramientas',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Imprimir',
+        btn_install: 'Instalar',
+        dock_back: 'Reanclar',
+        detached_tag: 'Ventana Desacoplada',
+        resize_hint: 'Cambiar tamaño arrastrando los bordes'
+    },
+    fr: {
+        tab_home: 'Home Hub',
+        desk_title: 'Outils de Bureau',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculatrice)',
+        desk_clock: 'OmniClock (Horloge)',
+        new_tool_btn: 'Nouvel Outil',
+        choose_calc: 'Choisir le Calculateur',
+        tool_count: '17 Outils',
+        tool_count_long: '17 Outils',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Imprimer',
+        btn_install: 'Installer',
+        dock_back: 'Réancrer',
+        detached_tag: 'Fenêtre Détachée',
+        resize_hint: 'Redimensionner la fenêtre en étirant les bords'
+    },
+    de: {
+        tab_home: 'Home Hub',
+        desk_title: 'Schreibtisch-Tools',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Rechner)',
+        desk_clock: 'OmniClock (Uhr)',
+        new_tool_btn: 'Neues Tool',
+        choose_calc: 'Rechner Wählen',
+        tool_count: '17 Tools',
+        tool_count_long: '17 Tools',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Drucken',
+        btn_install: 'Installieren',
+        dock_back: 'Wieder andocken',
+        detached_tag: 'Abgetrenntes Fenster',
+        resize_hint: 'Fenstergröße an den Kanten ziehen'
+    },
+    pt: {
+        tab_home: 'Home Hub',
+        desk_title: 'Ferramentas de Secretária',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculadora)',
+        desk_clock: 'OmniClock (Relógio)',
+        new_tool_btn: 'Nova Ferramenta',
+        choose_calc: 'Escolher Calculadora',
+        tool_count: '17 Ferramentas',
+        tool_count_long: '17 Ferramentas',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Imprimir',
+        btn_install: 'Instalar',
+        dock_back: 'Reancorar',
+        detached_tag: 'Janela Desacoplada',
+        resize_hint: 'Redimensione a janela arrastando as bordas'
+    }
+};
+
+const NAV_TOOL_NAMES_I18N = {
+    rampe: { it: 'RampaFacile', en: 'RampEasy', es: 'RampaFácil', fr: 'RampeFacile', de: 'RampeLeicht', pt: 'RampaFácil' },
+    scale: { it: 'ScalaFacile', en: 'StairsEasy', es: 'EscaleraFácil', fr: 'EscalierFacile', de: 'TreppenLeicht', pt: 'EscadaFácil' },
+    tubi: { it: 'TubiFacili', en: 'PipesEasy', es: 'TuberíasFácil', fr: 'TuyauxFaciles', de: 'RohreLeicht', pt: 'TubosFácil' },
+    tetto: { it: 'TettoFacile', en: 'RoofEasy', es: 'TejadoFácil', fr: 'ToitFacile', de: 'DachLeicht', pt: 'TelhadoFácil' },
+    taglio: { it: 'TaglioOttimo', en: 'OptiCut 1D', es: 'CorteÓptimo', fr: 'CoupeOptimale', de: 'OptiSchnitt 1D', pt: 'CorteÓtimo' },
+    dorso: { it: 'DorsoFacile', en: 'SpineEasy', es: 'LomoFácil', fr: 'DosFacile', de: 'BuchrückenLeicht', pt: 'LombadaFácil' },
+    dpi: { it: 'RisoluzioneFacile', en: 'ResolutionEasy', es: 'ResoluciónFácil', fr: 'RésolutionFacile', de: 'AuflösungLeicht', pt: 'ResoluçãoFácil' },
+    tinta: { it: 'TintaPerfetta', en: 'ColorMatch Pro', es: 'TintaPerfecta', fr: 'CouleurParfaite', de: 'FarbTreffer', pt: 'TintaPerfeita' },
+    barcode: { it: 'OmniBarcode', en: 'OmniBarcode', es: 'OmniBarcode', fr: 'OmniBarcode', de: 'OmniBarcode', pt: 'OmniBarcode' },
+    copertura: { it: 'CoperturaFacile', en: 'CoverageEasy', es: 'CoberturaFácil', fr: 'CouvertureFacile', de: 'FarbdeckungLeicht', pt: 'CoberturaFácil' },
+    resa: { it: 'ResaCarta', en: 'PaperYield', es: 'RendimientoPapel', fr: 'RendementPapier', de: 'PapierAusbeute', pt: 'RendimentoPapel' },
+    mutuo: { it: 'MutuoFacile', en: 'MortgageEasy', es: 'HipotecaFácil', fr: 'PrêtImmoFacile', de: 'HypothekLeicht', pt: 'HipotecaFácil' },
+    pac: { it: 'InteresseComposto', en: 'CompoundInterest', es: 'InterésCompuesto', fr: 'IntérêtsComposés', de: 'ZinseszinsRechner', pt: 'JurosCompostos' },
+    margine: { it: 'MargineFacile', en: 'MarginEasy', es: 'MargenFácil', fr: 'MargeFacile', de: 'MargeLeicht', pt: 'MargemFácil' },
+    estinzione: { it: 'EstinzioneMutuo', en: 'MortgagePayoff', es: 'AmortizaciónHipoteca', fr: 'RemboursementAnticipé', de: 'SondertilgungRechner', pt: 'AmortizaçãoHipoteca' },
+    risparmio: { it: 'ObiettivoRisparmio', en: 'SavingsGoal', es: 'MetaAhorro', fr: 'ObjectifÉpargne', de: 'SparzielRechner', pt: 'MetaPoupança' },
+    fire: { it: 'FIRE & Rendita', en: 'FIRE & Passive Income', es: 'FIRE y Rentas', fr: 'FIRE & Rente', de: 'FIRE & Rente', pt: 'FIRE e Renda' }
+};
+
+function updateNavTranslations(lang) {
+    const l = NAV_TRANSLATIONS[lang] ? lang : 'it';
+    const tr = NAV_TRANSLATIONS[l];
+
+    const tabHome = document.getElementById('navTabHomeText');
+    if (tabHome) tabHome.textContent = tr.tab_home;
+
+    const deskTitle = document.getElementById('navDeskTitle');
+    if (deskTitle) deskTitle.textContent = tr.desk_title;
+
+    const deskMemo = document.getElementById('navDeskMemo');
+    if (deskMemo) deskMemo.textContent = tr.desk_memo;
+
+    const deskCalc = document.getElementById('navDeskCalc');
+    if (deskCalc) deskCalc.textContent = tr.desk_calc;
+
+    const deskClock = document.getElementById('navDeskClock');
+    if (deskClock) deskClock.textContent = tr.desk_clock;
+
+    const newBtn = document.getElementById('topNewToolBtnText');
+    if (newBtn) newBtn.textContent = tr.new_tool_btn;
+
+    const topChoose = document.getElementById('topDropChooseCalc');
+    if (topChoose) topChoose.textContent = tr.choose_calc;
+
+    const topCount = document.getElementById('topDropToolCount');
+    if (topCount) topCount.textContent = tr.tool_count;
+
+    const topB = document.getElementById('topDropBuildingTitle');
+    if (topB) topB.textContent = tr.cat_building;
+
+    const topG = document.getElementById('topDropGraphTitle');
+    if (topG) topG.textContent = tr.cat_graph;
+
+    const topF = document.getElementById('topDropFinanceTitle');
+    if (topF) topF.textContent = tr.cat_finance;
+
+    const suiteChoose = document.getElementById('suiteDropChooseCalc');
+    if (suiteChoose) suiteChoose.textContent = tr.choose_calc;
+
+    const suiteCount = document.getElementById('suiteDropToolCount');
+    if (suiteCount) suiteCount.textContent = tr.tool_count_long;
+
+    const suiteB = document.getElementById('suiteDropBuildingTitle');
+    if (suiteB) suiteB.textContent = tr.cat_building;
+
+    const suiteG = document.getElementById('suiteDropGraphTitle');
+    if (suiteG) suiteG.textContent = tr.cat_graph;
+
+    const suiteF = document.getElementById('suiteDropFinanceTitle');
+    if (suiteF) suiteF.textContent = tr.cat_finance;
+
+    const printBtn = document.getElementById('headerPrintText');
+    if (printBtn) printBtn.textContent = tr.btn_print;
+
+    const installBtn = document.getElementById('headerInstallText');
+    if (installBtn) installBtn.textContent = tr.btn_install;
+
+    // Update tool names inside dropdown links
+    document.querySelectorAll('[data-nav-tool-id]').forEach(link => {
+        const tid = link.getAttribute('data-nav-tool-id');
+        const nameEl = link.querySelector('.nav-tool-name');
+        if (tid && nameEl && NAV_TOOL_NAMES_I18N[tid] && NAV_TOOL_NAMES_I18N[tid][l]) {
+            nameEl.textContent = NAV_TOOL_NAMES_I18N[tid][l];
+        }
+    });
+}
+
+// Global hook to language change
+window.addEventListener('omnitools_lang_changed', (e) => {
+    if (e.detail && e.detail.lang) updateNavTranslations(e.detail.lang);
+        renderChromeTabs();
+});
+
 // Auto-Sync Language Selector
 document.addEventListener('DOMContentLoaded', () => {
     const sel = document.getElementById('langSelect');
+    const saved = localStorage.getItem('omnitools_lang') || 'it';
     if (sel) {
-        const saved = localStorage.getItem('omnitools_lang') || 'it';
         sel.value = saved;
     }
+    updateNavTranslations(saved);
 });
 
 // Dynamic Chrome Tabs & Multi-Window Detach Engine
@@ -735,6 +949,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const tool = TOOLS_MAP[id];
             if (!tool) return;
             const isActive = (id === pathname);
+            const curL = localStorage.getItem("omnitools_lang") || "it";
+            const localizedName = (NAV_TOOL_NAMES_I18N[id] && NAV_TOOL_NAMES_I18N[id][curL]) || tool.name;
 
             const tab = document.createElement('div');
             tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
@@ -744,7 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.innerHTML = `
                 <a href="${tool.url}" class="flex items-center gap-2 text-inherit no-underline">
                     ${iconMarkup}
-                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${tool.name}</span>
+                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${localizedName}</span>
                 </a>
                 <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
                     ↗

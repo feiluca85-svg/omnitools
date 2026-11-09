@@ -171,7 +171,7 @@
                 <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                 </span>
-                <span>Home Hub</span>
+                <span id="navTabHomeText">Home Hub</span>
             </a>
         </div>
 
@@ -188,20 +188,20 @@
 
                 <!-- DESK Menu Dropdown in Top Bar -->
                 <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
-                    <div class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
+                    <div id="navDeskTitle" class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
                         Strumenti da Scrivania
                     </div>
                     <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
                         <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
-                        <span>OmniMemo (Post-it)</span>
+                        <span id="navDeskMemo">OmniMemo (Post-it)</span>
                     </button>
                     <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
                         <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
-                        <span>OmniCalc (Calcolatrice)</span>
+                        <span id="navDeskCalc">OmniCalc (Calcolatrice)</span>
                     </button>
                     <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
                         <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
-                        <span>OmniClock (Orologio)</span>
+                        <span id="navDeskClock">OmniClock (Orologio)</span>
                     </button>
                 </div>
             </div>
@@ -210,60 +210,60 @@
             <div class="relative">
                 <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
                     <span>➕</span>
-                    <span class="hidden lg:inline">Nuovo Tool</span>
+                    <span id="topNewToolBtnText" class="hidden lg:inline">Nuovo Tool</span>
                 </button>
 
                 <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
                 <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
-                        <span>Scegli Calcolatore</span>
-                        <span class="text-blue-600 font-bold font-mono">17 Tool</span>
+                        <span id="topDropChooseCalc">Scegli Calcolatore</span>
+                        <span id="topDropToolCount" class="text-blue-600 font-bold font-mono">17 Tool</span>
                     </div>
 
                     <!-- Category: OmniBuilding -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> <span id="topDropBuildingTitle">OmniBuilding (5)</span>
                         </div>
                         
-            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/rampe" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
-                    <span class="font-bold">RampaFacile</span>
+                    <span class="nav-tool-name font-bold">RampaFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
             </a>
             
-            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/scale" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
-                    <span class="font-bold">ScalaFacile</span>
+                    <span class="nav-tool-name font-bold">ScalaFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
             </a>
             
-            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/tubi" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
-                    <span class="font-bold">TubiFacili</span>
+                    <span class="nav-tool-name font-bold">TubiFacili</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
             </a>
             
-            <a href="/tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/tetto" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
-                    <span class="font-bold">TettoFacile</span>
+                    <span class="nav-tool-name font-bold">TettoFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
             </a>
             
-            <a href="/taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+            <a href="/taglio" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
-                    <span class="font-bold">TaglioOttimo</span>
+                    <span class="nav-tool-name font-bold">TaglioOttimo</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
             </a>
             
                     </div>
@@ -271,55 +271,55 @@
                     <!-- Category: OmniGraph -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> OmniGraph (6)
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> <span id="topDropGraphTitle">OmniGraph (6)</span>
                         </div>
                         
-            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/dorso" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
-                    <span class="font-bold">DorsoFacile</span>
+                    <span class="nav-tool-name font-bold">DorsoFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
             </a>
             
-            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/dpi" data-nav-tool-id="dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
-                    <span class="font-bold">RisoluzioneFacile</span>
+                    <span class="nav-tool-name font-bold">RisoluzioneFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
             </a>
             
-            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/tinta" data-nav-tool-id="tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
-                    <span class="font-bold">TintaPerfetta</span>
+                    <span class="nav-tool-name font-bold">TintaPerfetta</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
             </a>
             
-            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/barcode" data-nav-tool-id="barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
-                    <span class="font-bold">OmniBarcode</span>
+                    <span class="nav-tool-name font-bold">OmniBarcode</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
             </a>
             
-            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/copertura" data-nav-tool-id="copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
-                    <span class="font-bold">CoperturaFacile</span>
+                    <span class="nav-tool-name font-bold">CoperturaFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
             </a>
             
-            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/resa" data-nav-tool-id="resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
-                    <span class="font-bold">ResaCarta</span>
+                    <span class="nav-tool-name font-bold">ResaCarta</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
             </a>
             
                     </div>
@@ -327,55 +327,55 @@
                     <!-- Category: OmniFinance -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> OmniFinance (6)
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> <span id="topDropFinanceTitle">OmniFinance (6)</span>
                         </div>
                         
-            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/mutuo" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
-                    <span class="font-bold">MutuoFacile</span>
+                    <span class="nav-tool-name font-bold">MutuoFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
             </a>
             
-            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/pac" data-nav-tool-id="pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
-                    <span class="font-bold">InteresseComposto</span>
+                    <span class="nav-tool-name font-bold">InteresseComposto</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
             </a>
             
-            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/margine" data-nav-tool-id="margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
-                    <span class="font-bold">MargineFacile</span>
+                    <span class="nav-tool-name font-bold">MargineFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
             </a>
             
-            <a href="/estinzione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/estinzione" data-nav-tool-id="estinzione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-                    <span class="font-bold">EstinzioneMutuo</span>
+                    <span class="nav-tool-name font-bold">EstinzioneMutuo</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bersani</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bersani</span>
             </a>
             
-            <a href="/risparmio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/risparmio" data-nav-tool-id="risparmio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
-                    <span class="font-bold">ObiettivoRisparmio</span>
+                    <span class="nav-tool-name font-bold">ObiettivoRisparmio</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Sinking Fund</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Sinking Fund</span>
             </a>
             
-            <a href="/fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/fire" data-nav-tool-id="fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
-                    <span class="font-bold">FIRE & Rendita</span>
+                    <span class="nav-tool-name font-bold">FIRE & Rendita</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
             </a>
             
                     </div>
@@ -420,163 +420,163 @@
                     <!-- Dropdown Menu Panel -->
                     <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
-                            <span>Scegli Calcolatore</span>
-                            <span>17 Strumenti</span>
+                            <span id="suiteDropChooseCalc">Scegli Calcolatore</span>
+                            <span id="suiteDropToolCount">17 Strumenti</span>
                         </div>
 
                         <div class="space-y-0.5">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> <span id="suiteDropBuildingTitle">OmniBuilding (5)</span>
                             </div>
                             
-            <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/rampe" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
-                    <span class="font-bold">RampaFacile</span>
+                    <span class="nav-tool-name font-bold">RampaFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
             </a>
             
-            <a href="/scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/scale" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
-                    <span class="font-bold">ScalaFacile</span>
+                    <span class="nav-tool-name font-bold">ScalaFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
             </a>
             
-            <a href="/tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/tubi" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
-                    <span class="font-bold">TubiFacili</span>
+                    <span class="nav-tool-name font-bold">TubiFacili</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
             </a>
             
-            <a href="/tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/tetto" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
-                    <span class="font-bold">TettoFacile</span>
+                    <span class="nav-tool-name font-bold">TettoFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
             </a>
             
-            <a href="/taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+            <a href="/taglio" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
-                    <span class="font-bold">TaglioOttimo</span>
+                    <span class="nav-tool-name font-bold">TaglioOttimo</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
             </a>
             
                         </div>
 
                         <div class="space-y-0.5 pt-1 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> OmniGraph (6)
+                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> <span id="suiteDropGraphTitle">OmniGraph (6)</span>
                             </div>
                             
-            <a href="/dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/dorso" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
-                    <span class="font-bold">DorsoFacile</span>
+                    <span class="nav-tool-name font-bold">DorsoFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
             </a>
             
-            <a href="/dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/dpi" data-nav-tool-id="dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
-                    <span class="font-bold">RisoluzioneFacile</span>
+                    <span class="nav-tool-name font-bold">RisoluzioneFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
             </a>
             
-            <a href="/tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/tinta" data-nav-tool-id="tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
-                    <span class="font-bold">TintaPerfetta</span>
+                    <span class="nav-tool-name font-bold">TintaPerfetta</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
             </a>
             
-            <a href="/barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/barcode" data-nav-tool-id="barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
-                    <span class="font-bold">OmniBarcode</span>
+                    <span class="nav-tool-name font-bold">OmniBarcode</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
             </a>
             
-            <a href="/copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/copertura" data-nav-tool-id="copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
-                    <span class="font-bold">CoperturaFacile</span>
+                    <span class="nav-tool-name font-bold">CoperturaFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
             </a>
             
-            <a href="/resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/resa" data-nav-tool-id="resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
-                    <span class="font-bold">ResaCarta</span>
+                    <span class="nav-tool-name font-bold">ResaCarta</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
             </a>
             
                         </div>
 
                         <div class="space-y-0.5 pt-1 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> OmniFinance (6)
+                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> <span id="suiteDropFinanceTitle">OmniFinance (6)</span>
                             </div>
                             
-            <a href="/mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/mutuo" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
-                    <span class="font-bold">MutuoFacile</span>
+                    <span class="nav-tool-name font-bold">MutuoFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
             </a>
             
-            <a href="/pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/pac" data-nav-tool-id="pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
-                    <span class="font-bold">InteresseComposto</span>
+                    <span class="nav-tool-name font-bold">InteresseComposto</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
             </a>
             
-            <a href="/margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/margine" data-nav-tool-id="margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
-                    <span class="font-bold">MargineFacile</span>
+                    <span class="nav-tool-name font-bold">MargineFacile</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
             </a>
             
-            <a href="/estinzione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/estinzione" data-nav-tool-id="estinzione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-                    <span class="font-bold">EstinzioneMutuo</span>
+                    <span class="nav-tool-name font-bold">EstinzioneMutuo</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bersani</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bersani</span>
             </a>
             
-            <a href="/risparmio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/risparmio" data-nav-tool-id="risparmio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
-                    <span class="font-bold">ObiettivoRisparmio</span>
+                    <span class="nav-tool-name font-bold">ObiettivoRisparmio</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Sinking Fund</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Sinking Fund</span>
             </a>
             
-            <a href="/fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/fire" data-nav-tool-id="fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
-                    <span class="font-bold">FIRE & Rendita</span>
+                    <span class="nav-tool-name font-bold">FIRE & Rendita</span>
                 </div>
-                <span class="text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
             </a>
             
                         </div>
@@ -588,7 +588,7 @@
             <div class="flex items-center gap-2">
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -603,7 +603,7 @@
                 </button>
                 <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
                     <span>🖨️</span>
-                    <span class="hidden sm:inline">Stampa</span>
+                    <span id="headerPrintText" class="hidden sm:inline">Stampa</span>
                 </button>
             </div>
         </div>
@@ -924,9 +924,9 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
                     <div class="flex items-center gap-2">
                         <span class="text-base">⚡</span>
-                        <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
+                        <h3 id="footerRelTitle" class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
                     </div>
-                    <span class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
+                    <span id="footerRelSub" class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     
@@ -940,7 +940,7 @@
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Calcolo pendenze DM 236</span>
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
-                <span>Apri Calcolatore</span>
+                <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
             </div>
         </a>
@@ -954,7 +954,7 @@
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Spessore dorso libro</span>
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
-                <span>Apri Calcolatore</span>
+                <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
             </div>
         </a>
@@ -968,7 +968,7 @@
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Ammortamento rata mutuo</span>
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
-                <span>Apri Calcolatore</span>
+                <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
             </div>
         </a>
@@ -1031,13 +1031,13 @@
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span id="footerNetSub" class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (5 Tools) -->
                 <div class="space-y-1.5">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
-                        <span>🏗️</span> <span>OmniBuilding (5 Cantiere & Fabbricazione)</span>
+                        <span>🏗️</span> <span id="footerCatBuilding">OmniBuilding (5 Cantiere & Fabbricazione)</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         
@@ -1046,35 +1046,35 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📐 Rampe</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza & DM 236</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/scale" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪜 Scale</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Gradini & Blondel</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/tubi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🚰 Scarichi</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza UNI EN</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/tetto" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏠 Tetto & Falda</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza, Gradi & Trave</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <div class="p-2 sm:p-2.5 rounded-xl bg-blue-600/30 border-blue-400/50 border flex items-center justify-between transition shadow-xs">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-white text-[11px] block truncate">🪚 Taglio 1D</span>
                             <span class="text-[9px] text-blue-200 block truncate">Ottimizzatore Barre & Sfrido</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-blue-500 text-white font-extrabold rounded shrink-0">Attivo</span>
+                        <span class="footer-pill-active text-[9px] px-1.5 py-0.5 bg-blue-500 text-white font-extrabold rounded shrink-0">Attivo</span>
                     </div>
                     </div>
                 </div>
@@ -1082,7 +1082,7 @@
                 <!-- Division 2: OmniGraph (6 Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1">
-                        <span>🎨</span> <span>OmniGraph (6 Grafica & Stampa)</span>
+                        <span>🎨</span> <span id="footerCatGraph">OmniGraph (6 Grafica & Stampa)</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         
@@ -1091,42 +1091,42 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📕 Dorso</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Spessore & KDP</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/dpi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖼️ DPI / Pixel</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/tinta" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Tinta & CMYK</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Calibrazione</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/barcode" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Barcode</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Vettoriale & GS1</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/copertura" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖨️ Copertura</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro & Costi</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/resa" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📑 Resa Carta</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Nesting & Taglio</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     </div>
                 </div>
@@ -1134,7 +1134,7 @@
                 <!-- Division 3: OmniFinance (6 Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                        <span>💼</span> <span>OmniFinance (6 Finanza & Libertà)</span>
+                        <span>💼</span> <span id="footerCatFinance">OmniFinance (6 Finanza & Libertà)</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         
@@ -1143,42 +1143,42 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏦 Rata Mutuo</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ammortamento & Sostenibilità</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/pac" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📈 Interesse PAC</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Crescita & Rendita 4%</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/margine" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Margine & Ricarico</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">COGS, Markup & IVA</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/estinzione" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">⚡ Estinzione Mutuo</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Rata vs Anni & Bersani</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/risparmio" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Obiettivo Risparmio</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Sinking Fund & Piano Mensile</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     <a href="/fire" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🔥 FIRE & Rendita</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Libertà & Trinity 4%</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
                     </div>
                 </div>
@@ -1186,7 +1186,7 @@
                 <!-- Division 4: OmniDesk Utilities (Quick Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1">
-                        <span>⚡</span> <span>OmniDesk — Strumenti Rapidi da Scrivania</span>
+                        <span>⚡</span> <span id="footerCatDesk">OmniDesk — Strumenti Rapidi da Scrivania</span>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-[11px] text-center font-bold">
                         <a href="/memo" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
@@ -1203,14 +1203,14 @@
 
                 <div class="pt-2 text-center border-t border-slate-800/80">
                     <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
-                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                        <span>🤝</span> <span id="footerPartnerText">Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
                     </a>
                 </div>
             </div>
 
             <!-- Disclaimer and Copyright -->
             <div class="text-center space-y-2 pt-2">
-                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="footerRights" class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
                 <p id="legalDisclaimerText" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
                     OmniTools Network fornisce utility di precisione a scopo estimativo, didattico e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il parere vincolante di tecnici abilitati o consulenti finanziari abilitati (TUF / D.Lgs. 58/1998).
                 </p>
@@ -1363,13 +1363,227 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+// Global Navigation I18N Engine (6 Languages)
+const NAV_TRANSLATIONS = {
+    it: {
+        tab_home: 'Home Hub',
+        desk_title: 'Strumenti da Scrivania',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calcolatrice)',
+        desk_clock: 'OmniClock (Orologio)',
+        new_tool_btn: 'Nuovo Tool',
+        choose_calc: 'Scegli Calcolatore',
+        tool_count: '17 Tool',
+        tool_count_long: '17 Strumenti',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Stampa',
+        btn_install: 'Installa',
+        dock_back: 'Riancora',
+        detached_tag: 'Finestra Staccata',
+        resize_hint: 'Ridimensiona finestra trascinando i bordi'
+    },
+    en: {
+        tab_home: 'Home Hub',
+        desk_title: 'Desktop Utilities',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculator)',
+        desk_clock: 'OmniClock (Clock)',
+        new_tool_btn: 'New Tool',
+        choose_calc: 'Choose Calculator',
+        tool_count: '17 Tools',
+        tool_count_long: '17 Tools',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Print',
+        btn_install: 'Install',
+        dock_back: 'Dock back',
+        detached_tag: 'Detached Window',
+        resize_hint: 'Resize window by dragging borders'
+    },
+    es: {
+        tab_home: 'Home Hub',
+        desk_title: 'Herramientas de Escritorio',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculadora)',
+        desk_clock: 'OmniClock (Reloj)',
+        new_tool_btn: 'Nueva Herramienta',
+        choose_calc: 'Elegir Calculadora',
+        tool_count: '17 Herramientas',
+        tool_count_long: '17 Herramientas',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Imprimir',
+        btn_install: 'Instalar',
+        dock_back: 'Reanclar',
+        detached_tag: 'Ventana Desacoplada',
+        resize_hint: 'Cambiar tamaño arrastrando los bordes'
+    },
+    fr: {
+        tab_home: 'Home Hub',
+        desk_title: 'Outils de Bureau',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculatrice)',
+        desk_clock: 'OmniClock (Horloge)',
+        new_tool_btn: 'Nouvel Outil',
+        choose_calc: 'Choisir le Calculateur',
+        tool_count: '17 Outils',
+        tool_count_long: '17 Outils',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Imprimer',
+        btn_install: 'Installer',
+        dock_back: 'Réancrer',
+        detached_tag: 'Fenêtre Détachée',
+        resize_hint: 'Redimensionner la fenêtre en étirant les bords'
+    },
+    de: {
+        tab_home: 'Home Hub',
+        desk_title: 'Schreibtisch-Tools',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Rechner)',
+        desk_clock: 'OmniClock (Uhr)',
+        new_tool_btn: 'Neues Tool',
+        choose_calc: 'Rechner Wählen',
+        tool_count: '17 Tools',
+        tool_count_long: '17 Tools',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Drucken',
+        btn_install: 'Installieren',
+        dock_back: 'Wieder andocken',
+        detached_tag: 'Abgetrenntes Fenster',
+        resize_hint: 'Fenstergröße an den Kanten ziehen'
+    },
+    pt: {
+        tab_home: 'Home Hub',
+        desk_title: 'Ferramentas de Secretária',
+        desk_memo: 'OmniMemo (Post-it)',
+        desk_calc: 'OmniCalc (Calculadora)',
+        desk_clock: 'OmniClock (Relógio)',
+        new_tool_btn: 'Nova Ferramenta',
+        choose_calc: 'Escolher Calculadora',
+        tool_count: '17 Ferramentas',
+        tool_count_long: '17 Ferramentas',
+        cat_building: 'OmniBuilding (5)',
+        cat_graph: 'OmniGraph (6)',
+        cat_finance: 'OmniFinance (6)',
+        btn_print: 'Imprimir',
+        btn_install: 'Instalar',
+        dock_back: 'Reancorar',
+        detached_tag: 'Janela Desacoplada',
+        resize_hint: 'Redimensione a janela arrastando as bordas'
+    }
+};
+
+const NAV_TOOL_NAMES_I18N = {
+    rampe: { it: 'RampaFacile', en: 'RampEasy', es: 'RampaFácil', fr: 'RampeFacile', de: 'RampeLeicht', pt: 'RampaFácil' },
+    scale: { it: 'ScalaFacile', en: 'StairsEasy', es: 'EscaleraFácil', fr: 'EscalierFacile', de: 'TreppenLeicht', pt: 'EscadaFácil' },
+    tubi: { it: 'TubiFacili', en: 'PipesEasy', es: 'TuberíasFácil', fr: 'TuyauxFaciles', de: 'RohreLeicht', pt: 'TubosFácil' },
+    tetto: { it: 'TettoFacile', en: 'RoofEasy', es: 'TejadoFácil', fr: 'ToitFacile', de: 'DachLeicht', pt: 'TelhadoFácil' },
+    taglio: { it: 'TaglioOttimo', en: 'OptiCut 1D', es: 'CorteÓptimo', fr: 'CoupeOptimale', de: 'OptiSchnitt 1D', pt: 'CorteÓtimo' },
+    dorso: { it: 'DorsoFacile', en: 'SpineEasy', es: 'LomoFácil', fr: 'DosFacile', de: 'BuchrückenLeicht', pt: 'LombadaFácil' },
+    dpi: { it: 'RisoluzioneFacile', en: 'ResolutionEasy', es: 'ResoluciónFácil', fr: 'RésolutionFacile', de: 'AuflösungLeicht', pt: 'ResoluçãoFácil' },
+    tinta: { it: 'TintaPerfetta', en: 'ColorMatch Pro', es: 'TintaPerfecta', fr: 'CouleurParfaite', de: 'FarbTreffer', pt: 'TintaPerfeita' },
+    barcode: { it: 'OmniBarcode', en: 'OmniBarcode', es: 'OmniBarcode', fr: 'OmniBarcode', de: 'OmniBarcode', pt: 'OmniBarcode' },
+    copertura: { it: 'CoperturaFacile', en: 'CoverageEasy', es: 'CoberturaFácil', fr: 'CouvertureFacile', de: 'FarbdeckungLeicht', pt: 'CoberturaFácil' },
+    resa: { it: 'ResaCarta', en: 'PaperYield', es: 'RendimientoPapel', fr: 'RendementPapier', de: 'PapierAusbeute', pt: 'RendimentoPapel' },
+    mutuo: { it: 'MutuoFacile', en: 'MortgageEasy', es: 'HipotecaFácil', fr: 'PrêtImmoFacile', de: 'HypothekLeicht', pt: 'HipotecaFácil' },
+    pac: { it: 'InteresseComposto', en: 'CompoundInterest', es: 'InterésCompuesto', fr: 'IntérêtsComposés', de: 'ZinseszinsRechner', pt: 'JurosCompostos' },
+    margine: { it: 'MargineFacile', en: 'MarginEasy', es: 'MargenFácil', fr: 'MargeFacile', de: 'MargeLeicht', pt: 'MargemFácil' },
+    estinzione: { it: 'EstinzioneMutuo', en: 'MortgagePayoff', es: 'AmortizaciónHipoteca', fr: 'RemboursementAnticipé', de: 'SondertilgungRechner', pt: 'AmortizaçãoHipoteca' },
+    risparmio: { it: 'ObiettivoRisparmio', en: 'SavingsGoal', es: 'MetaAhorro', fr: 'ObjectifÉpargne', de: 'SparzielRechner', pt: 'MetaPoupança' },
+    fire: { it: 'FIRE & Rendita', en: 'FIRE & Passive Income', es: 'FIRE y Rentas', fr: 'FIRE & Rente', de: 'FIRE & Rente', pt: 'FIRE e Renda' }
+};
+
+function updateNavTranslations(lang) {
+    const l = NAV_TRANSLATIONS[lang] ? lang : 'it';
+    const tr = NAV_TRANSLATIONS[l];
+
+    const tabHome = document.getElementById('navTabHomeText');
+    if (tabHome) tabHome.textContent = tr.tab_home;
+
+    const deskTitle = document.getElementById('navDeskTitle');
+    if (deskTitle) deskTitle.textContent = tr.desk_title;
+
+    const deskMemo = document.getElementById('navDeskMemo');
+    if (deskMemo) deskMemo.textContent = tr.desk_memo;
+
+    const deskCalc = document.getElementById('navDeskCalc');
+    if (deskCalc) deskCalc.textContent = tr.desk_calc;
+
+    const deskClock = document.getElementById('navDeskClock');
+    if (deskClock) deskClock.textContent = tr.desk_clock;
+
+    const newBtn = document.getElementById('topNewToolBtnText');
+    if (newBtn) newBtn.textContent = tr.new_tool_btn;
+
+    const topChoose = document.getElementById('topDropChooseCalc');
+    if (topChoose) topChoose.textContent = tr.choose_calc;
+
+    const topCount = document.getElementById('topDropToolCount');
+    if (topCount) topCount.textContent = tr.tool_count;
+
+    const topB = document.getElementById('topDropBuildingTitle');
+    if (topB) topB.textContent = tr.cat_building;
+
+    const topG = document.getElementById('topDropGraphTitle');
+    if (topG) topG.textContent = tr.cat_graph;
+
+    const topF = document.getElementById('topDropFinanceTitle');
+    if (topF) topF.textContent = tr.cat_finance;
+
+    const suiteChoose = document.getElementById('suiteDropChooseCalc');
+    if (suiteChoose) suiteChoose.textContent = tr.choose_calc;
+
+    const suiteCount = document.getElementById('suiteDropToolCount');
+    if (suiteCount) suiteCount.textContent = tr.tool_count_long;
+
+    const suiteB = document.getElementById('suiteDropBuildingTitle');
+    if (suiteB) suiteB.textContent = tr.cat_building;
+
+    const suiteG = document.getElementById('suiteDropGraphTitle');
+    if (suiteG) suiteG.textContent = tr.cat_graph;
+
+    const suiteF = document.getElementById('suiteDropFinanceTitle');
+    if (suiteF) suiteF.textContent = tr.cat_finance;
+
+    const printBtn = document.getElementById('headerPrintText');
+    if (printBtn) printBtn.textContent = tr.btn_print;
+
+    const installBtn = document.getElementById('headerInstallText');
+    if (installBtn) installBtn.textContent = tr.btn_install;
+
+    // Update tool names inside dropdown links
+    document.querySelectorAll('[data-nav-tool-id]').forEach(link => {
+        const tid = link.getAttribute('data-nav-tool-id');
+        const nameEl = link.querySelector('.nav-tool-name');
+        if (tid && nameEl && NAV_TOOL_NAMES_I18N[tid] && NAV_TOOL_NAMES_I18N[tid][l]) {
+            nameEl.textContent = NAV_TOOL_NAMES_I18N[tid][l];
+        }
+    });
+}
+
+// Global hook to language change
+window.addEventListener('omnitools_lang_changed', (e) => {
+    if (e.detail && e.detail.lang) updateNavTranslations(e.detail.lang);
+        renderChromeTabs();
+});
+
 // Auto-Sync Language Selector
 document.addEventListener('DOMContentLoaded', () => {
     const sel = document.getElementById('langSelect');
+    const saved = localStorage.getItem('omnitools_lang') || 'it';
     if (sel) {
-        const saved = localStorage.getItem('omnitools_lang') || 'it';
         sel.value = saved;
     }
+    updateNavTranslations(saved);
 });
 
 // Dynamic Chrome Tabs & Multi-Window Detach Engine
@@ -1595,6 +1809,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const tool = TOOLS_MAP[id];
             if (!tool) return;
             const isActive = (id === pathname);
+            const curL = localStorage.getItem("omnitools_lang") || "it";
+            const localizedName = (NAV_TOOL_NAMES_I18N[id] && NAV_TOOL_NAMES_I18N[id][curL]) || tool.name;
 
             const tab = document.createElement('div');
             tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
@@ -1604,7 +1820,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.innerHTML = `
                 <a href="${tool.url}" class="flex items-center gap-2 text-inherit no-underline">
                     ${iconMarkup}
-                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${tool.name}</span>
+                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${localizedName}</span>
                 </a>
                 <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
                     ↗
@@ -1651,6 +1867,298 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
         
+
+        // Global Footer I18N Engine (6 Languages)
+        const FOOTER_TRANSLATIONS = {
+    "it": {
+        "rel_title": "Altri Calcolatori Tecnici Consigliati",
+        "rel_sub": "Precision Utilities • 100% Gratuito",
+        "rel_open": "Apri Calcolatore",
+        "share_title": "Ti è stato utile questo calcolatore?",
+        "share_sub": "Condividilo con colleghi, collaboratori o clienti",
+        "share_copy": "Copia Link",
+        "share_copied": "Copiato! ✓",
+        "share_btn": "Condividi",
+        "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
+        "suggest_btn": "Suggerisci",
+        "net_sub": "17 Strumenti Gratuiti • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Cantiere & Fabbricazione)",
+        "cat_graph": "OmniGraph (6 Grafica & Stampa)",
+        "cat_finance": "OmniFinance (6 Finanza & Libertà)",
+        "cat_desk": "OmniDesk — Strumenti Rapidi da Scrivania",
+        "partner_text": "Diventa Partner Ufficiale o Sponsor della Suite OmniTools",
+        "rights": "© 2026 OmniTools Network — Tutti i diritti riservati.",
+        "pill_active": "Attivo",
+        "pill_open": "Apri ➔",
+        "install_title": "Installa OmniTools come App",
+        "install_sub": "Utility di calcolo professionale sempre a portata di mano",
+        "install_btn": "Installa",
+        "suggest_modal_title": "Suggerisci uno Strumento",
+        "suggest_modal_desc": "Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?",
+        "suggest_modal_ph": "Scrivi qui la tua idea...",
+        "suggest_modal_anon": "🔒 Invio 100% anonimo. Non serve registrarsi.",
+        "suggest_modal_cancel": "Annulla",
+        "suggest_modal_send": "Invia",
+        "suggest_modal_success": "Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.",
+        "suggest_modal_done": "Fatto"
+    },
+    "en": {
+        "rel_title": "Other Recommended Technical Calculators",
+        "rel_sub": "Precision Utilities • 100% Free",
+        "rel_open": "Open Calculator",
+        "share_title": "Was this calculator useful to you?",
+        "share_sub": "Share it with colleagues, teammates, or clients",
+        "share_copy": "Copy Link",
+        "share_copied": "Copied! ✓",
+        "share_btn": "Share",
+        "suggest_banner": "Have an idea for a new construction, graphics, or finance calculator?",
+        "suggest_btn": "Suggest",
+        "net_sub": "17 Free Tools • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Construction & Fabrication)",
+        "cat_graph": "OmniGraph (6 Graphics & Prepress)",
+        "cat_finance": "OmniFinance (6 Finance & Freedom)",
+        "cat_desk": "OmniDesk — Fast Desktop Utilities",
+        "partner_text": "Become an Official Partner or Sponsor of OmniTools Suite",
+        "rights": "© 2026 OmniTools Network — All rights reserved.",
+        "pill_active": "Active",
+        "pill_open": "Open ➔",
+        "install_title": "Install OmniTools as an App",
+        "install_sub": "Professional calculation utilities always at your fingertips",
+        "install_btn": "Install",
+        "suggest_modal_title": "Suggest a Tool",
+        "suggest_modal_desc": "What new calculator, formula, or feature would you like to see on OmniTools?",
+        "suggest_modal_ph": "Write your idea here...",
+        "suggest_modal_anon": "🔒 100% anonymous submission. No sign-up required.",
+        "suggest_modal_cancel": "Cancel",
+        "suggest_modal_send": "Send",
+        "suggest_modal_success": "Thank you very much! Your suggestion has been saved and will shape upcoming OmniTools.",
+        "suggest_modal_done": "Done"
+    },
+    "es": {
+        "rel_title": "Otras Calculadoras Técnicas Recomendadas",
+        "rel_sub": "Utilidades de Precisión • 100% Gratis",
+        "rel_open": "Abrir Calculadora",
+        "share_title": "¿Te ha sido útil esta calculadora?",
+        "share_sub": "Compártela con colegas, colaboradores o clientes",
+        "share_copy": "Copiar Enlace",
+        "share_copied": "¡Copiado! ✓",
+        "share_btn": "Compartir",
+        "suggest_banner": "¿Tienes una idea para una nueva calculadora de obra, gráfica o finanzas?",
+        "suggest_btn": "Sugerir",
+        "net_sub": "17 Herramientas Gratuitas • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Construcción y Fabricación)",
+        "cat_graph": "OmniGraph (6 Gráfica y Preimpresión)",
+        "cat_finance": "OmniFinance (6 Finanzas y Libertad)",
+        "cat_desk": "OmniDesk — Herramientas Rápidas de Escritorio",
+        "partner_text": "Conviértete en Socio Oficial o Patrocinador de la Suite OmniTools",
+        "rights": "© 2026 OmniTools Network — Todos los derechos reservados.",
+        "pill_active": "Activo",
+        "pill_open": "Abrir ➔",
+        "install_title": "Instala OmniTools como App",
+        "install_sub": "Utilidades de cálculo profesional siempre a tu alcance",
+        "install_btn": "Instalar",
+        "suggest_modal_title": "Sugerir una Herramienta",
+        "suggest_modal_desc": "¿Qué nueva calculadora, fórmula o función te gustaría ver en OmniTools?",
+        "suggest_modal_ph": "Escribe tu idea aquí...",
+        "suggest_modal_anon": "🔒 Envío 100% anónimo. Sin registros.",
+        "suggest_modal_cancel": "Cancelar",
+        "suggest_modal_send": "Enviar",
+        "suggest_modal_success": "¡Muchas gracias! Tu idea ha sido registrada y guiará las próximas herramientas.",
+        "suggest_modal_done": "Hecho"
+    },
+    "fr": {
+        "rel_title": "Autres Calculateurs Techniques Recommandés",
+        "rel_sub": "Utilitaires de Précision • 100% Gratuit",
+        "rel_open": "Ouvrir le Calculateur",
+        "share_title": "Ce calculateur vous a-t-il été utile ?",
+        "share_sub": "Partagez-le avec vos collègues, collaborateurs ou clients",
+        "share_copy": "Copier le Lien",
+        "share_copied": "Copié ! ✓",
+        "share_btn": "Partager",
+        "suggest_banner": "Une idée de nouveau calculateur pour le chantier, le graphisme ou la finance ?",
+        "suggest_btn": "Suggérer",
+        "net_sub": "17 Outils Gratuits • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Bâtiment & Fabrication)",
+        "cat_graph": "OmniGraph (6 Graphisme & Prépresse)",
+        "cat_finance": "OmniFinance (6 Finance & Liberté)",
+        "cat_desk": "OmniDesk — Outils Rapides de Bureau",
+        "partner_text": "Devenez Partenaire Officiel ou Sponsor de la Suite OmniTools",
+        "rights": "© 2026 OmniTools Network — Tous droits réservés.",
+        "pill_active": "Actif",
+        "pill_open": "Ouvrir ➔",
+        "install_title": "Installer OmniTools comme Application",
+        "install_sub": "Utilitaires de calcul professionnel toujours à portée de main",
+        "install_btn": "Installer",
+        "suggest_modal_title": "Suggérer un Outil",
+        "suggest_modal_desc": "Quel calculateur, formule ou fonctionnalité aimeriez-vous voir sur OmniTools ?",
+        "suggest_modal_ph": "Écrivez votre idée ici...",
+        "suggest_modal_anon": "🔒 Envoi 100% anonyme. Aucune inscription requise.",
+        "suggest_modal_cancel": "Annuler",
+        "suggest_modal_send": "Envoyer",
+        "suggest_modal_success": "Merci beaucoup ! Votre idée a été enregistrée pour les prochains outils.",
+        "suggest_modal_done": "Terminé"
+    },
+    "de": {
+        "rel_title": "Weitere Empfohlene Technische Rechner",
+        "rel_sub": "Präzisions-Tools • 100% Kostenlos",
+        "rel_open": "Rechner Öffnen",
+        "share_title": "War dieser Rechner hilfreich für Sie?",
+        "share_sub": "Teilen Sie ihn mit Kollegen, Partnern oder Kunden",
+        "share_copy": "Link Kopieren",
+        "share_copied": "Kopiert! ✓",
+        "share_btn": "Teilen",
+        "suggest_banner": "Haben Sie eine Idee für einen neuen Rechner für Bau, Grafik oder Finanzen?",
+        "suggest_btn": "Vorschlagen",
+        "net_sub": "17 Kostenlose Tools • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Bau & Fertigung)",
+        "cat_graph": "OmniGraph (6 Grafik & Druckvorstufe)",
+        "cat_finance": "OmniFinance (6 Finanzen & Freiheit)",
+        "cat_desk": "OmniDesk — Schnelle Schreibtisch-Tools",
+        "partner_text": "Werden Sie offizieller Partner oder Sponsor der OmniTools Suite",
+        "rights": "© 2026 OmniTools Network — Alle Rechte vorbehalten.",
+        "pill_active": "Aktiv",
+        "pill_open": "Öffnen ➔",
+        "install_title": "OmniTools als App Installieren",
+        "install_sub": "Professionelle Rechenwerkzeuge immer griffbereit",
+        "install_btn": "Installieren",
+        "suggest_modal_title": "Ein Tool Vorschlagen",
+        "suggest_modal_desc": "Welchen neuen Rechner, welche Formel oder Funktion wünschen Sie sich bei OmniTools?",
+        "suggest_modal_ph": "Schreiben Sie Ihre Idee hier...",
+        "suggest_modal_anon": "🔒 100% anonyme Übermittlung. Keine Registrierung nötig.",
+        "suggest_modal_cancel": "Abbrechen",
+        "suggest_modal_send": "Senden",
+        "suggest_modal_success": "Vielen Dank! Ihre Idee wurde gespeichert und fließt in kommende Tools ein.",
+        "suggest_modal_done": "Fertig"
+    },
+    "pt": {
+        "rel_title": "Outras Calculadoras Técnicas Recomendadas",
+        "rel_sub": "Utilitários de Precisão • 100% Gratuito",
+        "rel_open": "Abrir Calculadora",
+        "share_title": "Esta calculadora foi útil para você?",
+        "share_sub": "Compartilhe com colegas, parceiros ou clientes",
+        "share_copy": "Copiar Link",
+        "share_copied": "Copiado! ✓",
+        "share_btn": "Compartilhar",
+        "suggest_banner": "Tem uma ideia para uma nova calculadora de obra, gráfica ou finanças?",
+        "suggest_btn": "Sugerir",
+        "net_sub": "17 Ferramentas Gratuitas • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Construção & Fabricação)",
+        "cat_graph": "OmniGraph (6 Design & Pré-impressão)",
+        "cat_finance": "OmniFinance (6 Finanças & Liberdade)",
+        "cat_desk": "OmniDesk — Ferramentas Rápidas de Secretária",
+        "partner_text": "Seja um Parceiro Oficial ou Patrocinador da Suite OmniTools",
+        "rights": "© 2026 OmniTools Network — Todos os direitos reservados.",
+        "pill_active": "Ativo",
+        "pill_open": "Abrir ➔",
+        "install_title": "Instalar OmniTools como Aplicativo",
+        "install_sub": "Utilitários profissionais de cálculo sempre à mão",
+        "install_btn": "Instalar",
+        "suggest_modal_title": "Sugerir uma Ferramenta",
+        "suggest_modal_desc": "Qual nova calculadora, fórmula ou recurso você gostaria de ver no OmniTools?",
+        "suggest_modal_ph": "Escreva sua ideia aqui...",
+        "suggest_modal_anon": "🔒 Envio 100% anônimo. Sem necessidade de cadastro.",
+        "suggest_modal_cancel": "Cancelar",
+        "suggest_modal_send": "Enviar",
+        "suggest_modal_success": "Muito obrigado! Sua ideia foi registrada e guiará as próximas ferramentas.",
+        "suggest_modal_done": "Concluído"
+    }
+};
+
+        function updateFooterTranslations(lang) {
+            const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
+            const tr = FOOTER_TRANSLATIONS[l];
+
+            const relTitle = document.getElementById("footerRelTitle");
+            if (relTitle) relTitle.textContent = tr.rel_title;
+
+            const relSub = document.getElementById("footerRelSub");
+            if (relSub) relSub.textContent = tr.rel_sub;
+
+            document.querySelectorAll(".footer-rel-open").forEach(el => {
+                el.textContent = tr.rel_open;
+            });
+
+            const shareTitle = document.getElementById("shareTitleText");
+            if (shareTitle) shareTitle.textContent = tr.share_title;
+
+            const shareSub = document.getElementById("shareSubText");
+            if (shareSub) shareSub.textContent = tr.share_sub;
+
+            const shareCopy = document.getElementById("shareCopyText");
+            if (shareCopy) shareCopy.textContent = tr.share_copy;
+
+            const suggestBanner = document.getElementById("suggestBannerText");
+            if (suggestBanner) suggestBanner.textContent = tr.suggest_banner;
+
+            const suggestBtn = document.getElementById("suggestBtnText");
+            if (suggestBtn) suggestBtn.textContent = tr.suggest_btn;
+
+            const netSub = document.getElementById("footerNetSub");
+            if (netSub) netSub.textContent = tr.net_sub;
+
+            const catB = document.getElementById("footerCatBuilding");
+            if (catB) catB.textContent = tr.cat_building;
+
+            const catG = document.getElementById("footerCatGraph");
+            if (catG) catG.textContent = tr.cat_graph;
+
+            const catF = document.getElementById("footerCatFinance");
+            if (catF) catF.textContent = tr.cat_finance;
+
+            const catDesk = document.getElementById("footerCatDesk");
+            if (catDesk) catDesk.textContent = tr.cat_desk;
+
+            const partner = document.getElementById("footerPartnerText");
+            if (partner) partner.textContent = tr.partner_text;
+
+            const rights = document.getElementById("footerRights");
+            if (rights) rights.textContent = tr.rights;
+
+            document.querySelectorAll(".footer-pill-active").forEach(el => {
+                el.textContent = tr.pill_active;
+            });
+
+            document.querySelectorAll(".footer-pill-open").forEach(el => {
+                el.textContent = tr.pill_open;
+            });
+
+            const installT = document.getElementById("installBannerTitle");
+            if (installT) installT.textContent = tr.install_title;
+
+            const installS = document.getElementById("installBannerSub");
+            if (installS) installS.textContent = tr.install_sub;
+
+            const modalT = document.getElementById("modalSuggestTitle");
+            if (modalT) modalT.textContent = tr.suggest_modal_title;
+
+            const modalD = document.getElementById("modalSuggestDesc");
+            if (modalD) modalD.textContent = tr.suggest_modal_desc;
+
+            const modalMsg = document.getElementById("suggestMessage");
+            if (modalMsg) modalMsg.placeholder = tr.suggest_modal_ph;
+
+            const modalAnon = document.getElementById("modalPrivacyNote");
+            if (modalAnon) modalAnon.textContent = tr.suggest_modal_anon;
+
+            const modalClose = document.getElementById("modalCloseBtn");
+            if (modalClose) modalClose.textContent = tr.suggest_modal_cancel;
+
+            const modalSubmit = document.getElementById("modalSubmitBtn");
+            if (modalSubmit) modalSubmit.textContent = tr.suggest_modal_send;
+
+            const modalSucc = document.getElementById("modalSuccessText");
+            if (modalSucc) modalSucc.textContent = tr.suggest_modal_success;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const saved = localStorage.getItem("omnitools_lang") || "it";
+            updateFooterTranslations(saved);
+        });
+
+        window.addEventListener("omnitools_lang_changed", (e) => {
+            if (e.detail && e.detail.lang) updateFooterTranslations(e.detail.lang);
+        });
+
         // Viral Share Functions
         function shareWhatsApp() {
             const url = encodeURIComponent(window.location.href);
@@ -1674,7 +2182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const el = document.getElementById('shareCopyText');
                 if (el) {
                     const orig = el.textContent;
-                    el.textContent = 'Copiato! ✓';
+                    const curL = localStorage.getItem('omnitools_lang') || 'it'; el.textContent = (FOOTER_TRANSLATIONS[curL] && FOOTER_TRANSLATIONS[curL].share_copied) || 'Copiato! ✓';
                     setTimeout(() => { el.textContent = orig; }, 2000);
                 }
             }).catch(() => {
@@ -2178,6 +2686,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function changeLanguage(lang) {
             localStorage.setItem('omnitools_lang', lang);
+            try { window.dispatchEvent(new CustomEvent('omnitools_lang_changed', { detail: { lang: lang } })); } catch(e) {}
             const sel = document.getElementById('langSelect');
             if (sel) sel.value = lang;
             document.documentElement.lang = lang;

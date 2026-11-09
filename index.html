@@ -1519,12 +1519,14 @@
             if (!TRANSLATIONS[lang]) lang = 'en';
             currentLang = lang;
             localStorage.setItem('omnitools_lang', lang);
+            try { window.dispatchEvent(new CustomEvent('omnitools_lang_changed', { detail: { lang: lang } })); } catch(e) {}
             document.getElementById('langSelect').value = lang;
             document.documentElement.lang = lang;
             applyTranslations();
         }
 
         function applyTranslations() {
+            syncMacrotoolCounts();
             const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
             
             // Header & Hero
@@ -1819,6 +1821,75 @@
         }
 
         // Dynamic Sync of Macrotools and Suite Counters
+        const MACRO_SUBTEXT_I18N = {
+            it: {
+                all: (c) => `${c} Strumenti`,
+                all_mob: (c) => `Tutti (${c})`,
+                b_mob: (c) => `Building (${c})`,
+                b_sub: (c) => `${c} Cantiere & Fabbricazione`,
+                g_mob: (c) => `Graph (${c})`,
+                g_sub: (c) => `${c} Grafica & Stampa`,
+                f_mob: (c) => `Finance (${c})`,
+                f_sub: (c) => `${c} Finanza & Business`,
+                badge: (c) => `${c} Tool Attivi`
+            },
+            en: {
+                all: (c) => `${c} Tools`,
+                all_mob: (c) => `All (${c})`,
+                b_mob: (c) => `Building (${c})`,
+                b_sub: (c) => `${c} Site & Fabrication`,
+                g_mob: (c) => `Graph (${c})`,
+                g_sub: (c) => `${c} Graphics & Prepress`,
+                f_mob: (c) => `Finance (${c})`,
+                f_sub: (c) => `${c} Finance & Business`,
+                badge: (c) => `${c} Active Tools`
+            },
+            es: {
+                all: (c) => `${c} Herramientas`,
+                all_mob: (c) => `Todos (${c})`,
+                b_mob: (c) => `Building (${c})`,
+                b_sub: (c) => `${c} Obra y Fabricación`,
+                g_mob: (c) => `Graph (${c})`,
+                g_sub: (c) => `${c} Gráfica e Impresión`,
+                f_mob: (c) => `Finance (${c})`,
+                f_sub: (c) => `${c} Finanzas y Negocios`,
+                badge: (c) => `${c} Herramientas Activas`
+            },
+            fr: {
+                all: (c) => `${c} Outils`,
+                all_mob: (c) => `Tous (${c})`,
+                b_mob: (c) => `Building (${c})`,
+                b_sub: (c) => `${c} Chantier & Fabrication`,
+                g_mob: (c) => `Graph (${c})`,
+                g_sub: (c) => `${c} Graphisme & Impression`,
+                f_mob: (c) => `Finance (${c})`,
+                f_sub: (c) => `${c} Finance & Entreprise`,
+                badge: (c) => `${c} Outils Actifs`
+            },
+            de: {
+                all: (c) => `${c} Tools`,
+                all_mob: (c) => `Alle (${c})`,
+                b_mob: (c) => `Building (${c})`,
+                b_sub: (c) => `${c} Baustelle & Fertigung`,
+                g_mob: (c) => `Graph (${c})`,
+                g_sub: (c) => `${c} Grafik & Druckvorstufe`,
+                f_mob: (c) => `Finance (${c})`,
+                f_sub: (c) => `${c} Finanzen & Business`,
+                badge: (c) => `${c} Aktive Tools`
+            },
+            pt: {
+                all: (c) => `${c} Ferramentas`,
+                all_mob: (c) => `Todos (${c})`,
+                b_mob: (c) => `Building (${c})`,
+                b_sub: (c) => `${c} Obra e Fabricação`,
+                g_mob: (c) => `Graph (${c})`,
+                g_sub: (c) => `${c} Gráfica e Impressão`,
+                f_mob: (c) => `Finance (${c})`,
+                f_sub: (c) => `${c} Finanças e Negócios`,
+                badge: (c) => `${c} Ferramentas Ativas`
+            }
+        };
+
         function syncMacrotoolCounts() {
             const bCards = document.querySelectorAll('#sectionBuilding .tool-card');
             const gCards = document.querySelectorAll('#sectionGraph .tool-card');
@@ -1829,37 +1900,40 @@
             const fCount = fCards.length;
             const totalCount = bCount + gCount + fCount;
 
+            const curL = (typeof currentLang !== 'undefined' && MACRO_SUBTEXT_I18N[currentLang]) ? currentLang : 'it';
+            const trM = MACRO_SUBTEXT_I18N[curL];
+
             const filterAllMobile = document.getElementById('filterAllMobile');
             const filterAllSubtext = document.getElementById('filterAllSubtext');
-            if (filterAllMobile) filterAllMobile.textContent = `Tutti (${totalCount})`;
-            if (filterAllSubtext) filterAllSubtext.textContent = `${totalCount} Strumenti`;
+            if (filterAllMobile) filterAllMobile.textContent = trM.all_mob(totalCount);
+            if (filterAllSubtext) filterAllSubtext.textContent = trM.all(totalCount);
 
             const filterBuildingMobile = document.getElementById('filterBuildingMobile');
             const filterBuildingSubtext = document.getElementById('filterBuildingSubtext');
-            if (filterBuildingMobile) filterBuildingMobile.textContent = `Building (${bCount})`;
-            if (filterBuildingSubtext) filterBuildingSubtext.textContent = `${bCount} Cantiere & Fabbricazione`;
+            if (filterBuildingMobile) filterBuildingMobile.textContent = trM.b_mob(bCount);
+            if (filterBuildingSubtext) filterBuildingSubtext.textContent = trM.b_sub(bCount);
 
             const filterGraphMobile = document.getElementById('filterGraphMobile');
             const filterGraphSubtext = document.getElementById('filterGraphSubtext');
-            if (filterGraphMobile) filterGraphMobile.textContent = `Graph (${gCount})`;
-            if (filterGraphSubtext) filterGraphSubtext.textContent = `${gCount} Grafica & Stampa`;
+            if (filterGraphMobile) filterGraphMobile.textContent = trM.g_mob(gCount);
+            if (filterGraphSubtext) filterGraphSubtext.textContent = trM.g_sub(gCount);
 
             const filterFinanceMobile = document.getElementById('filterFinanceMobile');
             const filterFinanceSubtext = document.getElementById('filterFinanceSubtext');
-            if (filterFinanceMobile) filterFinanceMobile.textContent = `Finance (${fCount})`;
-            if (filterFinanceSubtext) filterFinanceSubtext.textContent = `${fCount} Finanza & Business`;
+            if (filterFinanceMobile) filterFinanceMobile.textContent = trM.f_mob(fCount);
+            if (filterFinanceSubtext) filterFinanceSubtext.textContent = trM.f_sub(fCount);
 
             const badgeBuilding = document.getElementById('badgeCountBuilding');
-            if (badgeBuilding) badgeBuilding.textContent = `${bCount} Tool Attivi`;
+            if (badgeBuilding) badgeBuilding.textContent = trM.badge(bCount);
 
             const badgeGraph = document.getElementById('badgeCountGraph');
-            if (badgeGraph) badgeGraph.textContent = `${gCount} Tool Attivi`;
+            if (badgeGraph) badgeGraph.textContent = trM.badge(gCount);
 
             const badgeFinance = document.getElementById('badgeCountFinance');
-            if (badgeFinance) badgeFinance.textContent = `${fCount} Tool Attivi`;
+            if (badgeFinance) badgeFinance.textContent = trM.badge(fCount);
 
             const topDropCount = document.querySelector('#topNewToolDropdown .font-mono');
-            if (topDropCount) topDropCount.textContent = `${totalCount} Tool`;
+            if (topDropCount) topDropCount.textContent = trM.all(totalCount);
         }
 
         // Init

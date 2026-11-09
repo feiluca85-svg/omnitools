@@ -875,6 +875,7 @@ html_code = f"""<!DOCTYPE html>
             if (I18N_DATA[lang]) {{
                 currentLang = lang;
                 localStorage.setItem('omnitools_lang', lang);
+            try {{ window.dispatchEvent(new CustomEvent('omnitools_lang_changed', {{ detail: {{ lang: lang }} }})); }} catch(e) {{}}
                 const selectEl = document.getElementById('langSelect');
                 if (selectEl) selectEl.value = lang;
                 applyTranslations(lang);

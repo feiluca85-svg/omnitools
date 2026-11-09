@@ -49,7 +49,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                             <span class="font-bold text-white text-[11px] block truncate">{t['name']}</span>
                             <span class="text-[9px] {txt_desc} block truncate">{t['desc']}</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 {badge_bg} text-white font-extrabold rounded shrink-0">Attivo</span>
+                        <span class="footer-pill-active text-[9px] px-1.5 py-0.5 {badge_bg} text-white font-extrabold rounded shrink-0">Attivo</span>
                     </div>"""
             else:
                 html += f"""
@@ -58,7 +58,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">{t['name']}</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">{t['desc']}</span>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>"""
         return html
 
@@ -165,7 +165,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">{r['desc']}</span>
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
-                <span>Apri Calcolatore</span>
+                <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
             </div>
         </a>"""
@@ -180,9 +180,9 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
                     <div class="flex items-center gap-2">
                         <span class="text-base">⚡</span>
-                        <h3 class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
+                        <h3 id="footerRelTitle" class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
                     </div>
-                    <span class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
+                    <span id="footerRelSub" class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {rel_html}
@@ -245,13 +245,13 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span id="footerNetSub" class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (5 Tools) -->
                 <div class="space-y-1.5">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
-                        <span>🏗️</span> <span>OmniBuilding (5 Cantiere & Fabbricazione)</span>
+                        <span>🏗️</span> <span id="footerCatBuilding">OmniBuilding (5 Cantiere & Fabbricazione)</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         {building_pills}
@@ -261,7 +261,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 <!-- Division 2: OmniGraph (6 Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1">
-                        <span>🎨</span> <span>OmniGraph (6 Grafica & Stampa)</span>
+                        <span>🎨</span> <span id="footerCatGraph">OmniGraph (6 Grafica & Stampa)</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         {graph_pills}
@@ -271,7 +271,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 <!-- Division 3: OmniFinance (6 Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                        <span>💼</span> <span>OmniFinance (6 Finanza & Libertà)</span>
+                        <span>💼</span> <span id="footerCatFinance">OmniFinance (6 Finanza & Libertà)</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         {finance_pills}
@@ -281,7 +281,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
                 <!-- Division 4: OmniDesk Utilities (Quick Tools) -->
                 <div class="space-y-1.5 pt-1">
                     <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1">
-                        <span>⚡</span> <span>OmniDesk — Strumenti Rapidi da Scrivania</span>
+                        <span>⚡</span> <span id="footerCatDesk">OmniDesk — Strumenti Rapidi da Scrivania</span>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-[11px] text-center font-bold">
                         <a href="/memo" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
@@ -298,14 +298,14 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
 
                 <div class="pt-2 text-center border-t border-slate-800/80">
                     <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
-                        <span>🤝</span> <span>Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                        <span>🤝</span> <span id="footerPartnerText">Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
                     </a>
                 </div>
             </div>
 
             <!-- Disclaimer and Copyright -->
             <div class="text-center space-y-2 pt-2">
-                <p class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
+                <p id="footerRights" class="font-bold text-slate-700">© 2026 OmniTools Network — Tutti i diritti riservati.</p>
                 <p id="{disclaimer_id}" class="text-[10px] text-slate-500 leading-relaxed text-justify sm:text-center max-w-2xl mx-auto">
                     {default_legal}
                 </p>
@@ -383,6 +383,298 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
 
 def render_unified_footer_js():
     return """
+
+        // Global Footer I18N Engine (6 Languages)
+        const FOOTER_TRANSLATIONS = {
+    "it": {
+        "rel_title": "Altri Calcolatori Tecnici Consigliati",
+        "rel_sub": "Precision Utilities \u2022 100% Gratuito",
+        "rel_open": "Apri Calcolatore",
+        "share_title": "Ti \u00e8 stato utile questo calcolatore?",
+        "share_sub": "Condividilo con colleghi, collaboratori o clienti",
+        "share_copy": "Copia Link",
+        "share_copied": "Copiato! \u2713",
+        "share_btn": "Condividi",
+        "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
+        "suggest_btn": "Suggerisci",
+        "net_sub": "17 Strumenti Gratuiti \u2022 Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Cantiere & Fabbricazione)",
+        "cat_graph": "OmniGraph (6 Grafica & Stampa)",
+        "cat_finance": "OmniFinance (6 Finanza & Libert\u00e0)",
+        "cat_desk": "OmniDesk \u2014 Strumenti Rapidi da Scrivania",
+        "partner_text": "Diventa Partner Ufficiale o Sponsor della Suite OmniTools",
+        "rights": "\u00a9 2026 OmniTools Network \u2014 Tutti i diritti riservati.",
+        "pill_active": "Attivo",
+        "pill_open": "Apri \u2794",
+        "install_title": "Installa OmniTools come App",
+        "install_sub": "Utility di calcolo professionale sempre a portata di mano",
+        "install_btn": "Installa",
+        "suggest_modal_title": "Suggerisci uno Strumento",
+        "suggest_modal_desc": "Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?",
+        "suggest_modal_ph": "Scrivi qui la tua idea...",
+        "suggest_modal_anon": "🔒 Invio 100% anonimo. Non serve registrarsi.",
+        "suggest_modal_cancel": "Annulla",
+        "suggest_modal_send": "Invia",
+        "suggest_modal_success": "Grazie mille! La tua idea \u00e8 stata registrata e guider\u00e0 i prossimi strumenti di OmniTools.",
+        "suggest_modal_done": "Fatto"
+    },
+    "en": {
+        "rel_title": "Other Recommended Technical Calculators",
+        "rel_sub": "Precision Utilities \u2022 100% Free",
+        "rel_open": "Open Calculator",
+        "share_title": "Was this calculator useful to you?",
+        "share_sub": "Share it with colleagues, teammates, or clients",
+        "share_copy": "Copy Link",
+        "share_copied": "Copied! \u2713",
+        "share_btn": "Share",
+        "suggest_banner": "Have an idea for a new construction, graphics, or finance calculator?",
+        "suggest_btn": "Suggest",
+        "net_sub": "17 Free Tools \u2022 Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Construction & Fabrication)",
+        "cat_graph": "OmniGraph (6 Graphics & Prepress)",
+        "cat_finance": "OmniFinance (6 Finance & Freedom)",
+        "cat_desk": "OmniDesk \u2014 Fast Desktop Utilities",
+        "partner_text": "Become an Official Partner or Sponsor of OmniTools Suite",
+        "rights": "\u00a9 2026 OmniTools Network \u2014 All rights reserved.",
+        "pill_active": "Active",
+        "pill_open": "Open \u2794",
+        "install_title": "Install OmniTools as an App",
+        "install_sub": "Professional calculation utilities always at your fingertips",
+        "install_btn": "Install",
+        "suggest_modal_title": "Suggest a Tool",
+        "suggest_modal_desc": "What new calculator, formula, or feature would you like to see on OmniTools?",
+        "suggest_modal_ph": "Write your idea here...",
+        "suggest_modal_anon": "🔒 100% anonymous submission. No sign-up required.",
+        "suggest_modal_cancel": "Cancel",
+        "suggest_modal_send": "Send",
+        "suggest_modal_success": "Thank you very much! Your suggestion has been saved and will shape upcoming OmniTools.",
+        "suggest_modal_done": "Done"
+    },
+    "es": {
+        "rel_title": "Otras Calculadoras T\u00e9cnicas Recomendadas",
+        "rel_sub": "Utilidades de Precisi\u00f3n \u2022 100% Gratis",
+        "rel_open": "Abrir Calculadora",
+        "share_title": "\u00bfTe ha sido \u00fatil esta calculadora?",
+        "share_sub": "Comp\u00e1rtela con colegas, colaboradores o clientes",
+        "share_copy": "Copiar Enlace",
+        "share_copied": "\u00a1Copiado! \u2713",
+        "share_btn": "Compartir",
+        "suggest_banner": "\u00bfTienes una idea para una nueva calculadora de obra, gr\u00e1fica o finanzas?",
+        "suggest_btn": "Sugerir",
+        "net_sub": "17 Herramientas Gratuitas \u2022 Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Construcci\u00f3n y Fabricaci\u00f3n)",
+        "cat_graph": "OmniGraph (6 Gr\u00e1fica y Preimpresi\u00f3n)",
+        "cat_finance": "OmniFinance (6 Finanzas y Libertad)",
+        "cat_desk": "OmniDesk \u2014 Herramientas R\u00e1pidas de Escritorio",
+        "partner_text": "Convi\u00e9rtete en Socio Oficial o Patrocinador de la Suite OmniTools",
+        "rights": "\u00a9 2026 OmniTools Network \u2014 Todos los derechos reservados.",
+        "pill_active": "Activo",
+        "pill_open": "Abrir \u2794",
+        "install_title": "Instala OmniTools como App",
+        "install_sub": "Utilidades de c\u00e1lculo profesional siempre a tu alcance",
+        "install_btn": "Instalar",
+        "suggest_modal_title": "Sugerir una Herramienta",
+        "suggest_modal_desc": "\u00bfQu\u00e9 nueva calculadora, f\u00f3rmula o funci\u00f3n te gustar\u00eda ver en OmniTools?",
+        "suggest_modal_ph": "Escribe tu idea aqu\u00ed...",
+        "suggest_modal_anon": "🔒 Env\u00edo 100% an\u00f3nimo. Sin registros.",
+        "suggest_modal_cancel": "Cancelar",
+        "suggest_modal_send": "Enviar",
+        "suggest_modal_success": "\u00a1Muchas gracias! Tu idea ha sido registrada y guiar\u00e1 las pr\u00f3ximas herramientas.",
+        "suggest_modal_done": "Hecho"
+    },
+    "fr": {
+        "rel_title": "Autres Calculateurs Techniques Recommand\u00e9s",
+        "rel_sub": "Utilitaires de Pr\u00e9cision \u2022 100% Gratuit",
+        "rel_open": "Ouvrir le Calculateur",
+        "share_title": "Ce calculateur vous a-t-il \u00e9t\u00e9 utile ?",
+        "share_sub": "Partagez-le avec vos coll\u00e8gues, collaborateurs ou clients",
+        "share_copy": "Copier le Lien",
+        "share_copied": "Copi\u00e9 ! \u2713",
+        "share_btn": "Partager",
+        "suggest_banner": "Une id\u00e9e de nouveau calculateur pour le chantier, le graphisme ou la finance ?",
+        "suggest_btn": "Sugg\u00e9rer",
+        "net_sub": "17 Outils Gratuits \u2022 Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 B\u00e2timent & Fabrication)",
+        "cat_graph": "OmniGraph (6 Graphisme & Pr\u00e9presse)",
+        "cat_finance": "OmniFinance (6 Finance & Libert\u00e9)",
+        "cat_desk": "OmniDesk \u2014 Outils Rapides de Bureau",
+        "partner_text": "Devenez Partenaire Officiel ou Sponsor de la Suite OmniTools",
+        "rights": "\u00a9 2026 OmniTools Network \u2014 Tous droits r\u00e9serv\u00e9s.",
+        "pill_active": "Actif",
+        "pill_open": "Ouvrir \u2794",
+        "install_title": "Installer OmniTools comme Application",
+        "install_sub": "Utilitaires de calcul professionnel toujours \u00e0 port\u00e9e de main",
+        "install_btn": "Installer",
+        "suggest_modal_title": "Sugg\u00e9rer un Outil",
+        "suggest_modal_desc": "Quel calculateur, formule ou fonctionnalit\u00e9 aimeriez-vous voir sur OmniTools ?",
+        "suggest_modal_ph": "\u00c9crivez votre id\u00e9e ici...",
+        "suggest_modal_anon": "🔒 Envoi 100% anonyme. Aucune inscription requise.",
+        "suggest_modal_cancel": "Annuler",
+        "suggest_modal_send": "Envoyer",
+        "suggest_modal_success": "Merci beaucoup ! Votre id\u00e9e a \u00e9t\u00e9 enregistr\u00e9e pour les prochains outils.",
+        "suggest_modal_done": "Termin\u00e9"
+    },
+    "de": {
+        "rel_title": "Weitere Empfohlene Technische Rechner",
+        "rel_sub": "Pr\u00e4zisions-Tools \u2022 100% Kostenlos",
+        "rel_open": "Rechner \u00d6ffnen",
+        "share_title": "War dieser Rechner hilfreich f\u00fcr Sie?",
+        "share_sub": "Teilen Sie ihn mit Kollegen, Partnern oder Kunden",
+        "share_copy": "Link Kopieren",
+        "share_copied": "Kopiert! \u2713",
+        "share_btn": "Teilen",
+        "suggest_banner": "Haben Sie eine Idee f\u00fcr einen neuen Rechner f\u00fcr Bau, Grafik oder Finanzen?",
+        "suggest_btn": "Vorschlagen",
+        "net_sub": "17 Kostenlose Tools \u2022 Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Bau & Fertigung)",
+        "cat_graph": "OmniGraph (6 Grafik & Druckvorstufe)",
+        "cat_finance": "OmniFinance (6 Finanzen & Freiheit)",
+        "cat_desk": "OmniDesk \u2014 Schnelle Schreibtisch-Tools",
+        "partner_text": "Werden Sie offizieller Partner oder Sponsor der OmniTools Suite",
+        "rights": "\u00a9 2026 OmniTools Network \u2014 Alle Rechte vorbehalten.",
+        "pill_active": "Aktiv",
+        "pill_open": "\u00d6ffnen \u2794",
+        "install_title": "OmniTools als App Installieren",
+        "install_sub": "Professionelle Rechenwerkzeuge immer griffbereit",
+        "install_btn": "Installieren",
+        "suggest_modal_title": "Ein Tool Vorschlagen",
+        "suggest_modal_desc": "Welchen neuen Rechner, welche Formel oder Funktion w\u00fcnschen Sie sich bei OmniTools?",
+        "suggest_modal_ph": "Schreiben Sie Ihre Idee hier...",
+        "suggest_modal_anon": "🔒 100% anonyme \u00dcbermittlung. Keine Registrierung n\u00f6tig.",
+        "suggest_modal_cancel": "Abbrechen",
+        "suggest_modal_send": "Senden",
+        "suggest_modal_success": "Vielen Dank! Ihre Idee wurde gespeichert und flie\u00dft in kommende Tools ein.",
+        "suggest_modal_done": "Fertig"
+    },
+    "pt": {
+        "rel_title": "Outras Calculadoras T\u00e9cnicas Recomendadas",
+        "rel_sub": "Utilit\u00e1rios de Precis\u00e3o \u2022 100% Gratuito",
+        "rel_open": "Abrir Calculadora",
+        "share_title": "Esta calculadora foi \u00fatil para voc\u00ea?",
+        "share_sub": "Compartilhe com colegas, parceiros ou clientes",
+        "share_copy": "Copiar Link",
+        "share_copied": "Copiado! \u2713",
+        "share_btn": "Compartilhar",
+        "suggest_banner": "Tem uma ideia para uma nova calculadora de obra, gr\u00e1fica ou finan\u00e7as?",
+        "suggest_btn": "Sugerir",
+        "net_sub": "17 Ferramentas Gratuitas \u2022 Precision Utilities Suite",
+        "cat_building": "OmniBuilding (5 Constru\u00e7\u00e3o & Fabrica\u00e7\u00e3o)",
+        "cat_graph": "OmniGraph (6 Design & Pr\u00e9-impress\u00e3o)",
+        "cat_finance": "OmniFinance (6 Finan\u00e7as & Liberdade)",
+        "cat_desk": "OmniDesk \u2014 Ferramentas R\u00e1pidas de Secret\u00e1ria",
+        "partner_text": "Seja um Parceiro Oficial ou Patrocinador da Suite OmniTools",
+        "rights": "\u00a9 2026 OmniTools Network \u2014 Todos os direitos reservados.",
+        "pill_active": "Ativo",
+        "pill_open": "Abrir \u2794",
+        "install_title": "Instalar OmniTools como Aplicativo",
+        "install_sub": "Utilit\u00e1rios profissionais de c\u00e1lculo sempre \u00e0 m\u00e3o",
+        "install_btn": "Instalar",
+        "suggest_modal_title": "Sugerir uma Ferramenta",
+        "suggest_modal_desc": "Qual nova calculadora, f\u00f3rmula ou recurso voc\u00ea gostaria de ver no OmniTools?",
+        "suggest_modal_ph": "Escreva sua ideia aqui...",
+        "suggest_modal_anon": "🔒 Envio 100% an\u00f4nimo. Sem necessidade de cadastro.",
+        "suggest_modal_cancel": "Cancelar",
+        "suggest_modal_send": "Enviar",
+        "suggest_modal_success": "Muito obrigado! Sua ideia foi registrada e guiar\u00e1 as pr\u00f3ximas ferramentas.",
+        "suggest_modal_done": "Conclu\u00eddo"
+    }
+};
+
+        function updateFooterTranslations(lang) {
+            const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
+            const tr = FOOTER_TRANSLATIONS[l];
+
+            const relTitle = document.getElementById("footerRelTitle");
+            if (relTitle) relTitle.textContent = tr.rel_title;
+
+            const relSub = document.getElementById("footerRelSub");
+            if (relSub) relSub.textContent = tr.rel_sub;
+
+            document.querySelectorAll(".footer-rel-open").forEach(el => {
+                el.textContent = tr.rel_open;
+            });
+
+            const shareTitle = document.getElementById("shareTitleText");
+            if (shareTitle) shareTitle.textContent = tr.share_title;
+
+            const shareSub = document.getElementById("shareSubText");
+            if (shareSub) shareSub.textContent = tr.share_sub;
+
+            const shareCopy = document.getElementById("shareCopyText");
+            if (shareCopy) shareCopy.textContent = tr.share_copy;
+
+            const suggestBanner = document.getElementById("suggestBannerText");
+            if (suggestBanner) suggestBanner.textContent = tr.suggest_banner;
+
+            const suggestBtn = document.getElementById("suggestBtnText");
+            if (suggestBtn) suggestBtn.textContent = tr.suggest_btn;
+
+            const netSub = document.getElementById("footerNetSub");
+            if (netSub) netSub.textContent = tr.net_sub;
+
+            const catB = document.getElementById("footerCatBuilding");
+            if (catB) catB.textContent = tr.cat_building;
+
+            const catG = document.getElementById("footerCatGraph");
+            if (catG) catG.textContent = tr.cat_graph;
+
+            const catF = document.getElementById("footerCatFinance");
+            if (catF) catF.textContent = tr.cat_finance;
+
+            const catDesk = document.getElementById("footerCatDesk");
+            if (catDesk) catDesk.textContent = tr.cat_desk;
+
+            const partner = document.getElementById("footerPartnerText");
+            if (partner) partner.textContent = tr.partner_text;
+
+            const rights = document.getElementById("footerRights");
+            if (rights) rights.textContent = tr.rights;
+
+            document.querySelectorAll(".footer-pill-active").forEach(el => {
+                el.textContent = tr.pill_active;
+            });
+
+            document.querySelectorAll(".footer-pill-open").forEach(el => {
+                el.textContent = tr.pill_open;
+            });
+
+            const installT = document.getElementById("installBannerTitle");
+            if (installT) installT.textContent = tr.install_title;
+
+            const installS = document.getElementById("installBannerSub");
+            if (installS) installS.textContent = tr.install_sub;
+
+            const modalT = document.getElementById("modalSuggestTitle");
+            if (modalT) modalT.textContent = tr.suggest_modal_title;
+
+            const modalD = document.getElementById("modalSuggestDesc");
+            if (modalD) modalD.textContent = tr.suggest_modal_desc;
+
+            const modalMsg = document.getElementById("suggestMessage");
+            if (modalMsg) modalMsg.placeholder = tr.suggest_modal_ph;
+
+            const modalAnon = document.getElementById("modalPrivacyNote");
+            if (modalAnon) modalAnon.textContent = tr.suggest_modal_anon;
+
+            const modalClose = document.getElementById("modalCloseBtn");
+            if (modalClose) modalClose.textContent = tr.suggest_modal_cancel;
+
+            const modalSubmit = document.getElementById("modalSubmitBtn");
+            if (modalSubmit) modalSubmit.textContent = tr.suggest_modal_send;
+
+            const modalSucc = document.getElementById("modalSuccessText");
+            if (modalSucc) modalSucc.textContent = tr.suggest_modal_success;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const saved = localStorage.getItem("omnitools_lang") || "it";
+            updateFooterTranslations(saved);
+        });
+
+        window.addEventListener("omnitools_lang_changed", (e) => {
+            if (e.detail && e.detail.lang) updateFooterTranslations(e.detail.lang);
+        });
+
         // Viral Share Functions
         function shareWhatsApp() {
             const url = encodeURIComponent(window.location.href);
@@ -406,7 +698,7 @@ def render_unified_footer_js():
                 const el = document.getElementById('shareCopyText');
                 if (el) {
                     const orig = el.textContent;
-                    el.textContent = 'Copiato! ✓';
+                    const curL = localStorage.getItem('omnitools_lang') || 'it'; el.textContent = (FOOTER_TRANSLATIONS[curL] && FOOTER_TRANSLATIONS[curL].share_copied) || 'Copiato! ✓';
                     setTimeout(() => { el.textContent = orig; }, 2000);
                 }
             }).catch(() => {
