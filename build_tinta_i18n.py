@@ -153,9 +153,11 @@ html_code = f"""<!DOCTYPE html>
                 print-color-adjust: exact !important;
             }}
             #matrixContainer {{
-                height: calc(100vh - 120px) !important;
+                height: calc(100vh - 235px) !important;
+                max-height: calc(100vh - 235px) !important;
                 display: flex !important;
                 flex-direction: column !important;
+                overflow: hidden !important;
             }}
             #matrixContainer table {{
                 height: 100% !important;

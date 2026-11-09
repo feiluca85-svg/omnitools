@@ -180,11 +180,8 @@ html_code = f"""<!DOCTYPE html>
             }}
             .grid.grid-cols-1.lg\\:grid-cols-12 {{
                 display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 10px !important;
-            }}
-            .lg\\:col-span-7, .lg\\:col-span-5 {{
-                width: 100% !important;
+                grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+                gap: 8px !important;
             }}
         }}
         
@@ -558,7 +555,7 @@ html_code = f"""<!DOCTYPE html>
                     </div>
 
                     <!-- PRINT ONLY: SIGNATURE & LAB NOTES (Strictly Single Page A4) -->
-                    <div class="print-only mt-4 pt-3 border-t border-slate-300 text-[8pt]">
+                    <div id="printFooterBox" class="print-only mt-4 pt-3 border-t border-slate-300 text-[8pt]">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="border border-slate-300 rounded p-2">
                                 <p class="font-bold text-slate-700 uppercase mb-1">Note Operative / RIP:</p>

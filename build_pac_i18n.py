@@ -333,7 +333,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
 
         <!-- Technical Legal Disclaimer Box (TUF / D.Lgs. 58/1998) -->
-        <div class="p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5">
+        <div class="no-print p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5">
             <div class="flex items-center gap-1.5 font-bold text-slate-800">
                 <span>⚖️</span>
                 <span>Nota Tecnica & Disclaimer Legale (OmniFinance):</span>
@@ -348,7 +348,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
 
         <!-- FAQ Section (Frequenty Asked Questions) -->
-        <section class="mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
+        <section id="faqSection" class="no-print mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
             <div class="space-y-1">
                 <span class="text-xs font-black uppercase tracking-wider text-emerald-800">Guida & Domande Frequenti</span>
                 <h2 id="faqTitle" class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Tutto quello che devi sapere su Interesse Composto e PAC</h2>

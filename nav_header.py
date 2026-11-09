@@ -379,13 +379,20 @@ def render_suite_header(current_id):
                 padding: 0 !important;
             }}
             main > * {{
-                margin-top: 0.35rem !important;
-                margin-bottom: 0.35rem !important;
+                margin-top: 0.3rem !important;
+                margin-bottom: 0.3rem !important;
+            }}
+            #omniUniversalPrintHeader {{
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+                margin-bottom: 0.4rem !important;
+                padding-bottom: 0.35rem !important;
             }}
             .lg\\:grid-cols-12 {{
                 display: grid !important;
                 grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
-                gap: 0.65rem !important;
+                gap: 0.6rem !important;
+                align-items: start !important;
             }}
             .lg\\:col-span-5 {{
                 grid-column: span 5 / span 5 !important;
@@ -396,6 +403,23 @@ def render_suite_header(current_id):
             .lg\\:col-span-7 {{
                 grid-column: span 7 / span 7 !important;
             }}
+            #resultsColumn:only-child,
+            .lg\\:grid-cols-12 > .no-print + #resultsColumn,
+            .lg\\:grid-cols-12 > .no-print + .lg\\:col-span-7,
+            .lg\\:grid-cols-12 > #resultsColumn:first-child:last-child,
+            .lg\\:grid-cols-12:not(:has(#controlsColumn:not(.no-print))) > #resultsColumn:first-child {{
+                grid-column: span 12 / span 12 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }}
+            .space-y-6 > :not([hidden]) ~ :not([hidden]),
+            .space-y-5 > :not([hidden]) ~ :not([hidden]),
+            .space-y-4 > :not([hidden]) ~ :not([hidden]) {{
+                margin-top: 0.45rem !important;
+            }}
+            .p-6, .sm\\:p-6, .p-5, .sm\\:p-5 {{
+                padding: 0.65rem !important;
+            }}
             .lg\\:order-1 {{
                 order: 1 !important;
             }}
@@ -403,8 +427,22 @@ def render_suite_header(current_id):
                 order: 2 !important;
             }}
             #omniUniversalPrintFooter {{
-                margin-top: 0.5rem !important;
-                padding-top: 0.45rem !important;
+                margin-top: 0.35rem !important;
+                padding-top: 0.3rem !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }}
+            .max-h-56, .max-h-60, .max-h-72, .max-h-\\[500px\\] {{
+                max-height: 110px !important;
+                overflow: hidden !important;
+            }}
+            #mortgageSvg, #compoundSvg, #trajectorySvg {{
+                height: 115px !important;
+                max-height: 115px !important;
+            }}
+            #visualBarsContainer {{
+                max-height: 120px !important;
+                overflow: hidden !important;
             }}
             #omniUniversalPrintHeader.active-universal-print {{
                 display: block !important;

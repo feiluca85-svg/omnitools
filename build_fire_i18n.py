@@ -206,7 +206,7 @@ html_code = f"""<!DOCTYPE html>
         </div>
 
         <!-- Presets Bar -->
-        <div class="p-3.5 bg-white border border-slate-200/80 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
+        <div class="no-print p-3.5 bg-white border border-slate-200/80 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
             <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
                 <svg class="w-4 h-4 text-emerald-600 inline mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 Stili di Vita FIRE:

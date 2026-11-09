@@ -1017,17 +1017,19 @@ def render_unified_footer_js():
                 }
             });
 
-            // 2. Check if tool already has its own dedicated print header
-            const hasCustomHeader = Boolean(
-                document.getElementById('printHeader') ||
-                document.querySelector('main > .print-only') ||
-                document.querySelector('body > .print-only')
-            );
+            // 2. Standardize all 17 tools to use #omniUniversalPrintHeader (except TintaPerfetta which has its press-operator strip)
+            const curPath = window.location.pathname.replace('.html', '').replace('/', '');
+            if (curPath !== 'tinta') {
+                document.querySelectorAll('#printHeader, main > .print-only, body > .print-only').forEach(el => {
+                    el.classList.remove('print-only', 'print:block');
+                    el.classList.add('no-print', 'hidden');
+                });
+            }
+            const hasCustomHeader = (curPath === 'tinta') && Boolean(document.getElementById('printHeader'));
             const univHeader = document.getElementById('omniUniversalPrintHeader');
             if (univHeader) {
                 if (!hasCustomHeader) {
                     univHeader.classList.add('active-universal-print');
-                    // Move inside main at the very top for clean A4 alignment if not already inside main
                     const mainEl = document.querySelector('main');
                     if (mainEl && univHeader.parentElement !== mainEl) {
                         mainEl.insertBefore(univHeader, mainEl.firstChild);

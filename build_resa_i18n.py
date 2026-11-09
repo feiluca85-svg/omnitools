@@ -155,8 +155,8 @@ html_code = f"""<!DOCTYPE html>
             }}
             #mainGrid {{
                 display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 12px !important;
+                grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+                gap: 10px !important;
             }}
             #svgContainer {{
                 max-height: 220px !important;

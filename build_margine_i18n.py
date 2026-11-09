@@ -333,7 +333,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
 
         <!-- Educational Didactic Box: Margine vs Ricarico Explanation -->
-        <div class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 text-xs leading-relaxed text-slate-700 space-y-3 card-box">
+        <div class="no-print p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 text-xs leading-relaxed text-slate-700 space-y-3 card-box">
             <h3 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
                 <span>💡</span>
                 <span>Qual è la differenza fondamentale tra Margine e Ricarico (Markup)?</span>
@@ -368,7 +368,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
 
         <!-- FAQ Section (Frequently Asked Questions) -->
-        <section class="mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
+        <section id="faqSection" class="no-print mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
             <div class="space-y-1">
                 <span class="text-xs font-black uppercase tracking-wider text-emerald-800">Guida & Domande Frequenti</span>
                 <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">Tutto sul Calcolo dei Margini, Prezzo di Vendita e Ricarico</h2>

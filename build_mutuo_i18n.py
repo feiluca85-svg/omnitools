@@ -367,7 +367,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
 
         <!-- Technical Legal Disclaimer Box (TUF / D.Lgs. 58/1998) -->
-        <div class="p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5 card-box">
+        <div class="no-print p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5 card-box">
             <div class="flex items-center gap-1.5 font-bold text-slate-800">
                 <span>⚖️</span>
                 <span>Nota Tecnica & Disclaimer Legale (OmniFinance):</span>
