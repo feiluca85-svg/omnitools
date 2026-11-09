@@ -160,6 +160,83 @@
 
     <!-- Universal Header with Chrome Tabs & Tool Picker -->
     
+    <style id="omniUniversalPrintStyles">
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm 8mm 10mm;
+            }
+            html, body {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                color: #0f172a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            #omniChromeTabsBar,
+            header,
+            footer,
+            nav,
+            .no-print,
+            #faqSection, #faqContainer, #faqTitle, #normSection, #shareStrip,
+            #suggestModal, #installBanner, #iosModal, #suggestBanner,
+            #heroContainer, #modeSelectorBar, #currencySwitcher,
+            #omniSponsorBanner,
+            input[type=range], details, .faq-accordion {
+                display: none !important;
+            }
+            main {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            main > * {
+                margin-top: 0.35rem !important;
+                margin-bottom: 0.35rem !important;
+            }
+            .lg\:grid-cols-12 {
+                display: grid !important;
+                grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+                gap: 0.65rem !important;
+            }
+            .lg\:col-span-5 {
+                grid-column: span 5 / span 5 !important;
+            }
+            .lg\:col-span-6 {
+                grid-column: span 6 / span 6 !important;
+            }
+            .lg\:col-span-7 {
+                grid-column: span 7 / span 7 !important;
+            }
+            .lg\:order-1 {
+                order: 1 !important;
+            }
+            .lg\:order-2 {
+                order: 2 !important;
+            }
+            #omniUniversalPrintFooter {
+                margin-top: 0.5rem !important;
+                padding-top: 0.45rem !important;
+            }
+            #omniUniversalPrintHeader.active-universal-print {
+                display: block !important;
+            }
+            #omniUniversalPrintFooter.active-universal-print {
+                display: block !important;
+            }
+            .card-box, .metric-card, .print-border, .print-card {
+                box-shadow: none !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+        }
+        @media screen {
+            #omniUniversalPrintHeader, #omniUniversalPrintFooter {
+                display: none !important;
+            }
+        }
+    </style>
     
     <!-- TOP CHROME-STYLE TABS STRIP (DESKTOP ONLY: sticky top-0, always visible) -->
     <div id="omniChromeTabsBar" class="hidden md:flex bg-slate-950 px-3 pt-2 pb-0 items-center justify-between border-b border-slate-800 text-xs select-none sticky top-0 z-50 shadow-md">
@@ -385,8 +462,34 @@
         </div>
     </div>
     
+    <!-- UNIVERSAL A4 PRINT TECHNICAL HEADER (Auto-activates when tool has no custom print header) -->
+    <div id="omniUniversalPrintHeader" class="hidden mb-3 pb-2.5 border-b-2 border-slate-900">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1.5 shadow-xs" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.2" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#fde047" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-amber-700">Tools</span> Lab</span>
+                        <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">SCHEDA TECNICA A4 • OMNIBUILDING</span>
+                    </div>
+                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">TaglioOttimo — Ottimizzatore Taglio 1D & Sfrido</div>
+                </div>
+            </div>
+            <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
+                <div id="omniUniversalPrintDate" class="font-bold text-slate-900">Data: --/--/----</div>
+                <div>Specifica: Bin-Packing 1D</div>
+                <div class="text-amber-700 font-bold">www.omnitoolslab.com/taglio</div>
+            </div>
+        </div>
+    </div>
     <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+    <header class="no-print bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="max-w-5xl mx-auto px-3 sm:px-6 flex items-center justify-between gap-3">
             
             <!-- Logo & Suite Switcher -->
@@ -632,7 +735,7 @@
 
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
         <!-- Main Tool Intro Header -->
-        <div class="mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
+        <div class="no-print mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
             <div>
                 <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold mb-2">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
@@ -658,7 +761,7 @@
         </div>
 
         <!-- Presets Bar -->
-        <div class="mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
+        <div class="no-print mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
             <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
                 <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 Esempi Rapidi:
@@ -935,10 +1038,66 @@
 
     <!-- Universal Footer -->
     
+    <!-- UNIVERSAL A4 PRINT TECHNICAL FOOTER / CARTIGLIO (Auto-activates when tool has no custom print footer) -->
+    <div id="omniUniversalPrintFooter" class="hidden max-w-5xl mx-auto mt-4 pt-3 border-t-2 border-slate-300 text-xs">
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <span id="omniPrintNotesLabel" class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Note Tecniche / Riferimento Pratica o Commessa:</span>
+                <div class="border border-dashed border-slate-400 h-14 rounded-lg p-2 text-[9px] text-slate-500 leading-tight flex flex-col justify-between">
+                    <span> Spazio riservato per annotazioni di cantiere, produzione o ufficio tecnico.</span>
+                    <span class="font-mono text-[8px] text-slate-400">Ref. ID: OMNI-TAGLIO-A4</span>
+                </div>
+            </div>
+            <div>
+                <span id="omniPrintSignLabel" class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Verifica / Timbro e Firma del Responsabile:</span>
+                <div class="border border-slate-300 h-14 rounded-lg flex items-end justify-between px-3 pb-1.5 text-[9px] text-slate-400">
+                    <span>Data: ____/____/202__</span>
+                    <span>Firma ___________________________</span>
+                </div>
+            </div>
+        </div>
+        <div class="text-[8.5px] text-slate-500 flex items-center justify-between mt-2.5 pt-1.5 border-t border-slate-200 font-mono">
+            <span>Elaborato generato gratuitamente con <strong>OmniTools Lab</strong> (https://www.omnitoolslab.com/taglio)</span>
+            <span>Precision Utilities Suite • Tutti i diritti riservati</span>
+        </div>
+    </div>
+
     <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
     <footer class="no-print bg-white border-t border-slate-200 pt-8 pb-10 mt-8 text-xs text-slate-500">
         <div class="max-w-5xl mx-auto px-3 sm:px-6 space-y-6">
             
+            <!-- NATIVE TECHNICAL SPONSOR / PARTNER BANNER SLOT (Division-Contextualized) -->
+            <div id="omniSponsorBanner" data-sponsor-division="building" class="bg-gradient-to-r from-amber-50/90 via-white to-orange-50/60 rounded-3xl p-4 sm:p-5 border-2 border-dashed border-amber-200/90 hover:border-amber-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-start gap-3.5 text-left">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center text-2xl shrink-0">
+                        🏗️
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span id="sponsorBannerBadge" class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border bg-amber-100 text-amber-900 border-amber-300">
+                                SLOT SPONSOR TECNICO • OMNIBUILDING
+                            </span>
+                            <span id="sponsorBannerAvail" class="text-[10px] font-bold text-slate-500 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Postazione Esclusiva Disponibile
+                            </span>
+                        </div>
+                        <h4 id="sponsorBannerTitle" class="text-xs sm:text-sm font-extrabold text-slate-900 leading-snug">
+                            Produci sistemi per l'edilizia, tubazioni, serramenti o attrezzature da cantiere?
+                        </h4>
+                        <p id="sponsorBannerDesc" class="text-[11px] text-slate-600 leading-relaxed max-w-2xl">
+                            Posiziona il tuo brand e le tue schede tecniche qui e sulle stampe PDF A4 utilizzate ogni giorno da Geometri, Architetti, Ingegneri e Imprese Edili.
+                        </p>
+                    </div>
+                </div>
+                <div class="shrink-0 w-full md:w-auto flex md:flex-col items-center justify-end gap-2">
+                    <a href="/partnership" class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 font-extrabold text-xs shadow-md transition active:scale-95 text-center inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+                        <span>🤝</span>
+                        <span id="sponsorBannerCta">Candida la tua Azienda</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
             <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
@@ -2101,6 +2260,140 @@ document.addEventListener('DOMContentLoaded', () => {
             const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
             const tr = FOOTER_TRANSLATIONS[l];
 
+            // Update Division-Contextualized Native Sponsor Banner (6 Languages)
+            const SPONSOR_I18N = {
+                it: {
+                    avail: "Postazione Esclusiva Disponibile",
+                    cta: "Candida la tua Azienda",
+                    building: {
+                        badge: "SLOT SPONSOR TECNICO • OMNIBUILDING",
+                        title: "Produci sistemi per l'edilizia, tubazioni, serramenti o attrezzature da cantiere?",
+                        desc: "Posiziona il tuo brand e le tue schede tecniche qui e sulle stampe PDF A4 utilizzate ogni giorno da Geometri, Architetti, Ingegneri e Imprese Edili."
+                    },
+                    graph: {
+                        badge: "SLOT SPONSOR TECNICO • OMNIGRAPH",
+                        title: "Sei una Cartiera, un Service di Stampa Offset/Digitale o un Fornitore Packaging?",
+                        desc: "Mostra le tue carte, profili colore o servizi di stampa direttamente a Grafici, Tipografie, Case Editrici e Studi di Prestampa mentre preparano gli esecutivi."
+                    },
+                    finance: {
+                        badge: "SLOT SPONSOR TECNICO • OMNIFINANCE",
+                        title: "Sei un Broker Mutui, una Piattaforma Fintech o uno Studio di Consulenza Indipendente?",
+                        desc: "Raggiungi con esclusività di categoria utenti e famiglie ad altissima intenzione mentre calcolano rate mutuo, estinzioni anticipate, PAC e piani di risparmio."
+                    }
+                },
+                en: {
+                    avail: "Exclusive Slot Available",
+                    cta: "Apply as Official Partner",
+                    building: {
+                        badge: "TECHNICAL SPONSOR SLOT • OMNIBUILDING",
+                        title: "Do you manufacture building systems, piping, profiles, or construction equipment?",
+                        desc: "Place your brand and technical datasheets here and on A4 PDF printouts used daily by Architects, Civil Engineers, Surveyors, and Contractors."
+                    },
+                    graph: {
+                        badge: "TECHNICAL SPONSOR SLOT • OMNIGRAPH",
+                        title: "Are you a Paper Mill, Commercial Print Service, or Packaging Supplier?",
+                        desc: "Showcase your paper stocks, ICC profiles, or print services directly to Graphic Designers, Publishers, and Prepress Studios while they prepare press files."
+                    },
+                    finance: {
+                        badge: "TECHNICAL SPONSOR SLOT • OMNIFINANCE",
+                        title: "Are you a Mortgage Broker, Fintech Platform, or Independent Financial Advisor?",
+                        desc: "Reach high-intent users and families with category exclusivity right as they calculate mortgages, early payoffs, compound interest, and savings goals."
+                    }
+                },
+                es: {
+                    avail: "Posición Exclusiva Disponible",
+                    cta: "Postular mi Empresa",
+                    building: {
+                        badge: "ESPACIO PATROCINADOR TÉCNICO • OMNIBUILDING",
+                        title: "¿Fabricas sistemas de construcción, tuberías, carpintería o equipos de obra?",
+                        desc: "Posiciona tu marca y fichas técnicas aquí y en las hojas técnicas A4 utilizadas a diario por Arquitectos, Aparejadores, Ingenieros y Constructoras."
+                    },
+                    graph: {
+                        badge: "ESPACIO PATROCINADOR TÉCNICO • OMNIGRAPH",
+                        title: "¿Eres una Papelera, Imprenta Offset/Digital o Proveedor de Packaging?",
+                        desc: "Muestra tus papeles, perfiles de color o servicios de impresión directamente a Diseñadores Gráficos, Editoriales e Imprentas mientras calculan sus artes finales."
+                    },
+                    finance: {
+                        badge: "ESPACIO PATROCINADOR TÉCNICO • OMNIFINANCE",
+                        title: "¿Eres un Bróker Hipotecario, Plataforma Fintech o Asesor Financiero Independiente?",
+                        desc: "Llega con exclusividad de categoría a usuarios y familias de alta intención mientras simulan hipotecas, amortizaciones anticipadas y planes de ahorro."
+                    }
+                },
+                fr: {
+                    avail: "Emplacement Exclusif Disponible",
+                    cta: "Devenir Partenaire",
+                    building: {
+                        badge: "ESPACE SPONSOR TECHNIQUE • OMNIBUILDING",
+                        title: "Vous fabriquez des matériaux BTP, canalisations, profilés ou outillage de chantier ?",
+                        desc: "Affichez votre marque et vos fiches techniques ici et sur les rapports A4 imprimés chaque jour par les Architectes, Géomètres, Ingénieurs et Artisans."
+                    },
+                    graph: {
+                        badge: "ESPACE SPONSOR TECHNIQUE • OMNIGRAPH",
+                        title: "Vous êtes Papetier, Imprimeur Offset/Numérique ou Fournisseur Packaging ?",
+                        desc: "Présentez vos papiers, profils ICC ou services d'impression aux Graphistes, Éditeurs et Studios Prépresse au moment précis où ils préparent leurs fichiers."
+                    },
+                    finance: {
+                        badge: "ESPACE SPONSOR TECHNIQUE • OMNIFINANCE",
+                        title: "Vous êtes Courtier Immobilier, Fintech ou Conseiller en Gestion de Patrimoine ?",
+                        desc: "Touchez en exclusivité des utilisateurs à très forte intention lorsqu'ils calculent leurs mensualités de prêt, remboursements anticipés et plans d'épargne."
+                    }
+                },
+                de: {
+                    avail: "Exklusivplatz Verfügbar",
+                    cta: "Als Partner Bewerben",
+                    building: {
+                        badge: "TECHNISCHER SPONSORPLATZ • OMNIBUILDING",
+                        title: "Hersteller von Bausystemen, Rohren, Profilen oder Baustellentechnik?",
+                        desc: "Platzieren Sie Ihre Marke direkt im Arbeitsfluss und auf den A4-Datenblättern von Architekten, Bauingenieuren, Planern und Handwerksbetrieben."
+                    },
+                    graph: {
+                        badge: "TECHNISCHER SPONSORPLATZ • OMNIGRAPH",
+                        title: "Papierfabrik, Offset-/Digitaldruckerei oder Verpackungshersteller?",
+                        desc: "Präsentieren Sie Ihre Papiersorten und Druckservices direkt Grafikdesignern, Verlagen und Druckvorstufen-Profis bei der Produktionsplanung."
+                    },
+                    finance: {
+                        badge: "TECHNISCHER SPONSORPLATZ • OMNIFINANCE",
+                        title: "Hypothekenmakler, Fintech-Plattform oder Unabhängige Finanzberatung?",
+                        desc: "Erreichen Sie kaufbereite Nutzer mit Kategorie-Exklusivität genau dann, wenn sie Baufinanzierungen, Sondertilgungen und Sparpläne berechnen."
+                    }
+                },
+                pt: {
+                    avail: "Posição Exclusiva Disponível",
+                    cta: "Candidatar Empresa",
+                    building: {
+                        badge: "ESPAÇO PATROCINADOR TÉCNICO • OMNIBUILDING",
+                        title: "Fabrica materiais de construção, tubagens, perfis ou equipamentos de obra?",
+                        desc: "Posicione a sua marca aqui e nas fichas técnicas A4 impressas diariamente por Arquitetos, Engenheiros Civis, Projetistas e Empreiteiros."
+                    },
+                    graph: {
+                        badge: "ESPAÇO PATROCINADOR TÉCNICO • OMNIGRAPH",
+                        title: "É uma Fábrica de Papel, Gráfica Offset/Digital ou Fornecedor de Embalagens?",
+                        desc: "Mostre os seus papéis e serviços de impressão diretamente a Designers Gráficos, Editoras e Gráficas enquanto preparam os ficheiros de produção."
+                    },
+                    finance: {
+                        badge: "ESPAÇO PATROCINADOR TÉCNICO • OMNIFINANCE",
+                        title: "É Intermediário de Crédito, Plataforma Fintech ou Consultor Financeiro?",
+                        desc: "Alcance com exclusividade utilizadores e famílias de alta intenção enquanto simulam prestações de crédito habitação, amortizações e planos de poupança."
+                    }
+                }
+            };
+            const spBox = document.getElementById("omniSponsorBanner");
+            if (spBox) {
+                const divKey = spBox.getAttribute("data-sponsor-division") || "building";
+                const spLang = SPONSOR_I18N[l] || SPONSOR_I18N.it;
+                const spDiv = spLang[divKey] || spLang.building;
+                const bEl = document.getElementById("sponsorBannerBadge");
+                const aEl = document.getElementById("sponsorBannerAvail");
+                const tEl = document.getElementById("sponsorBannerTitle");
+                const dEl = document.getElementById("sponsorBannerDesc");
+                const cEl = document.getElementById("sponsorBannerCta");
+                if (bEl) bEl.textContent = spDiv.badge;
+                if (aEl) aEl.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> ${spLang.avail}`;
+                if (tEl) tEl.textContent = spDiv.title;
+                if (dEl) dEl.textContent = spDiv.desc;
+                if (cEl) cEl.textContent = spLang.cta;
+            }
+
             const relTitle = document.getElementById("footerRelTitle");
             if (relTitle) relTitle.textContent = tr.rel_title;
 
@@ -2238,6 +2531,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Suggestion Modal Functions
         function openSuggestModal() {
             const modal = document.getElementById('suggestModal');
+            const formBox = document.getElementById('suggestFormContainer');
+            const successBox = document.getElementById('suggestSuccessContainer');
+            const msgEl = document.getElementById('suggestMessage');
+            if (formBox) formBox.classList.remove('hidden');
+            if (successBox) successBox.classList.add('hidden');
+            if (msgEl) msgEl.value = '';
             if (modal) modal.classList.remove('hidden');
         }
 
@@ -2246,18 +2545,100 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modal) modal.classList.add('hidden');
         }
 
-        function submitSuggestion() {
+        async function submitSuggestion() {
             const msgEl = document.getElementById('suggestMessage');
             const msg = msgEl ? msgEl.value.trim() : '';
             if (!msg) {
                 alert('Inserisci la tua idea prima di inviare.');
                 return;
             }
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            const origText = submitBtn ? submitBtn.textContent : 'Invia';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = '...';
+            }
+            const curLang = localStorage.getItem('omnitools_lang') || 'it';
+            const curTool = window.location.pathname.replace('.html', '').replace('/', '') || 'Hub';
+            try {
+                await fetch('/api/suggest', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: msg,
+                        idea: msg,
+                        tool: curTool,
+                        lang: curLang
+                    })
+                });
+            } catch (e) {
+                console.warn('Suggestion submission error:', e);
+            }
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = origText;
+            }
             const formBox = document.getElementById('suggestFormContainer');
             const successBox = document.getElementById('suggestSuccessContainer');
             if (formBox) formBox.classList.add('hidden');
             if (successBox) successBox.classList.remove('hidden');
         }
+
+        // Universal A4 Print Header & Footer Coordinator (Ensures all 17 tools print with a unified header, date & footer)
+        function syncUniversalPrintSheet() {
+            const nowStr = new Date().toLocaleDateString(localStorage.getItem('omnitools_lang') || 'it-IT');
+            // 1. Update any existing date stamps across all tools
+            ['omniUniversalPrintDate', 'printReportDate', 'printDate', 'printDateStamp'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (id === 'omniUniversalPrintDate' || id === 'printReportDate') {
+                        el.textContent = 'Data: ' + nowStr;
+                    } else {
+                        el.textContent = nowStr;
+                    }
+                }
+            });
+
+            // 2. Check if tool already has its own dedicated print header
+            const hasCustomHeader = Boolean(
+                document.getElementById('printHeader') ||
+                document.querySelector('main > .print-only') ||
+                document.querySelector('body > .print-only')
+            );
+            const univHeader = document.getElementById('omniUniversalPrintHeader');
+            if (univHeader) {
+                if (!hasCustomHeader) {
+                    univHeader.classList.add('active-universal-print');
+                    // Move inside main at the very top for clean A4 alignment if not already inside main
+                    const mainEl = document.querySelector('main');
+                    if (mainEl && univHeader.parentElement !== mainEl) {
+                        mainEl.insertBefore(univHeader, mainEl.firstChild);
+                    }
+                } else {
+                    univHeader.classList.remove('active-universal-print');
+                }
+            }
+
+            // 3. Check if tool already has its own dedicated print footer
+            const hasCustomFooter = Boolean(
+                document.getElementById('printFooterBox') ||
+                document.getElementById('printFooter')
+            );
+            const univFooter = document.getElementById('omniUniversalPrintFooter');
+            if (univFooter) {
+                if (!hasCustomFooter) {
+                    univFooter.classList.add('active-universal-print');
+                    const mainEl = document.querySelector('main');
+                    if (mainEl && univFooter.parentElement !== mainEl) {
+                        mainEl.appendChild(univFooter);
+                    }
+                } else {
+                    univFooter.classList.remove('active-universal-print');
+                }
+            }
+        }
+        window.addEventListener('beforeprint', syncUniversalPrintSheet);
+        document.addEventListener('DOMContentLoaded', syncUniversalPrintSheet);
 
         function dismissInstallBanner() {
             const banner = document.getElementById('installBanner');

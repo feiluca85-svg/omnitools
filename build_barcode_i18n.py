@@ -218,7 +218,8 @@ html_code = f"""<!DOCTYPE html>
             .no-print,
             #faqSection, #normSection, #shareStrip,
             #installBanner, #iosModal,
-            button, input, select {{ 
+            #previewInteractiveGuide,
+            button, input[type=range] {{ 
                 display: none !important; 
             }}
             .print-only {{
@@ -235,7 +236,7 @@ html_code = f"""<!DOCTYPE html>
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
         
         <!-- Hero Header -->
-        <div class="text-center space-y-1.5 sm:space-y-2">
+        <div id="heroContainer" class="no-print text-center space-y-1.5 sm:space-y-2">
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200/80 text-[11px] font-extrabold text-rose-800 tracking-wide uppercase">
                 <span>🎯</span>
                 <span id="heroBadge">OmniGraph · Packaging & Editoria</span>
@@ -249,7 +250,7 @@ html_code = f"""<!DOCTYPE html>
         </div>
 
         <!-- Presets Quick Bar -->
-        <div class="bg-white rounded-2xl p-2.5 sm:p-3 border border-slate-200 shadow-2xs">
+        <div class="no-print bg-white rounded-2xl p-2.5 sm:p-3 border border-slate-200 shadow-2xs">
             <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2 px-1 flex items-center justify-between">
                 <span>⚡ Preset Rapidi Standard</span>
                 <span class="text-[10px] text-rose-700 font-bold hidden sm:inline">1-Click Setup</span>
@@ -374,7 +375,7 @@ html_code = f"""<!DOCTYPE html>
                 </div>
 
                 <!-- NUOVA CARD: STILE GRAFICO & PROPORZIONI CIFRE / NUMERI -->
-                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
+                <div class="no-print bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
                     <div class="flex items-center justify-between">
                         <h2 id="styleCardTitle" class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
                             <span>✍️</span> Tipografia & Grafica del Barcode
@@ -466,7 +467,7 @@ html_code = f"""<!DOCTYPE html>
                 </div>
 
                 <!-- SIMPLIFIED & INTERACTIVE COLOR STUDIO CARD -->
-                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
+                <div class="no-print bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
                     <div class="flex items-center justify-between">
                         <h2 id="colorsTitle" class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
                             <span>🎨</span> Studio Colori & Contrasto GS1

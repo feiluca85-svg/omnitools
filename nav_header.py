@@ -335,10 +335,124 @@ def render_suite_header(current_id):
     finance_tools_html = render_tool_items("OmniFinance")
     current_icon = TOOL_ICONS.get(current_id, "")
 
+    cat_name = current_tool.get("category", "OmniTools")
+    if cat_name == "OmniBuilding":
+        print_logo_bg = "from-amber-500 to-amber-700"
+        print_accent_txt = "text-amber-700"
+    elif cat_name == "OmniGraph":
+        print_logo_bg = "from-rose-700 to-rose-900"
+        print_accent_txt = "text-rose-800"
+    else:
+        print_logo_bg = "from-emerald-600 to-teal-800"
+        print_accent_txt = "text-emerald-700"
+
     html = f"""
+    <style id="omniUniversalPrintStyles">
+        @media print {{
+            @page {{
+                size: A4 portrait;
+                margin: 8mm 10mm 8mm 10mm;
+            }}
+            html, body {{
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                color: #0f172a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }}
+            #omniChromeTabsBar,
+            header,
+            footer,
+            nav,
+            .no-print,
+            #faqSection, #faqContainer, #faqTitle, #normSection, #shareStrip,
+            #suggestModal, #installBanner, #iosModal, #suggestBanner,
+            #heroContainer, #modeSelectorBar, #currencySwitcher,
+            #omniSponsorBanner,
+            input[type=range], details, .faq-accordion {{
+                display: none !important;
+            }}
+            main {{
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            main > * {{
+                margin-top: 0.35rem !important;
+                margin-bottom: 0.35rem !important;
+            }}
+            .lg\\:grid-cols-12 {{
+                display: grid !important;
+                grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+                gap: 0.65rem !important;
+            }}
+            .lg\\:col-span-5 {{
+                grid-column: span 5 / span 5 !important;
+            }}
+            .lg\\:col-span-6 {{
+                grid-column: span 6 / span 6 !important;
+            }}
+            .lg\\:col-span-7 {{
+                grid-column: span 7 / span 7 !important;
+            }}
+            .lg\\:order-1 {{
+                order: 1 !important;
+            }}
+            .lg\\:order-2 {{
+                order: 2 !important;
+            }}
+            #omniUniversalPrintFooter {{
+                margin-top: 0.5rem !important;
+                padding-top: 0.45rem !important;
+            }}
+            #omniUniversalPrintHeader.active-universal-print {{
+                display: block !important;
+            }}
+            #omniUniversalPrintFooter.active-universal-print {{
+                display: block !important;
+            }}
+            .card-box, .metric-card, .print-border, .print-card {{
+                box-shadow: none !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }}
+        }}
+        @media screen {{
+            #omniUniversalPrintHeader, #omniUniversalPrintFooter {{
+                display: none !important;
+            }}
+        }}
+    </style>
     {render_chrome_tabs_strip(current_id)}
+    <!-- UNIVERSAL A4 PRINT TECHNICAL HEADER (Auto-activates when tool has no custom print header) -->
+    <div id="omniUniversalPrintHeader" class="hidden mb-3 pb-2.5 border-b-2 border-slate-900">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br {print_logo_bg} flex items-center justify-center text-white shrink-0 p-1.5 shadow-xs" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.2" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#fde047" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="{print_accent_txt}">Tools</span> Lab</span>
+                        <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">SCHEDA TECNICA A4 • {cat_name.upper()}</span>
+                    </div>
+                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">{current_tool['name']} — {current_tool['desc']}</div>
+                </div>
+            </div>
+            <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
+                <div id="omniUniversalPrintDate" class="font-bold text-slate-900">Data: --/--/----</div>
+                <div>Specifica: {current_tool['badge']}</div>
+                <div class="{print_accent_txt} font-bold">www.omnitoolslab.com{current_tool.get('url', '')}</div>
+            </div>
+        </div>
+    </div>
     <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
+    <header class="no-print bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
         <div class="{container_max_w} mx-auto px-3 sm:px-6 flex items-center justify-between gap-3">
             
             <!-- Logo & Suite Switcher -->

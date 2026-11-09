@@ -349,7 +349,7 @@ html_code = f"""<!DOCTYPE html>
                     </div>
 
                     <!-- Presets Grid -->
-                    <div class="pt-2 border-t border-slate-100">
+                    <div class="no-print pt-2 border-t border-slate-100">
                         <label id="presetsTitle" class="text-[11px] font-extrabold uppercase tracking-wide text-slate-600 block mb-2">Preset standard di pendenza tetto:</label>
                         <div class="grid grid-cols-2 gap-1.5 text-left">
                             <button type="button" onclick="applyPreset(8.7)" class="p-2 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition text-left group">
@@ -378,7 +378,7 @@ html_code = f"""<!DOCTYPE html>
         </div>
 
         <!-- FAQ Accordion Section -->
-        <div class="mt-8 pt-6 border-t border-slate-200 space-y-3">
+        <div id="faqSection" class="no-print mt-8 pt-6 border-t border-slate-200 space-y-3">
             <h2 id="faqTitle" class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">Domande Frequenti su Pendenza Tetto, Falde e Calcolo Geometria</h2>
             
             <div class="space-y-2 text-xs sm:text-sm">

@@ -181,7 +181,7 @@ html_code = f"""<!DOCTYPE html>
 
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
         <!-- Main Tool Intro Header -->
-        <div class="mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
+        <div class="no-print mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
             <div>
                 <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold mb-2">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
@@ -207,7 +207,7 @@ html_code = f"""<!DOCTYPE html>
         </div>
 
         <!-- Presets Bar -->
-        <div class="mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
+        <div class="no-print mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
             <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
                 <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 Esempi Rapidi:
