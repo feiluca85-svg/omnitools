@@ -18,8 +18,8 @@ html_code = f"""<!DOCTYPE html>
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Calcolo Pendenza Tubi di Scarico e Fognatura — Dislivello e Autopulizia UNI EN 12056</title>
-    <meta name="description" content="Calcolatore online per pendenza tubazioni di scarico fognario, caduta per metro lineare (cm/m), dislivello e dimensionamento diametri Ø 40-200 mm con verifica di autopulizia acque nere e grigie secondo UNI EN 12056 e UNI EN 752.">
+    <title>Calcolo Pendenza Tubi di Scarico e Fognatura — Pipe Gradient & Drainage Fall Calculator (UNI EN 12056)</title>
+    <meta name="description" content="Calcolatore online per pendenza tubazioni di scarico fognario (pipe gradient & drainage fall calculator), caduta per metro lineare (cm/m), dislivello e dimensionamento diametri Ø 40-200 mm con verifica di autopulizia secondo UNI EN 12056 e IPC.">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tubi">

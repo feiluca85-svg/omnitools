@@ -339,14 +339,36 @@
                         <span class="font-jakarta font-black text-base sm:text-lg text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
                         <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Lab</span>
                     </div>
-                    <span id="taglineText" class="text-[10px] text-slate-500 font-medium hidden sm:inline leading-tight mt-0.5">Precision Utilities Suite</span>
+                    <span id="taglineText" class="text-[10px] text-slate-500 font-medium inline leading-tight mt-0.5">Precision Utilities Suite</span>
                 </div>
             </a>
 
-            <!-- Right Controls: Language Selector + App Install -->
-            <div class="flex items-center gap-2 shrink-0">
+            <!-- Right Controls: Desk Widget Dropdown + Language Selector + App Install -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <div class="relative">
+                    <button type="button" id="mainDeskBtn" onclick="const d=document.getElementById('mainDeskDropdown'); if(d) d.classList.toggle('hidden'); event.stopPropagation();" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] sm:text-xs font-extrabold transition shadow-2xs" title="Utilità rapide: Memo, Calcolatrice e Orologio">
+                        <span>⚡</span>
+                        <span>DESK</span>
+                    </button>
+                    <div id="mainDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-1 text-slate-800">
+                        <div class="px-2 py-1 text-[10px] font-extrabold uppercase text-slate-400 border-b border-slate-100">Strumenti da Scrivania</div>
+                        <button type="button" onclick="openDeskTool('memo'); document.getElementById('mainDeskDropdown').classList.add('hidden');" class="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-amber-50 text-left text-xs font-bold text-slate-700 transition">
+                            <span class="text-base">📝</span>
+                            <span>OmniMemo (Post-it)</span>
+                        </button>
+                        <button type="button" onclick="openDeskTool('calc'); document.getElementById('mainDeskDropdown').classList.add('hidden');" class="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-blue-50 text-left text-xs font-bold text-slate-700 transition">
+                            <span class="text-base">🔢</span>
+                            <span>OmniCalc (Calcolatrice)</span>
+                        </button>
+                        <button type="button" onclick="openDeskTool('clock'); document.getElementById('mainDeskDropdown').classList.add('hidden');" class="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-xl hover:bg-teal-50 text-left text-xs font-bold text-slate-700 transition">
+                            <span class="text-base">⏱️</span>
+                            <span>OmniClock (Orologio)</span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -356,9 +378,9 @@
                     </select>
                 </div>
 
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-xs">
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 text-[11px] sm:text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-xs">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">Installa App</span>
+                    <span id="headerInstallText" class="inline">Installa App</span>
                 </button>
             </div>
         </div>
@@ -406,24 +428,23 @@
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
                     <!-- Tab 1: Tutti i Tool -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-white/30">
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-white/30">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                                 <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
                                 <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
                             </svg>
                         </div>
-                        <div class="text-center sm:text-left leading-tight">
-                            <span id="filterAllMobile" class="sm:hidden font-black text-xs block text-white">Tutti (17)</span>
-                            <span id="filterAllText" class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">Tutti i Tool</span>
-                            <span id="filterAllSubtext" class="subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold hidden sm:block">17 Strumenti</span>
+                        <div class="text-left leading-tight min-w-0">
+                            <span id="filterAllText" class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">Tutti i Tool</span>
+                            <span id="filterAllSubtext" class="subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold block truncate">17 Strumenti</span>
                         </div>
                     </button>
 
                     <!-- Tab 2: OmniBuilding -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-amber-300/40">
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-amber-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
                                 <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -431,16 +452,15 @@
                                 <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
                             </svg>
                         </div>
-                        <div class="text-center sm:text-left leading-tight">
-                            <span id="filterBuildingMobile" class="sm:hidden font-black text-xs block text-current">Building (5)</span>
-                            <span class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">OmniBuilding</span>
-                            <span id="filterBuildingSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block">5 Cantiere & Fabbricazione</span>
+                        <div class="text-left leading-tight min-w-0">
+                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniBuilding</span>
+                            <span id="filterBuildingSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">5 Cantiere & Fabbricazione</span>
                         </div>
                     </button>
 
                     <!-- Tab 3: OmniGraph -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-rose-300/40">
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-rose-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
                                 <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
@@ -449,16 +469,15 @@
                                 <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
                             </svg>
                         </div>
-                        <div class="text-center sm:text-left leading-tight">
-                            <span id="filterGraphMobile" class="sm:hidden font-black text-xs block text-current">Graph (6)</span>
-                            <span class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">OmniGraph</span>
-                            <span id="filterGraphSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block">6 Grafica & Stampa</span>
+                        <div class="text-left leading-tight min-w-0">
+                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniGraph</span>
+                            <span id="filterGraphSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Grafica & Stampa</span>
                         </div>
                     </button>
 
                     <!-- Tab 4: OmniFinance -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
                                 <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
@@ -466,10 +485,9 @@
                                 <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
                             </svg>
                         </div>
-                        <div class="text-center sm:text-left leading-tight">
-                            <span id="filterFinanceMobile" class="sm:hidden font-black text-xs block text-current">Finance (6)</span>
-                            <span class="hidden sm:block text-xs sm:text-[14px] font-black tracking-tight leading-tight">OmniFinance</span>
-                            <span id="filterFinanceSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block">6 Finanza & Business</span>
+                        <div class="text-left leading-tight min-w-0">
+                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniFinance</span>
+                            <span id="filterFinanceSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Finanza & Business</span>
                         </div>
                     </button>
 
@@ -505,7 +523,7 @@
                             <p id="divBuildingDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori geometrici e normativi per cantieri, architettura, coperture e taglio</p>
                         </div>
                     </div>
-                    <span id="badgeCountBuilding" class="text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-xl border border-amber-200 hidden sm:inline-block">5 Tool Attivi</span>
+                    <span id="badgeCountBuilding" class="text-[11px] sm:text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-200 inline-block shrink-0">5 Tool Attivi</span>
                 </div>
 
                 <!-- 5 Building Tools Grid -->
@@ -749,7 +767,7 @@
                             <p id="divGraphDesc" class="text-[11px] text-slate-500 mt-0.5">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
                         </div>
                     </div>
-                    <span id="badgeCountGraph" class="text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2.5 py-1 rounded-xl border border-rose-200 hidden sm:inline-block">6 Tool Attivi</span>
+                    <span id="badgeCountGraph" class="text-[11px] sm:text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2 sm:px-2.5 py-1 rounded-xl border border-rose-200 inline-block shrink-0">6 Tool Attivi</span>
                 </div>
 
                 <!-- 6 Graphic Tools Grid -->
@@ -1064,7 +1082,7 @@
                             <p id="divFinanceDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
                         </div>
                     </div>
-                    <span id="badgeCountFinance" class="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-200 hidden sm:inline-block">6 Tool Attivi</span>
+                    <span id="badgeCountFinance" class="text-[11px] sm:text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2 sm:px-2.5 py-1 rounded-xl border border-emerald-200 inline-block shrink-0">6 Tool Attivi</span>
                 </div>
 
                 <!-- 6 Finance Tools Grid -->
@@ -1355,7 +1373,7 @@
                         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                         <span id="shareCopyText">Copia Link</span>
                     </button>
-                    <button type="button" onclick="nativeShare()" class="inline-flex sm:hidden items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni">
+                    <button type="button" onclick="nativeShare()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Altre opzioni">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
                         <span>Condividi</span>
                     </button>
@@ -1545,6 +1563,7 @@
             if (t.division_finance_desc && document.getElementById('divFinanceDesc')) document.getElementById('divFinanceDesc').textContent = t.division_finance_desc;
 
             // Macrotool category badges
+            if (t.filter_all && document.getElementById('filterAllText')) document.getElementById('filterAllText').textContent = t.filter_all;
             if (t.filter_all && document.getElementById('filterAllMobile')) document.getElementById('filterAllMobile').textContent = t.filter_all;
             if (t.filter_building && document.getElementById('filterBuildingMobile')) document.getElementById('filterBuildingMobile').textContent = t.filter_building;
             if (t.filter_graph && document.getElementById('filterGraphMobile')) document.getElementById('filterGraphMobile').textContent = t.filter_graph;
@@ -1604,38 +1623,38 @@
             const btnFinance = document.getElementById('filterFinanceBtn');
 
             // Base inactive classes (fixed dimensions, larger inner content)
-            const baseInactive = "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer";
+            const baseInactive = "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer";
 
             if (btnAll) {
                 btnAll.className = filter === 'all' 
-                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subAll = btnAll.querySelector('.subtext');
-                if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
+                if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
             }
 
             if (btnBuilding) {
                 btnBuilding.className = filter === 'building'
-                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subB = btnBuilding.querySelector('.subtext');
-                if (subB) subB.className = filter === 'building' ? "subtext text-[10px] sm:text-[11px] text-amber-100 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
+                if (subB) subB.className = filter === 'building' ? "subtext text-[10px] sm:text-[11px] text-amber-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
             }
 
             if (btnGraph) {
                 btnGraph.className = filter === 'graph'
-                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subG = btnGraph.querySelector('.subtext');
-                if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] sm:text-[11px] text-rose-200 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
+                if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] sm:text-[11px] text-rose-200 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
             }
 
             if (btnFinance) {
                 btnFinance.className = filter === 'finance'
-                    ? "flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subF = btnFinance.querySelector('.subtext');
-                if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] sm:text-[11px] text-emerald-100 font-semibold hidden sm:block" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold hidden sm:block";
+                if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] sm:text-[11px] text-emerald-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
             }
 
             filterTools();
@@ -2020,6 +2039,13 @@ document.addEventListener('click', (e) => {
     if (newToolDrop && !newToolDrop.classList.contains('hidden')) {
         if (!newToolDrop.contains(e.target) && (!topNewToolBtn || !topNewToolBtn.contains(e.target))) {
             newToolDrop.classList.add('hidden');
+        }
+    }
+    const mainDeskDrop = document.getElementById('mainDeskDropdown');
+    const mainDeskBtn = document.getElementById('mainDeskBtn');
+    if (mainDeskDrop && !mainDeskDrop.classList.contains('hidden')) {
+        if (!mainDeskDrop.contains(e.target) && (!mainDeskBtn || !mainDeskBtn.contains(e.target))) {
+            mainDeskDrop.classList.add('hidden');
         }
     }
 });

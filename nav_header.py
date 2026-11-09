@@ -362,15 +362,15 @@ def render_suite_header(current_id):
                 <span class="text-slate-300">/</span>
 
                 <!-- Current Tool Dropdown Button -->
-                <div class="relative">
-                    <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+                <div class="relative min-w-0">
+                    <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold transition max-w-[140px] sm:max-w-none">
                         {current_icon}
-                        <span class="hidden sm:inline">{current_tool['name']}</span>
-                        <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span id="suiteCurrentToolName" class="inline truncate">{current_tool['name']}</span>
+                        <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
                     <!-- Dropdown Menu Panel -->
-                    <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2">
+                    <div id="suiteMenuDropdown" class="hidden absolute left-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 max-h-[82vh] overflow-y-auto">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                             <span id="suiteDropChooseCalc">Scegli Calcolatore</span>
                             <span id="suiteDropToolCount">17 Strumenti</span>
@@ -396,15 +396,35 @@ def render_suite_header(current_id):
                             </div>
                             {finance_tools_html}
                         </div>
+
+                        <div class="space-y-1 pt-1.5 border-t border-slate-100">
+                            <div class="px-2 text-[10px] font-extrabold uppercase text-indigo-700 flex items-center gap-1">
+                                <span>⚡</span> <span id="suiteDropDeskTitle">Strumenti da Scrivania</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-1 px-1">
+                                <button type="button" onclick="openDeskTool('memo'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-[10px] font-bold transition">
+                                    <span>📝</span>
+                                    <span>Memo</span>
+                                </button>
+                                <button type="button" onclick="openDeskTool('calc'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200/80 text-[10px] font-bold transition">
+                                    <span>🔢</span>
+                                    <span>Calc</span>
+                                </button>
+                                <button type="button" onclick="openDeskTool('clock'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-200/80 text-[10px] font-bold transition">
+                                    <span>⏱️</span>
+                                    <span>Clock</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Right Actions -->
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{{detail:{{lang:this.value}}}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{{detail:{{lang:this.value}}}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
@@ -413,13 +433,13 @@ def render_suite_header(current_id):
                         <option value="pt">🇵🇹 PT</option>
                     </select>
                 </div>
-                <button onclick="if(typeof triggerInstall==='function'){{triggerInstall();}}else{{alert('OmniTools è già installato o pronto nel browser.');}}" id="headerInstallBtn" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
+                <button onclick="if(typeof triggerInstall==='function'){{triggerInstall();}}else{{alert('OmniTools è già installato o pronto nel browser.');}}" id="headerInstallBtn" class="no-print inline-flex items-center gap-1 px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
                     <span>📲</span>
-                    <span id="headerInstallText" class="hidden sm:inline">Installa</span>
+                    <span id="headerInstallText" class="inline">Installa</span>
                 </button>
-                <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+                <button onclick="window.print()" class="no-print inline-flex items-center gap-1 px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
                     <span>🖨️</span>
-                    <span id="headerPrintText" class="hidden sm:inline">Stampa</span>
+                    <span id="headerPrintText" class="inline">Stampa</span>
                 </button>
             </div>
         </div>
@@ -699,6 +719,15 @@ function updateNavTranslations(lang) {
 
     const installBtn = document.getElementById('headerInstallText');
     if (installBtn) installBtn.textContent = tr.btn_install;
+
+    const suiteDesk = document.getElementById('suiteDropDeskTitle');
+    if (suiteDesk) suiteDesk.textContent = tr.desk_title;
+
+    const curPath = window.location.pathname.replace('.html', '').replace('/', '');
+    const curToolNameEl = document.getElementById('suiteCurrentToolName');
+    if (curToolNameEl && curPath && NAV_TOOL_NAMES_I18N[curPath] && NAV_TOOL_NAMES_I18N[curPath][l]) {
+        curToolNameEl.textContent = NAV_TOOL_NAMES_I18N[curPath][l];
+    }
 
     // Update tool names inside dropdown links
     document.querySelectorAll('[data-nav-tool-id]').forEach(link => {

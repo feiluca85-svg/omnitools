@@ -86,10 +86,6 @@
       "destination": "/pac"
     },
     {
-      "source": "/risparmio",
-      "destination": "/pac"
-    },
-    {
       "source": "/markup",
       "destination": "/margine"
     },
