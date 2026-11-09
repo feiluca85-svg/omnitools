@@ -136,7 +136,13 @@ html_code = f"""<!DOCTYPE html>
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Share+Tech+Mono&family=Inconsolata:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {{
+            font-family: 'OCR-B';
+            src: local('OCR-B 10 BT'), local('OCR-B'), local('OCRB'), local('Lucida Sans Typewriter'), local('Monaco'), local('Courier New');
+        }}
+    </style>
     <script>
         tailwind.config = {{
             theme: {{
@@ -362,6 +368,98 @@ html_code = f"""<!DOCTYPE html>
                                     <span id="quietZoneVal" class="font-mono text-rose-700">10 px</span>
                                 </div>
                                 <input type="range" id="quietZone" min="0" max="30" step="5" value="10" oninput="updateBarcode()" class="w-full accent-rose-700 cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUOVA CARD: STILE GRAFICO & PROPORZIONI CIFRE / NUMERI -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
+                    <div class="flex items-center justify-between">
+                        <h2 id="styleCardTitle" class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
+                            <span>✍️</span> Tipografia & Grafica del Barcode
+                        </h2>
+                        <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Personalizzazione Visiva</span>
+                    </div>
+
+                    <!-- Presets Grafici Rapidi -->
+                    <div>
+                        <div id="stylePresetLabel" class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1.5">
+                            Grafica Barcode Veloce:
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                            <button type="button" onclick="applyStylePreset('gs1')" class="p-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-300 text-left transition active:scale-95 group">
+                                <span class="text-[11px] font-bold text-slate-800 group-hover:text-indigo-900 block truncate" id="presetStyleGs1">Standard GS1</span>
+                                <span class="text-[9px] text-slate-500 block truncate">OCR-B 14px</span>
+                            </button>
+                            <button type="button" onclick="applyStylePreset('modern')" class="p-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-300 text-left transition active:scale-95 group">
+                                <span class="text-[11px] font-bold text-slate-800 group-hover:text-indigo-900 block truncate" id="presetStyleModern">Moderno Clean</span>
+                                <span class="text-[9px] text-slate-500 block truncate">JetBrains 15px</span>
+                            </button>
+                            <button type="button" onclick="applyStylePreset('compact')" class="p-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-300 text-left transition active:scale-95 group">
+                                <span class="text-[11px] font-bold text-slate-800 group-hover:text-indigo-900 block truncate" id="presetStyleCompact">Compatto</span>
+                                <span class="text-[9px] text-slate-500 block truncate">Stretto 11px</span>
+                            </button>
+                            <button type="button" onclick="applyStylePreset('large')" class="p-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-indigo-50 hover:border-indigo-300 text-left transition active:scale-95 group">
+                                <span class="text-[11px] font-bold text-slate-800 group-hover:text-indigo-900 block truncate" id="presetStyleLarge">Cifre Grandi</span>
+                                <span class="text-[9px] text-slate-500 block truncate">Alta Leggibilità 18px</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Controlli Dettagliati: Font Family + Font Size + Margin + Weight -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 border-t border-slate-100">
+                        <!-- Font Family -->
+                        <div>
+                            <label id="fontFamilyLabel" class="block text-[11px] font-bold text-slate-700 mb-1">
+                                Stile Carattere (Font Cifre)
+                            </label>
+                            <select id="fontFamilySelect" onchange="updateBarcode()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
+                                <option value="ocrb" id="fontOcrbOpt" selected>OCR-B Ufficiale GS1 (Standard GDO)</option>
+                                <option value="monospace" id="fontMonoOpt">JetBrains Mono (Moderno & Chiaro)</option>
+                                <option value="sans" id="fontSansOpt">Sans-Serif Tecnico (Helvetica / Arial)</option>
+                                <option value="condensed" id="fontCondOpt">Compatto / Condensed (Stretto)</option>
+                                <option value="serif" id="fontSerifOpt">Serif Editoriale (Classico / Libri)</option>
+                            </select>
+                        </div>
+
+                        <!-- Font Weight -->
+                        <div>
+                            <label id="fontWeightLabel" class="block text-[11px] font-bold text-slate-700 mb-1">
+                                Spessore Cifre
+                            </label>
+                            <select id="fontWeightSelect" onchange="updateBarcode()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
+                                <option value="normal" id="weightNormalOpt" selected>Normale (400)</option>
+                                <option value="bold" id="weightBoldOpt">Grassetto (Bold 700)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Sliders: Font Size + Text Margin -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
+                                <span id="fontSizeLabel">Dimensione Cifre</span>
+                                <span id="fontSizeVal" class="font-mono text-indigo-600">14 px</span>
+                            </div>
+                            <input type="range" id="fontSizeRange" min="9" max="24" step="1" value="14" oninput="updateBarcode()" class="w-full accent-indigo-600 cursor-pointer">
+                            <div class="flex justify-between text-[9px] text-slate-400 mt-0.5 font-mono">
+                                <span>Piccolo (9px)</span>
+                                <span>Standard (14px)</span>
+                                <span>Grande (24px)</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
+                                <span id="textMarginLabel">Distanza Cifre dalle Barre</span>
+                                <span id="textMarginVal" class="font-mono text-indigo-600">4 px</span>
+                            </div>
+                            <input type="range" id="textMarginRange" min="0" max="15" step="1" value="4" oninput="updateBarcode()" class="w-full accent-indigo-600 cursor-pointer">
+                            <div class="flex justify-between text-[9px] text-slate-400 mt-0.5 font-mono">
+                                <span>Adiacente (0)</span>
+                                <span>Medio (4)</span>
+                                <span>Ampio (15)</span>
                             </div>
                         </div>
                     </div>
@@ -1104,6 +1202,24 @@ html_code = f"""<!DOCTYPE html>
             }}
 
             // Render Barcode via JsBarcode
+            const fontFamilyKey = document.getElementById('fontFamilySelect') ? document.getElementById('fontFamilySelect').value : 'ocrb';
+            const fontWeightKey = document.getElementById('fontWeightSelect') ? document.getElementById('fontWeightSelect').value : 'normal';
+            const fontSizeCustom = document.getElementById('fontSizeRange') ? parseInt(document.getElementById('fontSizeRange').value, 10) : 14;
+            const textMarginCustom = document.getElementById('textMarginRange') ? parseInt(document.getElementById('textMarginRange').value, 10) : 4;
+
+            if (document.getElementById('fontSizeVal')) document.getElementById('fontSizeVal').innerText = fontSizeCustom + ' px';
+            if (document.getElementById('textMarginVal')) document.getElementById('textMarginVal').innerText = textMarginCustom + ' px';
+
+            const fontMap = {{
+                'ocrb': '"OCR-B", "OCR-B 10 BT", "JetBrains Mono", monospace',
+                'monospace': '"JetBrains Mono", monospace',
+                'sans': '"Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif',
+                'condensed': '"Inconsolata", "Trebuchet MS", "Arial Narrow", monospace',
+                'serif': 'Georgia, Cambria, "Times New Roman", serif'
+            }};
+            const chosenFont = fontMap[fontFamilyKey] || fontMap['ocrb'];
+            const fontOptions = fontWeightKey === 'bold' ? 'bold' : '';
+
             try {{
                 JsBarcode("#barcodeSvg", finalValue, {{
                     format: formatToRender,
@@ -1112,9 +1228,10 @@ html_code = f"""<!DOCTYPE html>
                     width: barWidth,
                     height: barHeight,
                     displayValue: displayValue,
-                    font: "JetBrains Mono, monospace",
-                    fontSize: 14,
-                    textMargin: 4,
+                    font: chosenFont,
+                    fontOptions: fontOptions,
+                    fontSize: fontSizeCustom,
+                    textMargin: textMarginCustom,
                     margin: quietZone
                 }});
             }} catch (err) {{
@@ -1122,10 +1239,50 @@ html_code = f"""<!DOCTYPE html>
             }}
 
             // Render GS1 Laser 670nm Simulation
-            renderLaserSimulation(barColorCurrent, bgColorCurrent, formatToRender, finalValue, barWidth, barHeight, quietZone, displayValue);
+            renderLaserSimulation(barColorCurrent, bgColorCurrent, formatToRender, finalValue, barWidth, barHeight, quietZone, displayValue, chosenFont, fontOptions, fontSizeCustom, textMarginCustom);
         }}
 
-        function renderLaserSimulation(barColor, bgColor, symb, value, barWidth, barHeight, quietZone, displayValue) {{
+        function applyStylePreset(preset) {{
+            const fFamily = document.getElementById('fontFamilySelect');
+            const fWeight = document.getElementById('fontWeightSelect');
+            const fSize = document.getElementById('fontSizeRange');
+            const tMargin = document.getElementById('textMarginRange');
+            const bHeight = document.getElementById('barHeight');
+            const bWidth = document.getElementById('barWidth');
+
+            if (preset === 'gs1') {{
+                if (fFamily) fFamily.value = 'ocrb';
+                if (fWeight) fWeight.value = 'normal';
+                if (fSize) fSize.value = 14;
+                if (tMargin) tMargin.value = 4;
+                if (bHeight) bHeight.value = 65;
+                if (bWidth) bWidth.value = 2;
+            }} else if (preset === 'modern') {{
+                if (fFamily) fFamily.value = 'monospace';
+                if (fWeight) fWeight.value = 'normal';
+                if (fSize) fSize.value = 15;
+                if (tMargin) tMargin.value = 5;
+                if (bHeight) bHeight.value = 60;
+                if (bWidth) bWidth.value = 2;
+            }} else if (preset === 'compact') {{
+                if (fFamily) fFamily.value = 'condensed';
+                if (fWeight) fWeight.value = 'bold';
+                if (fSize) fSize.value = 11;
+                if (tMargin) tMargin.value = 2;
+                if (bHeight) bHeight.value = 45;
+                if (bWidth) bWidth.value = 1.5;
+            }} else if (preset === 'large') {{
+                if (fFamily) fFamily.value = 'sans';
+                if (fWeight) fWeight.value = 'bold';
+                if (fSize) fSize.value = 18;
+                if (tMargin) tMargin.value = 6;
+                if (bHeight) bHeight.value = 75;
+                if (bWidth) bWidth.value = 2.2;
+            }}
+            updateBarcode();
+        }}
+
+        function renderLaserSimulation(barColor, bgColor, symb, value, barWidth, barHeight, quietZone, displayValue, chosenFont, fontOptions, fontSizeCustom, textMarginCustom) {{
             const rgbBar = hexToRgb(barColor);
             const rgbBg = hexToRgb(bgColor);
 
@@ -1148,9 +1305,10 @@ html_code = f"""<!DOCTYPE html>
                     width: barWidth,
                     height: barHeight,
                     displayValue: displayValue,
-                    font: "JetBrains Mono, monospace",
-                    fontSize: 14,
-                    textMargin: 4,
+                    font: chosenFont || '"OCR-B", monospace',
+                    fontOptions: fontOptions || '',
+                    fontSize: fontSizeCustom || 14,
+                    textMargin: textMarginCustom || 4,
                     margin: quietZone
                 }});
             }} catch (e) {{}}
@@ -1286,6 +1444,28 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('ruleTipText').innerHTML = t.rule_tip;
             document.getElementById('legalDisclaimer').innerHTML = t.legal_disclaimer;
             document.getElementById('faqTitle').innerHTML = t.faq_title;
+
+            // Update Style card elements
+            if (t.style_card_title && document.getElementById('styleCardTitle')) document.getElementById('styleCardTitle').innerHTML = '<span>✍️</span> ' + t.style_card_title;
+            if (t.style_preset_label && document.getElementById('stylePresetLabel')) document.getElementById('stylePresetLabel').innerHTML = t.style_preset_label + ':';
+            if (t.preset_style_gs1 && document.getElementById('presetStyleGs1')) document.getElementById('presetStyleGs1').innerHTML = t.preset_style_gs1;
+            if (t.preset_style_modern && document.getElementById('presetStyleModern')) document.getElementById('presetStyleModern').innerHTML = t.preset_style_modern;
+            if (t.preset_style_compact && document.getElementById('presetStyleCompact')) document.getElementById('presetStyleCompact').innerHTML = t.preset_style_compact;
+            if (t.preset_style_large_text && document.getElementById('presetStyleLarge')) document.getElementById('presetStyleLarge').innerHTML = t.preset_style_large_text;
+
+            if (t.font_family_label && document.getElementById('fontFamilyLabel')) document.getElementById('fontFamilyLabel').innerHTML = t.font_family_label;
+            if (t.font_ocrb && document.getElementById('fontOcrbOpt')) document.getElementById('fontOcrbOpt').innerHTML = t.font_ocrb;
+            if (t.font_monospace && document.getElementById('fontMonoOpt')) document.getElementById('fontMonoOpt').innerHTML = t.font_monospace;
+            if (t.font_sans && document.getElementById('fontSansOpt')) document.getElementById('fontSansOpt').innerHTML = t.font_sans;
+            if (t.font_condensed && document.getElementById('fontCondOpt')) document.getElementById('fontCondOpt').innerHTML = t.font_condensed;
+            if (t.font_serif && document.getElementById('fontSerifOpt')) document.getElementById('fontSerifOpt').innerHTML = t.font_serif;
+
+            if (t.font_weight_label && document.getElementById('fontWeightLabel')) document.getElementById('fontWeightLabel').innerHTML = t.font_weight_label;
+            if (t.weight_normal && document.getElementById('weightNormalOpt')) document.getElementById('weightNormalOpt').innerHTML = t.weight_normal;
+            if (t.weight_bold && document.getElementById('weightBoldOpt')) document.getElementById('weightBoldOpt').innerHTML = t.weight_bold;
+
+            if (t.font_size_label && document.getElementById('fontSizeLabel')) document.getElementById('fontSizeLabel').innerHTML = t.font_size_label;
+            if (t.text_margin_label && document.getElementById('textMarginLabel')) document.getElementById('textMarginLabel').innerHTML = t.text_margin_label;
 
             // Update FAQs
             document.getElementById('faq1Q').innerHTML = t.faq_1_q;
