@@ -2257,8 +2257,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (banner) banner.classList.add('hidden');
         }
 
-        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock)
+        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock) & Universal i18n
         (function() {
+            if (!document.getElementById('omni-i18n-universal-script')) {
+                const u = document.createElement('script');
+                u.id = 'omni-i18n-universal-script';
+                u.src = '/omni_i18n_universal.js';
+                document.head.appendChild(u);
+            }
             if (!document.getElementById('omnidesk-script')) {
                 const s = document.createElement('script');
                 s.id = 'omnidesk-script';

@@ -910,4 +910,12 @@
     window.OmniDesk.toggleMemo(false);
     window.OmniDesk.toggleCalc(false);
 
+    // Load Universal Runtime i18n Engine on every page that loads desk_dock.js
+    if (!document.getElementById('omni-i18n-universal-script')) {
+        const i18nScript = document.createElement('script');
+        i18nScript.id = 'omni-i18n-universal-script';
+        i18nScript.src = '/omni_i18n_universal.js';
+        document.head.appendChild(i18nScript);
+    }
+
 })();

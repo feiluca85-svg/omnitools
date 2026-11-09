@@ -304,6 +304,10 @@
 
             document.getElementById('langSelect').value = lang;
             localStorage.setItem('omni_lang', lang);
+            localStorage.setItem('omnitools_lang', lang);
+            if (typeof window.applyUniversalTranslations === 'function') {
+                window.applyUniversalTranslations(lang);
+            }
         }
 
         async function submitPartnerInquiry(e) {
@@ -346,7 +350,7 @@
 
         // Initialize language from stored preference or browser language
         document.addEventListener('DOMContentLoaded', () => {
-            const stored = localStorage.getItem('omni_lang');
+            const stored = localStorage.getItem('omnitools_lang') || localStorage.getItem('omni_lang');
             if (stored && TRANSLATIONS[stored]) {
                 changeLanguage(stored);
             } else {
@@ -357,5 +361,6 @@
             }
         });
     </script>
+    <script src="/omni_i18n_universal.js"></script>
 </body>
 </html>

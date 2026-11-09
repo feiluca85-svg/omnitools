@@ -49,6 +49,14 @@
                     📲 Installa App Desktop
                 </button>
                 <a href="/" class="text-xs font-bold text-slate-500 hover:text-slate-800 transition px-2 py-1">Torna all'Hub</a>
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <option value="it">🇮🇹 IT</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="de">🇩🇪 DE</option>
+                    <option value="pt">🇵🇹 PT</option>
+                </select>
             </div>
         </div>
     </header>
@@ -202,5 +210,6 @@ Es:
             }
         }
     </script>
+    <script src="/omni_i18n_universal.js"></script>
 </body>
 </html>
