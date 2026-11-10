@@ -48,7 +48,7 @@ Prima di iniziare, durante lo sviluppo e dopo il rilascio di QUALSIASI nuovo too
 ### 🟡 Divisione 1: OmniBuilding (Cantieri, Edilizia, Geometri, Ingegneri)
 * **Colore Identificativo:** Giallo Cantiere / Ambra (`#d97706` / `#b45309` / sfondo `#fef3c7`).
 * **PWA:** `manifest-building.json` installabile come Web App indipendente.
-* **Tool Attivi (3):**
+* **Tool Attivi (6):**
   1. `rampe.html` (**RampaFacile**): Verifica pendenza %, gradi e lunghezza rampe a norma DM 236/89 con disegno blueprint interattivo.
   2. `scale.html` (**ScalaFacile**): Alzata, pedata, numero gradini con Legge di Blondel ($2a + p = 63\text{ cm}$) e fasce comfort/sicurezza DIN 18065.
   3. `tubi.html` (**ScaricoFacile**): Calcolo diametro, pendenza e velocità autopulente per condotte fognarie/acque reflue (UNI EN 12056).

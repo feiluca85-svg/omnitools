@@ -11,6 +11,7 @@ TOOL_ICONS = {
         "tubi": """<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>""",
     "tetto": """<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>""",
     "taglio": """<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>""",
+    "piastrelle": """<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>""",
 
     
     "dorso": """<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>""",
@@ -73,6 +74,15 @@ TOOLS = [
         "desc": "Ottimizzatore Taglio 1D & Sfrido",
         "url": "/taglio",
         "badge": "Bin-Packing 1D"
+    },
+    {
+        "id": "piastrelle",
+        "category": "OmniBuilding",
+        "category_label": "Cantiere & Calcolo",
+        "name": "PiastrellaFacile",
+        "desc": "Sfrido, Colla & Stucco Fughe",
+        "url": "/piastrelle",
+        "badge": "Superfici & Posa"
     },
     {
         "id": "dorso",
@@ -622,14 +632,20 @@ function toggleTopNewToolMenu(e) {
 function openDeskTool(toolType) {
     const drop = document.getElementById('topDeskDropdown');
     if (drop) drop.classList.add('hidden');
+    const trigger = () => {
+        if (window.OmniDesk) {
+            if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
+            else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
+            else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+        }
+    };
     if (window.OmniDesk) {
-        if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
-        else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
-        else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+        trigger();
     } else {
-        // Fallback open standalone page
-        const map = { memo: '/memo', calc: '/calcolatrice', clock: '/orologio' };
-        window.open(map[toolType], '_blank');
+        const s = document.createElement('script');
+        s.src = '/desk_dock.js';
+        s.onload = trigger;
+        document.head.appendChild(s);
     }
 }
 

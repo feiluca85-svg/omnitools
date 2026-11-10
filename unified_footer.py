@@ -7,6 +7,7 @@ def render_unified_footer(current_tool_id, disclaimer_id="legalDisclaimerText", 
         {"id": "tubi", "name": "🚰 Scarichi", "desc": "Pendenza UNI EN", "url": "/tubi"},
         {"id": "tetto", "name": "🏠 Tetto & Falda", "desc": "Pendenza, Gradi & Trave", "url": "/tetto"},
         {"id": "taglio", "name": "🪚 Taglio 1D", "desc": "Ottimizzatore Barre & Sfrido", "url": "/taglio"},
+        {"id": "piastrelle", "name": "🧱 Piastrelle", "desc": "Sfrido, Colla & Fughe", "url": "/piastrelle"},
     ]
     graph_tools = [
         {"id": "dorso", "name": "📕 Dorso", "desc": "Spessore & KDP", "url": "/dorso"},

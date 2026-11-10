@@ -325,6 +325,14 @@
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
             </a>
             
+            <a href="/piastrelle" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                    <span class="nav-tool-name font-bold">PiastrellaFacile</span>
+                </div>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Superfici & Posa</span>
+            </a>
+            
                     </div>
 
                     <!-- Category: OmniGraph -->
@@ -552,6 +560,14 @@
                     <span class="nav-tool-name font-bold">TaglioOttimo</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+            </a>
+            
+            <a href="/piastrelle" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                    <span class="nav-tool-name font-bold">PiastrellaFacile</span>
+                </div>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Superfici & Posa</span>
             </a>
             
                         </div>
@@ -1230,6 +1246,13 @@
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
                     </a>
+                    <a href="/piastrelle" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
+                        <div class="min-w-0 pr-1">
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🧱 Piastrelle</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Sfrido, Colla & Fughe</span>
+                        </div>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                    </a>
                     </div>
                 </div>
 
@@ -1507,14 +1530,20 @@ function toggleTopNewToolMenu(e) {
 function openDeskTool(toolType) {
     const drop = document.getElementById('topDeskDropdown');
     if (drop) drop.classList.add('hidden');
+    const trigger = () => {
+        if (window.OmniDesk) {
+            if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
+            else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
+            else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+        }
+    };
     if (window.OmniDesk) {
-        if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
-        else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
-        else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
+        trigger();
     } else {
-        // Fallback open standalone page
-        const map = { memo: '/memo', calc: '/calcolatrice', clock: '/orologio' };
-        window.open(map[toolType], '_blank');
+        const s = document.createElement('script');
+        s.src = '/desk_dock.js';
+        s.onload = trigger;
+        document.head.appendChild(s);
     }
 }
 

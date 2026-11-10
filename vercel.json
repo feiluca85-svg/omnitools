@@ -196,6 +196,34 @@
     {
       "source": "/sparziel",
       "destination": "/risparmio"
+    },
+    {
+      "source": "/piastrelle",
+      "destination": "/piastrelle"
+    },
+    {
+      "source": "/piastrella",
+      "destination": "/piastrelle"
+    },
+    {
+      "source": "/pavimenti",
+      "destination": "/piastrelle"
+    },
+    {
+      "source": "/pavimento",
+      "destination": "/piastrelle"
+    },
+    {
+      "source": "/rivestimenti",
+      "destination": "/piastrelle"
+    },
+    {
+      "source": "/tile-calculator",
+      "destination": "/piastrelle"
+    },
+    {
+      "source": "/grout-calculator",
+      "destination": "/piastrelle"
     }
   ]
 }
