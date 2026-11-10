@@ -135,6 +135,14 @@
 
   function getActiveLang() {
     try {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang');
+      if (urlLang && ['it','en','es','fr','de','pt'].includes(urlLang)) {
+        try { localStorage.setItem('omnitools_lang', urlLang); } catch(e) {}
+        const sel = document.getElementById('langSelect');
+        if (sel) sel.value = urlLang;
+        return urlLang;
+      }
       const sel = document.getElementById('langSelect');
       if (sel && sel.value) return sel.value;
       return localStorage.getItem('omnitools_lang') || 'it';

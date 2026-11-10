@@ -62,6 +62,8 @@
   - [x] Aggiunta Schema.org `WebApplication` e `FAQPage` strutturati su `piastrelle.html` per catturare i Rich Snippet su Google.
   - [x] Audit e test di risposta su produzione delle rotte `/piastrelle` e `/tile-calculator`.
   - [x] Risoluzione bug banner B2B Hub multilingua in `index.html`.
+  - [x] **Anticipo SEO Internazionale `hreflang`**: Inserita la matrice a 6 lingue (`it`, `en`, `es`, `fr`, `de`, `pt` + `x-default`) su tutte le 24 pagine HTML della suite.
+  - [x] **Deep-linking Lingua**: Supporto al parametro query `?lang=` in `omni_i18n_universal.js` e in tutti i calcolatori, consentendo ai bot e agli utenti esteri di atterrare direttamente nella loro lingua nativa.
 - [ ] **Giorno 2 (Mercoledì 11/11/2026)**:
   - [ ] Verifica e collaudo schede A4 stampabili dei 6 tool Finance (`mutuo`, `estinzione`, `pac`, `margine`, `risparmio`, `fire`).
   - [ ] Integrazione QR Code dinamico sulla Scheda Tecnica A4 (permette a chi ha il foglio cartaceo in mano di scansionarlo e riaprire il tool con i dati precompilati).

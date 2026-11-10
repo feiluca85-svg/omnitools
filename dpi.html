@@ -9,6 +9,13 @@
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/dpi">
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dpi?lang=it" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/dpi?lang=en" />
+    <link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/dpi?lang=es" />
+    <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/dpi?lang=fr" />
+    <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/dpi?lang=de" />
+    <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/dpi?lang=pt" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/dpi" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI">
@@ -2858,6 +2865,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         function detectInitialLanguage() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const urlLang = params.get('lang');
+                if (urlLang && ['it','en','es','fr','de','pt'].includes(urlLang)) {
+                    localStorage.setItem('omnitools_lang', urlLang);
+                    return urlLang;
+                }
+            } catch(e) {}
             const stored = localStorage.getItem('omnitools_lang');
             if (stored && TRANSLATIONS[stored]) return stored;
             const candidates = navigator.languages || [navigator.language || navigator.userLanguage || ''];
