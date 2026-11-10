@@ -55,3 +55,12 @@ Serve a:
 * **File modificato:** `index.html`
 * **Causa del problema:** Nella funzione `applyTranslations()` di `index.html`, la riga che prelevava il dizionario per il banner sponsor B2B utilizzava `HUB_SPONSOR_I18N[lang]` anziché `HUB_SPONSOR_I18N[currentLang]`. Poiché `lang` non era un argomento della funzione, risultava `undefined` causando il fallback perenne a `HUB_SPONSOR_I18N.it`.
 * **Risoluzione & Verifica:** Sostituito con `HUB_SPONSOR_I18N[currentLang]`. Verificata l'applicazione corretta e istantanea di badge, testo disponibilità slot, titolo, descrizione e pulsante CTA in tutte le 6 lingue (Italiano, Inglese, Spagnolo, Francese, Tedesco e Portoghese).
+
+### [2026-11-10 21:09] — Creazione Roadmap Strategica di Monetizzazione & Direttiva Soci
+* **Nuovo File:** `ROADMAP_MONETIZZAZIONE_CRESCITA.md`
+  - Analisi dettagliata per tutti i 18 tool (dal volume più basso al più alto).
+  - Identificazione affiliazioni più remunerative e partner concreti di riferimento (B2B/B2C).
+  - Tabella di marcia 12 mesi (visite mensili e ricavi divisi per Ads, Affiliazioni e Sponsor diretti).
+  - Piano operativo 30 giorni giorno per giorno.
+  - Tabella di confronto settimanale "Previsto vs Reale" da aggiornare ogni weekend.
+* **Aggiornamento Memoria Permanente:** Integrata Sezione 8 in `PROJECT_MEMORY.md` con la direttiva primaria di business e il rituale del check-in settimanale.

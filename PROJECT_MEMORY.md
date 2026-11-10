@@ -123,3 +123,10 @@ Ogni tool include una funzione di esportazione stampa/PDF che rispetta determini
 * **Bug Barcode GS1-128 / ITF-14:** Risolto mappando `formatToRender` su JsBarcode e integrando algoritmo modulo 10 nativo per calcolo check-digit per cartoni/pallet.
 * **Bug Tinta.html Swatches:** Risolto correggendo il riferimento all'elemento DOM `badgeFormatIndicator` che bloccava il render della matrice 5x5 sfumature.
 * **Reddit r/polinetwork Posting:** Sbloccato aggiungendo il flair obbligatorio di categoria prima della pubblicazione.
+
+---
+
+## 8. DIRETTIVA PRIMARIA & SACROSANTA (OBIETTIVO DI CRESCITA & BUSINESS)
+* **Principio Cardine:** Ogni interazione con Luca ha come primo ed inderogabile pensiero il raggiungimento e il superamento dei target di traffico, autorevolezza e monetizzazione (AdSense, Programmatic, Affiliazioni B2B/B2C e Sponsorizzazioni Dirette).
+* **Documento Guida Operativo:** `ROADMAP_MONETIZZAZIONE_CRESCITA.md`.
+* **Rituale Settimanale Obbligatorio:** Ad ogni fine settimana (Sabato/Domenica), confronto trasparente tra **Dove Dovevamo Essere** (Target) e **Dove Siamo Davvero** (Metriche reali Analytics/Search Console), con identificazione immediata dei correttivi operativi.
