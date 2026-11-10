@@ -30,6 +30,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PiastrellaFacile",
+      "url": "https://www.omnitoolslab.com/piastrelle",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "All",
+      "description": "Calcolatore professionale per piastrelle, pavimenti, calcolo sfrido, consumo colla adesiva e stucco per fughe con anteprima di posa e stampa A4.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto sfrido devo considerare per il mio pavimento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per una posa dritta standard in ambienti regolari si consiglia il 10% di scorta. Per posa diagonale o a correre (sfalsata) è consigliabile il 12-15%. Per ambienti irregolari con molti tagli e nicchie si raccomanda il 15-20%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si calcola la quantità di colla adesiva per piastrelle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il consumo varia da 2,5 a 6 kg/m² in base alla dimensione dei denti della spatola (da 6 mm a 12 mm). Per grandi formati (>60x60 cm) è prescritta la doppia spalmatura (fondo e piastrella) con un consumo medio di 6-8 kg/m²."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si stima il consumo di stucco per fughe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si applica la formula tecnica standard internazionale: (Larghezza + Lunghezza piastrella) / (Larghezza × Lunghezza) × Spessore × Larghezza fuga × 1.6 g/cm³. Più la piastrella è grande e la fuga sottile, minore sarà il consumo in kg/m²."
+          }
+        }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {

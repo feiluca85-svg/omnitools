@@ -56,12 +56,16 @@
 ## 3. Piano Operativo Giorno per Giorno (I Primi 30 Giorni di Rampa)
 
 ### Settimana 1: Consolidamento Tecnico, Search Console e Primi Backlink
-- **Lunedì**: Verifica indicizzazione completa su Google Search Console di tutte le 18 URL + Sitemap.
-- **Martedì**: Verifica schede A4 stampabili dei 6 tool Finance (mutuo, estinzione, pac, margine, risparmio, fire).
-- **Mercoledì**: Apertura account Awin / Tradedoubler / Amazon Associates / ManoMano Network per affiliazioni.
-- **Giovedì**: Community sniper: individuazione di 3 discussioni aperte su Reddit (`r/ItaliaPersonalFinance`, `r/DIY`, `r/commercialisti`) dove il tool risolve un dubbio specifico.
-- **Venerdì**: Verifica dei Core Web Vitals (LCP, CLS, INP) da Google PageSpeed per mantenere punteggio > 95/100.
-- **Weekend (Sabato/Domenica)**: **Check-in Settimanale 1** (confronto dati Vercel Analytics / Search Console con target tabella).
+- [x] **Giorno 1 (Oggi - Lunedì 10/11/2026)**:
+  - [x] Verifica DNS e reindirizzamenti su produzione Vercel (`omnitoolslab.com/piastrelle` -> HTTP 200).
+  - [x] Sitemap `sitemap.xml` aggiornata a 18 tool + legal con timestamp `2026-11-10`.
+  - [x] Aggiunta Schema.org `WebApplication` e `FAQPage` strutturati su `piastrelle.html` per catturare i Rich Snippet su Google.
+  - [x] Audit e test di risposta su produzione delle rotte `/piastrelle` e `/tile-calculator`.
+- [ ] **Giorno 2 (Martedì 11/11/2026)**: Verifica e collaudo schede A4 stampabili dei 6 tool Finance (mutuo, estinzione, pac, margine, risparmio, fire).
+- [ ] **Giorno 3 (Mercoledì 12/11/2026)**: Apertura / Configurazione account network affiliati (Amazon Associates, Awin, Tradedoubler).
+- [ ] **Giorno 4 (Giovedì 13/11/2026)**: Community sniper: individuazione di 3 discussioni aperte su Reddit (`r/ItaliaPersonalFinance`, `r/DIY`, `r/commercialisti`) dove il tool risolve un dubbio specifico.
+- [ ] **Giorno 5 (Venerdì 14/11/2026)**: Verifica dei Core Web Vitals (LCP, CLS, INP) da Google PageSpeed per mantenere punteggio > 95/100.
+- [ ] **Weekend (Sabato 15 / Domenica 16/11/2026)**: **1° Check-in Settimanale (W1)**: Confronto analitico Vercel vs Target (Target W1: 50-100 visitatori).
 
 ### Settimana 2: Monetizzazione Nativa & Integrazione Affiliazioni
 - **Lunedì**: Inserimento box dinamico "Materiali Consigliati" su `/piastrelle` e `/tinta` (link affiliati Leroy Merlin / Amazon).
