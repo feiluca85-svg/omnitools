@@ -45,3 +45,13 @@ Serve a:
 * **Bugfix Navigazione / Nuovo Tool Dropdown:** Aggiunto `piastrelle` all'interno di `NAV_TOOL_NAMES_I18N`, `TOOL_ICONS_JS` e `TOOLS_MAP` in `nav_header.py`, consentendo l'apertura immediata di tutti gli strumenti dal menu Nuovo Tool e dalla barra schede.
 * **Unità di Misura Duale (Metrico / Imperiale):** Aggiunto toggle rapido per passare da Metrico (`m`, `cm`, `mm`, `m²`) a Imperiale (`ft`, `in`, `sq ft`).
 * **Traduzioni a 6 Lingue Perfezionate:** Eliminate tutte le stringhe residue in italiano nei preset legno, bottoni, computo e dettagli fughe.
+
+### [2026-11-10 20:43] — Sitemap XML SEO Refresh
+* **File aggiornato:** `sitemap.xml`
+* **Data di modifica (lastmod):** Allineate tutte le URL a `2026-11-10`.
+* **Nuove URL verificate:** Inserita `/piastrelle` (priorità 0.9) e `/legal` (priorità 0.5) per Google Search Console.
+
+### [2026-11-10 20:53] — Risoluzione Traduzione Riquadro Sponsor B2B Partnership in Home
+* **File modificato:** `index.html`
+* **Causa del problema:** Nella funzione `applyTranslations()` di `index.html`, la riga che prelevava il dizionario per il banner sponsor B2B utilizzava `HUB_SPONSOR_I18N[lang]` anziché `HUB_SPONSOR_I18N[currentLang]`. Poiché `lang` non era un argomento della funzione, risultava `undefined` causando il fallback perenne a `HUB_SPONSOR_I18N.it`.
+* **Risoluzione & Verifica:** Sostituito con `HUB_SPONSOR_I18N[currentLang]`. Verificata l'applicazione corretta e istantanea di badge, testo disponibilità slot, titolo, descrizione e pulsante CTA in tutte le 6 lingue (Italiano, Inglese, Spagnolo, Francese, Tedesco e Portoghese).

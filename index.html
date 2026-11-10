@@ -1729,7 +1729,7 @@
                     cta: "Descobrir Espaços Parceiro"
                 }
             };
-            const hs = HUB_SPONSOR_I18N[lang] || HUB_SPONSOR_I18N.it;
+            const hs = HUB_SPONSOR_I18N[currentLang] || HUB_SPONSOR_I18N.it;
             if (document.getElementById('hubSponsorBadge')) document.getElementById('hubSponsorBadge').textContent = hs.badge;
             if (document.getElementById('hubSponsorAvail')) document.getElementById('hubSponsorAvail').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> ${hs.avail}`;
             if (document.getElementById('hubSponsorTitle')) document.getElementById('hubSponsorTitle').textContent = hs.title;
