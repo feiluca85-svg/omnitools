@@ -140,35 +140,54 @@ html_code = f"""<!DOCTYPE html>
                         </div>
                         <!-- Mode Pill Toggle -->
                         <div class="inline-flex p-0.5 rounded-xl bg-slate-100 border border-slate-200/80 text-xs font-bold">
-                            <button type="button" id="btnModeDims" onclick="setRoomMode('dims')" class="px-2.5 py-1 rounded-lg bg-white text-slate-800 shadow-2xs transition">L × W</button>
-                            <button type="button" id="btnModeDirect" onclick="setRoomMode('direct')" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 transition">m² Netti</button>
+                            <button type="button" id="btnModeDims" onclick="setRoomMode('dims')" class="px-2.5 py-1 rounded-lg bg-white text-slate-800 shadow-2xs transition">Dimensioni Stanza</button>
+                            <button type="button" id="btnModeDirect" onclick="setRoomMode('direct')" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 transition">Metri Quadri Netti</button>
                         </div>
                     </div>
                     
-                    <p id="secRoomDesc" class="text-xs text-slate-500">Inserisci le dimensioni dell'ambiente o direttamente i metri quadri netti.</p>
+                    <div class="flex items-center justify-between">
+                        <p id="secRoomDesc" class="text-xs text-slate-500">Inserisci le dimensioni dell'ambiente o direttamente i metri quadri netti.</p>
+                        <!-- Unit Switcher -->
+                        <div class="inline-flex p-0.5 rounded-xl bg-slate-100 border border-slate-200/80 text-[11px] font-bold">
+                            <button type="button" id="btnUnitMetric" onclick="setMeasurementUnit('metric')" class="px-2 py-0.5 rounded-lg bg-white text-slate-800 shadow-2xs transition">Metrico (m)</button>
+                            <button type="button" id="btnUnitImperial" onclick="setMeasurementUnit('imperial')" class="px-2 py-0.5 rounded-lg text-slate-500 hover:text-slate-900 transition">Imperial (ft)</button>
+                        </div>
+                    </div>
 
                     <!-- Dimensions Input Mode -->
                     <div id="dimsInputGroup" class="grid grid-cols-2 gap-3">
                         <div>
-                            <label id="lblLength" class="block text-xs font-bold text-slate-700 mb-1">Lunghezza Stanza (m)</label>
-                            <input type="number" id="inputLength" value="5.0" min="0.5" max="100" step="0.05" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblLength" class="block text-xs font-bold text-slate-700 mb-1">Lunghezza Stanza</label>
+                            <div class="relative">
+                                <input type="number" id="inputLength" value="5.0" min="0.5" max="300" step="0.05" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
+                                <span id="unitBadgeLen" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m</span>
+                            </div>
                         </div>
                         <div>
-                            <label id="lblWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Stanza (m)</label>
-                            <input type="number" id="inputWidth" value="4.0" min="0.5" max="100" step="0.05" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Stanza</label>
+                            <div class="relative">
+                                <input type="number" id="inputWidth" value="4.0" min="0.5" max="300" step="0.05" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
+                                <span id="unitBadgeWid" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Direct Area Input Mode (Hidden initially) -->
                     <div id="directInputGroup" class="hidden">
-                        <label id="lblNetSqm" class="block text-xs font-bold text-slate-700 mb-1">Superficie Netta (m²)</label>
-                        <input type="number" id="inputDirectSqm" value="20.0" min="0.5" max="5000" step="0.1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                        <label id="lblNetSqm" class="block text-xs font-bold text-slate-700 mb-1">Superficie Netta</label>
+                        <div class="relative">
+                            <input type="number" id="inputDirectSqm" value="20.0" min="0.5" max="50000" step="0.1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-12">
+                            <span id="unitBadgeArea" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m²</span>
+                        </div>
                     </div>
 
                     <!-- Openings Deduction (Doors / Windows / Pillars) -->
                     <div>
-                        <label id="lblOpenings" class="block text-[11px] font-bold text-slate-600 mb-1">Detrazione Porte / Aperture (m² opzionale)</label>
-                        <input type="number" id="inputOpenings" value="0" min="0" max="500" step="0.1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-700 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                        <label id="lblOpenings" class="block text-[11px] font-bold text-slate-600 mb-1">Detrazione Porte / Aperture (opzionale)</label>
+                        <div class="relative">
+                            <input type="number" id="inputOpenings" value="0" min="0" max="5000" step="0.1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-700 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-12">
+                            <span id="unitBadgeDeduct" class="absolute right-3 top-1.5 text-xs font-bold text-slate-400">m²</span>
+                        </div>
                     </div>
                 </div>
 
@@ -183,12 +202,12 @@ html_code = f"""<!DOCTYPE html>
 
                     <!-- Presets Pills -->
                     <div>
-                        <span id="lblTilePreset" class="block text-xs font-bold text-slate-700 mb-1.5">Formati Comuni</span>
+                        <span id="lblTilePreset" class="block text-xs font-bold text-slate-700 mb-1.5">Formati Standard</span>
                         <div class="flex flex-wrap gap-1.5">
                             <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">60 × 60 cm</button>
                             <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">30 × 60 cm</button>
                             <button type="button" onclick="setTilePreset(80, 80, 10)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">80 × 80 cm</button>
-                            <button type="button" onclick="setTilePreset(20, 120, 10)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">20 × 120 (Listoni)</button>
+                            <button type="button" onclick="setTilePreset(20, 120, 10)" id="btnPresetWood" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">20 × 120 (Listoni Legno)</button>
                             <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">20 × 20 cm</button>
                         </div>
                     </div>
@@ -196,22 +215,31 @@ html_code = f"""<!DOCTYPE html>
                     <!-- Custom Dimensions -->
                     <div class="grid grid-cols-3 gap-2.5">
                         <div>
-                            <label id="lblTileW" class="block text-[11px] font-bold text-slate-700 mb-1">Larghezza (cm)</label>
-                            <input type="number" id="tileWidth" value="60" min="5" max="300" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblTileW" class="block text-[11px] font-bold text-slate-700 mb-1">Larghezza</label>
+                            <div class="relative">
+                                <input type="number" id="tileWidth" value="60" min="5" max="300" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileW" class="absolute right-2 top-1.5 text-[11px] font-bold text-slate-400">cm</span>
+                            </div>
                         </div>
                         <div>
-                            <label id="lblTileH" class="block text-[11px] font-bold text-slate-700 mb-1">Altezza (cm)</label>
-                            <input type="number" id="tileHeight" value="60" min="5" max="300" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblTileH" class="block text-[11px] font-bold text-slate-700 mb-1">Altezza</label>
+                            <div class="relative">
+                                <input type="number" id="tileHeight" value="60" min="5" max="300" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileH" class="absolute right-2 top-1.5 text-[11px] font-bold text-slate-400">cm</span>
+                            </div>
                         </div>
                         <div>
-                            <label id="lblTileThick" class="block text-[11px] font-bold text-slate-700 mb-1">Spessore (mm)</label>
-                            <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblTileThick" class="block text-[11px] font-bold text-slate-700 mb-1">Spessore</label>
+                            <div class="relative">
+                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileThick" class="absolute right-2 top-1.5 text-[11px] font-bold text-slate-400">mm</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Layout Pattern & Waste Margin -->
                     <div>
-                        <label id="lblPattern" class="block text-xs font-bold text-slate-700 mb-1">Schema di Posa & Sfrido Tagli</label>
+                        <label id="lblPattern" class="block text-xs font-bold text-slate-700 mb-1">Schema di Posa & Sfrido</label>
                         <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                             <option value="10" selected id="optStraight">Posa Dritta Standard (+10% sfrido)</option>
                             <option value="12" id="optOffset">Posa Sfalsata / A Correre (+12% sfrido)</option>
@@ -228,8 +256,11 @@ html_code = f"""<!DOCTYPE html>
                     <!-- Packaging Info (Boxes) -->
                     <div class="grid grid-cols-2 gap-3 pt-1">
                         <div>
-                            <label id="lblBoxCoverage" class="block text-xs font-bold text-slate-700 mb-1">Mq per Scatola (m²)</label>
-                            <input type="number" id="boxCoverage" value="1.44" min="0.1" max="20" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblBoxCoverage" class="block text-xs font-bold text-slate-700 mb-1">Copertura per Scatola</label>
+                            <div class="relative">
+                                <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
+                                <span id="unitBadgeBoxCov" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m²</span>
+                            </div>
                         </div>
                         <div>
                             <label id="lblBoxPieces" class="block text-xs font-bold text-slate-700 mb-1">Pezzi per Scatola (opzionale)</label>
@@ -250,8 +281,11 @@ html_code = f"""<!DOCTYPE html>
                     <!-- Grout Width & Adhesive Notch Selection -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label id="lblGroutWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Fuga (mm)</label>
-                            <input type="number" id="groutWidth" value="2.0" min="0.5" max="20" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label id="lblGroutWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Fuga</label>
+                            <div class="relative">
+                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
+                                <span id="unitBadgeGroutW" class="absolute right-3 top-2 text-xs font-bold text-slate-400">mm</span>
+                            </div>
                         </div>
                         <div>
                             <label id="lblBagWeight" class="block text-xs font-bold text-slate-700 mb-1">Peso Sacco Colla (kg)</label>
@@ -279,7 +313,7 @@ html_code = f"""<!DOCTYPE html>
                     
                     <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">Distinta Materiali</span>
+                            <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">Distinta Materiali</span>
                             <h2 id="summaryTitle" class="text-base sm:text-lg font-black text-slate-900 mt-1">Computo per l'Acquisto</h2>
                         </div>
                         <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm">
@@ -297,7 +331,7 @@ html_code = f"""<!DOCTYPE html>
                                 <span id="valNetArea" class="text-base font-extrabold font-mono text-slate-800">20.00 m²</span>
                             </div>
                             <div>
-                                <span id="resGrossAreaLabel" class="text-[11px] font-extrabold text-amber-800 block">Totale con Sfrido</span>
+                                <span id="resGrossAreaLabel" class="text-[11px] font-extrabold text-amber-800 block">Totale da Ordinare (con sfrido)</span>
                                 <span id="valGrossArea" class="text-lg font-black font-mono text-amber-600">22.00 m²</span>
                             </div>
                         </div>
@@ -309,8 +343,8 @@ html_code = f"""<!DOCTYPE html>
                                 <span id="valBoxes" class="text-2xl font-black font-mono text-amber-700">16 Scatole</span>
                             </div>
                             <div class="flex items-center justify-between text-[11px] text-amber-800/80 mt-1 pt-1 border-t border-amber-200/60">
-                                <span id="valTotalSqmMade">Copertura effettiva: 23.04 m²</span>
-                                <span id="valTotalTiles">Totale pezzi: ~64</span>
+                                <span id="valTotalSqmMade">Copertura effettiva scatole: 23.04 m²</span>
+                                <span id="valTotalTiles">Pezzi Singoli Totali: ~64</span>
                             </div>
                         </div>
 
@@ -318,16 +352,16 @@ html_code = f"""<!DOCTYPE html>
                         <div class="grid grid-cols-2 gap-2">
                             <!-- Adhesive -->
                             <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
-                                <span id="resAdhesiveBagsLabel" class="text-[11px] font-bold text-slate-600 block">Sacchi Colla (25kg)</span>
+                                <span id="resAdhesiveBagsLabel" class="text-[11px] font-bold text-slate-600 block">Sacchi di Colla</span>
                                 <span id="valAdhesiveBags" class="text-xl font-black font-mono text-slate-900 mt-0.5 block">4 Sacchi</span>
-                                <span id="valAdhesiveKg" class="text-[10px] font-mono text-slate-500 mt-0.5 block">Totale: ~99 kg</span>
+                                <span id="valAdhesiveKg" class="text-[10px] font-mono text-slate-500 mt-0.5 block">Totale Colla Stimata: ~99 kg</span>
                             </div>
 
                             <!-- Grout -->
                             <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
-                                <span id="resGroutKgLabel" class="text-[11px] font-bold text-slate-600 block">Stucco per Fughe</span>
+                                <span id="resGroutKgLabel" class="text-[11px] font-bold text-slate-600 block">Stucco Fughe Necessario</span>
                                 <span id="valGroutKg" class="text-xl font-black font-mono text-slate-900 mt-0.5 block">1.5 kg</span>
-                                <span id="valGroutDetails" class="text-[10px] font-mono text-slate-500 mt-0.5 block">Fuga 2mm · 9mm spess.</span>
+                                <span id="valGroutDetails" class="text-[10px] font-mono text-slate-500 mt-0.5 block">Fuga 2mm · Spessore 9mm</span>
                             </div>
                         </div>
 
@@ -462,6 +496,85 @@ html_code = f"""<!DOCTYPE html>
         const TRANSLATIONS = {t_json_str};
         let currentLang = 'it';
         let currentRoomMode = 'dims'; // 'dims' or 'direct'
+        let currentUnitSystem = 'metric'; // 'metric' (m/cm/mm) or 'imperial' (ft/in)
+
+        function setMeasurementUnit(sys) {{
+            if (currentUnitSystem === sys) return;
+            currentUnitSystem = sys;
+            const btnM = document.getElementById('btnUnitMetric');
+            const btnI = document.getElementById('btnUnitImperial');
+
+            if (sys === 'metric') {{
+                btnM.className = "px-2 py-0.5 rounded-lg bg-white text-slate-800 shadow-2xs transition";
+                btnI.className = "px-2 py-0.5 rounded-lg text-slate-500 hover:text-slate-900 transition";
+                
+                // Convert values from imperial to metric
+                const l = (parseFloat(document.getElementById('inputLength').value) || 0) * 0.3048;
+                const w = (parseFloat(document.getElementById('inputWidth').value) || 0) * 0.3048;
+                const sq = (parseFloat(document.getElementById('inputDirectSqm').value) || 0) * 0.092903;
+                const ded = (parseFloat(document.getElementById('inputOpenings').value) || 0) * 0.092903;
+                const tw = (parseFloat(document.getElementById('tileWidth').value) || 0) * 2.54;
+                const th = (parseFloat(document.getElementById('tileHeight').value) || 0) * 2.54;
+                const tThick = (parseFloat(document.getElementById('tileThick').value) || 0) * 25.4;
+                const gw = (parseFloat(document.getElementById('groutWidth').value) || 0) * 25.4;
+                const boxCov = (parseFloat(document.getElementById('boxCoverage').value) || 0) * 0.092903;
+
+                document.getElementById('inputLength').value = l.toFixed(2);
+                document.getElementById('inputWidth').value = w.toFixed(2);
+                document.getElementById('inputDirectSqm').value = sq.toFixed(2);
+                document.getElementById('inputOpenings').value = ded.toFixed(2);
+                document.getElementById('tileWidth').value = Math.round(tw);
+                document.getElementById('tileHeight').value = Math.round(th);
+                document.getElementById('tileThick').value = Math.round(tThick);
+                document.getElementById('groutWidth').value = gw.toFixed(1);
+                document.getElementById('boxCoverage').value = boxCov.toFixed(2);
+
+                document.getElementById('unitBadgeLen').textContent = 'm';
+                document.getElementById('unitBadgeWid').textContent = 'm';
+                document.getElementById('unitBadgeArea').textContent = 'm²';
+                document.getElementById('unitBadgeDeduct').textContent = 'm²';
+                document.getElementById('unitBadgeTileW').textContent = 'cm';
+                document.getElementById('unitBadgeTileH').textContent = 'cm';
+                document.getElementById('unitBadgeTileThick').textContent = 'mm';
+                document.getElementById('unitBadgeGroutW').textContent = 'mm';
+                document.getElementById('unitBadgeBoxCov').textContent = 'm²';
+            }} else {{
+                btnI.className = "px-2 py-0.5 rounded-lg bg-white text-slate-800 shadow-2xs transition";
+                btnM.className = "px-2 py-0.5 rounded-lg text-slate-500 hover:text-slate-900 transition";
+
+                // Convert values from metric to imperial
+                const l = (parseFloat(document.getElementById('inputLength').value) || 0) / 0.3048;
+                const w = (parseFloat(document.getElementById('inputWidth').value) || 0) / 0.3048;
+                const sq = (parseFloat(document.getElementById('inputDirectSqm').value) || 0) / 0.092903;
+                const ded = (parseFloat(document.getElementById('inputOpenings').value) || 0) / 0.092903;
+                const tw = (parseFloat(document.getElementById('tileWidth').value) || 0) / 2.54;
+                const th = (parseFloat(document.getElementById('tileHeight').value) || 0) / 2.54;
+                const tThick = (parseFloat(document.getElementById('tileThick').value) || 0) / 25.4;
+                const gw = (parseFloat(document.getElementById('groutWidth').value) || 0) / 25.4;
+                const boxCov = (parseFloat(document.getElementById('boxCoverage').value) || 0) / 0.092903;
+
+                document.getElementById('inputLength').value = l.toFixed(1);
+                document.getElementById('inputWidth').value = w.toFixed(1);
+                document.getElementById('inputDirectSqm').value = sq.toFixed(1);
+                document.getElementById('inputOpenings').value = ded.toFixed(1);
+                document.getElementById('tileWidth').value = tw.toFixed(1);
+                document.getElementById('tileHeight').value = th.toFixed(1);
+                document.getElementById('tileThick').value = tThick.toFixed(2);
+                document.getElementById('groutWidth').value = gw.toFixed(2);
+                document.getElementById('boxCoverage').value = boxCov.toFixed(1);
+
+                document.getElementById('unitBadgeLen').textContent = 'ft';
+                document.getElementById('unitBadgeWid').textContent = 'ft';
+                document.getElementById('unitBadgeArea').textContent = 'sq ft';
+                document.getElementById('unitBadgeDeduct').textContent = 'sq ft';
+                document.getElementById('unitBadgeTileW').textContent = 'in';
+                document.getElementById('unitBadgeTileH').textContent = 'in';
+                document.getElementById('unitBadgeTileThick').textContent = 'in';
+                document.getElementById('unitBadgeGroutW').textContent = 'in';
+                document.getElementById('unitBadgeBoxCov').textContent = 'sq ft';
+            }}
+            calculateAll();
+        }}
 
         function setRoomMode(mode) {{
             currentRoomMode = mode;
@@ -485,12 +598,17 @@ html_code = f"""<!DOCTYPE html>
         }}
 
         function setTilePreset(w, h, th) {{
+            if (currentUnitSystem === 'imperial') {{
+                w = (w / 2.54).toFixed(1);
+                h = (h / 2.54).toFixed(1);
+                th = (th / 25.4).toFixed(2);
+            }}
             document.getElementById('tileWidth').value = w;
             document.getElementById('tileHeight').value = h;
             document.getElementById('tileThick').value = th;
             
             // Automatic estimation of coverage per box
-            const sqmPerTile = (w * h) / 10000;
+            const sqmPerTile = currentUnitSystem === 'metric' ? ((w * h) / 10000) : ((w * h) / 144);
             let pieces = 4;
             if (sqmPerTile > 0.5) pieces = 2;
             else if (sqmPerTile < 0.1) pieces = 25;
@@ -513,18 +631,21 @@ html_code = f"""<!DOCTYPE html>
         }}
 
         function calculateAll() {{
-            // 1. Calculate Net Area
-            let netArea = 0;
+            const isMetric = (currentUnitSystem === 'metric');
+            const areaUnit = isMetric ? 'm²' : 'sq ft';
+
+            // 1. Calculate Net Area in native selected unit
+            let rawNetArea = 0;
             if (currentRoomMode === 'dims') {{
                 const l = parseFloat(document.getElementById('inputLength').value) || 0;
                 const w = parseFloat(document.getElementById('inputWidth').value) || 0;
-                netArea = l * w;
+                rawNetArea = l * w;
             }} else {{
-                netArea = parseFloat(document.getElementById('inputDirectSqm').value) || 0;
+                rawNetArea = parseFloat(document.getElementById('inputDirectSqm').value) || 0;
             }}
 
-            const deductions = parseFloat(document.getElementById('inputOpenings').value) || 0;
-            netArea = Math.max(0, netArea - deductions);
+            const rawDeductions = parseFloat(document.getElementById('inputOpenings').value) || 0;
+            const netArea = Math.max(0, rawNetArea - rawDeductions);
 
             // 2. Waste Percentage
             let wastePct = 10;
@@ -539,51 +660,77 @@ html_code = f"""<!DOCTYPE html>
             const grossArea = netArea * (1 + (wastePct / 100));
 
             // 4. Boxes & Pieces
-            const boxCov = parseFloat(document.getElementById('boxCoverage').value) || 1.44;
+            const boxCov = parseFloat(document.getElementById('boxCoverage').value) || (isMetric ? 1.44 : 15.5);
             const piecesPerBox = parseInt(document.getElementById('boxPieces').value) || 4;
             const boxesNeeded = boxCov > 0 ? Math.ceil(grossArea / boxCov) : 0;
             const totalCoverageMade = boxesNeeded * boxCov;
             const totalPieces = boxesNeeded * piecesPerBox;
 
             // 5. Adhesive (Colla)
-            const adhesiveRate = parseFloat(document.getElementById('selectAdhesive').value) || 4.5;
+            const adhesiveRateKgPerSqm = parseFloat(document.getElementById('selectAdhesive').value) || 4.5;
             const bagWt = parseFloat(document.getElementById('bagWeight').value) || 25;
-            const totalAdhesiveKg = grossArea * adhesiveRate;
+            // Convert to sqm if imperial for formula
+            const grossAreaSqm = isMetric ? grossArea : (grossArea * 0.092903);
+            const netAreaSqm = isMetric ? netArea : (netArea * 0.092903);
+
+            const totalAdhesiveKg = grossAreaSqm * adhesiveRateKgPerSqm;
             const totalAdhesiveBags = bagWt > 0 ? Math.ceil(totalAdhesiveKg / bagWt) : 0;
 
             // 6. Grout (Stucco Fughe) ISO Formula: ((A + B) / (A * B)) * C * D * 1.6
-            const tileW = parseFloat(document.getElementById('tileWidth').value) || 60;
-            const tileH = parseFloat(document.getElementById('tileHeight').value) || 60;
-            const tileThick = parseFloat(document.getElementById('tileThick').value) || 9; // mm
-            const groutW = parseFloat(document.getElementById('groutWidth').value) || 2.0; // mm
+            let tileW_cm = parseFloat(document.getElementById('tileWidth').value) || (isMetric ? 60 : 24);
+            let tileH_cm = parseFloat(document.getElementById('tileHeight').value) || (isMetric ? 60 : 24);
+            let tileThick_mm = parseFloat(document.getElementById('tileThick').value) || (isMetric ? 9 : 0.35);
+            let groutW_mm = parseFloat(document.getElementById('groutWidth').value) || (isMetric ? 2.0 : 0.08);
+
+            if (!isMetric) {{
+                tileW_cm = tileW_cm * 2.54;
+                tileH_cm = tileH_cm * 2.54;
+                tileThick_mm = tileThick_mm * 25.4;
+                groutW_mm = groutW_mm * 25.4;
+            }}
 
             let groutRateKgPerSqm = 0;
-            if (tileW > 0 && tileH > 0) {{
-                // ((A+B)/(A*B)) * C * D * 1.6  (A and B in cm, C and D in mm)
-                groutRateKgPerSqm = ((tileW + tileH) / (tileW * tileH)) * tileThick * groutW * 1.6;
+            if (tileW_cm > 0 && tileH_cm > 0) {{
+                groutRateKgPerSqm = ((tileW_cm + tileH_cm) / (tileW_cm * tileH_cm)) * tileThick_mm * groutW_mm * 1.6;
             }}
-            const totalGroutKg = Math.max(0.5, (netArea * groutRateKgPerSqm));
+            const totalGroutKg = Math.max(0.5, (netAreaSqm * groutRateKgPerSqm));
 
             // Update DOM
-            document.getElementById('valNetArea').textContent = `${{netArea.toFixed(2)}} m²`;
-            document.getElementById('valGrossArea').textContent = `${{grossArea.toFixed(2)}} m²`;
+            document.getElementById('valNetArea').textContent = `${{netArea.toFixed(2)}} ${{areaUnit}}`;
+            document.getElementById('valGrossArea').textContent = `${{grossArea.toFixed(2)}} ${{areaUnit}}`;
             
             const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
-            const boxSuffix = currentLang === 'en' ? 'Boxes' : (currentLang === 'es' ? 'Cajas' : (currentLang === 'fr' ? 'Cartons' : (currentLang === 'de' ? 'Pakete' : 'Scatole')));
+            const boxSuffix = currentLang === 'en' ? 'Boxes' : (currentLang === 'es' ? 'Cajas' : (currentLang === 'fr' ? 'Cartons' : (currentLang === 'de' ? 'Pakete' : (currentLang === 'pt' ? 'Caixas' : 'Scatole'))));
             document.getElementById('valBoxes').textContent = `${{boxesNeeded}} ${{boxSuffix}}`;
             
-            document.getElementById('valTotalSqmMade').textContent = `${{t.label_box_coverage ? t.label_box_coverage.split('(')[0] : 'Copertura'}}: ${{totalCoverageMade.toFixed(2)}} m²`;
-            document.getElementById('valTotalTiles').textContent = `${{t.res_total_tiles || 'Totale pezzi'}}: ~${{totalPieces}}`;
+            document.getElementById('valTotalSqmMade').textContent = `${{t.res_total_coverage || 'Copertura effettiva scatole'}}: ${{totalCoverageMade.toFixed(2)}} ${{areaUnit}}`;
+            document.getElementById('valTotalTiles').textContent = `${{t.res_total_tiles || 'Pezzi Singoli Totali'}}: ~${{totalPieces}}`;
 
             const bagSuffix = currentLang === 'en' ? 'Bags' : (currentLang === 'es' ? 'Sacos' : (currentLang === 'fr' ? 'Sacs' : (currentLang === 'de' ? 'Säcke' : 'Sacchi')));
             document.getElementById('valAdhesiveBags').textContent = `${{totalAdhesiveBags}} ${{bagSuffix}}`;
-            document.getElementById('valAdhesiveKg').textContent = `Totale: ~${{Math.round(totalAdhesiveKg)}} kg`;
+            
+            const adhLabel = t.res_adhesive_total || 'Totale Colla Stimata';
+            document.getElementById('valAdhesiveKg').textContent = `${{adhLabel}}: ~${{Math.round(totalAdhesiveKg)}} kg`;
 
             document.getElementById('valGroutKg').textContent = `${{totalGroutKg.toFixed(1)}} kg`;
-            document.getElementById('valGroutDetails').textContent = `Fuga ${{groutW}}mm · ${{tileThick}}mm spess.`;
+            
+            const groutDetTmpl = t.res_grout_details || 'Fuga {{grout}} · Spessore {{thick}}';
+            const groutStr = isMetric ? `${{groutW_mm.toFixed(1)}}mm` : `${{(groutW_mm/25.4).toFixed(2)}}\\''`;
+            const thickStr = isMetric ? `${{tileThick_mm.toFixed(0)}}mm` : `${{(tileThick_mm/25.4).toFixed(2)}}\\''`;
+            document.getElementById('valGroutDetails').textContent = groutDetTmpl.replace('{{grout}}', groutStr).replace('{{thick}}', thickStr);
+
+            // Update Pattern Preview Badge
+            const badgeMap = {{
+                '10': t.preview_badge_straight || 'Dritta (+10%)',
+                '12': t.preview_badge_offset || 'Sfalsata (+12%)',
+                '15': t.preview_badge_diagonal || 'Diagonale (+15%)',
+                '20': t.preview_badge_herringbone || 'Spina di Pesce (+20%)',
+                'custom': t.preview_badge_custom || 'Personalizzata'
+            }};
+            document.getElementById('previewPatternBadge').textContent = badgeMap[patternVal] || `${{wastePct}}%`;
 
             // Draw SVG Preview
-            renderPatternSvg(patternVal, tileW, tileH);
+            renderPatternSvg(patternVal, tileW_cm, tileH_cm);
         }}
 
         function renderPatternSvg(pattern, tw, th) {{
@@ -629,16 +776,18 @@ html_code = f"""<!DOCTYPE html>
         }}
 
         function copyMaterialsList() {{
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
             const net = document.getElementById('valNetArea').textContent;
             const gross = document.getElementById('valGrossArea').textContent;
             const boxes = document.getElementById('valBoxes').textContent;
             const adhesive = document.getElementById('valAdhesiveBags').textContent + ' (' + document.getElementById('valAdhesiveKg').textContent + ')';
             const grout = document.getElementById('valGroutKg').textContent;
 
-            const text = `📋 DISTINTA ACQUISTO PIASTRELLE (OmniTools Lab):\\n- Superficie Netta: ${{net}}\\n- Da Ordinare (con sfrido): ${{gross}}\\n- Scatole Piastrelle: ${{boxes}}\\n- Colla / Adesivo: ${{adhesive}}\\n- Stucco Fughe: ${{grout}}\\nGenerato su: https://www.omnitoolslab.com/piastrelle`;
+            const text = `📋 ${{t.summary_title || 'DISTINTA ACQUISTO PIASTRELLE'}} (OmniTools Lab):\\n- ${{t.res_net_area || 'Superficie Netta'}}: ${{net}}\\n- ${{t.res_gross_area || 'Da Ordinare'}}: ${{gross}}\\n- ${{t.res_boxes || 'Scatole'}}: ${{boxes}}\\n- ${{t.res_adhesive_bags || 'Colla'}}: ${{adhesive}}\\n- ${{t.res_grout_kg || 'Stucco Fughe'}}: ${{grout}}\\nGenerato su: https://www.omnitoolslab.com/piastrelle`;
 
             navigator.clipboard.writeText(text).then(() => {{
                 const toast = document.getElementById('copyToast');
+                toast.textContent = t.copied_msg || '✓ Distinta copiata negli appunti!';
                 toast.classList.remove('hidden');
                 setTimeout(() => toast.classList.add('hidden'), 2500);
             }});
@@ -660,8 +809,8 @@ html_code = f"""<!DOCTYPE html>
 
             document.getElementById('secRoomTitle').textContent = t.sec_room_title;
             document.getElementById('secRoomDesc').textContent = t.sec_room_desc;
-            document.getElementById('btnModeDims').textContent = t.mode_dimensions.split('(')[0].trim();
-            document.getElementById('btnModeDirect').textContent = t.mode_direct_sqm.split('(')[0].trim();
+            document.getElementById('btnModeDims').textContent = t.mode_dimensions;
+            document.getElementById('btnModeDirect').textContent = t.mode_direct_sqm;
             document.getElementById('lblLength').textContent = t.label_length;
             document.getElementById('lblWidth').textContent = t.label_width;
             document.getElementById('lblNetSqm').textContent = t.label_net_sqm;
@@ -670,6 +819,9 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('secTileTitle').textContent = t.sec_tile_title;
             document.getElementById('secTileDesc').textContent = t.sec_tile_desc;
             document.getElementById('lblTilePreset').textContent = t.label_tile_preset;
+            if (document.getElementById('btnPresetWood') && t.preset_wood) {{
+                document.getElementById('btnPresetWood').textContent = t.preset_wood;
+            }}
             document.getElementById('lblTileW').textContent = t.label_tile_w;
             document.getElementById('lblTileH').textContent = t.label_tile_h;
             document.getElementById('lblTileThick').textContent = t.label_tile_thick;
@@ -680,6 +832,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('optDiagonal').textContent = t.pattern_diagonal;
             document.getElementById('optHerringbone').textContent = t.pattern_herringbone;
             document.getElementById('optCustom').textContent = t.pattern_custom;
+            document.getElementById('lblCustomWaste').textContent = t.label_custom_waste || t.pattern_custom;
 
             document.getElementById('lblBoxCoverage').textContent = t.label_box_coverage;
             document.getElementById('lblBoxPieces').textContent = t.label_box_pieces;
@@ -694,6 +847,7 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('notchMedium').textContent = t.notch_medium;
             document.getElementById('notchLarge').textContent = t.notch_large;
 
+            document.getElementById('badgeBom').textContent = t.badge_bom || 'Distinta Materiali';
             document.getElementById('summaryTitle').textContent = t.summary_title;
             document.getElementById('resNetAreaLabel').textContent = t.res_net_area;
             document.getElementById('resGrossAreaLabel').textContent = t.res_gross_area;
@@ -705,6 +859,10 @@ html_code = f"""<!DOCTYPE html>
             document.getElementById('btnCopyList').textContent = t.btn_copy_list;
             document.getElementById('btnPrint').textContent = t.btn_print;
             document.getElementById('previewTitle').textContent = t.preview_title;
+
+            if (document.getElementById('faqTitle') && t.faq_main_title) {{
+                document.getElementById('faqTitle').textContent = t.faq_main_title;
+            }}
 
             // FAQs
             for (let i = 1; i <= 5; i++) {{
@@ -735,8 +893,11 @@ html_code = f"""<!DOCTYPE html>
         }});
     </script>
 
-    {header_js}
-    {footer_js}
+    <!-- Header & Footer JS -->
+    <script>
+        {header_js}
+        {footer_js}
+    </script>
 
 </body>
 </html>
@@ -746,4 +907,4 @@ output_path = os.path.join(cur_dir, "piastrelle.html")
 with open(output_path, "w", encoding="utf-8") as f:
     f.write(html_code)
 
-print("SUCCESS: piastrelle.html generated perfectly!")
+print("SUCCESS: piastrelle.html generated with perfect translations, dual unit system and proper script tags!")

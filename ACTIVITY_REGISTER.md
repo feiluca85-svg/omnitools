@@ -39,3 +39,9 @@ Serve a:
   3. `index.html`: Inserimento card `piastrelle` in OmniBuilding, aggiornamento contatori a 18 (6 Building, 6 Graph, 6 Finance).
   4. `vercel.json` & `sitemap.xml`: Aggiunta rotte `/piastrelle`, `/pavimenti`, `/tile-calculator`.
   5. `PROJECT_MEMORY.md`: Aggiornamento conteggio e documentazione.
+
+### [2026-11-10 20:40] — Bugfix & Polish per PiastrellaFacile (Tool #18)
+* **Bugfix Testo a Fondo Pagina:** Risolto bug di rendering dello script JS (mancavano i tag di apertura/chiusura `<script>` per `{header_js}` e `{footer_js}` che facevano stampare il codice JS grezzo a fondo pagina).
+* **Bugfix Navigazione / Nuovo Tool Dropdown:** Aggiunto `piastrelle` all'interno di `NAV_TOOL_NAMES_I18N`, `TOOL_ICONS_JS` e `TOOLS_MAP` in `nav_header.py`, consentendo l'apertura immediata di tutti gli strumenti dal menu Nuovo Tool e dalla barra schede.
+* **Unità di Misura Duale (Metrico / Imperiale):** Aggiunto toggle rapido per passare da Metrico (`m`, `cm`, `mm`, `m²`) a Imperiale (`ft`, `in`, `sq ft`).
+* **Traduzioni a 6 Lingue Perfezionate:** Eliminate tutte le stringhe residue in italiano nei preset legno, bottoni, computo e dettagli fughe.
