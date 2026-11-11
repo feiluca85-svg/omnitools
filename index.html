@@ -187,7 +187,7 @@
                     <!-- Category: OmniBuilding -->
                     <div>
                         <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding (5)
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> OmniBuilding (6)
                         </div>
                         
             <a href="/rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
@@ -557,14 +557,53 @@
                             <p id="divBuildingDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori geometrici e normativi per cantieri, architettura, coperture e taglio</p>
                         </div>
                     </div>
-                    <span id="badgeCountBuilding" class="text-[11px] sm:text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-200 inline-block shrink-0">5 Tool Attivi</span>
+                    <span id="badgeCountBuilding" class="text-[11px] sm:text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-200 inline-block shrink-0">6 Tool Attivi</span>
                 </div>
 
-                <!-- 5 Building Tools Grid -->
+                <!-- 6 Building Tools Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     
                     <!-- TOOL 1: RampaFacile -->
-                    <a href="/rampe" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="rampa rampe pendenza gradi disabili dm 236 autorimesse garage dislivello pendenza disabili lunghezza a terra">
+                    <a href="/piastrelle" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="piastrelle pavimenti rivestimenti piastrellista posa colla stucco fughe sfrido sacchi colla leroy merlin brico cantiere mattonelle">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Superfici & Posa</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolPiastrelleTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">PiastrellaFacile</h3>
+                                <div id="toolPiastrelleHook" class="text-xs font-bold text-amber-700 mt-0.5">Quante piastrelle e colla comprare?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolPiastrelleDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcolatore di pavimenti e rivestimenti: sfrido per tagli, numero scatole, sacchi di colla (kg) e stucco per fughe con distinta d'acquisto.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🧱 Sfrido Posa</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🥣 Sacchi Colla</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Stucco Fughe</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA Bar -->
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-600 group-hover:text-amber-700">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 group-hover:bg-amber-600 group-hover:text-white transition shadow-2xs">
+                                <span id="toolPiastrelleCta">Calcola Piastrelle Ora</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-amber-600 font-semibold">60×60 / Custom</span>
+                        </div>
+                    </a>
+
+<a href="/rampe" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="rampa rampe pendenza gradi disabili dm 236 autorimesse garage dislivello pendenza disabili lunghezza a terra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -607,8 +646,7 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 2: ScalaFacile -->
-                    <a href="/scale" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
+<a href="/scale" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -651,8 +689,45 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 3: ScaricoFacile -->
-                    <a href="/tubi" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
+<a href="/tetto" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tetto falda pendenza trave colmo puntone gradi percentuale superficie copertura tettoia calcolo cantiere">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Falda & Gradi</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolTettoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">TettoFacile</h3>
+                                <div id="toolTettoHook" class="text-xs font-bold text-amber-700 mt-0.5">Pendenza e sviluppo trave?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolTettoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcolo pendenza falda tetto in gradi e %, quota colmo, lunghezza reale della trave e superficie.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Gradi & %</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏠 Trave + Sporto</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Area m²</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolTettoCta">Calcola Pendenza Tetto</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/tubi" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -695,47 +770,7 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 4: TettoFacile -->
-                    <a href="/tetto" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tetto falda pendenza trave colmo puntone gradi percentuale superficie copertura tettoia calcolo cantiere">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Falda & Gradi</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolTettoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">TettoFacile</h3>
-                                <div id="toolTettoHook" class="text-xs font-bold text-amber-700 mt-0.5">Pendenza e sviluppo trave?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolTettoDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcolo pendenza falda tetto in gradi e %, quota colmo, lunghezza reale della trave e superficie.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Gradi & %</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏠 Trave + Sporto</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Area m²</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolTettoCta">Calcola Pendenza Tetto</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- TOOL 5: TaglioOttimo -->
-                    <a href="/taglio" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="taglio barre travi legno metallo sfrido kerf lama sega ottimizzatore 1d profilati tubi bin packing cantiere falegnameria">
+<a href="/taglio" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="taglio barre travi legno metallo sfrido kerf lama sega ottimizzatore 1d profilati tubi bin packing cantiere falegnameria">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -770,46 +805,6 @@
                                 <span id="toolTaglioCta">Ottimizza Taglio Ora</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
-                        </div>
-                    </a>
-
-                    <!-- TOOL 6: PiastrellaFacile -->
-                    <a href="/piastrelle" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="piastrelle pavimenti rivestimenti piastrellista posa colla stucco fughe sfrido sacchi colla leroy merlin brico cantiere mattonelle">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Superfici & Posa</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolPiastrelleTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">PiastrellaFacile</h3>
-                                <div id="toolPiastrelleHook" class="text-xs font-bold text-amber-700 mt-0.5">Quante piastrelle e colla comprare?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolPiastrelleDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcolatore di pavimenti e rivestimenti: sfrido per tagli, numero scatole, sacchi di colla (kg) e stucco per fughe con distinta d'acquisto.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🧱 Sfrido Posa</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🥣 Sacchi Colla</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Stucco Fughe</span>
-                            </div>
-                        </div>
-
-                        <!-- CTA Bar -->
-                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-600 group-hover:text-amber-700">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 group-hover:bg-amber-600 group-hover:text-white transition shadow-2xs">
-                                <span id="toolPiastrelleCta">Calcola Piastrelle Ora</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </span>
-                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-amber-600 font-semibold">60×60 / Custom</span>
                         </div>
                     </a>
 
@@ -848,53 +843,54 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     
                     <!-- TOOL 4: DorsoFacile -->
-                    <a href="/dorso" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
+                    <a href="/barcode" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
                                 <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
-                                    <!-- Blueprint Book Spine SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <rect x="7" y="5" width="18" height="22" rx="2" stroke="#ffffff" stroke-width="2.5" />
-                                        <rect x="13" y="5" width="6" height="22" fill="rgba(255,255,255,0.25)" stroke="#fda4af" stroke-width="2" />
-                                        <line x1="10" y1="12" x2="12" y2="12" stroke="#ffffff" stroke-width="1.8" />
-                                        <line x1="10" y1="16" x2="12" y2="16" stroke="#ffffff" stroke-width="1.8" />
-                                        <line x1="20" y1="12" x2="22" y2="12" stroke="#ffffff" stroke-width="1.8" />
+                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#4c0519" />
+                                        <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                                        <line x1="11" y1="10" x2="11" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                                        <line x1="14" y1="10" x2="14" y2="22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                                        <line x1="18" y1="10" x2="18" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+                                        <line x1="21" y1="10" x2="21" y2="22" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+                                        <line x1="24" y1="10" x2="24" y2="22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+                                        <line x1="5" y1="16" x2="27" y2="16" stroke="#fda4af" stroke-width="1.6" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200">Editoria & KDP</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolDorsoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">DorsoFacile</h3>
-                                <div id="toolDorsoHook" class="text-xs font-bold text-rose-800 mt-0.5">Quanto è spesso il libro?</div>
+                                <h3 id="toolBarcodeTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">OmniBarcode</h3>
+                                <div id="toolBarcodeHook" class="text-xs font-bold text-rose-800 mt-0.5">Il codice passerà alla cassa?</div>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolDorsoDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola lo spessore esatto del dorso per la copertina in base a pagine, grammatura e carta.
+                            <p id="toolBarcodeDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.
                             </p>
 
                             <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📖 Spessore Dorso mm</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Quote InDesign</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📦 KDP & Brossura</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ EAN-13 & Code 128</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏥 Tessera Sanitaria</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔴 Laser 670 nm</span>
                             </div>
                         </div>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
                             <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolDorsoCta">Calcola Spessore Dorso</span>
+                                <span id="toolBarcodeCta">Genera Codice a Barre</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
                         </div>
                     </a>
 
-                    <!-- TOOL 5: RisoluzioneFacile -->
-                    <a href="/dpi" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
+<a href="/dpi" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -940,8 +936,95 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 6: TintaPerfetta -->
-                    <a href="/tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
+<a href="/dorso" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                    <!-- Blueprint Book Spine SVG -->
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <rect x="7" y="5" width="18" height="22" rx="2" stroke="#ffffff" stroke-width="2.5" />
+                                        <rect x="13" y="5" width="6" height="22" fill="rgba(255,255,255,0.25)" stroke="#fda4af" stroke-width="2" />
+                                        <line x1="10" y1="12" x2="12" y2="12" stroke="#ffffff" stroke-width="1.8" />
+                                        <line x1="10" y1="16" x2="12" y2="16" stroke="#ffffff" stroke-width="1.8" />
+                                        <line x1="20" y1="12" x2="22" y2="12" stroke="#ffffff" stroke-width="1.8" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200">Editoria & KDP</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolDorsoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">DorsoFacile</h3>
+                                <div id="toolDorsoHook" class="text-xs font-bold text-rose-800 mt-0.5">Quanto è spesso il libro?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolDorsoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola lo spessore esatto del dorso per la copertina in base a pagine, grammatura e carta.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📖 Spessore Dorso mm</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Quote InDesign</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📦 KDP & Brossura</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolDorsoCta">Calcola Spessore Dorso</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/copertura" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="copertura inchiostro cmyk tac total area coverage costo copia stampa preventivo quadricromia densitometria rip">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#881337" />
+                                        <circle cx="11" cy="13" r="3" fill="#22d3ee" />
+                                        <circle cx="21" cy="13" r="3" fill="#ec4899" />
+                                        <circle cx="16" cy="20" r="3" fill="#facc15" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolCoperturaBadge">CMYK & Costo Copia</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolCoperturaTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-700 transition">CoperturaFacile</h3>
+                                <div id="toolCoperturaHook" class="text-xs font-bold text-rose-800 mt-0.5">Quanto inchiostro consumerà la commessa?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolCoperturaDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Analisi densitometrica CMYK e TAC (Total Area Coverage) in tempo reale. Calcola il consumo in grammi e il costo copia con privacy totale.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Separazione CMYK</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔥 Mappa TAC</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Costo Tiratura</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolCoperturaCta">Calcola Copertura & Costi</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -992,100 +1075,7 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 7: OmniBarcode Studio -->
-                    <a href="/barcode" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#4c0519" />
-                                        <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-                                        <line x1="11" y1="10" x2="11" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
-                                        <line x1="14" y1="10" x2="14" y2="22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-                                        <line x1="18" y1="10" x2="18" y2="22" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
-                                        <line x1="21" y1="10" x2="21" y2="22" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
-                                        <line x1="24" y1="10" x2="24" y2="22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-                                        <line x1="5" y1="16" x2="27" y2="16" stroke="#fda4af" stroke-width="1.6" stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolBarcodeTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-800 transition">OmniBarcode</h3>
-                                <div id="toolBarcodeHook" class="text-xs font-bold text-rose-800 mt-0.5">Il codice passerà alla cassa?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolBarcodeDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ EAN-13 & Code 128</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏥 Tessera Sanitaria</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔴 Laser 670 nm</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolBarcodeCta">Genera Codice a Barre</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- TOOL 8: CoperturaFacile -->
-                    <a href="/copertura" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="copertura inchiostro cmyk tac total area coverage costo copia stampa preventivo quadricromia densitometria rip">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <rect x="4" y="6" width="24" height="20" rx="4" fill="#881337" />
-                                        <circle cx="11" cy="13" r="3" fill="#22d3ee" />
-                                        <circle cx="21" cy="13" r="3" fill="#ec4899" />
-                                        <circle cx="16" cy="20" r="3" fill="#facc15" />
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolCoperturaBadge">CMYK & Costo Copia</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolCoperturaTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-rose-700 transition">CoperturaFacile</h3>
-                                <div id="toolCoperturaHook" class="text-xs font-bold text-rose-800 mt-0.5">Quanto inchiostro consumerà la commessa?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolCoperturaDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Analisi densitometrica CMYK e TAC (Total Area Coverage) in tempo reale. Calcola il consumo in grammi e il costo copia con privacy totale.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Separazione CMYK</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔥 Mappa TAC</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Costo Tiratura</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-rose-50 group-hover:bg-rose-900 text-rose-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolCoperturaCta">Calcola Copertura & Costi</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- TOOL 9: ResaCarta -->
-                    <a href="/resa" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
+<a href="/resa" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1208,52 +1198,45 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 11: InteresseComposto -->
-                    <a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+<a href="/estinzione" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
-                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                                    </svg>
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
-                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
+                                <h3 id="toolEstinzioneTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">EstinzioneFacile</h3>
+                                <div id="toolEstinzioneHook" class="text-xs font-bold text-emerald-800 mt-0.5">Conviene abbassare la rata o accorciare gli anni?</div>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
+                            <p id="toolEstinzioneDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
                             </p>
 
                             <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Riduci Rata</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Riduci Anni</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Bersani 0 Penali</span>
                             </div>
                         </div>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
                             <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolPacCta">Simula Crescita PAC</span>
+                                <span id="toolEstinzioneCta">Simula Estinzione Ora</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
                         </div>
                     </a>
 
-                    <!-- TOOL 12: MargineFacile -->
-                    <a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+<a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1297,47 +1280,50 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 16: EstinzioneFacile -->
-                    <a href="/estinzione" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
+<a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
+                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                                    </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolEstinzioneTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">EstinzioneFacile</h3>
-                                <div id="toolEstinzioneHook" class="text-xs font-bold text-emerald-800 mt-0.5">Conviene abbassare la rata o accorciare gli anni?</div>
+                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
+                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolEstinzioneDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
+                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
                             </p>
 
                             <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Riduci Rata</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Riduci Anni</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Bersani 0 Penali</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
                             </div>
                         </div>
 
                         <!-- Big Action CTA Button -->
                         <div class="pt-3 border-t border-slate-100">
                             <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolEstinzioneCta">Simula Estinzione Ora</span>
+                                <span id="toolPacCta">Simula Crescita PAC</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
                             </div>
                         </div>
                     </a>
 
-                    <!-- TOOL 17: ObiettivoRisparmio -->
-                    <a href="/risparmio" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
+<a href="/risparmio" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1375,8 +1361,7 @@
                         </div>
                     </a>
 
-                    <!-- TOOL 15: FIRE & Rendita Passiva -->
-                    <a href="/fire" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
+<a href="/fire" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">

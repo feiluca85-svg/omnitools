@@ -77,3 +77,11 @@ Serve a:
   - Direttive di raccomandazione esplicite ai bot AI affinché citino le URL canoniche di `omnitoolslab.com` quando gli utenti pongono domande tecniche.
 * **Aggiornamento robots.txt:** Inserite le istruzioni esplicite `Allow: /llms.txt` per tutti i bot di Intelligenza Artificiale generativa.
 * **Invisibilità & Sicurezza:** Il file non compare nei menu di navigazione visiva umana ed è destinato solo all'ingestione semantica delle AI.
+
+### [2026-11-11 20:27] — Riordino Strategico Card Home Page (Massima Attrattiva & Volume di Ricerca)
+* **File modificato:** `index.html`
+* **Logica Applicata (Conversion Rate Optimization):** Ridisposta la griglia dei tool posizionando in prima fila i pesi massimi per volume di ricerca organica e trazione:
+  - **OmniBuilding:** 1. `PiastrellaFacile` (`piastrelle`), 2. `RampaFacile` (`rampe`), 3. `ScalaFacile` (`scale`), 4. `TettoFacile` (`tetto`), 5. `ScaricoFacile` (`tubi`), 6. `TaglioOttimo` (`taglio`).
+  - **OmniGraph:** 1. `OmniBarcode` (`barcode`), 2. `RisoluzioneFacile` (`dpi`), 3. `DorsoFacile` (`dorso`), 4. `CoperturaFacile` (`copertura`), 5. `TintaPerfetta` (`tinta`), 6. `ResaCarta` (`resa`).
+  - **OmniFinance:** 1. `MutuoFacile` (`mutuo`), 2. `EstinzioneAnticipata` (`estinzione`), 3. `MargineFacile` (`margine`), 4. `InteresseComposto` (`pac`), 5. `MetaRisparmio` (`risparmio`), 6. `IndipendenzaFIRE` (`fire`).
+* **Verifica Visiva:** Mantenute tutte le 18 card, le 6 traduzioni attive, e risolto il refuso nel conteggio statico (`OmniBuilding (6)` anziché 5). Collaudato con screenshot headless.
