@@ -874,224 +874,195 @@
             </div>
         </section>
 
-        <!-- Mode Selector -->
-        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
-            <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center">
-                📏 Calcola Pendenza
-            </button>
-            <button id="modeReverseBtn" onclick="switchMode('reverse')" class="flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center">
-                📐 Calcola Spazio
-            </button>
-        </div>
+        <!-- Calculation Card (Unified OmniBuilding Architecture like TubiFacili) -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
 
-        <!-- Calculator Layout -->
-        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-stretch">
-            
-            <!-- RESULTS & VISUAL COLUMN (IN CIMA SU MOBILE) -->
-            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 flex flex-col justify-between space-y-2.5 sm:space-y-4">
-                
-                <!-- Compliance Badge (Semaforo Normativa) -->
-                <div id="complianceCard" class="p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border">
-                    <div class="flex items-start gap-2.5 sm:gap-3">
-                        <div id="statusIcon" class="w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold">
-                            ✓
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center justify-between gap-1">
-                                <h3 id="statusTitle" class="font-bold text-sm sm:text-base tracking-tight">Pendenza a Norma</h3>
-                                <span id="statusTag" class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Accessibile</span>
-                            </div>
-                            <p id="statusDesc" class="text-[11px] sm:text-xs mt-0.5 leading-snug">
-                                Conforme per disabili e carrozzine secondo le linee guida.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3 Numerical Output Cards -->
-                <div class="grid grid-cols-3 gap-2 sm:gap-3">
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colSlopeLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Pendenza</span>
-                        <div id="slopePercent" class="text-xl sm:text-3xl font-extrabold text-blue-600 tracking-tight">6.0%</div>
-                        <span id="slopeRatio" class="text-[10px] sm:text-xs font-semibold text-slate-700 block mt-0.5">1 : 16.7</span>
-                    </div>
-
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colAngleLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Angolo</span>
-                        <div id="slopeDegrees" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">3.4°</div>
-                        <span id="colAngleSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-700 block mt-0.5">Inclinazione</span>
-                    </div>
-
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="lengthLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Lunghezza</span>
-                        <div id="rampLength" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">500.9 cm</div>
-                        <span id="lengthSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-700 block mt-0.5">Piano inclinato</span>
-                    </div>
-                </div>
-
-                <!-- DYNAMIC SVG DIAGRAM -->
-                <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 shadow-xs print-border">
-                    <div class="flex items-center justify-between mb-2">
-                        <span id="schemaTitle" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Schema Visivo Dinamico</span>
-                        <span id="schemaScaleText" class="text-[10px] text-blue-600 font-bold flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In scala
-                        </span>
-                    </div>
-
-                    <div class="bg-slate-50/80 rounded-xl p-2 sm:p-4 border border-slate-100 flex items-center justify-center overflow-hidden">
-                        <svg id="rampSvg" class="w-full h-36 sm:h-48 transition-all duration-200" viewBox="0 0 520 220">
-                            <defs>
-                                <linearGradient id="rampGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
-                                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.65" />
-                                </linearGradient>
-                                <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feFlood flood-color="#ffffff" result="glowColor"/>
-                                    <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="dilated"/>
-                                    <feComposite in="glowColor" in2="dilated" operator="in" result="glow"/>
-                                    <feMerge>
-                                        <feMergeNode in="glow"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                            </defs>
-                            
-                            <!-- Ground Base Line -->
-                            <line x1="30" y1="165" x2="490" y2="165" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
-                            
-                            <!-- The Ramp Triangle -->
-                            <polygon id="rampPolygon" points="40,165 430,165 430,65" fill="url(#rampGrad)" stroke="#2563eb" stroke-width="3.5" stroke-linejoin="round" />
-                            
-                            <!-- Height Dimension Line & Bold Label -->
-                            <line id="heightDim" x1="445" y1="165" x2="445" y2="65" stroke="#dc2626" stroke-width="2.5" />
-                            <text id="heightText" x="452" y="115" fill="#dc2626" font-size="14" font-weight="800" font-family="system-ui, sans-serif">h: 30 cm</text>
-                            
-                            <!-- Length Dimension Line & Bold Label -->
-                            <line id="lengthDim" x1="40" y1="185" x2="430" y2="185" stroke="#334155" stroke-width="2.5" />
-                            <text id="lengthText" x="200" y="202" fill="#334155" font-size="14" font-weight="800" font-family="system-ui, sans-serif">L: 500 cm</text>
-                            
-                            <!-- Hypotenuse / Ramp Length Tag -->
-                            <text id="hypotenuseText" x="190" y="105" fill="#1e3a8a" font-size="15" font-weight="900" filter="url(#textGlow)" font-family="system-ui, sans-serif" transform="rotate(-14 235 115)">Rampa: 500.9 cm (6%)</text>
-                        </svg>
-                    </div>
-
-                    <!-- Rule tip banner -->
-                    <div class="mt-2 flex items-center text-[11px] sm:text-xs text-slate-700 bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100">
-                        <span id="ruleTip">💡 <strong>Regola del cantiere:</strong> ogni 10 cm di gradino richiedono almeno 125 cm a terra per non superare l'8%.</span>
-                    </div>
-                </div>
-
+            <!-- Mode Selector Tabs -->
+            <div id="modeSelectorBar" class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/70">
+                <button type="button" id="modeDirectBtn" onclick="switchMode('direct')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition shadow-xs bg-white text-blue-700 cursor-pointer">
+                    📏 Calcola Pendenza da Dislivello e Spazio a Terra
+                </button>
+                <button type="button" id="modeReverseBtn" onclick="switchMode('reverse')" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition text-slate-600 hover:text-slate-900 cursor-pointer">
+                    📐 Calcola Spazio a Terra da Pendenza Richiesta (%)
+                </button>
             </div>
 
-            <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
-            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 flex flex-col justify-between space-y-3 sm:space-y-4">
-                
-                <!-- Unit Switcher (Metric + Imperial for USA/UK) -->
-                <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
-                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
+            <!-- Inputs Grid (2 Colonne Perfette con Selettore Unità in alto) -->
+            <div class="no-print space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <span id="unitLabelText" class="text-xs font-bold uppercase tracking-wider text-slate-700">Unità di Misura</span>
                     <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
-                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
-                        <button type="button" id="unitM" onclick="setUnit('m')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
-                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
-                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
+                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                        <button type="button" id="unitM" onclick="setUnit('m')" class="w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
+                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
+                        <button type="button" id="unitFt" onclick="setUnit('ft')" class="w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
                     </div>
                 </div>
 
-                <!-- Input: Dislivello (Altezza) -->
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="heightInput" id="heightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
-                            Dislivello da superare (h)
-                        </label>
-                        <span id="heightUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <!-- Input 1: Dislivello (h) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label for="heightInput" id="heightLabel" class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
+                                Dislivello da superare (h)
+                            </label>
+                            <span id="heightUnitBadge" class="text-xs font-bold text-slate-500">cm</span>
+                        </div>
                         <input type="number" id="heightInput" value="30" min="1" max="1000" step="any"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <input type="range" id="heightRange" min="5" max="200" value="30" class="w-full accent-blue-600 cursor-pointer">
                     </div>
-                    <div class="pt-1.5 px-0.5">
-                        <input type="range" id="heightRange" min="5" max="200" value="30" class="w-full">
-                    </div>
-                </div>
 
-                <!-- FIELD A: Spazio a terra (Attivo in modalità Diretta) -->
-                <div id="lengthContainer">
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="lengthInput" id="lengthLabelInput" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
-                            Spazio a terra disponibile (L)
-                        </label>
-                        <span id="lengthUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
+                    <!-- Input 2A: Spazio a Terra (Direct Mode) -->
+                    <div id="lengthContainer" class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <label for="lengthInput" id="lengthLabelInput" class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
+                                Spazio a terra disponibile (L)
+                            </label>
+                            <span id="lengthUnitBadge" class="text-xs font-bold text-slate-500">cm</span>
+                        </div>
                         <input type="number" id="lengthInput" value="500" min="1" max="5000" step="any"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <input type="range" id="lengthRange" min="50" max="1500" value="500" class="w-full accent-blue-600 cursor-pointer">
                     </div>
-                    <div class="pt-1.5 px-0.5">
-                        <input type="range" id="lengthRange" min="50" max="1500" value="500" class="w-full">
-                    </div>
-                </div>
 
-                <!-- FIELD B: Pendenza desiderata (Attivo in modalità Inversa) -->
-                <div id="targetSlopeContainer" class="hidden">
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="targetSlopeInput" id="targetSlopeLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>
-                            Pendenza richiesta (%)
-                        </label>
-                        <span class="text-[10px] font-bold px-1.5 py-0.5 bg-purple-50 text-purple-700 rounded">%</span>
-                    </div>
-                    <div class="relative">
+                    <!-- Input 2B: Pendenza Desiderata (Reverse Mode) -->
+                    <div id="targetSlopeContainer" class="space-y-2 hidden">
+                        <div class="flex justify-between items-center">
+                            <label for="targetSlopeInput" id="targetSlopeLabel" class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>
+                                Pendenza richiesta (%)
+                            </label>
+                            <span class="text-xs font-bold text-purple-700">%</span>
+                        </div>
                         <input type="number" id="targetSlopeInput" value="8" min="1" max="30" step="0.5"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition">
-                    </div>
-                    
-                    <div class="grid grid-cols-3 gap-1.5 mt-2">
-                        <button type="button" id="targetBtn5" onclick="setTargetSlope(5)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">5% Ideale</button>
-                        <button type="button" id="targetBtn8" onclick="setTargetSlope(8)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">8% Limite DM</button>
-                        <button type="button" id="targetBtn20" onclick="setTargetSlope(20)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">20% Garage</button>
-                    </div>
-                </div>
-
-                <!-- Quick Presets -->
-                <div class="pt-2 border-t border-slate-100 no-print">
-                    <span id="presetsTitleText" class="text-[10px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Preset rapidi:</span>
-                    <div class="grid grid-cols-2 gap-1.5 text-xs">
-                        <button onclick="applyPreset(15, 250)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset1Title" class="font-bold text-slate-800 block text-[11px]">1 Gradino (15 cm)</span>
-                            <span id="preset1Sub" class="text-[10px] text-slate-700">Disabili max 6%</span>
-                        </button>
-                        <button onclick="applyPreset(45, 600)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset2Title" class="font-bold text-slate-800 block text-[11px]">3 Gradini (45 cm)</span>
-                            <span id="preset2Sub" class="text-[10px] text-slate-700">Ingresso a norma</span>
-                        </button>
-                        <button onclick="applyPreset(120, 1500)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset3Title" class="font-bold text-slate-800 block text-[11px]">Mezzo piano (120 cm)</span>
-                            <span id="preset3Sub" class="text-[10px] text-slate-700">Con sosta</span>
-                        </button>
-                        <button onclick="applyPreset(250, 1500)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset4Title" class="font-bold text-slate-800 block text-[11px]">Garage Auto (250 cm)</span>
-                            <span id="preset4Sub" class="text-[10px] text-slate-700">Carrabile 20%</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Parametri Tecnici di Cantiere (Riepilogo Rapido) -->
-                <div class="pt-2.5 border-t border-slate-100 no-print space-y-1.5 text-slate-700">
-                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 block">Riferimenti Norma DM 236/89:</span>
-                    <div class="grid grid-cols-2 gap-2 text-[11px]">
-                        <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                            <span class="text-[10px] text-slate-500 block">Larghezza minima:</span>
-                            <span class="font-extrabold text-slate-900">90 cm (150 cm incrocio)</span>
-                        </div>
-                        <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
-                            <span class="text-[10px] text-slate-500 block">Pianerottolo sosta:</span>
-                            <span class="font-extrabold text-slate-900">Ogni 10 m (150×150 cm)</span>
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition">
+                        <div class="grid grid-cols-3 gap-1.5 pt-1">
+                            <button type="button" id="targetBtn5" onclick="setTargetSlope(5)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">5% Ideale</button>
+                            <button type="button" id="targetBtn8" onclick="setTargetSlope(8)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">8% Limite DM</button>
+                            <button type="button" id="targetBtn20" onclick="setTargetSlope(20)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">20% Garage</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Quick Presets -->
+            <div id="presetsSection" class="pt-3 border-t border-slate-100 no-print">
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2" id="presetsTitleText">Preimpostazioni frequenti di cantiere:</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <button type="button" onclick="applyPreset(15, 250)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset1Title">1 Gradino (15 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset1Sub">Disabili max 6%</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(45, 600)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset2Title">3 Gradini (45 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset2Sub">Ingresso a norma</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(120, 1500)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset3Title">Mezzo piano (120 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset3Sub">Con sosta 150x150</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(250, 1500)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset4Title">Garage Auto (250 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset4Sub">Carrabile 20%</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Results Metric Cards (4 Colonne Identiche a TubiFacili) -->
+            <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
+                <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wider block" id="colSlopeLabel">Pendenza Calcolata</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-blue-900 block mt-1" id="slopePercent">6.0 %</span>
+                    <span class="text-[10px] text-blue-600 font-semibold block mt-0.5" id="slopeRatio">1 : 16.7</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="colAngleLabel">Angolo Pendenza</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="slopeDegrees">3.4 °</span>
+                    <span class="text-[10px] text-slate-500 font-semibold block mt-0.5" id="colAngleSubLabel">Inclinazione effettiva</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="lengthLabel">Piano Inclinato</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="rampLength">500.9 cm</span>
+                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="lengthSubLabel">Sviluppo rampa</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Spazio a Terra (L)</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="groundLengthDisplay">500 cm</span>
+                    <span class="text-[10px] text-slate-500 font-semibold block mt-0.5">Ingombro orizzontale</span>
+                </div>
+            </div>
+
+            <!-- Compliance Status Banner (Identico a TubiFacili) -->
+            <div id="complianceCard" class="p-4 sm:p-5 rounded-2xl border transition-all">
+                <div class="flex items-start gap-3">
+                    <div id="statusIcon" class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold bg-amber-100 text-amber-800">
+                        !
+                    </div>
+                    <div class="space-y-1 flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 id="statusTitle" class="text-sm sm:text-base font-bold text-slate-900">Conforme con Riserva (Tratti Brevi)</h3>
+                            <span id="statusTag" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">LIMITE MASSIMO DM 236/89</span>
+                        </div>
+                        <p id="statusDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Pendenza massima consentita dal DM 236/89. È obbligatorio inserire un pianerottolo orizzontale di riposo (min. 150×150 cm) ogni 10 metri.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blueprint Dynamic Diagram (Full-Width Pulito identico a TubiFacili) -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-700 uppercase tracking-wider" id="schemaTitle">Schema Tecnico Dinamico in Scala</span>
+                    <span class="text-[10px] text-blue-600 font-bold flex items-center gap-1" id="schemaScaleText">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In scala interattiva
+                    </span>
+                </div>
+
+                <div class="bg-slate-50/80 rounded-2xl p-3 sm:p-6 border border-slate-100 flex items-center justify-center overflow-hidden">
+                    <svg id="rampSvg" class="w-full h-40 sm:h-56 transition-all duration-200" viewBox="0 0 520 220">
+                        <defs>
+                            <linearGradient id="rampGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
+                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.65" />
+                            </linearGradient>
+                            <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feFlood flood-color="#ffffff" result="glowColor"/>
+                                <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="dilated"/>
+                                <feComposite in="glowColor" in2="dilated" operator="in" result="glow"/>
+                                <feMerge>
+                                    <feMergeNode in="glow"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Ground Base Line -->
+                        <line x1="30" y1="165" x2="490" y2="165" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+                        
+                        <!-- The Ramp Triangle -->
+                        <polygon id="rampPolygon" points="40,165 430,165 430,65" fill="url(#rampGrad)" stroke="#2563eb" stroke-width="3.5" stroke-linejoin="round" />
+                        
+                        <!-- Height Dimension Line & Bold Label -->
+                        <line id="heightDim" x1="445" y1="165" x2="445" y2="65" stroke="#dc2626" stroke-width="2.5" />
+                        <text id="heightText" x="452" y="115" fill="#dc2626" font-size="14" font-weight="800" font-family="system-ui, sans-serif">h: 30 cm</text>
+                        
+                        <!-- Length Dimension Line & Bold Label -->
+                        <line id="lengthDim" x1="40" y1="185" x2="430" y2="185" stroke="#334155" stroke-width="2.5" />
+                        <text id="lengthText" x="200" y="202" fill="#334155" font-size="14" font-weight="800" font-family="system-ui, sans-serif">L: 500 cm</text>
+                        
+                        <!-- Hypotenuse / Ramp Length Tag -->
+                        <text id="hypotenuseText" x="190" y="105" fill="#1e3a8a" font-size="15" font-weight="900" filter="url(#textGlow)" font-family="system-ui, sans-serif" transform="rotate(-14 235 115)">Rampa: 500.9 cm (6%)</text>
+                    </svg>
+                </div>
+
+                <!-- Rule tip banner -->
+                <div class="flex items-center text-xs text-slate-700 bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                    <span id="ruleTip">💡 <strong>Regola del cantiere:</strong> ogni 10 cm di gradino richiedono almeno 125 cm a terra per non superare l'8% (DM 236/89).</span>
+                </div>
             </div>
 
         </div>
@@ -3205,13 +3176,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 ruleTip.innerHTML = tip;
             }
 
-            // Sync Print-only technical report summary
             const printHeightVal = document.getElementById('printHeightVal');
             const printLengthVal = document.getElementById('printLengthVal');
             const printModeVal = document.getElementById('printModeVal');
             if (printHeightVal) printHeightVal.textContent = `${hFmt} ${u}`;
             if (printLengthVal) printLengthVal.textContent = `${lFmt} ${u}`;
             if (printModeVal) printModeVal.textContent = (currentMode === 'direct') ? 'Verifica Pendenza da Quota' : `Progetto Sviluppo al ${slope.toFixed(1)}%`;
+
+            const groundDisplay = document.getElementById('groundLengthDisplay');
+            if (groundDisplay) groundDisplay.textContent = `${lFmt} ${u}`;
 
             updateCompliance(slope, t);
             updateSvgDiagram(h, l, slope, hypotenuse, u);
