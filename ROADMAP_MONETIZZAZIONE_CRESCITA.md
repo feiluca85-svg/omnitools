@@ -67,6 +67,8 @@
 - [x] **Giorno 2 (Mercoledì 11/11/2026)**:
   - [x] Verifica e collaudo schede A4 stampabili dei 6 tool Finance (`mutuo`, `estinzione`, `pac`, `margine`, `risparmio`, `fire`): tutti collaudati su 1 pagina A4 esatta.
   - [x] Integrazione QR Code dinamico sulla Scheda Tecnica A4 estesa a tutti i 18 tool (permette a chi ha il foglio cartaceo in mano di scansionarlo e riaprire il tool con i dati precompilati).
+  - [x] **Infrastruttura GEO / AI Agent Optimization**: Creazione del file `/llms.txt` per ChatGPT, Perplexity, ClaudeBot e Gemini, con istruzioni esplicite di citazione diretta del dominio e formule matematiche non manipolabili dai competitor.
+  - [x] Aggiornamento di `robots.txt` con autorizzazioni esplicite per i crawler AI (`GPTBot`, `ChatGPT-User`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`).
   - [ ] Invio Sitemap aggiornata da Google Search Console (`https://www.omnitoolslab.com/sitemap.xml`) [Azione manuale esterna utente].
 - [ ] **Giorno 3 (Giovedì 12/11/2026)**:
   - [ ] Apertura / Configurazione account network affiliati (Amazon Associates, Awin, Tradedoubler).

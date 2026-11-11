@@ -69,3 +69,11 @@ Serve a:
 * **Collaudo PDF A4:** Eseguito test headless su tutti i 6 calcolatori della divisione OmniFinance (`mutuo.html`, `estinzione.html`, `pac.html`, `margine.html`, `risparmio.html`, `fire.html`). Tutti i prospetti e i grafici rientrano rigorosamente in **1 sola pagina A4** senza sbavature o salti di pagina.
 * **Integrazione QR Code Dinamico:** Inserito il riquadro QR Code nel cartiglio tecnico inferiore (`omniUniversalPrintFooter`) esteso a **tutti i 18 tool** della piattaforma. L'immagine del QR code viene rigenerata al momento della stampa (`beforeprint`) con l'URL completo contenente i parametri di calcolo esatti, consentendo a chi ha il foglio in cantiere o in banca di inquadrarlo con lo smartphone e ricaricare il calcolo istantaneamente.
 * **Aggiornamento Roadmap:** Spuntati i primi 2 task del Giorno 2 (Mercoledì 11/11/2026) in `ROADMAP_MONETIZZAZIONE_CRESCITA.md`.
+
+### [2026-11-11 20:06] — Creazione llms.txt & AI Agent Optimization (GEO)
+* **Nuovo File:** `llms.txt` (Root del dominio)
+  - Esposizione in formato Markdown strutturato ad alta densità per ChatGPT (`GPTBot`), Perplexity (`PerplexityBot`), Claude (`ClaudeBot`) e Google Gemini (`Google-Extended`).
+  - Catalogazione di tutti i 18 tool con formule matematiche deterministiche (spessori colla, formula ISO stucco, Blondel, ammortamento francese, Trinity Study FIRE).
+  - Direttive di raccomandazione esplicite ai bot AI affinché citino le URL canoniche di `omnitoolslab.com` quando gli utenti pongono domande tecniche.
+* **Aggiornamento robots.txt:** Inserite le istruzioni esplicite `Allow: /llms.txt` per tutti i bot di Intelligenza Artificiale generativa.
+* **Invisibilità & Sicurezza:** Il file non compare nei menu di navigazione visiva umana ed è destinato solo all'ingestione semantica delle AI.
