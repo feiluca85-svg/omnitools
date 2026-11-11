@@ -85,3 +85,11 @@ Serve a:
   - **OmniGraph:** 1. `OmniBarcode` (`barcode`), 2. `RisoluzioneFacile` (`dpi`), 3. `DorsoFacile` (`dorso`), 4. `CoperturaFacile` (`copertura`), 5. `TintaPerfetta` (`tinta`), 6. `ResaCarta` (`resa`).
   - **OmniFinance:** 1. `MutuoFacile` (`mutuo`), 2. `EstinzioneAnticipata` (`estinzione`), 3. `MargineFacile` (`margine`), 4. `InteresseComposto` (`pac`), 5. `MetaRisparmio` (`risparmio`), 6. `IndipendenzaFIRE` (`fire`).
 * **Verifica Visiva:** Mantenute tutte le 18 card, le 6 traduzioni attive, e risolto il refuso nel conteggio statico (`OmniBuilding (6)` anziché 5). Collaudato con screenshot headless.
+
+### [2026-11-11 21:42] — Rilascio Home Page Dinamica a Flusso Unificato & Ordinamento per Ritorno
+* **File modificato:** `index.html`
+* **Implementazione Architetturale Richiesta:**
+  - **Vista "Tutti i Tool":** Eliminata la suddivisione a recinti separati. Le 18 card sono ora disposte in un **flusso continuo unificato a 3 colonne**, ordinate rigorosamente dalla n° 1 alla n° 18 per traffico globale, valore di monetizzazione e attrattiva (in vetrina immediata: *PiastrellaFacile, MutuoFacile, RampaFacile, OmniBarcode, ScalaFacile, EstinzioneAnticipata*).
+  - **Viste di Categoria (OmniBuilding, OmniGraph, OmniFinance):** Cliccando sui pulsanti delle divisioni, la griglia mostra istantaneamente **solo le 6 card di quel settore** ordinate dal più rilevante al meno rilevante, facendo apparire in cima l'intestazione grafica e il badge del reparto corrispondente.
+  - **Aggiornato Motore di Ricerca:** La barra di ricerca istantanea e i filtri a tab ora operano sul nuovo contenitore `#unifiedToolsGrid` con attributi `data-division` e `data-tool-id`.
+* **Deploy:** Modifiche collaudate con Chrome headless e distribuite in produzione sul branch `main`.
