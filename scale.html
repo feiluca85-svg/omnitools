@@ -805,21 +805,69 @@
     
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex-1 w-full space-y-4">
         
-        <!-- Hero Header -->
-        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
-            <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2 font-jakarta">
-                Calcolo Scala, Alzata & Pedata
-            </h1>
-            <p id="heroDesc" class="text-slate-600 text-xs sm:text-base leading-relaxed px-2">
-                Calcola all'istante numero gradini, alzata, pedata e ingombro a terra con verifica comfort e conformità alla Legge di Blondel (2a + p = 62-64 cm).
-            </p>
+        <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
+        <div id="printHeader" class="hidden print:block mb-3 pb-2 border-b-2 border-slate-900">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-sm" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
+                            <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                            <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
+                            <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5 leading-none">
+                            <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-blue-600">Tools</span> Lab</span>
+                            <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">SCHEDA TECNICA A4</span>
+                        </div>
+                        <h1 class="text-xs font-bold text-slate-700 mt-1">ScalaFacile — Relazione Tecnica Dimensionamento Gradini & Formula di Blondel</h1>
+                    </div>
+                </div>
+                <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
+                    <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
+                    <div>Blondel 2a+p=63 • DIN 18065</div>
+                    <div class="text-blue-600 font-bold">omnitoolslab.com/scale</div>
+                </div>
+            </div>
         </div>
 
-        
+        <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
+        <div id="printInputsSummary" class="hidden print:block mb-2 p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs">
+            <div class="grid grid-cols-3 gap-2">
+                <div>
+                    <span class="text-[9px] text-slate-500 uppercase font-bold block">Dislivello Piano (H):</span>
+                    <span id="printHeightVal" class="text-xs font-extrabold text-slate-900">270 cm</span>
+                </div>
+                <div>
+                    <span class="text-[9px] text-slate-500 uppercase font-bold block">Sviluppo a terra (L):</span>
+                    <span id="printLengthVal" class="text-xs font-extrabold text-slate-900">392 cm</span>
+                </div>
+                <div>
+                    <span class="text-[9px] text-slate-500 uppercase font-bold block">Regola di Blondel:</span>
+                    <span id="printModeVal" class="text-xs font-extrabold text-slate-900">2a + p = 63.0 cm</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Header -->
+        <section class="text-center space-y-2 no-print">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold shadow-2xs">
+                <span>🏗️</span> <span id="toolBadge">OmniBuilding</span> • <span class="font-mono">Legge di Blondel & DIN 18065</span>
+            </div>
+            <h1 id="heroTitle" class="font-jakarta text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+                Calcolo Scala, Alzata & Pedata
+            </h1>
+            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Calcola istantaneamente numero gradini, alzata, pedata e ingombro a terra con verifica comfort e conformità alla Legge di Blondel (2a + p = 62-64 cm).
+            </p>
+        </section>
+
         <!-- Google Featured Snippet (Position 0) Callout Box -->
-        <section aria-label="Formula Legge di Blondel" class="no-print bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-3">
+        <section aria-label="Formula Legge di Blondel" class="no-print bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs">
             <div class="flex items-start gap-3">
                 <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
                 <div class="text-xs sm:text-sm space-y-1">
@@ -833,168 +881,23 @@
             </div>
         </section>
 
-        <!-- Mode Selector (Direct vs Target Riser) -->
-        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
-            <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center">
-                📏 Da Spazio a Terra
-            </button>
-            <button id="modeReverseBtn" onclick="switchMode('reverse')" class="flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center">
-                📐 Da Alzata Ideale
-            </button>
-        </div>
+        <!-- Main Unified Card (Single Card Container) -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
 
-        <!-- Calculator Layout (12 Cols on desktop, top-results on mobile) -->
-        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
-            
-            <!-- RESULTS & VISUAL COLUMN (IN CIMA SU MOBILE) -->
-            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
-                
-                <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
-                <div id="printHeader" class="hidden print:block mb-3 pb-2 border-b-2 border-slate-900">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-sm" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
-                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                        <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
-                        <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
-                    </svg>
-                </div>
-                            <div>
-                                <div class="flex items-center gap-1.5 leading-none">
-                                    <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-blue-600">Tools</span> Lab</span>
-                                    <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">SCHEDA TECNICA A4</span>
-                                </div>
-                                <h1 class="text-xs font-bold text-slate-700 mt-1">ScalaFacile — Relazione Tecnica Dimensionamento Gradini & Formula di Blondel</h1>
-                            </div>
-                        </div>
-                        <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
-                            <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
-                            <div>Blondel 2a+p=63 • DIN 18065</div>
-                            <div class="text-blue-600 font-bold">omnitoolslab.com/scale</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DEDICATED PRINT-ONLY INPUT SUMMARY -->
-                <div id="printInputsSummary" class="hidden print:block mb-2 p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div>
-                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Dislivello Piano (H):</span>
-                            <span id="printHeightVal" class="text-xs font-extrabold text-slate-900">270 cm</span>
-                        </div>
-                        <div>
-                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Sviluppo a terra (L):</span>
-                            <span id="printLengthVal" class="text-xs font-extrabold text-slate-900">392 cm</span>
-                        </div>
-                        <div>
-                            <span class="text-[9px] text-slate-500 uppercase font-bold block">Regola di Blondel:</span>
-                            <span id="printModeVal" class="text-xs font-extrabold text-slate-900">2a + p = 63.0 cm</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comfort / Blondel Compliance Badge -->
-                <div id="complianceCard" class="p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border">
-                    <div class="flex items-start gap-2.5 sm:gap-3">
-                        <div id="statusIcon" class="w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20">
-                            ✓
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex flex-wrap items-center justify-between gap-1">
-                                <h3 id="statusTitle" class="font-bold text-sm sm:text-base tracking-tight text-emerald-950">Comfort Ottimale & a Norma</h3>
-                                <span id="statusTag" class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800">Perfetta</span>
-                            </div>
-                            <p id="statusDesc" class="text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800">
-                                La scala rispetta la regola aurea di Blondel (2a + p tra 62 e 64 cm) con alzata agevole.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3 Numerical Output Cards -->
-                <div class="grid grid-cols-3 gap-2 sm:gap-3">
-                    <!-- Alzata -->
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colRiserLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Alzata (a)</span>
-                        <div id="riserOutput" class="text-xl sm:text-3xl font-extrabold text-blue-600 tracking-tight font-jakarta">17.5 cm</div>
-                        <span id="riserSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">Ideale: 16-18 cm</span>
-                    </div>
-
-                    <!-- Pedata -->
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colTreadLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Pedata (p)</span>
-                        <div id="treadOutput" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight font-jakarta">28.0 cm</div>
-                        <span id="treadSubLabel" class="text-[10px] sm:text-xs font-semibold text-slate-500 block mt-0.5">Ideale: 26-30 cm</span>
-                    </div>
-
-                    <!-- Gradini & Formula Blondel -->
-                    <div class="bg-white p-2.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs text-center print-border">
-                        <span id="colStepsLabel" class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block mb-0.5">Gradini / Blondel</span>
-                        <div id="stepsOutput" class="text-xl sm:text-3xl font-extrabold text-slate-800 tracking-tight font-jakarta">15</div>
-                        <span id="blondelOutput" class="text-[10px] sm:text-xs font-bold text-indigo-600 block mt-0.5">2a + p = 63.0 cm</span>
-                    </div>
-                </div>
-
-                <!-- DYNAMIC SVG DIAGRAM (Stair Section with Step Profile) -->
-                <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 shadow-xs print-border">
-                    <div class="flex items-center justify-between mb-2">
-                        <span id="schemaTitle" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Sezione Scala in Scala</span>
-                        <span id="schemaScaleText" class="text-[10px] text-blue-600 font-bold flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In scala vettoriale
-                        </span>
-                    </div>
-
-                    <div class="bg-slate-50/80 rounded-xl p-2 sm:p-4 border border-slate-100 flex items-center justify-center overflow-hidden">
-                        <svg id="stairsSvg" class="w-full h-40 sm:h-52 transition-all duration-200" viewBox="0 0 540 240">
-                            <defs>
-                                <linearGradient id="stairsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
-                                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.75" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <!-- Ground Base Line -->
-                            <line x1="30" y1="185" x2="510" y2="185" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
-                            
-                            <!-- Staircase Step Profile (Polyline/Polygon drawn dynamically) -->
-                            <polygon id="stairsPolygon" points="40,185 450,185 450,45" fill="url(#stairsGrad)" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" />
-                            
-                            <!-- Total Height Dimension (Red) -->
-                            <line id="heightDim" x1="465" y1="185" x2="465" y2="45" stroke="#dc2626" stroke-width="2.5" />
-                            <text id="heightText" x="472" y="115" fill="#dc2626" font-size="13" font-weight="800" font-family="system-ui, sans-serif">H: 270 cm</text>
-                            
-                            <!-- Total Length Dimension (Slate) -->
-                            <line id="lengthDim" x1="40" y1="205" x2="450" y2="205" stroke="#334155" stroke-width="2.5" />
-                            <text id="lengthText" x="210" y="222" fill="#334155" font-size="13" font-weight="800" font-family="system-ui, sans-serif">L: 392 cm (14 pedate)</text>
-                            
-                            <!-- Angle & Step Spec Tag -->
-                            <text id="slopeAngleText" x="150" y="80" fill="#1e3a8a" font-size="13" font-weight="900" font-family="system-ui, sans-serif">15 alzate da 18.0 cm • 34.6°</text>
-                        </svg>
-                    </div>
-
-                    <!-- Rule tip banner -->
-                    <div class="mt-2 flex items-center text-[11px] sm:text-xs text-slate-700 bg-slate-50 p-2 sm:p-2.5 rounded-lg border border-slate-100">
-                        <span id="ruleTip">💡 <strong>Legge di Blondel:</strong> <code>2a + p = 62 ÷ 64 cm</code>. Il doppio dell'alzata sommato alla pedata garantisce il passo naturale senza affaticare le ginocchia.</span>
-                    </div>
-                </div>
-
-                <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
-                
-                    <div class="text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
-                        Documento tecnico generato da <strong>OmniTools</strong> (https://www.omnitoolslab.com/scale) — Calcoli per predimensionamento geometrico.
-                    </div>
-                </div>
-
+            <!-- Mode Selector (Direct vs Target Riser) Tabs -->
+            <div id="modeSelectorBar" class="bg-slate-100 p-1.5 rounded-2xl flex border border-slate-200/80 mb-6 text-xs sm:text-sm font-bold no-print">
+                <button id="modeDirectBtn" type="button" onclick="switchMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-blue-600 shadow-sm transition active:scale-95 text-center font-bold">
+                    📏 Da Spazio a Terra
+                </button>
+                <button id="modeReverseBtn" type="button" onclick="switchMode('reverse')" class="flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">
+                    📐 Da Alzata Ideale
+                </button>
             </div>
 
-            <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
-            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4">
-                
-                <!-- Unit Switcher (Metric + Imperial) -->
-                <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
-                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
+            <!-- Controls Section (Inputs & Sliders) -->
+            <div id="controlsColumn" class="space-y-4 no-print">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <span id="unitLabelText" class="text-xs font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
                     <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
                         <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
                         <button type="button" id="unitM" onclick="setUnit('m')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
@@ -1003,86 +906,176 @@
                     </div>
                 </div>
 
-                <!-- Input: Dislivello totale (H) -->
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="heightInput" id="heightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
-                            Dislivello totale piano-piano (H)
-                        </label>
-                        <span id="heightUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
+                <!-- Input Columns Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Input: Dislivello totale (H) -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="heightInput" id="heightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
+                                Dislivello totale piano-piano (H)
+                            </label>
+                            <span id="heightUnitBadge" class="text-xs font-bold text-blue-700">cm</span>
+                        </div>
                         <input type="number" id="heightInput" value="270" min="20" max="1000" step="any"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <div class="pt-1.5 px-0.5">
+                            <input type="range" id="heightRange" min="50" max="450" value="270" class="w-full">
+                        </div>
                     </div>
-                    <div class="pt-1.5 px-0.5">
-                        <input type="range" id="heightRange" min="50" max="450" value="270" class="w-full">
-                    </div>
-                </div>
 
-                <!-- FIELD A: Spazio a terra disponibile (L) - Modalità Diretta -->
-                <div id="lengthContainer">
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="lengthInput" id="lengthLabelInput" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
-                            Spazio a terra disponibile (L)
-                        </label>
-                        <span id="lengthUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
+                    <!-- FIELD A: Spazio a terra disponibile (L) -->
+                    <div id="lengthContainer" class="space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="lengthInput" id="lengthLabelInput" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-slate-800 inline-block"></span>
+                                Spazio a terra disponibile (L)
+                            </label>
+                            <span id="lengthUnitBadge" class="text-xs font-bold text-slate-800">cm</span>
+                        </div>
                         <input type="number" id="lengthInput" value="392" min="50" max="2000" step="any"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <div class="pt-1.5 px-0.5">
+                            <input type="range" id="lengthRange" min="100" max="700" value="392" class="w-full">
+                        </div>
                     </div>
-                    <div class="pt-1.5 px-0.5">
-                        <input type="range" id="lengthRange" min="100" max="700" value="392" class="w-full">
-                    </div>
-                </div>
 
-                <!-- FIELD B: Alzata Desiderata (Target Riser) - Modalità Inversa -->
-                <div id="targetRiserContainer" class="hidden">
-                    <div class="flex justify-between items-center mb-1">
-                        <label for="targetRiserInput" id="targetRiserLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span>
-                            Alzata ideale desiderata (a)
-                        </label>
-                        <span id="targetRiserUnitBadge" class="text-[10px] font-bold px-1.5 py-0.5 bg-indigo-50 text-indigo-700 rounded">cm</span>
-                    </div>
-                    <div class="relative">
+                    <!-- FIELD B: Alzata Desiderata (Target Riser) -->
+                    <div id="targetRiserContainer" class="space-y-1.5 hidden">
+                        <div class="flex justify-between items-center">
+                            <label for="targetRiserInput" id="targetRiserLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-indigo-600 inline-block"></span>
+                                Alzata ideale desiderata (a)
+                            </label>
+                            <span id="targetRiserUnitBadge" class="text-xs font-bold text-indigo-700">cm</span>
+                        </div>
                         <input type="number" id="targetRiserInput" value="17.5" min="12" max="25" step="0.5"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
-                    </div>
-                    
-                    <div class="grid grid-cols-3 gap-1.5 mt-2">
-                        <button type="button" id="targetBtn16" onclick="setTargetRiser(16.0)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">16 cm Comoda</button>
-                        <button type="button" id="targetBtn175" onclick="setTargetRiser(17.5)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">17.5 cm Standard</button>
-                        <button type="button" id="targetBtn19" onclick="setTargetRiser(19.0)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">19 cm Salvaspazio</button>
-                    </div>
-                </div>
-
-                <!-- Quick Presets -->
-                <div class="pt-2 border-t border-slate-100 no-print">
-                    <span id="presetsTitleText" class="text-[10px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Preset rapidi:</span>
-                    <div class="grid grid-cols-2 gap-1.5 text-xs">
-                        <button onclick="applyPreset(270, 392)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset1Title" class="font-bold text-slate-800 block text-[11px]">Scala Interna (H 270 cm)</span>
-                            <span id="preset1Sub" class="text-[10px] text-slate-600">15 gradini comfort</span>
-                        </button>
-                        <button onclick="applyPreset(300, 448)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset2Title" class="font-bold text-slate-800 block text-[11px]">Piano Alto (H 300 cm)</span>
-                            <span id="preset2Sub" class="text-[10px] text-slate-600">17 gradini con sosta</span>
-                        </button>
-                        <button onclick="applyPreset(220, 264)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset3Title" class="font-bold text-slate-800 block text-[11px]">Soppalco (H 220 cm)</span>
-                            <span id="preset3Sub" class="text-[10px] text-slate-600">Salvaspazio 12 gradini</span>
-                        </button>
-                        <button onclick="applyPreset(120, 180)" class="p-2 border border-slate-200 rounded-xl text-left bg-slate-50/70 hover:bg-blue-50 hover:border-blue-200 active:scale-95 transition">
-                            <span id="preset4Title" class="font-bold text-slate-800 block text-[11px]">Scala Esterna (H 120 cm)</span>
-                            <span id="preset4Sub" class="text-[10px] text-slate-600">Pedata ampia 30 cm</span>
-                        </button>
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                        <div class="grid grid-cols-3 gap-1.5 pt-1">
+                            <button type="button" id="targetBtn16" onclick="setTargetRiser(16.0)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">16 cm Comoda</button>
+                            <button type="button" id="targetBtn175" onclick="setTargetRiser(17.5)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">17.5 cm Standard</button>
+                            <button type="button" id="targetBtn19" onclick="setTargetRiser(19.0)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">19 cm Salvaspazio</button>
+                        </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Quick Presets -->
+            <div id="presetsSection" class="pt-3 border-t border-slate-100 no-print">
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2" id="presetsTitleText">Preimpostazioni frequenti di cantiere:</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <button type="button" onclick="applyPreset(270, 392)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset1Title">Scala Interna (H 270 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset1Sub">15 gradini comfort</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(300, 448)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset2Title">Piano Alto (H 300 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset2Sub">17 gradini con sosta</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(220, 264)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset3Title">Soppalco (H 220 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset3Sub">Salvaspazio 12 gradini</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(120, 180)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset4Title">Scala Esterna (H 120 cm)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset4Sub">Pedata ampia 30 cm</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Results Metric Cards (4 Colonne Identiche a TubiFacili e RampaFacile) -->
+            <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
+                <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wider block" id="colRiserLabel">Alzata Calcolata (a)</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-blue-900 block mt-1" id="riserOutput">17.5 cm</span>
+                    <span class="text-[10px] text-blue-600 font-semibold block mt-0.5" id="riserSubLabel">Ideale: 16-18 cm</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="colTreadLabel">Pedata Calcolata (p)</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="treadOutput">28.0 cm</span>
+                    <span class="text-[10px] text-slate-500 font-semibold block mt-0.5" id="treadSubLabel">Ideale: 26-30 cm</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="colStepsLabel">Gradini Totali</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="stepsOutput">15</span>
+                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="stepsSubLabel">Alzate totali</span>
+                </div>
+                <div class="bg-indigo-50/70 border border-indigo-200/80 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-indigo-700 uppercase tracking-wider block" id="colBlondelLabel">Formula Blondel (2a+p)</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-indigo-900 block mt-1" id="blondelOutput">64.0 cm</span>
+                    <span class="text-[10px] text-indigo-600 font-semibold block mt-0.5" id="blondelSubLabel">Ideale: 62 – 64 cm</span>
+                </div>
+            </div>
+
+            <!-- Comfort / Blondel Compliance Badge -->
+            <div id="complianceCard" class="p-4 sm:p-5 rounded-2xl border transition-all">
+                <div class="flex items-start gap-3">
+                    <div id="statusIcon" class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20">
+                        ✓
+                    </div>
+                    <div class="space-y-1 flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 id="statusTitle" class="text-sm sm:text-base font-bold text-slate-900">Comfort Ottimale & a Norma</h3>
+                            <span id="statusTag" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">Perfetta</span>
+                        </div>
+                        <p id="statusDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            La scala rispetta la regola aurea di Blondel (2a + p tra 62 e 64 cm) con alzata agevole.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blueprint Dynamic Diagram (Full-Width Pulito identico a TubiFacili e RampaFacile) -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-700 uppercase tracking-wider" id="schemaTitle">Schema Tecnico Dinamico in Scala</span>
+                    <span class="text-[10px] text-blue-600 font-bold flex items-center gap-1" id="schemaScaleText">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> In scala interattiva
+                    </span>
+                </div>
+
+                <div class="bg-slate-50/80 rounded-2xl p-3 sm:p-6 border border-slate-100 flex items-center justify-center overflow-hidden">
+                    <svg id="stairsSvg" class="w-full h-40 sm:h-56 transition-all duration-200" viewBox="0 0 540 240">
+                        <defs>
+                            <linearGradient id="stairsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
+                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.75" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Ground Base Line -->
+                        <line x1="30" y1="185" x2="510" y2="185" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+                        
+                        <!-- Staircase Step Profile (Polyline/Polygon drawn dynamically) -->
+                        <polygon id="stairsPolygon" points="40,185 450,185 450,45" fill="url(#stairsGrad)" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" />
+                        
+                        <!-- Total Height Dimension (Red) -->
+                        <line id="heightDim" x1="465" y1="185" x2="465" y2="45" stroke="#dc2626" stroke-width="2.5" />
+                        <text id="heightText" x="472" y="115" fill="#dc2626" font-size="13" font-weight="800" font-family="system-ui, sans-serif">H: 270 cm</text>
+                        
+                        <!-- Total Length Dimension (Slate) -->
+                        <line id="lengthDim" x1="40" y1="205" x2="450" y2="205" stroke="#334155" stroke-width="2.5" />
+                        <text id="lengthText" x="210" y="222" fill="#334155" font-size="13" font-weight="800" font-family="system-ui, sans-serif">L: 392 cm (14 pedate)</text>
+                        
+                        <!-- Angle & Step Spec Tag -->
+                        <text id="slopeAngleText" x="150" y="80" fill="#1e3a8a" font-size="13" font-weight="900" font-family="system-ui, sans-serif">15 alzate da 18.0 cm • 34.6°</text>
+                    </svg>
+                </div>
+
+                <!-- Rule tip banner -->
+                <div class="flex items-center text-xs text-slate-700 bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                    <span id="ruleTip">💡 <strong>Legge di Blondel:</strong> <code>2a + p = 62 ÷ 64 cm</code>. Il doppio dell'alzata sommato alla pedata garantisce il passo naturale senza affaticare le ginocchia.</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons: Print & Copy (Identico a TubiFacili e RampaFacile) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Cantiere A4</span>
+                </button>
+                <button type="button" onclick="copyResultsScale()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span id="copyIcon">📋</span> <span id="btnCopyScale">Copia Dati per Computo Metrico</span>
+                </button>
             </div>
 
         </div>
@@ -2961,10 +2954,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (document.getElementById('colRiserLabel')) document.getElementById('colRiserLabel').textContent = t.col_riser;
             if (document.getElementById('colTreadLabel')) document.getElementById('colTreadLabel').textContent = t.col_tread;
-            if (document.getElementById('colStepsLabel')) document.getElementById('colStepsLabel').textContent = t.col_steps;
+            if (document.getElementById('colStepsLabel')) document.getElementById('colStepsLabel').textContent = (currentLang === 'it' ? 'Gradini Totali' : t.col_steps);
+            if (document.getElementById('colBlondelLabel')) document.getElementById('colBlondelLabel').textContent = (currentLang === 'it' ? 'Formula Blondel (2a+p)' : 'Blondel (2R+T)');
             if (document.getElementById('schemaTitle')) document.getElementById('schemaTitle').textContent = t.schema_title;
             if (document.getElementById('schemaScaleText')) document.getElementById('schemaScaleText').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> ${t.schema_scale}`;
-            if (document.getElementById('printBtnText')) document.getElementById('printBtnText').textContent = t.print_btn;
+            if (document.getElementById('btnPrint')) document.getElementById('btnPrint').textContent = (currentLang === 'it' ? 'Stampa Scheda Cantiere A4' : t.print_btn);
 
             if (document.getElementById('installBannerTitle')) document.getElementById('installBannerTitle').textContent = t.install_banner_title;
             if (document.getElementById('installBannerSub')) document.getElementById('installBannerSub').textContent = t.install_banner_sub;
@@ -3198,7 +3192,9 @@ document.addEventListener('DOMContentLoaded', () => {
             riserOutput.textContent = `${rFmt} ${u}`;
             treadOutput.textContent = `${tFmt} ${u}`;
             stepsOutput.textContent = `${numRisers}`;
-            blondelOutput.textContent = `2a + p = ${bFmt} ${u}`;
+            blondelOutput.textContent = `${bFmt} ${u}`;
+            const stepsSub = document.getElementById('stepsSubLabel');
+            if (stepsSub) stepsSub.textContent = `${numTreads} pedate (${angleDeg.toFixed(1)}°)`;
 
             // Sync Print-only technical report summary
             const printHeightVal = document.getElementById('printHeightVal');
@@ -3302,6 +3298,27 @@ document.addEventListener('DOMContentLoaded', () => {
             slopeAngleText.setAttribute('x', startX + 20);
             slopeAngleText.setAttribute('y', curY - 12);
             slopeAngleText.textContent = `${numRisers} alzate da ${rFmt} ${u} • ${tFmt} ${u} pedata • ${angleDeg.toFixed(1)}°`;
+        }
+
+        
+        function copyResultsScale() {
+            const h = heightInput.value;
+            const l = (currentMode === 'direct' ? lengthInput.value : (document.getElementById('lengthText') ? document.getElementById('lengthText').textContent : ''));
+            const riser = document.getElementById('riserOutput').textContent;
+            const tread = document.getElementById('treadOutput').textContent;
+            const steps = document.getElementById('stepsOutput').textContent;
+            const blondel = document.getElementById('blondelOutput').textContent;
+            const u = currentUnit;
+
+            const text = `Scala: Dislivello ${h} ${u} | Sviluppo a terra ${l} ${u} | Alzata ${riser} | Pedata ${tread} | ${steps} gradini (${blondel}) (OmniTools Lab ScalaFacile)`;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopyScale');
+                const orig = btn.textContent;
+                btn.textContent = '✓ Valori Copiati per Computo!';
+                setTimeout(() => { btn.textContent = orig; }, 2000);
+            }).catch(err => {
+                console.error("Errore copia appunti:", err);
+            });
         }
 
         // PWA Install Prompt Logic
