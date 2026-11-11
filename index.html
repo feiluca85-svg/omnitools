@@ -530,11 +530,15 @@
 
         </section>
 
-        <!-- Tools Showcase (Dynamic Unified Stream & Divisional Focus) -->
-        <section class="max-w-5xl mx-auto px-4 space-y-6">
-
-            <!-- Contextual Division Headers (Displayed when a specific division is active) -->
-            <div id="divisionHeaderBuilding" class="hidden space-y-2">
+        <!-- Tools Showcase -->
+        <section class="max-w-5xl mx-auto px-4 space-y-8">
+            
+            <!-- ========================================== -->
+            <!-- DIVISION 1: OmniBuilding (Edilizia & Tubi) -->
+            <!-- ========================================== -->
+            <div id="sectionBuilding" class="space-y-4">
+                
+                <!-- Division Department Header -->
                 <div class="flex items-center justify-between pb-2.5 border-b-2 border-amber-500/20">
                     <div class="flex items-center gap-2.5">
                         <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-sm shadow-amber-500/30 shrink-0 p-1">
@@ -553,52 +557,14 @@
                             <p id="divBuildingDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori geometrici e normativi per cantieri, architettura, coperture e taglio</p>
                         </div>
                     </div>
-            </div>
-            <div id="divisionHeaderGraph" class="hidden space-y-2">
-                <div class="flex items-center justify-between pb-2.5 border-b-2 border-rose-900/20">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-sm shadow-rose-900/30 shrink-0 p-1">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
-                                <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
-                                <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                                <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                                <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h2 id="divGraphTitle" class="text-base sm:text-lg font-black text-rose-950 tracking-tight font-jakarta leading-none">Omni<span class="text-rose-700">Graph</span></h2>
-                                <span class="text-[9px] font-extrabold uppercase bg-rose-100 text-rose-900 px-2 py-0.5 rounded-full border border-rose-300">Reparto Grafica</span>
-                            </div>
-                            <p id="divGraphDesc" class="text-[11px] text-slate-500 mt-0.5">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
-                        </div>
-                    </div>
-            </div>
-            <div id="divisionHeaderFinance" class="hidden space-y-2">
-                <div class="flex items-center justify-between pb-2.5 border-b-2 border-emerald-500/20">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0 p-1">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
-                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
-                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
-                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
-                                <span class="text-[9px] font-extrabold uppercase bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full border border-emerald-300">Reparto Finanza</span>
-                            </div>
-                            <p id="divFinanceDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
-                        </div>
-                    </div>
-            </div>
+                    <span id="badgeCountBuilding" class="text-[11px] sm:text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2 sm:px-2.5 py-1 rounded-xl border border-amber-200 inline-block shrink-0">6 Tool Attivi</span>
+                </div>
 
-            <!-- Unified Responsive Tools Grid (18 Tools Ranked by Real World Demand & Value) -->
-            <div id="unifiedToolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-<a href="/piastrelle" data-division="building" data-tool-id="piastrelle" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="piastrelle pavimenti rivestimenti piastrellista posa colla stucco fughe sfrido sacchi colla leroy merlin brico cantiere mattonelle">
+                <!-- 6 Building Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <!-- TOOL 1: RampaFacile -->
+                    <a href="/piastrelle" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="piastrelle pavimenti rivestimenti piastrellista posa colla stucco fughe sfrido sacchi colla leroy merlin brico cantiere mattonelle">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -637,52 +603,7 @@
                         </div>
                     </a>
 
-<a href="/mutuo" data-division="finance" data-tool-id="mutuo" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
-                                        <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="12" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="17" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="22" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolMutuoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MutuoFacile</h3>
-                                <div id="toolMutuoHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto peserà la rata sul tuo stipendio?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolMutuoDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Rata Mensile</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Tabella Anno/Anno</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Sostenibilità 33%</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolMutuoCta">Calcola Rata Mutuo</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/rampe" data-division="building" data-tool-id="rampe" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="rampa rampe pendenza gradi disabili dm 236 autorimesse garage dislivello pendenza disabili lunghezza a terra">
+<a href="/rampe" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="rampa rampe pendenza gradi disabili dm 236 autorimesse garage dislivello pendenza disabili lunghezza a terra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -725,7 +646,204 @@
                         </div>
                     </a>
 
-<a href="/barcode" data-division="graph" data-tool-id="barcode" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
+<a href="/scale" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
+                                    <!-- Blueprint Stairs SVG -->
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M 5 25 H 12 V 18 H 19 V 11 H 27" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+                                        <line x1="12" y1="25" x2="12" y2="18" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
+                                        <line x1="19" y1="18" x2="19" y2="11" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Blondel</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolScaleTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">ScalaFacile</h3>
+                                <div id="toolScaleHook" class="text-xs font-bold text-amber-700 mt-0.5">Quanti gradini servono?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolScaleDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Trova numero di gradini, alzata e pedata perfetti con la formula ergonomica di Blondel.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🪜 Alzata / Pedata</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 2a + p = 63 cm</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏢 DIN 18065</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolScaleCta">Progetta Scala Ora</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/tetto" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tetto falda pendenza trave colmo puntone gradi percentuale superficie copertura tettoia calcolo cantiere">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Falda & Gradi</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolTettoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">TettoFacile</h3>
+                                <div id="toolTettoHook" class="text-xs font-bold text-amber-700 mt-0.5">Pendenza e sviluppo trave?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolTettoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcolo pendenza falda tetto in gradi e %, quota colmo, lunghezza reale della trave e superficie.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Gradi & %</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏠 Trave + Sporto</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Area m²</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolTettoCta">Calcola Pendenza Tetto</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/tubi" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
+                                    <!-- Blueprint Pipe Flow SVG -->
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <line x1="5" y1="11" x2="27" y2="21" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" />
+                                        <path d="M 12 14.5 C 15 16, 17 17, 20 18.5" stroke="#fde047" stroke-width="2" stroke-linecap="round" />
+                                        <circle cx="21" cy="22" r="2" fill="#fde047" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">UNI EN 12056</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolTubiTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">ScaricoFacile</h3>
+                                <div id="toolTubiHook" class="text-xs font-bold text-amber-700 mt-0.5">L'acqua scorre o si intasa?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolTubiDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Pendenza corretta, dislivello al metro e verifica autopulizia per tubazioni di scarico (UNI EN 12056).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🚰 Caduta cm/m</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💧 Autopulizia 1-2%</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Ø 40-200 mm</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolTubiCta">Calcola Pendenza Tubo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/taglio" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="taglio barre travi legno metallo sfrido kerf lama sega ottimizzatore 1d profilati tubi bin packing cantiere falegnameria">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Taglio 1D & Sfrido</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolTaglioTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">TaglioOttimo</h3>
+                                <div id="toolTaglioHook" class="text-xs font-bold text-amber-700 mt-0.5">Come tagliare con zero sfrido?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolTaglioDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Ottimizzatore di taglio 1D per travi, barre e tubi. Riduci lo sfrido con algoritmo bin-packing e spessore lama.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🪚 Taglio 1D</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Kerf Lama</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">♻️ Meno Sfrido</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolTaglioCta">Ottimizza Taglio Ora</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- DIVISION 2: OmniGraph (Grafica & Stampa) -->
+            <!-- ========================================== -->
+            <div id="sectionGraph" class="space-y-4">
+                
+                <!-- Division Department Header -->
+                <div class="flex items-center justify-between pb-2.5 border-b-2 border-rose-900/20">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shadow-sm shadow-rose-900/30 shrink-0 p-1">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
+                                <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
+                                <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 id="divGraphTitle" class="text-base sm:text-lg font-black text-rose-950 tracking-tight font-jakarta leading-none">Omni<span class="text-rose-700">Graph</span></h2>
+                                <span class="text-[9px] font-extrabold uppercase bg-rose-100 text-rose-900 px-2 py-0.5 rounded-full border border-rose-300">Reparto Grafica</span>
+                            </div>
+                            <p id="divGraphDesc" class="text-[11px] text-slate-500 mt-0.5">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
+                        </div>
+                    </div>
+                    <span id="badgeCountGraph" class="text-[11px] sm:text-xs font-mono font-bold text-rose-900 bg-rose-50 px-2 sm:px-2.5 py-1 rounded-xl border border-rose-200 inline-block shrink-0">6 Tool Attivi</span>
+                </div>
+
+                <!-- 6 Graphic Tools Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    
+                    <!-- TOOL 4: DorsoFacile -->
+                    <a href="/barcode" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -772,170 +890,7 @@
                         </div>
                     </a>
 
-<a href="/scale" data-division="building" data-tool-id="scale" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
-                                    <!-- Blueprint Stairs SVG -->
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M 5 25 H 12 V 18 H 19 V 11 H 27" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
-                                        <line x1="12" y1="25" x2="12" y2="18" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
-                                        <line x1="19" y1="18" x2="19" y2="11" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Blondel</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolScaleTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">ScalaFacile</h3>
-                                <div id="toolScaleHook" class="text-xs font-bold text-amber-700 mt-0.5">Quanti gradini servono?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolScaleDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Trova numero di gradini, alzata e pedata perfetti con la formula ergonomica di Blondel.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🪜 Alzata / Pedata</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 2a + p = 63 cm</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏢 DIN 18065</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolScaleCta">Progetta Scala Ora</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/estinzione" data-division="finance" data-tool-id="estinzione" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolEstinzioneTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">EstinzioneFacile</h3>
-                                <div id="toolEstinzioneHook" class="text-xs font-bold text-emerald-800 mt-0.5">Conviene abbassare la rata o accorciare gli anni?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolEstinzioneDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Riduci Rata</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Riduci Anni</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Bersani 0 Penali</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolEstinzioneCta">Simula Estinzione Ora</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/margine" data-division="finance" data-tool-id="margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
-                                        <circle cx="21" cy="11" r="2" fill="#ffffff"/>
-                                        <line x1="12" y1="18" x2="18" y2="12" stroke="#ffffff" stroke-width="1.5"/>
-                                        <circle cx="13" cy="13" r="1" fill="#ffffff"/>
-                                        <circle cx="17" cy="17" r="1" fill="#ffffff"/>
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolMargineTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MargineFacile</h3>
-                                <div id="toolMargineHook" class="text-xs font-bold text-emerald-800 mt-0.5">Stai calcolando il margine o solo il ricarico?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolMargineDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ Margine vs Ricarico</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⚖️ Prezzo da COGS</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏛️ Scorporo Imposte</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolMargineCta">Calcola Margine & Prezzo</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/tetto" data-division="building" data-tool-id="tetto" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tetto falda pendenza trave colmo puntone gradi percentuale superficie copertura tettoia calcolo cantiere">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Falda & Gradi</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolTettoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">TettoFacile</h3>
-                                <div id="toolTettoHook" class="text-xs font-bold text-amber-700 mt-0.5">Pendenza e sviluppo trave?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolTettoDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcolo pendenza falda tetto in gradi e %, quota colmo, lunghezza reale della trave e superficie.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Gradi & %</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏠 Trave + Sporto</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Area m²</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolTettoCta">Calcola Pendenza Tetto</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/dpi" data-division="graph" data-tool-id="dpi" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
+<a href="/dpi" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -981,93 +936,7 @@
                         </div>
                     </a>
 
-<a href="/tubi" data-division="building" data-tool-id="tubi" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
-                                    <!-- Blueprint Pipe Flow SVG -->
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <line x1="5" y1="11" x2="27" y2="21" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" />
-                                        <path d="M 12 14.5 C 15 16, 17 17, 20 18.5" stroke="#fde047" stroke-width="2" stroke-linecap="round" />
-                                        <circle cx="21" cy="22" r="2" fill="#fde047" />
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">UNI EN 12056</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolTubiTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">ScaricoFacile</h3>
-                                <div id="toolTubiHook" class="text-xs font-bold text-amber-700 mt-0.5">L'acqua scorre o si intasa?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolTubiDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Pendenza corretta, dislivello al metro e verifica autopulizia per tubazioni di scarico (UNI EN 12056).
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🚰 Caduta cm/m</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💧 Autopulizia 1-2%</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Ø 40-200 mm</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolTubiCta">Calcola Pendenza Tubo</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/pac" data-division="finance" data-tool-id="pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
-                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
-                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolPacCta">Simula Crescita PAC</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/dorso" data-division="graph" data-tool-id="dorso" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
+<a href="/dorso" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 sm:p-6 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1112,83 +981,7 @@
                         </div>
                     </a>
 
-<a href="/taglio" data-division="building" data-tool-id="taglio" class="tool-card group relative bg-white hover:bg-amber-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-amber-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="taglio barre travi legno metallo sfrido kerf lama sega ottimizzatore 1d profilati tubi bin packing cantiere falegnameria">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Taglio 1D & Sfrido</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolTaglioTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-amber-600 transition">TaglioOttimo</h3>
-                                <div id="toolTaglioHook" class="text-xs font-bold text-amber-700 mt-0.5">Come tagliare con zero sfrido?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolTaglioDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Ottimizzatore di taglio 1D per travi, barre e tubi. Riduci lo sfrido con algoritmo bin-packing e spessore lama.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🪚 Taglio 1D</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📐 Kerf Lama</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">♻️ Meno Sfrido</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-amber-50 group-hover:bg-amber-500 text-amber-800 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolTaglioCta">Ottimizza Taglio Ora</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/risparmio" data-division="finance" data-tool-id="risparmio" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolRisparmioBadge">Sinking Fund</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolRisparmioTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">ObiettivoRisparmio</h3>
-                                <div id="toolRisparmioHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto devi mettere da parte al mese per raggiungere il tuo traguardo?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolRisparmioDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola la quota di accantonamento mensile per anticipo casa, auto, fondo emergenza o viaggi, con o senza rendimento composto.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎯 Quota Mensile</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Sinking Fund</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Con Rendimento</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolRisparmioCta">Calcola Quota Risparmio</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/copertura" data-division="graph" data-tool-id="copertura" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="copertura inchiostro cmyk tac total area coverage costo copia stampa preventivo quadricromia densitometria rip">
+<a href="/copertura" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="copertura inchiostro cmyk tac total area coverage costo copia stampa preventivo quadricromia densitometria rip">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1231,7 +1024,7 @@
                         </div>
                     </a>
 
-<a href="/tinta" data-division="graph" data-tool-id="tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
+<a href="/tinta" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1282,49 +1075,7 @@
                         </div>
                     </a>
 
-<a href="/fire" data-division="finance" data-tool-id="fire" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M16 4 C11 10, 8 15, 8 20 A8 8 0 0 0 24 20 C24 15, 21 10, 16 4 Z" fill="#047857" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round"/>
-                                        <path d="M16 13 C13.5 16, 12 19, 12 22 A4 4 0 0 0 20 22 C20 19, 18.5 16, 16 13 Z" fill="#34d399" opacity="0.9"/>
-                                        <circle cx="16" cy="22" r="2" fill="#ffffff"/>
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolFireBadge">Trinity Study 4%</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolFireTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">FIRE & Rendita Passiva</h3>
-                                <div id="toolFireHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto capitale ti serve per smettere di lavorare?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolFireDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola il tuo FIRE Number secondo lo Studio Trinity (regola del 4% / 25x spese annue), gli anni alla libertà finanziaria e la traiettoria di accumulo.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔥 FIRE Number</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Anni al Traguardo</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Curva Traiettoria</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolFireCta">Calcola Libertà FIRE</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/resa" data-division="graph" data-tool-id="resa" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
+<a href="/resa" class="tool-card group relative bg-white hover:bg-rose-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-rose-700 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
@@ -1367,11 +1118,295 @@
                             </div>
                         </div>
                     </a>
+
+                </div>
             </div>
 
-        </section>
+            <!-- ========================================== -->
+            <!-- DIVISION 3: OmniFinance (Finanza & Business) -->
+            <!-- ========================================== -->
+            <div id="sectionFinance" class="space-y-4 pt-4">
+                
+                <!-- Division Department Header -->
+                <div class="flex items-center justify-between pb-2.5 border-b-2 border-emerald-500/20">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0 p-1">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
+                                <span class="text-[9px] font-extrabold uppercase bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full border border-emerald-300">Reparto Finanza</span>
+                            </div>
+                            <p id="divFinanceDesc" class="text-[11px] text-slate-500 mt-0.5">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
+                        </div>
+                    </div>
+                    <span id="badgeCountFinance" class="text-[11px] sm:text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2 sm:px-2.5 py-1 rounded-xl border border-emerald-200 inline-block shrink-0">6 Tool Attivi</span>
+                </div>
 
-        <!-- NATIVE TECHNICAL SPONSOR / PARTNER SHOWCASE BANNER (3 Divisions Exclusivity) -->
+                <!-- 6 Finance Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <!-- TOOL 10: MutuoFacile -->
+                    <a href="/mutuo" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="12" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="17" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="22" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMutuoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MutuoFacile</h3>
+                                <div id="toolMutuoHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto peserà la rata sul tuo stipendio?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMutuoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Rata Mensile</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Tabella Anno/Anno</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Sostenibilità 33%</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMutuoCta">Calcola Rata Mutuo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/estinzione" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolEstinzioneTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">EstinzioneFacile</h3>
+                                <div id="toolEstinzioneHook" class="text-xs font-bold text-emerald-800 mt-0.5">Conviene abbassare la rata o accorciare gli anni?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolEstinzioneDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Riduci Rata</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Riduci Anni</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Bersani 0 Penali</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolEstinzioneCta">Simula Estinzione Ora</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <circle cx="21" cy="11" r="2" fill="#ffffff"/>
+                                        <line x1="12" y1="18" x2="18" y2="12" stroke="#ffffff" stroke-width="1.5"/>
+                                        <circle cx="13" cy="13" r="1" fill="#ffffff"/>
+                                        <circle cx="17" cy="17" r="1" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMargineTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MargineFacile</h3>
+                                <div id="toolMargineHook" class="text-xs font-bold text-emerald-800 mt-0.5">Stai calcolando il margine o solo il ricarico?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMargineDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ Margine vs Ricarico</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⚖️ Prezzo da COGS</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏛️ Scorporo Imposte</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMargineCta">Calcola Margine & Prezzo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
+                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
+                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolPacCta">Simula Crescita PAC</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/risparmio" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolRisparmioBadge">Sinking Fund</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolRisparmioTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">ObiettivoRisparmio</h3>
+                                <div id="toolRisparmioHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto devi mettere da parte al mese per raggiungere il tuo traguardo?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolRisparmioDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola la quota di accantonamento mensile per anticipo casa, auto, fondo emergenza o viaggi, con o senza rendimento composto.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎯 Quota Mensile</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Sinking Fund</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Con Rendimento</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolRisparmioCta">Calcola Quota Risparmio</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/fire" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M16 4 C11 10, 8 15, 8 20 A8 8 0 0 0 24 20 C24 15, 21 10, 16 4 Z" fill="#047857" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round"/>
+                                        <path d="M16 13 C13.5 16, 12 19, 12 22 A4 4 0 0 0 20 22 C20 19, 18.5 16, 16 13 Z" fill="#34d399" opacity="0.9"/>
+                                        <circle cx="16" cy="22" r="2" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolFireBadge">Trinity Study 4%</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolFireTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">FIRE & Rendita Passiva</h3>
+                                <div id="toolFireHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto capitale ti serve per smettere di lavorare?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolFireDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola il tuo FIRE Number secondo lo Studio Trinity (regola del 4% / 25x spese annue), gli anni alla libertà finanziaria e la traiettoria di accumulo.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔥 FIRE Number</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Anni al Traguardo</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Curva Traiettoria</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolFireCta">Calcola Libertà FIRE</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- NATIVE TECHNICAL SPONSOR / PARTNER SHOWCASE BANNER (3 Divisions Exclusivity) -->
             <div id="hubSponsorBanner" class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-5 sm:p-6 border border-indigo-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
                 <div class="flex items-start gap-4 text-left">
                     <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-2xl shrink-0">
@@ -1793,81 +1828,74 @@
             initFilterFromHash();
         });
 
-        // Deterministic Performance & Demand Rankings
-        const TOOL_RANKINGS = {
-            all: [
-                'piastrelle', 'mutuo', 'rampe', 'barcode', 'scale', 'estinzione',
-                'margine', 'tetto', 'dpi', 'tubi', 'pac', 'dorso',
-                'taglio', 'risparmio', 'copertura', 'tinta', 'fire', 'resa'
-            ],
-            building: ['piastrelle', 'rampe', 'scale', 'tetto', 'tubi', 'taglio'],
-            graph: ['barcode', 'dpi', 'dorso', 'copertura', 'tinta', 'resa'],
-            finance: ['mutuo', 'estinzione', 'margine', 'pac', 'risparmio', 'fire']
-        };
-
         function filterTools() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const clearBtn = document.getElementById('clearSearchBtn');
-            if (clearBtn) {
-                if (query.length > 0) clearBtn.classList.remove('hidden');
-                else clearBtn.classList.add('hidden');
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
             }
 
-            const headerBuilding = document.getElementById('divisionHeaderBuilding');
-            const headerGraph = document.getElementById('divisionHeaderGraph');
-            const headerFinance = document.getElementById('divisionHeaderFinance');
-            const grid = document.getElementById('unifiedToolsGrid');
+            const secBuilding = document.getElementById('sectionBuilding');
+            const secGraph = document.getElementById('sectionGraph');
+            const secFinance = document.getElementById('sectionFinance');
 
-            // Manage contextual division headers
-            if (headerBuilding) {
-                if (currentFilter === 'building' && query === '') headerBuilding.classList.remove('hidden');
-                else headerBuilding.classList.add('hidden');
-            }
-            if (headerGraph) {
-                if (currentFilter === 'graph' && query === '') headerGraph.classList.remove('hidden');
-                else headerGraph.classList.add('hidden');
-            }
-            if (headerFinance) {
-                if (currentFilter === 'finance' && query === '') headerFinance.classList.remove('hidden');
-                else headerFinance.classList.add('hidden');
-            }
+            let visibleBuildingCards = 0;
+            let visibleGraphCards = 0;
+            let visibleFinanceCards = 0;
 
-            // Get target ranking order for active tab
-            const targetOrder = TOOL_RANKINGS[currentFilter] || TOOL_RANKINGS.all;
-
-            // Re-order and filter cards in DOM
-            const cards = Array.from(document.querySelectorAll('.tool-card'));
-            const cardsMap = {};
+            const cards = document.querySelectorAll('.tool-card');
             cards.forEach(card => {
-                const id = card.getAttribute('data-tool-id');
-                if (id) cardsMap[id] = card;
-            });
+                const isBuildingCard = card.closest('#sectionBuilding') !== null;
+                const isGraphCard = card.closest('#sectionGraph') !== null;
+                const isFinanceCard = card.closest('#sectionFinance') !== null;
 
-            // Re-append in exact ranked order
-            if (grid) {
-                targetOrder.forEach(id => {
-                    const card = cardsMap[id];
-                    if (card && card.parentElement === grid) {
-                        grid.appendChild(card);
-                    }
-                });
-            }
+                // Check division filter
+                let allowedByDivision = true;
+                if (currentFilter === 'building' && !isBuildingCard) allowedByDivision = false;
+                if (currentFilter === 'graph' && !isGraphCard) allowedByDivision = false;
+                if (currentFilter === 'finance' && !isFinanceCard) allowedByDivision = false;
 
-            // Apply visibility rules
-            cards.forEach(card => {
-                const div = card.getAttribute('data-division');
-                let allowedByDivision = (currentFilter === 'all') || (currentFilter === div);
-
+                // Check search query
                 const text = card.textContent.toLowerCase();
                 const tags = (card.getAttribute('data-tags') || '').toLowerCase();
                 const matchQuery = query === '' || text.includes(query) || tags.includes(query);
 
                 if (allowedByDivision && matchQuery) {
                     card.classList.remove('hidden');
+                    if (isBuildingCard) visibleBuildingCards++;
+                    if (isGraphCard) visibleGraphCards++;
+                    if (isFinanceCard) visibleFinanceCards++;
                 } else {
                     card.classList.add('hidden');
                 }
             });
+
+            // Show or hide division containers based on visible cards
+            if (secBuilding) {
+                if (visibleBuildingCards > 0 && (currentFilter === 'all' || currentFilter === 'building')) {
+                    secBuilding.classList.remove('hidden');
+                } else {
+                    secBuilding.classList.add('hidden');
+                }
+            }
+
+            if (secGraph) {
+                if (visibleGraphCards > 0 && (currentFilter === 'all' || currentFilter === 'graph')) {
+                    secGraph.classList.remove('hidden');
+                } else {
+                    secGraph.classList.add('hidden');
+                }
+            }
+
+            if (secFinance) {
+                if (visibleFinanceCards > 0 && (currentFilter === 'all' || currentFilter === 'finance')) {
+                    secFinance.classList.remove('hidden');
+                } else {
+                    secFinance.classList.add('hidden');
+                }
+            }
         }
 
         function clearSearch() {
@@ -2037,9 +2065,9 @@
         };
 
         function syncMacrotoolCounts() {
-            const bCards = document.querySelectorAll('.tool-card[data-division="building"]');
-            const gCards = document.querySelectorAll('.tool-card[data-division="graph"]');
-            const fCards = document.querySelectorAll('.tool-card[data-division="finance"]');
+            const bCards = document.querySelectorAll('#sectionBuilding .tool-card');
+            const gCards = document.querySelectorAll('#sectionGraph .tool-card');
+            const fCards = document.querySelectorAll('#sectionFinance .tool-card');
 
             const bCount = bCards.length;
             const gCount = gCards.length;
