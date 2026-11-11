@@ -768,25 +768,24 @@
     
 
     <!-- MAIN APP CONTAINER -->
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
         
         <!-- Hero Header -->
-        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase mb-2">
+        <section class="text-center space-y-2 no-print">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold shadow-2xs">
                 <span>🏠</span>
                 <span id="heroBadge">OmniBuilding · Geometria & Cantiere</span>
             </div>
-            <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2">
+            <h1 id="heroTitle" class="font-jakarta text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
                 Calcolo Pendenza Tetto, Falda & Superficie
             </h1>
-            <p id="heroDesc" class="text-slate-600 text-xs sm:text-base leading-relaxed px-2">
+            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
                 Calcola all'istante l'inclinazione in gradi e percentuale, la quota del colmo, la lunghezza reale della trave e la superficie della falda.
             </p>
-        </div>
+        </section>
 
-        
         <!-- Google Featured Snippet (Position 0) Callout Box -->
-        <section aria-label="Formula Pendenza Tetto e Trave" class="no-print bg-gradient-to-r from-amber-50 to-amber-100/60 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-3">
+        <section aria-label="Formula Pendenza Tetto e Trave" class="no-print bg-gradient-to-r from-amber-50 to-amber-100/60 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs">
             <div class="flex items-start gap-3">
                 <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
                 <div class="text-xs sm:text-sm space-y-1">
@@ -800,193 +799,198 @@
             </div>
         </section>
 
-        <!-- Mode Selector -->
-        <div id="modeSelectorBar" class="no-print bg-slate-200/80 p-1 rounded-2xl flex max-w-sm sm:max-w-md mx-auto shadow-inner text-xs sm:text-sm font-bold">
-            <button id="modeDirectBtn" onclick="switchMode('direct')" class="flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-amber-700 shadow-sm transition active:scale-95 text-center">
-                📐 Da Base & Colmo
-            </button>
-            <button id="modeReverseBtn" onclick="switchMode('reverse')" class="flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center">
-                📏 Da Pendenza & Base
-            </button>
-        </div>
+        <!-- Main Unified Card (Single Card Container) -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
 
-        <!-- Calculator Layout -->
-        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
-            
-            <!-- RESULTS & VISUAL COLUMN (First on mobile) -->
-            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
-                
-                <!-- Status Banner -->
-                <div id="statusBanner" class="p-3 sm:p-4 rounded-2xl border transition-colors duration-200 flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900">
-                    <span id="statusIcon" class="text-xl sm:text-2xl leading-none mt-0.5">🏠</span>
-                    <div class="min-w-0 flex-1">
-                        <div class="flex items-center justify-between gap-2 mb-0.5">
-                            <h3 id="statusTitle" class="font-extrabold text-xs sm:text-sm leading-snug">Pendenza Standard Ottimale</h3>
-                            <span id="statusTag" class="text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-200/60 uppercase tracking-wide shrink-0">Ideale Tegole</span>
-                        </div>
-                        <p id="statusDesc" class="text-xs sm:text-xs leading-relaxed text-slate-600">
-                            Inclinazione ideale per il deflusso rapido delle acque meteoriche con tegole tradizionali e coppi senza ristagni.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 4 Core Metric KPI Cards -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
-                    
-                    <!-- Pendenza % -->
-                    <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-2xs flex flex-col justify-between">
-                        <span id="colSlopeLabel" class="text-[10px] sm:text-xs font-bold text-slate-600 uppercase tracking-wide">Pendenza</span>
-                        <div class="my-1">
-                            <span id="valSlopePct" class="text-xl sm:text-2xl font-black font-mono text-amber-600 tracking-tight">30.0%</span>
-                        </div>
-                        <span id="valRatio" class="text-[10px] font-mono text-slate-600">Rapporto 1:3.3</span>
-                    </div>
-
-                    <!-- Inclinazione Gradi -->
-                    <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-2xs flex flex-col justify-between">
-                        <span id="colAngleLabel" class="text-[10px] sm:text-xs font-bold text-slate-600 uppercase tracking-wide">Inclinazione</span>
-                        <div class="my-1">
-                            <span id="valAngleDeg" class="text-xl sm:text-2xl font-black font-mono text-slate-900 tracking-tight">16.7°</span>
-                        </div>
-                        <span class="text-[10px] font-mono text-slate-600">Angolo in gradi</span>
-                    </div>
-
-                    <!-- Lunghezza Trave -->
-                    <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-2xs flex flex-col justify-between">
-                        <span id="colRafterLabel" class="text-[10px] sm:text-xs font-bold text-slate-600 uppercase tracking-wide">Lunghezza Trave</span>
-                        <div class="my-1">
-                            <span id="valRafterLength" class="text-xl sm:text-2xl font-black font-mono text-slate-900 tracking-tight">465.3 cm</span>
-                        </div>
-                        <span id="valOverhangNote" class="text-[10px] font-mono text-slate-600">Incluso sporto 50cm</span>
-                    </div>
-
-                    <!-- Superficie Reale -->
-                    <div class="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-2xs flex flex-col justify-between">
-                        <span id="colAreaLabel" class="text-[10px] sm:text-xs font-bold text-slate-600 uppercase tracking-wide">Superficie Falda</span>
-                        <div class="my-1">
-                            <span id="valRoofArea" class="text-xl sm:text-2xl font-black font-mono text-slate-900 tracking-tight">46.5 m²</span>
-                        </div>
-                        <span id="valLengthNote" class="text-[10px] font-mono text-slate-600">Su facciata 10.0 m</span>
-                    </div>
-                </div>
-
-                <!-- Dynamic Vector Section Diagram -->
-                <div class="bg-white rounded-2xl p-3.5 sm:p-5 border border-slate-200 shadow-2xs">
-                    <div class="flex items-center justify-between mb-2">
-                        <span id="schemaTitle" class="text-xs sm:text-sm font-extrabold text-slate-900">Schema Geometrico Sezione Falda</span>
-                        <span id="schemaScale" class="text-[10px] font-mono font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">In scala interattiva</span>
-                    </div>
-
-                    <!-- Interactive SVG Canvas -->
-                    <div class="w-full bg-slate-50/70 border border-slate-200 rounded-xl p-2 sm:p-4 flex items-center justify-center overflow-hidden">
-                        <svg id="roofSvgCanvas" class="w-full h-44 sm:h-56 select-none" viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Injected dynamically via JS -->
-                        </svg>
-                    </div>
-
-                    <!-- Quick Context Tip -->
-                    <div class="mt-3 text-xs leading-relaxed text-slate-600 bg-amber-50/50 p-2.5 rounded-xl border border-amber-100">
-                        <span id="ruleTip">💡 <strong>Regola Geometrica del Tetto:</strong> La pendenza percentuale esprime quanti centimetri si sale verticalmente ogni 100 cm di avanzamento orizzontale. La lunghezza della trave include l'ipotenusa del triangolo più lo sporto di gronda.</span>
-                    </div>
-                </div>
-
+            <!-- Mode Selector (Direct vs Reverse) Tabs -->
+            <div id="modeSelectorBar" class="bg-slate-100 p-1.5 rounded-2xl flex border border-slate-200/80 mb-6 text-xs sm:text-sm font-bold no-print">
+                <button id="modeDirectBtn" type="button" onclick="switchMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-amber-700 shadow-sm transition active:scale-95 text-center font-bold">
+                    📐 Da Base & Colmo
+                </button>
+                <button id="modeReverseBtn" type="button" onclick="switchMode('reverse')" class="flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">
+                    📏 Da Pendenza & Base
+                </button>
             </div>
 
-            <!-- CONTROLS & INPUT COLUMN -->
-            <div id="controlsColumn" class="w-full order-2 lg:order-1 lg:col-span-5 space-y-3 sm:space-y-4">
-                
-                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-2xs space-y-3.5">
-                    
-                    <!-- Unit Switcher -->
-                    <div class="flex items-center justify-between">
-                        <label id="unitLabel" class="text-xs font-extrabold uppercase tracking-wide text-slate-600">Unità di Misura</label>
-                        <div class="inline-flex p-0.5 rounded-xl bg-slate-100 border border-slate-200 text-xs font-bold">
-                            <button type="button" onclick="setUnit('cm')" id="unitBtnCm" class="px-2.5 py-1 rounded-lg bg-white shadow-2xs text-amber-700 transition">cm</button>
-                            <button type="button" onclick="setUnit('m')" id="unitBtnM" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">m</button>
-                        </div>
+            <!-- Controls Section (Inputs & Sliders) -->
+            <div id="controlsColumn" class="space-y-4 no-print">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <span id="unitLabel" class="text-xs font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
+                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
+                        <button type="button" onclick="setUnit('cm')" id="unitBtnCm" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                        <button type="button" onclick="setUnit('m')" id="unitBtnM" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
                     </div>
-
-                    <!-- Input 1: Base / Run (L) -->
-                    <div class="space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <label for="inputBase" id="baseLabel" class="text-xs font-extrabold text-slate-700 flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                                <span>Larghezza Base in Pianta (L)</span>
-                            </label>
-                            <span id="baseUnitTag" class="text-xs font-mono font-bold text-slate-600">cm</span>
-                        </div>
-                        <input type="number" id="inputBase" value="400" min="50" max="5000" step="1" oninput="calculateRoof()" class="w-full px-3.5 py-2.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-slate-900 font-mono font-bold text-base rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none transition">
-                        <input type="range" id="sliderBase" min="100" max="1500" value="400" step="5" oninput="syncSlider('base', this.value)" class="w-full accent-amber-500 cursor-pointer">
-                    </div>
-
-                    <!-- Input 2: Dynamic (Height in Direct Mode, Slope% in Reverse Mode) -->
-                    <div id="modeDirectGroup" class="space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <label for="inputHeight" id="heightLabel" class="text-xs font-extrabold text-slate-700 flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                                <span>Altezza Colmo / Dislivello (H)</span>
-                            </label>
-                            <span id="heightUnitTag" class="text-xs font-mono font-bold text-slate-600">cm</span>
-                        </div>
-                        <input type="number" id="inputHeight" value="120" min="10" max="3000" step="1" oninput="calculateRoof()" class="w-full px-3.5 py-2.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-slate-900 font-mono font-bold text-base rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none transition">
-                        <input type="range" id="sliderHeight" min="20" max="800" value="120" step="5" oninput="syncSlider('height', this.value)" class="w-full accent-amber-500 cursor-pointer">
-                    </div>
-
-                    <div id="modeReverseGroup" class="space-y-1.5 hidden">
-                        <div class="flex items-center justify-between">
-                            <label for="inputSlopePct" id="slopePctLabel" class="text-xs font-extrabold text-slate-700 flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                                <span>Pendenza Desiderata (%)</span>
-                            </label>
-                            <span class="text-xs font-mono font-bold text-slate-600">%</span>
-                        </div>
-                        <input type="number" id="inputSlopePct" value="30" min="2" max="250" step="0.5" oninput="calculateRoof()" class="w-full px-3.5 py-2.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-slate-900 font-mono font-bold text-base rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none transition">
-                        <input type="range" id="sliderSlopePct" min="5" max="120" value="30" step="1" oninput="syncSlider('slopePct', this.value)" class="w-full accent-amber-500 cursor-pointer">
-                    </div>
-
-                    <!-- Input 3: Sporto Gronda (cm) -->
-                    <div class="space-y-1.5 pt-1 border-t border-slate-100">
-                        <div class="flex items-center justify-between">
-                            <label for="inputOverhang" id="overhangLabel" class="text-xs font-bold text-slate-600">Sporto Gronda Grondaia (cm)</label>
-                            <span class="text-xs font-mono font-bold text-slate-600">cm</span>
-                        </div>
-                        <input type="number" id="inputOverhang" value="50" min="0" max="200" step="5" oninput="calculateRoof()" class="w-full px-3 py-2 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-slate-900 font-mono font-bold text-xs rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none transition">
-                    </div>
-
-                    <!-- Input 4: Lunghezza Fabbricato (m) -->
-                    <div class="space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <label for="inputRoofLength" id="roofLengthLabel" class="text-xs font-bold text-slate-600">Lunghezza Edificio / Falda (m)</label>
-                            <span class="text-xs font-mono font-bold text-slate-600">m</span>
-                        </div>
-                        <input type="number" id="inputRoofLength" value="10" min="1" max="100" step="0.5" oninput="calculateRoof()" class="w-full px-3 py-2 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-slate-900 font-mono font-bold text-xs rounded-xl border border-slate-200 focus:border-amber-500 focus:outline-none transition">
-                    </div>
-
-                    <!-- Presets Grid -->
-                    <div class="no-print pt-2 border-t border-slate-100">
-                        <label id="presetsTitle" class="text-[11px] font-extrabold uppercase tracking-wide text-slate-600 block mb-2">Preset standard di pendenza tetto:</label>
-                        <div class="grid grid-cols-2 gap-1.5 text-left">
-                            <button type="button" onclick="applyPreset(8.7)" class="p-2 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition text-left group">
-                                <span id="preset1Title" class="text-xs font-bold text-slate-800 group-hover:text-amber-800 block">Tettoia (8.7% • 5°)</span>
-                                <span id="preset1Sub" class="text-[10px] text-slate-600 block">Minimo scolo acqua</span>
-                            </button>
-                            <button type="button" onclick="applyPreset(30)" class="p-2 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition text-left group">
-                                <span id="preset2Title" class="text-xs font-bold text-slate-800 group-hover:text-amber-800 block">Tegole (30% • 16.7°)</span>
-                                <span id="preset2Sub" class="text-[10px] text-slate-600 block">Standard coppi</span>
-                            </button>
-                            <button type="button" onclick="applyPreset(60)" class="p-2 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition text-left group">
-                                <span id="preset3Title" class="text-xs font-bold text-slate-800 group-hover:text-amber-800 block">Neve (60% • 31°)</span>
-                                <span id="preset3Sub" class="text-[10px] text-slate-600 block">Zone montane</span>
-                            </button>
-                            <button type="button" onclick="applyPreset(100)" class="p-2 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition text-left group">
-                                <span id="preset4Title" class="text-xs font-bold text-slate-800 group-hover:text-amber-800 block">Alpino (100% • 45°)</span>
-                                <span id="preset4Sub" class="text-[10px] text-slate-600 block">Ripido per neve</span>
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
 
+                <!-- Input Columns Grid: Base & Height/Slope (2 columns) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Input 1: Base (L) -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="inputBase" id="baseLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                                <span>Larghezza Base in Pianta (L)</span>
+                            </label>
+                            <span id="baseUnitTag" class="text-xs font-mono font-bold text-slate-700">cm</span>
+                        </div>
+                        <input type="number" id="inputBase" value="400" min="50" max="5000" step="1" oninput="calculateRoof()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                        <div class="pt-1.5 px-0.5">
+                            <input type="range" id="sliderBase" min="100" max="1500" value="400" step="5" oninput="syncSlider('base', this.value)" class="w-full accent-amber-500 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Input 2: Colmo / Dislivello (H) in Direct Mode -->
+                    <div id="modeDirectGroup" class="space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="inputHeight" id="heightLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                                <span>Altezza Colmo / Dislivello (H)</span>
+                            </label>
+                            <span id="heightUnitTag" class="text-xs font-mono font-bold text-slate-700">cm</span>
+                        </div>
+                        <input type="number" id="inputHeight" value="120" min="10" max="3000" step="1" oninput="calculateRoof()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                        <div class="pt-1.5 px-0.5">
+                            <input type="range" id="sliderHeight" min="20" max="800" value="120" step="5" oninput="syncSlider('height', this.value)" class="w-full accent-amber-500 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Input 2 Reverse: Pendenza Desiderata (%) in Reverse Mode -->
+                    <div id="modeReverseGroup" class="space-y-1.5 hidden">
+                        <div class="flex justify-between items-center">
+                            <label for="inputSlopePct" id="slopePctLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                                <span>Pendenza Desiderata (%)</span>
+                            </label>
+                            <span class="text-xs font-mono font-bold text-slate-700">%</span>
+                        </div>
+                        <input type="number" id="inputSlopePct" value="30" min="2" max="250" step="0.5" oninput="calculateRoof()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                        <div class="pt-1.5 px-0.5">
+                            <input type="range" id="sliderSlopePct" min="5" max="120" value="30" step="1" oninput="syncSlider('slopePct', this.value)" class="w-full accent-amber-500 cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Parameters (2 columns: Sporto Gronda & Lunghezza Edificio) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="inputOverhang" id="overhangLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span>
+                                <span>Sporto Gronda Grondaia (cm)</span>
+                            </label>
+                            <span class="text-xs font-mono font-bold text-slate-500">cm</span>
+                        </div>
+                        <input type="number" id="inputOverhang" value="50" min="0" max="300" step="5" oninput="calculateRoof()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="inputRoofLength" id="roofLengthLabel" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span>
+                                <span>Lunghezza Edificio / Falda (m)</span>
+                            </label>
+                            <span class="text-xs font-mono font-bold text-slate-500">m</span>
+                        </div>
+                        <input type="number" id="inputRoofLength" value="10" min="1" max="100" step="0.5" oninput="calculateRoof()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Presets -->
+            <div id="presetsSection" class="pt-3 border-t border-slate-100 no-print">
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2" id="presetsTitle">Preimpostazioni standard di pendenza tetto:</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <button type="button" onclick="applyPreset(8.7)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset1Title">Tettoia (8.7% • 5°)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset1Sub">Minimo scolo acqua</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(30)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset2Title">Tegole (30% • 16.7°)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset2Sub">Standard coppi</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(60)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset3Title">Neve (60% • 31°)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset3Sub">Zone montane</div>
+                    </button>
+                    <button type="button" onclick="applyPreset(100)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset4Title">Alpino (100% • 45°)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset4Sub">Ripido per neve</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Results Metric Cards (4 Colonne Identiche a TubiFacili, RampaFacile e ScalaFacile) -->
+            <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
+                <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block" id="colSlopeLabel">Pendenza</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-amber-900 block mt-1" id="valSlopePct">30.0%</span>
+                    <span class="text-[10px] text-amber-700 font-mono block mt-0.5" id="valRatio">Rapporto 1:3.3</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="colAngleLabel">Inclinazione</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valAngleDeg">16.7°</span>
+                    <span class="text-[10px] text-slate-500 font-semibold block mt-0.5">Angolo in gradi</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="colRafterLabel">Lunghezza Trave</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valRafterLength">467.6 cm</span>
+                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valOverhangNote">Incluso sporto 50 cm</span>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="colAreaLabel">Superficie Falda</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valRoofArea">46.8 m²</span>
+                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valLengthNote">Su facciata 10.0 m</span>
+                </div>
+            </div>
+
+            <!-- Status Banner -->
+            <div id="statusBanner" class="p-4 sm:p-5 rounded-2xl border transition-all flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900">
+                <span id="statusIcon" class="text-2xl leading-none mt-0.5">🏠</span>
+                <div class="space-y-1 flex-1">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h3 id="statusTitle" class="text-sm sm:text-base font-bold text-slate-900">Pendenza Standard Ottimale</h3>
+                        <span id="statusTag" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-900 border border-amber-300">Ideale Tegole</span>
+                    </div>
+                    <p id="statusDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Inclinazione ideale per il deflusso rapido delle acque meteoriche con tegole tradizionali e coppi senza ristagni.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dynamic Vector Section Diagram -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-700 uppercase tracking-wider" id="schemaTitle">Schema Geometrico Sezione Falda</span>
+                    <span class="text-[10px] text-amber-700 font-bold flex items-center gap-1" id="schemaScale">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span> In scala interattiva
+                    </span>
+                </div>
+
+                <div class="bg-slate-50/80 rounded-2xl p-3 sm:p-6 border border-slate-100 flex items-center justify-center overflow-hidden">
+                    <svg id="roofSvgCanvas" class="w-full h-44 sm:h-56 select-none" viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Injected dynamically via JS -->
+                    </svg>
+                </div>
+
+                <!-- Rule tip banner -->
+                <div class="flex items-center text-xs text-slate-700 bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                    <span id="ruleTip">💡 <strong>Regola Geometrica del Tetto:</strong> La pendenza percentuale esprime quanti centimetri si sale verticalmente ogni 100 cm di avanzamento orizzontale. La lunghezza della trave include l'ipotenusa del triangolo più lo sporto di gronda.</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons: Print & Copy (Identico a TubiFacili, RampaFacile e ScalaFacile) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Cantiere A4</span>
+                </button>
+                <button type="button" onclick="copyResultsTetto()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span id="copyIcon">📋</span> <span id="btnCopyTetto">Copia Dati per Computo Metrico</span>
+                </button>
             </div>
 
         </div>
@@ -1703,6 +1707,29 @@
                 <!-- Angle Arc -->
                 <path d="M ${xWall + 32} ${yWall} A 32 32 0 0 0 ${xWall + 32 * Math.cos(angleDeg * Math.PI / 180)} ${yWall - 32 * Math.sin(angleDeg * Math.PI / 180)}" fill="none" stroke="#f59e0b" stroke-width="2" />
             `;
+        }
+
+        
+        function copyResultsTetto() {
+            const base = document.getElementById('inputBase').value;
+            const height = (currentMode === 'direct' ? document.getElementById('inputHeight').value : (document.getElementById('inputSlopePct').value + '% pendenza'));
+            const slope = document.getElementById('valSlopePct').textContent;
+            const deg = document.getElementById('valAngleDeg').textContent;
+            const rafter = document.getElementById('valRafterLength').textContent;
+            const area = document.getElementById('valRoofArea').textContent;
+            const overhang = document.getElementById('inputOverhang').value;
+            const facade = document.getElementById('inputRoofLength').value;
+            const u = currentUnit;
+
+            const text = 'Tetto: Base ' + base + ' ' + u + ' | Colmo/Pendenza ' + height + ' | Inclinazione ' + deg + ' (' + slope + ') | Lunghezza Trave ' + rafter + ' (sporto ' + overhang + 'cm) | Superficie Falda ' + area + ' (facciata ' + facade + 'm) (OmniTools Lab TettoFacile)';
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopyTetto');
+                const orig = btn.textContent;
+                btn.textContent = '✓ Valori Copiati per Computo!';
+                setTimeout(() => { btn.textContent = orig; }, 2000);
+            }).catch(err => {
+                console.error("Errore copia appunti:", err);
+            });
         }
 
         function changeLanguage(lang) {
