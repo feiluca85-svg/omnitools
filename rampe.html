@@ -1065,6 +1065,16 @@
                 </div>
             </div>
 
+            <!-- Action Buttons: Print & Copy (Identico a TubiFacili) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Cantiere A4</span>
+                </button>
+                <button type="button" onclick="copyResultsRampa()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span id="copyIcon">📋</span> <span id="btnCopyRampa">Copia Dati per Computo Metrico</span>
+                </button>
+            </div>
+
         </div>
 
         <!-- Reference Guide & Normative Tables (SEO Pillar) -->
@@ -3278,6 +3288,23 @@ document.addEventListener('DOMContentLoaded', () => {
             hypotenuseText.setAttribute('y', hypMidY);
             hypotenuseText.setAttribute('transform', `rotate(${-angleDeg} ${hypMidX} ${hypMidY})`);
             hypotenuseText.textContent = `Rampa: ${hypFmt} ${u} (${slope.toFixed(1)}%)`;
+        }
+
+        function copyResultsRampa() {
+            const h = heightInput.value;
+            const l = (currentMode === 'direct') ? lengthInput.value : document.getElementById('groundLengthDisplay').textContent;
+            const slope = slopePercentElem.textContent;
+            const deg = slopeDegreesElem.textContent;
+            const hyp = rampLengthElem.textContent;
+            const u = currentUnit;
+
+            const text = `Rampa: Dislivello ${h} ${u} | Sviluppo a terra ${l} ${u} | Pendenza ${slope} (${deg}) | Piano inclinato ${hyp} (OmniTools Lab RampaFacile)`;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopyRampa');
+                const orig = btn.textContent;
+                btn.textContent = '✓ Valori Copiati per Computo!';
+                setTimeout(() => { btn.textContent = orig; }, 2000);
+            });
         }
 
         // PWA Install Prompt Logic
