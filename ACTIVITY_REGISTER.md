@@ -64,3 +64,8 @@ Serve a:
   - Piano operativo 30 giorni giorno per giorno.
   - Tabella di confronto settimanale "Previsto vs Reale" da aggiornare ogni weekend.
 * **Aggiornamento Memoria Permanente:** Integrata Sezione 8 in `PROJECT_MEMORY.md` con la direttiva primaria di business e il rituale del check-in settimanale.
+
+### [2026-11-11 19:37] — Collaudo Stampa A4 Finance & Integrazione QR Code Dinamico su 18 Tool
+* **Collaudo PDF A4:** Eseguito test headless su tutti i 6 calcolatori della divisione OmniFinance (`mutuo.html`, `estinzione.html`, `pac.html`, `margine.html`, `risparmio.html`, `fire.html`). Tutti i prospetti e i grafici rientrano rigorosamente in **1 sola pagina A4** senza sbavature o salti di pagina.
+* **Integrazione QR Code Dinamico:** Inserito il riquadro QR Code nel cartiglio tecnico inferiore (`omniUniversalPrintFooter`) esteso a **tutti i 18 tool** della piattaforma. L'immagine del QR code viene rigenerata al momento della stampa (`beforeprint`) con l'URL completo contenente i parametri di calcolo esatti, consentendo a chi ha il foglio in cantiere o in banca di inquadrarlo con lo smartphone e ricaricare il calcolo istantaneamente.
+* **Aggiornamento Roadmap:** Spuntati i primi 2 task del Giorno 2 (Mercoledì 11/11/2026) in `ROADMAP_MONETIZZAZIONE_CRESCITA.md`.

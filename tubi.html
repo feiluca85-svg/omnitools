@@ -1278,6 +1278,10 @@
                 <div class="border border-dashed border-slate-400 h-14 rounded-lg p-2 text-[9px] text-slate-500 leading-tight flex flex-col justify-between">
                     <span> Spazio riservato per annotazioni di cantiere, produzione o ufficio tecnico.</span>
                     <span class="font-mono text-[8px] text-slate-400">Ref. ID: OMNI-TUBI-A4</span>
+                    <div class="mt-1 flex items-center gap-1.5 pt-1 border-t border-slate-200">
+                        <img id="omniPrintQrImg" class="w-8 h-8 rounded border border-slate-300 bg-white p-0.5 shrink-0" alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&margin=0&data=https://www.omnitoolslab.com" />
+                        <span class="text-[7px] text-slate-500 leading-tight">Inquadra per ricalcolare o verificare su smartphone</span>
+                    </div>
                 </div>
             </div>
             <div>
@@ -2888,7 +2892,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-        window.addEventListener('beforeprint', syncUniversalPrintSheet);
+        function updateUniversalPrintQr() {
+            try {
+                const qrImg = document.getElementById('omniPrintQrImg');
+                if (qrImg) {
+                    const u = encodeURIComponent(window.location.href);
+                    qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=120x120&margin=0&data=' + u;
+                }
+            } catch(e) {}
+        }
+        window.addEventListener('beforeprint', () => {
+            updateUniversalPrintQr();
+            syncUniversalPrintSheet();
+        });
+        document.addEventListener('DOMContentLoaded', updateUniversalPrintQr);
         document.addEventListener('DOMContentLoaded', syncUniversalPrintSheet);
 
         function dismissInstallBanner() {
