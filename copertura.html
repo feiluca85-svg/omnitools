@@ -860,10 +860,10 @@
         </div>
 
         <!-- MAIN INTERACTIVE GRID -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
 
             <!-- LEFT COLUMN: UPLOAD, PREVIEW & SETTINGS (7 COLS) -->
-            <div class="lg:col-span-7 flex flex-col gap-5">
+            <div class="w-full flex flex-col gap-5">
                 
                 <!-- UPLOAD DROPZONE -->
                 <div class="no-print bg-white rounded-2xl p-5 border-2 border-dashed border-slate-300 hover:border-rose-400 transition-all cursor-pointer text-center relative group shadow-xs" id="dropArea">
@@ -1013,7 +1013,7 @@
             </div>
 
             <!-- RIGHT COLUMN: RESULTS, TAC GAUGE & COST SUMMARY (5 COLS) -->
-            <div class="lg:col-span-5 flex flex-col gap-5">
+            <div class="w-full flex flex-col gap-5">
                 
                 <!-- CMYK SEPARATIONS & COVERAGE RESULTS -->
                 <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs print-card">
@@ -1182,7 +1182,18 @@
             <div id="ruleTipText">
                 💡 <strong>La Regola del TAC (Total Area Coverage):</strong> In tipografia il TAC rappresenta la somma delle percentuali dei quattro inchiostri di quadricromia (C + M + Y + K) in un singolo punto. Lo standard ISO 12647 raccomanda di non superare mai il <strong>300-320%</strong> su carte patinate e il <strong>260%</strong> su carte usomano o giornale. Valori superiori non aumentano la profondità del nero, ma provocano solo macchie e ritardi di consegna.
             </div>
+        
+            <!-- Twin Action Buttons (OmniTools Standard) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Tecnica A4</span>
+                </button>
+                <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span>📋</span> <span id="btnCopy">Copia Dati Tecnici</span>
+                </button>
+            </div>
         </div>
+
 
         <!-- FAQ ACCORDION SECTION (Unified OmniTools Lab Standard) -->
         <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
@@ -3492,6 +3503,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Per installare l\'app su iOS: tocca il tasto Condividi e seleziona "Aggiungi alla schermata Home". Su Android/Desktop: menu opzioni del browser -> "Installa applicazione".');
             }
         }
-    </script>
+    
+        function copyResults() {
+            const title = document.querySelector('h1')?.textContent?.trim() || 'OmniTools Lab';
+            const url = window.location.href;
+            navigator.clipboard.writeText(`📋 ${title}
+Generato su: ${url}`).then(() => {
+                const btn = document.getElementById('btnCopy');
+                if (btn) {
+                    const orig = btn.textContent;
+                    btn.textContent = '✓ Valori Copiati!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                }
+            });
+        }
+</script>
 </body>
 </html>

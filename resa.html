@@ -828,7 +828,7 @@
         <div id="mainGrid" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
 
             <!-- LEFT COLUMN: CONTROLS & SETTINGS (5 COLS) -->
-            <div class="lg:col-span-5 flex flex-col gap-4">
+            <div class="w-full flex flex-col gap-4">
                 
                 <!-- FORMAT PRESETS & SIZES -->
                 <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4">
@@ -943,7 +943,7 @@
             </div>
 
             <!-- RIGHT COLUMN: RESULTS & INTERACTIVE 2D SVG PREVIEW (7 COLS) -->
-            <div class="lg:col-span-7 flex flex-col gap-4">
+            <div class="w-full flex flex-col gap-4">
                 
                 <!-- KEY METRICS CARDS -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -1029,7 +1029,18 @@
                 </div>
 
             </div>
+        
+            <!-- Twin Action Buttons (OmniTools Standard) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Tecnica A4</span>
+                </button>
+                <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span>📋</span> <span id="btnCopy">Copia Dati Tecnici</span>
+                </button>
+            </div>
         </div>
+
 
         <!-- FAQ ACCORDION SECTION -->
         <section id="faqSection" class="no-print pt-4 border-t border-slate-200 space-y-3">
@@ -3215,6 +3226,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Per installare l\'app su iOS: tocca il tasto Condividi e seleziona "Aggiungi alla schermata Home". Su Android/Desktop: menu opzioni del browser -> "Installa applicazione".');
             }
         }
-    </script>
+    
+        function copyResults() {
+            const title = document.querySelector('h1')?.textContent?.trim() || 'OmniTools Lab';
+            const url = window.location.href;
+            navigator.clipboard.writeText(`📋 ${title}
+Generato su: ${url}`).then(() => {
+                const btn = document.getElementById('btnCopy');
+                if (btn) {
+                    const orig = btn.textContent;
+                    btn.textContent = '✓ Valori Copiati!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                }
+            });
+        }
+</script>
 </body>
 </html>

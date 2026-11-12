@@ -844,7 +844,7 @@
     
 
     <!-- Main Content (Unified max-w-5xl) -->
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
         
         <!-- Hero Header -->
         <div id="heroContainer" class="no-print text-center space-y-1.5 sm:space-y-2">
@@ -895,7 +895,7 @@
         </div>
 
         <!-- 2-Column Studio Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
             
             <!-- LEFT COLUMN: Controls & Parameters (6 Cols) -->
             <div class="lg:col-span-6 space-y-3 sm:space-y-4">
@@ -1292,7 +1292,18 @@
             <span id="ruleTipText">
                 💡 <strong>La Fisica del Laser GS1 a 670 nm:</strong> Gli scanner da cassa e industriali emettono luce laser rossa (lunghezza d'onda ~670 nm). La luce rossa viene <em>riflessa</em> dai pigmenti caldi (rosso, arancio, giallo, oro) che quindi allo scanner appaiono <strong>BIANCHI</strong>. Viene invece <em>assorbita</em> dai pigmenti freddi e scuri (nero, blu scuro, verde scuro, marrone) che appaiono <strong>NERI</strong>. Ecco perché le barre rosse o gialle sono del tutto invisibili allo scanner!
             </span>
+        
+            <!-- Twin Action Buttons (OmniTools Standard) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Tecnica A4</span>
+                </button>
+                <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span>📋</span> <span id="btnCopy">Copia Dati Tecnici</span>
+                </button>
+            </div>
         </div>
+
 
         <!-- FAQ Section (Pre-rendered static HTML with JSON Schema) -->
         <section id="faqSection" class="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-2xs space-y-4">
@@ -3759,6 +3770,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateBarcode();
             }
         });
-    </script>
+    
+        function copyResults() {
+            const title = document.querySelector('h1')?.textContent?.trim() || 'OmniTools Lab';
+            const url = window.location.href;
+            navigator.clipboard.writeText(`📋 ${title}
+Generato su: ${url}`).then(() => {
+                const btn = document.getElementById('btnCopy');
+                if (btn) {
+                    const orig = btn.textContent;
+                    btn.textContent = '✓ Valori Copiati!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                }
+            });
+        }
+</script>
 </body>
 </html>

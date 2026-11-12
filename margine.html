@@ -738,7 +738,7 @@
     </header>
     
 
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
 
         <!-- Print-only official header -->
         <div class="print-only mb-6 border-b-2 border-slate-900 pb-3">
@@ -784,10 +784,10 @@
         </div>
 
         <!-- Main Interactive Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
 
             <!-- Controls Column (5 cols) -->
-            <div class="lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4 card-box">
+            <div class="w-full bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4 card-box">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-700 block pb-2 border-b border-slate-100 flex items-center justify-between">
                     <span class="flex items-center gap-1.5"><span>⚙️</span> Dati di Costo & Obiettivi</span>
                     <div class="flex items-center gap-2">
@@ -855,7 +855,7 @@
             </div>
 
             <!-- Results & Visualization Column (7 cols) -->
-            <div class="lg:col-span-7 space-y-4">
+            <div class="w-full space-y-4">
 
                 <!-- Primary KPI Card: Prezzo Consigliato Netto & Lordo -->
                 <div class="bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 rounded-2xl p-5 text-white shadow-md relative overflow-hidden card-box">
@@ -981,7 +981,18 @@
             <p class="text-[11px] text-slate-500">
                 <strong>Regola pratica veloce:</strong> Un ricarico del <span class="font-bold text-blue-700" id="txtExpMarkup">53.8%</span> su un prodotto genera un margine effettivo del <span class="font-bold text-emerald-700">35.0%</span>.
             </p>
+        
+            <!-- Twin Action Buttons (OmniFinance Standard) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Prospetto Finanziario A4</span>
+                </button>
+                <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span>📋</span> <span id="btnCopy">Copia Riepilogo Finanziario</span>
+                </button>
+            </div>
         </div>
+
 
         <!-- FAQ Section (Frequently Asked Questions) -->
         <section id="faqSection" class="no-print mt-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
@@ -2993,6 +3004,20 @@ document.addEventListener('DOMContentLoaded', () => {
         function fallbackCopy(text) {
             prompt('Copia questo link con i tuoi parametri salvati:', text);
         }
-    </script>
+    
+        function copyResults() {
+            const title = document.querySelector('h1')?.textContent?.trim() || 'OmniTools Lab';
+            const url = window.location.href;
+            navigator.clipboard.writeText(`🏦 ${title}
+Generato su: ${url}`).then(() => {
+                const btn = document.getElementById('btnCopy');
+                if (btn) {
+                    const orig = btn.textContent;
+                    btn.textContent = '✓ Valori Copiati!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                }
+            });
+        }
+</script>
 </body>
 </html>
