@@ -1262,13 +1262,6 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <span id="omniPrintSignLabel" class="font-bold text-slate-800 block mb-1 text-[10px] uppercase tracking-wider">Verifica / Timbro e Firma del Responsabile:</span>
-                <div class="border border-slate-300 h-14 rounded-lg flex items-end justify-between px-3 pb-1.5 text-[9px] text-slate-400">
-                    <span>Data: ____/____/202__</span>
-                    <span>Firma ___________________________</span>
-                </div>
-            </div>
         </div>
         <div class="text-[8.5px] text-slate-500 flex items-center justify-between mt-2.5 pt-1.5 border-t border-slate-200 font-mono">
             <span>Elaborato generato gratuitamente con <strong>OmniTools Lab</strong> (https://www.omnitoolslab.com/rampe)</span>
@@ -3640,6 +3633,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sel) {
             sel.addEventListener("change", (e) => window.omniExtraLang(e.target.value));
         }
+        new MutationObserver(() => {
+            const l = (document.documentElement.lang || "").slice(0, 2).toLowerCase();
+            if (l) window.omniExtraLang(l);
+        }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
     });
 })();
 </script>
