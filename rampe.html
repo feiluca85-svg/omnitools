@@ -3440,5 +3440,13 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTranslations();
         updateCalculations();
     </script>
+
+    <script>
+        try {
+            const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]').filter(x => x.id !== 'rampe');
+            rec.unshift({ id: 'rampe', name: 'RampaFacile', url: '/rampe', icon: '📐' });
+            localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
+        } catch(e) {}
+    </script>
 </body>
 </html>

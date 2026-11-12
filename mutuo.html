@@ -3197,5 +3197,13 @@ Generato su: https://www.omnitoolslab.com/mutuo`;
             });
         }
 </script>
+
+    <script>
+        try {
+            const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]').filter(x => x.id !== 'mutuo');
+            rec.unshift({ id: 'mutuo', name: 'MutuoFacile', url: '/mutuo', icon: '🏦' });
+            localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
+        } catch(e) {}
+    </script>
 </body>
 </html>

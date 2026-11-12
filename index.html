@@ -458,6 +458,17 @@
                 </div>
             </div>
 
+            
+        <!-- Usati di Recente (Auto-populated from localStorage) -->
+        <div id="recentToolsBar" class="hidden max-w-5xl mx-auto px-3 sm:px-6">
+            <div class="bg-white border border-slate-200 rounded-2xl p-3 sm:p-4 shadow-2xs flex flex-wrap items-center gap-2.5">
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 flex items-center gap-1.5 mr-1">
+                    <span>🕒</span> Usati di Recente:
+                </span>
+                <div id="recentToolsList" class="flex flex-wrap items-center gap-2"></div>
+            </div>
+        </div>
+
             <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (OmniTools 12-Tool Standard) -->
             <div class="pt-2 sm:pt-3 max-w-3xl sm:max-w-4xl mx-auto w-full">
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
@@ -2500,6 +2511,19 @@ document.addEventListener('click', (e) => {
                 }
             }
         });
+
+        // Render Usati di Recente
+        (function() {
+            try {
+                const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]');
+                const bar = document.getElementById('recentToolsBar');
+                const list = document.getElementById('recentToolsList');
+                if (bar && list && rec.length > 0) {
+                    list.innerHTML = rec.map(t => `<a href="${t.url}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-xs font-bold text-slate-800 hover:text-blue-700 transition"><span>${t.icon}</span><span>${t.name}</span></a>`).join('');
+                    bar.classList.remove('hidden');
+                }
+            } catch(e) {}
+        })();
 </script>
 </body>
 </html>

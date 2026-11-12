@@ -3295,5 +3295,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'mailto:info@omnitoolslab.com?subject=' + encodeURIComponent('Suggerimento Calcolatore ScaricoFacile');
         }
     </script>
+
+    <script>
+        try {
+            const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]').filter(x => x.id !== 'tubi');
+            rec.unshift({ id: 'tubi', name: 'TubiFacili', url: '/tubi', icon: '🔧' });
+            localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
+        } catch(e) {}
+    </script>
 </body>
 </html>

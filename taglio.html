@@ -3263,5 +3263,13 @@ document.addEventListener('DOMContentLoaded', () => {
             calculateCutList();
         });
     </script>
+
+    <script>
+        try {
+            const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]').filter(x => x.id !== 'taglio');
+            rec.unshift({ id: 'taglio', name: 'TaglioOttimo', url: '/taglio', icon: '✂️' });
+            localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
+        } catch(e) {}
+    </script>
 </body>
 </html>

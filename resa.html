@@ -3241,5 +3241,13 @@ Generato su: ${url}`).then(() => {
             });
         }
 </script>
+
+    <script>
+        try {
+            const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]').filter(x => x.id !== 'resa');
+            rec.unshift({ id: 'resa', name: 'ResaCarta', url: '/resa', icon: '📄' });
+            localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
+        } catch(e) {}
+    </script>
 </body>
 </html>
