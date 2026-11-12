@@ -3100,5 +3100,69 @@ Generato su: ${url}`).then(() => {
 <div id="omniPrintDisclaimer" class="hidden print:block mt-8 pt-3 border-t border-slate-300 text-[9px] leading-snug text-slate-600 text-center">
     <strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità per uso improprio senza validazione tecnica.
 </div>
+<script id="omniExtraI18n">
+(function() {
+    const DICT = {
+        it: {
+            shareBtn: "Link Calcolo",
+            shareTitle: "Copia link con parametri precompilati",
+            copied: "Copiato!",
+            disclaimer: "<strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità per uso improprio senza validazione tecnica."
+        },
+        en: {
+            shareBtn: "Share Link",
+            shareTitle: "Copy link with pre-filled parameters",
+            copied: "Copied!",
+            disclaimer: "<strong>LEGAL NOTICE / DISCLAIMER:</strong> Calculation for informational and preliminary estimation purposes only. It does not constitute an executive design, technical report, certification, or professional advice (engineering, architectural, or financial). Prior to any on-site execution, industrial printing, or binding decision, verification by a qualified and licensed professional in accordance with applicable regulations is mandatory. OmniTools Lab disclaims all liability for improper use without technical validation."
+        },
+        es: {
+            shareBtn: "Enlace Cálculo",
+            shareTitle: "Copiar enlace con parámetros prellenados",
+            copied: "¡Copiado!",
+            disclaimer: "<strong>AVISO LEGAL / DISCLAIMER:</strong> Cálculo puramente indicativo con fines informativos y de estimación preliminar. No constituye proyecto ejecutivo, informe técnico, certificación ni asesoramiento profesional (de ingeniería, arquitectura o financiero). Antes de cualquier ejecución en obra, impresión industrial o decisión vinculante, es obligatoria la verificación por parte de un técnico o profesional habilitado según la normativa vigente. OmniTools Lab declina toda responsabilidad por uso indebido sin validación técnica."
+        },
+        fr: {
+            shareBtn: "Lien Calcul",
+            shareTitle: "Copier le lien avec paramètres pré-remplis",
+            copied: "Copié !",
+            disclaimer: "<strong>MENTION LÉGALE / DISCLAIMER :</strong> Calcul purement indicatif à titre informatif et d'estimation préliminaire. Ne constitue pas un projet d'exécution, un rapport technique, une certification ni un conseil professionnel (ingénierie, architecture ou finance). Avant toute exécution sur chantier, impression industrielle ou décision contraignante, la vérification par un technicien ou professionnel habilité conformément aux réglementations en vigueur est obligatoire. OmniTools Lab décline toute responsabilité en cas d'utilisation inappropriée sans validation technique."
+        },
+        de: {
+            shareBtn: "Rechen-Link",
+            shareTitle: "Link mit vorausgefüllten Parametern kopieren",
+            copied: "Kopiert!",
+            disclaimer: "<strong>RECHTLICHER HINWEIS / DISCLAIMER:</strong> Berechnung dient ausschließlich zu Informations- und vorläufigen Schätzzwecken. Sie stellt keine Ausführungsplanung, keinen technischen Bericht, keine Zertifizierung und keine professionelle Beratung (Ingenieur-, Architektur- oder Finanzberatung) dar. Vor jeder Bauausführung, industriellen Druckproduktion oder verbindlichen Entscheidung ist eine Prüfung durch einen zugelassenen Fachmann gemäß den geltenden Vorschriften zwingend erforderlich. OmniTools Lab übernimmt keine Haftung für unsachgemäße Verwendung ohne technische Prüfung."
+        },
+        pt: {
+            shareBtn: "Link Cálculo",
+            shareTitle: "Copiar link com parâmetros preenchidos",
+            copied: "Copiado!",
+            disclaimer: "<strong>AVISO LEGAL / DISCLAIMER:</strong> Cálculo puramente indicativo para fins informativos e de estimativa preliminar. Não constitui projeto executivo, relatório técnico, certificação nem aconselhamento profissional (engenharia, arquitetura ou finanças). Antes de qualquer execução em obra, impressão industrial ou decisão vinculativa, é obrigatória a verificação por um técnico ou profissional habilitado segundo a legislação vigente. O OmniTools Lab declina qualquer responsabilidade por uso indevido sem validação técnica."
+        }
+    };
+    window.omniExtraLang = function(lang) {
+        const l = DICT[lang] ? lang : "it";
+        const t = DICT[l];
+        const lbl = document.getElementById("paramShareLabel");
+        const btn = document.getElementById("paramShareBtn");
+        const disc = document.getElementById("omniPrintDisclaimer");
+        if (lbl && lbl.textContent !== DICT.it.copied && !Object.values(DICT).some(d => d.copied === lbl.textContent)) {
+            lbl.textContent = t.shareBtn;
+        }
+        if (btn) btn.title = t.shareTitle;
+        if (disc) disc.innerHTML = t.disclaimer;
+        window._omniCopiedText = t.copied;
+        window._omniShareBtnText = t.shareBtn;
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+        const sel = document.getElementById("langSelect");
+        const cur = (sel && sel.value) || localStorage.getItem("omnitools_lang") || document.documentElement.lang || "it";
+        window.omniExtraLang(cur.slice(0, 2).toLowerCase());
+        if (sel) {
+            sel.addEventListener("change", (e) => window.omniExtraLang(e.target.value));
+        }
+    });
+})();
+</script>
 </body>
 </html>
