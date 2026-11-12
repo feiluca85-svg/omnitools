@@ -10,6 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+        /* OmniTools Dark Mode */
+        html.omni-dark body { background-color: #0f172a !important; color: #e2e8f0 !important; }
+        html.omni-dark header { background-color: rgba(15, 23, 42, 0.92) !important; border-color: #334155 !important; }
+        html.omni-dark .bg-white { background-color: #1e293b !important; border-color: #334155 !important; color: #e2e8f0 !important; }
+        html.omni-dark .bg-slate-50, html.omni-dark .bg-slate-50\/70, html.omni-dark .bg-slate-50\/80, html.omni-dark .bg-slate-100, html.omni-dark .bg-slate-100\/90 { background-color: #0f172a !important; border-color: #334155 !important; }
+        html.omni-dark .text-slate-900, html.omni-dark .text-slate-800 { color: #f1f5f9 !important; }
+        html.omni-dark .text-slate-700, html.omni-dark .text-slate-600 { color: #cbd5e1 !important; }
+        html.omni-dark .text-slate-500 { color: #94a3b8 !important; }
+        html.omni-dark input, html.omni-dark select { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
+        html.omni-dark .border-slate-200, html.omni-dark .border-slate-100 { border-color: #334155 !important; }
+        html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 p-4 sm:p-8 antialiased">
@@ -135,6 +147,24 @@
                 l.href = href;
                 document.head.appendChild(l);
             }, { passive: true });
+        })();
+    </script>
+
+    <script>
+        // Dark Mode Engine
+        (function() {
+            function applyDark(on) {
+                document.documentElement.classList.toggle('omni-dark', on);
+                const btn = document.getElementById('darkModeBtn');
+                if (btn) btn.textContent = on ? '☀️' : '🌙';
+            }
+            window.toggleDarkMode = function() {
+                const next = !document.documentElement.classList.contains('omni-dark');
+                localStorage.setItem('omnitools_dark', next ? '1' : '0');
+                applyDark(next);
+            };
+            if (localStorage.getItem('omnitools_dark') === '1') applyDark(true);
+            document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
         })();
     </script>
 </body>

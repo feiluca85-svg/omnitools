@@ -176,6 +176,18 @@
             transform: scale(1.04);
             z-index: 10;
         }
+    
+        /* OmniTools Dark Mode */
+        html.omni-dark body { background-color: #0f172a !important; color: #e2e8f0 !important; }
+        html.omni-dark header { background-color: rgba(15, 23, 42, 0.92) !important; border-color: #334155 !important; }
+        html.omni-dark .bg-white { background-color: #1e293b !important; border-color: #334155 !important; color: #e2e8f0 !important; }
+        html.omni-dark .bg-slate-50, html.omni-dark .bg-slate-50\/70, html.omni-dark .bg-slate-50\/80, html.omni-dark .bg-slate-100, html.omni-dark .bg-slate-100\/90 { background-color: #0f172a !important; border-color: #334155 !important; }
+        html.omni-dark .text-slate-900, html.omni-dark .text-slate-800 { color: #f1f5f9 !important; }
+        html.omni-dark .text-slate-700, html.omni-dark .text-slate-600 { color: #cbd5e1 !important; }
+        html.omni-dark .text-slate-500 { color: #94a3b8 !important; }
+        html.omni-dark input, html.omni-dark select { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
+        html.omni-dark .border-slate-200, html.omni-dark .border-slate-100 { border-color: #334155 !important; }
+        html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-rose-900 selection:text-white">
@@ -787,7 +799,8 @@
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-[11px] sm:text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-[11px] sm:text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
                         <option value="en">🇬🇧 EN</option>
                         <option value="es">🇪🇸 ES</option>
