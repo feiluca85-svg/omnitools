@@ -43,6 +43,20 @@
         html.omni-dark .border-slate-200, html.omni-dark .border-slate-100 { border-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
     </style>
+    <script>
+        function applyDark(on) {
+            document.documentElement.classList.toggle('omni-dark', on);
+            const btn = document.getElementById('darkModeBtn');
+            if (btn) btn.textContent = on ? '☀️' : '🌙';
+        }
+        window.toggleDarkMode = function() {
+            const next = !document.documentElement.classList.contains('omni-dark');
+            localStorage.setItem('omnitools_dark', next ? '1' : '0');
+            applyDark(next);
+        };
+        if (localStorage.getItem('omnitools_dark') === '1') applyDark(true);
+        document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
