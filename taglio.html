@@ -794,7 +794,7 @@
     </header>
     
 
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
         <!-- Main Tool Intro Header -->
         <div class="no-print mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
             <div>
@@ -1008,19 +1008,15 @@
                 <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
                     <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
                         <h3 id="detailedCutlistTableTitle" class="text-base font-bold text-slate-900">Distinta di Taglio Sequenziale (Guida per Officina)</h3>
-                        <button type="button" onclick="window.print()" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                            Stampa Distinta
-                        </button>
                     </div>
 
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs">
                             <thead>
                                 <tr class="text-slate-400 border-b border-slate-100">
-                                    <th class="pb-2 font-semibold w-16">Barra</th>
-                                    <th class="pb-2 font-semibold">Tagli da Eseguire in Sequenza</th>
-                                    <th class="pb-2 font-semibold text-right w-24">Sfrido Residuo</th>
+                                    <th class="pb-2 font-semibold w-16" id="thBarra">Barra</th>
+                                    <th class="pb-2 font-semibold" id="thSequenza">Tagli da Eseguire in Sequenza</th>
+                                    <th class="pb-2 font-semibold text-right w-24" id="thSfrido">Sfrido Residuo</th>
                                 </tr>
                             </thead>
                             <tbody id="workshopTableBody" class="divide-y divide-slate-100">
@@ -1030,13 +1026,23 @@
                     </div>
                 </div>
 
+                <!-- Twin Action Buttons (OmniBuilding Standard) -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                    <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                        <span>🖨️</span> <span id="btnPrint">Stampa Scheda Cantiere A4</span>
+                    </button>
+                    <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                        <span id="copyIcon">📋</span> <span id="btnCopy">Copia Dati per Computo Metrico</span>
+                    </button>
+                </div>
+
             </div>
 
         </div>
 
-        <!-- FAQ Section -->
-        <section id="faqSection" class="no-print mt-12 bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6 space-y-4">
-            <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
+        <!-- FAQ Section (Unified OmniTools Lab Standard) -->
+        <section id="faqSection" class="no-print bg-white rounded-3xl border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
+            <div class="flex items-center gap-2.5 mb-1">
                 <span class="text-xl">❓</span>
                 <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
                     <span id="faqTitle">Domande Frequenti sull'Ottimizzazione di Taglio 1D</span>
@@ -3052,6 +3058,33 @@ document.addEventListener('DOMContentLoaded', () => {
             renderWorkshopTable(bars);
         }
 
+        function copyResults() {
+            const stockLen = document.getElementById('stockLengthInput').value;
+            const kerf = document.getElementById('kerfInput').value;
+            const barsCount = document.getElementById('resBarsCount').textContent;
+            const eff = document.getElementById('resEfficiency').textContent;
+            const waste = document.getElementById('resWastePct').textContent;
+            const totalCuts = document.getElementById('resTotalCuts').textContent;
+            const stockM = document.getElementById('summaryStockLength').textContent;
+            const usedM = document.getElementById('summaryUsedLength').textContent;
+            const wasteM = document.getElementById('summaryWasteLength').textContent;
+
+            const text = `📋 PIANO DI TAGLIO 1D (OmniTools Lab - TaglioOttimo):\n- Barre Master necessarie: ${barsCount} pz (Lunghezza standard: ${stockLen} ${currentUnit})\n- Spessore Lama (Kerf): ${kerf} mm\n- Efficienza Utilizzo: ${eff}%\n- Sfrido Residuo: ${waste}%\n- Tagli Totali: ${totalCuts} passaggi\n- Riepilogo Metri: ${stockM} acquistati | ${usedM} utili | ${wasteM} scarto\nGenerato su: https://www.omnitoolslab.com/taglio`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopy');
+                const origHtml = btn.innerHTML;
+                btn.innerHTML = '<span>✓</span> <span>Valori Copiati per Computo!</span>';
+                btn.classList.add('bg-emerald-100', 'text-emerald-800', 'border-emerald-300');
+                setTimeout(() => {
+                    btn.innerHTML = origHtml;
+                    btn.classList.remove('bg-emerald-100', 'text-emerald-800', 'border-emerald-300');
+                }, 2200);
+            }).catch(() => {
+                alert('Dati di taglio copiati negli appunti!');
+            });
+        }
+
         function renderVisualBars(bars, stockLength, kerfInUnit) {
             const container = document.getElementById('visualBarsContainer');
             container.innerHTML = '';
@@ -3196,6 +3229,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (q4) q4.textContent = t('faq_q4');
             const a4 = document.getElementById('faqA4');
             if (a4) a4.textContent = t('faq_a4');
+
+            const btnP = document.getElementById('btnPrint');
+            if (btnP) btnP.textContent = (lang === 'it' ? 'Stampa Scheda Cantiere A4' : 'Print A4 Sheet');
+            const btnC = document.getElementById('btnCopy');
+            if (btnC) btnC.textContent = (lang === 'it' ? 'Copia Dati per Computo Metrico' : 'Copy Data for Takeoff');
 
             calculateCutList();
         }
