@@ -846,11 +846,8 @@
                 </button>
             </div>
 
-        <!-- Calculator Layout -->
-        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-6 items-start">
-            
-            <!-- RESULTS & VISUAL COLUMN (TOP ON MOBILE) -->
-            <div id="resultsColumn" class="w-full order-1 lg:order-2 lg:col-span-7 space-y-2.5 sm:space-y-4">
+        <!-- RESULTS & VISUAL COLUMN -->
+            <div id="resultsColumn" class="w-full space-y-4 sm:space-y-5">
                 
                 <!-- DEDICATED PRINT-ONLY TECHNICAL SPEC HEADER -->
                 <div id="printHeader" class="hidden print:block mb-3 pb-2 border-b-2 border-slate-900">
@@ -1018,16 +1015,14 @@
                 </div>
 
                 <!-- DEDICATED PRINT-ONLY TECHNICAL NOTES & SIGNATURE BOX -->
-                
-                    <div class="text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
-                        Scheda generata da <strong>OmniTools Graph</strong> (https://www.omnitoolslab.com/dorso) — Dimensionamento copertina e dorso libro.
-                    </div>
+                <div class="hidden print:block text-[8px] text-slate-400 text-center mt-3 pt-1.5 border-t border-slate-200">
+                    Scheda generata da <strong>OmniTools Graph</strong> (https://www.omnitoolslab.com/dorso) — Dimensionamento copertina e dorso libro.
                 </div>
 
             </div>
 
             <!-- CONTROLS COLUMN (INPUT E SLIDER) -->
-            <div id="controlsColumn" class="no-print w-full order-2 lg:order-1 lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200 space-y-3 sm:space-y-4">
+            <div id="controlsColumn" class="no-print w-full bg-slate-50/70 rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-4">
                 
                 <!-- Unit Switcher (mm / cm / in / pt) -->
                 <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
@@ -1149,8 +1144,6 @@
                 </div>
 
             </div>
-
-        </div>
 
             <!-- Twin Action Buttons (OmniGraph Standard) -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
