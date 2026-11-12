@@ -214,6 +214,10 @@
         .print-only {
             display: none;
         }
+    
+        @media (max-width: 640px) {
+            html, body, main { max-width: 100vw !important; overflow-x: hidden !important; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-blue-500 selection:text-white">
