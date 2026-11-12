@@ -3246,5 +3246,23 @@ Generato su: ${url}`).then(() => {
             localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
         } catch(e) {}
     </script>
+
+    <script>
+        // Instant hover prefetch for faster tab switching
+        (function() {
+            const prefetched = new Set();
+            document.addEventListener('mouseover', (e) => {
+                const a = e.target.closest && e.target.closest('a[href^="/"]');
+                if (!a) return;
+                const href = a.getAttribute('href');
+                if (!href || prefetched.has(href) || href === window.location.pathname) return;
+                prefetched.add(href);
+                const l = document.createElement('link');
+                l.rel = 'prefetch';
+                l.href = href;
+                document.head.appendChild(l);
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>
