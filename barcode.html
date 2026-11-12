@@ -3863,5 +3863,63 @@ Generato su: ${url}`).then(() => {
             }, { passive: true });
         })();
     </script>
+<script id="omniParamShare">
+(function() {
+    const EXCLUDE_IDS = new Set(["langSelect", "omniQuickSearch", "darkModeBtn", "paramShareBtn"]);
+    window.getOmniShareUrl = function() {
+        const params = new URLSearchParams();
+        const root = document.querySelector("main") || document.body;
+        root.querySelectorAll("input[id], select[id], textarea[id]").forEach(el => {
+            if (EXCLUDE_IDS.has(el.id)) return;
+            const t = (el.type || "").toLowerCase();
+            if (t === "file" || t === "hidden" || t === "button" || t === "submit") return;
+            if (t === "checkbox" || t === "radio") {
+                params.set(el.id, el.checked ? "1" : "0");
+            } else if (el.value !== "") {
+                params.set(el.id, el.value);
+            }
+        });
+        const qs = params.toString();
+        return window.location.origin + window.location.pathname + (qs ? "?" + qs : "");
+    };
+    window.copyOmniParamLink = function() {
+        const url = window.getOmniShareUrl();
+        const label = document.getElementById("paramShareLabel");
+        const icon = document.getElementById("paramShareIcon");
+        const done = () => {
+            if (icon) icon.textContent = "✓";
+            if (label) label.textContent = "Copiato!";
+            setTimeout(() => {
+                if (icon) icon.textContent = "🔗";
+                if (label) label.textContent = "Link Calcolo";
+            }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(done).catch(() => { prompt("Copia il link:", url); });
+        } else {
+            prompt("Copia il link:", url);
+        }
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        if (![...params.keys()].length) return;
+        let applied = false;
+        params.forEach((val, key) => {
+            const el = document.getElementById(key);
+            if (!el) return;
+            const t = (el.type || "").toLowerCase();
+            if (t === "file" || t === "hidden" || t === "button" || t === "submit") return;
+            if (t === "checkbox" || t === "radio") {
+                el.checked = (val === "1" || val === "true");
+            } else {
+                el.value = val;
+            }
+            el.dispatchEvent(new Event("input", { bubbles: true }));
+            el.dispatchEvent(new Event("change", { bubbles: true }));
+            applied = true;
+        });
+    });
+})();
+</script>
 </body>
 </html>
