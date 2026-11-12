@@ -550,7 +550,7 @@
                 <div class="relative min-w-0">
                     <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold transition max-w-[140px] sm:max-w-none">
                         <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                        <span id="suiteCurrentToolName" class="inline truncate max-w-[105px] sm:max-w-none">PiastrellaFacile</span>
+                        <span id="suiteCurrentToolName" class="inline truncate max-w-[82px] sm:max-w-none">PiastrellaFacile</span>
                         <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
 
@@ -1798,8 +1798,8 @@
             const boxSuffix = currentLang === 'en' ? 'Boxes' : (currentLang === 'es' ? 'Cajas' : (currentLang === 'fr' ? 'Cartons' : (currentLang === 'de' ? 'Pakete' : (currentLang === 'pt' ? 'Caixas' : 'Scatole'))));
             document.getElementById('valBoxes').textContent = `${boxesNeeded} ${boxSuffix}`;
             
-            document.getElementById('valTotalSqmMade').textContent = `${t.res_total_coverage || 'Copertura effettiva scatole'}: ${totalCoverageMade.toFixed(2)} ${areaUnit}`;
-            document.getElementById('valTotalTiles').textContent = `${t.res_total_tiles || 'Pezzi Singoli Totali'}: ~${totalPieces}`;
+            document.getElementById('valCoverageDetails').textContent = `${t.res_total_coverage || 'Copertura effettiva scatole'}: ${totalCoverageMade.toFixed(2)} ${areaUnit}`;
+            document.getElementById('valTilesDetails').textContent = `${t.res_total_tiles || 'Pezzi Singoli Totali'}: ~${totalPieces}`;
 
             const bagSuffix = currentLang === 'en' ? 'Bags' : (currentLang === 'es' ? 'Sacos' : (currentLang === 'fr' ? 'Sacs' : (currentLang === 'de' ? 'Säcke' : 'Sacchi')));
             document.getElementById('valAdhesiveBags').textContent = `${totalAdhesiveBags} ${bagSuffix}`;
@@ -2299,7 +2299,7 @@ function updateNavTranslations(lang) {
 // Global hook to language change
 window.addEventListener('omnitools_lang_changed', (e) => {
     if (e.detail && e.detail.lang) updateNavTranslations(e.detail.lang);
-        renderChromeTabs();
+        if (typeof renderChromeTabs === 'function') renderChromeTabs();
 });
 
 // Auto-Sync Language Selector
@@ -2426,7 +2426,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             openTabs = openTabs.filter(x => x !== id);
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-            renderChromeTabs();
+            if (typeof renderChromeTabs === 'function') renderChromeTabs();
         },
 
         dockBack(id) {
@@ -2439,7 +2439,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 openTabs.push(id);
                 try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
             }
-            renderChromeTabs();
+            if (typeof renderChromeTabs === 'function') renderChromeTabs();
         },
 
         closeDetached(id) {
@@ -2583,7 +2583,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
                     window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
                 } else {
-                    renderChromeTabs();
+                    if (typeof renderChromeTabs === 'function') renderChromeTabs();
                 }
             });
 
