@@ -776,307 +776,306 @@
     
 
     <!-- MAIN APP CONTAINER -->
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-4 sm:space-y-6">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
         
         <!-- Hero Header -->
-        <div id="heroContainer" class="text-center max-w-2xl mx-auto pt-1 sm:pt-2">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase mb-2">
+        <section class="text-center space-y-2 no-print">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase mb-1">
                 <span>🧱</span>
                 <span id="heroBadge">OmniBuilding · Cantiere & Fai-da-te</span>
             </div>
-            <h1 id="heroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-1.5 sm:mb-2 font-jakarta">
+            <h1 id="heroTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight font-jakarta">
                 Calcolo Piastrelle, Sfrido, Colla & Fughe
             </h1>
-            <p id="heroDesc" class="text-slate-600 text-xs sm:text-sm leading-relaxed px-2">
+            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
                 Calcolatore professionale per pavimenti e rivestimenti. Calcola metri quadri da acquistare con sfrido per tagli, numero di scatole, sacchi di colla (kg) e stucco per fughe con distinta materiali immediata.
             </p>
-        </div>
+        </section>
 
-        <!-- 2-COLUMN WORKSPACE: CONTROLS & LIVE BILL OF MATERIALS -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
-            
-            <!-- LEFT COLUMN: INPUT CONTROLS -->
-            <div id="controlsColumn" class="no-print lg:col-span-7 space-y-4">
+        <!-- Google Featured Snippet (Position 0) Callout Box -->
+        <section aria-label="Formula Calcolo Piastrelle e Sfrido" class="no-print bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs">
+            <div class="flex items-start gap-3">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
+                <div class="text-xs sm:text-sm space-y-1">
+                    <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
+                        Formula Calcolo Piastrelle & Sfrido: <code class="bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">M² da Ordinare = M² Netti × (1 + Sfrido % / 100)</code> · <code class="bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">Scatole = ⌈M² da Ordinare / m² Scatola⌉</code>
+                    </p>
+                    <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
+                        <strong>Esempio pratico:</strong> Per una stanza di <code class="font-bold">20,0 m²</code> con posa dritta standard (<code class="font-bold">+10% sfrido</code>), il totale da ordinare è: <code class="font-mono text-slate-800 font-bold">20 × 1,10 = 22,0 m²</code>. Con scatole da <code class="font-bold">1,44 m²</code> servono <code class="font-mono text-slate-800 font-bold">16 scatole (23,04 m² effettivi)</code>, oltre a <code class="font-bold">4 sacchi di colla (25 kg)</code> e <code class="font-bold">~1,5 kg di stucco</code> (fuga 2 mm).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Unified Card (Single Card Container) -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
+
+            <!-- Mode Selector (Dimensions vs Direct Sqm) Tabs -->
+            <div id="modeSelectorBar" class="bg-slate-100 p-1.5 rounded-2xl flex border border-slate-200/80 mb-6 text-xs sm:text-sm font-bold no-print">
+                <button id="btnModeDims" type="button" onclick="setRoomMode('dims')" class="flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold">
+                    📏 Dimensioni Stanza (L × W)
+                </button>
+                <button id="btnModeDirect" type="button" onclick="setRoomMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">
+                    📐 Metri Quadri Netti
+                </button>
+            </div>
+
+            <!-- Controls Section (Inputs & Sliders) -->
+            <div id="controlsColumn" class="space-y-5 no-print">
                 
-                <!-- CARD 1: ROOM SURFACE MEASUREMENTS -->
-                <div class="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-xs space-y-3.5">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                <!-- 1. Room Measurements -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
                         <div class="flex items-center gap-2">
-                            <span class="w-6 h-6 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs">1</span>
-                            <h2 id="secRoomTitle" class="text-sm sm:text-base font-extrabold text-slate-900">Misure Superficie da Piastrellare</h2>
+                            <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">1</span>
+                            <span id="secRoomTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Misure Superficie da Piastrellare</span>
                         </div>
-                        <!-- Mode Pill Toggle -->
-                        <div class="inline-flex p-0.5 rounded-xl bg-slate-100 border border-slate-200/80 text-xs font-bold">
-                            <button type="button" id="btnModeDims" onclick="setRoomMode('dims')" class="px-2.5 py-1 rounded-lg bg-white text-slate-800 shadow-2xs transition">Dimensioni Stanza</button>
-                            <button type="button" id="btnModeDirect" onclick="setRoomMode('direct')" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 transition">Metri Quadri Netti</button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center justify-between">
-                        <p id="secRoomDesc" class="text-xs text-slate-500">Inserisci le dimensioni dell'ambiente o direttamente i metri quadri netti.</p>
                         <!-- Unit Switcher -->
-                        <div class="inline-flex p-0.5 rounded-xl bg-slate-100 border border-slate-200/80 text-[11px] font-bold">
-                            <button type="button" id="btnUnitMetric" onclick="setMeasurementUnit('metric')" class="px-2 py-0.5 rounded-lg bg-white text-slate-800 shadow-2xs transition">Metrico (m)</button>
-                            <button type="button" id="btnUnitImperial" onclick="setMeasurementUnit('imperial')" class="px-2 py-0.5 rounded-lg text-slate-500 hover:text-slate-900 transition">Imperial (ft)</button>
+                        <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-[11px] font-bold">
+                            <button type="button" id="btnUnitMetric" onclick="setMeasurementUnit('metric')" class="px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">Metrico (m)</button>
+                            <button type="button" id="btnUnitImperial" onclick="setMeasurementUnit('imperial')" class="px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">Imperial (ft)</button>
                         </div>
                     </div>
+                    <p id="secRoomDesc" class="text-xs text-slate-500 hidden">Inserisci le dimensioni dell'ambiente o direttamente i metri quadri netti.</p>
 
                     <!-- Dimensions Input Mode -->
-                    <div id="dimsInputGroup" class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label id="lblLength" class="block text-xs font-bold text-slate-700 mb-1">Lunghezza Stanza</label>
-                            <div class="relative">
-                                <input type="number" id="inputLength" value="5.0" min="0.5" max="300" step="0.05" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
-                                <span id="unitBadgeLen" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m</span>
+                    <div id="dimsInputGroup" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between items-center">
+                                <label for="inputLength" id="lblLength" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                                    Lunghezza Stanza
+                                </label>
+                                <span id="unitBadgeLen" class="text-xs font-mono font-bold text-slate-700">m</span>
                             </div>
+                            <input type="number" id="inputLength" value="5.0" min="0.5" max="300" step="0.05" oninput="calculateAll()"
+                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
-                        <div>
-                            <label id="lblWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Stanza</label>
-                            <div class="relative">
-                                <input type="number" id="inputWidth" value="4.0" min="0.5" max="300" step="0.05" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
-                                <span id="unitBadgeWid" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m</span>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between items-center">
+                                <label for="inputWidth" id="lblWidth" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                                    Larghezza Stanza
+                                </label>
+                                <span id="unitBadgeWid" class="text-xs font-mono font-bold text-slate-700">m</span>
                             </div>
+                            <input type="number" id="inputWidth" value="4.0" min="0.5" max="300" step="0.05" oninput="calculateAll()"
+                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
                     </div>
 
                     <!-- Direct Area Input Mode (Hidden initially) -->
-                    <div id="directInputGroup" class="hidden">
-                        <label id="lblNetSqm" class="block text-xs font-bold text-slate-700 mb-1">Superficie Netta</label>
-                        <div class="relative">
-                            <input type="number" id="inputDirectSqm" value="20.0" min="0.5" max="50000" step="0.1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-12">
-                            <span id="unitBadgeArea" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m²</span>
+                    <div id="directInputGroup" class="hidden space-y-1.5">
+                        <div class="flex justify-between items-center">
+                            <label for="inputDirectSqm" id="lblNetSqm" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                                Superficie Netta
+                            </label>
+                            <span id="unitBadgeArea" class="text-xs font-mono font-bold text-slate-700">m²</span>
                         </div>
+                        <input type="number" id="inputDirectSqm" value="20.0" min="0.5" max="50000" step="0.1" oninput="calculateAll()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                     </div>
 
                     <!-- Openings Deduction (Doors / Windows / Pillars) -->
-                    <div>
-                        <label id="lblOpenings" class="block text-[11px] font-bold text-slate-600 mb-1">Detrazione Porte / Aperture (opzionale)</label>
-                        <div class="relative">
-                            <input type="number" id="inputOpenings" value="0" min="0" max="5000" step="0.1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-700 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-12">
-                            <span id="unitBadgeDeduct" class="absolute right-3 top-1.5 text-xs font-bold text-slate-400">m²</span>
+                    <div class="space-y-1.5 pt-1">
+                        <div class="flex justify-between items-center">
+                            <label for="inputOpenings" id="lblOpenings" class="text-xs font-bold text-slate-600">Detrazione Porte / Aperture (opzionale)</label>
+                            <span id="unitBadgeDeduct" class="text-xs font-mono font-bold text-slate-500">m²</span>
                         </div>
+                        <input type="number" id="inputOpenings" value="0" min="0" max="5000" step="0.1" oninput="calculateAll()"
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                     </div>
                 </div>
 
-                <!-- CARD 2: TILE SIZE & PATTERN -->
-                <div class="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-xs space-y-3.5">
-                    <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
-                        <span class="w-6 h-6 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs">2</span>
-                        <h2 id="secTileTitle" class="text-sm sm:text-base font-extrabold text-slate-900">Formato Piastrella & Schema di Posa</h2>
+                <!-- 2. Formato Piastrella & Schema di Posa -->
+                <div class="space-y-3 pt-4 border-t border-slate-100">
+                    <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
+                        <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">2</span>
+                        <span id="secTileTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Formato Piastrella & Schema di Posa</span>
                     </div>
-
-                    <p id="secTileDesc" class="text-xs text-slate-500">Scegli la dimensione delle piastrelle e il tipo di posa per calcolare lo sfrido reale.</p>
+                    <p id="secTileDesc" class="text-xs text-slate-500 hidden">Scegli la dimensione delle piastrelle e il tipo di posa per calcolare lo sfrido reale.</p>
 
                     <!-- Presets Pills -->
                     <div>
-                        <span id="lblTilePreset" class="block text-xs font-bold text-slate-700 mb-1.5">Formati Standard</span>
+                        <span id="lblTilePreset" class="block text-xs font-bold text-slate-600 mb-2">Formati Standard:</span>
                         <div class="flex flex-wrap gap-1.5">
-                            <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">60 × 60 cm</button>
-                            <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">30 × 60 cm</button>
-                            <button type="button" onclick="setTilePreset(80, 80, 10)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">80 × 80 cm</button>
-                            <button type="button" onclick="setTilePreset(20, 120, 10)" id="btnPresetWood" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">20 × 120 (Listoni Legno)</button>
-                            <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-xs font-semibold text-slate-700 border border-slate-200 transition">20 × 20 cm</button>
+                            <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">60 × 60 cm</button>
+                            <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">30 × 60 cm</button>
+                            <button type="button" onclick="setTilePreset(80, 80, 9.5)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">80 × 80 cm</button>
+                            <button type="button" onclick="setTilePreset(20, 120, 9.5)" id="btnPresetWood" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 120 (Listoni Legno)</button>
+                            <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 20 cm</button>
                         </div>
                     </div>
 
-                    <!-- Custom Dimensions -->
-                    <div class="grid grid-cols-3 gap-2.5">
+                    <!-- Custom Tile Dimensions -->
+                    <div class="grid grid-cols-3 gap-3">
                         <div>
-                            <label id="lblTileW" class="block text-[11px] font-bold text-slate-700 mb-1">Larghezza</label>
+                            <label for="tileWidth" id="lblTileW" class="block text-[11px] font-bold text-slate-700 mb-1">Larghezza Piastrella</label>
                             <div class="relative">
-                                <input type="number" id="tileWidth" value="60" min="5" max="300" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span id="unitBadgeTileW" class="absolute right-2 top-1.5 text-[11px] font-bold text-slate-400">cm</span>
+                                <input type="number" id="tileWidth" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileW" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">cm</span>
                             </div>
                         </div>
                         <div>
-                            <label id="lblTileH" class="block text-[11px] font-bold text-slate-700 mb-1">Altezza</label>
+                            <label for="tileHeight" id="lblTileH" class="block text-[11px] font-bold text-slate-700 mb-1">Altezza Piastrella</label>
                             <div class="relative">
-                                <input type="number" id="tileHeight" value="60" min="5" max="300" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span id="unitBadgeTileH" class="absolute right-2 top-1.5 text-[11px] font-bold text-slate-400">cm</span>
+                                <input type="number" id="tileHeight" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileH" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">cm</span>
                             </div>
                         </div>
                         <div>
-                            <label id="lblTileThick" class="block text-[11px] font-bold text-slate-700 mb-1">Spessore</label>
+                            <label for="tileThick" id="lblTileThick" class="block text-[11px] font-bold text-slate-700 mb-1">Spessore</label>
                             <div class="relative">
-                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span id="unitBadgeTileThick" class="absolute right-2 top-1.5 text-[11px] font-bold text-slate-400">mm</span>
+                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileThick" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">mm</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Layout Pattern & Waste Margin -->
-                    <div>
-                        <label id="lblPattern" class="block text-xs font-bold text-slate-700 mb-1">Schema di Posa & Sfrido</label>
-                        <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
-                            <option value="10" selected id="optStraight">Posa Dritta Standard (+10% sfrido)</option>
-                            <option value="12" id="optOffset">Posa Sfalsata / A Correre (+12% sfrido)</option>
-                            <option value="15" id="optDiagonal">Posa in Diagonale (+15% sfrido)</option>
-                            <option value="20" id="optHerringbone">Posa a Spina di Pesce (+20% sfrido)</option>
-                            <option value="custom" id="optCustom">Sfrido Personalizzato (%)</option>
-                        </select>
-                        <div id="customWasteGroup" class="hidden mt-2">
-                            <label id="lblCustomWaste" class="block text-[11px] font-bold text-slate-600 mb-1">Percentuale Sfrido (%)</label>
-                            <input type="number" id="customWasteInput" value="10" min="0" max="50" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
-                        </div>
-                    </div>
-
-                    <!-- Packaging Info (Boxes) -->
-                    <div class="grid grid-cols-2 gap-3 pt-1">
+                    <!-- Layout Pattern & Packaging Info -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                         <div>
-                            <label id="lblBoxCoverage" class="block text-xs font-bold text-slate-700 mb-1">Copertura per Scatola</label>
-                            <div class="relative">
-                                <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
-                                <span id="unitBadgeBoxCov" class="absolute right-3 top-2 text-xs font-bold text-slate-400">m²</span>
+                            <label for="selectPattern" id="lblPattern" class="block text-xs font-bold text-slate-700 mb-1">Schema di Posa & Sfrido</label>
+                            <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                                <option value="10" selected id="optStraight">Posa Dritta Standard (+10% sfrido)</option>
+                                <option value="12" id="optOffset">Posa Sfalsata / A Correre (+12% sfrido)</option>
+                                <option value="15" id="optDiagonal">Posa in Diagonale (+15% sfrido)</option>
+                                <option value="20" id="optHerringbone">Posa a Spina di Pesce (+20% sfrido)</option>
+                                <option value="custom" id="optCustom">Sfrido Personalizzato (%)</option>
+                            </select>
+                            <div id="customWasteGroup" class="hidden mt-2">
+                                <label for="customWasteInput" id="lblCustomWaste" class="block text-[11px] font-bold text-slate-600 mb-1">Percentuale Sfrido (%)</label>
+                                <input type="number" id="customWasteInput" value="10" min="0" max="50" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                             </div>
                         </div>
-                        <div>
-                            <label id="lblBoxPieces" class="block text-xs font-bold text-slate-700 mb-1">Pezzi per Scatola (opzionale)</label>
-                            <input type="number" id="boxPieces" value="4" min="1" max="100" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label for="boxCoverage" id="lblBoxCoverage" class="block text-xs font-bold text-slate-700 mb-1">Copertura Scatola</label>
+                                <div class="relative">
+                                    <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                    <span id="unitBadgeBoxCov" class="absolute right-2 top-2 text-xs font-bold text-slate-400">m²</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="boxPieces" id="lblBoxPieces" class="block text-xs font-bold text-slate-700 mb-1">Pezzi / Scatola</label>
+                                <input type="number" id="boxPieces" value="4" min="1" max="100" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CARD 3: ADHESIVE & GROUT CONSUMPTIONS -->
-                <div class="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-xs space-y-3.5">
-                    <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
-                        <span class="w-6 h-6 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-xs">3</span>
-                        <h2 id="secMaterialsTitle" class="text-sm sm:text-base font-extrabold text-slate-900">Colla (Adesivo) & Stucco per Fughe</h2>
+                <!-- 3. Adhesive & Grout Consumptions -->
+                <div class="space-y-3 pt-4 border-t border-slate-100">
+                    <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
+                        <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">3</span>
+                        <span id="secMaterialsTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Colla (Adesivo) & Stucco per Fughe</span>
                     </div>
+                    <p id="secMaterialsDesc" class="text-xs text-slate-500 hidden">Stima precisa dei consumi di cantiere in base al sottofondo e alla fuga.</p>
 
-                    <p id="secMaterialsDesc" class="text-xs text-slate-500">Stima precisa dei consumi di cantiere in base al sottofondo e alla fuga.</p>
-
-                    <!-- Grout Width & Adhesive Notch Selection -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
-                            <label id="lblGroutWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Fuga</label>
+                            <label for="groutWidth" id="lblGroutWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Fuga</label>
                             <div class="relative">
-                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-10">
-                                <span id="unitBadgeGroutW" class="absolute right-3 top-2 text-xs font-bold text-slate-400">mm</span>
+                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-9">
+                                <span id="unitBadgeGroutW" class="absolute right-2 top-2 text-xs font-bold text-slate-400">mm</span>
                             </div>
                         </div>
                         <div>
-                            <label id="lblBagWeight" class="block text-xs font-bold text-slate-700 mb-1">Peso Sacco Colla (kg)</label>
-                            <input type="number" id="bagWeight" value="25" min="5" max="50" step="5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label for="bagWeight" id="lblBagWeight" class="block text-xs font-bold text-slate-700 mb-1">Peso Sacco Colla</label>
+                            <div class="relative">
+                                <input type="number" id="bagWeight" value="25" min="5" max="50" step="5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span class="absolute right-2 top-2 text-xs font-bold text-slate-400">kg</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <label id="lblAdhesiveNotch" class="block text-xs font-bold text-slate-700 mb-1">Tipo Spatola / Applicazione Colla</label>
-                        <select id="selectAdhesive" onchange="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
-                            <option value="3.0" id="notchSmall">Dente 6 mm (Piccoli formati, ~3.0 kg/m²)</option>
-                            <option value="4.5" selected id="notchMedium">Dente 8-10 mm (Standard 30x60 / 60x60, ~4.5 kg/m²)</option>
-                            <option value="6.0" id="notchLarge">Doppia Spalmatura (Grandi Lastre / Esterni, ~6.0 kg/m²)</option>
-                        </select>
+                        <div>
+                            <label for="selectAdhesive" id="lblAdhesiveNotch" class="block text-xs font-bold text-slate-700 mb-1">Tipo Spatola / Colla</label>
+                            <select id="selectAdhesive" onchange="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                                <option value="3.0" id="notchSmall">Dente 6 mm (~3.0 kg/m²)</option>
+                                <option value="4.5" selected id="notchMedium">Dente 8-10 mm (~4.5 kg/m²)</option>
+                                <option value="6.0" id="notchLarge">Doppia Spalmatura (~6.0 kg/m²)</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- RIGHT COLUMN: BILL OF MATERIALS & GRAPHICAL PREVIEW -->
-            <div id="resultsColumn" class="lg:col-span-5 space-y-4">
+            <!-- Key Results Metric Cards (4 Colonne Identiche a Tubi, Rampe, Scale, Tetto) -->
+            <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
                 
-                <!-- SUMMARY COMPILATION CARD -->
-                <div class="bg-white rounded-3xl p-5 border-2 border-amber-500/30 shadow-lg shadow-amber-500/5 space-y-4 print-container">
-                    
-                    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                        <div>
-                            <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">Distinta Materiali</span>
-                            <h2 id="summaryTitle" class="text-base sm:text-lg font-black text-slate-900 mt-1">Computo per l'Acquisto</h2>
-                        </div>
-                        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-lg shadow-sm">
-                            🛒
-                        </div>
-                    </div>
-
-                    <!-- Metrics Grid -->
-                    <div class="space-y-3">
-                        
-                        <!-- Net vs Gross Area -->
-                        <div class="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
-                            <div>
-                                <span id="resNetAreaLabel" class="text-[11px] font-bold text-slate-500 block">Superficie Netta</span>
-                                <span id="valNetArea" class="text-base font-extrabold font-mono text-slate-800">20.00 m²</span>
-                            </div>
-                            <div>
-                                <span id="resGrossAreaLabel" class="text-[11px] font-extrabold text-amber-800 block">Totale da Ordinare (con sfrido)</span>
-                                <span id="valGrossArea" class="text-lg font-black font-mono text-amber-600">22.00 m²</span>
-                            </div>
-                        </div>
-
-                        <!-- Boxes & Tiles Count -->
-                        <div class="p-3.5 rounded-2xl bg-amber-50/60 border border-amber-200">
-                            <div class="flex items-baseline justify-between">
-                                <span id="resBoxesLabel" class="text-xs font-bold text-amber-900">Scatole da Acquistare</span>
-                                <span id="valBoxes" class="text-2xl font-black font-mono text-amber-700">16 Scatole</span>
-                            </div>
-                            <div class="flex items-center justify-between text-[11px] text-amber-800/80 mt-1 pt-1 border-t border-amber-200/60">
-                                <span id="valTotalSqmMade">Copertura effettiva scatole: 23.04 m²</span>
-                                <span id="valTotalTiles">Pezzi Singoli Totali: ~64</span>
-                            </div>
-                        </div>
-
-                        <!-- Adhesive Mortar & Grout -->
-                        <div class="grid grid-cols-2 gap-2">
-                            <!-- Adhesive -->
-                            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
-                                <span id="resAdhesiveBagsLabel" class="text-[11px] font-bold text-slate-600 block">Sacchi di Colla</span>
-                                <span id="valAdhesiveBags" class="text-xl font-black font-mono text-slate-900 mt-0.5 block">4 Sacchi</span>
-                                <span id="valAdhesiveKg" class="text-[10px] font-mono text-slate-500 mt-0.5 block">Totale Colla Stimata: ~99 kg</span>
-                            </div>
-
-                            <!-- Grout -->
-                            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80">
-                                <span id="resGroutKgLabel" class="text-[11px] font-bold text-slate-600 block">Stucco Fughe Necessario</span>
-                                <span id="valGroutKg" class="text-xl font-black font-mono text-slate-900 mt-0.5 block">1.5 kg</span>
-                                <span id="valGroutDetails" class="text-[10px] font-mono text-slate-500 mt-0.5 block">Fuga 2mm · Spessore 9mm</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Contingency / Warning Note -->
-                    <div class="flex items-start gap-2 p-2.5 rounded-xl bg-amber-50/50 border border-amber-200 text-[11px] text-amber-800">
-                        <span class="text-base shrink-0">⚠️</span>
-                        <p id="resWasteWarning" class="leading-relaxed">
-                            Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.
-                        </p>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="pt-2 flex flex-col sm:flex-row gap-2 no-print">
-                        <button type="button" onclick="copyMaterialsList()" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-md transition active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer">
-                            <span>📋</span>
-                            <span id="btnCopyList">Copia Lista Spesa</span>
-                        </button>
-                        <button type="button" onclick="window.print()" class="py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow-md shadow-amber-500/20 transition active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer">
-                            <span>🖨️</span>
-                            <span id="btnPrint">Stampa Scheda A4</span>
-                        </button>
-                    </div>
-
-                    <div id="copyToast" class="hidden text-center text-xs font-bold text-emerald-600 py-1 transition-all">
-                        ✓ Distinta copiata negli appunti!
-                    </div>
-
-
-
+                <!-- Card 1: Scatole -->
+                <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block" id="resBoxesLabel">Scatole da Ordinare</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-amber-900 block mt-1" id="valBoxes">16 Scatole</span>
+                    <span class="text-[10px] text-amber-700 font-mono block mt-0.5" id="valCoverageDetails">23.04 m² effettivi</span>
+                    <span class="hidden" id="valTilesDetails">~64 pezzi</span>
                 </div>
 
-                <!-- DYNAMIC PATTERN VISUAL PREVIEW CARD -->
-                <div class="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-xs space-y-3 no-print">
-                    <div class="flex items-center justify-between">
-                        <h3 id="previewTitle" class="text-xs sm:text-sm font-extrabold text-slate-800">Anteprima Grafica Schema di Posa</h3>
-                        <span id="previewPatternBadge" class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Dritta (+10%)</span>
-                    </div>
-
-                    <!-- SVG Grid Canvas -->
-                    <div class="w-full h-40 bg-slate-100 rounded-2xl border border-slate-200/90 overflow-hidden flex items-center justify-center relative p-2 shadow-inner">
-                        <svg id="patternSvg" class="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
-                            <!-- Injected dynamically via JS -->
-                        </svg>
-                    </div>
+                <!-- Card 2: Totale da Ordinare -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resGrossAreaLabel">Totale con Sfrido</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valGrossArea">22.00 m²</span>
+                    <span class="text-[10px] text-slate-500 font-semibold block mt-0.5">Netto: <span id="valNetArea">20.00 m²</span></span>
+                    <span class="hidden" id="resNetAreaLabel">Superficie Netta</span>
                 </div>
 
+                <!-- Card 3: Sacchi di Colla -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resAdhesiveBagsLabel">Sacchi di Colla</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valAdhesiveBags">4 Sacchi</span>
+                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valAdhesiveKg">Totale stimato ~99 kg</span>
+                </div>
+
+                <!-- Card 4: Stucco Fughe -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resGroutKgLabel">Stucco Fughe</span>
+                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valGroutKg">1.5 kg</span>
+                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valGroutDetails">Fuga 2mm · Spessore 9mm</span>
+                </div>
+            </div>
+
+            <!-- Status / Contingency Warning Banner -->
+            <div class="p-4 sm:p-5 rounded-2xl border transition-all flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900">
+                <span class="text-2xl leading-none mt-0.5">⚠️</span>
+                <div class="space-y-1 flex-1">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h3 id="summaryTitle" class="text-sm sm:text-base font-bold text-slate-900">Computo per l'Acquisto & Riserva Tagli</h3>
+                        <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-900 border border-amber-300">Distinta Materiali</span>
+                    </div>
+                    <p id="resWasteWarning" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DYNAMIC PATTERN VISUAL PREVIEW -->
+            <div class="space-y-2 no-print">
+                <div class="flex items-center justify-between">
+                    <span id="previewTitle" class="text-xs font-bold text-slate-700 uppercase tracking-wider">Anteprima Grafica Schema di Posa</span>
+                    <span id="previewPatternBadge" class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Dritta (+10%)</span>
+                </div>
+
+                <!-- SVG Grid Canvas -->
+                <div class="w-full h-40 sm:h-52 bg-slate-100 rounded-2xl border border-slate-200/90 overflow-hidden flex items-center justify-center relative p-2 shadow-inner">
+                    <svg id="patternSvg" class="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
+                        <!-- Injected dynamically via JS -->
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Action Buttons: Print & Copy (Identico a TubiFacili, RampaFacile, ScalaFacile e TettoFacile) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Cantiere A4</span>
+                </button>
+                <button type="button" onclick="copyMaterialsList()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span id="copyIcon">📋</span> <span id="btnCopyList">Copia Dati per Computo Metrico</span>
+                </button>
+            </div>
+            <div id="copyToast" class="hidden text-center text-xs font-bold text-emerald-600 py-1 transition-all">
+                ✓ Distinta copiata negli appunti!
             </div>
 
         </div>
@@ -1601,8 +1600,8 @@
             const btnI = document.getElementById('btnUnitImperial');
 
             if (sys === 'metric') {
-                btnM.className = "px-2 py-0.5 rounded-lg bg-white text-slate-800 shadow-2xs transition";
-                btnI.className = "px-2 py-0.5 rounded-lg text-slate-500 hover:text-slate-900 transition";
+                btnM.className = "px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
+                btnI.className = "px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                 
                 // Convert values from imperial to metric
                 const l = (parseFloat(document.getElementById('inputLength').value) || 0) * 0.3048;
@@ -1635,8 +1634,8 @@
                 document.getElementById('unitBadgeGroutW').textContent = 'mm';
                 document.getElementById('unitBadgeBoxCov').textContent = 'm²';
             } else {
-                btnI.className = "px-2 py-0.5 rounded-lg bg-white text-slate-800 shadow-2xs transition";
-                btnM.className = "px-2 py-0.5 rounded-lg text-slate-500 hover:text-slate-900 transition";
+                btnI.className = "px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
+                btnM.className = "px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
 
                 // Convert values from metric to imperial
                 const l = (parseFloat(document.getElementById('inputLength').value) || 0) / 0.3048;
@@ -1680,13 +1679,13 @@
             const directGroup = document.getElementById('directInputGroup');
 
             if (mode === 'dims') {
-                btnDims.className = "px-2.5 py-1 rounded-lg bg-white text-slate-800 shadow-2xs transition";
-                btnDirect.className = "px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 transition";
+                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
+                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                 dimsGroup.classList.remove('hidden');
                 directGroup.classList.add('hidden');
             } else {
-                btnDirect.className = "px-2.5 py-1 rounded-lg bg-white text-slate-800 shadow-2xs transition";
-                btnDims.className = "px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 transition";
+                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
+                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                 directGroup.classList.remove('hidden');
                 dimsGroup.classList.add('hidden');
             }
@@ -1882,10 +1881,18 @@
             const text = `📋 ${t.summary_title || 'DISTINTA ACQUISTO PIASTRELLE'} (OmniTools Lab):\n- ${t.res_net_area || 'Superficie Netta'}: ${net}\n- ${t.res_gross_area || 'Da Ordinare'}: ${gross}\n- ${t.res_boxes || 'Scatole'}: ${boxes}\n- ${t.res_adhesive_bags || 'Colla'}: ${adhesive}\n- ${t.res_grout_kg || 'Stucco Fughe'}: ${grout}\nGenerato su: https://www.omnitoolslab.com/piastrelle`;
 
             navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopyList');
+                if (btn) {
+                    const orig = btn.textContent;
+                    btn.textContent = '✓ Valori Copiati per Computo!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                }
                 const toast = document.getElementById('copyToast');
-                toast.textContent = t.copied_msg || '✓ Distinta copiata negli appunti!';
-                toast.classList.remove('hidden');
-                setTimeout(() => toast.classList.add('hidden'), 2500);
+                if (toast) {
+                    toast.textContent = t.copied_msg || '✓ Distinta copiata negli appunti!';
+                    toast.classList.remove('hidden');
+                    setTimeout(() => toast.classList.add('hidden'), 2500);
+                }
             });
         }
 
@@ -1952,8 +1959,8 @@
             document.getElementById('resGroutKgLabel').textContent = t.res_grout_kg;
             document.getElementById('resWasteWarning').textContent = t.res_waste_warning;
 
-            document.getElementById('btnCopyList').textContent = t.btn_copy_list;
-            document.getElementById('btnPrint').textContent = t.btn_print;
+            document.getElementById('btnCopyList').textContent = (lang === 'it' ? 'Copia Dati per Computo Metrico' : t.btn_copy_list);
+            document.getElementById('btnPrint').textContent = (lang === 'it' ? 'Stampa Scheda Cantiere A4' : t.btn_print);
             document.getElementById('previewTitle').textContent = t.preview_title;
 
             if (document.getElementById('faqTitle') && t.faq_main_title) {
