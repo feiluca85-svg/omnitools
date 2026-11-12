@@ -738,7 +738,7 @@
     </header>
     
 
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-3 sm:space-y-5">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
 
         <!-- Print-only official header -->
         <div class="print-only mb-6 border-b-2 border-slate-900 pb-3">
@@ -793,11 +793,11 @@
             </div>
         </section>
 
-        <!-- Main Interactive Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- UNIFIED CALCULATOR CARD (OmniTools Lab Standard) -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-4 sm:p-7 space-y-6">
 
-            <!-- Controls Column (5 cols) -->
-            <div class="lg:col-span-5 bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-4 card-box">
+            <!-- Controls Column -->
+            <div class="w-full bg-slate-50/70 rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-4 card-box">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-700 block pb-2 border-b border-slate-100 flex items-center justify-between">
                     <span class="flex items-center gap-1.5"><span>⚙️</span> Parametri del Finanziamento</span>
                     <div class="flex items-center gap-2">
@@ -979,6 +979,16 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Twin Action Buttons (OmniFinance Standard) -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
+                <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
+                    <span>🖨️</span> <span id="btnPrint">Stampa Prospetto Mutuo A4</span>
+                </button>
+                <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
+                    <span>📋</span> <span id="btnCopy">Copia Riepilogo Finanziario</span>
+                </button>
             </div>
         </div>
 
@@ -3165,6 +3175,27 @@ document.addEventListener('DOMContentLoaded', () => {
         function fallbackCopy(text) {
             prompt('Copia questo link con il tuo preventivo mutuo:', text);
         }
-    </script>
+    
+        function copyResults() {
+            const amount = document.getElementById('badgeAmount')?.textContent || '';
+            const monthly = document.getElementById('resMonthly')?.textContent || '';
+            const interest = document.getElementById('resInterest')?.textContent || '';
+            const total = document.getElementById('resTotalCost')?.textContent || '';
+            const text = `🏦 PROSPETTO MUTUO (OmniTools Lab - MutuoFacile):
+- Importo: ${amount}
+- Rata Mensile: ${monthly}
+- Totale Interessi: ${interest}
+- Costo Totale: ${total}
+Generato su: https://www.omnitoolslab.com/mutuo`;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopy');
+                if (btn) {
+                    const orig = btn.textContent;
+                    btn.textContent = '✓ Valori Copiati!';
+                    setTimeout(() => { btn.textContent = orig; }, 2000);
+                }
+            });
+        }
+</script>
 </body>
 </html>
