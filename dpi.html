@@ -921,7 +921,7 @@
                         <span id="dpiBadge" class="text-xs font-mono font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">300 DPI</span>
                     </div>
                     <input type="range" id="dpiRange" min="10" max="600" step="5" value="300" oninput="updateDpiFromRange(this.value)" class="w-full accent-emerald-600">
-                    <div class="grid grid-cols-5 gap-1 pt-1">
+                    <div class="grid grid-cols-3 sm:grid-cols-5 gap-1.5 pt-1">
                         <button type="button" onclick="setDpi(72)" class="py-1 text-[10px] font-bold bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg border border-slate-200 transition text-center">72 DPI</button>
                         <button type="button" onclick="setDpi(150)" class="py-1 text-[10px] font-bold bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg border border-slate-200 transition text-center">150 DPI</button>
                         <button type="button" onclick="setDpi(200)" class="py-1 text-[10px] font-bold bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg border border-slate-200 transition text-center">200 DPI</button>
@@ -1003,7 +1003,7 @@
                 </div>
 
                 <!-- Primary KPI Metrics Grid -->
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <div class="bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200 shadow-xs">
                         <span id="colDimLabel" class="text-[10px] font-bold uppercase tracking-wider text-slate-600 block">Formato Stampa</span>
                         <div id="valPrintDim" class="text-sm sm:text-base lg:text-lg font-black font-mono text-slate-900 leading-tight">21.0 × 29.7 cm</div>
