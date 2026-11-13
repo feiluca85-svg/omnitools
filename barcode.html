@@ -3857,6 +3857,13 @@ Generato su: ${url}`).then(() => {
         const qs = params.toString();
         return window.location.origin + window.location.pathname + (qs ? "?" + qs : "");
     };
+    window.shareOmniWhatsApp = function() {
+        const url = window.getOmniShareUrl();
+        const title = (document.querySelector("h1") && document.querySelector("h1").textContent.trim()) || document.title;
+        const prefix = window._omniWaPrefix || "Ecco il calcolo pronto:";
+        const msg = prefix + " " + title + "\n" + url;
+        window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank", "noopener");
+    };
     window.copyOmniParamLink = function() {
         const url = window.getOmniShareUrl();
         const label = document.getElementById("paramShareLabel");
