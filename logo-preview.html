@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" class="overflow-x-hidden">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
+        html, body { overflow-x: clip; }
         .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
     
         /* OmniTools Dark Mode */
@@ -22,10 +23,7 @@
         html.omni-dark input, html.omni-dark select { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
         html.omni-dark .border-slate-200, html.omni-dark .border-slate-100 { border-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
-            /* Legibility boost inside main content (screen only) */
-        @media screen {
-            main .text-\[10px\], main .text-\[11px\] { font-size: 0.8125rem !important; line-height: 1.45 !important; }
-            main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
+main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
             main label { font-size: 0.84375rem !important; }
         }

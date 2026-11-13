@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" class="overflow-x-hidden">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -32,6 +32,7 @@
         }
     </script>
 <style id="omniDarkStyles">
+        html, body { overflow-x: clip; }
         html.omni-dark body { background-color: #0f172a !important; color: #e2e8f0 !important; }
         html.omni-dark header, html.omni-dark :not(body)[class*="bg-white/"] { background-color: rgba(15, 23, 42, 0.95) !important; border-color: #334155 !important; }
         html.omni-dark .bg-white { background-color: #1e293b !important; border-color: #334155 !important; color: #e2e8f0 !important; }
@@ -58,10 +59,7 @@
         html.omni-dark .hover\:bg-slate-50:hover, html.omni-dark .hover\:bg-slate-100:hover { background-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
         html.omni-dark, html.omni-dark body { background-color: #0f172a !important; background-image: none !important; color: #e2e8f0 !important; }
-            /* Legibility boost inside main content (screen only) */
-        @media screen {
-            main .text-\[10px\], main .text-\[11px\] { font-size: 0.8125rem !important; line-height: 1.45 !important; }
-            main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
+main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
             main label { font-size: 0.84375rem !important; }
         }
@@ -81,7 +79,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
     <!-- Mini Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">

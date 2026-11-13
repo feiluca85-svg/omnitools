@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" class="overflow-x-hidden">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -33,6 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        html, body { overflow-x: clip; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         @media print {
@@ -54,10 +55,7 @@
         html.omni-dark input, html.omni-dark select { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
         html.omni-dark .border-slate-200, html.omni-dark .border-slate-100 { border-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
-            /* Legibility boost inside main content (screen only) */
-        @media screen {
-            main .text-\[10px\], main .text-\[11px\] { font-size: 0.8125rem !important; line-height: 1.45 !important; }
-            main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
+main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
             main label { font-size: 0.84375rem !important; }
         }
@@ -173,7 +171,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
     
     <style id="omniUniversalPrintStyles">
