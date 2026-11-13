@@ -133,6 +133,26 @@
             max-width: 90vw;
             max-height: 85vh;
         }
+        html.dark #omnidesk-memo #memoPadBody {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+        html.dark #omnidesk-memo #memoWindowHeader {
+            background-color: #1e293b !important;
+            border-bottom-color: #334155 !important;
+            color: #f1f5f9 !important;
+        }
+        html.dark #omnidesk-memo #memoWindowHeader button {
+            color: #cbd5e1 !important;
+        }
+        html.dark #omnidesk-memo #memoSaveStatus {
+            color: #94a3b8 !important;
+        }
+        html.dark #omnidesk-memo #memoTitleInput::placeholder,
+        html.dark #omnidesk-memo #memoTextArea::placeholder {
+            color: #64748b !important;
+        }
 
         /* Adaptive Left or Right Bookmark Tabs (in normal flex flow) */
         .memo-tab-wrapper {
@@ -377,7 +397,7 @@
     memoWidget.className = 'omnidesk-widget hidden fixed flex items-start z-[9993]';
     memoWidget.innerHTML = `
         <!-- Smart Adaptive Bookmarks Container -->
-        <div id="memoTabsContainer" class="flex flex-col gap-1.5 pt-12 shrink-0 pointer-events-auto"></div>
+        <div id="memoTabsContainer" class="absolute right-full top-11 flex flex-col items-end gap-1.5 pointer-events-auto z-[1]"></div>
 
         <!-- Resizable Post-it Pad Body -->
         <div id="memoPadBody" class="omnidesk-resizable w-80 sm:w-88 rounded-2xl shadow-2xl border flex flex-col transition-all duration-150 relative">
@@ -520,7 +540,7 @@
         memoWidget.className = `omnidesk-widget ${deskState.isMemoOpen ? '' : 'hidden'} fixed flex items-start z-[9993] ${deskState.isMemoDocked ? 'memo-docked' : ''}`;
         if (deskState.isMemoDocked) {
             memoWidget.style.left = 'auto';
-            memoWidget.style.top = '68px';
+            memoWidget.style.top = '108px';
             memoWidget.style.right = '12px';
             memoWidget.style.bottom = 'auto';
         } else {
