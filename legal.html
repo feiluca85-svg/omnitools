@@ -58,6 +58,13 @@
         html.omni-dark .hover\:bg-slate-50:hover, html.omni-dark .hover\:bg-slate-100:hover { background-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
         html.omni-dark, html.omni-dark body { background-color: #0f172a !important; background-image: none !important; color: #e2e8f0 !important; }
+            /* Legibility boost inside main content (screen only) */
+        @media screen {
+            main .text-\[10px\], main .text-\[11px\] { font-size: 0.8125rem !important; line-height: 1.45 !important; }
+            main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
+            main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
+            main label { font-size: 0.84375rem !important; }
+        }
     </style>
     <script>
         function applyDark(on) {
