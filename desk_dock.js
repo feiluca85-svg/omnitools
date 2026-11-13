@@ -499,6 +499,8 @@
         });
     }
 
+    function renderMemoTabs() {}
+
     function renderActiveMemo() {
         const m = getActiveMemo();
         if (!m) return;

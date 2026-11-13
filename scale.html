@@ -3181,7 +3181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const factor = UNIT_FACTORS_CM[u] || 1.0;
             const h_cm = h * factor;
 
-            let numRisers, riser_cm, tread_cm, l_cm, blondel_cm, angleDeg;
+            let numRisers, numTreads, riser_cm, tread_cm, l_cm, blondel_cm, angleDeg;
 
             if (currentMode === 'direct') {
                 let l = parseFloat(lengthInput.value);
@@ -3193,7 +3193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (numRisers < 1) numRisers = 1;
 
                 riser_cm = h_cm / numRisers;
-                let numTreads = Math.max(numRisers - 1, 1);
+                numTreads = Math.max(numRisers - 1, 1);
                 tread_cm = l_cm / numTreads;
                 blondel_cm = (2 * riser_cm) + tread_cm;
                 angleDeg = Math.atan(h_cm / l_cm) * (180 / Math.PI);
@@ -3210,7 +3210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tread_cm = 63.0 - (2 * riser_cm);
                 if (tread_cm < 18.0) tread_cm = 18.0;
 
-                let numTreads = Math.max(numRisers - 1, 1);
+                numTreads = Math.max(numRisers - 1, 1);
                 l_cm = tread_cm * numTreads;
                 blondel_cm = (2 * riser_cm) + tread_cm;
                 angleDeg = Math.atan(h_cm / l_cm) * (180 / Math.PI);
