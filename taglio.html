@@ -596,7 +596,7 @@
     </div>
     <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
     <header class="no-print bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-2.5 sm:px-6 flex items-center justify-between gap-1.5 sm:gap-3">
+        <div class="max-w-5xl mx-auto px-2.5 sm:px-6 flex items-center justify-between gap-1 sm:gap-2">
             
             <!-- Logo & Suite Switcher -->
             <div class="flex items-center gap-3">
@@ -826,13 +826,7 @@
                 <!-- Language Selector Dropdown -->
                 <div class="relative inline-block text-left">
                     <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
-                    <div class="relative inline-flex items-center sm:hidden no-print" id="omniMobileMenuWrap">
-                        <button type="button" id="omniMobileMenuBtn" onclick="document.getElementById('omniMobileMenuDropdown').classList.toggle('hidden')" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm font-bold leading-none" aria-label="Menu">⋮</button>
-                        <div id="omniMobileMenuDropdown" class="hidden absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white border border-slate-200 shadow-xl p-2 z-50 space-y-1 text-xs font-semibold text-slate-700">
-                            <button type="button" onclick="toggleDarkMode();document.getElementById('omniMobileMenuDropdown').classList.add('hidden')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 flex items-center gap-2"><span>🌙 / ☀️</span><span>Tema Chiaro / Scuro</span></button>
-                            <button type="button" onclick="const b=document.getElementById('headerInstallBtn');if(b){b.click();}document.getElementById('omniMobileMenuDropdown').classList.add('hidden')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 flex items-center gap-2"><span>📲</span><span>Installa App</span></button>
-                        </div>
-                    </div>
+                    
                     <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="no-print hidden sm:inline-flex px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-[11px] sm:text-xs font-bold py-1.5 px-1.5 sm:px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
                         <option value="it">🇮🇹 IT</option>
@@ -842,6 +836,13 @@
                         <option value="de">🇩🇪 DE</option>
                         <option value="pt">🇵🇹 PT</option>
                     </select>
+                    <div class="relative inline-flex items-center sm:hidden no-print" id="omniMobileMenuWrap">
+                        <button type="button" id="omniMobileMenuBtn" onclick="document.getElementById('omniMobileMenuDropdown').classList.toggle('hidden')" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-sm font-bold leading-none" aria-label="Menu">⋮</button>
+                        <div id="omniMobileMenuDropdown" class="hidden absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white border border-slate-200 shadow-xl p-2 z-50 space-y-1 text-xs font-semibold text-slate-700">
+                            <button type="button" onclick="toggleDarkMode();document.getElementById('omniMobileMenuDropdown').classList.add('hidden')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 flex items-center gap-2"><span>🌙 / ☀️</span><span>Tema Chiaro / Scuro</span></button>
+                            <button type="button" onclick="const b=document.getElementById('headerInstallBtn');if(b){b.click();}document.getElementById('omniMobileMenuDropdown').classList.add('hidden')" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 flex items-center gap-2"><span>📲</span><span>Installa App</span></button>
+                        </div>
+                    </div>
                 </div>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print hidden sm:inline-flex items-center gap-1 px-2 sm:px-2.5 py-1.5 text-[11px] sm:text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-2xs" title="Installa come App">
                     <span>📲</span>
