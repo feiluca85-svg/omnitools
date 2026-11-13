@@ -149,9 +149,23 @@
         html.dark #omnidesk-memo #memoSaveStatus {
             color: #94a3b8 !important;
         }
+        html.dark #omnidesk-memo #memoTitleInput,
+        html.dark #omnidesk-memo #memoTextArea {
+            color: #f8fafc !important;
+        }
+        html.dark #omnidesk-memo #memoCountBadge {
+            background-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+        html.dark #omnidesk-memo button[onclick*="copyCurMemo"] {
+            color: #e2e8f0 !important;
+        }
+        html.dark #omnidesk-memo button[onclick*="deleteCurMemo"] {
+            color: #fb7185 !important;
+        }
         html.dark #omnidesk-memo #memoTitleInput::placeholder,
         html.dark #omnidesk-memo #memoTextArea::placeholder {
-            color: #64748b !important;
+            color: #94a3b8 !important;
         }
 
         /* Adaptive Left or Right Bookmark Tabs (in normal flex flow) */
@@ -480,11 +494,11 @@
         if (!cont) return;
 
         if (side === 'right') {
-            memoWidget.style.flexDirection = 'row-reverse';
-            cont.classList.add('memo-tabs-right');
+            cont.classList.remove('right-full', 'items-end');
+            cont.classList.add('left-full', 'items-start', 'memo-tabs-right');
         } else {
-            memoWidget.style.flexDirection = 'row';
-            cont.classList.remove('memo-tabs-right');
+            cont.classList.remove('left-full', 'items-start', 'memo-tabs-right');
+            cont.classList.add('right-full', 'items-end');
         }
     }
 
