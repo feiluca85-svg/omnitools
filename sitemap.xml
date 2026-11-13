@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Home Hub -->
   <url>
     <loc>https://www.omnitoolslab.com/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -11,36 +18,78 @@
   <!-- OmniBuilding -->
   <url>
     <loc>https://www.omnitoolslab.com/rampe</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/rampe?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/rampe?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/rampe?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/rampe?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/rampe?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/rampe" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/scale</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/scale?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/scale?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/scale?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/scale?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/scale?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/scale" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/tubi</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/tubi?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/tubi?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/tubi?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/tubi?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/tubi?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tubi" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/taglio</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/taglio?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/taglio?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/taglio?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/taglio?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/taglio?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/taglio" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/piastrelle</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/piastrelle?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/piastrelle?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/piastrelle?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/piastrelle?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/piastrelle?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/piastrelle?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/piastrelle" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/tetto</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/tetto?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/tetto?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/tetto?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/tetto?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/tetto?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tetto" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -49,36 +98,78 @@
   <!-- OmniGraph -->
   <url>
     <loc>https://www.omnitoolslab.com/dorso</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dorso?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/dorso?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/dorso?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/dorso?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/dorso?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/dorso?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/dorso" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/dpi</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dpi?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/dpi?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/dpi?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/dpi?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/dpi?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/dpi?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/dpi" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/tinta</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tinta?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/tinta?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/tinta?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/tinta?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/tinta?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/tinta?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tinta" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/barcode</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/barcode?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/barcode?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/barcode?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/barcode?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/barcode?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/barcode" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/copertura</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/copertura?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/copertura?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/copertura?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/copertura?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/copertura?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/copertura?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/copertura" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/resa</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/resa?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/resa?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/resa?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/resa?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/resa?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/resa" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -87,24 +178,52 @@
   <!-- OmniFinance -->
   <url>
     <loc>https://www.omnitoolslab.com/mutuo</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/mutuo?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/mutuo?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/mutuo?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/mutuo?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/mutuo?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/mutuo" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/pac</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/pac?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/pac?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/pac?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/pac?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/pac?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/pac?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/pac" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/margine</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/margine?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/margine?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/margine?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/margine?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/margine?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/margine" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/fire</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/fire?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/fire?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/fire?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/fire?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/fire?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/fire" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -112,6 +231,13 @@
 
   <url>
     <loc>https://www.omnitoolslab.com/estinzione</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/estinzione?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/estinzione?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/estinzione?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/estinzione?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/estinzione?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/estinzione" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -119,6 +245,13 @@
 
   <url>
     <loc>https://www.omnitoolslab.com/risparmio</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/risparmio?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/risparmio?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/risparmio?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/risparmio?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/risparmio?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/risparmio" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -127,18 +260,39 @@
   <!-- OmniDesk Utilities -->
   <url>
     <loc>https://www.omnitoolslab.com/memo</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/memo?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/memo?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/memo?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/memo?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/memo?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/memo?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/memo" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/calcolatrice</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/calcolatrice?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/calcolatrice?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/calcolatrice?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/calcolatrice?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/calcolatrice?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/calcolatrice?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/calcolatrice" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/orologio</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/orologio?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/orologio?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/orologio?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/orologio?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/orologio?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/orologio?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/orologio" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -147,6 +301,13 @@
   <!-- Partnership -->
   <url>
     <loc>https://www.omnitoolslab.com/partnership</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/partnership?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/partnership?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/partnership?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/partnership?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/partnership?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/partnership?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/partnership" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -154,6 +315,13 @@
   <!-- Legal & Privacy -->
   <url>
     <loc>https://www.omnitoolslab.com/legal</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/legal?lang=it" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/legal?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/legal?lang=es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/legal?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/legal?lang=de" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/legal?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/legal" />
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
