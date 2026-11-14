@@ -121,40 +121,55 @@
         }
     </script>
 <style id="omniDarkStyles">
+        html.omni-dark input[type="number"],
+        html.omni-dark input[type="text"],
+        html.omni-dark select,
+        html.omni-dark #presetsSection button {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-color: #334155 !important;
+        }
+        html.omni-dark #calcTabs button.bg-white,
+        html.omni-dark button.bg-white {
+            background-color: #1e293b !important;
+            color: #fbbf24 !important;
+            border-color: #475569 !important;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
-        html.omni-dark [class*="bg-amber-50"],
-        html.omni-dark [class*="bg-amber-100"],
-        html.omni-dark [class*="bg-amber-200"],
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80),
+        html.omni-dark :is(.bg-amber-100, .bg-amber-100\/80),
+        html.omni-dark :is(.bg-amber-200, .bg-amber-200\/80),
         html.omni-dark [class*="bg-yellow-50"],
         html.omni-dark [class*="bg-yellow-100"],
-        html.omni-dark [class*="bg-orange-50"] {
+        html.omni-dark :is(.bg-orange-50, .bg-orange-50\/20) {
             background-color: rgba(120, 53, 15, 0.28) !important;
             border-color: rgba(217, 119, 6, 0.45) !important;
             color: #fde68a !important;
         }
-        html.omni-dark [class*="bg-amber-50"] strong,
-        html.omni-dark [class*="bg-amber-50"] h3,
-        html.omni-dark [class*="bg-amber-50"] span,
-        html.omni-dark [class*="bg-amber-50"] p,
-        html.omni-dark [class*="bg-amber-50"] code,
-        html.omni-dark [class*="bg-amber-100"] strong,
-        html.omni-dark [class*="bg-amber-100"] h3,
-        html.omni-dark [class*="bg-amber-100"] span,
-        html.omni-dark [class*="bg-amber-100"] p,
-        html.omni-dark [class*="bg-amber-200"] strong,
-        html.omni-dark [class*="bg-amber-200"] h3,
-        html.omni-dark [class*="bg-amber-200"] span,
-        html.omni-dark [class*="bg-amber-200"] p {
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) strong,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) h3,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) span,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) p,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) code,
+        html.omni-dark :is(.bg-amber-100, .bg-amber-100\/80) strong,
+        html.omni-dark :is(.bg-amber-100, .bg-amber-100\/80) h3,
+        html.omni-dark :is(.bg-amber-100, .bg-amber-100\/80) span,
+        html.omni-dark :is(.bg-amber-100, .bg-amber-100\/80) p,
+        html.omni-dark :is(.bg-amber-200, .bg-amber-200\/80) strong,
+        html.omni-dark :is(.bg-amber-200, .bg-amber-200\/80) h3,
+        html.omni-dark :is(.bg-amber-200, .bg-amber-200\/80) span,
+        html.omni-dark :is(.bg-amber-200, .bg-amber-200\/80) p {
             color: #fde68a !important;
         }
-        html.omni-dark [class*="bg-amber-50"] .text-slate-900,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-800,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-700,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-600,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-500 {
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) .text-slate-900,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) .text-slate-800,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) .text-slate-700,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) .text-slate-600,
+        html.omni-dark :is(.bg-amber-50, .bg-amber-50\/70, .bg-amber-50\/80) .text-slate-500 {
             color: #fef08a !important;
         }
-        html.omni-dark [class*="bg-amber-200"][class*="rounded-full"] {
+        html.omni-dark :is(.bg-amber-200, .bg-amber-200\/80)[class*="rounded-full"] {
             background-color: rgba(245, 158, 11, 0.3) !important;
             border-color: #f59e0b !important;
             color: #fef08a !important;
@@ -166,10 +181,7 @@
         }
 
         /* Range Slider Track in Dark Mode */
-        html.omni-dark input[type=range] {
-            background: #334155 !important;
-            border: 1px solid #475569 !important;
-        }
+        
         html.omni-dark input[type=range]::-webkit-slider-thumb {
             border-color: #1e293b !important;
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.6) !important;
@@ -692,11 +704,11 @@
         </div>
 
             <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (OmniTools 12-Tool Standard) -->
-            <div class="pt-2 sm:pt-3 max-w-3xl sm:max-w-4xl mx-auto w-full">
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
+            <div class="pt-2 sm:pt-3 max-w-4xl sm:max-w-5xl mx-auto w-full">
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
                     <!-- Tab 1: Tutti i Tool -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 border border-blue-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
                         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-white/30">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
@@ -726,7 +738,23 @@
                         </div>
                     </button>
 
-                    <!-- Tab 3: OmniGraph -->
+                    <!-- Tab 3: OmniFinance -->
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                            </svg>
+                        </div>
+                        <div class="text-left leading-tight min-w-0">
+                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniFinance</span>
+                            <span id="filterFinanceSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Finanza & Business</span>
+                        </div>
+                    </button>
+
+                    <!-- Tab 4: OmniGraph -->
                     <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
                         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-rose-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -743,19 +771,18 @@
                         </div>
                     </button>
 
-                    <!-- Tab 4: OmniFinance -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
+                    <!-- Tab 5: OmniFood -->
+                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="col-span-2 sm:col-span-1 flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-orange-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
-                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
-                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
-                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                                <path d="M11 9.5H21M13.5 9.5V14.5L9.5 21.5C9 22.4 9.6 23.5 10.7 23.5H21.3C22.4 23.5 23 22.4 22.5 21.5L18.5 14.5V9.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="16" cy="19" r="2" fill="#fed7aa" />
                             </svg>
                         </div>
                         <div class="text-left leading-tight min-w-0">
-                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniFinance</span>
-                            <span id="filterFinanceSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Finanza & Business</span>
+                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniFood</span>
+                            <span id="filterFoodSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">4 FoodTech & Export</span>
                         </div>
                     </button>
 
@@ -770,7 +797,7 @@
             <!-- ========================================== -->
             <!-- DIVISION 1: OmniBuilding (Edilizia & Tubi) -->
             <!-- ========================================== -->
-            <div id="sectionBuilding" class="space-y-4">
+            <div id="sectionBuilding" class="space-y-4 pt-4 pb-4">
                 
                 <!-- Division Department Header -->
                 <div class="flex items-center gap-3 pb-2.5 border-b border-amber-500/25">
@@ -785,7 +812,7 @@
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
                             <h2 id="divBuildingTitle" class="text-base sm:text-lg font-black text-amber-900 tracking-tight font-jakarta leading-none">Omni<span class="text-amber-600">Building</span></h2>
-                            <span id="badgeCountBuilding" class="text-[10px] sm:text-[11px] font-mono font-bold text-amber-800 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">6 Tool</span>
+                            <span id="badgeCountBuilding" class="text-[10px] sm:text-[11px] font-bold text-amber-800 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">6 Tool</span>
                         </div>
                         <p id="divBuildingDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Calcolatori geometrici e normativi per cantieri, architettura, coperture e taglio</p>
                     </div>
@@ -987,7 +1014,7 @@
                             <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
                                 <span class="px-2 py-0.5 bg-slate-100 rounded-md">🚰 Caduta cm/m</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💧 Autopulizia 1-2%</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg> Autopulizia 1-2%</span>
                                 <span class="px-2 py-0.5 bg-slate-100 rounded-md">📏 Ø 40-200 mm</span>
                             </div>
                         </div>
@@ -1045,7 +1072,285 @@
             <!-- ========================================== -->
             <!-- DIVISION 2: OmniGraph (Grafica & Stampa) -->
             <!-- ========================================== -->
-            <div id="sectionGraph" class="space-y-4">
+            <div id="sectionFinance" class="space-y-4 pt-4 pb-4">
+                
+                <!-- Division Department Header -->
+                <div class="flex items-center gap-3 pb-2.5 border-b border-emerald-500/25">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0 p-1.5">
+                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                            <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
+                            <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
+                            <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
+                            <span id="badgeCountFinance" class="text-[10px] sm:text-[11px] font-bold text-emerald-800 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">6 Tool</span>
+                        </div>
+                        <p id="divFinanceDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
+                    </div>
+                </div>
+
+                <!-- 6 Finance Tools Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    
+                    <!-- TOOL 10: MutuoFacile -->
+                    <a href="/mutuo" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="12" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="17" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="22" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
+                                        <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMutuoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MutuoFacile</h3>
+                                <div id="toolMutuoHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto peserà la rata sul tuo stipendio?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMutuoDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Rata Mensile</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Tabella Anno/Anno</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Sostenibilità 33%</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMutuoCta">Calcola Rata Mutuo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/estinzione" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolEstinzioneTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">EstinzioneFacile</h3>
+                                <div id="toolEstinzioneHook" class="text-xs font-bold text-emerald-800 mt-0.5">Conviene abbassare la rata o accorciare gli anni?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolEstinzioneDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Riduci Rata</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Riduci Anni</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Bersani 0 Penali</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolEstinzioneCta">Simula Estinzione Ora</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
+                                        <circle cx="21" cy="11" r="2" fill="#ffffff"/>
+                                        <line x1="12" y1="18" x2="18" y2="12" stroke="#ffffff" stroke-width="1.5"/>
+                                        <circle cx="13" cy="13" r="1" fill="#ffffff"/>
+                                        <circle cx="17" cy="17" r="1" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolMargineTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MargineFacile</h3>
+                                <div id="toolMargineHook" class="text-xs font-bold text-emerald-800 mt-0.5">Stai calcolando il margine o solo il ricarico?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolMargineDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ Margine vs Ricarico</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m-7-4l3-7 3 7a3 3 0 01-6 0zm10 0l3-7 3 7a3 3 0 01-6 0zM5 7h14"/></svg> Prezzo da COGS</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏛️ Scorporo Imposte</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolMargineCta">Calcola Margine & Prezzo</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
+                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
+                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
+                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolPacCta">Simula Crescita PAC</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/risparmio" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolRisparmioBadge">Sinking Fund</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolRisparmioTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">ObiettivoRisparmio</h3>
+                                <div id="toolRisparmioHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto devi mettere da parte al mese per raggiungere il tuo traguardo?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolRisparmioDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola la quota di accantonamento mensile per anticipo casa, auto, fondo emergenza o viaggi, con o senza rendimento composto.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎯 Quota Mensile</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Sinking Fund</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Con Rendimento</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolRisparmioCta">Calcola Quota Risparmio</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+<a href="/fire" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
+                        <div class="space-y-3">
+                            <!-- Visual Header & Micro Blueprint -->
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                                        <path d="M16 4 C11 10, 8 15, 8 20 A8 8 0 0 0 24 20 C24 15, 21 10, 16 4 Z" fill="#047857" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round"/>
+                                        <path d="M16 13 C13.5 16, 12 19, 12 22 A4 4 0 0 0 20 22 C20 19, 18.5 16, 16 13 Z" fill="#34d399" opacity="0.9"/>
+                                        <circle cx="16" cy="22" r="2" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolFireBadge">Trinity Study 4%</span>
+                            </div>
+
+                            <!-- Title & Direct Question Hook -->
+                            <div>
+                                <h3 id="toolFireTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">FIRE & Rendita Passiva</h3>
+                                <div id="toolFireHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto capitale ti serve per smettere di lavorare?</div>
+                            </div>
+
+                            <!-- Plain Description -->
+                            <p id="toolFireDesc" class="text-xs text-slate-600 leading-relaxed">
+                                Calcola il tuo FIRE Number secondo lo Studio Trinity (regola del 4% / 25x spese annue), gli anni alla libertà finanziaria e la traiettoria di accumulo.
+                            </p>
+
+                            <!-- Feature Tags -->
+                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔥 FIRE Number</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Anni al Traguardo</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Curva Traiettoria</span>
+                            </div>
+                        </div>
+
+                        <!-- Big Action CTA Button -->
+                        <div class="pt-3 border-t border-slate-100">
+                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
+                                <span id="toolFireCta">Calcola Libertà FIRE</span>
+                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <div id="sectionGraph" class="space-y-4 pt-4 pb-4">
                 
                 <!-- Division Department Header -->
                 <div class="flex items-center gap-3 pb-2.5 border-b border-rose-900/25">
@@ -1061,7 +1366,7 @@
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
                             <h2 id="divGraphTitle" class="text-base sm:text-lg font-black text-rose-950 tracking-tight font-jakarta leading-none">Omni<span class="text-rose-700">Graph</span></h2>
-                            <span id="badgeCountGraph" class="text-[10px] sm:text-[11px] font-mono font-bold text-rose-900 bg-rose-500/10 px-2 py-0.5 rounded-md border border-rose-500/20">6 Tool</span>
+                            <span id="badgeCountGraph" class="text-[10px] sm:text-[11px] font-bold text-rose-900 bg-rose-500/10 px-2 py-0.5 rounded-md border border-rose-500/20">6 Tool</span>
                         </div>
                         <p id="divGraphDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
                     </div>
@@ -1103,7 +1408,7 @@
 
                             <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ EAN-13 & Code 128</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9h6m-6 4h4"/></svg> EAN-13 & Code 128</span>
                                 <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏥 Tessera Sanitaria</span>
                                 <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔴 Laser 670 nm</span>
                             </div>
@@ -1353,278 +1658,150 @@
             <!-- ========================================== -->
             <!-- DIVISION 3: OmniFinance (Finanza & Business) -->
             <!-- ========================================== -->
-            <div id="sectionFinance" class="space-y-4 pt-4">
-                
-                <!-- Division Department Header -->
-                <div class="flex items-center gap-3 pb-2.5 border-b border-emerald-500/25">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 flex items-center justify-center text-white shadow-sm shadow-emerald-500/30 shrink-0 p-1.5">
-                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
-                            <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
-                            <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
-                            <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
-                        </svg>
-                    </div>
-                    <div class="min-w-0 flex-1">
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
-                            <span id="badgeCountFinance" class="text-[10px] sm:text-[11px] font-mono font-bold text-emerald-800 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">6 Tool</span>
+            <!-- DIVISIONE 4: OMNIFOOD (FOODTECH & EXPORT) -->
+            <div id="sectionFood" class="space-y-4 pt-4 pb-4">
+                <div class="flex items-center justify-between border-b border-orange-200/80 pb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center text-white shadow-md shadow-orange-600/20 p-1.5 shrink-0 border border-orange-300/40">
+                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
+                                <path d="M11 9.5H21M13.5 9.5V14.5L9.5 21.5C9 22.4 9.6 23.5 10.7 23.5H21.3C22.4 23.5 23 22.4 22.5 21.5L18.5 14.5V9.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="16" cy="19" r="2" fill="#fed7aa" />
+                            </svg>
                         </div>
-                        <p id="divFinanceDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 id="divFoodTitle" class="text-lg sm:text-xl font-black text-orange-700 tracking-tight">OmniFood</h2>
+                                <span class="text-[11px] font-bold px-2 py-0.5 rounded-lg bg-orange-50 text-orange-700 border border-orange-200">4 Tool</span>
+                            </div>
+                            <p id="divFoodSub" class="text-xs text-slate-500 font-medium">Etichettatura internazionale, date di scadenza multiformato e ingegneria di laboratorio</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 6 Finance Tools Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    
-                    <!-- TOOL 10: MutuoFacile -->
-                    <a href="/mutuo" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                    <!-- Tool 1: ShelfLife & Export Date -->
+                    <a href="/shelflife" class="tool-card group relative bg-white hover:bg-orange-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-orange-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scadenza tmc lotto export usa fda canada cfia medio oriente gcc date">
                         <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
-                                        <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="12" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="17" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="22" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
-                                        <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
-                                    </svg>
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">UE • USA • CA • GCC</span>
                             </div>
-
-                            <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolMutuoTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MutuoFacile</h3>
-                                <div id="toolMutuoHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto peserà la rata sul tuo stipendio?</div>
+                                <h3 class="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange-600 transition">ShelfLife &amp; Export Date</h3>
+                                <div class="text-xs font-bold text-orange-700 mt-0.5">Che formato data richiede la dogana?</div>
                             </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolMutuoDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Calcola TMC/Scadenza e converte simultaneamente il formato lotto per UE (gg/mm/aaaa), USA (mm/dd/yyyy), Canada CFIA (YYYY AL MM DD) e Medio Oriente.
                             </p>
-
-                            <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Rata Mensile</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📊 Tabella Anno/Anno</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Sostenibilità 33%</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Formato UE / USA</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Canada CFIA</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">GCC / MENA</span>
                             </div>
                         </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolMutuoCta">Calcola Rata Mutuo</span>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 group-hover:bg-orange-600 group-hover:text-white transition shadow-2xs">
+                                <span>Converti Date Export</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
+                            </span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-orange-600 font-semibold">ISO 8601</span>
                         </div>
                     </a>
 
-<a href="/estinzione" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
+                    <!-- Tool 2: NutriExport Converter -->
+                    <a href="#food" class="tool-card group relative bg-white hover:bg-orange-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-orange-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="tabella nutrizionale etichetta fda usa canada cfia eu 1169 serving size 100g">
                         <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9h6m-6 4h4"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">EU 1169 ↔ FDA / CFIA</span>
                             </div>
-
-                            <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolEstinzioneTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">EstinzioneFacile</h3>
-                                <div id="toolEstinzioneHook" class="text-xs font-bold text-emerald-800 mt-0.5">Conviene abbassare la rata o accorciare gli anni?</div>
+                                <h3 class="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange-600 transition">NutriExport Converter</h3>
+                                <div class="text-xs font-bold text-orange-700 mt-0.5">Come convertire i valori da 100g a Serving?</div>
                             </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolEstinzioneDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Converte tabelle nutrizionali da 100g (Reg. UE 1169/2011) a Serving Size USA (FDA) e Canada (Health Canada), con arrotondamenti legali e %DV.
                             </p>
-
-                            <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Riduci Rata</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Riduci Anni</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🛡️ Bersani 0 Penali</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">100g ↔ Serving</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">% Daily Value</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Arrotondamenti</span>
                             </div>
                         </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolEstinzioneCta">Simula Estinzione Ora</span>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 group-hover:bg-orange-600 group-hover:text-white transition shadow-2xs">
+                                <span>Converti Tabella</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
+                            </span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-orange-600 font-semibold">FDA / EU</span>
                         </div>
                     </a>
 
-<a href="/margine" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+                    <!-- Tool 3: BatchScaler Pro -->
+                    <a href="#food" class="tool-card group relative bg-white hover:bg-orange-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-orange-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="scalatura lotti porzioni produzione laboratorio bakers percentage ingrediente limitante">
                         <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
-                                        <circle cx="21" cy="11" r="2" fill="#ffffff"/>
-                                        <line x1="12" y1="18" x2="18" y2="12" stroke="#ffffff" stroke-width="1.5"/>
-                                        <circle cx="13" cy="13" r="1" fill="#ffffff"/>
-                                        <circle cx="17" cy="17" r="1" fill="#ffffff"/>
-                                    </svg>
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m-7-4l3-7 3 7a3 3 0 01-6 0zm10 0l3-7 3 7a3 3 0 01-6 0zM5 7h14"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">Baker's % &amp; Lotti</span>
                             </div>
-
-                            <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolMargineTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">MargineFacile</h3>
-                                <div id="toolMargineHook" class="text-xs font-bold text-emerald-800 mt-0.5">Stai calcolando il margine o solo il ricarico?</div>
+                                <h3 class="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange-600 transition">BatchScaler Pro</h3>
+                                <div class="text-xs font-bold text-orange-700 mt-0.5">Quanto impasto serve per il lotto?</div>
                             </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolMargineDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Scalatura industriale di lotti e porzioni per laboratori, calcolo Baker's Percentage e ricalcolo automatico sull'ingrediente limitante in magazzino.
                             </p>
-
-                            <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏷️ Margine vs Ricarico</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⚖️ Prezzo da COGS</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏛️ Scorporo Imposte</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Baker's %</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Ingrediente Limitante</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Distinta Peso</span>
                             </div>
                         </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolMargineCta">Calcola Margine & Prezzo</span>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 group-hover:bg-orange-600 group-hover:text-white transition shadow-2xs">
+                                <span>Scala Lotto Ora</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
+                            </span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-orange-600 font-semibold">g / kg / %</span>
                         </div>
                     </a>
 
-<a href="/pac" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+                    <!-- Tool 4: HygroBalance Lab -->
+                    <a href="#food" class="tool-card group relative bg-white hover:bg-orange-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-orange-500 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="umidita igrometria impasto acqua farina temperatura laboratorio pasticceria panificazione">
                         <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
-                                        <circle cx="27" cy="6" r="3" fill="#10b981" stroke="#ffffff" stroke-width="1.5"/>
-                                        <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                                    </svg>
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2.5">
+                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">Igrometria Impasti</span>
                             </div>
-
-                            <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolPacTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">InteresseComposto</h3>
-                                <div id="toolPacHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto varrà il tuo piano di accumulo tra 20 anni?</div>
+                                <h3 class="text-base sm:text-lg font-black text-slate-900 group-hover:text-orange-600 transition">HygroBalance Lab</h3>
+                                <div class="text-xs font-bold text-orange-700 mt-0.5">Quanta acqua correggere con l'umidità?</div>
                             </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolPacDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Compensazione tecnica di acqua e farine in base all'umidità relativa giornaliera (%) e alla temperatura ambiente di laboratorio per standardizzare la resa.
                             </p>
-
-                            <!-- Feature Tags -->
                             <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Effetto Valanga</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">💰 Rendita 4% FIRE</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📉 Curva Interattiva</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Umidità %</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Idratazione</span>
+                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">Temp. Ambiente</span>
                             </div>
                         </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolPacCta">Simula Crescita PAC</span>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 group-hover:bg-orange-600 group-hover:text-white transition shadow-2xs">
+                                <span>Calcola Correzione</span>
                                 <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/risparmio" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2.5">
-                                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolRisparmioBadge">Sinking Fund</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolRisparmioTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">ObiettivoRisparmio</h3>
-                                <div id="toolRisparmioHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto devi mettere da parte al mese per raggiungere il tuo traguardo?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolRisparmioDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola la quota di accantonamento mensile per anticipo casa, auto, fondo emergenza o viaggi, con o senza rendimento composto.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🎯 Quota Mensile</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🏦 Sinking Fund</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Con Rendimento</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolRisparmioCta">Calcola Quota Risparmio</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
-                        </div>
-                    </a>
-
-<a href="/fire" class="tool-card group relative bg-white hover:bg-emerald-50/20 rounded-3xl p-5 border-2 border-slate-200/90 hover:border-emerald-600 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between space-y-4" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
-                        <div class="space-y-3">
-                            <!-- Visual Header & Micro Blueprint -->
-                            <div class="flex items-center justify-between">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
-                                    <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                        <path d="M16 4 C11 10, 8 15, 8 20 A8 8 0 0 0 24 20 C24 15, 21 10, 16 4 Z" fill="#047857" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round"/>
-                                        <path d="M16 13 C13.5 16, 12 19, 12 22 A4 4 0 0 0 20 22 C20 19, 18.5 16, 16 13 Z" fill="#34d399" opacity="0.9"/>
-                                        <circle cx="16" cy="22" r="2" fill="#ffffff"/>
-                                    </svg>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolFireBadge">Trinity Study 4%</span>
-                            </div>
-
-                            <!-- Title & Direct Question Hook -->
-                            <div>
-                                <h3 id="toolFireTitle" class="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">FIRE & Rendita Passiva</h3>
-                                <div id="toolFireHook" class="text-xs font-bold text-emerald-800 mt-0.5">Quanto capitale ti serve per smettere di lavorare?</div>
-                            </div>
-
-                            <!-- Plain Description -->
-                            <p id="toolFireDesc" class="text-xs text-slate-600 leading-relaxed">
-                                Calcola il tuo FIRE Number secondo lo Studio Trinity (regola del 4% / 25x spese annue), gli anni alla libertà finanziaria e la traiettoria di accumulo.
-                            </p>
-
-                            <!-- Feature Tags -->
-                            <div class="flex flex-wrap gap-1 pt-1 text-[10px] font-bold text-slate-500">
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">🔥 FIRE Number</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">⏳ Anni al Traguardo</span>
-                                <span class="px-2 py-0.5 bg-slate-100 rounded-md">📈 Curva Traiettoria</span>
-                            </div>
-                        </div>
-
-                        <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-slate-100">
-                            <div class="w-full py-2 px-3 rounded-xl bg-emerald-50 group-hover:bg-emerald-700 text-emerald-900 group-hover:text-white font-bold text-xs flex items-center justify-between transition-colors shadow-2xs">
-                                <span id="toolFireCta">Calcola Libertà FIRE</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </div>
+                            </span>
+                            <span class="text-[11px] font-mono text-slate-400 group-hover:text-orange-600 font-semibold">UR% / °C</span>
                         </div>
                     </a>
 
@@ -1987,6 +2164,9 @@
             currentFilter = filter;
             if (updateHash) {
                 try {
+                    localStorage.setItem('omnitools_preferred_division', filter);
+                } catch (e) {}
+                try {
                     if (filter === 'all') {
                         history.replaceState(null, null, window.location.pathname + window.location.search);
                     } else {
@@ -2001,13 +2181,14 @@
             const btnBuilding = document.getElementById('filterBuildingBtn');
             const btnGraph = document.getElementById('filterGraphBtn');
             const btnFinance = document.getElementById('filterFinanceBtn');
+            const btnFood = document.getElementById('filterFoodBtn');
 
             // Base inactive classes (fixed dimensions, larger inner content)
             const baseInactive = "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer";
 
             if (btnAll) {
                 btnAll.className = filter === 'all' 
-                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 border border-blue-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subAll = btnAll.querySelector('.subtext');
                 if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
@@ -2015,7 +2196,7 @@
 
             if (btnBuilding) {
                 btnBuilding.className = filter === 'building'
-                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 border font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subB = btnBuilding.querySelector('.subtext');
                 if (subB) subB.className = filter === 'building' ? "subtext text-[10px] sm:text-[11px] text-amber-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
@@ -2023,7 +2204,7 @@
 
             if (btnGraph) {
                 btnGraph.className = filter === 'graph'
-                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 border font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subG = btnGraph.querySelector('.subtext');
                 if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] sm:text-[11px] text-rose-200 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
@@ -2031,10 +2212,18 @@
 
             if (btnFinance) {
                 btnFinance.className = filter === 'finance'
-                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 border font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subF = btnFinance.querySelector('.subtext');
                 if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] sm:text-[11px] text-emerald-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
+            }
+
+            if (btnFood) {
+                btnFood.className = filter === 'food'
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-orange-700 text-white shadow-md shadow-orange-700/30 border-orange-700 border font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    : baseInactive;
+                const subFd = btnFood.querySelector('.subtext');
+                if (subFd) subFd.className = filter === 'food' ? "subtext text-[10px] sm:text-[11px] text-orange-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
             }
 
             filterTools();
@@ -2042,10 +2231,16 @@
 
         function initFilterFromHash() {
             const hash = (window.location.hash || '').replace('#', '').toLowerCase();
-            if (hash === 'building' || hash === 'graph' || hash === 'finance' || hash === 'all') {
+            const validDivisions = ['all', 'building', 'graph', 'finance', 'food'];
+            if (validDivisions.includes(hash)) {
                 setFilter(hash, false);
             } else {
-                setFilter('all', false);
+                let saved = 'all';
+                try {
+                    const pref = localStorage.getItem('omnitools_preferred_division');
+                    if (pref && validDivisions.includes(pref)) saved = pref;
+                } catch (e) {}
+                setFilter(saved, false);
             }
         }
 
@@ -2065,22 +2260,26 @@
             const secBuilding = document.getElementById('sectionBuilding');
             const secGraph = document.getElementById('sectionGraph');
             const secFinance = document.getElementById('sectionFinance');
+            const secFood = document.getElementById('sectionFood');
 
             let visibleBuildingCards = 0;
             let visibleGraphCards = 0;
             let visibleFinanceCards = 0;
+            let visibleFoodCards = 0;
 
             const cards = document.querySelectorAll('.tool-card');
             cards.forEach(card => {
                 const isBuildingCard = card.closest('#sectionBuilding') !== null;
                 const isGraphCard = card.closest('#sectionGraph') !== null;
                 const isFinanceCard = card.closest('#sectionFinance') !== null;
+                const isFoodCard = card.closest('#sectionFood') !== null;
 
                 // Check division filter
                 let allowedByDivision = true;
                 if (currentFilter === 'building' && !isBuildingCard) allowedByDivision = false;
                 if (currentFilter === 'graph' && !isGraphCard) allowedByDivision = false;
                 if (currentFilter === 'finance' && !isFinanceCard) allowedByDivision = false;
+                if (currentFilter === 'food' && !isFoodCard) allowedByDivision = false;
 
                 // Check search query
                 const text = card.textContent.toLowerCase();
@@ -2092,6 +2291,7 @@
                     if (isBuildingCard) visibleBuildingCards++;
                     if (isGraphCard) visibleGraphCards++;
                     if (isFinanceCard) visibleFinanceCards++;
+                    if (isFoodCard) visibleFoodCards++;
                 } else {
                     card.classList.add('hidden');
                 }
@@ -2119,6 +2319,14 @@
                     secFinance.classList.remove('hidden');
                 } else {
                     secFinance.classList.add('hidden');
+                }
+            }
+
+            if (secFood) {
+                if (visibleFoodCards > 0 && (currentFilter === 'all' || currentFilter === 'food')) {
+                    secFood.classList.remove('hidden');
+                } else {
+                    secFood.classList.add('hidden');
                 }
             }
         }
@@ -2449,6 +2657,7 @@ document.addEventListener('click', (e) => {
         'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
         'estinzione': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>`,
         'risparmio': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>`,
+        'shelflife': `<span class="w-4 h-4 rounded-md bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>`,
         'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
     };
 
@@ -2469,7 +2678,8 @@ document.addEventListener('click', (e) => {
         'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' },
         'estinzione': { name: 'Estinzione', url: '/estinzione', color: 'bg-emerald-600' },
         'risparmio': { name: 'Risparmio', url: '/risparmio', color: 'bg-emerald-600' },
-        'fire': { name: 'FIRE & Rendita', url: '/fire', color: 'bg-emerald-600' }
+        'fire': { name: 'FIRE & Rendita', url: '/fire', color: 'bg-emerald-600' },
+        'shelflife': { name: 'ShelfLife Export', url: '/shelflife', color: 'bg-orange-600' }
     };
 
     const TABS_KEY = 'omni_open_tabs_v1';
