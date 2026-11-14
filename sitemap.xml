@@ -326,4 +326,33 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- English Dedicated SEO Pages -->
+  <url>
+    <loc>https://www.omnitoolslab.com/en/stair-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/stair-calculator" />
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/barcode-generator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/barcode-generator" />
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/compound-interest-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/pac" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
