@@ -58,6 +58,37 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         html.omni-dark .hover\:bg-slate-50:hover, html.omni-dark .hover\:bg-slate-100:hover { background-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
         html.omni-dark, html.omni-dark body { background-color: #0f172a !important; background-image: none !important; color: #e2e8f0 !important; }
+        /* High-contrast fixes for formula boxes, sponsor banners and suggestion cards in dark mode */
+        html.omni-dark .no-print[class*="bg-gradient-to-r"][class*="-50"],
+        html.omni-dark [class*="bg-gradient-to-r"][class*="-50"] {
+            background-image: none !important;
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+        html.omni-dark .no-print .font-mono[class*="bg-white"],
+        html.omni-dark .font-mono[class*="bg-white"] {
+            background-color: #0f172a !important;
+            border-color: #475569 !important;
+            color: #38bdf8 !important;
+        }
+        html.omni-dark #omniSponsorBanner,
+        html.omni-dark [id*="SponsorBanner"],
+        html.omni-dark [class*="border-dashed"] {
+            background-image: none !important;
+            background-color: #1e293b !important;
+            border-color: #475569 !important;
+            color: #e2e8f0 !important;
+        }
+        html.omni-dark [class*="via-white"] {
+            background-image: none !important;
+            background-color: #1e293b !important;
+        }
+        html.omni-dark [class*="from-blue-50"][class*="to-indigo-50"] {
+            background-image: none !important;
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
         /* Homepage specific dark mode high-contrast card and header enhancements */
         html.omni-dark .tool-card { background-color: #1e293b !important; border-color: #334155 !important; }
         html.omni-dark .tool-card:hover { border-color: #64748b !important; background-color: #243248 !important; }
