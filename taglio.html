@@ -1029,48 +1029,47 @@
     </header>
     
 
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
-        <!-- Main Tool Intro Header -->
-        <div class="no-print mb-4 text-center sm:text-left sm:flex sm:items-end sm:justify-between border-b border-slate-200/80 pb-4">
-            <div>
-                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold mb-2">
-                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                    <span id="badgeCategory">OmniBuilding • Taglio 1D & Falegnameria</span>
-                </div>
-                <h1 id="mainTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Ottimizzatore di Taglio 1D</h1>
-                <p id="mainSubtitle" class="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl">
-                    Pianifica tagli per legno, profilati e tubi minimizzando lo sfrido di materiale con compensazione spessore lama (Kerf).
-                </p>
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8 page-container">
+        <!-- Centered Hero Header (OmniTools Lab Standard) -->
+        <section class="text-center space-y-2 no-print pt-1 sm:pt-2">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-bold shadow-2xs">
+                <span>🪚</span> <span id="badgeCategory">OmniBuilding • Taglio 1D & Falegnameria</span>
             </div>
-            <!-- Unit & Quick Controls -->
-            <div class="mt-4 sm:mt-0 flex items-center justify-center sm:justify-end gap-2 shrink-0">
-                <div class="flex items-center gap-2 bg-white px-2.5 py-1.5 rounded-2xl border border-slate-200 shadow-xs">
-                    <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mr-1 hidden sm:inline">Misure:</span>
-                    <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-0.5 text-xs font-bold">
-                        <button type="button" id="unitCmBtn" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
-                        <button type="button" id="unitMmBtn" onclick="setUnit('mm')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">mm</button>
-                        <button type="button" id="unitInBtn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
-                        <button type="button" id="unitFtBtn" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <h1 id="mainTitle" class="font-jakarta text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                Ottimizzatore di Taglio 1D
+            </h1>
+            <p id="mainSubtitle" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Pianifica tagli per legno, profilati e tubi minimizzando lo sfrido di materiale con compensazione spessore lama (Kerf).
+            </p>
+        </section>
 
-        <!-- Presets Bar -->
-        <div class="no-print mb-8 p-3.5 bg-white border border-slate-200/70 rounded-2xl shadow-xs flex flex-wrap items-center gap-2">
-            <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
-                <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                Esempi Rapidi:
-            </span>
-            <button onclick="applyPreset('wood_diy')" class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-xs font-semibold transition">
-                🪵 <span id="presetWoodDiyText">Scaffale Legno (Travetti 200cm)</span>
-            </button>
-            <button onclick="applyPreset('metal_frame')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-semibold transition">
-                🔩 <span id="presetMetalFrameText">Telaio Ferro (Barre 600cm)</span>
-            </button>
-            <button onclick="applyPreset('pergola')" class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-xs font-semibold transition">
-                🏡 <span id="presetPergolaText">Pergola Giardino (Travi 300cm)</span>
-            </button>
+        <!-- Presets Bar (OmniTools Lab Standard) -->
+        <div class="no-print p-3 sm:p-3.5 bg-white border border-slate-200/80 rounded-2xl shadow-xs flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-2">
+                <span id="presetTitleLabel" class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mr-1">
+                    <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Esempi Rapidi:
+                </span>
+                <button onclick="applyPreset('wood_diy')" class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-xs font-bold transition active:scale-95">
+                    🪵 <span id="presetWoodDiyText">Scaffale Legno (Travetti 200cm)</span>
+                </button>
+                <button onclick="applyPreset('metal_frame')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-bold transition active:scale-95">
+                    🔩 <span id="presetMetalFrameText">Telaio Ferro (Barre 600cm)</span>
+                </button>
+                <button onclick="applyPreset('pergola')" class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-xs font-bold transition active:scale-95">
+                    🏡 <span id="presetPergolaText">Pergola Giardino (Travi 300cm)</span>
+                </button>
+            </div>
+            <!-- Unit Switcher -->
+            <div class="flex items-center gap-1.5">
+                <span id="unitLabelText" class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mr-0.5">Misure:</span>
+                <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-0.5 text-xs font-bold">
+                    <button type="button" id="unitCmBtn" onclick="setUnit('cm')" class="px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                    <button type="button" id="unitMmBtn" onclick="setUnit('mm')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">mm</button>
+                    <button type="button" id="unitInBtn" onclick="setUnit('in')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
+                    <button type="button" id="unitFtBtn" onclick="setUnit('ft')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
+                </div>
+            </div>
         </div>
 
         
@@ -1096,7 +1095,7 @@
             <div class="lg:col-span-5 space-y-6">
                 
                 <!-- Stock Material & Kerf Card -->
-                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 border-t-4 border-t-amber-500 shadow-xs">
                     <div class="flex items-center gap-2.5 mb-5 pb-3 border-b border-slate-100">
                         <span class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold text-sm">1</span>
                         <h2 id="stockSettingsTitle" class="text-base font-bold text-slate-900">1. Barre Master di Partenza</h2>
