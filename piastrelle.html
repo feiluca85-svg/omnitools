@@ -162,6 +162,50 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         }
     </style>
 <style id="omniDarkStyles">
+        /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
+        html.omni-dark [class*="bg-amber-50"],
+        html.omni-dark [class*="bg-amber-100"],
+        html.omni-dark [class*="bg-amber-200"],
+        html.omni-dark [class*="bg-yellow-50"],
+        html.omni-dark [class*="bg-yellow-100"],
+        html.omni-dark [class*="bg-orange-50"] {
+            background-color: rgba(120, 53, 15, 0.28) !important;
+            border-color: rgba(217, 119, 6, 0.45) !important;
+            color: #fde68a !important;
+        }
+        html.omni-dark [class*="bg-amber-50"] strong,
+        html.omni-dark [class*="bg-amber-50"] h3,
+        html.omni-dark [class*="bg-amber-50"] span,
+        html.omni-dark [class*="bg-amber-50"] p,
+        html.omni-dark [class*="bg-amber-50"] code,
+        html.omni-dark [class*="bg-amber-100"] strong,
+        html.omni-dark [class*="bg-amber-100"] h3,
+        html.omni-dark [class*="bg-amber-100"] span,
+        html.omni-dark [class*="bg-amber-100"] p,
+        html.omni-dark [class*="bg-amber-200"] strong,
+        html.omni-dark [class*="bg-amber-200"] h3,
+        html.omni-dark [class*="bg-amber-200"] span,
+        html.omni-dark [class*="bg-amber-200"] p {
+            color: #fde68a !important;
+        }
+        html.omni-dark [class*="bg-amber-50"] .text-slate-900,
+        html.omni-dark [class*="bg-amber-50"] .text-slate-800,
+        html.omni-dark [class*="bg-amber-50"] .text-slate-700,
+        html.omni-dark [class*="bg-amber-50"] .text-slate-600,
+        html.omni-dark [class*="bg-amber-50"] .text-slate-500 {
+            color: #fef08a !important;
+        }
+        html.omni-dark [class*="bg-amber-200"][class*="rounded-full"] {
+            background-color: rgba(245, 158, 11, 0.3) !important;
+            border-color: #f59e0b !important;
+            color: #fef08a !important;
+        }
+        html.omni-dark [class*="bg-amber-500"]:not(.selection\:bg-amber-500),
+        html.omni-dark [class*="bg-amber-600"] {
+            background-color: #f59e0b !important;
+            color: #ffffff !important;
+        }
+
         /* Range Slider Track in Dark Mode */
         html.omni-dark input[type=range] {
             background: #334155 !important;
