@@ -580,9 +580,9 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                     </select>
                 </div>
 
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 text-[11px] sm:text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 active:scale-95 rounded-xl border border-blue-200 transition shadow-xs">
-                    <span>📲</span>
-                    <span id="headerInstallText" class="inline">Installa App</span>
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa App OmniTools">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg>
+                    <span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span>
                 </button>
             </div>
         </div>
@@ -642,7 +642,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
                     
                     <!-- Tab 1: Tutti i Tool -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
                         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-white/30">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
@@ -657,7 +657,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                     </button>
 
                     <!-- Tab 2: OmniBuilding -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
                         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-amber-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
@@ -673,7 +673,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                     </button>
 
                     <!-- Tab 3: OmniGraph -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
                         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-rose-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
@@ -690,7 +690,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                     </button>
 
                     <!-- Tab 4: OmniFinance -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
                         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
                             <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
@@ -1958,11 +1958,11 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             const btnFinance = document.getElementById('filterFinanceBtn');
 
             // Base inactive classes (fixed dimensions, larger inner content)
-            const baseInactive = "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer";
+            const baseInactive = "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer";
 
             if (btnAll) {
                 btnAll.className = filter === 'all' 
-                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subAll = btnAll.querySelector('.subtext');
                 if (subAll) subAll.className = filter === 'all' ? "subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
@@ -1970,7 +1970,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 
             if (btnBuilding) {
                 btnBuilding.className = filter === 'building'
-                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30 border-amber-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subB = btnBuilding.querySelector('.subtext');
                 if (subB) subB.className = filter === 'building' ? "subtext text-[10px] sm:text-[11px] text-amber-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
@@ -1978,7 +1978,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 
             if (btnGraph) {
                 btnGraph.className = filter === 'graph'
-                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-rose-900 text-white shadow-md shadow-rose-900/30 border-rose-900 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subG = btnGraph.querySelector('.subtext');
                 if (subG) subG.className = filter === 'graph' ? "subtext text-[10px] sm:text-[11px] text-rose-200 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
@@ -1986,7 +1986,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 
             if (btnFinance) {
                 btnFinance.className = filter === 'finance'
-                    ? "flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
+                    ? "flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-700/30 border-emerald-700 font-bold transition-all duration-200 active:scale-95 cursor-pointer"
                     : baseInactive;
                 const subF = btnFinance.querySelector('.subtext');
                 if (subF) subF.className = filter === 'finance' ? "subtext text-[10px] sm:text-[11px] text-emerald-100 font-semibold block truncate" : "subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate";
