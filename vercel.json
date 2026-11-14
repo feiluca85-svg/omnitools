@@ -251,6 +251,26 @@
     {
       "source": "/grout-calculator",
       "destination": "/piastrelle"
+    },
+    {
+      "source": "/scadenza",
+      "destination": "/shelflife"
+    },
+    {
+      "source": "/scadenze",
+      "destination": "/shelflife"
+    },
+    {
+      "source": "/tmc",
+      "destination": "/shelflife"
+    },
+    {
+      "source": "/shelf-life",
+      "destination": "/shelflife"
+    },
+    {
+      "source": "/date-export",
+      "destination": "/shelflife"
     }
   ]
 }
