@@ -243,7 +243,29 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             background-color: #1e293b !important;
             border-color: #334155 !important;
         }
-                /* Distinctive Dark Mode Gradients and Accents for Tool Containers */
+                        /* Costola-specific glowing formula pills in dark mode */
+        html.omni-dark div[class*="border-t-amber-"] ~ * .font-mono[class*="bg-white"],
+        html.omni-dark .no-print[class*="border-amber-"] .font-mono,
+        html.omni-dark .no-print[class*="border-orange-"] .font-mono {
+            background-color: #0f172a !important;
+            border-color: rgba(245, 158, 11, 0.45) !important;
+            color: #fbbf24 !important;
+        }
+        html.omni-dark div[class*="border-t-emerald-"] ~ * .font-mono[class*="bg-white"],
+        html.omni-dark .no-print[class*="border-emerald-"] .font-mono,
+        html.omni-dark .no-print[class*="border-teal-"] .font-mono {
+            background-color: #0f172a !important;
+            border-color: rgba(16, 185, 129, 0.45) !important;
+            color: #34d399 !important;
+        }
+        html.omni-dark div[class*="border-t-rose-"] ~ * .font-mono[class*="bg-white"],
+        html.omni-dark .no-print[class*="border-rose-"] .font-mono,
+        html.omni-dark .no-print[class*="border-pink-"] .font-mono {
+            background-color: #0f172a !important;
+            border-color: rgba(244, 63, 94, 0.45) !important;
+            color: #fb7185 !important;
+        }
+/* Distinctive Dark Mode Gradients and Accents for Tool Containers */
         html.omni-dark div[class*="border-t-emerald-"] {
             background: linear-gradient(180deg, rgba(6, 78, 59, 0.16) 0%, rgba(15, 23, 42, 0.95) 120px, #0f172a 100%) !important;
             border-top-color: #10b981 !important;
@@ -1019,12 +1041,12 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         </section>
         
         <!-- Google Featured Snippet (Position 0) Callout Box -->
-        <section aria-label="Formula Pendenza Rampa" class="no-print bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs">
+        <section aria-label="Formula Pendenza Rampa" class="no-print bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs">
             <div class="flex items-start gap-3">
-                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
                 <div class="text-xs sm:text-sm space-y-1">
                     <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
-                        Formula Pendenza Rampa (%): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-blue-200 text-blue-700 font-mono font-black">Pendenza % = (Dislivello / Spazio a Terra) × 100</code>
+                        Formula Pendenza Rampa (%): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">Pendenza % = (Dislivello / Spazio a Terra) × 100</code>
                     </p>
                     <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
                         <strong>Esempio pratico:</strong> Per superare un dislivello di <strong>30 cm</strong> con uno spazio orizzontale a terra di <strong>500 cm</strong>, la pendenza è: <code class="font-mono text-slate-800 font-bold">(30 / 500) × 100 = 6,0%</code> (perfettamente a norma <strong>DM 236/89</strong> per disabili).

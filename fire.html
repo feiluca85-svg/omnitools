@@ -221,7 +221,29 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             background-color: #1e293b !important;
             border-color: #334155 !important;
         }
-                /* Distinctive Dark Mode Gradients and Accents for Tool Containers */
+                        /* Costola-specific glowing formula pills in dark mode */
+        html.omni-dark div[class*="border-t-amber-"] ~ * .font-mono[class*="bg-white"],
+        html.omni-dark .no-print[class*="border-amber-"] .font-mono,
+        html.omni-dark .no-print[class*="border-orange-"] .font-mono {
+            background-color: #0f172a !important;
+            border-color: rgba(245, 158, 11, 0.45) !important;
+            color: #fbbf24 !important;
+        }
+        html.omni-dark div[class*="border-t-emerald-"] ~ * .font-mono[class*="bg-white"],
+        html.omni-dark .no-print[class*="border-emerald-"] .font-mono,
+        html.omni-dark .no-print[class*="border-teal-"] .font-mono {
+            background-color: #0f172a !important;
+            border-color: rgba(16, 185, 129, 0.45) !important;
+            color: #34d399 !important;
+        }
+        html.omni-dark div[class*="border-t-rose-"] ~ * .font-mono[class*="bg-white"],
+        html.omni-dark .no-print[class*="border-rose-"] .font-mono,
+        html.omni-dark .no-print[class*="border-pink-"] .font-mono {
+            background-color: #0f172a !important;
+            border-color: rgba(244, 63, 94, 0.45) !important;
+            color: #fb7185 !important;
+        }
+/* Distinctive Dark Mode Gradients and Accents for Tool Containers */
         html.omni-dark div[class*="border-t-emerald-"] {
             background: linear-gradient(180deg, rgba(6, 78, 59, 0.16) 0%, rgba(15, 23, 42, 0.95) 120px, #0f172a 100%) !important;
             border-top-color: #10b981 !important;
