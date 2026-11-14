@@ -183,6 +183,16 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         }
     </style>
 <style id="omniDarkStyles">
+        /* Range Slider Track in Dark Mode */
+        html.omni-dark input[type=range] {
+            background: #334155 !important;
+            border: 1px solid #475569 !important;
+        }
+        html.omni-dark input[type=range]::-webkit-slider-thumb {
+            border-color: #1e293b !important;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6) !important;
+        }
+
         html.omni-dark body { background-color: #0f172a !important; color: #e2e8f0 !important; }
         html.omni-dark header, html.omni-dark :not(body)[class*="bg-white/"] { background-color: rgba(15, 23, 42, 0.95) !important; border-color: #334155 !important; }
         html.omni-dark .bg-white { background-color: #1e293b !important; border-color: #334155 !important; color: #e2e8f0 !important; }
@@ -3791,193 +3801,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
-<!-- OmniTools Responsive Help Drawer (Desktop: Right Slide-Over | Mobile: Bottom Sheet) -->
-<div id="omniHelpBackdrop" onclick="closeHelpDrawer()" class="no-print fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-200"></div>
-<aside id="omniHelpDrawer" role="dialog" aria-modal="true" aria-labelledby="helpDrawerTitle"
-    class="no-print fixed z-50 bg-white border-slate-200 shadow-2xl transition-transform duration-300 ease-out flex flex-col
-           bottom-0 left-0 right-0 max-h-[85vh] rounded-t-3xl border-t translate-y-full
-           sm:top-0 sm:bottom-0 sm:left-auto sm:right-0 sm:h-full sm:max-h-full sm:w-full sm:max-w-md sm:rounded-none sm:rounded-l-3xl sm:border-t-0 sm:border-l sm:translate-y-0 sm:translate-x-full">
-
-    <!-- Mobile Drag Handle -->
-    <div id="helpDragHandle" class="sm:hidden flex justify-center pt-3 pb-1 cursor-grab active:cursor-grabbing shrink-0">
-        <span class="w-10 h-1.5 rounded-full bg-slate-300"></span>
-    </div>
-
-    <!-- Drawer Header -->
-    <div class="flex items-center justify-between px-5 py-3.5 sm:py-4 border-b border-slate-200 shrink-0">
-        <div class="flex items-center gap-2.5 min-w-0">
-            <span class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-700 border border-amber-500/25 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            </span>
-            <div class="min-w-0">
-                <h2 id="helpDrawerTitle" class="text-sm sm:text-base font-black text-slate-900 truncate">Guida Rapida — RampaFacile</h2>
-                <p id="helpDrawerSubtitle" class="text-[11px] text-slate-500 truncate">Formule, normative e istruzioni d'uso</p>
-            </div>
-        </div>
-        <button type="button" onclick="closeHelpDrawer()" aria-label="Chiudi guida" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm font-bold transition cursor-pointer shrink-0">✕</button>
-    </div>
-
-    <!-- Drawer Scrollable Body -->
-    <div id="helpDrawerBody" class="p-5 overflow-y-auto space-y-5 text-xs sm:text-[13px] text-slate-600 leading-relaxed flex-1">
-        <!-- Populated dynamically by syncHelpDrawerLang() -->
-    </div>
-
-    <!-- Drawer Footer -->
-    <div class="px-5 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-2 shrink-0 rounded-b-none sm:rounded-bl-3xl">
-        <button type="button" onclick="scrollToFaqFromHelp()" id="helpScrollFaqBtn" class="text-xs font-bold text-amber-700 hover:text-amber-800 inline-flex items-center gap-1 cursor-pointer">
-            <span>↓ Vai alle FAQ complete</span>
-        </button>
-        <button type="button" onclick="closeHelpDrawer()" id="helpCloseFooterBtn" class="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition cursor-pointer">Chiudi</button>
-    </div>
-</aside>
-
-<script>
-(function() {
-    const HELP_CONTENT = {
-        it: {
-            btn: 'Guida',
-            title: 'Guida Rapida — RampaFacile',
-            subtitle: 'Formule, normative e istruzioni d\'uso',
-            faqBtn: '↓ Vai alle FAQ complete',
-            closeBtn: 'Chiudi',
-            html: `
-                <div class="space-y-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-amber-700">1. Come si usa in 3 passi</h3>
-                    <ol class="list-decimal pl-4 space-y-1.5">
-                        <li><strong>Scegli la modalità:</strong> <em>Calcola Pendenza</em> (hai dislivello e spazio a terra) oppure <em>Calcola Spazio</em> (hai dislivello e pendenza % desiderata).</li>
-                        <li><strong>Inserisci le misure:</strong> usa i cursori o digita i valori in <code>cm</code>, <code>m</code>, <code>in</code> o <code>ft</code>.</li>
-                        <li><strong>Leggi il verdetto:</strong> il grafico aggiorna in tempo reale angolo, lunghezza inclinata e conformità normativa.</li>
-                    </ol>
-                </div>
-                <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 space-y-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-amber-900">2. Formule Matematiche</h3>
-                    <div class="font-mono text-[11px] space-y-1 text-amber-950">
-                        <div><strong>Pendenza %</strong> = (Dislivello / Spazio a Terra) × 100</div>
-                        <div><strong>Angolo (°)</strong> = arctan(Dislivello / Spazio a Terra) × (180 / π)</div>
-                        <div><strong>Lunghezza Rampa</strong> = √(Dislivello² + Spazio²)</div>
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Limiti Normativi (Italia / UE)</h3>
-                    <ul class="space-y-1.5">
-                        <li class="p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200 text-emerald-950">
-                            <strong>♿ Accessibilità Disabili (D.M. 236/89):</strong> massimo <strong>8%</strong> (consigliato <strong>5% – 6%</strong> per comfort autonomo).
-                        </li>
-                        <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800">
-                            <strong>🚗 Rampe Garage / Carrabili:</strong> pendenza standard <strong>15% – 20%</strong> con raccordi dolci alle estremità.
-                        </li>
-                    </ul>
-                </div>
-            `
-        },
-        en: {
-            btn: 'Guide',
-            title: 'Quick Guide — RampCalc',
-            subtitle: 'Formulas, standards & how-to',
-            faqBtn: '↓ Jump to full FAQ',
-            closeBtn: 'Close',
-            html: `
-                <div class="space-y-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-amber-700">1. How to use in 3 steps</h3>
-                    <ol class="list-decimal pl-4 space-y-1.5">
-                        <li><strong>Pick a mode:</strong> <em>Calculate Slope</em> (from rise &amp; horizontal run) or <em>Calculate Run</em> (from rise &amp; target grade %).</li>
-                        <li><strong>Enter dimensions:</strong> use the sliders or type exact values in <code>cm</code>, <code>m</code>, <code>in</code> or <code>ft</code>.</li>
-                        <li><strong>Check compliance:</strong> the live blueprint updates angle, ramp length, and accessibility status instantly.</li>
-                    </ol>
-                </div>
-                <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 space-y-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-amber-900">2. Core Formulas</h3>
-                    <div class="font-mono text-[11px] space-y-1 text-amber-950">
-                        <div><strong>Grade %</strong> = (Rise / Run) × 100</div>
-                        <div><strong>Angle (°)</strong> = arctan(Rise / Run) × (180 / π)</div>
-                        <div><strong>Ramp Length</strong> = √(Rise² + Run²)</div>
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Standard Slope Limits</h3>
-                    <ul class="space-y-1.5">
-                        <li class="p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200 text-emerald-950">
-                            <strong>♿ Wheelchair / ADA &amp; EU:</strong> max <strong>8.33%</strong> (1:12 ratio); <strong>5% – 6%</strong> recommended for comfort.
-                        </li>
-                        <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800">
-                            <strong>🚗 Driveways &amp; Garages:</strong> typical grade <strong>15% – 20%</strong> with smooth transitions.
-                        </li>
-                    </ul>
-                </div>
-            `
-        }
-    };
-
-    function getActiveHelpLang() {
-        const sel = document.getElementById('langSelect');
-        const lang = (sel && sel.value) || localStorage.getItem('omnitools_lang') || 'it';
-        return lang === 'it' ? 'it' : 'en';
-    }
-
-    window.syncHelpDrawerLang = function() {
-        const data = HELP_CONTENT[getActiveHelpLang()];
-        const btnText = document.getElementById('headerHelpText');
-        const titleEl = document.getElementById('helpDrawerTitle');
-        const subEl = document.getElementById('helpDrawerSubtitle');
-        const bodyEl = document.getElementById('helpDrawerBody');
-        const faqBtn = document.getElementById('helpScrollFaqBtn');
-        const closeBtn = document.getElementById('helpCloseFooterBtn');
-        if (btnText) btnText.textContent = data.btn;
-        if (titleEl) titleEl.textContent = data.title;
-        if (subEl) subEl.textContent = data.subtitle;
-        if (bodyEl) bodyEl.innerHTML = data.html;
-        if (faqBtn) faqBtn.innerHTML = '<span>' + data.faqBtn + '</span>';
-        if (closeBtn) closeBtn.textContent = data.closeBtn;
-    };
-
-    window.openHelpDrawer = function() {
-        syncHelpDrawerLang();
-        const backdrop = document.getElementById('omniHelpBackdrop');
-        const drawer = document.getElementById('omniHelpDrawer');
-        if (!backdrop || !drawer) return;
-        backdrop.classList.remove('hidden');
-        requestAnimationFrame(() => {
-            backdrop.classList.remove('opacity-0');
-            drawer.classList.remove('translate-y-full', 'sm:translate-x-full');
-        });
-        document.body.style.overflow = 'hidden';
-    };
-
-    window.closeHelpDrawer = function() {
-        const backdrop = document.getElementById('omniHelpBackdrop');
-        const drawer = document.getElementById('omniHelpDrawer');
-        if (!backdrop || !drawer) return;
-        backdrop.classList.add('opacity-0');
-        drawer.classList.add('translate-y-full', 'sm:translate-x-full');
-        setTimeout(() => {
-            backdrop.classList.add('hidden');
-            document.body.style.overflow = '';
-        }, 250);
-    };
-
-    window.scrollToFaqFromHelp = function() {
-        closeHelpDrawer();
-        setTimeout(() => {
-            const faq = document.getElementById('faqSection') || document.getElementById('faqContainer');
-            if (faq) faq.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 260);
-    };
-
-    // Swipe down to close on mobile bottom sheet
-    const handle = document.getElementById('helpDragHandle');
-    const drawer = document.getElementById('omniHelpDrawer');
-    if (handle && drawer) {
-        let startY = 0;
-        handle.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
-        handle.addEventListener('touchend', (e) => {
-            if (e.changedTouches[0].clientY - startY > 50) closeHelpDrawer();
-        }, { passive: true });
-    }
-
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeHelpDrawer(); });
-    window.addEventListener('omnitools_lang_changed', syncHelpDrawerLang);
-    document.addEventListener('DOMContentLoaded', syncHelpDrawerLang);
-})();
-</script>
+<script src="/omni_help_drawer.js"></script>
 </body>
 </html>
