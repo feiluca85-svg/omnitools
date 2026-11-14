@@ -251,7 +251,59 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             background-color: #1e293b !important;
             border-color: #334155 !important;
         }
-        /* Homepage specific dark mode high-contrast card and header enhancements */
+                /* Distinctive Dark Mode Gradients and Accents for Tool Containers */
+        html.omni-dark div[class*="border-t-emerald-"] {
+            background: linear-gradient(180deg, rgba(6, 78, 59, 0.16) 0%, rgba(15, 23, 42, 0.95) 120px, #0f172a 100%) !important;
+            border-top-color: #10b981 !important;
+            border-left-color: rgba(16, 185, 129, 0.25) !important;
+            border-right-color: rgba(16, 185, 129, 0.25) !important;
+            border-bottom-color: #334155 !important;
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15) !important;
+        }
+        html.omni-dark div[class*="border-t-amber-"] {
+            background: linear-gradient(180deg, rgba(120, 53, 15, 0.18) 0%, rgba(15, 23, 42, 0.95) 120px, #0f172a 100%) !important;
+            border-top-color: #f59e0b !important;
+            border-left-color: rgba(245, 158, 11, 0.25) !important;
+            border-right-color: rgba(245, 158, 11, 0.25) !important;
+            border-bottom-color: #334155 !important;
+            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.15) !important;
+        }
+        html.omni-dark div[class*="border-t-rose-"] {
+            background: linear-gradient(180deg, rgba(136, 19, 55, 0.18) 0%, rgba(15, 23, 42, 0.95) 120px, #0f172a 100%) !important;
+            border-top-color: #f43f5e !important;
+            border-left-color: rgba(244, 63, 94, 0.25) !important;
+            border-right-color: rgba(244, 63, 94, 0.25) !important;
+            border-bottom-color: #334155 !important;
+            box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.15) !important;
+        }
+        /* Inner tool sub-cards / controls cards */
+        html.omni-dark .bg-white.rounded-2xl,
+        html.omni-dark .bg-white.rounded-xl {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        /* Formula callout boxes enhanced with ambient themed gradients in dark mode */
+        html.omni-dark .no-print[class*="border-emerald-"][class*="-50"],
+        html.omni-dark .no-print[class*="border-teal-"][class*="-50"] {
+            background: linear-gradient(135deg, rgba(6, 78, 59, 0.35) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+            border-color: rgba(16, 185, 129, 0.45) !important;
+        }
+        html.omni-dark .no-print[class*="border-amber-"][class*="-50"],
+        html.omni-dark .no-print[class*="border-orange-"][class*="-50"] {
+            background: linear-gradient(135deg, rgba(120, 53, 15, 0.35) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+            border-color: rgba(245, 158, 11, 0.45) !important;
+        }
+        html.omni-dark .no-print[class*="border-blue-"][class*="-50"],
+        html.omni-dark .no-print[class*="border-indigo-"][class*="-50"] {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.35) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+            border-color: rgba(59, 130, 246, 0.45) !important;
+        }
+        html.omni-dark .no-print[class*="border-purple-"][class*="-50"],
+        html.omni-dark .no-print[class*="border-rose-"][class*="-50"] {
+            background: linear-gradient(135deg, rgba(136, 19, 55, 0.35) 0%, rgba(15, 23, 42, 0.85) 100%) !important;
+            border-color: rgba(244, 63, 94, 0.45) !important;
+        }
+/* Homepage specific dark mode high-contrast card and header enhancements */
         html.omni-dark .tool-card { background-color: #1e293b !important; border-color: #334155 !important; }
         html.omni-dark .tool-card:hover { border-color: #64748b !important; background-color: #243248 !important; }
         html.omni-dark .tool-card h3 { color: #f8fafc !important; }
