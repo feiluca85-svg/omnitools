@@ -217,17 +217,32 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         html.omni-dark .text-slate-900, html.omni-dark .text-slate-800, html.omni-dark .text-gray-900, html.omni-dark .text-gray-800 { color: #f1f5f9 !important; }
         html.omni-dark .text-slate-700, html.omni-dark .text-slate-600, html.omni-dark .text-gray-700, html.omni-dark .text-gray-600 { color: #cbd5e1 !important; }
         html.omni-dark .text-slate-500, html.omni-dark .text-slate-400, html.omni-dark .text-gray-500 { color: #94a3b8 !important; }
-        html.omni-dark .text-amber-900, html.omni-dark .text-amber-800, html.omni-dark .text-amber-700, html.omni-dark .text-orange-800 { color: #fde68a !important; }
-        html.omni-dark .text-blue-900, html.omni-dark .text-blue-800, html.omni-dark .text-blue-700, html.omni-dark .text-cyan-900, html.omni-dark .text-cyan-800 { color: #bfdbfe !important; }
-        html.omni-dark .text-emerald-900, html.omni-dark .text-emerald-800, html.omni-dark .text-emerald-700, html.omni-dark .text-teal-900, html.omni-dark .text-teal-800 { color: #a7f3d0 !important; }
-        html.omni-dark .text-rose-900, html.omni-dark .text-rose-800, html.omni-dark .text-rose-700, html.omni-dark .text-red-800 { color: #fecdd3 !important; }
-        html.omni-dark .text-indigo-900, html.omni-dark .text-indigo-800, html.omni-dark .text-indigo-700, html.omni-dark .text-purple-900, html.omni-dark .text-purple-800 { color: #c7d2fe !important; }
+        html.omni-dark .text-amber-950, html.omni-dark .text-amber-900, html.omni-dark .text-amber-800, html.omni-dark .text-amber-700, html.omni-dark .text-orange-800 { color: #fde68a !important; }
+        html.omni-dark .text-amber-600, html.omni-dark .text-amber-500 { color: #fbbf24 !important; }
+        html.omni-dark .text-blue-950, html.omni-dark .text-blue-900, html.omni-dark .text-blue-800, html.omni-dark .text-blue-700, html.omni-dark .text-cyan-900, html.omni-dark .text-cyan-800 { color: #bfdbfe !important; }
+        html.omni-dark .text-emerald-950, html.omni-dark .text-emerald-900, html.omni-dark .text-emerald-800, html.omni-dark .text-emerald-700, html.omni-dark .text-teal-900, html.omni-dark .text-teal-800 { color: #a7f3d0 !important; }
+        html.omni-dark .text-emerald-600 { color: #34d399 !important; }
+        html.omni-dark .text-rose-950, html.omni-dark .text-rose-900, html.omni-dark .text-rose-800, html.omni-dark .text-rose-700, html.omni-dark .text-red-800 { color: #fecdd3 !important; }
+        html.omni-dark .text-rose-600 { color: #fb7185 !important; }
+        html.omni-dark .text-indigo-950, html.omni-dark .text-indigo-900, html.omni-dark .text-indigo-800, html.omni-dark .text-indigo-700, html.omni-dark .text-purple-900, html.omni-dark .text-purple-800 { color: #c7d2fe !important; }
         html.omni-dark input, html.omni-dark select, html.omni-dark textarea { background-color: #0f172a !important; color: #f8fafc !important; border-color: #334155 !important; }
         html.omni-dark input::placeholder, html.omni-dark textarea::placeholder { color: #64748b !important; }
         html.omni-dark :not(body)[class*="border-slate-"], html.omni-dark :not(body)[class*="border-amber-200"], html.omni-dark :not(body)[class*="border-blue-200"], html.omni-dark :not(body)[class*="border-emerald-200"], html.omni-dark :not(body)[class*="border-rose-200"], html.omni-dark :not(body)[class*="border-indigo-200"], html.omni-dark :not(body)[class*="border-purple-200"] { border-color: #334155 !important; }
         html.omni-dark .hover\:bg-slate-50:hover, html.omni-dark .hover\:bg-slate-100:hover { background-color: #334155 !important; }
         html.omni-dark footer { background-color: #0f172a !important; border-color: #334155 !important; }
         html.omni-dark, html.omni-dark body { background-color: #0f172a !important; background-image: none !important; color: #e2e8f0 !important; }
+        /* Homepage specific dark mode high-contrast card and header enhancements */
+        html.omni-dark .tool-card { background-color: #1e293b !important; border-color: #334155 !important; }
+        html.omni-dark .tool-card:hover { border-color: #64748b !important; background-color: #243248 !important; }
+        html.omni-dark .tool-card h3 { color: #f8fafc !important; }
+        html.omni-dark .tool-card p { color: #94a3b8 !important; }
+        html.omni-dark #sectionBuilding > div:first-child,
+        html.omni-dark #sectionGraph > div:first-child,
+        html.omni-dark #sectionFinance > div:first-child { border-bottom-color: #334155 !important; }
+        html.omni-dark #divBuildingDesc, html.omni-dark #divGraphDesc, html.omni-dark #divFinanceDesc { color: #94a3b8 !important; }
+        html.omni-dark #badgeCountBuilding { background-color: rgba(180, 83, 9, 0.25) !important; color: #fde68a !important; border-color: rgba(217, 119, 6, 0.5) !important; }
+        html.omni-dark #badgeCountGraph { background-color: rgba(190, 18, 60, 0.25) !important; color: #fecdd3 !important; border-color: rgba(225, 29, 72, 0.5) !important; }
+        html.omni-dark #badgeCountFinance { background-color: rgba(4, 120, 87, 0.25) !important; color: #a7f3d0 !important; border-color: rgba(5, 150, 105, 0.5) !important; }
     </style>
     <script>
         function applyDark(on) {
