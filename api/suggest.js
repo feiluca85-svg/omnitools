@@ -22,9 +22,9 @@ export default async function handler(req, res) {
     // 1. Log prominently to Vercel Runtime Logs
     console.log(`[OMNITOOLS SUGGESTION] [Tool: ${tool}] [Lang: ${lang}] [Timestamp: ${timestamp}]: ${message}`);
     
-    // 2. Zero-registration instant Email Notification to clickbanger.agency@outlook.com
+    // 2. Zero-registration instant Email Notification to clickbanger.agency@outlook.com via obfuscated FormSubmit Token
     try {
-      await fetch('https://formsubmit.co/ajax/clickbanger.agency@outlook.com', {
+      await fetch('https://formsubmit.co/ajax/0bbb163b700573322a5bd20f8e1ef71e', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
