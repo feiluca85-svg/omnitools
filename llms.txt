@@ -126,4 +126,4 @@
 - Zero Server Side Data: All 18 tools compute algorithms 100% locally in the browser via JavaScript.
 - No personal user data, uploaded images, or financial numbers are transmitted or stored on remote servers.
 - All pages support dynamic responsive A4 single-page printing with technical stamp/signature boxes and QR code deep-linking.
-- Multilingual Support: Full native localization in Italian (`it`), English (`en`), Spanish (`es`), French (`fr`), German (`de`), and Portuguese (`pt`).
+- Bilingual Support: Full native localization in 2 languages — Italian (`it`) and English (`en`).

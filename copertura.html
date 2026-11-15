@@ -11,10 +11,6 @@
     <link rel="canonical" href="https://www.omnitoolslab.com/copertura">
     <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/copertura?lang=it" />
     <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/copertura?lang=en" />
-    <link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/copertura?lang=es" />
-    <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/copertura?lang=fr" />
-    <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/copertura?lang=de" />
-    <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/copertura?lang=pt" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/copertura" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -1032,13 +1028,9 @@
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
                 <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="pt">🇵🇹 PT</option>
-                    </select>
+                    <option value="it" selected>🇮🇹 IT</option>
+                    <option value="en">🇬🇧 EN</option>
+                </select>
                 <div class="relative sm:hidden" id="omniMobileMenuWrap">
                     <button type="button" id="omniMobileMenuBtn" onclick="event.stopPropagation();document.getElementById('omniMobileMenuDropdown').classList.toggle('hidden')" class="h-8 w-8 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-base font-black leading-none" aria-label="Menu">&#8942;</button>
                     <div id="omniMobileMenuDropdown" class="hidden absolute right-0 top-full mt-2 w-52 rounded-2xl bg-white border border-slate-200 shadow-xl p-1.5 z-50 text-xs font-semibold text-slate-700">
@@ -2000,7 +1992,7 @@ document.addEventListener('click', (e) => {
 });
 
 
-// Global Navigation I18N Engine (6 Languages)
+// Global Navigation I18N Engine (2 Languages: IT & EN)
 const NAV_TRANSLATIONS = {
     it: {
         tab_home: 'Home Hub',
@@ -2516,7 +2508,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // Global Footer I18N Engine (6 Languages)
+        // Global Footer I18N Engine (2 Languages: IT & EN)
         const FOOTER_TRANSLATIONS = {
     "it": {
         "rel_title": "Altri Calcolatori Tecnici Consigliati",
@@ -2716,7 +2708,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
             const tr = FOOTER_TRANSLATIONS[l];
 
-            // Update Division-Contextualized Native Sponsor Banner (6 Languages)
+            // Update Division-Contextualized Native Sponsor Banner (2 Languages: IT & EN)
             const SPONSOR_I18N = {
                 it: {
                     avail: "Postazione Esclusiva Disponibile",

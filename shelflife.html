@@ -11,10 +11,6 @@
     <link rel="canonical" href="https://www.omnitoolslab.com/shelflife">
     <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife?lang=it" />
     <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/shelflife?lang=en" />
-    <link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/shelflife?lang=es" />
-    <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/shelflife?lang=fr" />
-    <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/shelflife?lang=de" />
-    <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/shelflife?lang=pt" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/shelflife" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -36,7 +32,7 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "ScaricoFacile — Calcolo Pendenza Tubazioni e Scarichi",
-        "url": "https://www.omnitoolslab.com/tubi",
+        "url": "https://www.omnitoolslab.com/shelflife",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "All",
         "description": "Calcolatore tecnico professionale per il calcolo di pendenza, dislivello e caduta al metro lineare per reti di scarico a gravità e fognature.",
@@ -66,7 +62,7 @@
             "@type": "ListItem",
             "position": 3,
             "name": "ScaricoFacile",
-            "item": "https://www.omnitoolslab.com/tubi"
+            "item": "https://www.omnitoolslab.com/shelflife"
           }
         ]
       },
@@ -867,14 +863,14 @@ input[type="range"] {
                         <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-amber-700">Tools</span> Lab</span>
                         <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">SCHEDA TECNICA A4 • OMNIBUILDING</span>
                     </div>
-                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">ShelfLife Export — Pendenza Scarichi Idraulici</div>
+                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">ShelfLife & Export Date — Etichettatura Internazionale</div>
                 </div>
             </div>
             <div class="flex items-center gap-2.5">
                 <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                 <div id="omniUniversalPrintDate" class="font-bold text-slate-900">Data: --/--/----</div>
-                <div>Specifica: Scarichi</div>
-                <div class="text-amber-700 font-bold">www.omnitoolslab.com/tubi</div>
+                <div>Specifica: Reg. UE 1169/2011 • FDA • CFIA</div>
+                <div class="text-amber-700 font-bold">www.omnitoolslab.com/shelflife</div>
             </div>
                 <img id="omniPrintQrImg" class="w-10 h-10 rounded border border-slate-300 bg-white p-0.5 shrink-0" alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&margin=0&data=https://www.omnitoolslab.com" />
             </div></div>
@@ -1139,7 +1135,7 @@ input[type="range"] {
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" onchange="if(this.value==='en'){window.location.href='/en/shelf-life-calculator';}" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                     <option value="it" selected>🇮🇹 IT</option>
                     <option value="en">🇬🇧 EN</option>
                 </select>
@@ -1560,7 +1556,15 @@ input[type="range"] {
             const lbl = document.getElementById('lblProdDateOrigin');
             const st = document.getElementById('prodDateStatus');
 
-            const meta = {
+            const isEn = (document.documentElement.lang === 'en') || (document.getElementById('langSelect')?.value === 'en');
+            const meta = isEn ? {
+                europa: { label: 'Europe Production Date (DD/MM/YYYY)', ph: 'E.g. 14/11/2026' },
+                usa: { label: 'USA Production Date (MM/DD/YYYY)', ph: 'E.g. 11/14/2026' },
+                uk: { label: 'UK Production Date (DD/MM/YYYY)', ph: 'E.g. 14/11/2026' },
+                canada: { label: 'Canada Production Date (YYYY AL MM DD)', ph: 'E.g. 2026 NO 14' },
+                gcc: { label: 'GCC Production Date (DD/MM/YYYY)', ph: 'E.g. 14/11/2026' },
+                jp: { label: 'Japan Production Date (YYYY.MM.DD)', ph: 'E.g. 2026.11.14' }
+            } : {
                 europa: { label: 'Data Produzione Europa (GG/MM/AAAA)', ph: 'Es. 14/11/2026' },
                 usa: { label: 'Data Produzione USA (MM/DD/YYYY)', ph: 'Es. 11/14/2026' },
                 uk: { label: 'Data Produzione UK (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
@@ -2148,17 +2152,21 @@ input[type="range"] {
             const includeLot = document.getElementById('chkIncludeLot')?.checked !== false;
             const lot = includeLot ? (document.getElementById('inpLot').value || '').trim() : '';
 
+            const isEn = (document.documentElement.lang === 'en') || (document.getElementById('langSelect')?.value === 'en');
             const parts = [];
             if (prodName) parts.push(prodName);
-            if (sel.EU) parts.push(`UE: ${euStr}`);
+            if (sel.EU) parts.push(`${isEn ? 'EU' : 'UE'}: ${euStr}`);
             if (sel.USA) parts.push(`USA: ${usaNum} (${usaTxt})`);
             if (sel.UK) parts.push(`UK: ${ukStr} (${ukBbe})`);
             if (sel.CA) parts.push(`CA: ${caStr}`);
             if (sel.GCC) parts.push(`GCC: ${gccExp}`);
             if (sel.JP) parts.push(`JP: ${jpStr}`);
-            if (lot) parts.push(`LOTTO: ${lot}`);
+            if (lot) parts.push(`${isEn ? 'LOT' : 'LOTTO'}: ${lot}`);
 
-            document.getElementById('resWeekday').textContent = `Scade di ${IT_WEEKDAYS[expDate.getDay()]}`;
+            const EN_WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            document.getElementById('resWeekday').textContent = isEn
+                ? `Expires on ${EN_WEEKDAYS[expDate.getDay()]}`
+                : `Scade di ${IT_WEEKDAYS[expDate.getDay()]}`;
             document.getElementById('resLabelPreview').textContent = parts.join(' | ');
 
             const printTs = document.getElementById('printTimestamp');
@@ -2183,6 +2191,14 @@ input[type="range"] {
                 setTimeout(() => { lbl.textContent = 'Copia Tutte le Date Export'; }, 2000);
             });
         }
+
+        window.addEventListener('omnitools_lang_changed', function() {
+            setTimeout(() => {
+                syncProdDateFormattedFromIso();
+                calculate();
+                renderCustomPresets();
+            }, 20);
+        });
 
         function exportDatesCsv() {
             const prodName = (document.getElementById('inpProductName')?.value || '').trim();
@@ -2727,7 +2743,7 @@ document.addEventListener('click', (e) => {
 });
 
 
-// Global Navigation I18N Engine (6 Languages)
+// Global Navigation I18N Engine (2 Languages: IT & EN)
 const NAV_TRANSLATIONS = {
     it: {
         tab_home: 'Home Hub',
@@ -3245,7 +3261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // Global Footer I18N Engine (6 Languages)
+        // Global Footer I18N Engine (2 Languages: IT & EN)
         const FOOTER_TRANSLATIONS = {
     "it": {
         "rel_title": "Altri Calcolatori Tecnici Consigliati",
@@ -3445,7 +3461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
             const tr = FOOTER_TRANSLATIONS[l];
 
-            // Update Division-Contextualized Native Sponsor Banner (6 Languages)
+            // Update Division-Contextualized Native Sponsor Banner (2 Languages: IT & EN)
             const SPONSOR_I18N = {
                 it: {
                     avail: "Postazione Esclusiva Disponibile",

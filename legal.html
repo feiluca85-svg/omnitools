@@ -8,10 +8,6 @@
     <link rel="canonical" href="https://www.omnitoolslab.com/legal">
     <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/legal?lang=it" />
     <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/legal?lang=en" />
-    <link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/legal?lang=es" />
-    <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/legal?lang=fr" />
-    <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/legal?lang=de" />
-    <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/legal?lang=pt" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/legal" />
     <meta name="robots" content="index, follow">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -271,9 +267,15 @@
                     <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Legal</span>
                 </div>
             </a>
-            <a href="/" class="text-xs font-bold text-blue-600 hover:text-blue-800 transition flex items-center gap-1">
+            <div class="flex items-center gap-2">
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                    <option value="it" selected>🇮🇹 IT</option>
+                    <option value="en">🇬🇧 EN</option>
+                </select>
+                <a href="/" class="text-xs font-bold text-blue-600 hover:text-blue-800 transition flex items-center gap-1">
                 <span>←</span> Torna alla Suite
-            </a>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -355,7 +357,7 @@
                 <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 space-y-1">
                     <span class="font-bold flex items-center gap-1.5 text-slate-900">⚡ Calcolo Locale 100% Client-Side</span>
                     <p class="text-[11px] leading-relaxed text-slate-600">
-                        I dati e le misure inserite nei calcolatori non vengono trasmessi a server esterni ma elaborati istantaneamente sul dispositivo dell'utente. Le uniche informazioni memorizzate in locale (localStorage) riguardano preferenze strettamente tecniche (lingua e modalità notte).
+                        I dati e le misure inserite nei calcolatori non vengono trasmessi a server esterni ma elaborati in locale sul dispositivo dell'utente. Le uniche informazioni memorizzate in locale (localStorage) riguardano preferenze strettamente tecniche (lingua e modalità notte).
                     </p>
                 </div>
             </div>

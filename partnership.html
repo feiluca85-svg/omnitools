@@ -8,10 +8,6 @@
     <link rel="canonical" href="https://www.omnitoolslab.com/partnership">
     <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/partnership?lang=it" />
     <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/partnership?lang=en" />
-    <link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/partnership?lang=es" />
-    <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/partnership?lang=fr" />
-    <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/partnership?lang=de" />
-    <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/partnership?lang=pt" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/partnership" />
     <meta name="robots" content="index, follow">
     
@@ -298,13 +294,9 @@
                     ← Torna alla Suite
                 </a>
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
-                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold py-1.5 px-2 rounded-xl border border-slate-200 focus:outline-none cursor-pointer transition">
-                    <option value="it">🇮🇹 IT</option>
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                    <option value="it" selected>🇮🇹 IT</option>
                     <option value="en">🇬🇧 EN</option>
-                    <option value="es">🇪🇸 ES</option>
-                    <option value="fr">🇫🇷 FR</option>
-                    <option value="de">🇩🇪 DE</option>
-                    <option value="pt">🇵🇹 PT</option>
                 </select>
             </div>
         </div>
@@ -322,7 +314,7 @@
                 Fai conoscere i tuoi prodotti a chi progetta, stampa e costruisce.
             </h1>
             <p id="heroSub" class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-                OmniTools Lab è il punto di riferimento quotidiano per geometri, architetti, impiantisti, grafici editoriali e tipografi in 6 lingue europee. Raggiungi decision-maker tecnici nel momento esatto in cui calcolano.
+                OmniTools Lab è il punto di riferimento quotidiano per geometri, architetti, impiantisti, grafici editoriali e tipografi in 2 lingue (Italiano e Inglese). Raggiungi decision-maker tecnici nel momento esatto in cui calcolano.
             </p>
         </section>
 
@@ -334,9 +326,9 @@
                 <div class="text-xs text-slate-500 leading-relaxed" id="stat1Sub">Zero traffico casuale: solo professionisti del settore e studi tecnici</div>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
-                <div class="text-3xl font-black text-indigo-600 font-mono mb-1" id="stat2Val">6 Lingue</div>
-                <div class="font-bold text-slate-900 text-sm mb-1.5" id="stat2Label">Portata Europea</div>
-                <div class="text-xs text-slate-500 leading-relaxed" id="stat2Sub">IT, EN, ES, FR, DE, PT con localizzazione normativa nativa</div>
+                <div class="text-3xl font-black text-indigo-600 font-mono mb-1" id="stat2Val">2 Lingue (IT & EN)</div>
+                <div class="font-bold text-slate-900 text-sm mb-1.5" id="stat2Label">Italiano e Inglese</div>
+                <div class="text-xs text-slate-500 leading-relaxed" id="stat2Sub">Italiano e Inglese con localizzazione normativa nativa</div>
             </div>
             <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
                 <div class="text-3xl font-black text-emerald-600 font-mono mb-1" id="stat3Val">0 Banner Fastidiosi</div>
@@ -609,7 +601,108 @@
     </footer>
 
     <script>
-        const TRANSLATIONS = {"it": {"title": "Diventa Partner o Sponsor — OmniTools Lab", "nav_back": "← Torna alla Suite", "hero_badge": "🤝 Opportunità Commerciali & Sponsorizzazioni B2B", "hero_title": "Fai conoscere i tuoi prodotti a chi progetta, stampa e costruisce.", "hero_sub": "OmniTools Lab è il punto di riferimento quotidiano per geometri, architetti, impiantisti, grafici editoriali e tipografi in 6 lingue europee. Raggiungi decision-maker tecnici nel momento esatto in cui calcolano.", "stats_badge": "Perché OmniTools Lab?", "stat_1_val": "100%", "stat_1_label": "Target Tecnico Qualificato", "stat_1_sub": "Zero traffico casuale: solo professionisti del settore e studi tecnici", "stat_2_val": "6 Lingue", "stat_2_label": "Portata Europea", "stat_2_sub": "IT, EN, ES, FR, DE, PT con localizzazione normativa nativa", "stat_3_val": "0 Banner Fastidiosi", "stat_3_label": "Massima Brand Reputation", "stat_3_sub": "Integrazioni pulite, native e ad alta fiducia degli utenti", "solutions_title": "Formati di Collaborazione & Sponsorship", "sol_1_tag": "Sponsor Ufficiale", "sol_1_title": "Sponsor Esclusivo di Categoria", "sol_1_desc": "Associa il tuo brand in esclusiva a uno strumento (es. 'ScaricoFacile powered by [Produttore Tubi]'). Logo ben visibile nell'intestazione e nella scheda PDF A4 scaricata dal professionista.", "sol_2_tag": "Affiliazione & E-commerce", "sol_2_title": "Link Tecnico ai Tuoi Prodotti", "sol_2_desc": "Inserisci il link diretto al tuo catalogo o e-commerce per acquistare il materiale calcolato (es. raccordi per tubi, campionari carte speciali, distanziometri laser).", "sol_3_tag": "Strumento Su Misura", "sol_3_title": "White-Label & Calcolatore Personalizzato", "sol_3_desc": "Vuoi un calcolatore personalizzato con le formule e il catalogo della tua azienda da incorporare nel tuo sito web o distribuire ai tuoi installatori? Lo sviluppiamo noi.", "sol_4_tag": "Lead Generation", "sol_4_title": "Media Placement & Richieste Preventivo", "sol_4_desc": "Raccogli richieste di fornitura e preventivo qualificate direttamente dai professionisti alla ricerca di soluzioni idrauliche, edili o di stampa.", "form_title": "Richiedi Informazioni o un Media Kit", "form_sub": "Compila il modulo o scrivici direttamente a info@omnitoolslab.com. Rispondiamo entro 24 ore lavorative.", "label_company": "Azienda / Studio Tecnico *", "label_name": "Nome e Cognome", "label_email": "Email Aziendale *", "label_phone": "Telefono (opzionale)", "label_type": "Tipologia di Collaborazione Interessata *", "opt_sponsor": "Sponsorizzazione Esclusiva di uno Strumento", "opt_affiliate": "Integrazione Prodotti / Affiliazione Commerciale", "opt_whitelabel": "Sviluppo Calcolatore Personalizzato (White-Label)", "opt_other": "Altra proposta commerciale", "label_msg": "Breve descrizione del tuo brand o proposta *", "btn_submit": "Invia Richiesta di Collaborazione", "btn_submitting": "Invio in corso...", "success_title": "Richiesta Inviata con Successo!", "success_desc": "Grazie per l'interesse. Abbiamo ricevuto la tua richiesta e il nostro team ti contatterà al più presto con il Media Kit e le opzioni su misura.", "direct_contact_title": "Preferisci un contatto diretto?", "direct_contact_desc": "Scrivici una email a", "footer_disclaimer": "OmniTools Lab è una suite indipendente di calcolatori tecnici. Valutiamo solo collaborazioni con marchi, produttori e distributori che rispettano standard etici e qualitativi di eccellenza.", "footer_rights": "© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati."}, "en": {"title": "Partner or Advertise with Us — OmniTools Lab", "nav_back": "← Back to Suite", "hero_badge": "🤝 B2B Commercial Opportunities & Sponsorships", "hero_title": "Put your brand in front of engineers, printers, and builders.", "hero_sub": "OmniTools Lab is the daily utility suite for architects, surveyors, plumbers, prepress operators, and print shops across 6 European languages. Reach technical decision-makers right when they size projects.", "stats_badge": "Why OmniTools Lab?", "stat_1_val": "100%", "stat_1_label": "Qualified B2B Target", "stat_1_sub": "Zero casual clicks: strictly technical professionals and engineering firms", "stat_2_val": "6 Languages", "stat_2_label": "European Reach", "stat_2_sub": "EN, IT, ES, FR, DE, PT with native regulatory compliance tables", "stat_3_val": "0 Annoying Ads", "stat_3_label": "Maximum Brand Integrity", "stat_3_sub": "Clean, contextual, native partnerships that earn user trust", "solutions_title": "Partnership & Sponsorship Formats", "sol_1_tag": "Official Sponsor", "sol_1_title": "Exclusive Category Sponsorship", "sol_1_desc": "Own an entire tool category (e.g., 'SewerSlope powered by [Pipe Manufacturer]'). Your logo in the header and on every downloadable A4 engineering PDF.", "sol_2_tag": "Affiliate & Commerce", "sol_2_title": "Contextual Product Links", "sol_2_desc": "Direct link to your catalog or online store to purchase calculated materials (e.g. pipe fittings, specialty paper stocks, laser distance meters).", "sol_3_tag": "Custom Utility", "sol_3_title": "White-Label & Custom Calculator", "sol_3_desc": "Need a branded calculator featuring your product specs to embed on your website or distribute to installers? We build it for you.", "sol_4_tag": "Lead Generation", "sol_4_title": "Native RFQ Placement", "sol_4_desc": "Capture qualified quote requests directly from specifiers and installers looking for building, plumbing, or print materials.", "form_title": "Request Media Kit or Proposal", "form_sub": "Fill in the form or email us at info@omnitoolslab.com. We reply within 24 business hours.", "label_company": "Company / Engineering Firm *", "label_name": "Full Name", "label_email": "Work Email *", "label_phone": "Phone (optional)", "label_type": "Interested Partnership Type *", "opt_sponsor": "Exclusive Tool Sponsorship", "opt_affiliate": "Product Integration / Affiliate Program", "opt_whitelabel": "Custom Branded Calculator (White-Label)", "opt_other": "Other commercial inquiry", "label_msg": "Brief description of your brand or proposal *", "btn_submit": "Send Partnership Request", "btn_submitting": "Submitting...", "success_title": "Request Successfully Received!", "success_desc": "Thank you for reaching out. We have logged your request and our team will get in touch with our Media Kit and custom proposals.", "direct_contact_title": "Prefer direct email?", "direct_contact_desc": "Reach out directly to", "footer_disclaimer": "OmniTools Lab is an independent technical calculator suite. We partner exclusively with quality-verified manufacturers and distributors.", "footer_rights": "© 2026 OmniTools Lab — Precision Utilities Suite. All rights reserved."}, "es": {"title": "Colabora o Patrocina — OmniTools Lab", "nav_back": "← Volver a la Suite", "hero_badge": "🤝 Oportunidades Comerciales B2B y Patrocinios", "hero_title": "Presenta tu marca a quienes diseñan, imprimen y construyen.", "hero_sub": "OmniTools Lab es la suite de cálculo de referencia para arquitectos, fontaneros, diseñadores e imprentas en 6 idiomas europeos. Conecta con prescriptores técnicos en el momento exacto del cálculo.", "stats_badge": "¿Por qué OmniTools Lab?", "stat_1_val": "100%", "stat_1_label": "Audiencia B2B Cualificada", "stat_1_sub": "Cero tráfico irrelevante: solo profesionales de obra, arquitectura y gráfica", "stat_2_val": "6 Idiomas", "stat_2_label": "Alcance Europeo", "stat_2_sub": "ES, IT, EN, FR, DE, PT con tablas normativas locales", "stat_3_val": "0 Anuncios Invasivos", "stat_3_label": "Prestigio de Marca", "stat_3_sub": "Integraciones nativas y limpias de máxima confianza", "solutions_title": "Formatos de Colaboración", "sol_1_tag": "Patrocinador Oficial", "sol_1_title": "Patrocinio Exclusivo de Herramienta", "sol_1_desc": "Asocia tu marca en exclusiva a una calculadora con tu logotipo en el encabezado y en el PDF técnico A4 descargable.", "sol_2_tag": "Afiliación y Comercio", "sol_2_title": "Enlace Técnico a tus Productos", "sol_2_desc": "Enlace directo a tu catálogo para comprar los materiales calculados (tuberías, papeles especiales, medidores).", "sol_3_tag": "A Medida", "sol_3_title": "Calculadora Marca Blanca", "sol_3_desc": "Desarrollamos calculadoras personalizadas con el catálogo y fórmulas de tu empresa para tu web o clientes.", "sol_4_tag": "Presupuestos", "sol_4_title": "Captación de Leads Técnicos", "sol_4_desc": "Recibe solicitudes de presupuesto de profesionales que dimensionan sus proyectos de fontanería, construcción o gráfica.", "form_title": "Solicitar Información o Media Kit", "form_sub": "Rellena el formulario o escríbenos a info@omnitoolslab.com.", "label_company": "Empresa / Estudio Técnico *", "label_name": "Nombre y Apellidos", "label_email": "Email Corporativo *", "label_phone": "Teléfono (opcional)", "label_type": "Tipo de Colaboración *", "opt_sponsor": "Patrocinio Exclusivo de Herramienta", "opt_affiliate": "Integración de Catálogo / Afiliación", "opt_whitelabel": "Calculadora Personalizada Marca Blanca", "opt_other": "Otra propuesta comercial", "label_msg": "Breve descripción de tu marca o propuesta *", "btn_submit": "Enviar Solicitud de Colaboración", "btn_submitting": "Enviando...", "success_title": "¡Solicitud Recibida con Éxito!", "success_desc": "Gracias por tu interés. Nos pondremos en contacto contigo a la brevedad.", "direct_contact_title": "¿Prefieres contacto directo?", "direct_contact_desc": "Escríbenos a", "footer_disclaimer": "OmniTools Lab es una suite técnica independiente.", "footer_rights": "© 2026 OmniTools Lab. Todos los derechos reservados."}, "fr": {"title": "Devenez Partenaire ou Sponsor — OmniTools Lab", "nav_back": "← Retour à la Suite", "hero_badge": "🤝 Opportunités Commerciales & Sponsoring B2B", "hero_title": "Faites connaître vos produits aux prescripteurs du bâtiment et de l'imprimerie.", "hero_sub": "OmniTools Lab est la référence pour architectes, métreurs, plombiers et imprimeurs en 6 langues européennes. Atteignez les professionnels au moment précis de leurs calculs techniques.", "stats_badge": "Pourquoi OmniTools Lab ?", "stat_1_val": "100%", "stat_1_label": "Audience Professionnelle", "stat_1_sub": "Strictement des professionnels du bâtiment, de l'architecture et du graphisme", "stat_2_val": "6 Langues", "stat_2_label": "Couverture Européenne", "stat_2_sub": "FR, IT, EN, ES, DE, PT avec normes techniques intégrées", "stat_3_val": "0 Publicité Invasive", "stat_3_label": "Notoriété et Confiance", "stat_3_sub": "Intégrations natives, élégantes et à forte valeur ajoutée", "solutions_title": "Formats de Partenariat", "sol_1_tag": "Sponsor Officiel", "sol_1_title": "Sponsoring Exclusif d'Outil", "sol_1_desc": "Associez votre marque à un calculateur avec logo dans l'en-tête et sur la fiche technique A4 imprimable.", "sol_2_tag": "Affiliation & E-commerce", "sol_2_title": "Lien Technique vers vos Produits", "sol_2_desc": "Lien direct vers votre catalogue pour commander les matériaux calculés (raccords PVC, papiers spéciaux, lasers).", "sol_3_tag": "Sur-Mesure", "sol_3_title": "Calculateur Marque Blanche", "sol_3_desc": "Développement d'un calculateur sur-mesure intégrant vos gammes de produits pour votre propre site internet.", "sol_4_tag": "Demandes de Devis", "sol_4_title": "Génération de Leads Qualifiés", "sol_4_desc": "Recevez des demandes de devis émanant directement des installateurs et maîtres d'œuvre.", "form_title": "Demander le Kit Média", "form_sub": "Remplissez le formulaire ou contactez-nous à info@omnitoolslab.com.", "label_company": "Entreprise / Bureau d'Études *", "label_name": "Nom & Prénom", "label_email": "Email Professionnel *", "label_phone": "Téléphone (facultatif)", "label_type": "Type de Partenariat *", "opt_sponsor": "Sponsoring Exclusif d'un Outil", "opt_affiliate": "Intégration Catalogue / Affiliation", "opt_whitelabel": "Calculateur Personnalisé Marque Blanche", "opt_other": "Autre demande commerciale", "label_msg": "Présentation de votre projet ou marque *", "btn_submit": "Envoyer la Demande", "btn_submitting": "Envoi en cours...", "success_title": "Demande Reçue avec Succès !", "success_desc": "Merci pour votre message. Nous reviendrons vers vous sous 24h ouvrées.", "direct_contact_title": "Contact direct ?", "direct_contact_desc": "Écrivez-nous à", "footer_disclaimer": "OmniTools Lab est une suite indépendante d'outils professionnels.", "footer_rights": "© 2026 OmniTools Lab. Tous droits réservés."}, "de": {"title": "Partner oder Sponsor werden — OmniTools Lab", "nav_back": "← Zurück zur Suite", "hero_badge": "🤝 B2B-Kooperationen & Sponsoring", "hero_title": "Präsentieren Sie Ihre Marke Architekten, Planern und Druckereien.", "hero_sub": "OmniTools Lab ist das tägliche Präzisionswerkzeug für Bauingenieure, Installateure, Grafiker und Druckexperten in 6 Sprachen.", "stats_badge": "Warum OmniTools Lab?", "stat_1_val": "100%", "stat_1_label": "Reine Fachzielgruppe", "stat_1_sub": "Keine Streuverluste: Ausschließlich Planer, Handwerker und Agenturen", "stat_2_val": "6 Sprachen", "stat_2_label": "Europäische Reichweite", "stat_2_sub": "DE, IT, EN, ES, FR, PT mit DIN-konformen Prüfungen", "stat_3_val": "0 Aufdringliche Banner", "stat_3_label": "Höchste Markensicherheit", "stat_3_sub": "Seriöse, native Einbindungen mit hohem Nutzervertrauen", "solutions_title": "Kooperationsformate", "sol_1_tag": "Offizieller Sponsor", "sol_1_title": "Exklusives Tool-Sponsoring", "sol_1_desc": "Platzieren Sie Ihr Firmenlogo prominent im Rechner und auf dem generierten A4-PDF-Datenblatt.", "sol_2_tag": "Affiliate & Shop", "sol_2_title": "Produktverlinkung & Shopanbindung", "sol_2_desc": "Direkter Absprung zu Ihren Produkten passend zum Berechnungsergebnis (Rohre, Spezialpapiere, Messtechnik).", "sol_3_tag": "White-Label", "sol_3_title": "Maßgeschneiderter Firmenrechner", "sol_3_desc": "Wir programmieren für Ihre Website einen individuellen Rechner nach Ihren Produktkatalogen.", "sol_4_tag": "Lead-Generierung", "sol_4_title": "Qualifizierte Angebotsanfragen", "sol_4_desc": "Erhalten Sie direkte Anfragen von Fachbetrieben und Planern während der Projektkalkulation.", "form_title": "Mediadaten anfordern", "form_sub": "Füllen Sie das Formular aus oder schreiben Sie an info@omnitoolslab.com.", "label_company": "Firma / Ingenieurbüro *", "label_name": "Name und Vorname", "label_email": "Geschäftliche E-Mail *", "label_phone": "Telefon (optional)", "label_type": "Art der Partnerschaft *", "opt_sponsor": "Exklusiv-Sponsoring eines Tools", "opt_affiliate": "Produktverlinkung / Partnerschaft", "opt_whitelabel": "Individueller White-Label-Rechner", "opt_other": "Sonstige Kooperationsanfrage", "label_msg": "Kurzbeschreibung Ihrer Anfrage *", "btn_submit": "Anfrage absenden", "btn_submitting": "Wird gesendet...", "success_title": "Anfrage erfolgreich übermittelt!", "success_desc": "Vielen Dank. Unser Team meldet sich innerhalb von 24 Stunden bei Ihnen.", "direct_contact_title": "Direkter Kontakt?", "direct_contact_desc": "Schreiben Sie uns an", "footer_disclaimer": "OmniTools Lab ist eine unabhängige Plattform für technische Berechnungswerkzeuge.", "footer_rights": "© 2026 OmniTools Lab. Alle Rechte vorbehalten."}, "pt": {"title": "Torne-se Parceiro ou Patrocinador — OmniTools Lab", "nav_back": "← Voltar à Suite", "hero_badge": "🤝 Oportunidades Comerciais B2B e Parcerias", "hero_title": "Apresente os seus produtos a quem projeta, imprime e constrói.", "hero_sub": "O OmniTools Lab é a ferramenta diária de engenheiros, instaladores, designers e gráficas em 6 línguas europeias. Alcance decisores técnicos no momento exato do cálculo.", "stats_badge": "Porquê o OmniTools Lab?", "stat_1_val": "100%", "stat_1_label": "Público B2B Qualificado", "stat_1_sub": "Sem tráfego disperso: estritamente profissionais do setor e gabinetes técnicos", "stat_2_val": "6 Línguas", "stat_2_label": "Alcance Europeu", "stat_2_sub": "PT, IT, EN, ES, FR, DE com tabelas normativas nativas", "stat_3_val": "0 Banners Invasivos", "stat_3_label": "Reputação e Confiança", "stat_3_sub": "Integrações nativas, limpas e de elevada credibilidade", "solutions_title": "Formatos de Parceria", "sol_1_tag": "Patrocinador Oficial", "sol_1_title": "Patrocínio Exclusivo de Ferramenta", "sol_1_desc": "Associe a sua marca a uma ferramenta com logótipo no cabeçalho e na ficha técnica A4 descarregável.", "sol_2_tag": "Afiliados & Loja", "sol_2_title": "Ligação Técnica aos seus Produtos", "sol_2_desc": "Link direto para o seu catálogo para compra de tubos, papéis especiais ou instrumentos de medição.", "sol_3_tag": "À Medida", "sol_3_title": "Calculador White-Label Personalizado", "sol_3_desc": "Desenvolvemos calculadores com as fórmulas e produtos da sua empresa para embeber no seu site.", "sol_4_tag": "Geração de Leads", "sol_4_title": "Pedidos de Cotação Qualificados", "sol_4_desc": "Receba pedidos de orçamento de profissionais em fase de projeto ou obra.", "form_title": "Solicitar Media Kit e Informações", "form_sub": "Preencha o formulário ou contacte-nos através de info@omnitoolslab.com.", "label_company": "Empresa / Gabinete Técnico *", "label_name": "Nome e Sobrenome", "label_email": "Email Corporativo *", "label_phone": "Telefone (opcional)", "label_type": "Tipo de Parceria Pretendida *", "opt_sponsor": "Patrocínio Exclusivo de Ferramenta", "opt_affiliate": "Integração de Catálogo / Afiliados", "opt_whitelabel": "Calculador Personalizado White-Label", "opt_other": "Outra proposta comercial", "label_msg": "Breve descrição da sua proposta *", "btn_submit": "Enviar Pedido de Parceria", "btn_submitting": "A enviar...", "success_title": "Pedido Enviado com Sucesso!", "success_desc": "Obrigado pelo interesse. Entraremos em contacto no prazo máximo de 24 horas úteis.", "direct_contact_title": "Prefere contacto direto?", "direct_contact_desc": "Envie email para", "footer_disclaimer": "O OmniTools Lab é uma suite independente de ferramentas técnicas.", "footer_rights": "© 2026 OmniTools Lab. Todos os direitos reservados."}};
+        const TRANSLATIONS = {
+            "it": {
+                "title": "Diventa Partner o Sponsor — OmniTools Lab",
+                "nav_back": "← Torna alla Suite",
+                "hero_badge": "🤝 Opportunità Commerciali & Sponsorizzazioni B2B",
+                "hero_title": "Fai conoscere i tuoi prodotti a chi progetta, stampa e costruisce.",
+                "hero_sub": "OmniTools Lab è il punto di riferimento quotidiano per geometri, architetti, impiantisti, grafici editoriali e tipografi in 2 lingue (Italiano e Inglese). Raggiungi decision-maker tecnici nel momento esatto in cui calcolano.",
+                "stats_badge": "Perché OmniTools Lab?",
+                "stat_1_val": "100%",
+                "stat_1_label": "Target Tecnico Qualificato",
+                "stat_1_sub": "Zero traffico casuale: solo professionisti del settore e studi tecnici",
+                "stat_2_val": "2 Lingue (IT & EN)",
+                "stat_2_label": "Italiano e Inglese",
+                "stat_2_sub": "Italiano e Inglese con localizzazione normativa nativa",
+                "stat_3_val": "0 Banner Fastidiosi",
+                "stat_3_label": "Massima Brand Reputation",
+                "stat_3_sub": "Integrazioni pulite, native e ad alta fiducia degli utenti",
+                "solutions_title": "Formati di Collaborazione & Sponsorship",
+                "sol_1_tag": "Sponsor Ufficiale",
+                "sol_1_title": "Sponsor Esclusivo di Categoria",
+                "sol_1_desc": "Associa il tuo brand in esclusiva a uno strumento (es. 'ScaricoFacile powered by [Produttore Tubi]'). Logo ben visibile nell'intestazione e nella scheda PDF A4 scaricata dal professionista.",
+                "sol_2_tag": "Affiliazione & E-commerce",
+                "sol_2_title": "Link Tecnico ai Tuoi Prodotti",
+                "sol_2_desc": "Inserisci il link diretto al tuo catalogo o e-commerce per acquistare il materiale calcolato (es. raccordi per tubi, campionari carte speciali, distanziometri laser).",
+                "sol_3_tag": "Strumento Su Misura",
+                "sol_3_title": "White-Label & Calcolatore Personalizzato",
+                "sol_3_desc": "Vuoi un calcolatore personalizzato con le formule e il catalogo della tua azienda da incorporare nel tuo sito web o distribuire ai tuoi installatori? Lo sviluppiamo noi.",
+                "sol_4_tag": "Lead Generation",
+                "sol_4_title": "Media Placement & Richieste Preventivo",
+                "sol_4_desc": "Raccogli richieste di fornitura e preventivo qualificate direttamente dai professionisti alla ricerca di soluzioni idrauliche, edili o di stampa.",
+                "form_title": "Richiedi Informazioni o un Media Kit",
+                "form_sub": "Compila il modulo o scrivici direttamente a info@omnitoolslab.com. Rispondiamo entro 24 ore lavorative.",
+                "label_company": "Azienda / Studio Tecnico *",
+                "label_name": "Nome e Cognome",
+                "label_email": "Email Aziendale *",
+                "label_phone": "Telefono (opzionale)",
+                "label_type": "Tipologia di Collaborazione Interessata *",
+                "opt_sponsor": "Sponsorizzazione Esclusiva di uno Strumento",
+                "opt_affiliate": "Integrazione Prodotti / Affiliazione Commerciale",
+                "opt_whitelabel": "Sviluppo Calcolatore Personalizzato (White-Label)",
+                "opt_other": "Altra proposta commerciale",
+                "label_msg": "Breve descrizione del tuo brand o proposta *",
+                "btn_submit": "Invia Richiesta di Collaborazione",
+                "btn_submitting": "Invio in corso...",
+                "success_title": "Richiesta Inviata con Successo!",
+                "success_desc": "Grazie per l'interesse. Abbiamo ricevuto la tua richiesta e il nostro team ti contatterà al più presto con il Media Kit e le opzioni su misura.",
+                "direct_contact_title": "Preferisci un contatto diretto?",
+                "direct_contact_desc": "Scrivici una email a",
+                "footer_disclaimer": "OmniTools Lab è una suite indipendente di calcolatori tecnici. Valutiamo solo collaborazioni con marchi, produttori e distributori che rispettano standard etici e qualitativi di eccellenza.",
+                "footer_rights": "© 2026 OmniTools Lab — Precision Utilities Suite. Tutti i diritti riservati."
+            },
+            "en": {
+                "title": "Partner or Advertise with Us — OmniTools Lab",
+                "nav_back": "← Back to Suite",
+                "hero_badge": "🤝 B2B Commercial Opportunities & Sponsorships",
+                "hero_title": "Put your brand in front of engineers, printers, and builders.",
+                "hero_sub": "OmniTools Lab is the daily utility suite for architects, surveyors, plumbers, prepress operators, and print shops in 2 languages (Italian and English). Reach technical decision-makers right when they size projects.",
+                "stats_badge": "Why OmniTools Lab?",
+                "stat_1_val": "100%",
+                "stat_1_label": "Qualified B2B Target",
+                "stat_1_sub": "Zero casual clicks: strictly technical professionals and engineering firms",
+                "stat_2_val": "2 Languages (IT & EN)",
+                "stat_2_label": "Italian & English",
+                "stat_2_sub": "Italian & English with native regulatory compliance tables",
+                "stat_3_val": "0 Annoying Ads",
+                "stat_3_label": "Maximum Brand Integrity",
+                "stat_3_sub": "Clean, contextual, native partnerships that earn user trust",
+                "solutions_title": "Partnership & Sponsorship Formats",
+                "sol_1_tag": "Official Sponsor",
+                "sol_1_title": "Exclusive Category Sponsorship",
+                "sol_1_desc": "Own an entire tool category (e.g., 'PipeSlope powered by [Pipe Manufacturer]'). Your logo in the header and on every downloadable A4 engineering PDF.",
+                "sol_2_tag": "Affiliate & Commerce",
+                "sol_2_title": "Contextual Product Links",
+                "sol_2_desc": "Direct link to your catalog or online store to purchase calculated materials (e.g. pipe fittings, specialty paper stocks, laser distance meters).",
+                "sol_3_tag": "Custom Utility",
+                "sol_3_title": "White-Label & Custom Calculator",
+                "sol_3_desc": "Need a branded calculator featuring your product specs to embed on your website or distribute to installers? We build it for you.",
+                "sol_4_tag": "Lead Generation",
+                "sol_4_title": "Native RFQ Placement",
+                "sol_4_desc": "Capture qualified quote requests directly from specifiers and installers looking for building, plumbing, or print materials.",
+                "form_title": "Request Media Kit or Proposal",
+                "form_sub": "Fill in the form or email us at info@omnitoolslab.com. We reply within 24 business hours.",
+                "label_company": "Company / Engineering Firm *",
+                "label_name": "Full Name",
+                "label_email": "Work Email *",
+                "label_phone": "Phone (optional)",
+                "label_type": "Interested Partnership Type *",
+                "opt_sponsor": "Exclusive Tool Sponsorship",
+                "opt_affiliate": "Product Integration / Affiliate Program",
+                "opt_whitelabel": "Custom Branded Calculator (White-Label)",
+                "opt_other": "Other commercial inquiry",
+                "label_msg": "Brief description of your brand or proposal *",
+                "btn_submit": "Send Partnership Request",
+                "btn_submitting": "Submitting...",
+                "success_title": "Request Successfully Received!",
+                "success_desc": "Thank you for reaching out. We have logged your request and our team will get in touch with our Media Kit and custom proposals.",
+                "direct_contact_title": "Prefer direct email?",
+                "direct_contact_desc": "Reach out directly to",
+                "footer_disclaimer": "OmniTools Lab is an independent technical calculator suite. We partner exclusively with quality-verified manufacturers and distributors.",
+                "footer_rights": "© 2026 OmniTools Lab — Precision Utilities Suite. All rights reserved."
+            }
+        };
         let currentLang = 'it';
 
         function changeLanguage(lang) {

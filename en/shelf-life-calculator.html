@@ -11,10 +11,6 @@
     <link rel="canonical" href="https://www.omnitoolslab.com/en/shelf-life-calculator">
     <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=it" />
     <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=en" />
-    <link rel="alternate" hreflang="es" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=es" />
-    <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=fr" />
-    <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=de" />
-    <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=pt" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/shelflife" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -1139,7 +1135,7 @@ input[type="range"] {
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" onchange="if(this.value==='it'){window.location.href='/shelflife';}" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                     <option value="it">🇮🇹 IT</option>
                     <option value="en" selected>🇬🇧 EN</option>
                 </select>
@@ -1665,11 +1661,11 @@ input[type="range"] {
             calculate();
         }
 
-        const PRESETS_KEY = 'omnitools_shelflife_presets_v2';
-        const LEGACY_PRESETS_KEY = 'omnitools_shelflife_custom_presets_v1';
+        const PRESETS_KEY = 'omnitools_shelflife_presets_en_v2';
+        const LEGACY_PRESETS_KEY = 'omnitools_shelflife_custom_presets_en_v1';
         const DEFAULT_PRESETS = [
             { name: 'Fresh Pastry', val: 5, unit: 'days', note: '+4°C' },
-            { name: 'Leavened / Panettone', val: 45, unit: 'days', note: 'TMC' },
+            { name: 'Leavened / Panettone', val: 45, unit: 'days', note: 'Best Before' },
             { name: 'Dry Biscuits', val: 180, unit: 'days', note: '6 months' },
             { name: 'Chocolate / Frozen', val: 12, unit: 'months', note: '-18°C / Dry' }
         ];
@@ -2727,7 +2723,7 @@ document.addEventListener('click', (e) => {
 });
 
 
-// Global Navigation I18N Engine (6 Languages)
+// Global Navigation I18N Engine (2 Languages: IT & EN)
 const NAV_TRANSLATIONS = {
     it: {
         tab_home: 'Home Hub',
@@ -3245,7 +3241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // Global Footer I18N Engine (6 Languages)
+        // Global Footer I18N Engine (2 Languages: IT & EN)
         const FOOTER_TRANSLATIONS = {
     "it": {
         "rel_title": "Altri Calcolatori Tecnici Consigliati",
@@ -3445,7 +3441,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
             const tr = FOOTER_TRANSLATIONS[l];
 
-            // Update Division-Contextualized Native Sponsor Banner (6 Languages)
+            // Update Division-Contextualized Native Sponsor Banner (2 Languages: IT & EN)
             const SPONSOR_I18N = {
                 it: {
                     avail: "Postazione Esclusiva Disponibile",

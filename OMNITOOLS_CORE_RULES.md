@@ -49,8 +49,8 @@ Qualsiasi scheda o tool tecnico generato deve rispettare rigorosamente:
 ---
 
 ## 4. SISTEMA DI INTERNAZIONALIZZAZIONE (i18n)
-- **6 Lingue Supportate:** Italiano (`it`), Inglese (`en`), Spagnolo (`es`), Francese (`fr`), Tedesco (`de`), Portoghese (`pt`).
-- **Riconoscimento Automatico Locale:** All'accesso, se l'utente non ha espresso una preferenza manuale memorizzata in `localStorage.getItem('omnitools_lang')`, il browser legge `navigator.languages` e imposta automaticamente la lingua opportuna (es. Francia $\rightarrow$ FR, Argentina/Spagna $\rightarrow$ ES, Brasile/Portogallo $\rightarrow$ PT, UK/USA $\rightarrow$ EN, ecc.).
+- **2 Lingue Supportate:** Italiano (`it`) e Inglese (`en`).
+- **Riconoscimento Automatico Locale:** All'accesso, se l'utente non ha espresso una preferenza manuale memorizzata in `localStorage.getItem('omnitools_lang')`, il browser imposta Italiano (`it`) o Inglese (`en` sulle pagine `/en/`).
 - **Persistenza:** Se l'utente seleziona manualmente una lingua dal menu, la scelta viene salvata e preservata su tutte le pagine.
 
 ---
