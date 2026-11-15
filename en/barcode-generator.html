@@ -1188,7 +1188,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                         <label id="symbologyLabel" class="block text-xs font-bold text-slate-700 mb-1.5">
                             Simbologia / Standard Barcode
                         </label>
-                        <select id="symbologySelect" onchange="onSymbologyChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition cursor-pointer">
+                        <select id="symbologySelect" onchange="onSymbologyChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-base sm:text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition cursor-pointer">
                             <option value="EAN13">EAN-13 (Commercio & GDO Europa - GS1)</option>
                             <option value="GS1_128">GS1-128 / EAN-128 (Logistica Pallet & AI)</option>
                             <option value="ITF14">GS1 ITF-14 (Scatoloni, Imballaggi & Cartoni)</option>
@@ -1210,7 +1210,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                             </span>
                         </div>
                         <div class="relative">
-                            <input type="text" id="barcodeValue" value="801234567890" oninput="updateBarcode()" placeholder="Es. 801234567890" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs sm:text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition">
+                            <input type="text" id="barcodeValue" value="801234567890" oninput="updateBarcode()" placeholder="Es. 801234567890" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-base sm:text-sm font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition">
                             <button type="button" onclick="randomizeCode()" class="absolute right-2 top-1.5 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-rose-700 bg-white hover:bg-rose-50 rounded-lg border border-slate-200 transition" title="Genera codice casuale">
                                 🎲 Random
                             </button>
@@ -1306,7 +1306,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                             <label id="fontFamilyLabel" class="block text-[11px] font-bold text-slate-700 mb-1">
                                 Stile Carattere (Font Cifre)
                             </label>
-                            <select id="fontFamilySelect" onchange="updateBarcode()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
+                            <select id="fontFamilySelect" onchange="updateBarcode()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-base sm:text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
                                 <option value="ocrb" id="fontOcrbOpt" selected>OCR-B Ufficiale GS1 (Standard GDO)</option>
                                 <option value="monospace" id="fontMonoOpt">JetBrains Mono (Moderno & Chiaro)</option>
                                 <option value="sans" id="fontSansOpt">Sans-Serif Tecnico (Helvetica / Arial)</option>
@@ -1320,7 +1320,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                             <label id="fontWeightLabel" class="block text-[11px] font-bold text-slate-700 mb-1">
                                 Spessore Cifre
                             </label>
-                            <select id="fontWeightSelect" onchange="updateBarcode()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
+                            <select id="fontWeightSelect" onchange="updateBarcode()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-base sm:text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition cursor-pointer">
                                 <option value="normal" id="weightNormalOpt" selected>Normale (400)</option>
                                 <option value="bold" id="weightBoldOpt">Grassetto (Bold 700)</option>
                             </select>
@@ -1425,7 +1425,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 
                             <!-- Hex Input -->
                             <div class="w-24">
-                                <input type="text" id="activeColorHex" value="#000000" oninput="onActiveHexInput(this.value)" placeholder="#000000" class="w-full text-center font-mono font-bold text-xs uppercase py-2 px-2 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <input type="text" id="activeColorHex" value="#000000" oninput="onActiveHexInput(this.value)" placeholder="#000000" class="w-full text-center font-mono font-bold text-base sm:text-xs uppercase py-2 px-2 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             </div>
                         </div>
 
@@ -1491,7 +1491,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                     <!-- Interactive Guide Pill above Preview -->
                     <div id="previewInteractiveGuide" class="flex items-center justify-between px-3 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200/80 text-[11px] font-bold text-indigo-900 transition-all">
                         <div class="flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-indigo-600 animate-ping"></span>
+                            <span class="w-2 h-2 rounded-full bg-indigo-600 shrink-0"></span>
                             <span id="interactiveGuideText">🎯 Clicca sulle BARRE o sullo SFONDO per selezionare cosa colorare</span>
                         </div>
                         <span id="interactiveCurrentTag" class="text-[9px] uppercase px-1.5 py-0.2 rounded bg-indigo-600 text-white font-extrabold">BARRE ATTIVE</span>

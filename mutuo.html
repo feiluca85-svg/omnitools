@@ -1250,10 +1250,10 @@
                         <table class="w-full text-xs text-left">
                             <thead class="bg-slate-50 text-[10px] font-bold text-slate-500 uppercase sticky top-0 border-b border-slate-200">
                                 <tr>
-                                    <th class="p-2">Anno</th>
-                                    <th class="p-2 text-right">Quota Capitale</th>
-                                    <th class="p-2 text-right">Quota Interessi</th>
-                                    <th class="p-2 text-right">Debito Residuo</th>
+                                    <th class="p-2 whitespace-nowrap">Anno</th>
+                                    <th class="p-2 text-right whitespace-nowrap">Quota Capitale</th>
+                                    <th class="p-2 text-right whitespace-nowrap">Quota Interessi</th>
+                                    <th class="p-2 text-right whitespace-nowrap">Debito Residuo</th>
                                 </tr>
                             </thead>
                             <tbody id="tableBody" class="divide-y divide-slate-100 font-mono text-[11px]">
@@ -1313,7 +1313,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <divid="faq1A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         L'ammortamento alla francese è il piano più diffuso in Italia ed Europa. Prevede una <strong>rata periodica costante</strong> per tutta la durata del finanziamento. Ogni rata è suddivisa in <em>quota interessi</em> (calcolata sul debito residuo) e <em>quota capitale</em>. Nei primi anni, poiché il debito residuo è elevato, la rata è composta prevalentemente da interessi; col passare del tempo il capitale viene via via rimborsato, riducendo gli interessi e aumentando progressivamente la quota di capitale restituita ogni mese.
                     </div>
                 </details>
@@ -1325,7 +1325,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <divid="faq2A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         È il parametro prudenziale cardine (Debt-to-Income / DTI) utilizzato dagli istituti bancari per valutare il merito creditizio. Di norma, l'importo della rata mensile non deve superare un terzo (<strong>30% - 35%</strong>) del reddito netto mensile complessivo dei richiedenti (al netto di altri prestiti personali o finanziamenti auto già in essere), garantendo una soglia minima di sussistenza per le spese correnti e imprevisti.
                     </div>
                 </details>
@@ -1337,7 +1337,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <divid="faq3A"  class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
                         Il <strong>TAN</strong> (Tasso Annuo Nominale) misura il tasso di interesse puro applicato al prestito. Il <strong>TAEG</strong> (Tasso Annuo Effettivo Globale) è invece l'indicatore reale del costo complessivo del finanziamento: include obbligatoriamente per legge tutte le spese accessorie, tra cui imposta sostitutiva statale, spese di istruttoria, perizia dell'immobile, polizza assicurativa incendio e scoppio obbligatoria e spese di incasso rata. È il TAEG il valore da confrontare tra diverse banche.
                     </div>
                 </details>
@@ -3236,10 +3236,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 tableHtml += `
                     <tr class="hover:bg-slate-50/80">
-                        <td class="p-2 font-bold">${y}° Anno</td>
-                        <td class="p-2 text-right text-emerald-700">${formatMoney(yearPrincipal)}</td>
-                        <td class="p-2 text-right text-rose-600">${formatMoney(yearInterest)}</td>
-                        <td class="p-2 text-right font-bold">${formatMoney(balance)}</td>
+                        <td class="p-2 font-bold whitespace-nowrap">${y}° Anno</td>
+                        <td class="p-2 text-right text-emerald-700 whitespace-nowrap">${formatMoney(yearPrincipal)}</td>
+                        <td class="p-2 text-right text-rose-600 whitespace-nowrap">${formatMoney(yearInterest)}</td>
+                        <td class="p-2 text-right font-bold whitespace-nowrap">${formatMoney(balance)}</td>
                     </tr>
                 `;
             }
