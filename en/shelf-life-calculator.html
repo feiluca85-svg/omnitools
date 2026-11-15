@@ -4266,12 +4266,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 nodeOriginals.set(node, node.nodeValue);
             }
             const orig = nodeOriginals.get(node);
-            const trimmed = orig.trim();
-            if (!trimmed) return;
+            const norm = orig.replace(/\s+/g, " ").trim();
+            if (!norm) return;
             if (lang === "it" || !dict) {
                 node.nodeValue = orig;
-            } else if (dict[trimmed]) {
-                node.nodeValue = orig.replace(trimmed, dict[trimmed]);
+            } else if (dict[norm]) {
+                node.nodeValue = orig.replace(orig.trim(), dict[norm]);
+            } else {
+                let updated = orig;
+                for (const [k, v] of Object.entries(dict)) {
+                    if (k.length > 5 && updated.includes(k)) {
+                        updated = updated.replace(k, v);
+                    }
+                }
+                node.nodeValue = updated;
             }
         });
     };
