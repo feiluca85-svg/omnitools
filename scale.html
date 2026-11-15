@@ -27,78 +27,79 @@
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "OmniTools - Calcolo Scale & Legge di Blondel",
+    "url": "https://www.omnitoolslab.com/scale",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Calcolatore professionale per scale d'interni e cantiere con verifica Legge di Blondel, D.M. 236/89 e DIN 18065.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "OmniTools - Calcolo Scale & Legge di Blondel",
-        "url": "https://www.omnitoolslab.com/scale",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "description": "Calcolatore professionale per scale d'interni e cantiere con verifica Legge di Blondel, D.M. 236/89 e DIN 18065.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "ScalaFacile",
+        "item": "https://www.omnitoolslab.com/scale"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Che cos'è la Legge di Blondel per il calcolo delle scale?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Legge di Blondel è la formula ergonomica di riferimento per progettare scale comode e sicure: 2a + p = 62÷64 cm (dove 'a' è l'alzata del gradino e 'p' è la pedata). Se la somma di due alzate più una pedata si avvicina a 63 cm, la salita rispetta il passo naturale dell'essere umano senza affaticamento muscolare eccessivo."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "ScalaFacile",
-            "item": "https://www.omnitoolslab.com/scale"
-          }
-        ]
+        "@type": "Question",
+        "name": "Quali sono le dimensioni ideali di alzata e pedata per una scala interna?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Per scale residenziali interne, l'alzata ottimale è compresa tra 16 e 18 cm, mentre la pedata ideale è tra 27 e 30 cm. Per edifici aperti al pubblico, la normativa DM 236/89 raccomanda alzate non superiori a 16 cm e pedate non inferiori a 30 cm con profilo continuo a spigoli arrotondati."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Che cos'è la Legge di Blondel per il calcolo delle scale?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La Legge di Blondel è la formula ergonomica di riferimento per progettare scale comode e sicure: 2a + p = 62÷64 cm (dove 'a' è l'alzata del gradino e 'p' è la pedata). Se la somma di due alzate più una pedata si avvicina a 63 cm, la salita rispetta il passo naturale dell'essere umano senza affaticamento muscolare eccessivo."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Quali sono le dimensioni ideali di alzata e pedata per una scala interna?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Per scale residenziali interne, l'alzata ottimale è compresa tra 16 e 18 cm, mentre la pedata ideale è tra 27 e 30 cm. Per edifici aperti al pubblico, la normativa DM 236/89 raccomanda alzate non superiori a 16 cm e pedate non inferiori a 30 cm con profilo continuo a spigoli arrotondati."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Ogni quanti gradini è obbligatorio inserire un pianerottolo di riposo?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ai sensi delle normative tecniche e di sicurezza sul lavoro, ogni rampa continua non dovrebbe superare i 15 gradini (consigliato massimo 10-12 gradini in ambito pubblico). Quando il dislivello totale supera i 2.5 - 3.0 metri, è obbligatorio inserire un pianerottolo orizzontale di riposo con profondità almeno pari alla larghezza della rampa della scala."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Come si calcola la pendenza e lo sviluppo totale a terra di una rampa di scale?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Lo sviluppo a terra (ingombro orizzontale) è dato dalla moltiplicazione tra la pedata e il numero di pedate: Lunghezza = Pedata × (Numero Gradini - 1). La pendenza percentuale è pari a (Dislivello Totale / Sviluppo a terra) × 100."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Ogni quanti gradini è obbligatorio inserire un pianerottolo di riposo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ai sensi delle normative tecniche e di sicurezza sul lavoro, ogni rampa continua non dovrebbe superare i 15 gradini (consigliato massimo 10-12 gradini in ambito pubblico). Quando il dislivello totale supera i 2.5 - 3.0 metri, è obbligatorio inserire un pianerottolo orizzontale di riposo con profondità almeno pari alla larghezza della rampa della scala."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come si calcola la pendenza e lo sviluppo totale a terra di una rampa di scale?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lo sviluppo a terra (ingombro orizzontale) è dato dalla moltiplicazione tra la pedata e il numero di pedate: Lunghezza = Pedata × (Numero Gradini - 1). La pendenza percentuale è pari a (Dislivello Totale / Sviluppo a terra) × 100."
+        }
       }
     ]
+  }
+]
     </script>
     <link rel="manifest" href="manifest-building.json">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">

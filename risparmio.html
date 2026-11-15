@@ -88,89 +88,93 @@
 
     <!-- Schema.org JSON-LD Structured Data for Rich Snippets -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "@id": "https://www.omnitoolslab.com/risparmio#app",
+      "url": "https://www.omnitoolslab.com/risparmio",
+      "name": "ObiettivoRisparmio — Calcolatore Quota Risparmio Mensile & Sinking Fund",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "description": "Calcolatore gratuito di risparmio mensile per raggiungere obiettivi prefissati (anticipo casa, fondo emergenza, viaggi) con effetto interesse composto.",
+      "inLanguage": [
+        "it",
+        "en"
+      ],
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.omnitoolslab.com/risparmio#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebApplication",
-          "@id": "https://www.omnitoolslab.com/risparmio#app",
-          "url": "https://www.omnitoolslab.com/risparmio",
-          "name": "ObiettivoRisparmio — Calcolatore Quota Risparmio Mensile & Sinking Fund",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "description": "Calcolatore gratuito di risparmio mensile per raggiungere obiettivi prefissati (anticipo casa, fondo emergenza, viaggi) con effetto interesse composto.",
-          "inLanguage": ["it", "en"]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OmniTools Lab",
+          "item": "https://www.omnitoolslab.com"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://www.omnitoolslab.com/risparmio#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "OmniTools Lab",
-              "item": "https://www.omnitoolslab.com"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "OmniFinance",
-              "item": "https://www.omnitoolslab.com/#sectionFinance"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Obiettivo di Risparmio",
-              "item": "https://www.omnitoolslab.com/risparmio"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "OmniFinance",
+          "item": "https://www.omnitoolslab.com/#sectionFinance"
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://www.omnitoolslab.com/risparmio#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Cos'è un Sinking Fund (Fondo Spese Future)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Un Sinking Fund è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota, evitando di intaccare il fondo emergenza o ricorrere a prestiti bancari."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Quanto dovrebbe essere grande un Fondo di Emergenza?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La regola generale raccomanda di accantonare tra i 3 e i 6 mesi di spese vive essenziali (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi è consigliabile raggiungere 6-9 mesi."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Conviene tenere i risparmi sul conto corrente o su un conto deposito?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri come i conti deposito svincolabili permettono di maturare interessi senza rischi."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Come calcolare la quota mensile corretta?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La formula sottrae il capitale iniziale dall'obiettivo e divide per i mesi disponibili, riducendo l'importo necessario qualora i fondi vengano remunerati da un rendimento composto."
-              }
-            }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Obiettivo di Risparmio",
+          "item": "https://www.omnitoolslab.com/risparmio"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.omnitoolslab.com/risparmio#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cos'è un Sinking Fund (Fondo Spese Future)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un Sinking Fund è una strategia di finanza personale che consiste nel mettere da parte una somma mensile fissa destinata a una spesa specifica futura nota, evitando di intaccare il fondo emergenza o ricorrere a prestiti bancari."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto dovrebbe essere grande un Fondo di Emergenza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La regola generale raccomanda di accantonare tra i 3 e i 6 mesi di spese vive essenziali (mutuo/affitto, bollette, spesa alimentare). Per lavoratori autonomi è consigliabile raggiungere 6-9 mesi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Conviene tenere i risparmi sul conto corrente o su un conto deposito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I soldi fermi sul conto corrente perdono potere d'acquisto a causa dell'inflazione. Per obiettivi a breve-medio termine (1-5 anni), strumenti sicuri come i conti deposito svincolabili permettono di maturare interessi senza rischi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come calcolare la quota mensile corretta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La formula sottrae il capitale iniziale dall'obiettivo e divide per i mesi disponibili, riducendo l'importo necessario qualora i fondi vengano remunerati da un rendimento composto."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 <style id="omniDarkStyles">
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */

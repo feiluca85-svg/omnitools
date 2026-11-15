@@ -37,71 +37,72 @@
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "TileEasy — Tile, Waste, Adhesive & Grout Calculator",
+    "url": "https://www.omnitoolslab.com/en/tile-grout-calculator",
+    "inLanguage": "en-US",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Professional flooring and wall tile calculator for net/gross area, cutting waste factor, box quantities, mortar adhesive bags, and ISO joint grout consumption.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "TileEasy — Tile, Waste, Adhesive & Grout Calculator",
-        "url": "https://www.omnitoolslab.com/en/tile-grout-calculator",
-        "inLanguage": "en-US",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "description": "Professional flooring and wall tile calculator for net/gross area, cutting waste factor, box quantities, mortar adhesive bags, and ISO joint grout consumption.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tile & Grout Calculator",
+        "item": "https://www.omnitoolslab.com/en/tile-grout-calculator"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much extra tile should I order for cutting waste?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a standard straight grid layout in rectangular rooms, add 10% for perimeter cuts and breakage. For staggered (running bond) layouts add 12%, for diagonal layouts add 15%, and for herringbone patterns add 20%. Always keep one unopened box for future repairs."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Tile & Grout Calculator",
-            "item": "https://www.omnitoolslab.com/en/tile-grout-calculator"
-          }
-        ]
+        "@type": "Question",
+        "name": "How is tile adhesive mortar consumption calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Adhesive coverage depends on tile size and trowel notch depth: small formats (6 mm notch) use ~3.0 kg/m², medium tiles like 30x60 or 60x60 cm (8–10 mm notch) use ~4.5 kg/m², and large-format slabs or outdoor installations with back-buttering require ~6.0 kg/m²."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How much extra tile should I order for cutting waste?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "For a standard straight grid layout in rectangular rooms, add 10% for perimeter cuts and breakage. For staggered (running bond) layouts add 12%, for diagonal layouts add 15%, and for herringbone patterns add 20%. Always keep one unopened box for future repairs."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How is tile adhesive mortar consumption calculated?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Adhesive coverage depends on tile size and trowel notch depth: small formats (6 mm notch) use ~3.0 kg/m², medium tiles like 30x60 or 60x60 cm (8–10 mm notch) use ~4.5 kg/m², and large-format slabs or outdoor installations with back-buttering require ~6.0 kg/m²."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What formula is used to estimate joint grout quantity?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Grout consumption in kg/m² follows the standard industrial formula: ((Tile Width + Tile Length) / (Tile Width × Tile Length)) × Tile Thickness (mm) × Joint Width (mm) × 1.6 (grout density g/cm³)."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "What formula is used to estimate joint grout quantity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grout consumption in kg/m² follows the standard industrial formula: ((Tile Width + Tile Length) / (Tile Width × Tile Length)) × Tile Thickness (mm) × Joint Width (mm) × 1.6 (grout density g/cm³)."
+        }
       }
     ]
+  }
+]
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>

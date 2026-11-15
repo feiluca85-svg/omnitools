@@ -27,79 +27,80 @@
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "TaglioOttimo — Ottimizzatore di Taglio Lineare 1D",
+      "url": "https://www.omnitoolslab.com/taglio",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "description": "Applicazione professionale per ottimizzare il piano di taglio 1D di travi in legno, profilati in metallo e tubi idraulici con compensazione dello spessore lama.",
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "WebApplication",
-          "name": "TaglioOttimo — Ottimizzatore di Taglio Lineare 1D",
-          "url": "https://www.omnitoolslab.com/taglio",
-          "applicationCategory": "UtilityApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "description": "Applicazione professionale per ottimizzare il piano di taglio 1D di travi in legno, profilati in metallo e tubi idraulici con compensazione dello spessore lama."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OmniTools Lab",
+          "item": "https://www.omnitoolslab.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "OmniTools Lab",
-              "item": "https://www.omnitoolslab.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "TaglioOttimo",
-              "item": "https://www.omnitoolslab.com/taglio"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "TaglioOttimo",
+          "item": "https://www.omnitoolslab.com/taglio"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Che cos'è lo spessore della lama (Kerf) e perché va calcolato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il Kerf è la larghezza di materiale asportata dalla lama (in media 3 mm per legno, 1.5-2 mm per ferro). Senza calcolare il kerf, ogni taglio riduce la barra e l'ultimo pezzo risulterà corto e inservibile."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Che cos'è lo spessore della lama (Kerf) e perché va calcolato?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Il Kerf è la larghezza di materiale asportata dalla lama (in media 3 mm per legno, 1.5-2 mm per ferro). Senza calcolare il kerf, ogni taglio riduce la barra e l'ultimo pezzo risulterà corto e inservibile."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Come funziona l'algoritmo di calcolo (First Fit Decreasing)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "L'algoritmo ordina i pezzi richiesti dal più lungo al più corto e li assegna alla prima barra utile con spazio residuo, riducendo al minimo sfridi e barre necessarie."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Posso usare questo calcolatore per profilati metallici, tubi e battiscopa?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Certamente. Qualsiasi materiale lineare continuo (travi, canali, tubi PVC, alluminio, acciaio) segue esattamente la stessa geometria di taglio 1D."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Come gestire lo sfrido finale residuo per non sprecare materiale?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Il diagramma visivo quantifica gli spezzoni utili per riutilizzarli in progetti futuri prima di acquistare nuove barre."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Come funziona l'algoritmo di calcolo (First Fit Decreasing)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'algoritmo ordina i pezzi richiesti dal più lungo al più corto e li assegna alla prima barra utile con spazio residuo, riducendo al minimo sfridi e barre necessarie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso usare questo calcolatore per profilati metallici, tubi e battiscopa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Certamente. Qualsiasi materiale lineare continuo (travi, canali, tubi PVC, alluminio, acciaio) segue esattamente la stessa geometria di taglio 1D."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come gestire lo sfrido finale residuo per non sprecare materiale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il diagramma visivo quantifica gli spezzoni utili per riutilizzarli in progetti futuri prima di acquistare nuove barre."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Tailwind CSS CDN -->

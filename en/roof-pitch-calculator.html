@@ -27,80 +27,81 @@
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "RoofSlope — Roof Pitch, Rafter Length & Surface Area Calculator",
+      "url": "https://www.omnitoolslab.com/en/roof-pitch-calculator",
+      "inLanguage": "en-US",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Interactive roof geometry calculator for pitch in percentage and degrees, ridge height, true rafter length with eaves overhang, and roof slope surface area.",
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "WebApplication",
-          "name": "RoofSlope — Roof Pitch, Rafter Length & Surface Area Calculator",
-          "url": "https://www.omnitoolslab.com/en/roof-pitch-calculator",
-          "inLanguage": "en-US",
-          "applicationCategory": "UtilitiesApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "description": "Interactive roof geometry calculator for pitch in percentage and degrees, ridge height, true rafter length with eaves overhang, and roof slope surface area."
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OmniTools Lab",
+          "item": "https://www.omnitoolslab.com/"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "OmniTools Lab",
-              "item": "https://www.omnitoolslab.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Roof Pitch Calculator",
-              "item": "https://www.omnitoolslab.com/en/roof-pitch-calculator"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Roof Pitch Calculator",
+          "item": "https://www.omnitoolslab.com/en/roof-pitch-calculator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you convert roof slope percentage to degrees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the inverse tangent formula: Degrees = arctan(Slope % / 100) × (180 / π). For example, a 30% roof pitch equals approximately 16.7°."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How do you convert roof slope percentage to degrees?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Use the inverse tangent formula: Degrees = arctan(Slope % / 100) × (180 / π). For example, a 30% roof pitch equals approximately 16.7°."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the minimum recommended pitch for a tile roof?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Traditional clay or concrete interlocking tiles generally require a minimum pitch of 30% to 35% (approx. 17°–19°) for rapid rainwater runoff without capillary backflow, whereas standing-seam metal roofs can operate down to 7%–10%."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do you calculate the true surface area of a pitched roof slope?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Multiply the true inclined rafter length (hypotenuse of horizontal run and ridge rise, plus eaves overhang) by the horizontal building length along the eaves line."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does eaves overhang affect rafter cut length?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The eaves overhang projects beyond the exterior wall plate to shield the facade from rainwater and must be added to the theoretical hypotenuse length when ordering and cutting timber rafters."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "What is the minimum recommended pitch for a tile roof?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional clay or concrete interlocking tiles generally require a minimum pitch of 30% to 35% (approx. 17°–19°) for rapid rainwater runoff without capillary backflow, whereas standing-seam metal roofs can operate down to 7%–10%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you calculate the true surface area of a pitched roof slope?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the true inclined rafter length (hypotenuse of horizontal run and ridge rise, plus eaves overhang) by the horizontal building length along the eaves line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does eaves overhang affect rafter cut length?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The eaves overhang projects beyond the exterior wall plate to shield the facade from rainwater and must be added to the theoretical hypotenuse length when ordering and cutting timber rafters."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- PWA & Mobile Icons -->

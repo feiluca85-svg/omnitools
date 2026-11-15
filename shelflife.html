@@ -27,76 +27,77 @@
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ShelfLife & Export Date — Calcolo Scadenza Alimentare, TMC e Lotto",
+    "url": "https://www.omnitoolslab.com/shelflife",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "Calcolatore per date di scadenza e TMC alimentari (Reg. UE 1169/2011), formattazione doganale per USA (FDA), Canada (CFIA), Paesi del Golfo (GCC GSO 9) e Giappone (Regola 1/3), con decodifica lotto Julian Date.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "ShelfLife & Export Date — Calcolo Scadenza Alimentare, TMC e Lotto",
-        "url": "https://www.omnitoolslab.com/shelflife",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "description": "Calcolatore per date di scadenza e TMC alimentari (Reg. UE 1169/2011), formattazione doganale per USA (FDA), Canada (CFIA), Paesi del Golfo (GCC GSO 9) e Giappone (Regola 1/3), con decodifica lotto Julian Date.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "OmniFood",
+        "item": "https://www.omnitoolslab.com/#food"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ShelfLife & Export Date",
+        "item": "https://www.omnitoolslab.com/shelflife"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual è la differenza tra Data di Scadenza e Termine Minimo di Conservazione (TMC)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Secondo il Regolamento UE 1169/2011, la Data di Scadenza ('Da consumarsi entro') si applica ai prodotti molto deperibili dal punto di vista microbiologico, mentre il TMC ('Da consumarsi preferibilmente entro') indica la data fino alla quale l'alimento conserva le sue proprietà specifiche se conservato correttamente."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "OmniFood",
-            "item": "https://www.omnitoolslab.com/#food"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "ShelfLife & Export Date",
-            "item": "https://www.omnitoolslab.com/shelflife"
-          }
-        ]
+        "@type": "Question",
+        "name": "Come vengono formattate le date di scadenza per USA (FDA), Canada (CFIA) e Paesi del Golfo (GCC GSO 9)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Negli USA (FDA) il formato abituale premette il mese al giorno (MM/DD/YYYY o MMM DD, YYYY). In Canada (CFIA) è obbligatorio il formato bilingue inglese/francese con anno, mese bilingue a 2 lettere e giorno (es. YYYY MA DD). Nei Paesi del Golfo (GSO 9) sono obbligatorie sia la data di produzione (PROD) sia la scadenza (EXP) in ordine giorno/mese/anno."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Qual è la differenza tra Data di Scadenza e Termine Minimo di Conservazione (TMC)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Secondo il Regolamento UE 1169/2011, la Data di Scadenza ('Da consumarsi entro') si applica ai prodotti molto deperibili dal punto di vista microbiologico, mentre il TMC ('Da consumarsi preferibilmente entro') indica la data fino alla quale l'alimento conserva le sue proprietà specifiche se conservato correttamente."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Come vengono formattate le date di scadenza per USA (FDA), Canada (CFIA) e Paesi del Golfo (GCC GSO 9)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Negli USA (FDA) il formato abituale premette il mese al giorno (MM/DD/YYYY o MMM DD, YYYY). In Canada (CFIA) è obbligatorio il formato bilingue inglese/francese con anno, mese bilingue a 2 lettere e giorno (es. YYYY MA DD). Nei Paesi del Golfo (GSO 9) sono obbligatorie sia la data di produzione (PROD) sia la scadenza (EXP) in ordine giorno/mese/anno."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Come funziona il codice lotto con data giuliana (Julian Date)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Il formato Julian Date codifica la data di produzione con l'ultima o le ultime due cifre dell'anno seguite dal numero progressivo del giorno dell'anno da 001 a 365 (o 366 negli anni bisestili), ad esempio L26319 per il 319° giorno del 2026."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Come funziona il codice lotto con data giuliana (Julian Date)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il formato Julian Date codifica la data di produzione con l'ultima o le ultime due cifre dell'anno seguite dal numero progressivo del giorno dell'anno da 001 a 365 (o 366 negli anni bisestili), ad esempio L26319 per il 319° giorno del 2026."
+        }
       }
     ]
+  }
+]
     </script>
 
     <!-- Favicon & PWA -->

@@ -27,79 +27,80 @@
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "StairCalculator — Riser, Tread & Blondel Law Calculator",
+    "url": "https://www.omnitoolslab.com/en/stair-calculator",
+    "inLanguage": "en-US",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Professional stair calculator for interior, exterior, and construction stairs with Blondel Law (2R + T = 63 cm), DIN 18065, and ergonomic compliance check.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "StairCalculator — Riser, Tread & Blondel Law Calculator",
-        "url": "https://www.omnitoolslab.com/en/stair-calculator",
-        "inLanguage": "en-US",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "description": "Professional stair calculator for interior, exterior, and construction stairs with Blondel Law (2R + T = 63 cm), DIN 18065, and ergonomic compliance check.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Stair Calculator",
+        "item": "https://www.omnitoolslab.com/en/stair-calculator"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Blondel's Law for stair design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blondel's Law is the reference ergonomic formula for designing comfortable and safe stairs: 2R + T = 62 to 64 cm (where R is the riser height and T is the tread depth). When twice the riser plus one tread equals roughly 63 cm (24.8 inches), the stair matches natural human stride length."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Stair Calculator",
-            "item": "https://www.omnitoolslab.com/en/stair-calculator"
-          }
-        ]
+        "@type": "Question",
+        "name": "What are the ideal riser and tread dimensions for an interior staircase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For residential interior stairs, the optimal riser height is between 16 and 18 cm (6.3–7.1 in), while the ideal tread depth is between 27 and 30 cm (10.6–11.8 in). For public access buildings, risers should not exceed 16 cm and treads should be at least 30 cm."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is Blondel's Law for stair design?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Blondel's Law is the reference ergonomic formula for designing comfortable and safe stairs: 2R + T = 62 to 64 cm (where R is the riser height and T is the tread depth). When twice the riser plus one tread equals roughly 63 cm (24.8 inches), the stair matches natural human stride length."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are the ideal riser and tread dimensions for an interior staircase?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "For residential interior stairs, the optimal riser height is between 16 and 18 cm (6.3–7.1 in), while the ideal tread depth is between 27 and 30 cm (10.6–11.8 in). For public access buildings, risers should not exceed 16 cm and treads should be at least 30 cm."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "After how many steps is an intermediate stair landing required?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Under building and safety standards, a continuous flight of stairs should not exceed 15 steps (10–12 steps recommended in public buildings). When total vertical rise exceeds 2.5 to 3.0 meters, an intermediate horizontal landing at least as deep as the stair width is required."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do you calculate total horizontal run and slope of a staircase?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Total horizontal run is calculated by multiplying tread depth by the number of treads: Run = Tread × (Number of Steps - 1). Stair slope percentage is (Total Rise / Total Run) × 100."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "After how many steps is an intermediate stair landing required?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under building and safety standards, a continuous flight of stairs should not exceed 15 steps (10–12 steps recommended in public buildings). When total vertical rise exceeds 2.5 to 3.0 meters, an intermediate horizontal landing at least as deep as the stair width is required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you calculate total horizontal run and slope of a staircase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Total horizontal run is calculated by multiplying tread depth by the number of treads: Run = Tread × (Number of Steps - 1). Stair slope percentage is (Total Rise / Total Run) × 100."
+        }
       }
     ]
+  }
+]
     </script>
     <link rel="manifest" href="/manifest-building.json">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6">

@@ -29,71 +29,72 @@
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "RampSlope — Ramp Slope, Grade & ADA Compliance Calculator",
+    "url": "https://www.omnitoolslab.com/en/ramp-slope-calculator",
+    "inLanguage": "en-US",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Professional ramp slope and grade calculator in percentage (%), degrees, and 1:X ratio with instant wheelchair accessibility (ADA 1:12 / DM 236) and vehicle driveway checks.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "RampSlope — Ramp Slope, Grade & ADA Compliance Calculator",
-        "url": "https://www.omnitoolslab.com/en/ramp-slope-calculator",
-        "inLanguage": "en-US",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "description": "Professional ramp slope and grade calculator in percentage (%), degrees, and 1:X ratio with instant wheelchair accessibility (ADA 1:12 / DM 236) and vehicle driveway checks.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Ramp Slope Calculator",
+        "item": "https://www.omnitoolslab.com/en/ramp-slope-calculator"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the maximum legal slope for a wheelchair ramp (ADA & EN standards)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under the Americans with Disabilities Act (ADA), the maximum allowed slope for a wheelchair ramp is 1:12 (8.33%), with a maximum single rise of 30 inches (76 cm) before a flat landing is required. A gentle 1:20 slope (5%) is recommended for effortless independent propulsion."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Ramp Slope Calculator",
-            "item": "https://www.omnitoolslab.com/en/ramp-slope-calculator"
-          }
-        ]
+        "@type": "Question",
+        "name": "What is the maximum slope for a residential garage driveway?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Building codes typically allow a maximum gradient of 20% (approx. 11.3°) for straight vehicle ramps and 15% for curved ramps. However, to prevent low-clearance vehicles from scraping their bumper or undercarriage, a slope between 12% and 15% with transition blends is strongly advised."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the maximum legal slope for a wheelchair ramp (ADA & EN standards)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Under the Americans with Disabilities Act (ADA), the maximum allowed slope for a wheelchair ramp is 1:12 (8.33%), with a maximum single rise of 30 inches (76 cm) before a flat landing is required. A gentle 1:20 slope (5%) is recommended for effortless independent propulsion."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the maximum slope for a residential garage driveway?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Building codes typically allow a maximum gradient of 20% (approx. 11.3°) for straight vehicle ramps and 15% for curved ramps. However, to prevent low-clearance vehicles from scraping their bumper or undercarriage, a slope between 12% and 15% with transition blends is strongly advised."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do you calculate ramp slope percentage from rise and run?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Divide the vertical rise by the horizontal run and multiply by 100: Slope (%) = (Rise / Run) × 100. For example, a 40 cm vertical rise over a 500 cm horizontal run gives (40 / 500) × 100 = 8%."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "How do you calculate ramp slope percentage from rise and run?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide the vertical rise by the horizontal run and multiply by 100: Slope (%) = (Rise / Run) × 100. For example, a 40 cm vertical rise over a 500 cm horizontal run gives (40 / 500) × 100 = 8%."
+        }
       }
     ]
+  }
+]
     </script>
     <link rel="manifest" href="/manifest-building.json">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6">

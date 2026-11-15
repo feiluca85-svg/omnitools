@@ -23,60 +23,61 @@
 
     <!-- Schema.org JSON-LD Structured Data (WebApplication + FAQPage) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CoperturaFacile — Calcolo Copertura Inchiostro CMYK",
+    "url": "https://www.omnitoolslab.com/copertura",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "All",
+    "description": "Strumento professionale di prestampa per misurare la copertura percentuale di inchiostro CMYK, mappare le aree TAC critiche e calcolare i costi di tiratura.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "CoperturaFacile — Calcolo Copertura Inchiostro CMYK",
-        "url": "https://www.omnitoolslab.com/copertura",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "All",
-        "description": "Strumento professionale di prestampa per misurare la copertura percentuale di inchiostro CMYK, mappare le aree TAC critiche e calcolare i costi di tiratura.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
+        "@type": "Question",
+        "name": "Come si calcola la copertura percentuale di inchiostro in una pagina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La copertura di un singolo colore (C, M, Y o K) corrisponde alla media ponderata della densità di quel colore su tutti i pixel dell'area stampabile."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Come si calcola la copertura percentuale di inchiostro in una pagina?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La copertura di un singolo colore (C, M, Y o K) corrisponde alla media ponderata della densità di quel colore su tutti i pixel dell'area stampabile."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Perché le tipografie e i centri stampa chiedono la percentuale di copertura?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "I contratti di noleggio e toner si basano su una copertura standard del 5% per colore. Pagine con fondi pieni o fotografie consumano fino a 10 volte più inchiostro."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Cosa indica la Mappa Termica TAC (Heatmap)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Evidenzia in rosso le coordinate dove la somma degli inchiostri supera il 310%, segnalando il rischio di sbavature e fogli incollati."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "I file caricati vengono salvati o inviati a qualche server?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Il calcolo viene eseguito al 100% all'interno della memoria RAM del tuo browser tramite l'API Canvas di HTML5."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Perché le tipografie e i centri stampa chiedono la percentuale di copertura?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I contratti di noleggio e toner si basano su una copertura standard del 5% per colore. Pagine con fondi pieni o fotografie consumano fino a 10 volte più inchiostro."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cosa indica la Mappa Termica TAC (Heatmap)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evidenzia in rosso le coordinate dove la somma degli inchiostri supera il 310%, segnalando il rischio di sbavature e fogli incollati."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I file caricati vengono salvati o inviati a qualche server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Il calcolo viene eseguito al 100% all'interno della memoria RAM del tuo browser tramite l'API Canvas di HTML5."
+        }
       }
     ]
+  }
+]
     </script>
 
     <!-- PWA & Mobile Icons -->

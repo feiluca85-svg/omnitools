@@ -23,60 +23,61 @@
 
     <!-- Schema.org JSON-LD Structured Data (WebApplication + FAQPage) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ResaCarta — Ottimizzazione Taglio Fogli Macchina",
+    "url": "https://www.omnitoolslab.com/resa",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "All",
+    "description": "Applicazione professionale per grafici, tipografi e preventivisti: calcolo della resa di taglio dai fogli macchina, disposizione con e senza rotazione, sfrido % e verifica senso fibra.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "ResaCarta — Ottimizzazione Taglio Fogli Macchina",
-        "url": "https://www.omnitoolslab.com/resa",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "All",
-        "description": "Applicazione professionale per grafici, tipografi e preventivisti: calcolo della resa di taglio dai fogli macchina, disposizione con e senza rotazione, sfrido % e verifica senso fibra.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
+        "@type": "Question",
+        "name": "Come si calcola la resa di taglio di un foglio macchina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La resa si calcola confrontando la disposizione dritta con la disposizione ruotata a 90 gradi e la combinazione mista, tenendo conto dei margini di pinza macchina e dei refili tra le pose."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Come si calcola la resa di taglio di un foglio macchina?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La resa si calcola confrontando la disposizione dritta con la disposizione ruotata a 90 gradi e la combinazione mista, tenendo conto dei margini di pinza macchina e dei refili tra le pose."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Perché il senso di fibra della carta conta nella piega?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Se la piega viene effettuata in controfibra (perpendicolare alle fibre di cellulosa), il cartoncino si spacca e i volumi resistono all'apertura piatta. La linea di piega deve essere parallela alla fibra."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Quanto spazio bisogna riservare per la pinza macchina?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Nelle macchine offset tradizionali il margine di presa pinza è solitamente compreso tra 10 e 15 mm su un lato lungo. Nelle macchine digitali il bordo non stampabile è solitamente tra 3 e 5 mm."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Come si calcola il peso della carta da ordinare?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Formula: Peso (kg) = (Base foglio in m × Altezza foglio in m × Grammatura in gsm × Totale fogli) / 1000."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Perché il senso di fibra della carta conta nella piega?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Se la piega viene effettuata in controfibra (perpendicolare alle fibre di cellulosa), il cartoncino si spacca e i volumi resistono all'apertura piatta. La linea di piega deve essere parallela alla fibra."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto spazio bisogna riservare per la pinza macchina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nelle macchine offset tradizionali il margine di presa pinza è solitamente compreso tra 10 e 15 mm su un lato lungo. Nelle macchine digitali il bordo non stampabile è solitamente tra 3 e 5 mm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Come si calcola il peso della carta da ordinare?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Formula: Peso (kg) = (Base foglio in m × Altezza foglio in m × Grammatura in gsm × Totale fogli) / 1000."
+        }
       }
     ]
+  }
+]
     </script>
 
     <!-- PWA & Mobile Icons -->

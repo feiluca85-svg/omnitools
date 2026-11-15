@@ -88,89 +88,93 @@
 
     <!-- Schema.org JSON-LD Structured Data for Rich Snippets -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "@id": "https://www.omnitoolslab.com/estinzione#app",
+      "url": "https://www.omnitoolslab.com/estinzione",
+      "name": "EstinzioneFacile — Simulatore Estinzione Anticipata Mutuo",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "description": "Simulatore di estinzione anticipata parziale del mutuo. Calcola se conviene abbassare la rata mensile o ridurre gli anni e il totale interessi risparmiati secondo la legge Bersani.",
+      "inLanguage": [
+        "it",
+        "en"
+      ],
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.omnitoolslab.com/estinzione#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebApplication",
-          "@id": "https://www.omnitoolslab.com/estinzione#app",
-          "url": "https://www.omnitoolslab.com/estinzione",
-          "name": "EstinzioneFacile — Simulatore Estinzione Anticipata Mutuo",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "description": "Simulatore di estinzione anticipata parziale del mutuo. Calcola se conviene abbassare la rata mensile o ridurre gli anni e il totale interessi risparmiati secondo la legge Bersani.",
-          "inLanguage": ["it", "en"]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OmniTools Lab",
+          "item": "https://www.omnitoolslab.com"
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://www.omnitoolslab.com/estinzione#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "OmniTools Lab",
-              "item": "https://www.omnitoolslab.com"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "OmniFinance",
-              "item": "https://www.omnitoolslab.com/#sectionFinance"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Estinzione Anticipata Mutuo",
-              "item": "https://www.omnitoolslab.com/estinzione"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "OmniFinance",
+          "item": "https://www.omnitoolslab.com/#sectionFinance"
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://www.omnitoolslab.com/estinzione#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "L'estinzione anticipata parziale del mutuo prevede penali o costi bancari?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. In Italia, grazie al Decreto Bersani (Legge 40/2007), per tutti i mutui stipulati o rinegoziati per l'acquisto o la ristrutturazione di immobili adibiti ad abitazione o attività professionale, le penali di estinzione anticipata totale o parziale sono nulle per legge."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Conviene di più abbassare la rata mensile o diminuire gli anni del mutuo?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Dal punto di vista puramente economico e matematico, ridurre gli anni del mutuo (durata) genera un risparmio di interessi notevolmente più elevato rispetto alla riduzione della sola rata."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Come viene ricalcolato l'ammortamento dopo un versamento anticipato?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La somma versata abbatte direttamente il debito residuo in quota capitale. Da quel momento, gli interessi futuri vengono calcolati dalla banca esclusivamente sul nuovo debito ridotto."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Esiste un importo minimo obbligatorio per l'estinzione parziale?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La legge non impone una soglia minima, ma molti contratti bancari indicano un importo minimo per singola operazione (spesso 1.000 € o l'equivalente di una rata mensile)."
-              }
-            }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Estinzione Anticipata Mutuo",
+          "item": "https://www.omnitoolslab.com/estinzione"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.omnitoolslab.com/estinzione#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "L'estinzione anticipata parziale del mutuo prevede penali o costi bancari?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. In Italia, grazie al Decreto Bersani (Legge 40/2007), per tutti i mutui stipulati o rinegoziati per l'acquisto o la ristrutturazione di immobili adibiti ad abitazione o attività professionale, le penali di estinzione anticipata totale o parziale sono nulle per legge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Conviene di più abbassare la rata mensile o diminuire gli anni del mutuo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dal punto di vista puramente economico e matematico, ridurre gli anni del mutuo (durata) genera un risparmio di interessi notevolmente più elevato rispetto alla riduzione della sola rata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come viene ricalcolato l'ammortamento dopo un versamento anticipato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La somma versata abbatte direttamente il debito residuo in quota capitale. Da quel momento, gli interessi futuri vengono calcolati dalla banca esclusivamente sul nuovo debito ridotto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Esiste un importo minimo obbligatorio per l'estinzione parziale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La legge non impone una soglia minima, ma molti contratti bancari indicano un importo minimo per singola operazione (spesso 1.000 € o l'equivalente di una rata mensile)."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 <style id="omniDarkStyles">
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */

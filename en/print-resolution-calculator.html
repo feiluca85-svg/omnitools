@@ -27,78 +27,79 @@
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI",
+    "url": "https://www.omnitoolslab.com/dpi",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "All",
+    "description": "Calcolatore professionale per grafici, fotografi e tipografi per la conversione accurata tra pixel, cm di stampa e risoluzione DPI con distanza di visione.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "OmniTools - Calcolo Risoluzione Stampa, Pixel & DPI",
-        "url": "https://www.omnitoolslab.com/dpi",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "All",
-        "description": "Calcolatore professionale per grafici, fotografi e tipografi per la conversione accurata tra pixel, cm di stampa e risoluzione DPI con distanza di visione.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "RisoluzioneFacile",
+        "item": "https://www.omnitoolslab.com/dpi"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual è la differenza tra DPI e PPI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PPI (Pixels Per Inch) indica il numero di pixel digitali per pollice all'interno di un file raster o su uno schermo. DPI (Dots Per Inch) indica invece i punti fisici di inchiostro che la macchina da stampa o il plotter deposita sulla carta. Nel flusso di lavoro di prestampa grafica si usano come sinonimi, ma il calcolo matematico della dimensione del documento si basa rigorosamente sulla formula PPI."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "RisoluzioneFacile",
-            "item": "https://www.omnitoolslab.com/dpi"
-          }
-        ]
+        "@type": "Question",
+        "name": "Servono davvero 300 DPI per stampare striscioni o cartelloni 6x3 metri?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, è uno degli errori più diffusi che genera file da molti Gigabyte impossibili da gestire. La risoluzione necessaria dipende esclusivamente dalla distanza dell'osservatore (acuità visiva di 1 arcminuto). A 5 metri di distanza, un cartellone appare nitidissimo a soli 25-35 DPI, perché a quella distanza l'occhio umano non è fisicamente in grado di distinguere i singoli punti di stampa."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Qual è la differenza tra DPI e PPI?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "PPI (Pixels Per Inch) indica il numero di pixel digitali per pollice all'interno di un file raster o su uno schermo. DPI (Dots Per Inch) indica invece i punti fisici di inchiostro che la macchina da stampa o il plotter deposita sulla carta. Nel flusso di lavoro di prestampa grafica si usano come sinonimi, ma il calcolo matematico della dimensione del documento si basa rigorosamente sulla formula PPI."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Servono davvero 300 DPI per stampare striscioni o cartelloni 6x3 metri?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, è uno degli errori più diffusi che genera file da molti Gigabyte impossibili da gestire. La risoluzione necessaria dipende esclusivamente dalla distanza dell'osservatore (acuità visiva di 1 arcminuto). A 5 metri di distanza, un cartellone appare nitidissimo a soli 25-35 DPI, perché a quella distanza l'occhio umano non è fisicamente in grado di distinguere i singoli punti di stampa."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Come si calcolano le dimensioni di stampa in cm conoscendo pixel e DPI?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La formula esatta è: Centimetri = (Pixel / DPI) × 2.54. Ad esempio, per un file di 3000 pixel di larghezza stampato a 300 DPI: (3000 / 300) × 2.54 = 25.4 cm."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Quanti megapixel servono per stampare una foto in formato A4 o A3 a 300 DPI?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Per un foglio A4 (21×29.7 cm) a 300 DPI servono 2480×3508 pixel (circa 8.7 Megapixel). Per un foglio A3 (29.7×42 cm) a 300 DPI occorrono 3508×4961 pixel (circa 17.4 Megapixel). Qualsiasi fotocamera recente o smartphone moderno scatta file ampiamente sufficienti per la stampa di qualità."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Come si calcolano le dimensioni di stampa in cm conoscendo pixel e DPI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La formula esatta è: Centimetri = (Pixel / DPI) × 2.54. Ad esempio, per un file di 3000 pixel di larghezza stampato a 300 DPI: (3000 / 300) × 2.54 = 25.4 cm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanti megapixel servono per stampare una foto in formato A4 o A3 a 300 DPI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Per un foglio A4 (21×29.7 cm) a 300 DPI servono 2480×3508 pixel (circa 8.7 Megapixel). Per un foglio A3 (29.7×42 cm) a 300 DPI occorrono 3508×4961 pixel (circa 17.4 Megapixel). Qualsiasi fotocamera recente o smartphone moderno scatta file ampiamente sufficienti per la stampa di qualità."
+        }
       }
     ]
+  }
+]
     </script>
     <link rel="manifest" href="manifest-graph.json">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6">

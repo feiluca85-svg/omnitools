@@ -9,52 +9,53 @@
     
     <!-- Schema.org Structured Data (WebApplication + FAQPage) -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "TintaPerfetta — Matrice di Calibrazione CMYK",
+    "url": "https://www.omnitoolslab.com/tinta",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "All",
+    "description": "Matrice di scarto cromatico CMYK su misura per rotative a bobina, stampanti digitali SRA3 e formati personalizzati con campionamento colore pipetta contagocce.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "TintaPerfetta — Matrice di Calibrazione CMYK",
-        "url": "https://www.omnitoolslab.com/tinta",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "All",
-        "description": "Matrice di scarto cromatico CMYK su misura per rotative a bobina, stampanti digitali SRA3 e formati personalizzati con campionamento colore pipetta contagocce.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
+        "@type": "Question",
+        "name": "Perché il colore a video RGB non corrisponde mai al 100% alla stampa CMYK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I monitor emettono luce RGB con un gamut più ampio, mentre la stampa sottrae luce tramite inchiostri CMYK. La finitura della carta e la macchina modificano il risultato reale."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Perché il colore a video RGB non corrisponde mai al 100% alla stampa CMYK?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "I monitor emettono luce RGB con un gamut più ampio, mentre la stampa sottrae luce tramite inchiostri CMYK. La finitura della carta e la macchina modificano il risultato reale."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Come si usa la matrice di calibrazione TintaPerfetta?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Inserisci la ricetta colore stimata, stampa il file PDF vettoriale sul supporto reale con la tua macchina da stampa, confronta il tassello sotto luce D50 e imposta il codice vincente nel RIP."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Cos'è il Total Area Coverage (TAC) e perché è importante?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Il TAC è la somma delle percentuali dei quattro canali CMYK. Per carte patinate non deve superare il 300-320%, per uso mano 260% per evitare sbavature o problemi di asciugatura."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Come si usa la matrice di calibrazione TintaPerfetta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inserisci la ricetta colore stimata, stampa il file PDF vettoriale sul supporto reale con la tua macchina da stampa, confronta il tassello sotto luce D50 e imposta il codice vincente nel RIP."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cos'è il Total Area Coverage (TAC) e perché è importante?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il TAC è la somma delle percentuali dei quattro canali CMYK. Per carte patinate non deve superare il 300-320%, per uso mano 260% per evitare sbavature o problemi di asciugatura."
+        }
       }
     ]
+  }
+]
     </script>
 
     <!-- Canonical & SEO Meta Tags -->

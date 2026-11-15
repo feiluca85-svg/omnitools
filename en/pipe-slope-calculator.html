@@ -27,85 +27,86 @@
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PipeSlope — Drainage Pipe Gradient & Fall Calculator",
+    "url": "https://www.omnitoolslab.com/en/pipe-slope-calculator",
+    "inLanguage": "en-US",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Professional plumbing calculator for gravity drainage pipe slope, total vertical drop, fall per linear meter, and Manning self-cleansing velocity (EN 12056 / IPC).",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "isAccessibleForFree": true
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "PipeSlope — Drainage Pipe Gradient & Fall Calculator",
-        "url": "https://www.omnitoolslab.com/en/pipe-slope-calculator",
-        "inLanguage": "en-US",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "description": "Professional plumbing calculator for gravity drainage pipe slope, total vertical drop, fall per linear meter, and Manning self-cleansing velocity (EN 12056 / IPC).",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OmniTools Lab",
+        "item": "https://www.omnitoolslab.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "OmniBuilding",
+        "item": "https://www.omnitoolslab.com/#building"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Pipe Slope Calculator",
+        "item": "https://www.omnitoolslab.com/en/pipe-slope-calculator"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the minimum required slope for a sewer or drain pipe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Plumbing standards (EN 12056 and IPC) specify a minimum gradient of 1% (1 cm drop per meter, or approx. 1/8 inch per foot for 4-inch pipes) to maintain a self-cleansing flow velocity of at least 0.7 m/s and prevent solid sedimentation."
         }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "OmniTools Lab",
-            "item": "https://www.omnitoolslab.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "OmniBuilding",
-            "item": "https://www.omnitoolslab.com/#building"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Pipe Slope Calculator",
-            "item": "https://www.omnitoolslab.com/en/pipe-slope-calculator"
-          }
-        ]
+        "@type": "Question",
+        "name": "What happens if a drainage pipe slope is too steep?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When the slope exceeds 3.5% to 4%, liquid accelerates rapidly and outruns heavy suspended solids (liquid-solid separation), leaving waste stranded on the pipe invert and causing chronic blockages."
+        }
       },
       {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the minimum required slope for a sewer or drain pipe?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Plumbing standards (EN 12056 and IPC) specify a minimum gradient of 1% (1 cm drop per meter, or approx. 1/8 inch per foot for 4-inch pipes) to maintain a self-cleansing flow velocity of at least 0.7 m/s and prevent solid sedimentation."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What happens if a drainage pipe slope is too steep?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "When the slope exceeds 3.5% to 4%, liquid accelerates rapidly and outruns heavy suspended solids (liquid-solid separation), leaving waste stranded on the pipe invert and causing chronic blockages."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do you calculate the total vertical drop of a drain line?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Multiply the horizontal pipe length in meters by the percentage slope: Drop (cm) = Length (m) × Slope (%). For example, a 4-meter pipe laid at a 1.5% gradient requires a 6 cm vertical fall."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Which pipe diameter should be used for bathroom and kitchen fixtures?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Under EN 12056 guidelines, washbasins and bidets use Ø 40 mm branch pipes, showers and kitchen sinks require Ø 50 mm, and toilets (WCs) and main soil stacks require at least Ø 90–110 mm."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "How do you calculate the total vertical drop of a drain line?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply the horizontal pipe length in meters by the percentage slope: Drop (cm) = Length (m) × Slope (%). For example, a 4-meter pipe laid at a 1.5% gradient requires a 6 cm vertical fall."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which pipe diameter should be used for bathroom and kitchen fixtures?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under EN 12056 guidelines, washbasins and bidets use Ø 40 mm branch pipes, showers and kitchen sinks require Ø 50 mm, and toilets (WCs) and main soil stacks require at least Ø 90–110 mm."
+        }
       }
     ]
+  }
+]
     </script>
 
     <!-- Favicon & PWA -->

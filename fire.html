@@ -27,73 +27,80 @@
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebApplication",
+      "name": "FIRE Calculator — Libertà Finanziaria & Rendita Passiva",
+      "url": "https://www.omnitoolslab.com/fire",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "description": "Calcolatore accademico basato sul Trinity Study e la Regola del 4% per pianificare la pensione anticipata, il numero FIRE e la rendita passiva.",
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "FIRE Freedom Calculator",
+      "operatingSystem": "Web Browser",
+      "applicationCategory": "FinanceApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "210"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
         {
-          "@type": "WebApplication",
-          "name": "FIRE Calculator — Libertà Finanziaria & Rendita Passiva",
-          "url": "https://www.omnitoolslab.com/fire",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "description": "Calcolatore accademico basato sul Trinity Study e la Regola del 4% per pianificare la pensione anticipata, il numero FIRE e la rendita passiva."
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "FIRE Freedom Calculator",
-          "operatingSystem": "Web Browser",
-          "applicationCategory": "FinanceApplication",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "210"
+          "@type": "Question",
+          "name": "Cos'è il movimento FIRE e come funziona la Regola del 4%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FIRE significa Financial Independence, Retire Early. La regola del 4%, fondata sul Trinity Study, indica che prelevando annualmente non oltre il 4% da un portafoglio diversificato indicizzato all'inflazione, il capitale ha oltre il 95% di probabilità di durare almeno 30 anni senza esaurirsi."
           }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Cos'è il movimento FIRE e come funziona la Regola del 4%?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "FIRE significa Financial Independence, Retire Early. La regola del 4%, fondata sul Trinity Study, indica che prelevando annualmente non oltre il 4% da un portafoglio diversificato indicizzato all'inflazione, il capitale ha oltre il 95% di probabilità di durare almeno 30 anni senza esaurirsi."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Come si calcola il Numero FIRE?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "La formula è: Spese Annuali moltiplicate per 25 (ovvero Spese Annuali diviso il 4% di Safe Withdrawal Rate). Esempio: 24.000 €/anno x 25 = 600.000 € di capitale target."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Lean FIRE copre le spese essenziali minime con uno stile di vita frugale. Regular FIRE sostiene il tenore di vita medio attuale. Fat FIRE permette una rendita abbondante e spese elevate senza rinunce."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Cos'è il rischio della sequenza dei rendimenti (Sequence of Returns Risk)?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "È il rischio che i mercati crollino nei primissimi anni di ritiro. Si gestisce mantenendo un cuscinetto di liquidità di 1-2 anni di spese o riducendo i prelievi nei periodi di mercato orso."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Come si calcola il Numero FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La formula è: Spese Annuali moltiplicate per 25 (ovvero Spese Annuali diviso il 4% di Safe Withdrawal Rate). Esempio: 24.000 €/anno x 25 = 600.000 € di capitale target."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lean FIRE copre le spese essenziali minime con uno stile di vita frugale. Regular FIRE sostiene il tenore di vita medio attuale. Fat FIRE permette una rendita abbondante e spese elevate senza rinunce."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cos'è il rischio della sequenza dei rendimenti (Sequence of Returns Risk)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "È il rischio che i mercati crollino nei primissimi anni di ritiro. Si gestisce mantenendo un cuscinetto di liquidità di 1-2 anni di spese o riducendo i prelievi nei periodi di mercato orso."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 
     <!-- Tailwind CSS CDN -->
