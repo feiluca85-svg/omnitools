@@ -593,21 +593,24 @@
                 </button>
 
                 <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
-                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left">
+                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left max-h-[82vh] overflow-y-auto">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                         <span id="topDropChooseCalc">Scegli Calcolatore</span>
-                        <span id="topDropToolCount" class="text-blue-600 font-bold font-mono">18 Tool</span>
+                        <span id="topDropToolCount" class="text-blue-600 font-bold font-mono">19 Tool</span>
                     </div>
 
                     <!-- Category: OmniBuilding -->
-                    <div>
-                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> <span id="topDropBuildingTitle">OmniBuilding (6)</span>
-                        </div>
-                        
-            <a href="/rampe" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                    <details class="group/cat" data-cat="building" open>
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> <span id="topDropBuildingTitle">OmniBuilding (6)</span>
+                        </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/rampe" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
                     <span class="nav-tool-name font-bold">RampaFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
@@ -615,7 +618,7 @@
             
             <a href="/scale" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
                     <span class="nav-tool-name font-bold">ScalaFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
@@ -623,7 +626,7 @@
             
             <a href="/tubi" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
                     <span class="nav-tool-name font-bold">TubiFacili</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
@@ -631,7 +634,7 @@
             
             <a href="/tetto" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
                     <span class="nav-tool-name font-bold">TettoFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
@@ -639,7 +642,7 @@
             
             <a href="/taglio" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
                     <span class="nav-tool-name font-bold">TaglioOttimo</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
@@ -647,21 +650,24 @@
             
             <a href="/piastrelle" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
                     <span class="nav-tool-name font-bold">PiastrellaFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Superfici & Posa</span>
             </a>
-            
-                    </div>
+    </div>
+</details>
 
                     <!-- Category: OmniGraph -->
-                    <div>
-                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1">
+                    <details class="group/cat" data-cat="graph">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> <span id="topDropGraphTitle">OmniGraph (6)</span>
-                        </div>
-                        
-            <a href="/dorso" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                        </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/dorso" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
                     <span class="nav-tool-name font-bold">DorsoFacile</span>
@@ -708,16 +714,19 @@
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
             </a>
-            
-                    </div>
+    </div>
+</details>
 
                     <!-- Category: OmniFinance -->
-                    <div>
-                        <div class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1">
+                    <details class="group/cat" data-cat="finance">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> <span id="topDropFinanceTitle">OmniFinance (6)</span>
-                        </div>
-                        
-            <a href="/mutuo" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                        </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/mutuo" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
                     <span class="nav-tool-name font-bold">MutuoFacile</span>
@@ -764,8 +773,26 @@
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
             </a>
-            
-                    </div>
+    </div>
+</details>
+                    <!-- Category: OmniFood -->
+                    <details class="group/cat" data-cat="food">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span> <span>OmniFood (1)</span>
+                        </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/shelflife" data-nav-tool-id="shelflife" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                            <div class="flex items-center gap-2">
+                                <span class="w-4 h-4 rounded-md bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
+                                <span class="nav-tool-name font-bold">ShelfLife Export</span>
+                            </div>
+                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">UE • FDA • CFIA</span>
+                        </a>
+    </div>
+</details>
                 </div>
             </div>
 
@@ -836,17 +863,20 @@
                     <div id="suiteMenuDropdown" class="hidden fixed inset-x-3 top-14 sm:inset-x-auto sm:top-auto sm:absolute sm:left-0 sm:mt-2 w-auto sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 max-h-[82vh] overflow-y-auto">
                         <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                             <span id="suiteDropChooseCalc">Scegli Calcolatore</span>
-                            <span id="suiteDropToolCount">17 Strumenti</span>
+                            <span id="suiteDropToolCount">19 Strumenti</span>
                         </div>
 
-                        <div class="space-y-0.5">
-                            <div class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> <span id="suiteDropBuildingTitle">OmniBuilding (6)</span>
-                            </div>
-                            
-            <a href="/rampe" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                        <details class="group/cat" data-cat="building" open>
+    <summary class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-orange-500"></span> <span id="suiteDropBuildingTitle">OmniBuilding (6)</span>
+                            </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/rampe" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
                     <span class="nav-tool-name font-bold">RampaFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DM 236/89</span>
@@ -854,7 +884,7 @@
             
             <a href="/scale" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
                     <span class="nav-tool-name font-bold">ScalaFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
@@ -862,7 +892,7 @@
             
             <a href="/tubi" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
                     <span class="nav-tool-name font-bold">TubiFacili</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
@@ -870,7 +900,7 @@
             
             <a href="/tetto" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
                     <span class="nav-tool-name font-bold">TettoFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
@@ -878,7 +908,7 @@
             
             <a href="/taglio" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
                     <span class="nav-tool-name font-bold">TaglioOttimo</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
@@ -886,20 +916,23 @@
             
             <a href="/piastrelle" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
                     <span class="nav-tool-name font-bold">PiastrellaFacile</span>
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Superfici & Posa</span>
             </a>
-            
-                        </div>
+    </div>
+</details>
 
-                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
-                            <div class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1">
+                        <details class="group/cat" data-cat="graph">
+    <summary class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-rose-700"></span> <span id="suiteDropGraphTitle">OmniGraph (6)</span>
-                            </div>
-                            
-            <a href="/dorso" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                            </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/dorso" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
                     <span class="nav-tool-name font-bold">DorsoFacile</span>
@@ -946,15 +979,18 @@
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
             </a>
-            
-                        </div>
+    </div>
+</details>
 
-                        <div class="space-y-0.5 pt-1 border-t border-slate-100">
-                            <div class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1">
+                        <details class="group/cat" data-cat="finance">
+    <summary class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-emerald-600"></span> <span id="suiteDropFinanceTitle">OmniFinance (6)</span>
-                            </div>
-                            
-            <a href="/mutuo" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                            </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/mutuo" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
                     <span class="nav-tool-name font-bold">MutuoFacile</span>
@@ -1001,19 +1037,37 @@
                 </div>
                 <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
             </a>
-            
-                        </div>
+    </div>
+</details>
 
+
+                        <details class="group/cat" data-cat="food">
+    <summary class="px-2 text-[10px] font-extrabold uppercase text-orange-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+        <span class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-orange-600"></span> <span>OmniFood (1)</span>
+                            </span>
+        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="space-y-0.5 pt-1">
+<a href="/shelflife" data-nav-tool-id="shelflife" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-4 h-4 rounded-md bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
+                                    <span class="nav-tool-name font-bold">ShelfLife Export</span>
+                                </div>
+                                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">UE • FDA • CFIA</span>
+                            </a>
+    </div>
+</details>
                         <div class="space-y-1 pt-1.5 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-indigo-700 flex items-center gap-1">
                                 <span>⚡</span> <span id="suiteDropDeskTitle">Strumenti da Scrivania</span>
                             </div>
                             <div class="grid grid-cols-3 gap-1 px-1">
-                                <button type="button" onclick="openDeskTool('memo'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/80 text-[10px] font-bold transition">
+                                <button type="button" onclick="openDeskTool('memo'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-amber-900 border border-orange-200/80 text-[10px] font-bold transition">
                                     <span>📝</span>
                                     <span>Memo</span>
                                 </button>
-                                <button type="button" onclick="openDeskTool('calc'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200/80 text-[10px] font-bold transition">
+                                <button type="button" onclick="openDeskTool('calc'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-amber-900 border border-orange-200/80 text-[10px] font-bold transition">
                                     <span>🔢</span>
                                     <span>Calc</span>
                                 </button>
@@ -1630,7 +1684,7 @@
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
                     </div>
-                    <span id="footerNetSub" class="text-[11px] text-slate-400 font-medium">17 Strumenti Gratuiti • Precision Utilities Suite</span>
+                    <span id="footerNetSub" class="text-[11px] text-slate-400 font-medium">19 Strumenti Gratuiti • Precision Utilities Suite</span>
                 </div>
                 
                 <!-- Division 1: OmniBuilding (5 Tools) -->
@@ -1991,8 +2045,8 @@ const NAV_TRANSLATIONS = {
         desk_clock: 'OmniClock (Orologio)',
         new_tool_btn: 'Nuovo Tool',
         choose_calc: 'Scegli Calcolatore',
-        tool_count: '17 Tool',
-        tool_count_long: '17 Strumenti',
+        tool_count: '19 Tool',
+        tool_count_long: '19 Strumenti',
         cat_building: 'OmniBuilding (6)',
         cat_graph: 'OmniGraph (6)',
         cat_finance: 'OmniFinance (6)',
@@ -2010,8 +2064,8 @@ const NAV_TRANSLATIONS = {
         desk_clock: 'OmniClock (Clock)',
         new_tool_btn: 'New Tool',
         choose_calc: 'Choose Calculator',
-        tool_count: '17 Tools',
-        tool_count_long: '17 Tools',
+        tool_count: '19 Tools',
+        tool_count_long: '19 Tools',
         cat_building: 'OmniBuilding (6)',
         cat_graph: 'OmniGraph (6)',
         cat_finance: 'OmniFinance (6)',
@@ -2067,8 +2121,8 @@ const NAV_TRANSLATIONS = {
         desk_clock: 'OmniClock (Uhr)',
         new_tool_btn: 'Neues Tool',
         choose_calc: 'Rechner Wählen',
-        tool_count: '17 Tools',
-        tool_count_long: '17 Tools',
+        tool_count: '19 Tools',
+        tool_count_long: '19 Tools',
         cat_building: 'OmniBuilding (6)',
         cat_graph: 'OmniGraph (6)',
         cat_finance: 'OmniFinance (6)',
@@ -2510,7 +2564,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_btn": "Condividi",
         "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
         "suggest_btn": "Suggerisci",
-        "net_sub": "17 Strumenti Gratuiti • Precision Utilities Suite",
+        "net_sub": "19 Strumenti Gratuiti • Precision Utilities Suite",
         "cat_building": "OmniBuilding (5 Cantiere & Fabbricazione)",
         "cat_graph": "OmniGraph (6 Grafica & Stampa)",
         "cat_finance": "OmniFinance (6 Finanza & Libertà)",
