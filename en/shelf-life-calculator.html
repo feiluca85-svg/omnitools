@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Food Expiry Date &amp; Best Before Calculator for Export — Shelf Life &amp; Expiry Date Calculator</title>
-    <meta name="description" content="Calcolatore professionale per date di scadenza alimentari e TMC per l'export: formattazione automatica e decodifica per Italia/UE, USA (FDA), UK (FSA), Canada (CFIA), Paesi del Golfo (GCC GSO 9) e Giappone (CAA).">
+    <meta name="description" content="Calcolatore professionaland date di scadenza alimentari e TMC for l'export: formattazione automatica e decodifica for Italia/UE, USA (FDA), UK (FSA), Canada (CFIA), Paesi del Golfo (GCC GSO 9) e Giappone (CAA).">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/en/shelf-life-calculator">
@@ -15,11 +15,11 @@
     <link rel="alternate" hreflang="fr" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=fr" />
     <link rel="alternate" hreflang="de" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=de" />
     <link rel="alternate" hreflang="pt" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=pt" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/shelflife" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Food Expiry Date &amp; Best Before Calculator for Export — OmniFood">
-    <meta property="og:description" content="Converti e formatta le etichette alimentari per Europa, USA, UK, Canada, Paesi del Golfo e Giappone in un clic.">
+    <meta property="og:description" content="Converti e formatta le etichette alimentari for Europa, USA, UK, Canada, Paesi del Golfo e Giappone in un clic.">
     <meta property="og:url" content="https://www.omnitoolslab.com/en/shelf-life-calculator">
     <meta property="og:site_name" content="OmniTools Lab">
     <meta property="og:image" content="https://www.omnitoolslab.com/og-shelflife.png">
@@ -39,7 +39,7 @@
         "url": "https://www.omnitoolslab.com/tubi",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "All",
-        "description": "Calcolatore tecnico professionale per il calcolo di pendenza, dislivello e caduta al metro lineare per reti di scarico a gravità e fognature.",
+        "description": "Calcolatore tecnico professionaland il calcolo di pendenza, dislivello e caduta al metro linearand reti di scarico a gravità e fognature.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -76,10 +76,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Qual è la pendenza minima obbligatoria per un tubo di scarico fognario?",
+            "name": "Qual è la pendenza minima obbligatoria for un tubo di scarico fognario?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "La pendenza minima raccomandata dalle norme tecniche europee (UNI EN 12056) è dell'1% (1 cm per ogni metro lineare) per garantire l'autopulizia ed evitare depositi solidi."
+              "text": "La pendenza minima raccomandata dalle norme tecniche europee (UNI EN 12056) è dell'1% (1 cm for ogni metro lineare) for garantire l'autopulizia ed evitare depositi solidi."
             }
           },
           {
@@ -95,7 +95,7 @@
             "name": "Come si calcola il dislivello tra punto di partenza e punto di arrivo?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Formula: Dislivello (cm) = Lunghezza (metri) × Pendenza (%). Ad esempio: 4 metri con pendenza 1.5% necessitano di 6 cm di caduta."
+              "text": "Formula: Dislivello (cm) = Lunghezza (metri) × Pendenza (%). For example: 4 metri con pendenza 1.5% necessitano di 6 cm di caduta."
             }
           },
           {
@@ -103,7 +103,7 @@
             "name": "Qual è il diametro corretto della tubazione in base agli apparecchi sanitari collegati?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Secondo le norme UNI EN 12056, per lavabi e bidet si usa Ø 40 mm, per docce e lavelli cucina Ø 50 mm, mentre per WC e collettori principali di scarico è obbligatorio almeno Ø 90-110 mm per garantire l'evacuazione senza sifonamento."
+              "text": "Secondo le norme UNI EN 12056, for lavabi e bidet si usa Ø 40 mm, for docce e lavelli cucina Ø 50 mm, mentrand WC e collettori principali di scarico è obbligatorio almeno Ø 90-110 mm for garantire l'evacuazione senza sifonamento."
             }
           }
         ]
@@ -1139,14 +1139,10 @@ input[type="range"] {
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="en" selected>🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="pt">🇵🇹 PT</option>
-                    </select>
+                <select id="langSelect" onchange="if(this.value==='it'){window.location.href='/shelflife';}" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                    <option value="it">🇮🇹 IT</option>
+                    <option value="en" selected>🇬🇧 EN</option>
+                </select>
                 <div class="relative sm:hidden" id="omniMobileMenuWrap">
                     <button type="button" id="omniMobileMenuBtn" onclick="event.stopPropagation();document.getElementById('omniMobileMenuDropdown').classList.toggle('hidden')" class="h-8 w-8 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-base font-black leading-none" aria-label="Menu">&#8942;</button>
                     <div id="omniMobileMenuDropdown" class="hidden absolute right-0 top-full mt-2 w-52 rounded-2xl bg-white border border-slate-200 shadow-xl p-1.5 z-50 text-xs font-semibold text-slate-700">
@@ -1170,12 +1166,12 @@ input[type="range"] {
                         <span class="px-2 py-0.5 bg-orange-600 text-white font-bold text-[10px] rounded uppercase tracking-wider">OmniTools Lab — SCHEDA TECNICA A4</span>
                         <span class="text-[11px] font-bold text-slate-600">OmniFood • Export Compliance</span>
                     </div>
-                    <h1 class="font-jakarta text-xl font-extrabold text-slate-900 leading-tight" id="printSheetTitle">Scheda Formattazione Date Scadenza &amp; Lotto Export</h1>
-                    <p class="text-[10px] text-slate-500 mt-0.5">Riferimenti: Reg. (UE) 1169/2011 • US FDA 21 CFR • Canada CFIA (SFCR) • GCC / GSO 150</p>
+                    <h1 class="font-jakarta text-xl font-extrabold text-slate-900 leading-tight" id="printSheetTitle">Food Expiry Date &amp; Export Lot Formatting Sheet</h1>
+                    <p class="text-[10px] text-slate-500 mt-0.5">References: EU Reg. 1169/2011 • US FDA 21 CFR • Canada CFIA (SFCR) • GCC / GSO 150</p>
                 </div>
                 <div class="text-right text-[10px] text-slate-600 shrink-0">
                     <div class="font-bold text-slate-900 text-xs">omnitoolslab.com</div>
-                    <div>Data stampa: <span id="printTimestamp"></span></div>
+                    <div>Print date: <span id="printTimestamp"></span></div>
                 </div>
             </div>
             <!-- Compact Summary of Current Inputs for the Printout -->
@@ -1203,10 +1199,10 @@ input[type="range"] {
                 <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-orange-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
                 <div class="text-xs sm:text-sm space-y-1">
                     <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
-                        Regola Export Multipaese: <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-orange-200 text-orange-800 font-mono font-black">Scadenza = Data Produzione + Shelf-Life</code>
+                        Multi-Country Export Rule: <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-orange-200 text-orange-800 font-mono font-black">Expiry Date = Production Date + Shelf-Life</code>
                     </p>
                     <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
-                        <strong>Esempio Canada (CFIA):</strong> I codici mese bilingui ufficiali sono fissi (<code class="font-mono font-bold">JA, FE, MR, AL, MA, JN, JL, AU, SE, OC, NO, DE</code>). Il <code class="font-mono font-bold">12/02/2027</code> in UE diventa <code class="font-mono font-bold">02/12/2027</code> in USA e <code class="font-mono font-bold">2027 FE 12</code> in Canada.
+                        <strong>Canada (CFIA) Example:</strong> Official bilingual month codes are fixed (<code class="font-mono font-bold">JA, FE, MR, AL, MA, JN, JL, AU, SE, OC, NO, DE</code>). <code class="font-mono font-bold">12/02/2027</code> in EU becomes <code class="font-mono font-bold">02/12/2027</code> in USA and <code class="font-mono font-bold">2027 FE 12</code> in Canada.
                     </p>
                 </div>
             </div>
@@ -1218,20 +1214,20 @@ input[type="range"] {
             <!-- Mode Selector Tabs -->
             <div id="calcTabs" class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/70 no-print">
                 <button type="button" onclick="setMode('fromProd')" id="tabModeFromProd" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition shadow-xs bg-white text-orange-700 cursor-pointer">
-                    1. Calcola da Data Produzione + Durata
+                    1. Calculate from Production Date + Shelf Life
                 </button>
                 <button type="button" onclick="setMode('fromExp')" id="tabModeFromExp" class="py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition text-slate-600 hover:text-slate-900 cursor-pointer">
-                    2. Converti / Decodifica Scadenza (Export ↔ UE)
+                    2. Convert / Decode Expiry Date (Export ↔ EU)
                 </button>
             </div>
 
             <!-- Inputs Grid -->
             <div class="no-print space-y-4">
                 <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-100">
-                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-800">IMPOSTA DATE E DURATA</span>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-800">SET DATES &amp; SHELF LIFE</span>
                     <div id="durationUnitGroup" class="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
-                        <button type="button" id="unitDaysBtn" onclick="setDurUnit('days')" class="px-3 py-1 rounded-lg bg-white text-orange-700 font-extrabold shadow-xs cursor-pointer">Giorni</button>
-                        <button type="button" id="unitMonthsBtn" onclick="setDurUnit('months')" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold cursor-pointer">Mesi</button>
+                        <button type="button" id="unitDaysBtn" onclick="setDurUnit('days')" class="px-3 py-1 rounded-lg bg-white text-orange-700 font-extrabold shadow-xs cursor-pointer">Days</button>
+                        <button type="button" id="unitMonthsBtn" onclick="setDurUnit('months')" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold cursor-pointer">Months</button>
                     </div>
                 </div>
 
@@ -1241,17 +1237,17 @@ input[type="range"] {
                         <div class="flex justify-between items-center gap-2">
                             <label for="selOriginMarket" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                <span>Mercato di Partenza (Dove produci / Da dove leggi la data)</span>
+                                <span>Origin Market (Where you produce / Read date from)</span>
                             </label>
-                            <span class="text-[11px] font-semibold text-slate-400">Memorizzato localmente</span>
+                            <span class="text-[11px] font-semibold text-slate-400">Saved locally</span>
                         </div>
                         <select id="selOriginMarket" onchange="onOriginMarketChange()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
-                            <option value="europa">🇪🇺 Europa / UE (GG/MM/AAAA)</option>
-                            <option value="usa">🇺🇸 Stati Uniti — USA (MM/DD/YYYY)</option>
-                            <option value="uk">🇬🇧 Regno Unito — UK (DD/MM/YYYY o Best Before End)</option>
+                            <option value="europa">🇪🇺 Europe / EU (DD/MM/YYYY)</option>
+                            <option value="usa">🇺🇸 United States — USA (MM/DD/YYYY)</option>
+                            <option value="uk">🇬🇧 United Kingdom — UK (DD/MM/YYYY or Best Before End)</option>
                             <option value="canada">🇨🇦 Canada — CFIA (YYYY AL MM DD)</option>
-                            <option value="gcc">🇦🇪 Medio Oriente — GCC / Arabia Saudita (DD/MM/YYYY o MM/YYYY)</option>
-                            <option value="jp">🇯🇵 Giappone — CAA / JAS (AAAA.MM.GG)</option>
+                            <option value="gcc">🇦🇪 Middle East — GCC / Saudi Arabia (DD/MM/YYYY or MM/YYYY)</option>
+                            <option value="jp">🇯🇵 Japan — CAA / JAS (YYYY.MM.DD)</option>
                         </select>
                     </div>
 
@@ -1260,24 +1256,24 @@ input[type="range"] {
                         <div class="flex justify-between items-center gap-2">
                             <label for="inpProductName" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                <span>Nome Prodotto / Ricetta (Opzionale)</span>
+                                <span>Product Name / Recipe (Optional)</span>
                             </label>
-                            <span id="productSaveHint" class="text-[11px] font-semibold text-slate-400">Scrivi le iniziali per cercare tra i tuoi prodotti</span>
+                            <span id="productSaveHint" class="text-[11px] font-semibold text-slate-400">Type initials to search your saved products</span>
                         </div>
                         <input type="text" id="inpProductName" autocomplete="off" placeholder="Es. Panettone Classico, Biscotto Frollino, Crema Pasticcera..." oninput="onProductNameInput()" onfocus="onProductNameInput()" onkeydown="onProductNameKeydown(event)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                         <div id="productAutocompleteList" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-2xl shadow-xl z-30 max-h-56 overflow-y-auto divide-y divide-slate-100"></div>
                     </div>
 
-                    <!-- Production Date (Mode 1 - Dinamico per Mercato) -->
+                    <!-- Production Date (Mode 1 - Dinamico for Mercato) -->
                     <div id="prodDateBox" class="space-y-1.5">
                         <div class="flex justify-between items-center gap-2">
                             <label for="inpProdDateFormatted" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                <span id="lblProdDateOrigin">Data di Produzione Europa (GG/MM/AAAA)</span>
+                                <span id="lblProdDateOrigin">Production Date Europe (DD/MM/YYYY)</span>
                             </label>
                             <div class="flex items-center gap-2">
-                                <span id="prodDateStatus" class="hidden text-[11px] font-bold text-red-600">Formato non valido</span>
-                                <button type="button" onclick="setTodayProd()" class="text-[11px] font-bold text-orange-700 hover:underline cursor-pointer shrink-0">Oggi</button>
+                                <span id="prodDateStatus" class="hidden text-[11px] font-bold text-red-600">Invalid format</span>
+                                <button type="button" onclick="setTodayProd()" class="text-[11px] font-bold text-orange-700 hover:underline cursor-pointer shrink-0">Today</button>
                             </div>
                         </div>
                         <div class="relative flex items-center">
@@ -1296,9 +1292,9 @@ input[type="range"] {
                         <div class="flex justify-between items-center">
                             <label for="numDuration" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                <span id="lblDuration">Durata Shelf-Life</span>
+                                <span id="lblDuration">Shelf-Life Duration</span>
                             </label>
-                            <span id="durUnitBadge" class="text-xs font-mono font-bold text-slate-500">giorni</span>
+                            <span id="durUnitBadge" class="text-xs font-mono font-bold text-slate-500">days</span>
                         </div>
                         <input type="number" id="numDuration" min="1" max="1825" step="1" value="90" oninput="document.getElementById('rngDuration').value=this.value; calculate();" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                         <div class="pt-1 px-0.5">
@@ -1311,7 +1307,7 @@ input[type="range"] {
                         <div id="expDateCalWrap" class="space-y-1.5">
                             <label for="inpExpDate" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                <span>Data di Scadenza da Convertire (Europa GG/MM/AAAA)</span>
+                                <span>Expiry Date to Convert (Europe DD/MM/YYYY)</span>
                             </label>
                             <input type="date" id="inpExpDate" oninput="calculate()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                         </div>
@@ -1319,7 +1315,7 @@ input[type="range"] {
                             <div class="flex justify-between items-center gap-2">
                                 <label for="inpReverseDate" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                     <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                    <span id="lblReverseDate">Inserisci data letta su etichetta estera</span>
+                                    <span id="lblReverseDate">Enter date from foreign label</span>
                                 </label>
                                 <span id="reverseParseStatus" class="text-[11px] font-bold text-emerald-700"></span>
                             </div>
@@ -1332,14 +1328,14 @@ input[type="range"] {
                         <div class="flex flex-wrap justify-between items-center gap-2">
                             <label for="inpLot" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-slate-400 inline-block"></span>
-                                <span>Codice Lotto di Produzione (Opzionale)</span>
+                                <span>Production Lot / Batch Code (Optional)</span>
                             </label>
                             <div class="flex items-center gap-3">
                                 <label class="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-600 cursor-pointer select-none">
                                     <input type="checkbox" id="chkIncludeLot" checked onchange="calculate()" class="w-3.5 h-3.5 accent-orange-600 rounded cursor-pointer">
-                                    <span>Includi Lotto in etichetta/stampa</span>
+                                    <span>Include Lot in label/print</span>
                                 </label>
-                                <button type="button" onclick="generateAutoLot()" class="text-[11px] font-bold text-orange-700 hover:underline cursor-pointer">Genera Lotto Automatico</button>
+                                <button type="button" onclick="generateAutoLot()" class="text-[11px] font-bold text-orange-700 hover:underline cursor-pointer">Auto-Generate Lot</button>
                             </div>
                         </div>
                         <input type="text" id="inpLot" placeholder="Es. L261114-A" oninput="calculate()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
@@ -1350,33 +1346,33 @@ input[type="range"] {
             <!-- Quick Presets (Unified Deletable & Customizable Product List) -->
             <div id="presetsSection" class="pt-2 border-t border-slate-100 no-print space-y-3">
                 <div class="flex flex-wrap items-center justify-between gap-2">
-                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Preimpostazioni &amp; I Miei Prodotti (<span id="presetsCount">0</span>):</span>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Presets &amp; My Products (<span id="presetsCount">0</span>):</span>
                     <div class="flex items-center gap-2">
-                        <button type="button" id="btnRestoreBasePresets" onclick="restoreDefaultPresets()" class="hidden text-[11px] font-bold text-slate-500 hover:text-slate-800 underline cursor-pointer">Ripristina preset base</button>
+                        <button type="button" id="btnRestoreBasePresets" onclick="restoreDefaultPresets()" class="hidden text-[11px] font-bold text-slate-500 hover:text-slate-800 underline cursor-pointer">Reset default presets</button>
                         <button type="button" onclick="saveCustomProductPreset()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-200 text-[11px] font-extrabold transition cursor-pointer">
-                            <span>＋</span> <span>Salva Prodotto nei Preset</span>
+                            <span>＋</span> <span>Save Product to Presets</span>
                         </button>
                     </div>
                 </div>
 
                 <div id="customPresetsGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
                 <div id="presetsEmptyState" class="hidden text-xs text-slate-400 italic py-2 text-center border border-dashed border-slate-200 rounded-xl">
-                    Nessun prodotto salvato. Inserisci un Nome Prodotto qui sopra e premi <strong>＋ Salva Prodotto nei Preset</strong>.
+                    No saved products. Enter a Product Name above and click <strong>＋ Save Product to Presets</strong>.
                 </div>
             </div>
 
             <!-- Market Selection Hint + Clickable Export Date Cards (4 Mercati) -->
             <div class="pt-4 border-t border-slate-100 space-y-2.5">
                 <div class="flex flex-wrap items-center justify-between gap-2 no-print">
-                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Clicca sulle caselle per scegliere quali date includere in etichetta e stampa A4:</span>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Click boxes to select which dates to include on label &amp; A4 print:</span>
                 </div>
 
-                <!-- Key Export Date Cards (6 Mercati, cliccabili per attivare/disattivare) -->
+                <!-- Key Export Date Cards (6 Mercati, cliccabili for attivare/disattivare) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     <button type="button" id="cardEU" onclick="toggleMarketCard('EU')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Italia / Unione Europea</span>
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Italy / European Union</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resEU">--/--/----</span>
-                        <span class="mkt-sub text-[10px] text-orange-700 font-semibold block mt-0.5">Formato gg/mm/aaaa</span>
+                        <span class="mkt-sub text-[10px] text-orange-700 font-semibold block mt-0.5">Format dd/mm/yyyy</span>
                     </button>
                     <button type="button" id="cardUSA" onclick="toggleMarketCard('USA')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
                         <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">USA (FDA Standard)</span>
@@ -1384,22 +1380,22 @@ input[type="range"] {
                         <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5" id="resUSAText">MMM DD YYYY</span>
                     </button>
                     <button type="button" id="cardUK" onclick="toggleMarketCard('UK')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Regno Unito (UK / FSA)</span>
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">United Kingdom (UK / FSA)</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resUK">--/--/----</span>
                         <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5" id="resUKSub">Best before end MM/YYYY</span>
                     </button>
                     <button type="button" id="cardCanada" onclick="toggleMarketCard('CA')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Canada (CFIA Bilingue)</span>
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Canada (CFIA Bilingual)</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resCanada">---- -- --</span>
                         <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5">YYYY AL MM DD</span>
                     </button>
                     <button type="button" id="cardGCC" onclick="toggleMarketCard('GCC')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Medio Oriente (GCC • GSO 9)</span>
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Middle East (GCC • GSO 9)</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resGCC">--/----</span>
-                        <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5" id="resGCCProd">PROD + EXP obbligatorie</span>
+                        <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5" id="resGCCProd">PROD + EXP mandatory</span>
                     </button>
                     <button type="button" id="cardJP" onclick="toggleMarketCard('JP')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Giappone (CAA / JAS)</span>
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Japan (CAA / JAS)</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resJP">----.--.--</span>
                         <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5">賞味期限 AAAA.MM.GG</span>
                     </button>
@@ -1409,27 +1405,27 @@ input[type="range"] {
             <!-- Ready-to-Print Label Strip -->
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
                 <div class="flex flex-wrap items-center justify-between gap-2">
-                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-700">Riga Pronta per Etichettatrice &amp; Giorno Scadenza</span>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-700">Ready-to-Print Label Line &amp; Expiry Day</span>
                     <span id="resWeekday" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-800 border border-orange-200">--</span>
                 </div>
                 <div id="resLabelPreview" class="p-3 rounded-xl bg-white border border-slate-200 font-mono text-xs sm:text-sm font-bold text-slate-900 break-all">
                     --
                 </div>
                 <p class="text-[11px] text-slate-500 leading-relaxed">
-                    <strong>Nota tecnica GCC (GSO 9 / SFDA):</strong> Nei Paesi del Golfo (Arabia Saudita, Emirati Arabi, Qatar, ecc.) è obbligatorio stampare sia <em>PROD</em> che <em>EXP</em> in chiaro: formato <code>DD/MM/YYYY</code> se la durata è inferiore a 3 mesi, oppure <code>MM/YYYY</code> se superiore a 3 mesi. Le date devono essere stampate o impresse direttamente sull'imballo originale (<strong>vietati adesivi applicati dopo la stampa</strong>).
+                    <strong>GCC Technical Note (GSO 9 / SFDA):</strong> In Gulf countries (Saudi Arabia, UAE, Qatar, etc.) it is mandatory to print both <em>PROD</em> and <em>EXP</em> in plain text: format <code>DD/MM/YYYY</code> if shelf life is under 3 months, or <code>MM/YYYY</code> if over 3 months. Dates must be printed or embossed directly on the original packaging (<strong>post-print stickers are strictly prohibited</strong>).
                 </p>
             </div>
 
             <!-- Action Buttons (Identici a TubiFacili) -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
                 <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
-                    <span>🖨️</span> <span>Stampa Scheda Etichetta A4</span>
+                    <span>🖨️</span> <span>Print A4 Label Sheet</span>
                 </button>
                 <button type="button" onclick="copyExportDates()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
-                    <span id="copyIcon">📋</span> <span id="btnCopyLabel">Copia Tutte le Date Export</span>
+                    <span id="copyIcon">📋</span> <span id="btnCopyLabel">Copy All Export Dates</span>
                 </button>
                 <button type="button" onclick="exportDatesCsv()" class="flex-1 py-3 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
-                    <span>📊</span> <span>Scarica CSV / Excel</span>
+                    <span>📊</span> <span>Download CSV / Excel</span>
                 </button>
             </div>
 
@@ -1440,7 +1436,7 @@ input[type="range"] {
             <div class="flex items-center gap-2.5 mb-1">
                 <span class="text-xl">❓</span>
                 <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
-                    <span>Domande Frequenti su Shelf-Life &amp; Date Export</span>
+                    <span>Frequently Asked Questions on Shelf-Life &amp; Export Dates</span>
                 </h2>
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
             </div>
@@ -1448,68 +1444,68 @@ input[type="range"] {
             <div id="faqContainer" class="space-y-3">
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Perché in Canada (CFIA) si usano i codici mese a due lettere come "FE" o "AL"?</span>
+                        <span>Why does Canada (CFIA) use two-letter month codes like "FE" or "AL"?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        I regolamenti canadesi (<em>Safe Food for Canadians Regulations — SFCR</em>) impongono codici mese bilingui standardizzati (inglese/francese) sulle date "Best Before / Meilleur avant" per evitare ambiguità: <code>JA, FE, MR, AL, MA, JN, JL, AU, SE, OC, NO, DE</code>. Ad esempio <strong>AL</strong> vale sia per <em>April</em> che per <em>Avril</em>, e <strong>JN</strong> per <em>June/Juin</em>.
+                        Canadian regulations (<em>Safe Food for Canadians Regulations — SFCR</em>) mandate standardized bilingual month codes (English/French) on "Best Before / Meilleur avant" dates to avoid ambiguity: <code>JA, FE, MR, AL, MA, JN, JL, AU, SE, OC, NO, DE</code>. For example <strong>AL</strong> stands for both <em>April</em> and for <em>Avril</em>, e <strong>JN</strong> for <em>June/Juin</em>.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Qual è la differenza tra formato USA (FDA) e formato Europeo (UE)?</span>
+                        <span>What is the difference between USA (FDA) and European (EU) date formats?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        In Italia e nell'Unione Europea (Reg. UE 1169/2011) la data segue l'ordine <strong>GG/MM/AAAA</strong> (es. <code>05/08/2027</code> = 5 agosto). Negli Stati Uniti l'ordine numerico è invertito in <strong>MM/DD/YYYY</strong> (<code>08/05/2027</code>): per evitare contestazioni doganali o confusione nei consumatori USA è buona prassi affiancare o preferire la forma testuale <code>AUG 05 2027</code>.
+                        In Italy and the European Union (EU Reg. 1169/2011) the date follows <strong>GG/MM/AAAA</strong> (es. <code>05/08/2027</code> = August 5). In the United States the numeric order is reversed to <strong>MM/DD/YYYY</strong> (<code>08/05/2027</code>): for evitare contestazioni doganali o confusione nei consumatori USA è buona prassi affiancare o preferire la forma testuale <code>AUG 05 2027</code>.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Cosa richiedono i Paesi del Golfo (GCC / SFDA) sulle etichette alimentari?</span>
+                        <span>What do Gulf Countries (GCC / SFDA) require on food labels?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Le norme tecniche GSO (<em>GSO 9 / GSO 150</em> per Arabia Saudita/SFDA, Emirati Arabi Uniti, Qatar, Kuwait, Oman, Bahrain) richiedono obbligatoriamente <strong>entrambe</strong> le date in chiaro: data di produzione (<code>PROD</code>) e data di scadenza (<code>EXP</code>), in formato <code>DD/MM/YYYY</code> se la shelf-life è inferiore a 3 mesi oppure <code>MM/YYYY</code> se superiore a 3 mesi. Le date devono essere stampate o impresse direttamente sull'imballo originale (<strong>sono severamente vietati bollini adesivi post-stampa</strong>) e accompagnate da diciture in arabo.
+                        GSO technical standards (<em>GSO 9 / GSO 150</em> for Arabia Saudita/SFDA, Emirati Arabi Uniti, Qatar, Kuwait, Oman, Bahrain) richiedono obbligatoriamente <strong>both</strong> dates in plain text: production date (<code>PROD</code>) and expiry date (<code>EXP</code>), in format <code>DD/MM/YYYY</code> if shelf life is under 3 months or <code>MM/YYYY</code> if over 3 months. Dates must be printed or embossed directly on the original packaging (<strong>post-print adhesive stickers are strictly prohibited</strong>) and accompanied by Arabic wording.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Quali regole valgono per il Regno Unito (UK / FSA post-Brexit)?</span>
+                        <span>Quali regole valgono for il Regno Unito (UK / FSA post-Brexit)?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Nel Regno Unito (Food Standards Agency — FSA) il formato standard è <code>DD/MM/YYYY</code>. Per prodotti a lunga conservazione (> 3 mesi) in cui si omette il giorno, è obbligatorio specificare <strong>Best before end MM/YYYY</strong> o <strong>End of MM/YYYY</strong>. Inoltre, post-Brexit, è obbligatorio riportare in etichetta la ragione sociale con indirizzo fisico di un <strong>Food Business Operator (FBO) stabilito nel Regno Unito</strong>.
+                        In the United Kingdom (Food Standards Agency — FSA) the standard format is <code>DD/MM/YYYY</code>. For long-shelf-life products (> 3 months) where the day is omitted, you must specify <strong>Best before end MM/YYYY</strong> o <strong>End of MM/YYYY</strong>. Furthermore, post-Brexit, the label must state the business name and physical address of a <strong>Food Business Operator (FBO) established in the UK</strong>.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Come funzionano le date in Giappone e cos'è la "Regola del Terzo"?</span>
+                        <span>How do dates work in Japan and what is the "One-Third Rule"?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        In Giappone (Consumer Affairs Agency / JAS) il formato segue l'ordine decrescente <strong>AAAA.MM.GG</strong> (o <code>AAAA年MM月DD日</code>). La normativa distingue rigorosamente tra <strong>Shoumi-kigen (賞味期限)</strong> per la data preferibile (TMC) e <strong>Shouhi-kigen (消費期限)</strong> per la scadenza tassativa dei freschi (&le;5 giorni). Nella grande distribuzione giapponese vige la ferrea <strong>regola commerciale del terzo (1/3 rule)</strong>: il prodotto deve raggiungere il distributore entro il primo terzo della sua durata complessiva, altrimenti la merce viene respinta al mittente.
+                        In Japan (Consumer Affairs Agency / JAS) the format follows descending order <strong>AAAA.MM.GG</strong> (o <code>AAAA年MM月DD日</code>). Regulations strictly distinguish between <strong>Shoumi-kigen (賞味期限)</strong> for la data preferibile (TMC) e <strong>Shouhi-kigen (消費期限)</strong> for la scadenza tassativa dei freschi (&le;5 days). Nella grande distribuzione giapponese vige la ferrea <strong>One-Third commercial rule (1/3 rule)</strong>: the product must reach the distributor within the first third of its total shelf life, otherwise the shipment is rejected.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Qual è la differenza tra "Da consumarsi entro" (Data di Scadenza) e "Preferibilmente entro" (TMC)?</span>
+                        <span>What is the difference between "Use By" and "Best Before"?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        La <strong>Data di Scadenza</strong> (<em>Use By</em>) si applica ad alimenti microbiologicamente molto deperibili e indica il limite tassativo di sicurezza sanitaria. Il <strong>Termine Minimo di Conservazione — TMC</strong> (<em>Best Before</em>) indica fino a quando il prodotto conserva le proprietà organolettiche ottimali se conservato correttamente.
+                        La <strong>Use By Date</strong> (<em>Use By</em>) applies to microbiologically perishable foods and indicates a strict food safety limit. <strong>Minimum Durability / Best Before</strong> (<em>Best Before</em>) indicates until when the product retains optimal sensory qualities if stored properly.
                     </div>
                 </details>
             </div>
@@ -1518,16 +1514,16 @@ input[type="range"] {
         <!-- Legal Disclaimer (Comprehensive Protection) -->
         <section id="legalDisclaimerBox" class="bg-amber-50/60 rounded-3xl border border-amber-200/90 shadow-xs p-5 sm:p-6 text-[11px] sm:text-xs text-slate-700 leading-relaxed space-y-2">
             <div class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                <span>⚖️</span> <span>Avvertenza Legale, Esclusione di Responsabilità &amp; Conformità Regolatoria</span>
+                <span>⚖️</span> <span>Legal Notice, Disclaimer &amp; Regulatory Compliance</span>
             </div>
             <p>
-                <strong>1. Natura puramente informativa e di pre-formattazione:</strong> Il presente calcolatore esegue esclusivamente operazioni aritmetiche di calendario e formattazione convenzionale delle stringhe data/lotto. Non costituisce parere legale, consulenza regolatoria, asseverazione tecnica né certificazione di conformità doganale o sanitaria.
+                <strong>1. Informational &amp; pre-formatting purpose only:</strong> This calculator performs calendar arithmetic and conventional date/lot string formatting only. It does not constitute legal advice, regulatory consulting, technical certification, or customs/health compliance approval.
             </p>
             <p>
-                <strong>2. Sicurezza alimentare e validazione di laboratorio:</strong> La determinazione scientifica della shelf-life (<em>Data di Scadenza</em> o <em>TMC</em>) non può basarsi su stime generiche, ma richiede obbligatoriamente studi di stabilità, analisi microbiologiche/chimico-fisiche (es. <em>Challenge Test</em>, a<sub>w</sub>, pH, Reg. CE 2073/2005) e validazione documentale da parte dell'Operatore del Settore Alimentare (OSA), di un Tecnologo Alimentare abilitato o di un laboratorio accreditato.
+                <strong>2. Food safety &amp; laboratory validation:</strong> Scientific shelf-life determination (<em>Use By Date</em> o <em>TMC</em>) cannot rely on generic estimates; it requires stability studies, microbiological/physicochemical testing (e.g. <em>Challenge Test</em>, a<sub>w</sub>, pH, Reg. CE 2073/2005) and documented validation by the Food Business Operator (FBO), a qualified Food Technologist, or an accredited laboratory.
             </p>
             <p>
-                <strong>3. Conformità Export &amp; Manleva totale:</strong> Le normative di etichettatura dei Paesi di destinazione (Reg. UE 1169/2011, US FDA 21 CFR, Canada CFIA SFCR, GCC/SFDA GSO 9 e GSO 150) sono soggette ad aggiornamenti, eccezioni merceologiche e requisiti linguistici specifici (es. caratteri arabi, formato numerico vs testuale, obbligo di codice lotto). L'utilizzatore (produttore, confezionatore, esportatore o importatore) si assume l'esclusiva responsabilità di verificare l'etichetta definitiva con il proprio consulente regolatorio o spedizioniere doganale prima della stampa e spedizione. OmniTools Lab e i suoi autori declinano ogni responsabilità per fermi doganali, respingimenti, sequestri, sanzioni amministrative, danni commerciali, deterioramento della merce o danni a terzi.
+                <strong>3. Export compliance &amp; full indemnity:</strong> Destination country labeling regulations (EU Reg. 1169/2011, US FDA 21 CFR, Canada CFIA SFCR, GCC/SFDA GSO 9 &amp; GSO 150) are subject to updates, product-specific exemptions, and specific language requirements (e.g. Arabic script, numeric vs text format, mandatory lot code). The user (manufacturer, packer, exporter, or importer) assumes sole responsibility for verifying the final label with their regulatory consultant or customs broker prior to printing and shipping. OmniTools Lab and its authors disclaim all liability for customs holds, rejections, seizures, administrative fines, commercial losses, product spoilage, or third-party damages.
             </p>
         </section>
 
@@ -1565,12 +1561,12 @@ input[type="range"] {
             const st = document.getElementById('prodDateStatus');
 
             const meta = {
-                europa: { label: 'Data Produzione Europa (GG/MM/AAAA)', ph: 'Es. 14/11/2026' },
+                europa: { label: 'Data Produzione Europe (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
                 usa: { label: 'Data Produzione USA (MM/DD/YYYY)', ph: 'Es. 11/14/2026' },
                 uk: { label: 'Data Produzione UK (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
                 canada: { label: 'Data Produzione Canada (YYYY AL MM DD)', ph: 'Es. 2026 NO 14' },
                 gcc: { label: 'Data Produzione GCC (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
-                jp: { label: 'Data Produzione Giappone (AAAA.MM.GG)', ph: 'Es. 2026.11.14' }
+                jp: { label: 'Data Produzione Japan (YYYY.MM.DD)', ph: 'Es. 2026.11.14' }
             };
             const m = meta[origin] || meta.europa;
             if (lbl) lbl.textContent = m.label;
@@ -1655,7 +1651,7 @@ input[type="range"] {
             const inact = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold cursor-pointer';
             bd.className = unit === 'days' ? act : inact;
             bm.className = unit === 'months' ? act : inact;
-            document.getElementById('durUnitBadge').textContent = unit === 'days' ? 'giorni' : 'mesi';
+            document.getElementById('durUnitBadge').textContent = unit === 'days' ? 'days' : 'months';
             const rng = document.getElementById('rngDuration');
             if (unit === 'months') {
                 rng.max = 36;
@@ -1672,10 +1668,10 @@ input[type="range"] {
         const PRESETS_KEY = 'omnitools_shelflife_presets_v2';
         const LEGACY_PRESETS_KEY = 'omnitools_shelflife_custom_presets_v1';
         const DEFAULT_PRESETS = [
-            { name: 'Pasticceria Fresca', val: 5, unit: 'days', note: '+4°C' },
-            { name: 'Lievitati / Panettoni', val: 45, unit: 'days', note: 'TMC' },
-            { name: 'Biscotteria Secca', val: 180, unit: 'days', note: '6 mesi' },
-            { name: 'Cioccolato / Surgelati', val: 12, unit: 'months', note: '-18°C / Secco' }
+            { name: 'Fresh Pastry', val: 5, unit: 'days', note: '+4°C' },
+            { name: 'Leavened / Panettone', val: 45, unit: 'days', note: 'TMC' },
+            { name: 'Dry Biscuits', val: 180, unit: 'days', note: '6 months' },
+            { name: 'Chocolate / Frozen', val: 12, unit: 'months', note: '-18°C / Dry' }
         ];
         let acSelectedIdx = -1;
 
@@ -1728,7 +1724,7 @@ input[type="range"] {
             }
             if (emptyEl) emptyEl.classList.add('hidden');
             grid.innerHTML = list.map((item, idx) => {
-                const unitLbl = item.unit === 'months' ? 'mesi' : 'giorni';
+                const unitLbl = item.unit === 'months' ? 'months' : 'days';
                 const notePart = item.note ? ` (${escapeHtml(item.note)})` : '';
                 return `
                     <div class="relative group p-2.5 pr-7 rounded-xl border border-slate-200 bg-slate-50 hover:bg-orange-50 hover:border-orange-300 transition cursor-pointer" onclick="applyPreset(${item.val}, '${item.unit}', ${JSON.stringify(item.name).replace(/"/g, '&quot;')})">
@@ -1826,7 +1822,7 @@ input[type="range"] {
 
         function renderAutocompleteBox(box, matches) {
             box.innerHTML = matches.map((item, i) => {
-                const unitLbl = item.unit === 'months' ? 'mesi' : 'giorni';
+                const unitLbl = item.unit === 'months' ? 'months' : 'days';
                 const activeCls = i === acSelectedIdx ? 'bg-orange-50 text-orange-900' : 'hover:bg-orange-50/70 text-slate-800';
                 return `
                     <button type="button" onmousedown="event.preventDefault(); selectAutocompleteProduct(${i});" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left transition cursor-pointer ${activeCls}">
@@ -1921,16 +1917,16 @@ input[type="range"] {
                 txtWrap.classList.remove('hidden');
                 if (src === 'usa') {
                     if (lblRev) lblRev.textContent = 'Data USA letta su etichetta (MM/DD/YYYY o MMM DD YYYY)';
-                    if (inpRev) inpRev.placeholder = 'Es. 02/12/2027 oppure FEB 12 2027';
+                    if (inpRev) inpRev.placeholder = 'Es. 02/12/2027 or FEB 12 2027';
                 } else if (src === 'canada') {
                     if (lblRev) lblRev.textContent = 'Data Canada CFIA (YYYY AL MM DD)';
-                    if (inpRev) inpRev.placeholder = 'Es. 2027 FE 12 oppure 2027 AL 05';
+                    if (inpRev) inpRev.placeholder = 'Es. 2027 FE 12 or 2027 AL 05';
                 } else if (src === 'gcc') {
                     if (lblRev) lblRev.textContent = 'Data GCC / Medio Oriente (DD/MM/YYYY o MM/YYYY)';
-                    if (inpRev) inpRev.placeholder = 'Es. 12/02/2027 oppure 02/2027';
+                    if (inpRev) inpRev.placeholder = 'Es. 12/02/2027 or 02/2027';
                 } else if (src === 'jp') {
                     if (lblRev) lblRev.textContent = 'Data Giappone (AAAA.MM.GG o AAAA/MM/GG)';
-                    if (inpRev) inpRev.placeholder = 'Es. 2027.02.12 oppure 2027/02/12';
+                    if (inpRev) inpRev.placeholder = 'Es. 2027.02.12 or 2027/02/12';
                 }
                 if (inpRev) {
                     const eVal = document.getElementById('inpExpDate')?.value;
@@ -2121,7 +2117,7 @@ input[type="range"] {
 
             document.getElementById('resEU').textContent = euStr;
             document.getElementById('resUSA').textContent = usaNum;
-            document.getElementById('resUSAText').textContent = `Testuale: ${usaTxt}`;
+            document.getElementById('resUSAText').textContent = `Text: ${usaTxt}`;
             if (document.getElementById('resUK')) {
                 document.getElementById('resUK').textContent = ukStr;
                 document.getElementById('resUKSub').textContent = `Best before end: ${mm}/${yyyy}`;
@@ -2139,7 +2135,7 @@ input[type="range"] {
                 const pYy = prodDate.getFullYear();
                 prodStr = `${pDd}/${pMm}/${pYy}`;
                 const gccProdFmt = isShortGcc ? prodStr : `${pMm}/${pYy}`;
-                const gccRuleTag = isShortGcc ? '<3 mesi' : '≥3 mesi';
+                const gccRuleTag = isShortGcc ? '<3 months' : '≥3 months';
                 document.getElementById('resGCCProd').textContent = `PROD ${gccProdFmt} • EXP ${gccExp} (${gccRuleTag})`;
             } else {
                 document.getElementById('resGCCProd').textContent = `GSO 9: ${mm}/${yyyy} (≥3m) o ${dd}/${mm}/${yyyy} (<3m)`;
@@ -2160,9 +2156,9 @@ input[type="range"] {
             if (sel.CA) parts.push(`CA: ${caStr}`);
             if (sel.GCC) parts.push(`GCC: ${gccExp}`);
             if (sel.JP) parts.push(`JP: ${jpStr}`);
-            if (lot) parts.push(`LOTTO: ${lot}`);
+            if (lot) parts.push(`LOT: ${lot}`);
 
-            document.getElementById('resWeekday').textContent = `Scade di ${IT_WEEKDAYS[expDate.getDay()]}`;
+            document.getElementById('resWeekday').textContent = `Expires on ${IT_WEEKDAYS[expDate.getDay()]}`;
             document.getElementById('resLabelPreview').textContent = parts.join(' | ');
 
             const printTs = document.getElementById('printTimestamp');
@@ -2170,7 +2166,7 @@ input[type="range"] {
             const printSummary = document.getElementById('printInputsSummary');
             if (printSummary) {
                 const durVal = document.getElementById('numDuration').value || '--';
-                const durLbl = durUnit === 'days' ? 'giorni' : 'mesi';
+                const durLbl = durUnit === 'days' ? 'days' : 'months';
                 const modeHtml = currentMode === 'fromProd'
                     ? `<div><span class="text-slate-400 block">Prodotto / Produzione:</span><strong class="text-slate-900">${escapeHtml(prodName || 'N/D')} (${prodStr || '--'})</strong></div><div><span class="text-slate-400 block">Durata / Shelf-Life:</span><strong class="text-slate-900">${durVal} ${durLbl}</strong></div>`
                     : `<div><span class="text-slate-400 block">Prodotto / Modalità:</span><strong class="text-slate-900">${escapeHtml(prodName || 'N/D')} (Conversione)</strong></div><div><span class="text-slate-400 block">Scadenza UE:</span><strong class="text-slate-900">${euStr}</strong></div>`;
@@ -2184,7 +2180,7 @@ input[type="range"] {
             navigator.clipboard.writeText(txt).then(() => {
                 const lbl = document.getElementById('btnCopyLabel');
                 lbl.textContent = 'Copiato negli appunti ✓';
-                setTimeout(() => { lbl.textContent = 'Copia Tutte le Date Export'; }, 2000);
+                setTimeout(() => { lbl.textContent = 'Copy All Export Dates'; }, 2000);
             });
         }
 
@@ -2198,7 +2194,7 @@ input[type="range"] {
             if (sel.USA) rows.push([prodName, 'USA (FDA)', 'mm/dd/yyyy', document.getElementById('resUSA').textContent, lot]);
             if (sel.UK) rows.push([prodName, 'Regno Unito (UK/FSA)', 'dd/mm/yyyy o Best before end', document.getElementById('resUK')?.textContent || '', lot]);
             if (sel.CA) rows.push([prodName, 'Canada (CFIA)', 'YYYY AL MM DD', document.getElementById('resCanada').textContent, lot]);
-            if (sel.GCC) rows.push([prodName, 'Medio Oriente (GCC • GSO 9)', 'DD/MM/YYYY (<3m) o MM/YYYY (>=3m)', document.getElementById('resGCC').textContent, lot]);
+            if (sel.GCC) rows.push([prodName, 'Middle East (GCC • GSO 9)', 'DD/MM/YYYY (<3m) o MM/YYYY (>=3m)', document.getElementById('resGCC').textContent, lot]);
             if (sel.JP) rows.push([prodName, 'Giappone (CAA/JAS)', 'AAAA.MM.GG', document.getElementById('resJP')?.textContent || '', lot]);
             const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -2237,7 +2233,7 @@ input[type="range"] {
                             </span>
                         </div>
                         <h4 id="sponsorBannerTitle" class="text-xs sm:text-sm font-extrabold text-slate-900 leading-snug">
-                            Produci sistemi per l'edilizia, tubazioni, serramenti o attrezzature da cantiere?
+                            Produci sistemi for l'edilizia, tubazioni, serramenti o attrezzature da cantiere?
                         </h4>
                         <p id="sponsorBannerDesc" class="text-[11px] text-slate-600 leading-relaxed max-w-2xl">
                             Posiziona il tuo brand e le tue schede tecniche qui e sulle stampe PDF A4 utilizzate ogni giorno da Geometri, Architetti, Ingegneri e Imprese Edili.
@@ -2347,7 +2343,7 @@ input[type="range"] {
                 <div class="flex items-center gap-2.5">
                     <span class="text-xl">💡</span>
                     <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
-                        Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?
+                        Hai un'idea for un nuovo calcolatore di cantiere, grafica o finanza?
                     </span>
                 </div>
                 <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
@@ -3065,7 +3061,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <!-- Resize grip bar at bottom -->
                     <div class="h-4 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between px-2 text-[10px] text-slate-400 select-none">
                         <span class="font-mono">Ridimensiona finestra trascinando i bordi</span>
-                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-amber-700 transition" title="Trascina per ridimensionare larghezza e altezza">
+                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-amber-700 transition" title="Trascina for ridimensionare larghezza e altezza">
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 19H5m14-6H11m8-6H17"/></svg>
                         </div>
                     </div>
@@ -3195,7 +3191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const tab = document.createElement('div');
             tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
-            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
+            tab.title = 'Trascina in basso o clicca ↗ for staccare in finestra';
             
             const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
             tab.innerHTML = `
@@ -3260,7 +3256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_copy": "Copia Link",
         "share_copied": "Copiato! ✓",
         "share_btn": "Condividi",
-        "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
+        "suggest_banner": "Hai un'idea for un nuovo calcolatore di cantiere, grafica o finanza?",
         "suggest_btn": "Suggerisci",
         "net_sub": "17 Strumenti Gratuiti • Precision Utilities Suite",
         "cat_building": "OmniBuilding (5 Cantiere & Fabbricazione)",
@@ -3456,12 +3452,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     cta: "Candida la tua Azienda",
                     building: {
                         badge: "SLOT SPONSOR TECNICO • OMNIBUILDING",
-                        title: "Produci sistemi per l'edilizia, tubazioni, serramenti o attrezzature da cantiere?",
+                        title: "Produci sistemi for l'edilizia, tubazioni, serramenti o attrezzature da cantiere?",
                         desc: "Posiziona il tuo brand e le tue schede tecniche qui e sulle stampe PDF A4 utilizzate ogni giorno da Geometri, Architetti, Ingegneri e Imprese Edili."
                     },
                     food: {
                         badge: "SLOT SPONSOR TECNICO • OMNIFOOD",
-                        title: "Produci etichette, packaging alimentare, forni o soluzioni per laboratori?",
+                        title: "Produci etichette, packaging alimentare, forni o soluzioni for laboratori?",
                         desc: "Mostra le tue etichettatrici termiche, imballi a norma o servizi export direttamente a Pasticcerie, Panifici, Caseifici e Aziende Alimentari mentre preparano le date di spedizione."
                     },
                     graph: {
@@ -4019,7 +4015,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 <div id="omniPrintDisclaimer" class="hidden print:block mt-8 pt-3 border-t border-slate-300 text-[9px] leading-snug text-slate-600 text-center">
-    <strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità per uso improprio senza validazione tecnica.
+    <strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità for uso improprio senza validazione tecnica.
 </div>
 <script id="omniExtraI18n">
 (function() {
@@ -4028,7 +4024,7 @@ document.addEventListener('DOMContentLoaded', () => {
             shareBtn: "Link Calcolo",
             shareTitle: "Copia link con parametri precompilati",
             copied: "Copiato!",
-            disclaimer: "<strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità per uso improprio senza validazione tecnica."
+            disclaimer: "<strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità for uso improprio senza validazione tecnica."
         },
         en: {
             shareBtn: "Share Link",
@@ -4092,385 +4088,5 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
 
-<script>
-(function() {
-    const DICT = {
-        en: {
-            "Date di Scadenza & TMC per l'Export Alimentare": "Food Expiry Date & Best Before Calculator for Export",
-            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.",
-            "Regola Export Multipaese:": "Multi-Country Export Rule:",
-            "Scadenza = Data Produzione + Shelf-Life": "Expiry Date = Production Date + Shelf-Life",
-            "Esempio Canada (CFIA):": "Canada (CFIA) Example:",
-            "I codici mese bilingui ufficiali sono fissi (": "Official bilingual month codes are fixed (",
-            "). Il": ").",
-            "in UE diventa": "in EU becomes",
-            "in USA e": "in USA and",
-            "in Canada.": "in Canada.",
-            "1. Calcola da Data Produzione + Durata": "1. Calculate from Production Date + Shelf Life",
-            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Convert / Decode Expiry Date (Export ↔ EU)",
-            "IMPOSTA DATE E DURATA": "SET DATES & SHELF LIFE",
-            "Giorni": "Days",
-            "Mesi": "Months",
-            "giorni": "days",
-            "mesi": "months",
-            "Mercato di Partenza (Dove produci / Da dove leggi la data)": "Origin Market (Where you produce / Read date from)",
-            "Memorizzato localmente": "Saved locally",
-            "🇪🇺 Europa / UE (GG/MM/AAAA)": "🇪🇺 Europe / EU (DD/MM/YYYY)",
-            "🇺🇸 Stati Uniti — USA (MM/DD/YYYY)": "🇺🇸 United States — USA (MM/DD/YYYY)",
-            "🇬🇧 Regno Unito — UK (DD/MM/YYYY o Best Before End)": "🇬🇧 United Kingdom — UK (DD/MM/YYYY or Best Before End)",
-            "🇨🇦 Canada — CFIA (YYYY AL MM DD)": "🇨🇦 Canada — CFIA (YYYY AL MM DD)",
-            "🇦🇪 Medio Oriente — GCC / Arabia Saudita (DD/MM/YYYY o MM/YYYY)": "🇦🇪 Middle East — GCC / Saudi Arabia (DD/MM/YYYY or MM/YYYY)",
-            "🇯🇵 Giappone — CAA / JAS (AAAA.MM.GG)": "🇯🇵 Japan — CAA / JAS (YYYY.MM.DD)",
-            "Nome Prodotto / Ricetta (Opzionale)": "Product Name / Recipe (Optional)",
-            "Scrivi le iniziali per cercare tra i tuoi prodotti": "Type initials to search your saved products",
-            "Data di Produzione": "Production Date",
-            "Formato non valido": "Invalid format",
-            "Oggi": "Today",
-            "Durata Shelf-Life": "Shelf-Life Duration",
-            "Data di Scadenza da Convertire": "Expiry Date to Convert",
-            "Inserisci data letta su etichetta estera": "Enter date from foreign label",
-            "Codice Lotto di Produzione (Opzionale)": "Production Lot / Batch Code (Optional)",
-            "Includi Lotto in etichetta/stampa": "Include Lot in label/print",
-            "Genera Lotto Automatico": "Auto-Generate Lot",
-            "Preimpostazioni & I Miei Prodotti (": "Presets & My Products (",
-            "Ripristina preset base": "Reset default presets",
-            "Salva Prodotto nei Preset": "Save Product to Presets",
-            "＋ Salva Prodotto nei Preset": "+ Save Product to Presets",
-            "Pasticceria Fresca": "Fresh Pastry",
-            "Lievitati / Panettoni": "Leavened / Panettone",
-            "Biscotteria Secca": "Dry Biscuits",
-            "Cioccolato / Surgelati": "Chocolate / Frozen",
-            "Clicca sulle caselle per scegliere quali date includere in etichetta e stampa A4:": "Click boxes to select which dates to include on label & A4 print:",
-            "Italia / Unione Europea": "Italy / European Union",
-            "Formato gg/mm/aaaa": "Format dd/mm/yyyy",
-            "USA (FDA Standard)": "USA (FDA Standard)",
-            "Regno Unito (UK / FSA)": "United Kingdom (UK / FSA)",
-            "Canada (CFIA Bilingue)": "Canada (CFIA Bilingual)",
-            "Medio Oriente (GCC • GSO 9)": "Middle East (GCC • GSO 9)",
-            "PROD + EXP obbligatorie": "PROD + EXP mandatory",
-            "Giappone (CAA / JAS)": "Japan (CAA / JAS)",
-            "Riga Pronta per Etichettatrice & Giorno Scadenza": "Ready-to-Print Label Line & Expiry Day",
-            "Nota tecnica GCC (GSO 9 / SFDA):": "GCC Technical Note (GSO 9 / SFDA):",
-            "Nei Paesi del Golfo (Arabia Saudita, Emirati Arabi, Qatar, ecc.) è obbligatorio stampare sia": "In Gulf countries (Saudi Arabia, UAE, Qatar, etc.) it is mandatory to print both",
-            "Data Produzione": "Production Date",
-            "Testuale:": "Text:",
-            "Secco": "Dry",
-            "Lunedì": "Monday",
-            "Martedì": "Tuesday",
-            "Mercoledì": "Wednesday",
-            "Giovedì": "Thursday",
-            "Venerdì": "Friday",
-            "Sabato": "Saturday",
-            "Domenica": "Sunday",
-            "LOTTO:": "LOT:",
-            "in chiaro: formato": "in plain text: format",
-            "se la durata è inferiore a 3 mesi, oppure": "if shelf life is under 3 months, or",
-            "se superiore a 3 mesi.": "if over 3 months.",
-            "Copia": "Copy",
-            "Stampa": "Print",
-            "Scade di": "Expires on"
-        },
-        es: {
-            "Date di Scadenza & TMC per l'Export Alimentare": "Fechas de Caducidad y Consumo Preferente para Exportación",
-            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convierte y formatea etiquetas para Europa, EE. UU., Reino Unido, Canadá, Países del Golfo y Japón en un clic.",
-            "Regola Export Multipaese:": "Regla de Exportación Multipaís:",
-            "Scadenza = Data Produzione + Shelf-Life": "Caducidad = Fecha de Producción + Vida Útil",
-            "Esempio Canada (CFIA):": "Ejemplo Canadá (CFIA):",
-            "1. Calcola da Data Produzione + Durata": "1. Calcular desde Fecha de Producción + Duración",
-            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Convertir / Decodificar Caducidad (Export ↔ UE)",
-            "IMPOSTA DATE E DURATA": "CONFIGURAR FECHAS Y DURACIÓN",
-            "Giorni": "Días",
-            "Mesi": "Meses",
-            "giorni": "días",
-            "mesi": "meses",
-            "Mercato di Partenza (Dove produci / Da dove leggi la data)": "Mercado de Origen (Dónde produces / Lees la fecha)",
-            "Memorizzato localmente": "Guardado localmente",
-            "Nome Prodotto / Ricetta (Opzionale)": "Nombre del Producto / Receta (Opcional)",
-            "Data di Produzione": "Fecha de Producción",
-            "Formato non valido": "Formato no válido",
-            "Oggi": "Hoy",
-            "Durata Shelf-Life": "Duración de Vida Útil",
-            "Data di Scadenza da Convertire": "Fecha de Caducidad a Convertir",
-            "Codice Lotto di Produzione (Opzionale)": "Código de Lote de Producción (Opcional)",
-            "Includi Lotto in etichetta/stampa": "Incluir Lote en etiqueta/impresión",
-            "Genera Lotto Automatico": "Generar Lote Automático",
-            "Preimpostazioni & I Miei Prodotti (": "Preajustes y Mis Productos (",
-            "Ripristina preset base": "Restablecer preajustes",
-            "Salva Prodotto nei Preset": "Guardar Producto",
-            "＋ Salva Prodotto nei Preset": "+ Guardar Producto",
-            "Pasticceria Fresca": "Pastelería Fresca",
-            "Lievitati / Panettoni": "Masas Fermentadas / Panettone",
-            "Biscotteria Secca": "Galletas Secas",
-            "Cioccolato / Surgelati": "Chocolate / Congelados",
-            "Clicca sulle caselle per scegliere quali date includere in etichetta e stampa A4:": "Haz clic en las casillas para incluir fechas en etiqueta e impresión A4:",
-            "Italia / Unione Europea": "Italia / Unión Europea",
-            "Formato gg/mm/aaaa": "Formato dd/mm/aaaa",
-            "USA (FDA Standard)": "EE. UU. (FDA Estándar)",
-            "Regno Unito (UK / FSA)": "Reino Unido (UK / FSA)",
-            "Canada (CFIA Bilingue)": "Canadá (CFIA Bilingüe)",
-            "Medio Oriente (GCC • GSO 9)": "Oriente Medio (GCC • GSO 9)",
-            "PROD + EXP obbligatorie": "PROD + EXP obligatorias",
-            "Giappone (CAA / JAS)": "Japón (CAA / JAS)",
-            "Riga Pronta per Etichettatrice & Giorno Scadenza": "Línea Lista para Etiquetadora y Día de Caducidad",
-            "Nota tecnica GCC (GSO 9 / SFDA):": "Nota técnica GCC (GSO 9 / SFDA):",
-            "Data Produzione": "Fecha de Producción",
-            "Testuale:": "Texto:",
-            "Secco": "Seco",
-            "Lunedì": "Lunes",
-            "Martedì": "Martes",
-            "Mercoledì": "Miércoles",
-            "Giovedì": "Jueves",
-            "Venerdì": "Viernes",
-            "Sabato": "Sábado",
-            "Domenica": "Domingo",
-            "LOTTO:": "LOTE:",
-            "Data Produzione": "Data de Produção",
-            "Testuale:": "Texto:",
-            "Secco": "Seco",
-            "Lunedì": "Segunda-feira",
-            "Martedì": "Terça-feira",
-            "Mercoledì": "Quarta-feira",
-            "Giovedì": "Quinta-feira",
-            "Venerdì": "Sexta-feira",
-            "Sabato": "Sábado",
-            "Domenica": "Domingo",
-            "LOTTO:": "LOTE:",
-            "Copia": "Copiar",
-            "Scade di": "Caduca el"
-        },
-        fr: {
-            "Date di Scadenza & TMC per l'Export Alimentare": "Dates de Péremption & DDM pour l'Export Alimentaire",
-            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convertissez et formatez les étiquettes pour l'Europe, les USA, le Royaume-Uni, le Canada, le Golfe et le Japon en un clic.",
-            "Regola Export Multipaese:": "Règle Export Multi-Pays :",
-            "1. Calcola da Data Produzione + Durata": "1. Calculer depuis Date de Production + Durée",
-            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Convertir / Décoder Péremption (Export ↔ UE)",
-            "IMPOSTA DATE E DURATA": "DÉFINIR DATES ET DURÉE",
-            "Giorni": "Jours",
-            "Mesi": "Mois",
-            "giorni": "jours",
-            "mesi": "mois",
-            "Mercato di Partenza (Dove produci / Da dove leggi la data)": "Marché d'Origine (Production / Lecture)",
-            "Memorizzato localmente": "Enregistré localement",
-            "Nome Prodotto / Ricetta (Opzionale)": "Nom du Produit / Recette (Optionnel)",
-            "Data di Produzione": "Date de Production",
-            "Oggi": "Aujourd'hui",
-            "Durata Shelf-Life": "Durée de Conservation",
-            "Codice Lotto di Produzione (Opzionale)": "Code Lot de Production (Optionnel)",
-            "Includi Lotto in etichetta/stampa": "Inclure le Lot sur l'étiquette",
-            "Genera Lotto Automatico": "Générer Lot Automatique",
-            "Preimpostazioni & I Miei Prodotti (": "Préréglages & Mes Produits (",
-            "Salva Prodotto nei Preset": "Enregistrer le Produit",
-            "＋ Salva Prodotto nei Preset": "+ Enregistrer le Produit",
-            "Pasticceria Fresca": "Pâtisserie Fraîche",
-            "Lievitati / Panettoni": "Pâtes Levées / Panettone",
-            "Biscotteria Secca": "Biscuits Secs",
-            "Cioccolato / Surgelati": "Chocolat / Surgelés",
-            "Clicca sulle caselle per scegliere quali date includere in etichetta e stampa A4:": "Cliquez sur les cases pour choisir les dates à inclure sur l'étiquette et l'impression A4 :",
-            "Italia / Unione Europea": "Italie / Union Européenne",
-            "USA (FDA Standard)": "USA (Norme FDA)",
-            "Regno Unito (UK / FSA)": "Royaume-Uni (UK / FSA)",
-            "Canada (CFIA Bilingue)": "Canada (CFIA Bilingue)",
-            "Medio Oriente (GCC • GSO 9)": "Moyen-Orient (GCC • GSO 9)",
-            "PROD + EXP obbligatorie": "PROD + EXP obligatoires",
-            "Giappone (CAA / JAS)": "Japon (CAA / JAS)",
-            "Riga Pronta per Etichettatrice & Giorno Scadenza": "Ligne Prête à Imprimer & Jour d'Expiration",
-            "Data Produzione": "Date de Production",
-            "Testuale:": "Texte :",
-            "Secco": "Sec",
-            "Lunedì": "Lundi",
-            "Martedì": "Mardi",
-            "Mercoledì": "Mercredi",
-            "Giovedì": "Jeudi",
-            "Venerdì": "Vendredi",
-            "Sabato": "Samedi",
-            "Domenica": "Dimanche",
-            "LOTTO:": "LOT :",
-            "Copia": "Copier",
-            "Scade di": "Expire le"
-        },
-        de: {
-            "Date di Scadenza & TMC per l'Export Alimentare": "Mindesthaltbarkeitsdatum (MHD) & Verfallsdatum für den Export",
-            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Konvertieren und formatieren Sie Etiketten für Europa, USA, UK, Kanada, Golfstaaten und Japan mit einem Klick.",
-            "Regola Export Multipaese:": "Export-Regel für mehrere Länder:",
-            "1. Calcola da Data Produzione + Durata": "1. Berechnen ab Produktionsdatum + Dauer",
-            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Verfallsdatum Umrechnen (Export ↔ EU)",
-            "IMPOSTA DATE E DURATA": "DATEN & HALTBARKEIT FESTLEGEN",
-            "Giorni": "Tage",
-            "Mesi": "Monate",
-            "giorni": "Tage",
-            "mesi": "Monate",
-            "Mercato di Partenza (Dove produci / Da dove leggi la data)": "Herkunftsmarkt (Produktion / Datumformat)",
-            "Memorizzato localmente": "Lokal gespeichert",
-            "Nome Prodotto / Ricetta (Opzionale)": "Produktname / Rezept (Optional)",
-            "Data di Produzione": "Produktionsdatum",
-            "Oggi": "Heute",
-            "Durata Shelf-Life": "Haltbarkeitsdauer",
-            "Codice Lotto di Produzione (Opzionale)": "Produktions-Chargencode (Optional)",
-            "Includi Lotto in etichetta/stampa": "Charge auf Etikett/Druck einfügen",
-            "Genera Lotto Automatico": "Charge automatisch generieren",
-            "Preimpostazioni & I Miei Prodotti (": "Voreinstellungen & Meine Produkte (",
-            "Salva Prodotto nei Preset": "Produkt speichern",
-            "＋ Salva Prodotto nei Preset": "+ Produkt speichern",
-            "Pasticceria Fresca": "Frisches Gebäck",
-            "Lievitati / Panettoni": "Hefeteig / Panettone",
-            "Biscotteria Secca": "Trockengebäck",
-            "Cioccolato / Surgelati": "Schokolade / Tiefkühlkost",
-            "Clicca sulle caselle per scegliere quali date includere in etichetta e stampa A4:": "Klicken Sie auf die Felder für Etikett & A4-Druck:",
-            "Italia / Unione Europea": "Italien / Europäische Union",
-            "USA (FDA Standard)": "USA (FDA Standard)",
-            "Regno Unito (UK / FSA)": "Vereinigtes Königreich (UK / FSA)",
-            "Canada (CFIA Bilingue)": "Kanada (CFIA Zweisprachig)",
-            "Medio Oriente (GCC • GSO 9)": "Naher Osten (GCC • GSO 9)",
-            "PROD + EXP obbligatorie": "PROD + EXP Pflicht",
-            "Giappone (CAA / JAS)": "Japan (CAA / JAS)",
-            "Riga Pronta per Etichettatrice & Giorno Scadenza": "Etikettierzeile & Ablauftag",
-            "Data Produzione": "Produktionsdatum",
-            "Testuale:": "Text:",
-            "Secco": "Trocken",
-            "Lunedì": "Montag",
-            "Martedì": "Dienstag",
-            "Mercoledì": "Mittwoch",
-            "Giovedì": "Donnerstag",
-            "Venerdì": "Freitag",
-            "Sabato": "Samstag",
-            "Domenica": "Sonntag",
-            "LOTTO:": "LOS:",
-            "Copia": "Kopieren",
-            "Scade di": "Läuft ab am"
-        },
-        pt: {
-            "Date di Scadenza & TMC per l'Export Alimentare": "Datas de Validade e Consumo Preferencial para Exportação",
-            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Converta e formate rótulos para Europa, EUA, Reino Unido, Canadá, Países do Golfo e Japão em um clique.",
-            "Regola Export Multipaese:": "Regra de Exportação Multipaís:",
-            "1. Calcola da Data Produzione + Durata": "1. Calcular por Data de Produção + Validade",
-            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Converter / Decodificar Validade (Export ↔ UE)",
-            "IMPOSTA DATE E DURATA": "DEFINIR DATAS E VALIDADE",
-            "Giorni": "Dias",
-            "Mesi": "Meses",
-            "giorni": "dias",
-            "mesi": "meses",
-            "Mercato di Partenza (Dove produci / Da dove leggi la data)": "Mercado de Origem (Produção / Leitura)",
-            "Memorizzato localmente": "Salvo localmente",
-            "Nome Prodotto / Ricetta (Opzionale)": "Nome do Produto / Receita (Opcional)",
-            "Data di Produzione": "Data de Produção",
-            "Oggi": "Hoje",
-            "Durata Shelf-Life": "Prazo de Validade",
-            "Codice Lotto di Produzione (Opzionale)": "Código do Lote de Produção (Opcional)",
-            "Includi Lotto in etichetta/stampa": "Incluir Lote na etiqueta/impressão",
-            "Genera Lotto Automatico": "Gerar Lote Automático",
-            "Preimpostazioni & I Miei Prodotti (": "Predefinições e Meus Produtos (",
-            "Salva Prodotto nei Preset": "Salvar Produto",
-            "＋ Salva Prodotto nei Preset": "+ Salvar Produto",
-            "Pasticceria Fresca": "Confeitaria Fresca",
-            "Lievitati / Panettoni": "Massas Fermentadas / Panettone",
-            "Biscotteria Secca": "Biscoitos Secos",
-            "Cioccolato / Surgelati": "Chocolate / Congelados",
-            "Clicca sulle caselle per scegliere quali date includere in etichetta e stampa A4:": "Clique nas caixas para incluir datas na etiqueta e impressão A4:",
-            "Italia / Unione Europea": "Itália / União Europeia",
-            "USA (FDA Standard)": "EUA (Padrão FDA)",
-            "Regno Unito (UK / FSA)": "Reino Unido (UK / FSA)",
-            "Canada (CFIA Bilingue)": "Canadá (CFIA Bilíngue)",
-            "Medio Oriente (GCC • GSO 9)": "Oriente Médio (GCC • GSO 9)",
-            "PROD + EXP obbligatorie": "PROD + EXP obrigatórias",
-            "Giappone (CAA / JAS)": "Japão (CAA / JAS)",
-            "Riga Pronta per Etichettatrice & Giorno Scadenza": "Linha Pronta para Etiquetadora e Dia de Validade",
-            "Copia": "Copiar",
-            "Scade di": "Vence em"
-        }
-    };
-
-    const EN_TO_IT = {
-        "Food Expiry Date & Best Before Calculator for Export": "Date di Scadenza & TMC per l'Export Alimentare",
-        "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click."
-    };
-
-    const nodeOriginals = new WeakMap();
-    function walkTextNodes(root, fn) {
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
-        let node;
-        while ((node = walker.nextNode())) {
-            if (node.parentElement && ["SCRIPT", "STYLE"].includes(node.parentElement.tagName)) continue;
-            fn(node);
-        }
-    }
-
-    function captureOnce() {
-        const main = document.querySelector("main") || document.body;
-        walkTextNodes(main, (node) => {
-            if (!nodeOriginals.has(node)) {
-                nodeOriginals.set(node, node.nodeValue);
-            }
-        });
-    }
-
-    captureOnce();
-
-    function applyShelfLifeI18n(lang) {
-        try { localStorage.setItem("omnitools_lang", lang); } catch(e) {}
-        const main = document.querySelector("main") || document.body;
-        captureOnce();
-        const dict = DICT[lang] || null;
-
-        walkTextNodes(main, (node) => {
-            const orig = nodeOriginals.get(node);
-            if (orig === undefined) return;
-            const norm = orig.replace(/\s+/g, " ").trim();
-            if (!norm) return;
-
-            if (lang === "it") {
-                node.nodeValue = EN_TO_IT[norm] ? orig.replace(orig.trim(), EN_TO_IT[norm]) : orig;
-                return;
-            }
-            if (!dict) {
-                node.nodeValue = orig;
-                return;
-            }
-            const itBase = EN_TO_IT[norm] || norm;
-            if (dict[itBase]) {
-                node.nodeValue = orig.replace(orig.trim(), dict[itBase]);
-                return;
-            }
-            let updated = orig;
-            const keys = Object.keys(dict).sort((a, b) => b.length - a.length);
-            for (const k of keys) {
-                if (k.length >= 4 && updated.includes(k)) {
-                    updated = updated.split(k).join(dict[k]);
-                }
-            }
-            node.nodeValue = updated;
-        });
-    }
-
-    window.changeLanguage = function(lang) {
-        applyShelfLifeI18n(lang);
-        setTimeout(() => applyShelfLifeI18n(lang), 80);
-    };
-
-    window.addEventListener("omnitools_lang_changed", (e) => {
-        if (e && e.detail && e.detail.lang) {
-            applyShelfLifeI18n(e.detail.lang);
-        }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const sel = document.getElementById("langSelect");
-        const htmlLang = document.documentElement.lang || "it";
-        if (sel) {
-            sel.addEventListener("change", (ev) => {
-                const chosen = ev.target.value;
-                try { localStorage.setItem("omnitools_lang", chosen); } catch(e) {}
-                applyShelfLifeI18n(chosen);
-                setTimeout(() => applyShelfLifeI18n(chosen), 80);
-            });
-            if (htmlLang !== "it" && DICT[htmlLang]) {
-                sel.value = htmlLang;
-                applyShelfLifeI18n(htmlLang);
-            } else if (sel.value && sel.value !== "it") {
-                applyShelfLifeI18n(sel.value);
-            }
-        }
-    });
-})();
-</script>
 </body>
 </html>
