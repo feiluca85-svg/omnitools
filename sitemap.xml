@@ -126,8 +126,8 @@
   <!-- OmniFinance -->
   <url>
     <loc>https://www.omnitoolslab.com/mutuo</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo?lang=it" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/mutuo?lang=en" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/mutuo" />
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -144,8 +144,8 @@
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/margine</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine?lang=it" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/margine?lang=en" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/margine" />
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -153,8 +153,8 @@
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/fire</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire?lang=it" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/fire?lang=en" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/fire" />
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -162,8 +162,8 @@
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/estinzione</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione?lang=it" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/estinzione?lang=en" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/estinzione" />
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -171,8 +171,8 @@
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/risparmio</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio?lang=it" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/risparmio?lang=en" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/risparmio" />
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -318,6 +318,51 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/shelflife" />
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/mutuo" />
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/margin-markup-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/margine" />
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/fire-financial-independence-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/fire" />
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/estinzione" />
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.omnitoolslab.com/en/savings-goal-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/risparmio" />
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
