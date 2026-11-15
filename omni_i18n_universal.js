@@ -143,12 +143,14 @@
         if (sel) sel.value = urlLang;
         return urlLang;
       }
+      const sel = document.getElementById('langSelect');
+      if (sel && sel.dataset && sel.dataset.userPicked === '1' && sel.value) {
+        return sel.value;
+      }
       if (window.location.pathname.startsWith('/en/')) {
-        const sel = document.getElementById('langSelect');
         if (sel) sel.value = 'en';
         return 'en';
       }
-      const sel = document.getElementById('langSelect');
       if (sel && sel.value) return sel.value;
       return localStorage.getItem('omnitools_lang') || 'it';
     } catch (e) {
