@@ -1046,7 +1046,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition" onchange="if(this.value==='it'){window.location.href='/fire';}else{changeLanguage('en');}">
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition" onchange="if(this.value==='it'){window.location.href='/fire';}else{changeLanguage('en');}" onchange="if(this.value==='it'){window.location.href='/fire';}">
                         <option value="en" selected>🇬🇧 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1322,8 +1322,7 @@
             <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
                 <span class="text-xl">❓</span>
                 <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
-                    <span id="faqTitle">Domande Frequenti sul Movimento FIRE e la Libertà Finanziaria</span>
-                </h2>
+                    <span id="faqTitle">Frequently Asked Questions</h2>
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
             </div>
             
@@ -1335,45 +1334,37 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faqA1" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        FIRE è l'acronimo di "Financial Independence, Retire Early" (Indipendenza Finanziaria, Pensione Anticipata). La Regola del 4%, derivata dal celebre studio accademico Trinity Study dell'Università Trinity (Texas), dimostra che prelevando annualmente non più del 4% da un portafoglio diversificato di azioni e obbligazioni, il capitale ha una probabilità superiore al 95% di durare per almeno 30 anni senza mai esaurirsi.
-                    </div>
+                    <div id="faqA1" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">FIRE significa Financial Independence, Retire Early. La regola del 4%, fondata sul Trinity Study, indica che prelevando annualmente non oltre il 4% da un portafoglio diversificato indicizzato all'inflazione, il capitale ha oltre il 95% di probabilità di durare almeno 30 anni senza esaurirsi.</div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faqQ2">Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?</span>
+                        <span id="faqQ2">Come si calcola il Numero FIRE?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faqA2" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Lean FIRE punta a uno stile di vita frugale con spese coperte al minimo (es. 1.000 - 1.400 €/mese), richiedendo un capitale accumulato più piccolo. Regular FIRE garantisce il mantenimento del tenore di vita medio attuale (2.000 - 2.500 €/mese). Fat FIRE è pensato per chi desidera una pensione anticipata di lusso con viaggi frequenti e spese elevate (oltre 4.000 - 5.000 €/mese).
-                    </div>
+                    <div id="faqA2" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">La formula è: Spese Annuali moltiplicate per 25 (ovvero Spese Annuali diviso il 4% di Safe Withdrawal Rate). Esempio: 24.000 €/anno x 25 = 600.000 € di capitale target.</div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faqQ3">Come si calcola il Numero FIRE?</span>
+                        <span id="faqQ3">Qual è la differenza tra Lean FIRE, Regular FIRE e Fat FIRE?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faqA3" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        La formula matematica universale è: Spese Annue ÷ Tasso di Prelievo (SWR). Se applichi la regola classica del 4% (0.04), equivale semplicemente a moltiplicare le tue spese annuali per 25. Ad esempio: 24.000 € di spese all'anno × 25 = 600.000 € di patrimonio target.
-                    </div>
+                    <div id="faqA3" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">Lean FIRE copre le spese essenziali minime con uno stile di vita frugale. Regular FIRE sostiene il tenore di vita medio attuale. Fat FIRE permette una rendita abbondante e spese elevate senza rinunce.</div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faqQ4">Cosa succede se il mercato affronta una recessione subito dopo il mio ritiro (Sequence of Returns Risk)?</span>
+                        <span id="faqQ4">Cos'è il rischio della sequenza dei rendimenti (Sequence of Returns Risk)?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faqA4" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Il rischio della sequenza dei rendimenti si verifica quando una flessione del mercato colpisce i primi anni di ritiro. Per proteggersi, la strategia FIRE raccomanda di mantenere un cuscinetto di liquidità o obbligazioni a breve termine pari a 1-2 anni di spese vive (Cash Buffer), oppure di adottare un tasso di prelievo variabile riducendo temporaneamente le spese discrezionali durante i mercati orso.
-                    </div>
+                    <div id="faqA4" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">È il rischio che i mercati crollino nei primissimi anni di ritiro. Si gestisce mantenendo un cuscinetto di liquidità di 1-2 anni di spese o riducendo i prelievi nei periodi di mercato orso.</div>
                 </details>
             </div>
         </section>

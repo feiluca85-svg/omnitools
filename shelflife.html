@@ -1131,10 +1131,10 @@ input[type="range"] {
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
-                    <option value="it" selected>🇮🇹 IT</option>
-                    <option value="en">🇬🇧 EN</option>
-                </select>
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition" onchange="if(this.value==='en'){window.location.href='/en/shelf-life-calculator';}">
+                        <option value="it" selected>🇮🇹 Italiano</option>
+                        <option value="en">🇬🇧 English</option>
+                    </select>
                 <div class="relative sm:hidden" id="omniMobileMenuWrap">
                     <button type="button" id="omniMobileMenuBtn" onclick="event.stopPropagation();document.getElementById('omniMobileMenuDropdown').classList.toggle('hidden')" class="h-8 w-8 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-base font-black leading-none" aria-label="Menu">&#8942;</button>
                     <div id="omniMobileMenuDropdown" class="hidden absolute right-0 top-full mt-2 w-52 rounded-2xl bg-white border border-slate-200 shadow-xl p-1.5 z-50 text-xs font-semibold text-slate-700">

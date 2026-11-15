@@ -1058,7 +1058,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition" onchange="if(this.value==='it'){window.location.href='/estinzione';}else{changeLanguage('en');}">
+                <select id="langSelect" onchange="if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition" onchange="if(this.value==='it'){window.location.href='/estinzione';}else{changeLanguage('en');}" onchange="if(this.value==='it'){window.location.href='/estinzione';}">
                         <option value="en" selected>🇬🇧 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1349,57 +1349,56 @@
             <div class="flex items-center gap-2.5 mb-1 pb-2 border-b border-slate-100">
                 <span class="text-xl">❓</span>
                 <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
-                    <span id="faqTitle">Domande Frequenti su Estinzione Anticipata Mutuo</span>
-                </h2>
+                    <span id="faqTitle">Frequently Asked Questions</h2>
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">FAQ</span>
             </div>
             
             <div id="faqContainer" class="space-y-3">
-                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faq1Q">L'estinzione anticipata parziale del mutuo prevede penali o costi bancari?</span>
+                        <span id="faqQ1">L'estinzione anticipata parziale del mutuo prevede penali o costi bancari?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faq1A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        No. In Italia, grazie al <strong>Decreto Bersani (Legge 40/2007)</strong>, per tutti i mutui stipulati o rinegoziati per l'acquisto o la ristrutturazione di immobili adibiti ad abitazione (prima casa o meno) o ad attività professionale, <strong>le penali di estinzione anticipata totale o parziale sono nulle per legge</strong>.
+                    <div id="faqA1" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        No. In Italia, grazie al Decreto Bersani (Legge 40/2007), per tutti i mutui stipulati o rinegoziati per l'acquisto o la ristrutturazione di immobili adibiti ad abitazione o attività professionale, le penali di estinzione anticipata totale o parziale sono nulle per legge.
                     </div>
                 </details>
 
-                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faq2Q">Conviene di più abbassare la rata mensile o diminuire gli anni del mutuo?</span>
+                        <span id="faqQ2">Conviene di più abbassare la rata mensile o diminuire gli anni del mutuo?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faq2A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Dal punto di vista puramente economico e matematico, <strong>ridurre gli anni del mutuo (durata) genera un risparmio di interessi molto più elevato</strong>. Tuttavia, se la famiglia desidera maggiore serenità mese per mese, ridurre la rata offre un beneficio immediato sulla liquidità mensile.
+                    <div id="faqA2" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Dal punto di vista puramente economico e matematico, ridurre gli anni del mutuo (durata) genera un risparmio di interessi notevolmente più elevato rispetto alla riduzione della sola rata.
                     </div>
                 </details>
 
-                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faq3Q">Come viene ricalcolato l'ammortamento dopo un versamento anticipato?</span>
+                        <span id="faqQ3">Come viene ricalcolato l'ammortamento dopo un versamento anticipato?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        La somma versata va ad abbattere direttamente il <strong>debito residuo in quota capitale</strong>. Da quel momento, gli interessi futuri verranno conteggiati dalla banca esclusivamente sul nuovo debito ridotto, ricalcolando la rata o la durata secondo la formula di ammortamento alla francese.
+                    <div id="faqA3" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La somma versata abbatte direttamente il debito residuo in quota capitale. Da quel momento, gli interessi futuri vengono calcolati dalla banca esclusivamente sul nuovo debito ridotto.
                     </div>
                 </details>
 
-                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-xl border border-slate-200/80 p-4 transition duration-150">
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faq4Q">Esiste un importo minimo obbligatorio per l'estinzione parziale?</span>
+                        <span id="faqQ4">Esiste un importo minimo obbligatorio per l'estinzione parziale?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
-                    <div id="faq4A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        La legge non impone una soglia minima, ma molti contratti di mutuo o regolamenti interni bancari indicano un importo minimo per singola richiesta (spesso 1.000 € o l'equivalente di una rata mensile). Non c'è limite al numero di versamenti anticipati eseguibili.
+                    <div id="faqA4" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        La legge non impone una soglia minima, ma molti contratti bancari indicano un importo minimo per singola operazione (spesso 1.000 € o l'equivalente di una rata mensile).
                     </div>
                 </details>
             </div>
