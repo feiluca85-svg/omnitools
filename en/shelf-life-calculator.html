@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Food Expiry Date &amp; Best Before Calculator for Export — Shelf Life &amp; Expiry Date Calculator</title>
-    <meta name="description" content="Calcolatore professionaland date di scadenza alimentari e TMC for l'export: formattazione automatica e decodifica for Italia/UE, USA (FDA), UK (FSA), Canada (CFIA), Paesi del Golfo (GCC GSO 9) e Giappone (CAA).">
+    <meta name="description" content="Calculate food expiry dates, Best Before (TMC), and Julian lot codes for international export. Automatic label formatting for EU, US (FDA), UK (FSA), Canada (CFIA), Gulf States (GCC GSO 9), and Japan (CAA 1/3 Rule).">
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/en/shelf-life-calculator">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=it" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator?lang=en" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/shelflife" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Food Expiry Date &amp; Best Before Calculator for Export — OmniFood">
-    <meta property="og:description" content="Converti e formatta le etichette alimentari for Europa, USA, UK, Canada, Paesi del Golfo e Giappone in un clic.">
+    <meta property="og:description" content="Convert and format food expiry dates, Best Before labels, and Julian lot codes for EU, US, UK, Canada, Gulf States, and Japan.">
     <meta property="og:url" content="https://www.omnitoolslab.com/en/shelf-life-calculator">
     <meta property="og:site_name" content="OmniTools Lab">
     <meta property="og:image" content="https://www.omnitoolslab.com/og-shelflife.png">
@@ -23,7 +23,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-tubi.png">
+    <meta name="twitter:image" content="https://www.omnitoolslab.com/og-shelflife.png">
 
     <!-- Schema.org JSON-LD Structured Data (Rich Snippets) -->
     <script type="application/ld+json">
@@ -31,11 +31,11 @@
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "ScaricoFacile — Calcolo Pendenza Tubazioni e Scarichi",
-        "url": "https://www.omnitoolslab.com/tubi",
-        "applicationCategory": "UtilitiesApplication",
+        "name": "ShelfLife & Export Date Calculator",
+        "url": "https://www.omnitoolslab.com/en/shelf-life-calculator",
+        "applicationCategory": "BusinessApplication",
         "operatingSystem": "All",
-        "description": "Calcolatore tecnico professionaland il calcolo di pendenza, dislivello e caduta al metro linearand reti di scarico a gravità e fognature.",
+        "description": "Food shelf life, Best Before, and Use By date calculator with international export formatting for EU (Reg. 1169/2011), US (FDA), Canada (CFIA), Gulf States (GCC GSO 9), and Japan (1/3 Rule), plus Julian lot code decoding.",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -55,14 +55,14 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "OmniBuilding",
-            "item": "https://www.omnitoolslab.com/#building"
+            "name": "OmniFood",
+            "item": "https://www.omnitoolslab.com/#food"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "ScaricoFacile",
-            "item": "https://www.omnitoolslab.com/tubi"
+            "name": "ShelfLife & Export Date Calculator",
+            "item": "https://www.omnitoolslab.com/en/shelf-life-calculator"
           }
         ]
       },
@@ -72,34 +72,26 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Qual è la pendenza minima obbligatoria for un tubo di scarico fognario?",
+            "name": "What is the difference between Use By and Best Before dates?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "La pendenza minima raccomandata dalle norme tecniche europee (UNI EN 12056) è dell'1% (1 cm for ogni metro lineare) for garantire l'autopulizia ed evitare depositi solidi."
+              "text": "Under EU Regulation 1169/2011 and international food standards, a Use By date applies to highly perishable foods that pose a safety risk after expiration, while a Best Before date (date of minimum durability) indicates when a food retains its expected quality when stored properly."
             }
           },
           {
             "@type": "Question",
-            "name": "Cosa succede se la pendenza dello scarico è troppo ripida?",
+            "name": "How are food expiry dates formatted for the US (FDA), Canada (CFIA), and Gulf States (GCC GSO 9)?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sopra il 3.5-4%, l'acqua scivola via velocemente lasciando fermi sul fondo del tubo i corpi solidi pesanti (separazione liquido-solido), provocando occlusioni."
+              "text": "In the US (FDA), dates place the month before the day (MM/DD/YYYY or MMM DD, YYYY). In Canada (CFIA), labels require a bilingual English/French 2-letter month code (YYYY MA DD). In Gulf States (GCC GSO 9), both production (PROD) and expiry (EXP) dates are mandatory in day/month/year order."
             }
           },
           {
             "@type": "Question",
-            "name": "Come si calcola il dislivello tra punto di partenza e punto di arrivo?",
+            "name": "How does a Julian Date lot code work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Formula: Dislivello (cm) = Lunghezza (metri) × Pendenza (%). For example: 4 metri con pendenza 1.5% necessitano di 6 cm di caduta."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Qual è il diametro corretto della tubazione in base agli apparecchi sanitari collegati?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Secondo le norme UNI EN 12056, for lavabi e bidet si usa Ø 40 mm, for docce e lavelli cucina Ø 50 mm, mentrand WC e collettori principali di scarico è obbligatorio almeno Ø 90-110 mm for garantire l'evacuazione senza sifonamento."
+              "text": "A Julian Date lot code combines the last one or two digits of the production year with the three-digit day of the year from 001 to 365 (or 366 in leap years), such as L26319 for the 319th day of 2026."
             }
           }
         ]
