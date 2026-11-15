@@ -4094,79 +4094,184 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 (function() {
-    const SHELFLIFE_I18N = {
+    const DICT = {
         en: {
-            h1: "Food Expiry Date & Best Before Calculator for Export",
-            sub: "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.",
-            prodLabel: "Production / Packaging Date",
-            durLabel: "Shelf Life Duration",
-            originLabel: "Origin Market Format",
-            expTitle: "Calculated Expiry / Best Before Date",
-            marketsTitle: "Export Label Formats by Destination Market",
-            copyBtn: "Copy"
+            "Date di Scadenza & TMC per l'Export Alimentare": "Food Expiry Date & Best Before Calculator for Export",
+            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.",
+            "Regola Export Multipaese:": "Multi-Country Export Rule:",
+            "1. Calcola da Data Produzione + Durata": "1. Calculate from Production Date + Shelf Life",
+            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Convert / Decode Expiry Date (Export ↔ EU)",
+            "IMPOSTA DATE E DURATA": "SET DATES & SHELF LIFE",
+            "Giorni": "Days",
+            "Mesi": "Months",
+            "Mercato di Partenza (Formato Data Produzione)": "Origin Market (Production Date Format)",
+            "Nome Prodotto / Ricetta (Opzionale)": "Product Name / Recipe (Optional)",
+            "Durata Shelf-Life": "Shelf-Life Duration",
+            "Codice Lotto di Produzione (Opzionale)": "Production Lot / Batch Code (Optional)",
+            "Includi Lotto in etichetta/stampa": "Include Lot in label/print",
+            "Genera Lotto Automatico": "Auto-Generate Lot",
+            "PREIMPOSTAZIONI & I MIEI PRODOTTI": "PRESETS & MY PRODUCTS",
+            "＋ Salva Prodotto nei Preset": "+ Save Product to Presets",
+            "Pasticceria Fresca": "Fresh Pastry",
+            "Lievitati / Panettoni": "Leavened / Panettone",
+            "Biscotteria Secca": "Dry Biscuits",
+            "Cioccolato / Surgelati": "Chocolate / Frozen",
+            "ITALIA / UNIONE EUROPEA": "ITALY / EUROPEAN UNION",
+            "USA (FDA STANDARD)": "USA (FDA STANDARD)",
+            "REGNO UNITO (UK / FSA)": "UNITED KINGDOM (UK / FSA)",
+            "CANADA (CFIA BILINGUE)": "CANADA (CFIA BILINGUAL)",
+            "MEDIO ORIENTE (GCC • GSO 9)": "MIDDLE EAST (GCC • GSO 9)",
+            "GIAPPONE (CAA / JAS)": "JAPAN (CAA / JAS)",
+            "RIGA PRONTA PER ETICHETTATRICE & GIORNO SCADENZA": "READY-TO-PRINT LABEL LINE & EXPIRY DAY",
+            "Copia": "Copy"
         },
         es: {
-            h1: "Fechas de Caducidad y Consumo Preferente para Exportación",
-            sub: "Convierte y formatea etiquetas para Europa, EE. UU., Reino Unido, Canadá, Países del Golfo y Japón en un clic.",
-            prodLabel: "Fecha de Producción / Envasado",
-            durLabel: "Duración de Vida Útil",
-            originLabel: "Formato de Mercado de Origen",
-            expTitle: "Fecha de Caducidad / Consumo Preferente Calculada",
-            marketsTitle: "Formatos de Etiqueta por Mercado de Destino",
-            copyBtn: "Copiar"
+            "Date di Scadenza & TMC per l'Export Alimentare": "Fechas de Caducidad y Consumo Preferente para Exportación",
+            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convierte y formatea etiquetas para Europa, EE. UU., Reino Unido, Canadá, Países del Golfo y Japón en un clic.",
+            "Regola Export Multipaese:": "Regla de Exportación Multipaís:",
+            "1. Calcola da Data Produzione + Durata": "1. Calcular desde Fecha de Producción + Duración",
+            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Convertir / Decodificar Caducidad (Export ↔ UE)",
+            "IMPOSTA DATE E DURATA": "CONFIGURAR FECHAS Y DURACIÓN",
+            "Giorni": "Días",
+            "Mesi": "Meses",
+            "Mercato di Partenza (Formato Data Produzione)": "Mercado de Origen (Formato Fecha Producción)",
+            "Nome Prodotto / Ricetta (Opzionale)": "Nombre del Producto / Receta (Opcional)",
+            "Durata Shelf-Life": "Duración de Vida Útil",
+            "Codice Lotto di Produzione (Opzionale)": "Código de Lote de Producción (Opcional)",
+            "Includi Lotto in etichetta/stampa": "Incluir Lote en etiqueta/impresión",
+            "Genera Lotto Automatico": "Generar Lote Automático",
+            "PREIMPOSTAZIONI & I MIEI PRODOTTI": "PREAJUSTES Y MIS PRODUCTOS",
+            "＋ Salva Prodotto nei Preset": "+ Guardar Producto",
+            "Pasticceria Fresca": "Pastelería Fresca",
+            "Lievitati / Panettoni": "Masas Fermentadas / Panettone",
+            "Biscotteria Secca": "Galletas Secas",
+            "Cioccolato / Surgelati": "Chocolate / Congelados",
+            "ITALIA / UNIONE EUROPEA": "ITALIA / UNIÓN EUROPEA",
+            "USA (FDA STANDARD)": "EE. UU. (FDA ESTÁNDAR)",
+            "REGNO UNITO (UK / FSA)": "REINO UNIDO (UK / FSA)",
+            "CANADA (CFIA BILINGUE)": "CANADÁ (CFIA BILINGÜE)",
+            "MEDIO ORIENTE (GCC • GSO 9)": "ORIENTE MEDIO (GCC • GSO 9)",
+            "GIAPPONE (CAA / JAS)": "JAPÓN (CAA / JAS)",
+            "RIGA PRONTA PER ETICHETTATRICE & GIORNO SCADENZA": "LÍNEA LISTA PARA ETIQUETADORA Y DÍA DE CADUCIDAD",
+            "Copia": "Copiar"
         },
         fr: {
-            h1: "Dates de Péremption & DDM pour l'Export Alimentaire",
-            sub: "Convertissez et formatez les étiquettes pour l'Europe, les USA, le Royaume-Uni, le Canada, les pays du Golfe et le Japon en un clic.",
-            prodLabel: "Date de Production / Conditionnement",
-            durLabel: "Durée de Conservation",
-            originLabel: "Format du Marché d'Origine",
-            expTitle: "Date de Péremption / DDM Calculée",
-            marketsTitle: "Formats d'Étiquette par Marché de Destination",
-            copyBtn: "Copier"
+            "Date di Scadenza & TMC per l'Export Alimentare": "Dates de Péremption & DDM pour l'Export Alimentaire",
+            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Convertissez et formatez les étiquettes pour l'Europe, les USA, le Royaume-Uni, le Canada, le Golfe et le Japon en un clic.",
+            "Regola Export Multipaese:": "Règle Export Multi-Pays :",
+            "1. Calcola da Data Produzione + Durata": "1. Calculer depuis Date de Production + Durée",
+            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Convertir / Décoder Péremption (Export ↔ UE)",
+            "IMPOSTA DATE E DURATA": "DÉFINIR DATES ET DURÉE",
+            "Giorni": "Jours",
+            "Mesi": "Mois",
+            "Mercato di Partenza (Formato Data Produzione)": "Marché d'Origine (Format Date Production)",
+            "Nome Prodotto / Ricetta (Opzionale)": "Nom du Produit / Recette (Optionnel)",
+            "Durata Shelf-Life": "Durée de Conservation",
+            "Codice Lotto di Produzione (Opzionale)": "Code Lot de Production (Optionnel)",
+            "Includi Lotto in etichetta/stampa": "Inclure le Lot sur l'étiquette",
+            "Genera Lotto Automatico": "Générer Lot Automatique",
+            "PREIMPOSTAZIONI & I MIEI PRODOTTI": "PRÉRÉGLAGES & MES PRODUITS",
+            "＋ Salva Prodotto nei Preset": "+ Enregistrer le Produit",
+            "Pasticceria Fresca": "Pâtisserie Fraîche",
+            "Lievitati / Panettoni": "Pâtes Levées / Panettone",
+            "Biscotteria Secca": "Biscuits Secs",
+            "Cioccolato / Surgelati": "Chocolat / Surgelés",
+            "ITALIA / UNIONE EUROPEA": "ITALIE / UNION EUROPÉENNE",
+            "USA (FDA STANDARD)": "USA (NORME FDA)",
+            "REGNO UNITO (UK / FSA)": "ROYAUME-UNI (UK / FSA)",
+            "CANADA (CFIA BILINGUE)": "CANADA (CFIA BILINGUE)",
+            "MEDIO ORIENTE (GCC • GSO 9)": "MOYEN-ORIENT (GCC • GSO 9)",
+            "GIAPPONE (CAA / JAS)": "JAPON (CAA / JAS)",
+            "RIGA PRONTA PER ETICHETTATRICE & GIORNO SCADENZA": "LIGNE PRÊTE À IMPRIMER & JOUR D'EXPIRATION",
+            "Copia": "Copier"
         },
         de: {
-            h1: "Mindesthaltbarkeitsdatum (MHD) & Verfallsdatum für den Export",
-            sub: "Konvertieren und formatieren Sie Etiketten für Europa, USA, UK, Kanada, Golfstaaten und Japan mit einem Klick.",
-            prodLabel: "Produktions- / Verpackungsdatum",
-            durLabel: "Haltbarkeitsdauer",
-            originLabel: "Format des Herkunftsmarktes",
-            expTitle: "Berechnetes Ablauf- / Mindesthaltbarkeitsdatum",
-            marketsTitle: "Etikettenformate nach Zielmarkt",
-            copyBtn: "Kopieren"
+            "Date di Scadenza & TMC per l'Export Alimentare": "Mindesthaltbarkeitsdatum (MHD) & Verfallsdatum für den Export",
+            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Konvertieren und formatieren Sie Etiketten für Europa, USA, UK, Kanada, Golfstaaten und Japan mit einem Klick.",
+            "Regola Export Multipaese:": "Export-Regel für mehrere Länder:",
+            "1. Calcola da Data Produzione + Durata": "1. Berechnen ab Produktionsdatum + Dauer",
+            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Verfallsdatum Umrechnen (Export ↔ EU)",
+            "IMPOSTA DATE E DURATA": "DATEN & HALTBARKEIT FESTLEGEN",
+            "Giorni": "Tage",
+            "Mesi": "Monate",
+            "Mercato di Partenza (Formato Data Produzione)": "Herkunftsmarkt (Produktionsdatumsformat)",
+            "Nome Prodotto / Ricetta (Opzionale)": "Produktname / Rezept (Optional)",
+            "Durata Shelf-Life": "Haltbarkeitsdauer",
+            "Codice Lotto di Produzione (Opzionale)": "Produktions-Chargencode (Optional)",
+            "Includi Lotto in etichetta/stampa": "Charge auf Etikett/Druck einfügen",
+            "Genera Lotto Automatico": "Charge automatisch generieren",
+            "PREIMPOSTAZIONI & I MIEI PRODOTTI": "VOREINSTELLUNGEN & MEINE PRODUKTE",
+            "＋ Salva Prodotto nei Preset": "+ Produkt speichern",
+            "Pasticceria Fresca": "Frisches Gebäck",
+            "Lievitati / Panettoni": "Hefeteig / Panettone",
+            "Biscotteria Secca": "Trockengebäck",
+            "Cioccolato / Surgelati": "Schokolade / Tiefkühlkost",
+            "ITALIA / UNIONE EUROPEA": "ITALIEN / EUROPÄISCHE UNION",
+            "USA (FDA STANDARD)": "USA (FDA STANDARD)",
+            "REGNO UNITO (UK / FSA)": "VEREINIGTES KÖNIGREICH (UK / FSA)",
+            "CANADA (CFIA BILINGUE)": "KANADA (CFIA ZWEISPRACHIG)",
+            "MEDIO ORIENTE (GCC • GSO 9)": "NAHER OSTEN (GCC • GSO 9)",
+            "GIAPPONE (CAA / JAS)": "JAPAN (CAA / JAS)",
+            "RIGA PRONTA PER ETICHETTATRICE & GIORNO SCADENZA": "ETIKETTIERZEILE & ABLAUFTAG",
+            "Copia": "Kopieren"
         },
         pt: {
-            h1: "Datas de Validade e Consumo Preferencial para Exportação",
-            sub: "Converta e formate rótulos para Europa, EUA, Reino Unido, Canadá, Países do Golfo e Japão em um clique.",
-            prodLabel: "Data de Produção / Embalagem",
-            durLabel: "Prazo de Validade",
-            originLabel: "Formato do Mercado de Origem",
-            expTitle: "Data de Validade Calculada",
-            marketsTitle: "Formatos de Rótulo por Mercado de Destino",
-            copyBtn: "Copiar"
+            "Date di Scadenza & TMC per l'Export Alimentare": "Datas de Validade e Consumo Preferencial para Exportação",
+            "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.": "Converta e formate rótulos para Europa, EUA, Reino Unido, Canadá, Países do Golfo e Japão em um clique.",
+            "Regola Export Multipaese:": "Regra de Exportação Multipaís:",
+            "1. Calcola da Data Produzione + Durata": "1. Calcular por Data de Produção + Validade",
+            "2. Converti / Decodifica Scadenza (Export ↔ UE)": "2. Converter / Decodificar Validade (Export ↔ UE)",
+            "IMPOSTA DATE E DURATA": "DEFINIR DATAS E VALIDADE",
+            "Giorni": "Dias",
+            "Mesi": "Meses",
+            "Mercato di Partenza (Formato Data Produzione)": "Mercado de Origem (Formato Data Produção)",
+            "Nome Prodotto / Ricetta (Opzionale)": "Nome do Produto / Receita (Opcional)",
+            "Durata Shelf-Life": "Prazo de Validade",
+            "Codice Lotto di Produzione (Opzionale)": "Código do Lote de Produção (Opcional)",
+            "Includi Lotto in etichetta/stampa": "Incluir Lote na etiqueta/impressão",
+            "Genera Lotto Automatico": "Gerar Lote Automático",
+            "PREIMPOSTAZIONI & I MIEI PRODOTTI": "PREDEFINIÇÕES E MEUS PRODUTOS",
+            "＋ Salva Prodotto nei Preset": "+ Salvar Produto",
+            "Pasticceria Fresca": "Confeitaria Fresca",
+            "Lievitati / Panettoni": "Massas Fermentadas / Panettone",
+            "Biscotteria Secca": "Biscoitos Secos",
+            "Cioccolato / Surgelati": "Chocolate / Congelados",
+            "ITALIA / UNIONE EUROPEA": "ITÁLIA / UNIÃO EUROPEIA",
+            "USA (FDA STANDARD)": "EUA (PADRÃO FDA)",
+            "REGNO UNITO (UK / FSA)": "REINO UNIDO (UK / FSA)",
+            "CANADA (CFIA BILINGUE)": "CANADÁ (CFIA BILÍNGUE)",
+            "MEDIO ORIENTE (GCC • GSO 9)": "ORIENTE MÉDIO (GCC • GSO 9)",
+            "GIAPPONE (CAA / JAS)": "JAPÃO (CAA / JAS)",
+            "RIGA PRONTA PER ETICHETTATRICE & GIORNO SCADENZA": "LINHA PRONTA PARA ETIQUETADORA E DIA DE VALIDADE",
+            "Copia": "Copiar"
         }
     };
 
-    const ORIG_TEXTS = {};
+    const nodeOriginals = new WeakMap();
+    function walkTextNodes(root, fn) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        while ((node = walker.nextNode())) {
+            if (node.parentElement && ["SCRIPT", "STYLE"].includes(node.parentElement.tagName)) continue;
+            fn(node);
+        }
+    }
+
     window.changeLanguage = function(lang) {
         try { localStorage.setItem("omnitools_lang", lang); } catch(e) {}
-        const h1 = document.querySelector("h1");
-        const sub = h1 ? h1.nextElementSibling : null;
-        if (h1 && !ORIG_TEXTS.h1) ORIG_TEXTS.h1 = h1.textContent;
-        if (sub && !ORIG_TEXTS.sub) ORIG_TEXTS.sub = sub.textContent;
-
-        if (lang === "it" || !SHELFLIFE_I18N[lang]) {
-            if (h1 && ORIG_TEXTS.h1) h1.textContent = ORIG_TEXTS.h1;
-            if (sub && ORIG_TEXTS.sub) sub.textContent = ORIG_TEXTS.sub;
-            return;
-        }
-        const dict = SHELFLIFE_I18N[lang];
-        if (h1 && dict.h1) h1.textContent = dict.h1;
-        if (sub && dict.sub) sub.textContent = dict.sub;
-
-        document.querySelectorAll("button").forEach(btn => {
-            if (btn.textContent.trim() === "Copia" || btn.textContent.trim() === "Copy" || btn.textContent.trim() === "Copiar" || btn.textContent.trim() === "Copier" || btn.textContent.trim() === "Kopieren") {
-                btn.textContent = dict.copyBtn;
+        const main = document.querySelector("main") || document.body;
+        const dict = DICT[lang] || null;
+        walkTextNodes(main, (node) => {
+            if (!nodeOriginals.has(node)) {
+                nodeOriginals.set(node, node.nodeValue);
+            }
+            const orig = nodeOriginals.get(node);
+            const trimmed = orig.trim();
+            if (!trimmed) return;
+            if (lang === "it" || !dict) {
+                node.nodeValue = orig;
+            } else if (dict[trimmed]) {
+                node.nodeValue = orig.replace(trimmed, dict[trimmed]);
             }
         });
     };
@@ -4174,7 +4279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener("DOMContentLoaded", () => {
         const htmlLang = document.documentElement.lang;
         const sel = document.getElementById("langSelect");
-        if (htmlLang && htmlLang !== "it" && SHELFLIFE_I18N[htmlLang]) {
+        if (htmlLang && htmlLang !== "it" && DICT[htmlLang]) {
             if (sel) sel.value = htmlLang;
             window.changeLanguage(htmlLang);
         }
