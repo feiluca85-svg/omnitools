@@ -9,8 +9,8 @@
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/taglio">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio?lang=it" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/taglio?lang=en" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/taglio" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -3305,7 +3305,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const inCm = val * (UNIT_TO_CM[currentUnit] || 1);
                 return (inCm / 100).toFixed(2);
             };
-            document.getElementById('summaryStockLength').textContent = `${toMeters(totalStockBought)} m (${barsCount} barre)`;
+            document.getElementById('summaryStockLength').textContent = `${toMeters(totalStockBought)} m (${barsCount} ${currentLang === 'en' ? 'bars' : 'barre'})`;
             document.getElementById('summaryUsedLength').textContent = `${toMeters(totalUsefulLength)} m`;
             document.getElementById('summaryWasteLength').textContent = `${toMeters(totalOffcut)} m (${wastePct}%)`;
 
@@ -3362,12 +3362,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="flex items-center justify-between text-xs font-semibold mb-2 text-slate-700">
                         <div class="flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                            <span class="font-bold text-slate-900">Barra #${barIdx + 1} (${bar.stockLength} ${currentUnit})</span>
-                            <span class="text-slate-400 text-[11px] font-normal">• ${bar.cuts.length} pezzi</span>
+                            <span class="font-bold text-slate-900">${currentLang === 'en' ? 'Bar' : 'Barra'} #${barIdx + 1} (${bar.stockLength} ${currentUnit})</span>
+                            <span class="text-slate-400 text-[11px] font-normal">• ${bar.cuts.length} ${currentLang === 'en' ? 'pcs' : 'pezzi'}</span>
                         </div>
                         <div class="flex items-center gap-3 font-mono text-[11px]">
-                            <span class="text-emerald-700 font-bold">${barEfficiency}% utile</span>
-                            <span class="text-rose-600">Sfrido: ${barWaste} ${currentUnit}</span>
+                            <span class="text-emerald-700 font-bold">${barEfficiency}% ${currentLang === 'en' ? 'used' : 'utile'}</span>
+                            <span class="text-rose-600">${currentLang === 'en' ? 'Waste' : 'Sfrido'}: ${barWaste} ${currentUnit}</span>
                         </div>
                     </div>
                 `;

@@ -9,8 +9,8 @@
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tetto">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto?lang=it" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/tetto?lang=en" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tetto" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -1858,14 +1858,14 @@
 
             // Update KPI DOM
             document.getElementById('valSlopePct').textContent = slopePct.toFixed(1) + '%';
-            document.getElementById('valRatio').textContent = `Rapporto 1:${(100 / slopePct).toFixed(1)}`;
+            document.getElementById('valRatio').textContent = `${currentLang === 'en' ? 'Ratio' : 'Rapporto'} 1:${(100 / slopePct).toFixed(1)}`;
             document.getElementById('valAngleDeg').textContent = angleDeg.toFixed(1) + '°';
             document.getElementById('valRafterLength').textContent = (rafterTotalCm >= 1000) 
                 ? (rafterTotalCm / 100).toFixed(2) + ' m' 
                 : rafterTotalCm.toFixed(1) + ' cm';
-            document.getElementById('valOverhangNote').textContent = `Incluso sporto ${overhangCm} cm`;
+            document.getElementById('valOverhangNote').textContent = currentLang === 'en' ? `Incl. ${overhangCm} cm overhang` : `Incluso sporto ${overhangCm} cm`;
             document.getElementById('valRoofArea').textContent = roofAreaM2.toFixed(1) + ' m²';
-            document.getElementById('valLengthNote').textContent = `Su facciata ${roofLengthM.toFixed(1)} m`;
+            document.getElementById('valLengthNote').textContent = currentLang === 'en' ? `On ${roofLengthM.toFixed(1)} m eaves length` : `Su facciata ${roofLengthM.toFixed(1)} m`;
 
             // Update Status Badge
             updateRoofStatus(angleDeg, slopePct);
@@ -1959,7 +1959,7 @@
                 <text x="${xRidge + 12}" y="${(yRidge + yWall) / 2 + 4}" fill="#e11d48" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace" text-anchor="start">H: ${heightCm.toFixed(0)} cm</text>
 
                 <!-- Slope Incline Label on Rafter -->
-                <text x="${(xWall + xRidge) / 2 - 10}" y="${(yRidge + yWall) / 2 - 12}" fill="#92400e" font-size="11" font-weight="900" font-family="'JetBrains Mono', monospace" text-anchor="middle" transform="rotate(${-angleDeg}, ${(xWall + xRidge) / 2}, ${(yRidge + yWall) / 2})">Trave: ${((rafterTheoreticalCm + overhangCm) >= 1000 ? ((rafterTheoreticalCm + overhangCm)/100).toFixed(2)+'m' : (rafterTheoreticalCm + overhangCm).toFixed(0)+'cm')} (${angleDeg.toFixed(1)}°)</text>
+                <text x="${(xWall + xRidge) / 2 - 10}" y="${(yRidge + yWall) / 2 - 12}" fill="#92400e" font-size="11" font-weight="900" font-family="'JetBrains Mono', monospace" text-anchor="middle" transform="rotate(${-angleDeg}, ${(xWall + xRidge) / 2}, ${(yRidge + yWall) / 2})">${currentLang === 'en' ? 'Rafter' : 'Trave'}: ${((rafterTheoreticalCm + overhangCm) >= 1000 ? ((rafterTheoreticalCm + overhangCm)/100).toFixed(2)+'m' : (rafterTheoreticalCm + overhangCm).toFixed(0)+'cm')} (${angleDeg.toFixed(1)}°)</text>
 
                 <!-- Angle Arc -->
                 <path d="M ${xWall + 32} ${yWall} A 32 32 0 0 0 ${xWall + 32 * Math.cos(angleDeg * Math.PI / 180)} ${yWall - 32 * Math.sin(angleDeg * Math.PI / 180)}" fill="none" stroke="#f59e0b" stroke-width="2" />

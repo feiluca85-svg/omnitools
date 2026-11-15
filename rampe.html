@@ -11,8 +11,8 @@
 
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/rampe">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe?lang=it" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/rampe?lang=en" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/rampe" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -3548,7 +3548,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hypotenuseText.setAttribute('x', hypMidX);
             hypotenuseText.setAttribute('y', hypMidY);
             hypotenuseText.setAttribute('transform', `rotate(${-angleDeg} ${hypMidX} ${hypMidY})`);
-            hypotenuseText.textContent = `Rampa: ${hypFmt} ${u} (${slope.toFixed(1)}%)`;
+            hypotenuseText.textContent = `${currentLang === 'en' ? 'Ramp' : 'Rampa'}: ${hypFmt} ${u} (${slope.toFixed(1)}%)`;
         }
 
         function copyResultsRampa() {
@@ -3559,11 +3559,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const hyp = rampLengthElem.textContent;
             const u = currentUnit;
 
-            const text = `Rampa: Dislivello ${h} ${u} | Sviluppo a terra ${l} ${u} | Pendenza ${slope} (${deg}) | Piano inclinato ${hyp} (OmniTools Lab RampaFacile)`;
+            const text = currentLang === 'en'
+                ? `Ramp: Rise ${h} ${u} | Horizontal Run ${l} ${u} | Slope ${slope} (${deg}) | Inclined Length ${hyp} (OmniTools Lab RampSlope)`
+                : `Rampa: Dislivello ${h} ${u} | Sviluppo a terra ${l} ${u} | Pendenza ${slope} (${deg}) | Piano inclinato ${hyp} (OmniTools Lab RampaFacile)`;
             navigator.clipboard.writeText(text).then(() => {
                 const btn = document.getElementById('btnCopyRampa');
                 const orig = btn.textContent;
-                btn.textContent = '✓ Valori Copiati per Computo!';
+                btn.textContent = currentLang === 'en' ? '✓ Values Copied to Clipboard!' : '✓ Valori Copiati per Computo!';
                 setTimeout(() => { btn.textContent = orig; }, 2000);
             });
         }

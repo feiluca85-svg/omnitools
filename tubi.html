@@ -9,8 +9,8 @@
     
     <!-- Canonical & SEO Meta Tags -->
     <link rel="canonical" href="https://www.omnitoolslab.com/tubi">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi?lang=it" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/tubi?lang=en" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
     <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tubi" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -3251,12 +3251,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update UI metrics
             if (document.getElementById('resSlope')) document.getElementById('resSlope').textContent = slopePercent.toFixed(2) + ' %';
-            if (document.getElementById('resRatio')) document.getElementById('resRatio').textContent = '1 : ' + ratio + ' (1 cm ogni ' + ratio + ' cm)';
+            if (document.getElementById('resRatio')) document.getElementById('resRatio').textContent = '1 : ' + ratio + (currentLang === 'en' ? ' (1 cm every ' : ' (1 cm ogni ') + ratio + ' cm)';
             if (document.getElementById('resDrop')) document.getElementById('resDrop').textContent = dropCm.toFixed(1) + ' cm';
             const rld = document.getElementById('resLaserDrop'); if (rld) rld.textContent = 'ΔH = ' + dropCm.toFixed(1) + ' cm';
             if (document.getElementById('resDropMm')) document.getElementById('resDropMm').textContent = Math.round(dropMm) + ' mm';
             if (document.getElementById('resDropMeter')) document.getElementById('resDropMeter').textContent = dropPerMeterCm.toFixed(1) + ' cm/m';
-            if (document.getElementById('resDropMeterMm')) document.getElementById('resDropMeterMm').textContent = dropPerMeterMm.toFixed(0) + ' mm al metro';
+            if (document.getElementById('resDropMeterMm')) document.getElementById('resDropMeterMm').textContent = dropPerMeterMm.toFixed(0) + (currentLang === 'en' ? ' mm per meter' : ' mm al metro');
             if (document.getElementById('resAngle')) document.getElementById('resAngle').textContent = angleDeg.toFixed(2) + ' °';
             if (document.getElementById('resDiamBadge')) document.getElementById('resDiamBadge').textContent = 'Ø ' + diam + ' mm';
             
