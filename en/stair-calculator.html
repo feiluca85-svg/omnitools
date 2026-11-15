@@ -1072,7 +1072,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
                 <select id="langSelect" onchange="localStorage.setItem('omnitools_lang',this.value);if(this.value==='it'){window.location.href='/scale';return;}if(typeof changeLanguage==='function')changeLanguage(this.value);window.dispatchEvent(new CustomEvent('omnitools_lang_changed',{detail:{lang:this.value}}));" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition" onchange="if(this.value==='it'){window.location.href='/scale';}">
-                        <option value="en" selected>🇬🇧 English</option>
+                        <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
                 <div class="relative sm:hidden" id="omniMobileMenuWrap">
@@ -1182,9 +1182,9 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                     <span id="unitLabelText" class="text-xs font-bold uppercase tracking-wider text-slate-700">Imposta Misure</span>
                     <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-xs font-bold">
-                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center">cm</button>
+                        <button type="button" id="unitCm" onclick="setUnit('cm')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">cm</button>
                         <button type="button" id="unitM" onclick="setUnit('m')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">m</button>
-                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Inches (pollici)">in</button>
+                        <button type="button" id="unitIn" onclick="setUnit('in')" class="w-10 sm:w-11 py-1 rounded-lg bg-white text-blue-600 shadow-xs font-extrabold transition active:scale-95 text-center" title="Inches (in)">in</button>
                         <button type="button" id="unitFt" onclick="setUnit('ft')" class="w-10 sm:w-11 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold" title="Feet (piedi)">ft</button>
                     </div>
                 </div>
@@ -1200,10 +1200,10 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                             </label>
                             <span id="heightUnitBadge" class="text-xs font-bold text-blue-700">cm</span>
                         </div>
-                        <input type="number" id="heightInput" value="270" min="20" max="1000" step="any"
+                        <input type="number" id="heightInput" value="108" min="20" max="1000" step="any"
                             class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
                         <div class="pt-1.5 px-0.5">
-                            <input type="range" id="heightRange" min="50" max="450" value="270" class="w-full">
+                            <input type="range" id="heightRange" min="20" max="180" value="108" step="0.5" class="w-full">
                         </div>
                     </div>
 
@@ -2814,7 +2814,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         }
 
         let currentLang = 'en';
-        let currentUnit = 'cm';
+        let currentUnit = 'in';
         let currentMode = 'direct';
 
         const heightInput = document.getElementById('heightInput');
@@ -3011,19 +3011,10 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             if (document.getElementById('lengthUnitBadge')) document.getElementById('lengthUnitBadge').textContent = newUnit;
             if (document.getElementById('targetRiserUnitBadge')) document.getElementById('targetRiserUnitBadge').textContent = newUnit;
 
-            if (newUnit === 'cm') {
-                heightInput.value = Math.round(h_new);
-                lengthInput.value = Math.round(l_new);
-                targetRiserInput.value = a_new.toFixed(1);
-                heightRange.min = 50; heightRange.max = 450; heightRange.step = 1;
-                lengthRange.min = 100; lengthRange.max = 700; lengthRange.step = 5;
-            } else if (newUnit === 'm') {
-                heightInput.value = h_new.toFixed(2);
-                lengthInput.value = l_new.toFixed(2);
-                targetRiserInput.value = a_new.toFixed(2);
-                heightRange.min = 0.5; heightRange.max = 4.5; heightRange.step = 0.01;
-                lengthRange.min = 1.0; lengthRange.max = 7.0; lengthRange.step = 0.05;
-            } else if (newUnit === 'in') {
+            if (newUnit === 'in') {
+                heightInput.value = (h_cm / 2.54).toFixed(1);
+                heightRange.min = 20; heightRange.max = 180; heightRange.step = 0.5;
+            } else if (newUnit === 'cm') {
                 heightInput.value = h_new.toFixed(1);
                 lengthInput.value = l_new.toFixed(1);
                 targetRiserInput.value = a_new.toFixed(1);
