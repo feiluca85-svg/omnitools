@@ -70,7 +70,7 @@
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "EUR"
+    "priceCurrency": "USD"
   },
   "isAccessibleForFree": true
 }
@@ -1054,7 +1054,7 @@
             <!-- Universal Currency Switcher -->
             <div class="flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-2xs text-xs font-bold shrink-0" id="currencySwitcher">
                 <span class="text-[10px] text-slate-400 font-bold uppercase px-2 hidden sm:inline">Valuta:</span>
-                <button type="button" onclick="setCurrency('EUR')" id="currEUR" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">€ EUR</button>
+                <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">$USD</button>
                 <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">$ USD</button>
                 <button type="button" onclick="setCurrency('GBP')" id="currGBP" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">£ GBP</button>
                 <button type="button" onclick="setCurrency('CHF')" id="currCHF" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">CHF</button>
@@ -1086,8 +1086,8 @@
                 <!-- Costo Unitario del Prodotto (COGS) -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelCost" class="text-xs font-bold text-slate-700">Costo di Acquisto / Produzione (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeCost" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">45,00 €</span>
+                        <label id="labelCost" class="text-xs font-bold text-slate-700">Costo di Acquisto / Produzione (<span class="currencySymbol">$</span>)</label>
+                        <span id="badgeCost" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">45,00 $</span>
                     </div>
                     <input type="number" id="inputCost" value="45" min="0.01" max="1000000" step="1" oninput="calculateMargin()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
@@ -1117,8 +1117,8 @@
                 <!-- Modo B: Inserimento Prezzo di Vendita (nascosto di default) -->
                 <div id="boxSellingPrice" class="hidden">
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelSellingPrice" class="text-xs font-bold text-slate-700">Prezzo di Vendita Effettivo (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeSellingPrice" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">69,23 €</span>
+                        <label id="labelSellingPrice" class="text-xs font-bold text-slate-700">Prezzo di Vendita Effettivo (<span class="currencySymbol">$</span>)</label>
+                        <span id="badgeSellingPrice" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">69,23 $</span>
                     </div>
                     <input type="number" id="inputSellingPrice" value="69.23" min="0.01" max="1000000" step="0.5" oninput="calculateMargin()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
@@ -1148,13 +1148,12 @@
                         <div>
                             <span id="labelSellingPriceKpi" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Prezzo di Vendita Suggerito (Netto)</span>
                             <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resSellingPrice">
-                                69,23 €
-                            </div>
-                            <span class="text-xs text-emerald-100/90 mt-0.5 block" id="resPriceWithVat">84,46 € con IVA 22% inclusa</span>
+                                69,23 $</div>
+                            <span class="text-xs text-emerald-100/90 mt-0.5 block" id="resPriceWithVat">84,46 $con IVA 22% inclusa</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
                             <span id="labelGrossProfit" class="text-[10px] uppercase font-bold text-emerald-200 block">Utile Lordo Unitario</span>
-                            <div class="text-xl font-black font-mono text-white mt-0.5" id="resGrossProfit">+24,23 €</div>
+                            <div class="text-xl font-black font-mono text-white mt-0.5" id="resGrossProfit">+24,23 $</div>
                             <span class="text-[10px] font-semibold text-emerald-100" id="resMarginKpi">Margine: 35.0%</span>
                         </div>
                     </div>
@@ -1213,19 +1212,19 @@
                     <div class="divide-y divide-slate-100 text-xs">
                         <div class="p-2.5 flex justify-between items-center">
                             <span class="text-slate-600">Costo del Prodotto (COGS):</span>
-                            <span class="font-mono font-bold text-slate-800" id="dtCost">45,00 €</span>
+                            <span class="font-mono font-bold text-slate-800" id="dtCost">45,00 $</span>
                         </div>
                         <div class="p-2.5 flex justify-between items-center bg-emerald-50/50">
                             <span class="text-emerald-900 font-medium">Utile Unitario di Contribuzione:</span>
-                            <span class="font-mono font-black text-emerald-700" id="dtProfit">+24,23 €</span>
+                            <span class="font-mono font-black text-emerald-700" id="dtProfit">+24,23 $</span>
                         </div>
                         <div class="p-2.5 flex justify-between items-center font-bold">
                             <span class="text-slate-800">Prezzo Imponibile di Vendita:</span>
-                            <span class="font-mono text-slate-900" id="dtNetPrice">69,23 €</span>
+                            <span class="font-mono text-slate-900" id="dtNetPrice">69,23 $</span>
                         </div>
                         <div class="p-2.5 flex justify-between items-center bg-slate-50 font-bold">
                             <span class="text-slate-900">Prezzo Finale al Consumatore (Lordo):</span>
-                            <span class="font-mono text-emerald-800" id="dtGrossPrice">84,46 €</span>
+                            <span class="font-mono text-emerald-800" id="dtGrossPrice">84,46 $</span>
                         </div>
                     </div>
                 </div>
@@ -1330,7 +1329,7 @@
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        L'IVA (Imposta sul Valore Aggiunto) o Sales Tax è un'imposta di consumo riscossa dall'esercente per conto dello Stato. Per scorporare l'IVA da un prezzo lordo si divide per il coefficiente <code>1 + (Aliquota/100)</code>. Per esempio con IVA ordinaria italiana al 22%, un prodotto venduto a 122 € ha un imponibile netto di <code>122 / 1.22 = 100 €</code>. È su quest'ultimo imponibile netto che devono essere calcolati margine e markup.
+                        L'IVA (Imposta sul Valore Aggiunto) o Sales Tax è un'imposta di consumo riscossa dall'esercente per conto dello Stato. Per scorporare l'IVA da un prezzo lordo si divide per il coefficiente <code>1 + (Aliquota/100)</code>. Per esempio con IVA ordinaria italiana al 22%, un prodotto venduto a 122 $ha un imponibile netto di <code>122 / 1.22 = 100 $</code>. È su quest'ultimo imponibile netto che devono essere calcolati margine e markup.
                     </div>
                 </details>
 
@@ -3002,14 +3001,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Universal Multi-Currency Handler
         const CURRENCIES = {
-            'EUR': { symbol: '€', code: 'EUR', pos: 'after', space: true },
+            'USD': { symbol: '$', code: 'USD', pos: 'after', space: true },
             'USD': { symbol: '$', code: 'USD', pos: 'before', space: false },
             'GBP': { symbol: '£', code: 'GBP', pos: 'before', space: false },
             'CHF': { symbol: 'CHF', code: 'CHF', pos: 'before', space: true },
             'JPY': { symbol: '¥', code: 'JPY', pos: 'before', space: false }
         };
 
-        let currentCurrency = 'EUR';
+        let currentCurrency = 'USD';
         let currentMode = 'target_margin'; // 'target_margin' or 'given_price'
 
         function setCurrency(curr) {
@@ -3181,7 +3180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateUrlParams() {
             try {
                 const params = new URLSearchParams();
-                if (currentCurrency !== 'EUR') params.set('curr', currentCurrency);
+                if (currentCurrency !== 'USD') params.set('curr', currentCurrency);
                 if (currentMode !== 'target_margin') params.set('mode', currentMode);
                 const cost = document.getElementById('inputCost').value;
                 if (cost && cost !== '45') params.set('cost', cost);

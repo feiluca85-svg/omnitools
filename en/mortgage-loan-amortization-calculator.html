@@ -70,7 +70,7 @@
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "EUR"
+    "priceCurrency": "USD"
   },
   "isAccessibleForFree": true
 }
@@ -1054,7 +1054,7 @@
             <!-- Universal Currency Switcher -->
             <div class="flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-2xs text-xs font-bold shrink-0" id="currencySwitcher">
                 <span class="text-[10px] text-slate-400 font-bold uppercase px-2 hidden sm:inline">Valuta:</span>
-                <button type="button" onclick="setCurrency('EUR')" id="currEUR" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">€ EUR</button>
+                <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">$USD</button>
                 <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">$ USD</button>
                 <button type="button" onclick="setCurrency('GBP')" id="currGBP" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">£ GBP</button>
                 <button type="button" onclick="setCurrency('CHF')" id="currCHF" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">CHF</button>
@@ -1072,7 +1072,7 @@
                         Formula Rata Costante (Ammortamento Francese): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-emerald-200 text-emerald-800 font-mono font-black">Rata = C × [ i × (1+i)ⁿ ] / [ (1+i)ⁿ - 1 ]</code>
                     </p>
                     <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
-                        <strong>Esempio pratico & Sostenibilità:</strong> Su un mutuo di <code class="font-bold">180.000 €</code> a <code class="font-bold">25 anni (300 rate)</code> al TAN del <code class="font-bold">3,20%</code>, la rata mensile fissa è pari a <code class="font-mono text-emerald-800 font-bold">872,62 €</code>. Con reddito familiare netto di 2.800 €, l'incidenza è del <code class="font-bold">31,1%</code>, perfettamente entro il tetto bancario del 33%.
+                        <strong>Esempio pratico & Sostenibilità:</strong> Su un mutuo di <code class="font-bold">180.000 $</code> a <code class="font-bold">25 anni (300 rate)</code> al TAN del <code class="font-bold">3,20%</code>, la rata mensile fissa è pari a <code class="font-mono text-emerald-800 font-bold">872,62 $</code>. Con reddito familiare netto di 2.800 $, l'incidenza è del <code class="font-bold">31,1%</code>, perfettamente entro il tetto bancario del 33%.
                     </p>
                 </div>
             </div>
@@ -1096,8 +1096,8 @@
                 <!-- Importo Mutuo -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelAmount" class="text-xs font-bold text-slate-700">Importo Richiesto (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeAmount" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">180.000 €</span>
+                        <label id="labelAmount" class="text-xs font-bold text-slate-700">Importo Richiesto (<span class="currencySymbol">$</span>)</label>
+                        <span id="badgeAmount" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">180.000 $</span>
                     </div>
                     <div class="relative">
                         <input type="number" id="inputAmount" value="180000" min="5000" max="20000000" step="5000" oninput="syncFromInput('Amount')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -1146,8 +1146,8 @@
                 <!-- Reddito Netto Mensile (Per Sostenibilità Rata/Reddito 33%) -->
                 <div class="pt-2 border-t border-slate-100">
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelIncome" class="text-xs font-bold text-slate-700 flex items-center gap-1"><span>🛡️</span> <span>Reddito Netto Mensile</span> (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeIncome" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">2.600 €</span>
+                        <label id="labelIncome" class="text-xs font-bold text-slate-700 flex items-center gap-1"><span>🛡️</span> <span>Reddito Netto Mensile</span> (<span class="currencySymbol">$</span>)</label>
+                        <span id="badgeIncome" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">2.600 $</span>
                     </div>
                     <input type="number" id="inputIncome" value="2600" min="500" max="50000" step="50" oninput="calculateMortgage()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <p class="text-[10px] text-slate-500 mt-1">Utilizzato dalle banche per verificare il limite massimo del 33% di indebitamento.</p>
@@ -1163,8 +1163,7 @@
                         <div>
                             <span id="labelMonthly" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Rata Mensile Costante</span>
                             <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resMonthlyPayment">
-                                872,75 €
-                            </div>
+                                872,75 $</div>
                             <span class="text-xs text-emerald-100/90 mt-0.5 block">per <span id="resTotalInstallments" class="font-bold">300</span> mensilità</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
@@ -1179,19 +1178,19 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelPrincipal" class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Richiesto</span>
-                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resPrincipal">180.000 €</div>
+                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resPrincipal">180.000 $</div>
                         <span class="text-[10px] text-slate-500">100% finanziato</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelInterest" class="text-[11px] font-bold text-rose-600 uppercase tracking-wider block">Totale Interessi</span>
-                        <div class="text-lg font-black font-mono text-rose-600 mt-1" id="resTotalInterest">81.826 €</div>
+                        <div class="text-lg font-black font-mono text-rose-600 mt-1" id="resTotalInterest">81.826 $</div>
                         <span class="text-[10px] text-slate-500" id="resInterestRatio">+45.5% sul prestito</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelTotalCost" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">Costo Totale Mutuo</span>
-                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalCost">261.826 €</div>
+                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalCost">261.826 $</div>
                         <span class="text-[10px] text-slate-500">Capitale + Interessi</span>
                     </div>
                 </div>
@@ -2688,14 +2687,14 @@
 
         // Universal Multi-Currency Handler
         const CURRENCIES = {
-            'EUR': { symbol: '€', code: 'EUR', pos: 'after', space: true },
+            'USD': { symbol: '$', code: 'USD', pos: 'after', space: true },
             'USD': { symbol: '$', code: 'USD', pos: 'before', space: false },
             'GBP': { symbol: '£', code: 'GBP', pos: 'before', space: false },
             'CHF': { symbol: 'CHF', code: 'CHF', pos: 'before', space: true },
             'JPY': { symbol: '¥', code: 'JPY', pos: 'before', space: false }
         };
 
-        let currentCurrency = 'EUR';
+        let currentCurrency = 'USD';
 
         let lastCalculatedMortgageYears = [];
 
@@ -2962,8 +2961,8 @@
             const rate = parseFloat(document.getElementById('inputRate').value) || 0;
 
             const rows = [
-                [`Piano Ammortamento Francese - MutuoFacile (Importo: €${principal} - Anni: ${years} - Tasso: ${rate}%)`],
-                ["Anno", "Quota Capitale Annua (€)", "Quota Interessi Annua (€)", "Debito Residuo (€)"]
+                [`Piano Ammortamento Francese - MutuoFacile (Importo: $${principal} - Anni: ${years} - Tasso: ${rate}%)`],
+                ["Anno", "Quota Capitale Annua ($)", "Quota Interessi Annua ($)", "Debito Residuo ($)"]
             ];
 
             lastCalculatedMortgageYears.forEach(item => {
@@ -3011,7 +3010,7 @@
         function updateUrlParams() {
             try {
                 const params = new URLSearchParams();
-                if (currentCurrency !== 'EUR') params.set('curr', currentCurrency);
+                if (currentCurrency !== 'USD') params.set('curr', currentCurrency);
                 const amount = document.getElementById('inputAmount').value;
                 if (amount && amount !== '180000') params.set('loan', amount);
                 const years = document.getElementById('inputYears').value;

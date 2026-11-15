@@ -2999,5 +2999,31 @@ document.addEventListener('click', (e) => {
             }, { passive: true });
         })();
     </script>
+<script>
+        const EN_URL_MAP = {"/scale":"/en/stair-calculator","/rampe":"/en/ramp-slope-calculator","/tubi":"/en/pipe-slope-calculator","/taglio":"/en/cut-list-optimizer","/piastrelle":"/en/tile-grout-calculator","/tetto":"/en/roof-pitch-calculator","/barcode":"/en/barcode-generator","/dorso":"/en/book-spine-calculator","/dpi":"/en/print-resolution-calculator","/tinta":"/en/pantone-ink-mixing-calculator","/copertura":"/en/cmyk-ink-coverage-calculator","/resa":"/en/paper-cutting-yield-calculator","/pac":"/en/compound-interest-calculator","/mutuo":"/en/mortgage-loan-amortization-calculator","/margine":"/en/margin-markup-calculator","/fire":"/en/fire-financial-independence-calculator","/estinzione":"/en/early-mortgage-payoff-calculator","/risparmio":"/en/savings-goal-calculator","/shelflife":"/en/shelf-life-calculator"};
+        function updateCardLinksForLang(lang) {
+            document.querySelectorAll('a[href]').forEach(a => {
+                const href = a.getAttribute('href');
+                if (lang === 'en') {
+                    if (EN_URL_MAP[href]) {
+                        a.setAttribute('data-it-href', href);
+                        a.setAttribute('href', EN_URL_MAP[href]);
+                    }
+                } else if (lang === 'it') {
+                    const itHref = a.getAttribute('data-it-href');
+                    if (itHref) {
+                        a.setAttribute('href', itHref);
+                    }
+                }
+            });
+        }
+        window.addEventListener('omnitools_lang_changed', (e) => {
+            updateCardLinksForLang(e.detail.lang);
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            if (savedLang === 'en') updateCardLinksForLang('en');
+        });
+</script>
 </body>
 </html>

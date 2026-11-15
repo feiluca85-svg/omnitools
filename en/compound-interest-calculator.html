@@ -70,7 +70,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "EUR"
+    "priceCurrency": "USD"
   },
   "isAccessibleForFree": true
 }
@@ -1054,7 +1054,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             <!-- Universal Currency Switcher -->
             <div class="flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-2xs text-xs font-bold shrink-0" id="currencySwitcher">
                 <span class="text-[10px] text-slate-400 font-bold uppercase px-2 hidden sm:inline">Valuta:</span>
-                <button type="button" onclick="setCurrency('EUR')" id="currEUR" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">€ EUR</button>
+                <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">$USD</button>
                 <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">$ USD</button>
                 <button type="button" onclick="setCurrency('GBP')" id="currGBP" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">£ GBP</button>
                 <button type="button" onclick="setCurrency('CHF')" id="currCHF" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">CHF</button>
@@ -1080,8 +1080,8 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <!-- Capitale Iniziale -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelInitial" class="text-xs font-bold text-slate-700">Capitale Iniziale (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeInitial" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">5.000 €</span>
+                        <label id="labelInitial" class="text-xs font-bold text-slate-700">Capitale Iniziale (<span class="currencySymbol">$</span>)</label>
+                        <span id="badgeInitial" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">5.000 $</span>
                     </div>
                     <input type="number" id="inputInitial" value="5000" min="0" max="10000000" step="500" oninput="syncFromInput('Initial')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <input type="range" id="rangeInitial" min="0" max="50000" step="500" value="5000" oninput="syncFromRange('Initial')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
@@ -1096,8 +1096,8 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <!-- Versamento Mensile (PAC) -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelMonthly" class="text-xs font-bold text-slate-700">Versamento Ricorrente Mensile (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeMonthly" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">250 € / mese</span>
+                        <label id="labelMonthly" class="text-xs font-bold text-slate-700">Versamento Ricorrente Mensile (<span class="currencySymbol">$</span>)</label>
+                        <span id="badgeMonthly" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">250 $/ mese</span>
                     </div>
                     <input type="number" id="inputMonthly" value="250" min="0" max="100000" step="50" oninput="syncFromInput('Monthly')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <input type="range" id="rangeMonthly" min="0" max="2500" step="50" value="250" oninput="syncFromRange('Monthly')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
@@ -1151,13 +1151,12 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                         <div>
                             <span id="labelFinalAmount" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Capitale Finale Accumulato</span>
                             <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resFinalAmount">
-                                151.785 €
-                            </div>
+                                151.785 $</div>
                             <span class="text-xs text-emerald-100/90 mt-0.5 block" id="resGrowthMultiplier">2.3x il capitale versato</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
                             <span id="labelPassiveIncome" class="text-[10px] uppercase font-bold text-emerald-200 block">Rendita Perpetua (Regola 4%)</span>
-                            <div class="text-xl font-black font-mono text-white mt-0.5" id="resPassiveIncome">506 € / mese</div>
+                            <div class="text-xl font-black font-mono text-white mt-0.5" id="resPassiveIncome">506 $/ mese</div>
                             <span class="text-[10px] font-semibold text-emerald-100">Prelievo sicuro annuo</span>
                         </div>
                     </div>
@@ -1167,13 +1166,13 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelTotalDeposits" class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Versato da Te</span>
-                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalDeposits">65.000 €</div>
+                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalDeposits">65.000 $</div>
                         <span class="text-[10px] text-slate-500" id="resInitialVsPac">5k iniziale + 60k versamenti</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelTotalGains" class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Interessi Guadagnati (Compound)</span>
-                        <div class="text-lg font-black font-mono text-emerald-700 mt-1" id="resTotalGains">+86.785 €</div>
+                        <div class="text-lg font-black font-mono text-emerald-700 mt-1" id="resTotalGains">+86.785 $</div>
                         <span class="text-[10px] text-slate-500" id="resGainsShare">57.2% del patrimonio finale</span>
                     </div>
                 </div>
@@ -2984,14 +2983,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Universal Multi-Currency Handler
         const CURRENCIES = {
-            'EUR': { symbol: '€', code: 'EUR', pos: 'after', space: true },
+            'USD': { symbol: '$', code: 'USD', pos: 'after', space: true },
             'USD': { symbol: '$', code: 'USD', pos: 'before', space: false },
             'GBP': { symbol: '£', code: 'GBP', pos: 'before', space: false },
             'CHF': { symbol: 'CHF', code: 'CHF', pos: 'before', space: true },
             'JPY': { symbol: '¥', code: 'JPY', pos: 'before', space: false }
         };
 
-        let currentCurrency = 'EUR';
+        let currentCurrency = 'USD';
 
         let lastCalculatedPacData = [];
 
@@ -3208,8 +3207,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const ret = parseFloat(document.getElementById('inputReturn').value) || 0;
 
             const rows = [
-                [`Simulazione Piano di Accumulo (PAC) - InteresseComposto (Iniziale: €${initial} - Mensile: €${monthly} - Anni: ${years} - Rendimento: ${ret}%)`],
-                ["Anno", "Versato Cumulativo (€)", "Interessi Guadagnati Anno (€)", "Patrimonio Totale Portafoglio (€)"]
+                [`Simulazione Piano di Accumulo (PAC) - InteresseComposto (Iniziale: $${initial} - Mensile: $${monthly} - Anni: ${years} - Rendimento: ${ret}%)`],
+                ["Anno", "Versato Cumulativo ($)", "Interessi Guadagnati Anno ($)", "Patrimonio Totale Portafoglio ($)"]
             ];
 
             lastCalculatedPacData.forEach(item => {
@@ -3272,7 +3271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateUrlParams() {
             try {
                 const params = new URLSearchParams();
-                if (currentCurrency !== 'EUR') params.set('curr', currentCurrency);
+                if (currentCurrency !== 'USD') params.set('curr', currentCurrency);
                 const initial = document.getElementById('inputInitial').value;
                 if (initial && initial !== '5000') params.set('initial', initial);
                 const monthly = document.getElementById('inputMonthly').value;
