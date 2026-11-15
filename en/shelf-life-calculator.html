@@ -471,9 +471,6 @@ input[type="range"] {
         if (localStorage.getItem('omnitools_dark') === '1') applyDark(true);
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/shelflife" />
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
@@ -4094,5 +4091,95 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+
+<script>
+(function() {
+    const SHELFLIFE_I18N = {
+        en: {
+            h1: "Food Expiry Date & Best Before Calculator for Export",
+            sub: "Convert and format food date labels for Europe, USA, UK, Canada, Gulf Countries (GCC), and Japan in one click.",
+            prodLabel: "Production / Packaging Date",
+            durLabel: "Shelf Life Duration",
+            originLabel: "Origin Market Format",
+            expTitle: "Calculated Expiry / Best Before Date",
+            marketsTitle: "Export Label Formats by Destination Market",
+            copyBtn: "Copy"
+        },
+        es: {
+            h1: "Fechas de Caducidad y Consumo Preferente para Exportación",
+            sub: "Convierte y formatea etiquetas para Europa, EE. UU., Reino Unido, Canadá, Países del Golfo y Japón en un clic.",
+            prodLabel: "Fecha de Producción / Envasado",
+            durLabel: "Duración de Vida Útil",
+            originLabel: "Formato de Mercado de Origen",
+            expTitle: "Fecha de Caducidad / Consumo Preferente Calculada",
+            marketsTitle: "Formatos de Etiqueta por Mercado de Destino",
+            copyBtn: "Copiar"
+        },
+        fr: {
+            h1: "Dates de Péremption & DDM pour l'Export Alimentaire",
+            sub: "Convertissez et formatez les étiquettes pour l'Europe, les USA, le Royaume-Uni, le Canada, les pays du Golfe et le Japon en un clic.",
+            prodLabel: "Date de Production / Conditionnement",
+            durLabel: "Durée de Conservation",
+            originLabel: "Format du Marché d'Origine",
+            expTitle: "Date de Péremption / DDM Calculée",
+            marketsTitle: "Formats d'Étiquette par Marché de Destination",
+            copyBtn: "Copier"
+        },
+        de: {
+            h1: "Mindesthaltbarkeitsdatum (MHD) & Verfallsdatum für den Export",
+            sub: "Konvertieren und formatieren Sie Etiketten für Europa, USA, UK, Kanada, Golfstaaten und Japan mit einem Klick.",
+            prodLabel: "Produktions- / Verpackungsdatum",
+            durLabel: "Haltbarkeitsdauer",
+            originLabel: "Format des Herkunftsmarktes",
+            expTitle: "Berechnetes Ablauf- / Mindesthaltbarkeitsdatum",
+            marketsTitle: "Etikettenformate nach Zielmarkt",
+            copyBtn: "Kopieren"
+        },
+        pt: {
+            h1: "Datas de Validade e Consumo Preferencial para Exportação",
+            sub: "Converta e formate rótulos para Europa, EUA, Reino Unido, Canadá, Países do Golfo e Japão em um clique.",
+            prodLabel: "Data de Produção / Embalagem",
+            durLabel: "Prazo de Validade",
+            originLabel: "Formato do Mercado de Origem",
+            expTitle: "Data de Validade Calculada",
+            marketsTitle: "Formatos de Rótulo por Mercado de Destino",
+            copyBtn: "Copiar"
+        }
+    };
+
+    const ORIG_TEXTS = {};
+    window.changeLanguage = function(lang) {
+        try { localStorage.setItem("omnitools_lang", lang); } catch(e) {}
+        const h1 = document.querySelector("h1");
+        const sub = h1 ? h1.nextElementSibling : null;
+        if (h1 && !ORIG_TEXTS.h1) ORIG_TEXTS.h1 = h1.textContent;
+        if (sub && !ORIG_TEXTS.sub) ORIG_TEXTS.sub = sub.textContent;
+
+        if (lang === "it" || !SHELFLIFE_I18N[lang]) {
+            if (h1 && ORIG_TEXTS.h1) h1.textContent = ORIG_TEXTS.h1;
+            if (sub && ORIG_TEXTS.sub) sub.textContent = ORIG_TEXTS.sub;
+            return;
+        }
+        const dict = SHELFLIFE_I18N[lang];
+        if (h1 && dict.h1) h1.textContent = dict.h1;
+        if (sub && dict.sub) sub.textContent = dict.sub;
+
+        document.querySelectorAll("button").forEach(btn => {
+            if (btn.textContent.trim() === "Copia" || btn.textContent.trim() === "Copy" || btn.textContent.trim() === "Copiar" || btn.textContent.trim() === "Copier" || btn.textContent.trim() === "Kopieren") {
+                btn.textContent = dict.copyBtn;
+            }
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const htmlLang = document.documentElement.lang;
+        const sel = document.getElementById("langSelect");
+        if (htmlLang && htmlLang !== "it" && SHELFLIFE_I18N[htmlLang]) {
+            if (sel) sel.value = htmlLang;
+            window.changeLanguage(htmlLang);
+        }
+    });
+})();
+</script>
 </body>
 </html>
