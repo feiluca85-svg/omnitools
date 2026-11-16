@@ -792,14 +792,14 @@
                         <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-amber-700">Tools</span> Lab</span>
                         <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-300">A4 TECHNICAL SHEET • OMNIBUILDING</span>
                     </div>
-                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">RampaFacile — Pendenza & D.M. 236/89</div>
+                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">RampSlope — ADA Section 405 & IBC Ramp Standards</div>
                 </div>
             </div>
             <div class="flex items-center gap-2.5">
                 <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
                 <div id="omniUniversalPrintDate" class="font-bold text-slate-900">Date: --/--/----</div>
-                <div>Specifica: ADA Section 405</div>
-                <div class="text-amber-700 font-bold">www.omnitoolslab.com/rampe</div>
+                <div>Standard: ADA Sec. 405 • IBC 1012</div>
+                <div class="text-blue-700 font-bold">www.omnitoolslab.com/en/ramp-slope-calculator</div>
             </div>
                 <img id="omniPrintQrImg" class="w-10 h-10 rounded border border-slate-300 bg-white p-0.5 shrink-0" alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&margin=0&data=https://www.omnitoolslab.com" />
             </div></div>
@@ -1152,10 +1152,10 @@
                 <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
                 <div class="text-xs sm:text-sm space-y-1">
                     <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
-                        Ramp Slope Formula (%): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">Pendenza % = (Dislivello / Spazio a Terra) × 100</code>
+                        Ramp Slope Formula (%): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">Slope (%) = (Rise / Horizontal Run) × 100</code>
                     </p>
                     <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
-                        <strong>Practical example:</strong> To overcome a height difference of <strong>30 cm</strong> with a horizontal run of <strong>500 cm</strong>, the slope is: <code class="font-mono text-slate-800 font-bold">(30 / 500) × 100 = 6,0%</code> (fully compliant with <strong>ADA Section 405</strong> for wheelchair accessibility).
+                        <strong>US Standard Example (ADA 1:12):</strong> To overcome a vertical rise of <strong>12 inches (1 ft)</strong> with a horizontal run of <strong>144 inches (12 ft)</strong>, the slope is: <code class="font-mono text-slate-800 font-bold">(12 / 144) × 100 = 8.33%</code> (the maximum slope permitted under <strong>ADA Section 405</strong>).
                     </p>
                 </div>
             </div>
@@ -1215,7 +1215,7 @@
                         <input type="range" id="lengthRange" min="20" max="600" value="144" step="1" class="w-full accent-blue-600 cursor-pointer">
                     </div>
 
-                    <!-- Input 2B: Pendenza Desiderata (Reverse Mode) -->
+                    <!-- Input 2B: Target Slope (Reverse Mode) -->
                     <div id="targetSlopeContainer" class="space-y-2 hidden">
                         <div class="flex justify-between items-center">
                             <label for="targetSlopeInput" id="targetSlopeLabel" class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
@@ -1227,9 +1227,9 @@
                         <input type="number" id="targetSlopeInput" value="8" min="1" max="30" step="0.5"
                             class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition">
                         <div class="grid grid-cols-3 gap-1.5 pt-1">
-                            <button type="button" id="targetBtn5" onclick="setTargetSlope(5)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">5% Ideale</button>
-                            <button type="button" id="targetBtn8" onclick="setTargetSlope(8)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">8% Limite DM</button>
-                            <button type="button" id="targetBtn20" onclick="setTargetSlope(20)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">20% Garage</button>
+                            <button type="button" id="targetBtn5" onclick="setTargetSlope(5)" class="py-1 px-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-lg text-[11px] font-bold active:scale-95 transition">5% Ideal (1:20)</button>
+                            <button type="button" id="targetBtn8" onclick="setTargetSlope(8.33)" class="py-1 px-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-lg text-[11px] font-bold active:scale-95 transition">8.33% ADA (1:12)</button>
+                            <button type="button" id="targetBtn20" onclick="setTargetSlope(15)" class="py-1 px-1.5 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg text-[11px] font-bold active:scale-95 transition">15% Driveway</button>
                         </div>
                     </div>
                 </div>
@@ -1239,21 +1239,21 @@
             <div id="presetsSection" class="pt-3 border-t border-slate-100 no-print">
                 <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-2" id="presetsTitleText">Common job-site presets:</span>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    <button type="button" onclick="applyPreset(15, 250)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
-                        <div class="text-xs font-bold text-slate-800" id="preset1Title">1 Gradino (15 cm)</div>
-                        <div class="text-[10px] text-slate-500 font-mono" id="preset1Sub">Disabili max 6%</div>
+                    <button type="button" onclick="applyPresetInches(6, 72)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset1Title">1 Curb / Step (6 in)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset1Sub">ADA 1:12 (6 ft run)</div>
                     </button>
-                    <button type="button" onclick="applyPreset(45, 600)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
-                        <div class="text-xs font-bold text-slate-800" id="preset2Title">3 Gradini (45 cm)</div>
-                        <div class="text-[10px] text-slate-500 font-mono" id="preset2Sub">Entrance threshold</div>
+                    <button type="button" onclick="applyPresetInches(18, 216)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset2Title">Porch Steps (18 in)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset2Sub">Residential Entry</div>
                     </button>
-                    <button type="button" onclick="applyPreset(120, 1500)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
-                        <div class="text-xs font-bold text-slate-800" id="preset3Title">Mezzo piano (120 cm)</div>
-                        <div class="text-[10px] text-slate-500 font-mono" id="preset3Sub">Con sosta 150x150</div>
+                    <button type="button" onclick="applyPresetInches(30, 360)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset3Title">Max ADA Run (30 in)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset3Sub">Mandatory Landing</div>
                     </button>
-                    <button type="button" onclick="applyPreset(250, 1500)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
-                        <div class="text-xs font-bold text-slate-800" id="preset4Title">Garage Auto (250 cm)</div>
-                        <div class="text-[10px] text-slate-500 font-mono" id="preset4Sub">Carrabile 20%</div>
+                    <button type="button" onclick="applyPresetInches(60, 400)" class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-300 text-left transition cursor-pointer">
+                        <div class="text-xs font-bold text-slate-800" id="preset4Title">Driveway Ramp (60 in)</div>
+                        <div class="text-[10px] text-slate-500 font-mono" id="preset4Sub">Vehicle Grade 15%</div>
                     </button>
                 </div>
             </div>
@@ -1355,7 +1355,7 @@
             <!-- Action Buttons: Print & Copy (Identico a TubiFacili) -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
                 <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
-                    <span>🖨️</span> <span id="btnPrint">Stampa Scheda Cantiere A4</span>
+                    <span>🖨️</span> <span id="btnPrint">Print A4 Job-Site Schedule</span>
                 </button>
                 <button type="button" onclick="copyResultsRampa()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
                     <span id="copyIcon">📋</span> <span id="btnCopyRampa">Copy Data for Bill of Quantities</span>
@@ -1377,48 +1377,48 @@
                 <table class="w-full text-left text-xs border-collapse">
                     <thead>
                         <tr class="border-b border-slate-200 text-slate-700 bg-slate-50/80">
-                            <th class="py-2.5 px-3 font-bold">Intended Use</th>
-                            <th class="py-2.5 px-3 font-bold">Reference Regulation</th>
-                            <th class="py-2.5 px-3 font-bold">Recommended Slope</th>
-                            <th class="py-2.5 px-3 font-bold">Maximum Slope</th>
-                            <th class="py-2.5 px-3 font-bold">Mandatory Landing</th>
+                            <th class="py-2.5 px-3 font-bold">Intended Application</th>
+                            <th class="py-2.5 px-3 font-bold">Governing Standard</th>
+                            <th class="py-2.5 px-3 font-bold">Ideal Slope</th>
+                            <th class="py-2.5 px-3 font-bold">Max Permitted Slope</th>
+                            <th class="py-2.5 px-3 font-bold">Mandatory Landing Rule</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100 text-slate-700">
                         <tr class="hover:bg-slate-50/50">
-                            <td class="py-2.5 px-3 font-bold text-slate-900">Wheelchair Ramp (Accessibility)</td>
-                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">D.M. 236/89 art. 8.1.11</td>
-                            <td class="py-2.5 px-3 text-emerald-700 font-bold">4.0% – 5.0%</td>
-                            <td class="py-2.5 px-3 font-bold text-amber-700">8.0% (max 10 m)</td>
-                            <td class="py-2.5 px-3">Ogni 10 m lineari (min 150×150 cm)</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50/50">
-                            <td class="py-2.5 px-3 font-bold text-slate-900">Existing Building Retrofit</td>
-                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">D.M. 236/89 art. 8.1.11</td>
-                            <td class="py-2.5 px-3 text-slate-600">≤ 8.0%</td>
-                            <td class="py-2.5 px-3 font-bold text-rose-700">12.0% (tratti ≤ 3 m)</td>
-                            <td class="py-2.5 px-3">At the start and end of the ramp</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50/50">
-                            <td class="py-2.5 px-3 font-bold text-slate-900">Straight Garages & Parking Ramps</td>
-                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">IBC / NFPA Garage Codes art. 3.7.2</td>
-                            <td class="py-2.5 px-3 text-emerald-700 font-bold">12.0% – 16.0%</td>
-                            <td class="py-2.5 px-3 font-bold text-rose-700">20.0%</td>
-                            <td class="py-2.5 px-3">Raccordo a monte e a valle (min 3 m)</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50/50">
-                            <td class="py-2.5 px-3 font-bold text-slate-900">Curved Garages & Parking Ramps</td>
-                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">IBC / NFPA Garage Codes art. 3.7.2</td>
-                            <td class="py-2.5 px-3 text-emerald-700 font-bold">10.0% – 12.0%</td>
-                            <td class="py-2.5 px-3 font-bold text-amber-700">15.0% (su mezzadria)</td>
-                            <td class="py-2.5 px-3">Raggio min. curvatura 7.00 m</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50/50">
-                            <td class="py-2.5 px-3 font-bold text-slate-900">US / International ADA Standard</td>
-                            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-500">ADA Standards Sec. 405</td>
-                            <td class="py-2.5 px-3 text-emerald-700 font-bold">1:16 (6.25%)</td>
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Standard Wheelchair Ramp (Accessible Route)</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">ADA Standards Sec. 405.2</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">1:16 – 1:20 (5.0% – 6.25%)</td>
                             <td class="py-2.5 px-3 font-bold text-amber-700">1:12 (8.33%)</td>
-                            <td class="py-2.5 px-3">Ogni 9 metri lineari (30 ft)</td>
+                            <td class="py-2.5 px-3">Every 30 in (760 mm) of vertical rise (min. 60×60 in landing)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Existing Building / Historic Alteration</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">ADA Sec. 405.2 Exception</td>
+                            <td class="py-2.5 px-3 text-slate-600">1:12 (8.33%)</td>
+                            <td class="py-2.5 px-3 font-bold text-rose-700">1:10 (max 6 in rise) / 1:8 (max 3 in rise)</td>
+                            <td class="py-2.5 px-3">At top and bottom of each ramp run</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Commercial / Parking Garage Straight Ramp</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">IBC 2024 Sec. 406.4 / NFPA 88A</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">10.0% – 12.0%</td>
+                            <td class="py-2.5 px-3 font-bold text-amber-700">15.0% – 20.0% max</td>
+                            <td class="py-2.5 px-3">Top/bottom transition blend (min. 8–10 ft at 50% slope)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Curved / Helical Driveway Ramp</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-blue-600">IBC Sec. 406.4.2</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">8.0% – 10.0%</td>
+                            <td class="py-2.5 px-3 font-bold text-rose-700">12.0% – 15.0% (centerline)</td>
+                            <td class="py-2.5 px-3">Minimum centerline turning radius 24 ft</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="py-2.5 px-3 font-bold text-slate-900">Residential Curb / Sidewalk Cutout</td>
+                            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-500">PROWAG Section R304</td>
+                            <td class="py-2.5 px-3 text-emerald-700 font-bold">1:20 (5.0%)</td>
+                            <td class="py-2.5 px-3 font-bold text-amber-700">1:12 (8.33%)</td>
+                            <td class="py-2.5 px-3">Level turning space (min. 48×48 in)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1438,37 +1438,54 @@
             <div id="faqContainer" class="space-y-3">
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faqQ1">What is the maximum legal slope for a wheelchair ramp (ADA & EN standards)?</span>
+                        <span id="faqQ1">What is the maximum legal slope for a wheelchair ramp under ADA Standards?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div id="faqA1" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Under the Americans with Disabilities Act (ADA), the maximum allowed slope for a wheelchair ramp is 1:12 (8.33%), with a maximum single rise of 30 inches (76 cm) before a flat landing is required. A gentle 1:20 slope (5%) is recommended for effortless independent propulsion.
+                        Under the <strong>Americans with Disabilities Act (ADA Standards Section 405.2)</strong>, the maximum allowable slope for any ramp on an accessible route is <strong>1:12 (8.33% grade)</strong>, which equals 1 inch of vertical rise for every 12 inches of horizontal run. The maximum single continuous rise permitted is <strong>30 inches (760 mm)</strong> before an intermediate level landing is required. A gentler slope of <strong>1:16 to 1:20 (5% to 6.25%)</strong> is strongly recommended for effortless manual wheelchair propulsion.
                     </div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faqQ2">What is the maximum slope for a residential garage driveway?</span>
+                        <span id="faqQ2">When are level landings, handrails, and edge protection mandatory?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div id="faqA2" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Building codes typically allow a maximum gradient of 20% (approx. 11.3°) for straight vehicle ramps and 15% for curved ramps. However, to prevent low-clearance vehicles from scraping their bumper or undercarriage, a slope between 12% and 15% with transition blends is strongly advised.
+                        Under ADA Sec. 405.7 and IBC Section 1012:
+                        <ul class="list-disc list-inside mt-1.5 space-y-1">
+                            <li><strong>Landings:</strong> Mandatory at the top and bottom of each ramp run, and at every 30 inches of vertical rise. Landings must be at least <strong>60 inches long by 60 inches wide</strong> if the ramp changes direction.</li>
+                            <li><strong>Handrails:</strong> Mandatory on both sides for any ramp run with a vertical rise greater than <strong>6 inches (150 mm)</strong>. Height must be between <strong>34 and 38 inches</strong> above the walking surface.</li>
+                            <li><strong>Edge Protection:</strong> Ramps and landings with drop-offs must provide continuous curbs at least <strong>2 inches (50 mm) high</strong> or extended floor surfaces to prevent wheelchair casters from slipping off.</li>
+                        </ul>
                     </div>
                 </details>
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faqQ3">How do you calculate ramp slope percentage from rise and run?</span>
+                        <span id="faqQ3">How do you calculate ramp run length from vertical rise?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div id="faqA3" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Divide the vertical rise by the horizontal run and multiply by 100: Slope (%) = (Rise / Run) × 100. For example, a 40 cm vertical rise over a 500 cm horizontal run gives (40 / 500) × 100 = 8%.
+                        The mathematical formula is: <code>Horizontal Run = Rise / (Slope % / 100)</code>. For an ADA compliant 1:12 ramp (8.33%), simply multiply your total vertical rise in inches by 12. For example, overcoming an <strong>18-inch porch rise</strong> requires: <code>18 × 12 = 216 inches (18 feet)</code> of continuous ground run.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
+                    <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
+                        <span id="faqQ4">What is the maximum slope for residential and commercial vehicle driveways?</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div id="faqA4" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
+                        Under IBC Section 406 and municipal codes, vehicle driveway ramps are generally limited to a maximum grade of <strong>15% to 20%</strong> for straight sections, and <strong>12% to 15%</strong> for curved ramps. To avoid scraping low-clearance vehicle bumpers, codes mandate a <strong>transition slope blend</strong> (minimum 8 to 10 feet long at half the main slope) at the top crest and bottom sag.
                     </div>
                 </details>
             </div>
@@ -1639,7 +1656,7 @@
                     <div class="p-2 sm:p-2.5 rounded-xl bg-blue-600/30 border-blue-400/50 border flex items-center justify-between transition shadow-xs">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-white text-[11px] block truncate">📐 Ramps</span>
-                            <span class="text-[9px] text-blue-200 block truncate">Pendenza & ADA Standards</span>
+                            <span class="text-[9px] text-blue-200 block truncate">Slope & ADA Standards</span>
                         </div>
                         <span class="footer-pill-active text-[9px] px-1.5 py-0.5 bg-blue-500 text-white font-extrabold rounded shrink-0">Active</span>
                     </div>
@@ -1893,25 +1910,144 @@
 
 
     <script>
-        const TRANSLATIONS = {"it": {"title": "RampaFacile", "badge": "ADA Section 405", "hero_title": "Calcolo Pendenza Rampa & Dislivello", "hero_desc": "Calcola pendenza percentuale, gradi e spazio necessario a terra con verifica conformità normativa barriere architettoniche.", "mode_direct": "📏 Calcola Pendenza", "mode_reverse": "📐 Calcola Spazio", "unit_label": "Imposta Misure", "unit_cm": "Centimetri (cm)", "unit_m": "Metri (m)", "height_label": "Dislivello da superare (h)", "length_label": "Spazio a terra disponibile (L)", "target_slope_label": "Pendenza richiesta (%)", "target_5": "5% Ideale", "target_8": "8% Limite DM", "target_20": "20% Garage", "presets_title": "Preset rapidi:", "preset_1": "1 Gradino (15 cm)", "preset_1_sub": "Disabili max 6%", "preset_2": "3 Gradini (45 cm)", "preset_2_sub": "Ingresso a norma", "preset_3": "Mezzo piano (120 cm)", "preset_3_sub": "Con sosta", "preset_4": "Garage Auto (250 cm)", "preset_4_sub": "Carrabile 20%", "col_slope": "Pendenza", "col_angle": "Angolo", "col_angle_sub": "Inclinazione", "col_length": "Lunghezza", "col_length_sub": "Piano inclinato", "col_space_min": "Spazio Minimo", "col_space_min_sub": "Spazio a terra (L)", "schema_title": "Schema Visivo Dinamico", "schema_scale": "In scala", "rule_tip_direct": "💡 <strong>Regola del cantiere:</strong> ogni 10 cm di gradino richiedono almeno 125 cm a terra per non superare l'8%.", "rule_tip_reverse": "📐 <strong>Risultato:</strong> per superare <strong>{h} {u}</strong> con pendenza al <strong>{s}%</strong> serve uno spazio a terra di <strong>{l} {u}</strong> (rampa lunga {hyp} {u}).", "status_opt_title": "Pendenza Ottimale (ADA Section 405)", "status_opt_desc": "Pendenza ideale per sedie a rotelle e passeggini senza accompagnatore. Accessibilità autonoma garantita secondo legge.", "status_opt_tag": "Accessibile 100%", "status_warn_title": "Conforme con Riserva (Tratti Brevi)", "status_warn_desc": "Pendenza massima consentita dal ADA Section 405. È obbligatorio inserire un pianerottolo orizzontale di riposo (min. 150x150 cm) ogni 10 metri.", "status_warn_tag": "Limite Massimo", "status_car_title": "Non adatta a disabili — Idonea per Auto", "status_car_desc": "Troppo ripida per carrozzine. Rispetta la normativa antincendio per autorimesse (max 20% rettilinea, 16% curvilinea).", "status_car_tag": "Solo Garage / Auto", "status_danger_title": "Pendenza Eccessiva (> 20%)", "status_danger_desc": "Non conforme per disabili e oltre i limiti di legge anche per auto. Rischio di ribaltamento o di toccare il fondo della vettura.", "status_danger_tag": "Fuori Norma", "app_btn": "App", "print_btn": "Stampa", "install_banner_title": "Installa OmniTools come App", "install_banner_sub": "I tuoi calcolatori di cantiere pronti anche offline", "install_btn": "Installa", "legal_disclaimer": "<strong>Disclaimer di Manleva e Limitazione di Responsabilità:</strong> I calcoli, i grafici e i riferimenti normativi (ADA Section 405, IBC / NFPA Garage Codes) forniti da questo strumento online hanno finalità puramente didattica, matematica ed orientativa. Non costituiscono progetto esecutivo, perizia tecnica, asseverazione o consulenza professionale ai sensi del D.P.R. 380/2001 e successive modifiche. Lo sviluppatore e il gestore del sito declinano espressamente ogni responsabilità per errori, inesattezze, o per qualunque danno diretto o indiretto derivante dall'esecuzione materiale di opere senza la direzione e firma di un tecnico abilitato (geometra, architetto o ingegnere).", "faq_title": "Frequently Asked Questions</span>`,
-        'scale': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
-        'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
-        'tetto': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
-        'taglio': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>`,
-        'piastrelle': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>`,
-        'dorso': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
-        'dpi': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
-        'tinta': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
-        'barcode': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>`,
-        'copertura': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>`,
-        'resa': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
-        'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
-        'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
-        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
-        'estinzione': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>`,
-        'risparmio': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>`,
-        'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
-    };
+        const TRANSLATIONS = {
+    "en": {
+        "title": "RampSlope",
+        "badge": "ADA Section 405",
+        "hero_title": "Ramp Slope, Grade & ADA Compliance Calculator",
+        "hero_desc": "Calculate ramp slope percentage, grade ratio (1:12), angle in degrees, and required horizontal run with instant ADA Title III and IBC 1012 compliance verification.",
+        "mode_direct": "📏 Calculate Slope",
+        "mode_reverse": "📐 Calculate Run",
+        "unit_label": "Measurement Unit",
+        "unit_in": "Inches (in)",
+        "unit_ft": "Feet (ft)",
+        "unit_cm": "Centimeters (cm)",
+        "unit_m": "Meters (m)",
+        "height_label": "Total Vertical Rise (h)",
+        "length_label": "Available Horizontal Run (L)",
+        "target_slope_label": "Target Slope Grade (%)",
+        "target_5": "5% Ideal (1:20)",
+        "target_8": "8.33% ADA (1:12)",
+        "target_20": "15% Driveway",
+        "presets_title": "Common US job-site presets:",
+        "preset_1": "1 Curb / Step (6 in)",
+        "preset_1_sub": "ADA 1:12 (6 ft run)",
+        "preset_2": "Porch Steps (18 in)",
+        "preset_2_sub": "Residential Entry",
+        "preset_3": "Max ADA Run (30 in)",
+        "preset_3_sub": "Mandatory Landing",
+        "preset_4": "Driveway Ramp (60 in)",
+        "preset_4_sub": "Vehicle Grade 15%",
+        "col_slope": "Calculated Slope",
+        "col_angle": "Slope Angle",
+        "col_angle_sub": "Incline (°)",
+        "col_length": "Ramp Length",
+        "col_length_sub": "Inclined surface",
+        "col_space_min": "Required Run",
+        "col_space_min_sub": "Ground footprint (L)",
+        "schema_title": "Interactive Dynamic Elevation Diagram",
+        "schema_scale": "To visual scale",
+        "rule_tip_direct": "💡 <strong>ADA Standard Rule:</strong> Maximum slope on accessible routes is <strong>1:12 (8.33%)</strong>. Every 1 inch of rise requires at least 12 inches (1 foot) of horizontal run.",
+        "rule_tip_reverse": "📐 <strong>Calculation Result:</strong> To overcome a vertical rise of <strong>{h} {u}</strong> at a <strong>{s}%</strong> slope, you need a horizontal run of <strong>{l} {u}</strong> (inclined ramp surface of {hyp} {u}).",
+        "status_opt_title": "Optimal ADA Compliance (1:20 or Gentler)",
+        "status_opt_desc": "Ideal slope for unassisted manual wheelchair users and strollers. Full autonomous accessibility under ADA Section 405.2.",
+        "status_opt_tag": "100% Accessible",
+        "status_warn_title": "ADA Standard Limit (1:12 / 8.33%)",
+        "status_warn_desc": "Maximum slope permitted by ADA Section 405.2. Mandatory level landing (min. 60×60 in) required every 30 inches (760 mm) of vertical rise.",
+        "status_warn_tag": "Max ADA Limit",
+        "status_car_title": "Vehicle Ramp Grade (Not Wheelchair Accessible)",
+        "status_car_desc": "Too steep for pedestrian accessibility. Complies with IBC Section 406 vehicle driveway standards (max 15%–20% with transition blends).",
+        "status_car_tag": "Driveway Grade Only",
+        "status_danger_title": "Excessive Grade (> 20%)",
+        "status_danger_desc": "Exceeds ADA accessibility limits and vehicle safety thresholds. Severe risk of wheelchair tip-over or vehicle undercarriage scraping.",
+        "status_danger_tag": "Out of Code",
+        "app_btn": "App",
+        "print_btn": "Print",
+        "install_banner_title": "Install OmniTools as an App",
+        "install_banner_sub": "Job-site precision calculators available offline",
+        "install_btn": "Install",
+        "legal_disclaimer": "<strong>US Regulatory Compliance & Safe Harbor Disclaimer:</strong> Calculations, geometric diagrams, and regulatory citations (ADA Standards Section 405, IBC 2024 Chapter 10, ICC A117.1) are provided for preliminary planning, estimation, and educational reference only. They do not constitute sealed engineering drawings, architectural blueprints, or certified accessibility reviews. Local municipal amendments, frost-line depths, handrail extensions, and building codes vary by state and county. OmniTools Lab expressly disclaims all liability for construction defects, code violations, or damages resulting from execution without a licensed professional (PE, AIA architect, or licensed general contractor).",
+        "faq_title": "Frequently Asked Questions on Ramp Slope & ADA Accessibility Standards",
+        "suggest_banner": "💡 Have an idea for a new construction calculator or feature?",
+        "suggest_btn": "Suggest",
+        "suggest_modal_title": "Suggest a Tool",
+        "suggest_modal_desc": "What new calculator, engineering formula, or feature would you like to see on OmniTools?",
+        "suggest_placeholder": "Write your idea here (e.g. concrete footing volume, retaining wall slope, handrail extension...)",
+        "suggest_privacy_note": "🔒 100% anonymous submission. No personal info required.",
+        "suggest_send": "Send Suggestion",
+        "suggest_sending": "Sending...",
+        "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will shape upcoming OmniTools.",
+        "suggest_close": "Close"
+},
+    "it": {
+        "title": "RampSlope",
+        "badge": "ADA Section 405",
+        "hero_title": "Ramp Slope, Grade & ADA Compliance Calculator",
+        "hero_desc": "Calculate ramp slope percentage, grade ratio (1:12), angle in degrees, and required horizontal run with instant ADA Title III and IBC 1012 compliance verification.",
+        "mode_direct": "📏 Calculate Slope",
+        "mode_reverse": "📐 Calculate Run",
+        "unit_label": "Measurement Unit",
+        "unit_in": "Inches (in)",
+        "unit_ft": "Feet (ft)",
+        "unit_cm": "Centimeters (cm)",
+        "unit_m": "Meters (m)",
+        "height_label": "Total Vertical Rise (h)",
+        "length_label": "Available Horizontal Run (L)",
+        "target_slope_label": "Target Slope Grade (%)",
+        "target_5": "5% Ideal (1:20)",
+        "target_8": "8.33% ADA (1:12)",
+        "target_20": "15% Driveway",
+        "presets_title": "Common US job-site presets:",
+        "preset_1": "1 Curb / Step (6 in)",
+        "preset_1_sub": "ADA 1:12 (6 ft run)",
+        "preset_2": "Porch Steps (18 in)",
+        "preset_2_sub": "Residential Entry",
+        "preset_3": "Max ADA Run (30 in)",
+        "preset_3_sub": "Mandatory Landing",
+        "preset_4": "Driveway Ramp (60 in)",
+        "preset_4_sub": "Vehicle Grade 15%",
+        "col_slope": "Calculated Slope",
+        "col_angle": "Slope Angle",
+        "col_angle_sub": "Incline (°)",
+        "col_length": "Ramp Length",
+        "col_length_sub": "Inclined surface",
+        "col_space_min": "Required Run",
+        "col_space_min_sub": "Ground footprint (L)",
+        "schema_title": "Interactive Dynamic Elevation Diagram",
+        "schema_scale": "To visual scale",
+        "rule_tip_direct": "💡 <strong>ADA Standard Rule:</strong> Maximum slope on accessible routes is <strong>1:12 (8.33%)</strong>. Every 1 inch of rise requires at least 12 inches (1 foot) of horizontal run.",
+        "rule_tip_reverse": "📐 <strong>Calculation Result:</strong> To overcome a vertical rise of <strong>{h} {u}</strong> at a <strong>{s}%</strong> slope, you need a horizontal run of <strong>{l} {u}</strong> (inclined ramp surface of {hyp} {u}).",
+        "status_opt_title": "Optimal ADA Compliance (1:20 or Gentler)",
+        "status_opt_desc": "Ideal slope for unassisted manual wheelchair users and strollers. Full autonomous accessibility under ADA Section 405.2.",
+        "status_opt_tag": "100% Accessible",
+        "status_warn_title": "ADA Standard Limit (1:12 / 8.33%)",
+        "status_warn_desc": "Maximum slope permitted by ADA Section 405.2. Mandatory level landing (min. 60×60 in) required every 30 inches (760 mm) of vertical rise.",
+        "status_warn_tag": "Max ADA Limit",
+        "status_car_title": "Vehicle Ramp Grade (Not Wheelchair Accessible)",
+        "status_car_desc": "Too steep for pedestrian accessibility. Complies with IBC Section 406 vehicle driveway standards (max 15%–20% with transition blends).",
+        "status_car_tag": "Driveway Grade Only",
+        "status_danger_title": "Excessive Grade (> 20%)",
+        "status_danger_desc": "Exceeds ADA accessibility limits and vehicle safety thresholds. Severe risk of wheelchair tip-over or vehicle undercarriage scraping.",
+        "status_danger_tag": "Out of Code",
+        "app_btn": "App",
+        "print_btn": "Print",
+        "install_banner_title": "Install OmniTools as an App",
+        "install_banner_sub": "Job-site precision calculators available offline",
+        "install_btn": "Install",
+        "legal_disclaimer": "<strong>US Regulatory Compliance & Safe Harbor Disclaimer:</strong> Calculations, geometric diagrams, and regulatory citations (ADA Standards Section 405, IBC 2024 Chapter 10, ICC A117.1) are provided for preliminary planning, estimation, and educational reference only. They do not constitute sealed engineering drawings, architectural blueprints, or certified accessibility reviews. Local municipal amendments, frost-line depths, handrail extensions, and building codes vary by state and county. OmniTools Lab expressly disclaims all liability for construction defects, code violations, or damages resulting from execution without a licensed professional (PE, AIA architect, or licensed general contractor).",
+        "faq_title": "Frequently Asked Questions on Ramp Slope & ADA Accessibility Standards",
+        "suggest_banner": "💡 Have an idea for a new construction calculator or feature?",
+        "suggest_btn": "Suggest",
+        "suggest_modal_title": "Suggest a Tool",
+        "suggest_modal_desc": "What new calculator, engineering formula, or feature would you like to see on OmniTools?",
+        "suggest_placeholder": "Write your idea here (e.g. concrete footing volume, retaining wall slope, handrail extension...)",
+        "suggest_privacy_note": "🔒 100% anonymous submission. No personal info required.",
+        "suggest_send": "Send Suggestion",
+        "suggest_sending": "Sending...",
+        "suggest_thanks": "🎉 Thank you! Your suggestion has been saved and will shape upcoming OmniTools.",
+        "suggest_close": "Close"
+}
+};
 
     const TOOLS_MAP = {
         'rampe': { name: 'RampaFacile', url: '/rampe', color: 'bg-amber-500' },
@@ -3025,6 +3161,21 @@
         lengthRange.addEventListener('input', () => { syncInputWithSlider(lengthInput, lengthRange); updateCalculations(); });
         targetSlopeInput.addEventListener('input', updateCalculations);
 
+        
+        function applyPresetInches(riseIn, runIn) {
+            if (currentMode === 'reverse') {
+                switchMode('direct');
+            }
+            if (currentUnit !== 'in') {
+                setUnit('in');
+            }
+            heightInput.value = riseIn;
+            lengthInput.value = runIn;
+            syncSliderWithInput(heightRange, heightInput);
+            syncSliderWithInput(lengthRange, lengthInput);
+            updateCalculations();
+        }
+
         function applyPreset(hCm, lCm) {
             if (currentMode === 'reverse') {
                 switchMode('direct');
@@ -3108,7 +3259,7 @@
             const printModeVal = document.getElementById('printModeVal');
             if (printHeightVal) printHeightVal.textContent = `${hFmt} ${u}`;
             if (printLengthVal) printLengthVal.textContent = `${lFmt} ${u}`;
-            if (printModeVal) printModeVal.textContent = (currentMode === 'direct') ? 'Verifica Pendenza da Quota' : `Progetto Sviluppo al ${slope.toFixed(1)}%`;
+            if (printModeVal) printModeVal.textContent = (currentMode === 'direct') ? 'Slope Verification from Rise/Run' : `Ramp Layout at ${slope.toFixed(1)}% Grade`;
 
             const groundDisplay = document.getElementById('groundLengthDisplay');
             if (groundDisplay) groundDisplay.textContent = `${lFmt} ${u}`;
@@ -3215,9 +3366,7 @@
             const hyp = rampLengthElem.textContent;
             const u = currentUnit;
 
-            const text = currentLang === 'en'
-                ? `Ramp: Rise ${h} ${u} | Horizontal Run ${l} ${u} | Slope ${slope} (${deg}) | Inclined Length ${hyp} (OmniTools Lab RampSlope)`
-                : `Rampa: Dislivello ${h} ${u} | Sviluppo a terra ${l} ${u} | Pendenza ${slope} (${deg}) | Piano inclinato ${hyp} (OmniTools Lab RampaFacile)`;
+            const text = `Ramp: Rise ${h} ${u} | Horizontal Run ${l} ${u} | Slope ${slope} (${deg}) | Incline Length ${hyp} (OmniTools Lab RampSlope ADA)`;
             navigator.clipboard.writeText(text).then(() => {
                 const btn = document.getElementById('btnCopyRampa');
                 const orig = btn.textContent;
@@ -3331,7 +3480,7 @@
                 const el = document.getElementById('shareCopyText');
                 if (el) {
                     const orig = el.textContent;
-                    el.textContent = 'Copiato! ✓';
+                    el.textContent = 'Copied! ✓';
                     setTimeout(() => { el.textContent = orig; }, 2000);
                 }
             });
@@ -3351,8 +3500,7 @@
         const prd = document.getElementById('printReportDate');
         if (prd) {
             const now = new Date();
-            const dStr = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
-            prd.textContent = 'Date: ' + dStr;
+            prd.textContent = 'Date: ' + now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
         }
         document.getElementById('langSelect').value = currentLang;
         document.documentElement.lang = currentLang;
