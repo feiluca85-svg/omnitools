@@ -151,26 +151,83 @@
     }
   }
 
+  
+  // Dual-Core 1-to-1 Static Route Mapping (Clean Direct Navigation between IT and EN)
+  const DUAL_CORE_ROUTES = {
+    // IT to EN
+    '/': '/?lang=en',
+    '/index.html': '/?lang=en',
+    '/shelflife': '/en/shelf-life-calculator',
+    '/shelflife.html': '/en/shelf-life-calculator',
+    '/scale': '/en/stair-calculator',
+    '/scale.html': '/en/stair-calculator',
+    '/rampe': '/en/ramp-slope-calculator',
+    '/rampe.html': '/en/ramp-slope-calculator',
+    '/tetto': '/en/roof-pitch-calculator',
+    '/tetto.html': '/en/roof-pitch-calculator',
+    '/tubi': '/en/pipe-slope-calculator',
+    '/tubi.html': '/en/pipe-slope-calculator',
+    '/taglio': '/en/cut-list-optimizer',
+    '/taglio.html': '/en/cut-list-optimizer',
+    '/piastrelle': '/en/tile-grout-calculator',
+    '/piastrelle.html': '/en/tile-grout-calculator',
+    '/mutuo': '/en/mortgage-loan-amortization-calculator',
+    '/mutuo.html': '/en/mortgage-loan-amortization-calculator',
+    '/pac': '/en/compound-interest-calculator',
+    '/pac.html': '/en/compound-interest-calculator',
+    '/estinzione': '/en/early-mortgage-payoff-calculator',
+    '/estinzione.html': '/en/early-mortgage-payoff-calculator',
+    '/margine': '/en/margin-markup-calculator',
+    '/margine.html': '/en/margin-markup-calculator',
+    '/fire': '/en/fire-financial-independence-calculator',
+    '/fire.html': '/en/fire-financial-independence-calculator',
+    '/risparmio': '/en/savings-goal-calculator',
+    '/risparmio.html': '/en/savings-goal-calculator',
+    '/copertura': '/en/cmyk-ink-coverage-calculator',
+    '/copertura.html': '/en/cmyk-ink-coverage-calculator',
+    '/dorso': '/en/book-spine-calculator',
+    '/dorso.html': '/en/book-spine-calculator',
+    '/dpi': '/en/print-resolution-calculator',
+    '/dpi.html': '/en/print-resolution-calculator',
+    '/barcode': '/en/barcode-generator',
+    '/barcode.html': '/en/barcode-generator',
+    '/tinta': '/en/pantone-ink-mixing-calculator',
+    '/tinta.html': '/en/pantone-ink-mixing-calculator',
+    '/resa': '/en/paper-cutting-yield-calculator',
+    '/resa.html': '/en/paper-cutting-yield-calculator',
+    '/calcolatrice': '/calcolatrice?lang=en',
+    '/memo': '/memo?lang=en',
+    '/orologio': '/orologio?lang=en',
+    '/partnership': '/partnership?lang=en',
+    '/legal': '/legal?lang=en'
+  };
+
+  // Reverse mapping (EN to IT)
+  const DUAL_CORE_ROUTES_REVERSE = {};
+  for (const [itPath, enPath] of Object.entries(DUAL_CORE_ROUTES)) {
+    const cleanEn = enPath.split('?')[0];
+    const cleanIt = itPath.replace(/\.html$/, '') || '/';
+    if (!DUAL_CORE_ROUTES_REVERSE[cleanEn]) {
+      DUAL_CORE_ROUTES_REVERSE[cleanEn] = cleanIt;
+    }
+    DUAL_CORE_ROUTES_REVERSE[enPath] = cleanIt;
+  }
+
   function getActiveLang() {
     try {
-      const sel = document.getElementById('langSelect');
-      if (sel && sel.dataset && sel.dataset.userPicked === '1' && (sel.value === 'it' || sel.value === 'en')) {
-        return sel.value;
-      }
+      const pathname = window.location.pathname || '';
       const params = new URLSearchParams(window.location.search);
       const urlLang = params.get('lang');
-      if (urlLang === 'it' || urlLang === 'en') {
-        try { localStorage.setItem('omnitools_lang', urlLang); } catch(e) {}
-        if (sel) sel.value = urlLang;
-        return urlLang;
-      }
-      if (window.location.pathname.startsWith('/en/')) {
-        if (sel) sel.value = 'en';
+
+      // 1. If currently in /en/ path -> page is ALWAYS English
+      if (pathname.startsWith('/en/')) {
         return 'en';
       }
-      if (sel && (sel.value === 'it' || sel.value === 'en')) return sel.value;
-      const saved = localStorage.getItem('omnitools_lang');
-      if (saved === 'en' || saved === 'it') return saved;
+      // 2. Query param ?lang=en or ?lang=it
+      if (urlLang === 'en' || urlLang === 'it') {
+        return urlLang;
+      }
+      // 3. Root and standard pages default to Italian
       return 'it';
     } catch (e) {
       return 'it';
@@ -243,54 +300,57 @@
 
   window.applyUniversalTranslations = applyUniversalTranslations;
 
-  function wrapChangeLanguage() {
-    if (typeof window.changeLanguage !== 'function' && typeof window.setLanguage === 'function') {
-      window.changeLanguage = window.setLanguage;
+  function handleLanguageSwitch(targetLang) {
+    const lang = (targetLang === 'en') ? 'en' : 'it';
+    try { localStorage.setItem('omnitools_lang', lang); } catch (e) {}
+
+    const pathname = window.location.pathname || '/';
+    const cleanPath = pathname.replace(/\.html$/, '') || '/';
+    const isEnPage = pathname.startsWith('/en/');
+
+    if (lang === 'en' && !isEnPage) {
+      // Find matching EN route
+      const dest = DUAL_CORE_ROUTES[pathname] || DUAL_CORE_ROUTES[cleanPath];
+      if (dest) {
+        window.location.href = dest;
+        return;
+      }
+      // If on home
+      if (cleanPath === '/' || cleanPath === '/index') {
+        window.location.href = '/?lang=en';
+        return;
+      }
+    } else if (lang === 'it' && isEnPage) {
+      // Find matching IT route
+      const dest = DUAL_CORE_ROUTES_REVERSE[pathname] || DUAL_CORE_ROUTES_REVERSE[cleanPath];
+      if (dest) {
+        window.location.href = dest;
+        return;
+      }
+      window.location.href = '/';
+      return;
+    } else if (lang === 'it' && window.location.search.includes('lang=en')) {
+      window.location.href = window.location.pathname;
+      return;
     }
-    if (typeof window.changeLanguage === 'function' && !window.changeLanguage.__omniWrapped) {
-      const orig = window.changeLanguage;
-      const wrapped = function (rawLang) {
-        const lang = (rawLang === 'en') ? 'en' : 'it';
-        try { localStorage.setItem('omnitools_lang', lang); } catch (e) {}
-        const sel = document.getElementById('langSelect');
-        if (sel) {
-          sel.dataset.userPicked = '1';
-          if (sel.value !== lang) sel.value = lang;
-        }
-        const res = orig.call(this, lang);
-        if (typeof window.updateNavTranslations === 'function') {
-          try { window.updateNavTranslations(lang); } catch (e) {}
-        }
-        if (typeof window.updateFooterTranslations === 'function') {
-          try { window.updateFooterTranslations(lang); } catch (e) {}
-        }
-        applyUniversalTranslations(lang);
-        setTimeout(function () { applyUniversalTranslations(lang); }, 50);
-        return res;
-      };
-      wrapped.__omniWrapped = true;
-      window.changeLanguage = wrapped;
-    } else if (typeof window.changeLanguage !== 'function') {
-      const fallback = function (rawLang) {
-        const lang = (rawLang === 'en') ? 'en' : 'it';
-        try { localStorage.setItem('omnitools_lang', lang); } catch (e) {}
-        const sel = document.getElementById('langSelect');
-        if (sel) {
-          sel.dataset.userPicked = '1';
-          if (sel.value !== lang) sel.value = lang;
-        }
-        if (typeof window.updateNavTranslations === 'function') {
-          try { window.updateNavTranslations(lang); } catch (e) {}
-        }
-        if (typeof window.updateFooterTranslations === 'function') {
-          try { window.updateFooterTranslations(lang); } catch (e) {}
-        }
-        window.dispatchEvent(new CustomEvent('omnitools_lang_changed', { detail: { lang: lang } }));
-        applyUniversalTranslations(lang);
-        setTimeout(function () { applyUniversalTranslations(lang); }, 50);
-      };
-      fallback.__omniWrapped = true;
-      window.changeLanguage = fallback;
+
+    // Same page fallback
+    const sel = document.getElementById('langSelect');
+    if (sel && sel.value !== lang) sel.value = lang;
+    applyUniversalTranslations(lang);
+  }
+
+  function wrapChangeLanguage() {
+    window.changeLanguage = handleLanguageSwitch;
+    window.changeLanguage.__omniWrapped = true;
+
+    // Attach native change listener directly to #langSelect
+    const sel = document.getElementById('langSelect');
+    if (sel && !sel.__omniBound) {
+      sel.__omniBound = true;
+      sel.addEventListener('change', function(e) {
+        handleLanguageSwitch(e.target.value);
+      });
     }
   }
 
@@ -313,6 +373,8 @@
     }
     wrapChangeLanguage();
     const lang = getActiveLang();
+    const selInit = document.getElementById('langSelect');
+    if (selInit && selInit.value !== lang) selInit.value = lang;
     if (typeof window.updateNavTranslations === 'function') {
       try { window.updateNavTranslations(lang); } catch (e) {}
     }
