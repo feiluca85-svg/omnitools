@@ -1234,8 +1234,8 @@ input[type="range"] {
                             <span class="text-[11px] font-semibold text-slate-400">Saved locally</span>
                         </div>
                         <select id="selOriginMarket" onchange="onOriginMarketChange()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
+                            <option value="usa" selected>🇺🇸 United States — USA / FDA (MM/DD/YYYY)</option>
                             <option value="europa">🇪🇺 Europe / EU (DD/MM/YYYY)</option>
-                            <option value="usa">🇺🇸 United States — USA (MM/DD/YYYY)</option>
                             <option value="uk">🇬🇧 United Kingdom — UK (DD/MM/YYYY or Best Before End)</option>
                             <option value="canada">🇨🇦 Canada — CFIA (YYYY AL MM DD)</option>
                             <option value="gcc">🇦🇪 Middle East — GCC / Saudi Arabia (DD/MM/YYYY or MM/YYYY)</option>
@@ -1252,7 +1252,7 @@ input[type="range"] {
                             </label>
                             <span id="productSaveHint" class="text-[11px] font-semibold text-slate-400">Type initials to search your saved products</span>
                         </div>
-                        <input type="text" id="inpProductName" autocomplete="off" placeholder="Es. Panettone Classico, Biscotto Frollino, Crema Pasticcera..." oninput="onProductNameInput()" onfocus="onProductNameInput()" onkeydown="onProductNameKeydown(event)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
+                        <input type="text" id="inpProductName" autocomplete="off" placeholder="e.g. Chocolate Chip Cookies, Sourdough Bread, Organic Granola, Olive Oil..." oninput="onProductNameInput()" onfocus="onProductNameInput()" onkeydown="onProductNameKeydown(event)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                         <div id="productAutocompleteList" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-2xl shadow-xl z-30 max-h-56 overflow-y-auto divide-y divide-slate-100"></div>
                     </div>
 
@@ -1261,7 +1261,7 @@ input[type="range"] {
                         <div class="flex justify-between items-center gap-2">
                             <label for="inpProdDateFormatted" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-orange-600 inline-block"></span>
-                                <span id="lblProdDateOrigin">Production Date Europe (DD/MM/YYYY)</span>
+                                <span id="lblProdDateOrigin">Production / Pack Date USA (MM/DD/YYYY)</span>
                             </label>
                             <div class="flex items-center gap-2">
                                 <span id="prodDateStatus" class="hidden text-[11px] font-bold text-red-600">Invalid format</span>
@@ -1269,7 +1269,7 @@ input[type="range"] {
                             </div>
                         </div>
                         <div class="relative flex items-center">
-                            <input type="text" id="inpProdDateFormatted" oninput="onProdDateFormattedInput()" placeholder="Es. 15/11/2026" class="w-full pr-11 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-extrabold text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
+                            <input type="text" id="inpProdDateFormatted" oninput="onProdDateFormattedInput()" placeholder="e.g. 11/15/2026" class="w-full pr-11 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-extrabold text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                             <button type="button" onclick="openProdCalendarPicker()" title="Apri calendario" class="absolute right-2.5 p-1.5 text-slate-400 hover:text-orange-600 transition cursor-pointer select-none">
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -1311,7 +1311,7 @@ input[type="range"] {
                                 </label>
                                 <span id="reverseParseStatus" class="text-[11px] font-bold text-emerald-700"></span>
                             </div>
-                            <input type="text" id="inpReverseDate" placeholder="Es. 02/12/2027 o FEB 12 2027" oninput="calculate()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-extrabold text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
+                            <input type="text" id="inpReverseDate" placeholder="e.g. 02/12/2027 or FEB 12 2027" oninput="calculate()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-extrabold text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                         </div>
                     </div>
 
@@ -1330,7 +1330,7 @@ input[type="range"] {
                                 <button type="button" onclick="generateAutoLot()" class="text-[11px] font-bold text-orange-700 hover:underline cursor-pointer">Auto-Generate Lot</button>
                             </div>
                         </div>
-                        <input type="text" id="inpLot" placeholder="Es. L261114-A" oninput="calculate()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-base sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
+                        <input type="text" id="inpLot" placeholder="e.g. LOT-261114-A" oninput="calculate()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono font-bold text-base sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600 transition">
                     </div>
                 </div>
             </div>
@@ -1361,15 +1361,15 @@ input[type="range"] {
 
                 <!-- Key Export Date Cards (6 Mercati, cliccabili for attivare/disattivare) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <button type="button" id="cardEU" onclick="toggleMarketCard('EU')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Italy / European Union</span>
-                        <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resEU">--/--/----</span>
-                        <span class="mkt-sub text-[10px] text-orange-700 font-semibold block mt-0.5">Format dd/mm/yyyy</span>
-                    </button>
                     <button type="button" id="cardUSA" onclick="toggleMarketCard('USA')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
-                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">USA (FDA Standard)</span>
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">🇺🇸 United States (FDA / USDA)</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resUSA">--/--/----</span>
-                        <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5" id="resUSAText">MMM DD YYYY</span>
+                        <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5" id="resUSAText">Best If Used By: MMM DD YYYY</span>
+                    </button>
+                    <button type="button" id="cardEU" onclick="toggleMarketCard('EU')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
+                        <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">🇪🇺 European Union (Reg. 1169/2011)</span>
+                        <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resEU">--/--/----</span>
+                        <span class="mkt-sub text-[10px] text-orange-700 font-semibold block mt-0.5">Format DD/MM/YYYY</span>
                     </button>
                     <button type="button" id="cardUK" onclick="toggleMarketCard('UK')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
                         <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">United Kingdom (UK / FSA)</span>
@@ -1389,7 +1389,7 @@ input[type="range"] {
                     <button type="button" id="cardJP" onclick="toggleMarketCard('JP')" class="bg-orange-50/80 border-2 border-orange-500 rounded-2xl p-3.5 text-center transition cursor-pointer shadow-xs select-none">
                         <span class="mkt-title text-[11px] font-bold text-orange-800 uppercase tracking-wider block">Japan (CAA / JAS)</span>
                         <span class="mkt-val text-xl sm:text-2xl font-black font-mono text-orange-900 block mt-1" id="resJP">----.--.--</span>
-                        <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5">賞味期限 AAAA.MM.GG</span>
+                        <span class="mkt-sub text-[10px] text-orange-700 font-mono block mt-0.5">Shoumi-kigen: YYYY.MM.DD (賞味期限)</span>
                     </button>
                 </div>
             </div>
@@ -1453,7 +1453,7 @@ input[type="range"] {
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        In Italy and the European Union (EU Reg. 1169/2011) the date follows <strong>GG/MM/AAAA</strong> (es. <code>05/08/2027</code> = August 5). In the United States the numeric order is reversed to <strong>MM/DD/YYYY</strong> (<code>08/05/2027</code>): for evitare contestazioni doganali o confusione nei consumatori USA è buona prassi affiancare o preferire la forma testuale <code>AUG 05 2027</code>.
+                        In the United States (FDA and USDA guidelines), commercial packaging follows <strong>MM/DD/YYYY</strong> (such as <code>08/05/2027</code> for August 5). In Europe (EU Reg. 1169/2011), the sequence is day first: <strong>DD/MM/YYYY</strong> (<code>05/08/2027</code>). To prevent FDA border hold-ups, misinterpretation, or consumer disputes, US exporters and packers often supplement numeric dates with standard alphanumeric phrasing like <code>AUG 05 2027</code> or <code>Best If Used By: 08/05/2027</code>.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
@@ -1464,18 +1464,18 @@ input[type="range"] {
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        GSO technical standards (<em>GSO 9 / GSO 150</em> for Arabia Saudita/SFDA, Emirati Arabi Uniti, Qatar, Kuwait, Oman, Bahrain) richiedono obbligatoriamente <strong>both</strong> dates in plain text: production date (<code>PROD</code>) and expiry date (<code>EXP</code>), in format <code>DD/MM/YYYY</code> if shelf life is under 3 months or <code>MM/YYYY</code> if over 3 months. Dates must be printed or embossed directly on the original packaging (<strong>post-print adhesive stickers are strictly prohibited</strong>) and accompanied by Arabic wording.
+                        GSO technical standards (<em>GSO 9 / GSO 150</em> for Saudi Arabia / SFDA, UAE, Qatar, Kuwait, Oman, and Bahrain) strictly mandate <strong>both</strong> dates in plain text: production date (<code>PROD</code>) and expiration date (<code>EXP</code>), formatted as <code>DD/MM/YYYY</code> for shelf life under 3 months or <code>MM/YYYY</code> for shelf life of 3 months or longer. Dates must be engraved, embossed, or printed directly onto original primary packaging (<strong>post-production adhesive stickers are strictly prohibited</strong>) alongside Arabic terminology.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span>Quali regole valgono for il Regno Unito (UK / FSA post-Brexit)?</span>
+                        <span>What labeling rules apply to the United Kingdom (UK / FSA post-Brexit)?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        In the United Kingdom (Food Standards Agency — FSA) the standard format is <code>DD/MM/YYYY</code>. For long-shelf-life products (> 3 months) where the day is omitted, you must specify <strong>Best before end MM/YYYY</strong> o <strong>End of MM/YYYY</strong>. Furthermore, post-Brexit, the label must state the business name and physical address of a <strong>Food Business Operator (FBO) established in the UK</strong>.
+                        Under the UK Food Standards Agency (FSA), the standard format is <code>DD/MM/YYYY</code>. For shelf-stable foods exceeding 3 months where the exact day is omitted, labels must state <strong>Best before end MM/YYYY</strong> or <strong>End of MM/YYYY</strong>. Additionally, post-Brexit import regulations require the legal business name and physical street address of a <strong>Food Business Operator (FBO) established in the UK</strong>.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
@@ -1486,7 +1486,7 @@ input[type="range"] {
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        In Japan (Consumer Affairs Agency / JAS) the format follows descending order <strong>AAAA.MM.GG</strong> (o <code>AAAA年MM月DD日</code>). Regulations strictly distinguish between <strong>Shoumi-kigen (賞味期限)</strong> for la data preferibile (TMC) e <strong>Shouhi-kigen (消費期限)</strong> for la scadenza tassativa dei freschi (&le;5 days). Nella grande distribuzione giapponese vige la ferrea <strong>One-Third commercial rule (1/3 rule)</strong>: the product must reach the distributor within the first third of its total shelf life, otherwise the shipment is rejected.
+                        In Japan (Consumer Affairs Agency / JAS Act), food dates follow descending order: <strong>YYYY.MM.DD</strong> (or <code>YYYY年MM月DD日</code>). Japanese law rigorously separates <strong>Shoumi-kigen (賞味期限)</strong> for quality retention (Best Before) and <strong>Shouhi-kigen (消費期限)</strong> for perishable safety expiration (&le;5 days). Furthermore, major Japanese retailers enforce the commercial <strong>One-Third Rule (1/3 rule)</strong>: products must arrive at retail distribution hubs within the first third of their total shelf life, or the entire shipment faces mandatory rejection.
                     </div>
                 </details>
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
@@ -1497,25 +1497,28 @@ input[type="range"] {
                         </svg>
                     </summary>
                     <div class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        La <strong>Use By Date</strong> (<em>Use By</em>) applies to microbiologically perishable foods and indicates a strict food safety limit. <strong>Minimum Durability / Best Before</strong> (<em>Best Before</em>) indicates until when the product retains optimal sensory qualities if stored properly.
+                        In the United States, the FDA and USDA designate <strong>"Best If Used By"</strong> as the voluntary industry standard indicating peak flavor, aroma, and texture (it is not a purchase or safety deadline). Conversely, <strong>"Use By"</strong> denotes safety degradation for highly perishable foods. The only federally mandated expiration date in the US applies to <strong>Infant Formula (21 CFR 107.20)</strong>, which must carry a mandatory "Use By" date with strict nutritional guarantees.
                     </div>
                 </details>
             </div>
         </section>
 
         <!-- Legal Disclaimer (Comprehensive Protection) -->
-        <section id="legalDisclaimerBox" class="bg-amber-50/60 rounded-3xl border border-amber-200/90 shadow-xs p-5 sm:p-6 text-[11px] sm:text-xs text-slate-700 leading-relaxed space-y-2">
+        <section id="legalDisclaimerBox" class="bg-amber-50/60 rounded-3xl border border-amber-200/90 shadow-xs p-5 sm:p-6 text-[11px] sm:text-xs text-slate-700 leading-relaxed space-y-2.5">
             <div class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                <span>⚖️</span> <span>Legal Notice, Disclaimer &amp; Regulatory Compliance</span>
+                <span>⚖️</span> <span>US Regulatory Compliance Notice, Safe Harbor Disclaimer &amp; Product Liability Indemnity</span>
             </div>
             <p>
-                <strong>1. Informational &amp; pre-formatting purpose only:</strong> This calculator performs calendar arithmetic and conventional date/lot string formatting only. It does not constitute legal advice, regulatory consulting, technical certification, or customs/health compliance approval.
+                <strong>1. Educational &amp; Estimating Purposes Only:</strong> This online application provides algorithmic calendar projections and conventional labeling syntax strictly for preliminary planning, estimation, and pre-formatting reference. It does not provide legal, food safety, regulatory consulting, or customs compliance advice under US federal law, Title 21 Code of Federal Regulations (21 CFR), or international import frameworks.
             </p>
             <p>
-                <strong>2. Food safety &amp; laboratory validation:</strong> Scientific shelf-life determination (<em>Use By Date</em> o <em>TMC</em>) cannot rely on generic estimates; it requires stability studies, microbiological/physicochemical testing (e.g. <em>Challenge Test</em>, a<sub>w</sub>, pH, Reg. CE 2073/2005) and documented validation by the Food Business Operator (FBO), a qualified Food Technologist, or an accredited laboratory.
+                <strong>2. Food Safety &amp; Laboratory Validation (FSMA &amp; FDA 21 CFR Part 117):</strong> Food shelf-life cannot be legally established via mathematical calculators alone. Under the FDA Food Safety Modernization Act (FSMA) Preventive Controls for Human Food, Food Safety Plans require validated stability studies, challenge testing, water activity (a<sub>w</sub>), pH testing, pathogen controls, and sensory evaluation conducted by an accredited third-party food testing laboratory and documented by a Preventive Controls Qualified Individual (PCQI).
             </p>
             <p>
-                <strong>3. Export compliance &amp; full indemnity:</strong> Destination country labeling regulations (EU Reg. 1169/2011, US FDA 21 CFR, Canada CFIA SFCR, GCC/SFDA GSO 9 &amp; GSO 150) are subject to updates, product-specific exemptions, and specific language requirements (e.g. Arabic script, numeric vs text format, mandatory lot code). The user (manufacturer, packer, exporter, or importer) assumes sole responsibility for verifying the final label with their regulatory consultant or customs broker prior to printing and shipping. OmniTools Lab and its authors disclaim all liability for customs holds, rejections, seizures, administrative fines, commercial losses, product spoilage, or third-party damages.
+                <strong>3. Regulatory Discretion &amp; Mandatory Infant Formula Rules:</strong> Except for Infant Formula (which federally mandates strict "Use By" date labeling under 21 CFR 107.20), product dating on packaged food in the United States remains at the manufacturer's discretion, with the FDA recommending "Best If Used By". State and municipal retail codes may enforce independent open-dating regulations for fluid milk, shell eggs, and deli meats. Exporters and packers bear sole responsibility for verifying compliance with US Customs and Border Protection (CBP), FDA import alerts, and destination health authorities.
+            </p>
+            <p>
+                <strong>4. Full Hold-Harmless Indemnity:</strong> By using this tool, the operator, manufacturer, food packer, exporter, and importer agree to indemnify and hold harmless OmniTools Lab, its developers, and affiliates against any customs seizures, border holds, FDA Warning Letters, product recalls, administrative fines, spoilage claims, or commercial losses resulting from labeling, lot code printing, or date conversions.
             </p>
         </section>
 
@@ -1527,7 +1530,7 @@ input[type="range"] {
 
         const CFIA_MONTHS = ['JA', 'FE', 'MR', 'AL', 'MA', 'JN', 'JL', 'AU', 'SE', 'OC', 'NO', 'DE'];
         const EN_MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-        const IT_WEEKDAYS = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+        const EN_WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         function pad2(n) { return String(n).padStart(2, '0'); }
 
@@ -1546,21 +1549,21 @@ input[type="range"] {
         }
 
         function syncProdDateFormattedFromIso() {
-            const origin = document.getElementById('selOriginMarket')?.value || 'europa';
+            const origin = document.getElementById('selOriginMarket')?.value || 'usa';
             const isoVal = document.getElementById('inpProdDate')?.value;
             const inpFmt = document.getElementById('inpProdDateFormatted');
             const lbl = document.getElementById('lblProdDateOrigin');
             const st = document.getElementById('prodDateStatus');
 
             const meta = {
-                europa: { label: 'Data Produzione Europe (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
-                usa: { label: 'Data Produzione USA (MM/DD/YYYY)', ph: 'Es. 11/14/2026' },
-                uk: { label: 'Data Produzione UK (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
-                canada: { label: 'Data Produzione Canada (YYYY AL MM DD)', ph: 'Es. 2026 NO 14' },
-                gcc: { label: 'Data Produzione GCC (DD/MM/YYYY)', ph: 'Es. 14/11/2026' },
-                jp: { label: 'Data Produzione Japan (YYYY.MM.DD)', ph: 'Es. 2026.11.14' }
+                usa: { label: 'Production / Pack Date USA (MM/DD/YYYY)', ph: 'e.g. 11/14/2026' },
+                europa: { label: 'Production Date Europe (DD/MM/YYYY)', ph: 'e.g. 14/11/2026' },
+                uk: { label: 'Production Date UK (DD/MM/YYYY)', ph: 'e.g. 14/11/2026' },
+                canada: { label: 'Production Date Canada (YYYY AL MM DD)', ph: 'e.g. 2026 NO 14' },
+                gcc: { label: 'Production Date GCC (DD/MM/YYYY)', ph: 'e.g. 14/11/2026' },
+                jp: { label: 'Production Date Japan (YYYY.MM.DD)', ph: 'e.g. 2026.11.14' }
             };
-            const m = meta[origin] || meta.europa;
+            const m = meta[origin] || meta.usa;
             if (lbl) lbl.textContent = m.label;
             if (inpFmt) inpFmt.placeholder = m.ph;
 
@@ -1660,10 +1663,10 @@ input[type="range"] {
         const PRESETS_KEY = 'omnitools_shelflife_presets_en_v2';
         const LEGACY_PRESETS_KEY = 'omnitools_shelflife_custom_presets_en_v1';
         const DEFAULT_PRESETS = [
-            { name: 'Fresh Pastry', val: 5, unit: 'days', note: '+4°C' },
-            { name: 'Leavened / Panettone', val: 45, unit: 'days', note: 'Best Before' },
-            { name: 'Dry Biscuits', val: 180, unit: 'days', note: '6 months' },
-            { name: 'Chocolate / Frozen', val: 12, unit: 'months', note: '-18°C / Dry' }
+            { name: 'Fresh Bakery / Pastry', val: 5, unit: 'days', note: '38°F–40°F Refrigerated' },
+            { name: 'Artisan Sourdough / Bread', val: 14, unit: 'days', note: 'Best If Used By' },
+            { name: 'Dry Cookies / Crackers', val: 180, unit: 'days', note: '6 months Ambient' },
+            { name: 'Frozen Food / Confectionery', val: 12, unit: 'months', note: '0°F Freezer' }
         ];
         let acSelectedIdx = -1;
 
@@ -1722,7 +1725,7 @@ input[type="range"] {
                     <div class="relative group p-2.5 pr-7 rounded-xl border border-slate-200 bg-slate-50 hover:bg-orange-50 hover:border-orange-300 transition cursor-pointer" onclick="applyPreset(${item.val}, '${item.unit}', ${JSON.stringify(item.name).replace(/"/g, '&quot;')})">
                         <div class="text-xs font-bold text-slate-800 truncate">${escapeHtml(item.name)}</div>
                         <div class="text-[10px] text-slate-500 font-mono">${item.val} ${unitLbl}${notePart}</div>
-                        <button type="button" title="Rimuovi preset" onclick="event.stopPropagation(); deleteCustomPreset(${idx});" class="absolute top-1.5 right-1.5 w-5 h-5 rounded-md text-slate-400 hover:text-red-600 hover:bg-white flex items-center justify-center text-xs font-bold cursor-pointer">×</button>
+                        <button type="button" title="Remove preset" onclick="event.stopPropagation(); deleteCustomPreset(${idx});" class="absolute top-1.5 right-1.5 w-5 h-5 rounded-md text-slate-400 hover:text-red-600 hover:bg-white flex items-center justify-center text-xs font-bold cursor-pointer">×</button>
                     </div>
                 `;
             }).join('');
@@ -1740,7 +1743,7 @@ input[type="range"] {
                 }
                 if (hint) {
                     const orig = hint.textContent;
-                    hint.textContent = 'Inserisci prima il Nome Prodotto qui sotto!';
+                    hint.textContent = 'Please enter Product Name below first!';
                     hint.className = 'text-[11px] font-extrabold text-orange-700';
                     setTimeout(() => {
                         hint.textContent = orig;
@@ -1866,7 +1869,7 @@ input[type="range"] {
         const ORIGIN_STORAGE_KEY = 'omnitools_shelflife_origin_v1';
 
         function getSourceMarketFromOrigin() {
-            const origin = document.getElementById('selOriginMarket')?.value || 'europa';
+            const origin = document.getElementById('selOriginMarket')?.value || 'usa';
             if (origin === 'europa' || origin === 'uk') return 'iso';
             return origin;
         }
@@ -1874,7 +1877,7 @@ input[type="range"] {
         function onOriginMarketChange() {
             const originEl = document.getElementById('selOriginMarket');
             if (!originEl) return;
-            const origin = originEl.value || 'europa';
+            const origin = originEl.value || 'usa';
             try { localStorage.setItem(ORIGIN_STORAGE_KEY, origin); } catch (e) {}
 
             syncProdDateFormattedFromIso();
@@ -1886,7 +1889,7 @@ input[type="range"] {
             if (!originEl) return;
             try {
                 let saved = localStorage.getItem(ORIGIN_STORAGE_KEY);
-                if (saved === 'italia_ue' || saved === 'de_fr_es_ue') saved = 'europa';
+                if (saved === 'italia_ue' || saved === 'de_fr_es_ue') saved = 'usa';
                 if (saved && originEl.querySelector(`option[value="${saved}"]`)) {
                     originEl.value = saved;
                 }
@@ -1908,17 +1911,17 @@ input[type="range"] {
                 calWrap.classList.add('hidden');
                 txtWrap.classList.remove('hidden');
                 if (src === 'usa') {
-                    if (lblRev) lblRev.textContent = 'Data USA letta su etichetta (MM/DD/YYYY o MMM DD YYYY)';
-                    if (inpRev) inpRev.placeholder = 'Es. 02/12/2027 or FEB 12 2027';
+                    if (lblRev) lblRev.textContent = 'US Expiry / Best If Used By Date (MM/DD/YYYY or MMM DD YYYY)';
+                    if (inpRev) inpRev.placeholder = 'e.g. 02/12/2027 or FEB 12 2027';
                 } else if (src === 'canada') {
-                    if (lblRev) lblRev.textContent = 'Data Canada CFIA (YYYY AL MM DD)';
-                    if (inpRev) inpRev.placeholder = 'Es. 2027 FE 12 or 2027 AL 05';
+                    if (lblRev) lblRev.textContent = 'Canada CFIA Date (YYYY AL MM DD)';
+                    if (inpRev) inpRev.placeholder = 'e.g. 2027 FE 12 or 2027 AL 05';
                 } else if (src === 'gcc') {
-                    if (lblRev) lblRev.textContent = 'Data GCC / Medio Oriente (DD/MM/YYYY o MM/YYYY)';
-                    if (inpRev) inpRev.placeholder = 'Es. 12/02/2027 or 02/2027';
+                    if (lblRev) lblRev.textContent = 'GCC / Middle East Date (DD/MM/YYYY or MM/YYYY)';
+                    if (inpRev) inpRev.placeholder = 'e.g. 12/02/2027 or 02/2027';
                 } else if (src === 'jp') {
-                    if (lblRev) lblRev.textContent = 'Data Giappone (AAAA.MM.GG o AAAA/MM/GG)';
-                    if (inpRev) inpRev.placeholder = 'Es. 2027.02.12 or 2027/02/12';
+                    if (lblRev) lblRev.textContent = 'Japan Date (YYYY.MM.DD or YYYY/MM/DD)';
+                    if (inpRev) inpRev.placeholder = 'e.g. 2027.02.12 or 2027/02/12';
                 }
                 if (inpRev) {
                     const eVal = document.getElementById('inpExpDate')?.value;
@@ -2072,13 +2075,13 @@ input[type="range"] {
                     expDate = parseReverseMarketDate(raw, src);
                     if (!expDate) {
                         if (statusEl) {
-                            statusEl.textContent = raw.trim() ? 'Formato non riconosciuto' : '';
+                            statusEl.textContent = raw.trim() ? 'Unrecognized date format' : '';
                             statusEl.className = 'text-[11px] font-bold text-red-600';
                         }
                         return;
                     }
                     if (statusEl) {
-                        statusEl.textContent = `Decodificata → ${pad2(expDate.getDate())}/${pad2(expDate.getMonth() + 1)}/${expDate.getFullYear()} ✓`;
+                        statusEl.textContent = `Decoded → ${pad2(expDate.getMonth() + 1)}/${pad2(expDate.getDate())}/${expDate.getFullYear()} (US) ✓`;
                         statusEl.className = 'text-[11px] font-bold text-emerald-700';
                     }
                     document.getElementById('inpExpDate').value = formatISO(expDate);
@@ -2150,20 +2153,20 @@ input[type="range"] {
             if (sel.JP) parts.push(`JP: ${jpStr}`);
             if (lot) parts.push(`LOT: ${lot}`);
 
-            document.getElementById('resWeekday').textContent = `Expires on ${IT_WEEKDAYS[expDate.getDay()]}`;
+            document.getElementById('resWeekday').textContent = `Expires on ${EN_WEEKDAYS[expDate.getDay()]}`; // e.g. Expires on Sunday
             document.getElementById('resLabelPreview').textContent = parts.join(' | ');
 
             const printTs = document.getElementById('printTimestamp');
-            if (printTs) printTs.textContent = new Date().toLocaleDateString('it-IT');
+            if (printTs) printTs.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
             const printSummary = document.getElementById('printInputsSummary');
             if (printSummary) {
                 const durVal = document.getElementById('numDuration').value || '--';
                 const durLbl = durUnit === 'days' ? 'days' : 'months';
                 const modeHtml = currentMode === 'fromProd'
-                    ? `<div><span class="text-slate-400 block">Prodotto / Produzione:</span><strong class="text-slate-900">${escapeHtml(prodName || 'N/D')} (${prodStr || '--'})</strong></div><div><span class="text-slate-400 block">Durata / Shelf-Life:</span><strong class="text-slate-900">${durVal} ${durLbl}</strong></div>`
-                    : `<div><span class="text-slate-400 block">Prodotto / Modalità:</span><strong class="text-slate-900">${escapeHtml(prodName || 'N/D')} (Conversione)</strong></div><div><span class="text-slate-400 block">Scadenza UE:</span><strong class="text-slate-900">${euStr}</strong></div>`;
-                const selLabels = [sel.EU && 'UE', sel.USA && 'USA', sel.UK && 'UK', sel.CA && 'Canada', sel.GCC && 'GCC', sel.JP && 'Giappone'].filter(Boolean).join(', ');
-                printSummary.innerHTML = `${modeHtml}<div><span class="text-slate-400 block">Lotto Produzione:</span><strong class="text-slate-900">${escapeHtml(lot || 'Escluso / N/D')}</strong></div><div><span class="text-slate-400 block">Mercati Selezionati:</span><strong class="text-orange-700">${selLabels}</strong></div>`;
+                    ? `<div><span class="text-slate-400 block">Product / Pack Date:</span><strong class="text-slate-900">${escapeHtml(prodName || 'N/A')} (${usaNum || prodStr || '--'})</strong></div><div><span class="text-slate-400 block">Shelf-Life Duration:</span><strong class="text-slate-900">${durVal} ${durLbl}</strong></div>`
+                    : `<div><span class="text-slate-400 block">Product / Conversion:</span><strong class="text-slate-900">${escapeHtml(prodName || 'N/A')} (Decoded)</strong></div><div><span class="text-slate-400 block">US Expiry:</span><strong class="text-slate-900">${usaNum} (${usaTxt})</strong></div>`;
+                const selLabels = [sel.USA && 'USA', sel.EU && 'EU', sel.UK && 'UK', sel.CA && 'Canada', sel.GCC && 'GCC', sel.JP && 'Japan'].filter(Boolean).join(', ');
+                printSummary.innerHTML = `${modeHtml}<div><span class="text-slate-400 block">Batch / Lot Code:</span><strong class="text-slate-900">${escapeHtml(lot || 'None / N/A')}</strong></div><div><span class="text-slate-400 block">Selected Markets:</span><strong class="text-orange-700">${selLabels}</strong></div>`;
             }
         }
 
@@ -2171,7 +2174,7 @@ input[type="range"] {
             const txt = document.getElementById('resLabelPreview').textContent;
             navigator.clipboard.writeText(txt).then(() => {
                 const lbl = document.getElementById('btnCopyLabel');
-                lbl.textContent = 'Copiato negli appunti ✓';
+                lbl.textContent = 'Copied to Clipboard ✓';
                 setTimeout(() => { lbl.textContent = 'Copy All Export Dates'; }, 2000);
             });
         }
@@ -2181,13 +2184,13 @@ input[type="range"] {
             const includeLot = document.getElementById('chkIncludeLot')?.checked !== false;
             const lot = includeLot ? (document.getElementById('inpLot').value || '').trim() : '';
             const sel = getSelectedMarkets();
-            const rows = [['Prodotto', 'Mercato', 'Formato', 'Valore', 'Lotto']];
-            if (sel.EU) rows.push([prodName, 'Italia / UE', 'gg/mm/aaaa', document.getElementById('resEU').textContent, lot]);
-            if (sel.USA) rows.push([prodName, 'USA (FDA)', 'mm/dd/yyyy', document.getElementById('resUSA').textContent, lot]);
-            if (sel.UK) rows.push([prodName, 'Regno Unito (UK/FSA)', 'dd/mm/yyyy o Best before end', document.getElementById('resUK')?.textContent || '', lot]);
-            if (sel.CA) rows.push([prodName, 'Canada (CFIA)', 'YYYY AL MM DD', document.getElementById('resCanada').textContent, lot]);
-            if (sel.GCC) rows.push([prodName, 'Middle East (GCC • GSO 9)', 'DD/MM/YYYY (<3m) o MM/YYYY (>=3m)', document.getElementById('resGCC').textContent, lot]);
-            if (sel.JP) rows.push([prodName, 'Giappone (CAA/JAS)', 'AAAA.MM.GG', document.getElementById('resJP')?.textContent || '', lot]);
+            const rows = [['Product', 'Destination Market', 'Date Format', 'Date Value', 'Lot/Batch']];
+            if (sel.USA) rows.push([prodName, 'USA (FDA / USDA)', 'MM/DD/YYYY', document.getElementById('resUSA').textContent, lot]);
+            if (sel.EU) rows.push([prodName, 'European Union (Reg. 1169/2011)', 'DD/MM/YYYY', document.getElementById('resEU').textContent, lot]);
+            if (sel.UK) rows.push([prodName, 'United Kingdom (UK / FSA)', 'DD/MM/YYYY or Best Before End', document.getElementById('resUK')?.textContent || '', lot]);
+            if (sel.CA) rows.push([prodName, 'Canada (CFIA SFCR)', 'YYYY AL MM DD', document.getElementById('resCanada').textContent, lot]);
+            if (sel.GCC) rows.push([prodName, 'Middle East (GCC • GSO 9)', 'DD/MM/YYYY (<3m) or MM/YYYY (>=3m)', document.getElementById('resGCC').textContent, lot]);
+            if (sel.JP) rows.push([prodName, 'Japan (CAA / JAS)', 'YYYY.MM.DD', document.getElementById('resJP')?.textContent || '', lot]);
             const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const a = document.createElement('a');
@@ -3885,7 +3888,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         function openSuggestModal() {
-            window.location.href = 'mailto:info@omnitoolslab.com?subject=' + encodeURIComponent('Suggerimento Calcolatore ShelfLife Export');
+            window.location.href = 'mailto:info@omnitoolslab.com?subject=' + encodeURIComponent('Shelf Life & Export Calculator Suggestion');
         }
     </script>
 
