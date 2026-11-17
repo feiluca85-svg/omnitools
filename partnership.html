@@ -875,15 +875,8 @@
 
         // Initialize language from stored preference or browser language
         document.addEventListener('DOMContentLoaded', () => {
-            const stored = localStorage.getItem('omnitools_lang') || localStorage.getItem('omni_lang');
-            if (stored && TRANSLATIONS[stored]) {
-                changeLanguage(stored);
-            } else {
-                const navLang = (navigator.language || 'it').substring(0, 2).toLowerCase();
-                if (TRANSLATIONS[navLang]) {
-                    changeLanguage(navLang);
-                }
-            }
+            const urlLang = (new URLSearchParams(window.location.search)).get('lang');
+            if (urlLang === 'en') changeLanguage('en');
         });
     </script>
     <script src="/omni_i18n_universal.js"></script>

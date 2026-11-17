@@ -3202,20 +3202,11 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const params = new URLSearchParams(window.location.search);
                 const urlLang = params.get('lang');
-                if (urlLang && ['it','en','es','fr','de','pt'].includes(urlLang)) {
-                    localStorage.setItem('omnitools_lang', urlLang);
+                if (urlLang && ['it','en'].includes(urlLang)) {
                     return urlLang;
                 }
             } catch(e) {}
-            const stored = localStorage.getItem('omnitools_lang');
-            if (stored && TRANSLATIONS[stored]) return stored;
-            const candidates = navigator.languages || [navigator.language || navigator.userLanguage || ''];
-            for (let l of candidates) {
-                if (!l) continue;
-                const code = l.toLowerCase().split('-')[0].split('_')[0];
-                if (TRANSLATIONS[code]) return code;
-            }
-            return 'en';
+            return 'it';
         }
 
         let currentLang = detectInitialLanguage();

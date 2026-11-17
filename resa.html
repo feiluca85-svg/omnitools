@@ -3449,18 +3449,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Language & Localization Engine
         function initLanguage() {
-            const saved = localStorage.getItem('omnitools_lang');
-            if (saved && I18N_DATA[saved]) {
-                currentLang = saved;
-            } else {
-                const userLangs = navigator.languages || [navigator.language || 'it'];
-                for (let l of userLangs) {
-                    const prefix = l.split('-')[0].toLowerCase();
-                    if (I18N_DATA[prefix]) {
-                        currentLang = prefix;
-                        break;
-                    }
-                }
+            const urlLang = (new URLSearchParams(window.location.search)).get('lang');
+            currentLang = (urlLang === 'en') ? 'en' : 'it';
             }
             const selectEl = document.getElementById('langSelect');
             if (selectEl) selectEl.value = currentLang;

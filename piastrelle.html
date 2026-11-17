@@ -2305,9 +2305,8 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const stored = localStorage.getItem('omnitools_lang');
-            const browserLang = (navigator.language || 'it').slice(0, 2).toLowerCase();
-            const lang = stored || (['it', 'en'].includes(browserLang) ? browserLang : 'it');
+            const urlLang = (new URLSearchParams(window.location.search)).get('lang');
+            const lang = (urlLang === 'en') ? 'en' : 'it';
             setLanguage(lang);
             calculateAll();
         });

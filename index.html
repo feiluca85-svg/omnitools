@@ -2099,19 +2099,12 @@
             try {
                 const params = new URLSearchParams(window.location.search);
                 const urlLang = params.get('lang');
-                if (urlLang && ['it','en','es','fr','de','pt'].includes(urlLang)) {
-                    localStorage.setItem('omnitools_lang', urlLang);
+                if (urlLang && ['it','en'].includes(urlLang)) {
                     return urlLang;
                 }
             } catch(e) {}
-            const saved = localStorage.getItem('omnitools_lang');
-            if (saved && TRANSLATIONS[saved]) return saved;
-            const langs = navigator.languages || [navigator.language || 'it'];
-            for (const l of langs) {
-                const code = l.toLowerCase().split('-')[0];
-                if (TRANSLATIONS[code]) return code;
-            }
-            return 'en';
+            // Root index.html is strictly Italian by architectural rule. Never redirect or default to en based on browser or localStorage.
+            return 'it';
         }
 
         let currentLang = detectInitialLanguage();
@@ -3061,30 +3054,8 @@ document.addEventListener('click', (e) => {
         })();
     </script>
 <script>
-        const EN_URL_MAP = {"/scale":"/en/stair-calculator","/rampe":"/en/ramp-slope-calculator","/tubi":"/en/pipe-slope-calculator","/taglio":"/en/cut-list-optimizer","/piastrelle":"/en/tile-grout-calculator","/tetto":"/en/roof-pitch-calculator","/barcode":"/en/barcode-generator","/dorso":"/en/book-spine-calculator","/dpi":"/en/print-resolution-calculator","/tinta":"/en/pantone-ink-mixing-calculator","/copertura":"/en/cmyk-ink-coverage-calculator","/resa":"/en/paper-cutting-yield-calculator","/pac":"/en/compound-interest-calculator","/mutuo":"/en/mortgage-loan-amortization-calculator","/margine":"/en/margin-markup-calculator","/fire":"/en/fire-financial-independence-calculator","/estinzione":"/en/early-mortgage-payoff-calculator","/risparmio":"/en/savings-goal-calculator","/shelflife":"/en/shelf-life-calculator"};
-        function updateCardLinksForLang(lang) {
-            document.querySelectorAll('a[href]').forEach(a => {
-                const href = a.getAttribute('href');
-                if (lang === 'en') {
-                    if (EN_URL_MAP[href]) {
-                        a.setAttribute('data-it-href', href);
-                        a.setAttribute('href', EN_URL_MAP[href]);
-                    }
-                } else if (lang === 'it') {
-                    const itHref = a.getAttribute('data-it-href');
-                    if (itHref) {
-                        a.setAttribute('href', itHref);
-                    }
-                }
-            });
-        }
-        window.addEventListener('omnitools_lang_changed', (e) => {
-            updateCardLinksForLang(e.detail.lang);
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
-            if (savedLang === 'en') updateCardLinksForLang('en');
-        });
+        // In root index.html, tool cards always point strictly to root Italian URLs.
+        // No automatic link mutation based on localStorage or browser language.
 </script>
 </body>
 </html>
