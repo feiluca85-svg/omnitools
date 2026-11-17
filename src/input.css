@@ -136,3 +136,81 @@ html.dark select option {
 .svg-blueprint circle {
   vector-effect: non-scaling-stroke;
 }
+
+
+/* ==========================================================================
+   6. UNIFORM TOPBAR BUTTONS & PROPORTIONAL LOGO (320px–430px MOBILE PARITY)
+   ========================================================================== */
+header a.omni-header-btn,
+header button.omni-header-btn,
+header select.omni-header-btn,
+nav a.omni-header-btn,
+nav button.omni-header-btn,
+nav select.omni-header-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+}
+
+header a.omni-header-btn--wide,
+header button.omni-header-btn--wide,
+header select.omni-header-btn--wide,
+nav a.omni-header-btn--wide,
+nav button.omni-header-btn--wide,
+nav select.omni-header-btn--wide {
+  width: auto !important;
+  min-width: 44px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 10px !important;
+}
+
+@media (min-width: 768px) {
+  header a.omni-header-btn,
+  header button.omni-header-btn,
+  header select.omni-header-btn,
+  nav a.omni-header-btn,
+  nav button.omni-header-btn,
+  nav select.omni-header-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 13px !important;
+  }
+
+  header a.omni-header-btn--wide,
+  header button.omni-header-btn--wide,
+  header select.omni-header-btn--wide,
+  nav a.omni-header-btn--wide,
+  nav button.omni-header-btn--wide,
+  nav select.omni-header-btn--wide {
+    width: auto !important;
+    min-width: 44px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 12px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  header .omni-brand-logo,
+  header a[href="/"],
+  header a[href="/en/"],
+  header a[href="/index.html"] {
+    transform: scale(0.88);
+    transform-origin: left center;
+  }
+}
