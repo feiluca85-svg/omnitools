@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Paper Cutting Yield & Sheet Imposition Calculator | OmniGraph</title>
     <meta name="description" content="Calculate maximum print sheet yield and optimal 2D cutting imposition (straight vs mixed). Minimize paper waste and calculate parent sheets required.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
     
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator">
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/resa" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Paper Cutting Yield Calculator • OmniGraph">
@@ -90,14 +93,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ResaCarta">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <script defer src="/_vercel/insights/script.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -169,6 +171,67 @@
         main label { font-size: 0.84375rem !important; }
     </style>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -385,7 +448,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-white">
+<body data-mirror-url="/resa" class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-white">
 
 
     <style id="omniUniversalPrintStyles">
@@ -1050,7 +1113,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1129,12 +1192,14 @@
                     <div>
                         <label id="lblSheetFormat" class="block text-xs font-bold text-slate-700 mb-1">Formato Foglio Macchina (Grezzo)</label>
                         <select id="sheetPreset" onchange="applySheetPreset()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
-                            <option value="700x1000">70 × 100 cm (700 × 1000 mm) - Standard Offset</option>
-                            <option value="640x880">64 × 88 cm (640 × 880 mm) - Editoria Libri</option>
-                            <option value="500x700">50 × 70 cm (500 × 700 mm) - Mezzo Foglio</option>
-                            <option value="320x450" selected>SRA3 (320 × 450 mm) - Digitale Pro</option>
-                            <option value="330x487">SRA3+ (330 × 487 mm) - Digitale Xerox/Canon</option>
-                            <option value="297x420">A3 Standard (297 × 420 mm)</option>
+                            <option value="584x889">23" × 35" (584 × 889 mm) - US Parent Book Sheet</option>
+                            <option value="635x965">25" × 38" (635 × 965 mm) - US Basis Size Text Sheet</option>
+                            <option value="660x1016">26" × 40" (660 × 1016 mm) - Commercial Press Sheet</option>
+                            <option value="711x1016">28" × 40" (711 × 1016 mm) - Large Format Offset</option>
+                            <option value="330x483">13" × 19" Super B (330 × 483 mm) - Digital Pro</option>
+                            <option value="305x457">12" × 18" Arch B+ (305 × 457 mm) - Production Digital</option>
+                            <option value="700x1000">70 × 100 cm (700 × 1000 mm) - ISO Standard Offset</option>
+                            <option value="320x450" selected>SRA3 (320 × 450 mm) - European Digital Pro</option>
                             <option value="custom">Personalizzato...</option>
                         </select>
                     </div>
@@ -1155,12 +1220,14 @@
                     <div>
                         <label id="lblCutFormat" class="block text-xs font-bold text-slate-700 mb-1">Formato Prodotto Finito (Rifilato)</label>
                         <select id="cutPreset" onchange="applyCutPreset()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
-                            <option value="85x55" selected>Biglietto da Visita (85 × 55 mm)</option>
-                            <option value="105x148">Volantino A6 (105 × 148 mm)</option>
-                            <option value="148x210">Volantino A5 (148 × 210 mm)</option>
-                            <option value="210x297">Foglio / Scheda A4 (210 × 297 mm)</option>
-                            <option value="100x210">Pieghevole 1/3 A4 (100 × 210 mm)</option>
-                            <option value="100x150">Cartolina (100 × 150 mm)</option>
+                            <option value="89x51" selected>US Business Card (3.5" × 2" • 89 × 51 mm)</option>
+                            <option value="216x279">Letter ANSI A (8.5" × 11" • 216 × 279 mm)</option>
+                            <option value="216x356">Legal (8.5" × 14" • 216 × 356 mm)</option>
+                            <option value="279x432">Tabloid / Ledger ANSI B (11" × 17" • 279 × 432 mm)</option>
+                            <option value="140x216">Half-Letter / Statement (5.5" × 8.5" • 140 × 216 mm)</option>
+                            <option value="102x152">US Postcard (4" × 6" • 102 × 152 mm)</option>
+                            <option value="127x178">US Photo / Invitation (5" × 7" • 127 × 178 mm)</option>
+                            <option value="210x297">ISO A4 Sheet (210 × 297 mm)</option>
                             <option value="custom">Personalizzato...</option>
                         </select>
                     </div>
@@ -1282,7 +1349,7 @@
 
                     <!-- Vector Canvas Viewport -->
                     <div id="svgContainer" class="w-full bg-slate-900 rounded-xl p-3 flex items-center justify-center overflow-hidden border border-slate-800" style="min-height: 280px;">
-                        <svg id="sheetSvg" class="w-full max-h-[320px] transition-all duration-300 drop-shadow-md" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <svg id="sheetSvg"><title>Press Sheet Imposition & Cutting Layout</title> role="img" class="svg-blueprint w-full" class="w-full max-h-[320px] transition-all duration-300 drop-shadow-md" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
                             <!-- Injected by JavaScript -->
                         </svg>
                     </div>
@@ -2763,11 +2830,13 @@
 
             updateResaDropdowns();
             calculateYield();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ sheet: document.getElementById("sheetPreset") ? document.getElementById("sheetPreset").value : "", cut: document.getElementById("cutPreset") ? document.getElementById("cutPreset").value : "" }); } catch(e) {}
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             initLanguage();
             calculateYield();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ sheet: document.getElementById("sheetPreset") ? document.getElementById("sheetPreset").value : "", cut: document.getElementById("cutPreset") ? document.getElementById("cutPreset").value : "" }); } catch(e) {}
             updatePrintDate();
         });
 
@@ -2792,6 +2861,7 @@
                 document.getElementById('sheetH').value = h;
             }
             calculateYield();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ sheet: document.getElementById("sheetPreset") ? document.getElementById("sheetPreset").value : "", cut: document.getElementById("cutPreset") ? document.getElementById("cutPreset").value : "" }); } catch(e) {}
         }
 
         function applyCutPreset() {
@@ -2804,6 +2874,7 @@
                 document.getElementById('cutH').value = h;
             }
             calculateYield();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ sheet: document.getElementById("sheetPreset") ? document.getElementById("sheetPreset").value : "", cut: document.getElementById("cutPreset") ? document.getElementById("cutPreset").value : "" }); } catch(e) {}
         }
 
         // Main Cutting Imposition Algorithm
@@ -3089,6 +3160,7 @@
                 if (selectEl) selectEl.value = lang;
                 applyTranslations(lang);
                 calculateYield();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ sheet: document.getElementById("sheetPreset") ? document.getElementById("sheetPreset").value : "", cut: document.getElementById("cutPreset") ? document.getElementById("cutPreset").value : "" }); } catch(e) {}
                 updatePrintDate();
             }
         }
@@ -3335,5 +3407,6 @@ Generato su: ${url}`).then(() => {
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

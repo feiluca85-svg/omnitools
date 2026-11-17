@@ -308,11 +308,15 @@
     const cleanPath = pathname.replace(/\.html$/, '') || '/';
     const isEnPage = pathname.startsWith('/en/');
 
+    const currentSearch = window.location.search || '';
+    const bodyMirror = document.body && document.body.dataset && document.body.dataset.mirrorUrl;
+
     if (lang === 'en' && !isEnPage) {
-      // Find matching EN route
-      const dest = DUAL_CORE_ROUTES[pathname] || DUAL_CORE_ROUTES[cleanPath];
+      // Prefer explicit data-mirror-url if present
+      const dest = bodyMirror || DUAL_CORE_ROUTES[pathname] || DUAL_CORE_ROUTES[cleanPath];
       if (dest) {
-        window.location.href = dest;
+        const separator = dest.includes('?') ? (currentSearch ? '&' + currentSearch.slice(1) : '') : currentSearch;
+        window.location.href = dest + separator;
         return;
       }
       // If on home
@@ -321,13 +325,14 @@
         return;
       }
     } else if (lang === 'it' && isEnPage) {
-      // Find matching IT route
-      const dest = DUAL_CORE_ROUTES_REVERSE[pathname] || DUAL_CORE_ROUTES_REVERSE[cleanPath];
+      // Prefer explicit data-mirror-url if present
+      const dest = bodyMirror || DUAL_CORE_ROUTES_REVERSE[pathname] || DUAL_CORE_ROUTES_REVERSE[cleanPath];
       if (dest) {
-        window.location.href = dest;
+        const separator = dest.includes('?') ? (currentSearch ? '&' + currentSearch.slice(1) : '') : currentSearch;
+        window.location.href = dest + separator;
         return;
       }
-      window.location.href = '/';
+      window.location.href = '/' + currentSearch;
       return;
     } else if (lang === 'it' && window.location.search.includes('lang=en')) {
       window.location.href = window.location.pathname;

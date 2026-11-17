@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Stair Calculator Online — Riser, Tread & Blondel Law (2R + T = 63 cm) | OmniTools Lab</title>
     <meta name="description" content="Free professional stair calculator for interior, exterior, and construction stairs. Calculate riser height, tread depth, number of steps, slope angle, and ergonomic compliance with Blondel Law (2R + T = 63 cm).">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/stair-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/stair-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/stair-calculator" />
     
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/stair-calculator">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/scale" />
 <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="OmniTools — Stair Calculator (Riser, Tread & Blondel Law)">
@@ -113,8 +116,7 @@
     <meta name="apple-mobile-web-app-title" content="OmniTools">
     <link rel="apple-touch-icon" href="/icon-192.png?v=6">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,6 +190,67 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         }
     </style>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -404,7 +467,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body data-mirror-url="/scale" class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header (Identical design to RampaFacile) -->
     
@@ -1071,7 +1134,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Esporta distinta misure in CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -3135,6 +3198,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             if (printModeVal) printModeVal.textContent = `2a + p = ${bFmt} ${u} (${numRisers} gradini)`;
 
             updateComfortEvaluation(riser_cm, tread_cm, blondel_cm, angleDeg, t);
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ h: heightInput.value, l: lengthInput ? lengthInput.value : '', mode: currentMode, unit: currentUnit }); } catch(e) {}
             updateStairSvg(numRisers, riser_cm, tread_cm, h_cm, l_cm, rFmt, tFmt, lFmt, u, angleDeg);
         }
 
@@ -3142,37 +3206,45 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             complianceCard.className = "p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border ";
             statusTag.className = "text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ";
 
-            // Blondel aureo: 62 - 64 cm, alzata 16-18.5 cm, pedata 26-31 cm
-            if (blondel_cm >= 61.5 && blondel_cm <= 64.5 && riser_cm >= 15.5 && riser_cm <= 18.5 && tread_cm >= 26.0) {
+            // IRC R311.7 (Residential) & IBC 1011 (Commercial) Standards
+            const riserInches = riser_cm / 2.54;
+            const treadInches = tread_cm / 2.54;
+            const usComfort2R = (2 * riserInches) + treadInches; // Rule of thumb: 24" to 25"
+            const usComfort1R = riserInches + treadInches;       // Rule of thumb: 17" to 18"
+            
+            const isIrcCompliant = (riserInches <= 7.75 && treadInches >= 10.0);
+            const isComfortable = (usComfort2R >= 23.5 && usComfort2R <= 25.5);
+
+            if (isIrcCompliant && isComfortable) {
                 complianceCard.classList.add('bg-emerald-50/90', 'border-emerald-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
                 statusIcon.textContent = "✓";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-emerald-950";
-                statusTitle.textContent = t.status_opt_title;
+                statusTitle.textContent = "IRC R311.7 COMPLIANT (IDEAL PROPORTIONS)";
                 statusTag.classList.add('bg-emerald-100', 'text-emerald-800');
-                statusTag.textContent = t.status_opt_tag;
+                statusTag.textContent = "IRC R311.7 & IBC COMPLIANT";
                 statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800";
-                statusDesc.textContent = t.status_opt_desc;
-            } else if (riser_cm <= 20.0 && tread_cm >= 23.0 && blondel_cm >= 59.0 && blondel_cm <= 67.0) {
-                complianceCard.classList.add('bg-amber-50/90', 'border-amber-200');
-                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-amber-500 text-white shadow-md shadow-amber-500/20";
-                statusIcon.textContent = "!";
-                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-amber-950";
-                statusTitle.textContent = t.status_warn_title;
-                statusTag.classList.add('bg-amber-100', 'text-amber-800');
-                statusTag.textContent = t.status_warn_tag;
-                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-amber-800";
-                statusDesc.textContent = t.status_warn_desc;
+                statusDesc.textContent = `Riser: ${riserInches.toFixed(2)}" (Max 7-3/4"), Tread: ${treadInches.toFixed(2)}" (Min 10"). US Comfort: 2R+T = ${usComfort2R.toFixed(1)}" (ideal 24-25"), R+T = ${usComfort1R.toFixed(1)}" (ideal 17-18"). Required headroom: min 6' 8" (80"). Handrail height: 34"–38" vertically above nosing.`;
+            } else if (isIrcCompliant) {
+                complianceCard.classList.add('bg-blue-50/90', 'border-blue-200');
+                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-blue-600 text-white shadow-md shadow-blue-600/20";
+                statusIcon.textContent = "i";
+                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-blue-950";
+                statusTitle.textContent = "IRC COMPLIANT (STEEP / SHALLOW PITCH)";
+                statusTag.classList.add('bg-blue-100', 'text-blue-800');
+                statusTag.textContent = "CODE PASS (COMFORT WARNING)";
+                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-blue-800";
+                statusDesc.textContent = `Meets IRC legal limits (Riser ${riserInches.toFixed(2)}" <= 7.75", Tread ${treadInches.toFixed(2)}" >= 10"), but US Comfort rule 2R+T is ${usComfort2R.toFixed(1)}" (target: 24"-25"). If nosing is under 11" run, provide 3/4" to 1-1/4" nosing projection.`;
             } else {
                 complianceCard.classList.add('bg-rose-50/90', 'border-rose-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-rose-600 text-white shadow-md shadow-rose-600/20";
                 statusIcon.textContent = "✕";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-rose-950";
-                statusTitle.textContent = t.status_danger_title;
+                statusTitle.textContent = "NON-COMPLIANT (VIOLATES IRC / IBC CODE)";
                 statusTag.classList.add('bg-rose-100', 'text-rose-800');
-                statusTag.textContent = t.status_danger_tag;
+                statusTag.textContent = "IRC CODE VIOLATION";
                 statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-rose-800";
-                statusDesc.textContent = t.status_danger_desc;
+                statusDesc.textContent = `Exceeds legal US thresholds: Riser ${riserInches.toFixed(2)}" (Max allowable 7.75") or Tread ${treadInches.toFixed(2)}" (Min allowable 10.0"). High trip/fall risk under residential and commercial building inspection.`;
             }
         }
 
@@ -3551,5 +3623,6 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script>document.addEventListener('DOMContentLoaded',function(){try{var s=document.getElementById('langSelect');if(s)s.value='en';if(typeof changeLanguage==='function')changeLanguage('en');}catch(e){}});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

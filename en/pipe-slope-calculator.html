@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Pipe Slope & Drainage Fall Calculator — Sewer Gradient & Velocity | OmniTools Lab</title>
     <meta name="description" content="Calculate drainage pipe slope (%), total fall (cm/mm), drop per linear meter, and Manning flow velocity (m/s) for Ø 40–200 mm PVC/PP sewer lines under EN 12056 and IPC standards.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
     
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/pipe-slope-calculator">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tubi" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Pipe Slope & Drainage Fall Calculator (EN 12056 / IPC) | OmniTools Lab">
@@ -122,7 +125,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -206,6 +209,67 @@
         main label { font-size: 0.84375rem !important; }
     </style>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -422,7 +486,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body data-mirror-url="/tubi" class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Header Navigation -->
     
@@ -1089,7 +1153,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Toggle Light/Dark Theme">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Export takeoff schedule to CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Print</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1351,7 +1415,7 @@
                 </div>
 
                 <div class="bg-slate-900 rounded-2xl p-4 sm:p-6 overflow-hidden relative shadow-inner">
-                    <svg id="pipeSvg" class="w-full h-44 sm:h-56" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="pipeSvg" role="img" class="svg-blueprint w-full"><title>Pipe Slope Architectural CAD Diagram</title> h-44 sm:h-56" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#ea580c"/>
@@ -2955,6 +3019,7 @@
 
             // Update Compliance Status Banner
             updateStatus(slopePercent);
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ L: numLength.value, slope: slopePercent.toFixed(2), mode: currentMode }); } catch(e) {}
 
             // Update Interactive Blueprint SVG
             updateSvg(L, slopePercent, dropCm, diam);
@@ -2969,36 +3034,45 @@
             const title = document.getElementById('statusTitle');
             const tag = document.getElementById('statusTag');
             const desc = document.getElementById('statusDesc');
-            const t = TRANSLATIONS[currentLang];
 
-            if (slope < 1.0) {
-                container.className = 'p-4 sm:p-5 rounded-2xl border transition-all bg-rose-50/90 border-rose-200 text-rose-900';
-                icon.textContent = '🔴';
-                title.textContent = t.status_low_title;
-                tag.className = 'text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-200 text-rose-900 border border-rose-300';
-                tag.textContent = t.status_low_tag;
-                desc.textContent = t.status_low_desc;
-            } else if (slope >= 1.0 && slope <= 2.0) {
+            // IPC Table 704.1 & UPC Plumbing Standards
+            // Slope in %: 1/4" per ft = 2.08%, 1/8" per ft = 1.04%, 1/16" per ft = 0.52%
+            const diam = parseFloat(numDiam ? numDiam.value : 110);
+            let minReqSlope = 2.08;
+            let codeRule = '1/4" per foot (2.08%) for pipes 2-1/2" or smaller';
+
+            if (diam >= 200) {
+                minReqSlope = 0.52;
+                codeRule = '1/16" per foot (0.52%) for pipes 8" or larger';
+            } else if (diam >= 75) {
+                minReqSlope = 1.04;
+                codeRule = '1/8" per foot (1.04%) for pipes 3" to 6"';
+            }
+
+            const slopeInPerFt = (slope / 100) * 12; // inches per foot
+            let fractionDisplay = '';
+            if (window.OmniCore) {
+                fractionDisplay = OmniCore.toImperialFraction(slopeInPerFt);
+            }
+
+            if (slope >= minReqSlope && slope <= 4.0) {
                 container.className = 'p-4 sm:p-5 rounded-2xl border transition-all bg-emerald-50/90 border-emerald-200 text-emerald-900';
-                icon.textContent = '🟢';
-                title.textContent = t.status_ideal_title;
-                tag.className = 'text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 border border-emerald-300';
-                tag.textContent = t.status_ideal_tag;
-                desc.textContent = t.status_ideal_desc;
-            } else if (slope > 2.0 && slope <= 3.5) {
-                container.className = 'p-4 sm:p-5 rounded-2xl border transition-all bg-amber-50/90 border-amber-200 text-amber-900';
-                icon.textContent = '🟡';
-                title.textContent = t.status_acc_title;
-                tag.className = 'text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 border border-amber-300';
-                tag.textContent = t.status_acc_tag;
-                desc.textContent = t.status_acc_desc;
-            } else {
+                icon.textContent = '✓';
+                title.textContent = 'IPC / UPC COMPLIANT SLOPE';
+                tag.textContent = 'CODE COMPLIANT';
+                desc.textContent = `Current slope: ${slope.toFixed(2)}% (~${fractionDisplay}/ft). Meets IPC Table 704.1 requirement of ${codeRule}. Optimal self-cleansing velocity (2.0+ fps) maintained without solid-liquid separation.`;
+            } else if (slope < minReqSlope) {
                 container.className = 'p-4 sm:p-5 rounded-2xl border transition-all bg-rose-50/90 border-rose-200 text-rose-900';
-                icon.textContent = '⚠️';
-                title.textContent = t.status_high_title;
-                tag.className = 'text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-200 text-rose-900 border border-rose-300';
-                tag.textContent = t.status_high_tag;
-                desc.textContent = t.status_high_desc;
+                icon.textContent = '✕';
+                title.textContent = 'NON-COMPLIANT (INSUFFICIENT DRAINAGE SLOPE)';
+                tag.textContent = 'BELOW IPC CODE';
+                desc.textContent = `Current slope: ${slope.toFixed(2)}% (~${fractionDisplay}/ft). Fails minimum IPC/UPC code (${codeRule}). Risk of sediment buildup, chronic drain blockages and sluggish wastewater flow.`;
+            } else {
+                container.className = 'p-4 sm:p-5 rounded-2xl border transition-all bg-amber-50/90 border-amber-200 text-amber-900';
+                icon.textContent = '!';
+                title.textContent = 'EXCESSIVE SLOPE WARNING (STEEP GRADE)';
+                tag.textContent = 'HIGH VELOCITY';
+                desc.textContent = `Current slope: ${slope.toFixed(2)}% (~${fractionDisplay}/ft). Exceeds 4.0% (1/2"/ft). Liquids may drain faster than suspended solids, stranding solids inside the line.`;
             }
         }
 
@@ -3408,5 +3482,6 @@
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

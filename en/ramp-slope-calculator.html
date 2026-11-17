@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Ramp Slope Calculator Online — Wheelchair ADA, Garage & Grade (%) | OmniTools Lab</title>
     <meta name="description" content="Calculate ramp slope in percentage (%), degrees, and 1:X ratio from rise height and horizontal run. Instant compliance verification for ADA wheelchair ramps (1:12 / 8.33%), EN/ADA Standards, and garage driveways.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
     
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
 
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/ramp-slope-calculator">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/rampe" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Ramp Slope & Grade Calculator — Rise, Run, Degrees & ADA Check | OmniTools Lab">
@@ -107,8 +110,7 @@
     <meta name="apple-mobile-web-app-title" content="OmniTools">
     <link rel="apple-touch-icon" href="/icon-192.png?v=6">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,6 +183,67 @@
         main label { font-size: 0.84375rem !important; }
     </style>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -397,7 +460,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body data-mirror-url="/rampe" class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- Top Navigation Header with safe area padding -->
     
@@ -1068,7 +1131,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Toggle Light/Dark Theme">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Export takeoff schedule to CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Print</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1310,7 +1373,7 @@
                 </div>
 
                 <div class="bg-slate-50/80 rounded-2xl p-3 sm:p-6 border border-slate-100 flex items-center justify-center overflow-hidden">
-                    <svg id="rampSvg" class="w-full h-40 sm:h-56 transition-all duration-200" viewBox="0 0 520 220">
+                    <svg id="rampSvg" role="img" class="svg-blueprint w-full"><title>Ramp Slope Architectural CAD Diagram</title> h-40 sm:h-56 transition-all duration-200" viewBox="0 0 520 220">
                         <defs>
                             <linearGradient id="rampGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3" />
@@ -3265,6 +3328,7 @@
             if (groundDisplay) groundDisplay.textContent = `${lFmt} ${u}`;
 
             updateCompliance(slope, t);
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ h: heightInput.value, l: lengthInput.value, mode: currentMode, unit: currentUnit }); } catch(e) {}
             updateSvgDiagram(h, l, slope, hypotenuse, u);
         }
 
@@ -3272,50 +3336,50 @@
             complianceCard.className = "p-3 sm:p-4 rounded-2xl border transition-all duration-300 shadow-xs print-border ";
             statusTag.className = "text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ";
 
-            // Germany has a rigid 6% max threshold under DIN 18040
-            const optThreshold = (currentLang === 'de') ? 5.0 : 5.0;
-            const maxDisabilityLimit = (currentLang === 'de') ? 6.0 : (currentLang === 'en' || currentLang === 'pt' ? 8.33 : 8.0);
+            // 2010 ADA Standards (§405) & IBC 1012 Compliance
+            const hVal = parseFloat(heightInput.value) || 0;
+            const lVal = (currentMode === 'direct') ? (parseFloat(lengthInput.value) || 0) : (hVal / (slope / 100));
+            const riseInches = (currentUnit === 'in') ? hVal : (currentUnit === 'cm' ? hVal / 2.54 : hVal * 39.3701);
+            const runInches = (currentUnit === 'in') ? lVal : (currentUnit === 'cm' ? lVal / 2.54 : lVal * 39.3701);
+            const landingsCount = Math.floor(riseInches / 30);
+            const handrailsRequired = (riseInches > 6 || runInches > 72);
 
-            if (slope <= optThreshold) {
+            if (slope <= 8.334) {
+                // <= 1:12 ADA Compliant
                 complianceCard.classList.add('bg-emerald-50/90', 'border-emerald-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
                 statusIcon.textContent = "✓";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-emerald-950";
-                statusTitle.textContent = t.status_opt_title;
+                statusTitle.textContent = "ADA 1:12 COMPLIANT (2010 Standards §405)";
                 statusTag.classList.add('bg-emerald-100', 'text-emerald-800');
-                statusTag.textContent = t.status_opt_tag;
+                statusTag.textContent = "ADA 1:12 COMPLIANT";
+                let details = `Slope ${slope.toFixed(2)}% (1:${(100/slope).toFixed(1)}). Fully accessible for commercial, public and residential facilities.`;
+                if (landingsCount > 0) details += ` Required 60"x60" intermediate landings: ${landingsCount} (every 30" max rise).`;
+                if (handrailsRequired) details += ` Continuous handrails required on both sides (min 36" clear width).`;
                 statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-emerald-800";
-                statusDesc.textContent = t.status_opt_desc;
-            } else if (slope <= maxDisabilityLimit) {
+                statusDesc.textContent = details;
+            } else if (slope <= 12.5) {
+                // 1:12 to 1:8 Existing Site Exception
                 complianceCard.classList.add('bg-amber-50/90', 'border-amber-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-amber-500 text-white shadow-md shadow-amber-500/20";
                 statusIcon.textContent = "!";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-amber-950";
-                statusTitle.textContent = t.status_warn_title;
+                statusTitle.textContent = "EXISTING SITE EXCEPTION ONLY (ADA 405.2)";
                 statusTag.classList.add('bg-amber-100', 'text-amber-800');
-                statusTag.textContent = t.status_warn_tag;
+                statusTag.textContent = "EXISTING SITE EXCEPTION ONLY (ADA 405.2)";
                 statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-amber-800";
-                statusDesc.textContent = t.status_warn_desc;
-            } else if (slope <= 20.0) {
-                complianceCard.classList.add('bg-blue-50/90', 'border-blue-200');
-                statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-blue-600 text-white shadow-md shadow-blue-600/20";
-                statusIcon.textContent = "🚗";
-                statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-blue-950";
-                statusTitle.textContent = t.status_car_title;
-                statusTag.classList.add('bg-blue-100', 'text-blue-800');
-                statusTag.textContent = t.status_car_tag;
-                statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-blue-800";
-                statusDesc.textContent = t.status_car_desc;
+                statusDesc.textContent = `Slope ${slope.toFixed(2)}% exceeds standard 1:12. Allowed solely on existing historic or space-constrained buildings where 1:12 is technically infeasible (Max 1:10 for 6" rise, Max 1:8 for 3" rise).`;
             } else {
+                // > 1:8 Non-Compliant
                 complianceCard.classList.add('bg-rose-50/90', 'border-rose-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-rose-600 text-white shadow-md shadow-rose-600/20";
                 statusIcon.textContent = "✕";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-rose-950";
-                statusTitle.textContent = t.status_danger_title;
+                statusTitle.textContent = "NON-COMPLIANT (EXCEEDS MAX SLOPE)";
                 statusTag.classList.add('bg-rose-100', 'text-rose-800');
-                statusTag.textContent = t.status_danger_tag;
+                statusTag.textContent = "NON-COMPLIANT (EXCEEDS MAX SLOPE)";
                 statusDesc.className = "text-[11px] sm:text-xs mt-0.5 leading-snug text-rose-800";
-                statusDesc.textContent = t.status_danger_desc;
+                statusDesc.textContent = `Slope ${slope.toFixed(2)}% (1:${(100/slope).toFixed(1)}) is strictly non-compliant with ADA 2010 and IBC codes. Critical rollover/fall hazard.`;
             }
         }
 
@@ -3698,5 +3762,6 @@
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

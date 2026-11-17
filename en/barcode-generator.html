@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Free Vector Barcode Generator Online (SVG & PDF) — EAN-13, Code 128, UPC-A & GS1 Check</title>
     <meta name="description" content="Professional online vector barcode generator (SVG & print-ready PDF) for EAN-13, EAN-8, UPC-A, Code 128, Code 39, and ITF-14. Includes 670 nm GS1 laser contrast simulator.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/barcode-generator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/barcode-generator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/barcode-generator" />
     
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/barcode-generator">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/barcode" />
 <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="OmniBarcode Studio — Vector SVG & PDF Barcode Generator">
@@ -112,12 +115,11 @@
     <meta name="apple-mobile-web-app-title" content="OmniBarcode">
     <link rel="apple-touch-icon" href="/icon-192.png?v=6">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <script defer src="/_vercel/insights/script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Share+Tech+Mono&family=Inconsolata:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Share+Tech+Mono&family=Inconsolata:wght@500;700&display=swap" rel="stylesheet">
     <style>
         html, body { overflow-x: clip; }
         @font-face {
@@ -227,6 +229,67 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         }
     </style>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -443,7 +506,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white">
+<body data-mirror-url="/barcode" class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white">
 
 
     <style id="omniUniversalPrintStyles">
@@ -1108,7 +1171,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1190,13 +1253,13 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                             Simbologia / Standard Barcode
                         </label>
                         <select id="symbologySelect" onchange="onSymbologyChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-base sm:text-sm font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition cursor-pointer">
-                            <option value="EAN13">EAN-13 (Commercio & GDO Europa - GS1)</option>
-                            <option value="GS1_128">GS1-128 / EAN-128 (Logistica Pallet & AI)</option>
-                            <option value="ITF14">GS1 ITF-14 (Scatoloni, Imballaggi & Cartoni)</option>
-                            <option value="CODE128">Code 128 (Spedizioni Generiche & Magazzino)</option>
-                            <option value="CODE39">Code 39 (Industria & Tessera Sanitaria)</option>
-                            <option value="EAN8">EAN-8 (Packaging compatto & piccoli prodotti)</option>
-                            <option value="UPC">UPC-A (Standard USA & Nord America)</option>
+                            <option value="UPC" selected>UPC-A (GS1 US & North America Retail Standard - 12 Digits)</option>
+                            <option value="EAN13">EAN-13 (GS1 International & European Retail)</option>
+                            <option value="CODE128">Code 128 (USPS / FedEx / Logistics Alphanumeric)</option>
+                            <option value="ITF14">GS1 ITF-14 (Corrugated Master Cartons & Shipping)</option>
+                            <option value="GS1_128">GS1-128 (Pallet Shipping Container AI)</option>
+                            <option value="CODE39">Code 39 (Industrial & US Military Standard)</option>
+                            <option value="EAN8">EAN-8 (Compact Small-Package Retail)</option>
                         </select>
                     </div>
 
@@ -1503,7 +1566,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                         
                         <!-- SVG Barcode (Clicking here selects bars) -->
                         <div id="barcodeSvgWrapper" onclick="onBarcodeSvgClick(event)" class="p-1 rounded-lg transition-all" title="Clicca direttamente sulle barre per selezionare il colore delle barre">
-                            <svg id="barcodeSvg" class="max-w-full transition-transform group-hover:scale-[1.01]"></svg>
+                            <svg id="barcodeSvg"><title>GS1 / UPC Barcode Vector Graphic</title> role="img" class="svg-blueprint w-full" class="max-w-full transition-transform group-hover:scale-[1.01]"></svg>
                         </div>
                     </div>
 
@@ -3079,6 +3142,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             }
             syncTargetDisplays();
             updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
         }
 
         function onActiveColorPickerChange(val) {
@@ -3126,6 +3190,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             bgColorCurrent = bg;
             syncTargetDisplays();
             updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
         }
 
         function calculateEan13CheckDigit(str) {
@@ -3209,6 +3274,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 helper.innerText = 'Code 128 supporta qualsiasi carattere alfanumerico ASCII ad alta densità.';
             }
             updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
         }
 
         function applyPreset(type) {
@@ -3290,6 +3356,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 input.value = 'OMNI-' + Math.floor(100000 + Math.random() * 900000);
             }
             updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
         }
 
         function hexToRgb(hex) {
@@ -3493,6 +3560,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 if (bWidth) bWidth.value = 2.2;
             }
             updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
         }
 
         function renderLaserSimulation(barColor, bgColor, symb, value, barWidth, barHeight, quietZone, displayValue, chosenFont, fontOptions, fontSizeCustom, textMarginCustom) {
@@ -3691,6 +3759,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             document.getElementById('faq4A').innerHTML = t.faq_4_a;
 
             updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
         }
         window.changeLanguage = changeLanguage;
 
@@ -3704,6 +3773,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 changeLanguage(savedLang);
             } else {
                 updateBarcode();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ symbology: document.getElementById("symbologySelect") ? document.getElementById("symbologySelect").value : "", code: document.getElementById("barcodeInput") ? document.getElementById("barcodeInput").value : "" }); } catch(e) {}
             }
         });
     
@@ -3886,5 +3956,6 @@ Generato su: ${url}`).then(() => {
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script>document.addEventListener('DOMContentLoaded',function(){try{var s=document.getElementById('langSelect');if(s)s.value='en';if(typeof changeLanguage==='function')changeLanguage('en');}catch(e){}});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

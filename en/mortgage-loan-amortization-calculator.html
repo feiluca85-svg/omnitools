@@ -6,12 +6,15 @@
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <title>Mortgage Loan Amortization Calculator | OmniFinance</title>
     <meta name="description" content="Free French amortization schedule calculator. Calculate monthly loan payments, principal vs interest breakdown, total interest cost, and export PDF schedule.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
     
     <!-- Canonical & SEO -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator">
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/mutuo" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Mortgage Loan Amortization Calculator • OmniFinance">
@@ -27,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <style>
         html, body { overflow-x: clip; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -100,10 +103,10 @@
         },
         {
           "@type": "Question",
-          "name": "Qual è la differenza tra TAN e TAEG?",
+          "name": "Qual è la differenza tra Nominal Rate & APR (Reg. Z)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Il TAN misura il tasso di interesse puro applicato al prestito. Il TAEG esprime il costo totale effettivo del mutuo, includendo per legge tutte le spese accessorie: imposta sostitutiva, istruttoria, perizia, assicurazione incendio/scoppio obbligatoria e incasso rata."
+            "text": "Il Nominal Rate misura il tasso di interesse puro applicato al prestito. Il APR esprime il costo totale effettivo del mutuo, includendo per legge tutte le spese accessorie: imposta sostitutiva, istruttoria, perizia, assicurazione incendio/scoppio obbligatoria e incasso rata."
           }
         },
         {
@@ -126,6 +129,67 @@
     }
     </script>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -342,7 +406,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+<body data-mirror-url="/mutuo" class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
     
     <style id="omniUniversalPrintStyles">
@@ -1007,7 +1071,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -1072,7 +1136,7 @@
                         Formula Rata Costante (Ammortamento Francese): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-emerald-200 text-emerald-800 font-mono font-black">Rata = C × [ i × (1+i)ⁿ ] / [ (1+i)ⁿ - 1 ]</code>
                     </p>
                     <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
-                        <strong>Esempio pratico & Sostenibilità:</strong> Su un mutuo di <code class="font-bold">180.000 $</code> a <code class="font-bold">25 anni (300 rate)</code> al TAN del <code class="font-bold">3,20%</code>, la rata mensile fissa è pari a <code class="font-mono text-emerald-800 font-bold">872,62 $</code>. Con reddito familiare netto di 2.800 $, l'incidenza è del <code class="font-bold">31,1%</code>, perfettamente entro il tetto bancario del 33%.
+                        <strong>Esempio pratico & Sostenibilità:</strong> Su un mutuo di <code class="font-bold">180.000 $</code> a <code class="font-bold">25 anni (300 rate)</code> al Nominal Rate del <code class="font-bold">3,20%</code>, la rata mensile fissa è pari a <code class="font-mono text-emerald-800 font-bold">872,62 $</code>. Con reddito familiare netto di 2.800 $, l'incidenza è del <code class="font-bold">31,1%</code>, perfettamente entro il tetto bancario del 33%.
                     </p>
                 </div>
             </div>
@@ -1117,20 +1181,20 @@
                         <label id="labelYears" class="text-xs font-bold text-slate-700">Durata Mutuo (Anni)</label>
                         <span id="badgeYears" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">25 anni (300 rate)</span>
                     </div>
-                    <input type="number" id="inputYears" value="25" min="5" max="40" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <input type="number" id="inputYears" value="30" min="5" max="40" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     <input type="range" id="rangeYears" min="5" max="40" step="1" value="25" oninput="syncFromRange('Years')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
                     <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
-                        <button type="button" onclick="setYears(15)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">15a</button>
-                        <button type="button" onclick="setYears(20)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">20a</button>
-                        <button type="button" onclick="setYears(25)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">25a</button>
-                        <button type="button" onclick="setYears(30)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">30a</button>
+                        <button type="button" onclick="setYears(15)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">15-Yr Fixed</button>
+                        <button type="button" onclick="setYears(20)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">20-Yr</button>
+                        <button type="button" onclick="setYears(25)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">25-Yr</button>
+                        <button type="button" onclick="setYears(30)" class="py-1 bg-emerald-100 hover:bg-emerald-200 rounded-lg text-emerald-800 font-extrabold transition">30-Yr Fixed (US)</button>
                     </div>
                 </div>
 
-                <!-- Tasso di Interesse Annuo (TAN) -->
+                <!-- Tasso di Interesse Annuo (Nominal Interest Rate) -->
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label id="labelRate" class="text-xs font-bold text-slate-700">Tasso di Interesse Annuo (TAN %)</label>
+                        <label id="labelRate" class="text-xs font-bold text-slate-700">Tasso di Interesse Annuo (Nominal Rate %)</label>
                         <span id="badgeRate" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">3.20 %</span>
                     </div>
                     <input type="number" id="inputRate" value="3.20" min="0.05" max="18.00" step="0.05" oninput="syncFromInput('Rate')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -1224,7 +1288,7 @@
 
                     <!-- SVG Chart Container -->
                     <div class="w-full overflow-hidden">
-                        <svg id="mortgageSvg" class="w-full h-44" viewBox="0 0 520 200" preserveAspectRatio="none"></svg>
+                        <svg id="mortgageSvg"><title>Mortgage Amortization Schedule Chart</title> role="img" class="svg-blueprint w-full h-44" viewBox="0 0 520 200" preserveAspectRatio="none"></svg>
                     </div>
                     <p class="text-[10px] text-slate-400 text-center font-mono">
                         Ammortamento alla Francese: le prime rate hanno una quota interessi elevata, mentre con il passare degli anni la quota capitale diventa prevalente.
@@ -1331,13 +1395,13 @@
 
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
-                        <span id="faq3Q">Qual è la differenza tra TAN e TAEG nel calcolo del mutuo?</span>
+                        <span id="faq3Q">Qual è la differenza tra Nominal Rate & APR (Reg. Z) nel calcolo del mutuo?</span>
                         <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </summary>
                     <div id="faq3A" class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed border-t border-slate-200/60 pt-2.5">
-                        Il <strong>TAN</strong> (Tasso Annuo Nominale) misura il tasso di interesse puro applicato al prestito. Il <strong>TAEG</strong> (Tasso Annuo Effettivo Globale) è invece l'indicatore reale del costo complessivo del finanziamento: include obbligatoriamente per legge tutte le spese accessorie, tra cui imposta sostitutiva statale, spese di istruttoria, perizia dell'immobile, polizza assicurativa incendio e scoppio obbligatoria e spese di incasso rata. È il TAEG il valore da confrontare tra diverse banche.
+                        Il <strong>Nominal Rate</strong> (Nominal Interest Rate) misura il tasso di interesse puro applicato al prestito. Il <strong>APR</strong> (Tasso Annuo Effettivo Globale) è invece l'indicatore reale del costo complessivo del finanziamento: include obbligatoriamente per legge tutte le spese accessorie, tra cui imposta sostitutiva statale, spese di istruttoria, perizia dell'immobile, polizza assicurativa incendio e scoppio obbligatoria e spese di incasso rata. È il APR il valore da confrontare tra diverse banche.
                     </div>
                 </details>
 
@@ -1786,7 +1850,7 @@
 
 
     <script>
-        const TRANSLATIONS = {"it": {"badge": "SIMULATORE MUTUO & AMMORTAMENTO", "hero_title": "Calcolo Rata Mutuo & Piano di Ammortamento", "hero_desc": "Formula di ammortamento progressivo alla francese (rata costante). Verifica la sostenibilità della rata rispetto al reddito netto con la regola del 33% e scarica il piano in CSV.", "input_amount": "Importo Mutuo Richiesto", "input_years": "Durata Rimborso", "input_rate": "Tasso di Interesse Annuo (TAN)", "input_income": "Reddito Netto Mensile Nucleo", "res_monthly": "Rata Mensile Costante", "res_installments": "Totale Rate", "res_dti": "Rapporto Rata / Reddito", "res_principal": "Capitale Erogato", "res_interest": "Totale Interessi Bancari", "res_ratio": "Rapporto Interessi/Capitale", "res_total_cost": "Costo Totale Complessivo", "afford_title": "Sostenibilità Reddituale (Regola del 33%)", "afford_tag_ok": "SOSTENIBILE: Sotto la soglia prudenziale del 33%", "afford_tag_warn": "ATTENZIONE: Rata vicina al limite (30%-35%)", "afford_tag_alert": "RISCHIO ELEVATO: Rata superiore al 35% del reddito", "tab_summary": "Riepilogo Piano", "tab_yearly": "Piano Annuale", "tab_monthly": "Piano Rata per Rata (Mensile)", "col_year": "Anno", "col_month": "Mese", "col_rate": "Rata", "col_capital": "Quota Capitale", "col_interest": "Quota Interessi", "col_remaining": "Debito Residuo", "csv_export": "Esporta Piano Completo (CSV)", "print_btn": "Stampa / Salva PDF", "faq_title": "Frequently Asked Questions</span>`,
+        const TRANSLATIONS = {"it": {"badge": "SIMULATORE MUTUO & AMMORTAMENTO", "hero_title": "Calcolo Rata Mutuo & Piano di Ammortamento", "hero_desc": "Formula di ammortamento progressivo alla francese (rata costante). Verifica la sostenibilità della rata rispetto al reddito netto con la regola del 33% e scarica il piano in CSV.", "input_amount": "Importo Mutuo Richiesto", "input_years": "Durata Rimborso", "input_rate": "Tasso di Interesse Annuo (Nominal Interest Rate)", "input_income": "Reddito Netto Mensile Nucleo", "res_monthly": "Rata Mensile Costante", "res_installments": "Totale Rate", "res_dti": "Rapporto Rata / Reddito", "res_principal": "Capitale Erogato", "res_interest": "Totale Interessi Bancari", "res_ratio": "Rapporto Interessi/Capitale", "res_total_cost": "Costo Totale Complessivo", "afford_title": "Sostenibilità Reddituale (Regola del 33%)", "afford_tag_ok": "SOSTENIBILE: Sotto la soglia prudenziale del 33%", "afford_tag_warn": "ATTENZIONE: Rata vicina al limite (30%-35%)", "afford_tag_alert": "RISCHIO ELEVATO: Rata superiore al 35% del reddito", "tab_summary": "Riepilogo Piano", "tab_yearly": "Piano Annuale", "tab_monthly": "Piano Rata per Rata (Mensile)", "col_year": "Anno", "col_month": "Mese", "col_rate": "Rata", "col_capital": "Quota Capitale", "col_interest": "Quota Interessi", "col_remaining": "Debito Residuo", "csv_export": "Esporta Piano Completo (CSV)", "print_btn": "Stampa / Salva PDF", "faq_title": "Frequently Asked Questions</span>`,
         'scale': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
         'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
         'tetto': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
@@ -2840,6 +2904,47 @@
 
             // Popola Tabella Ammortamento & SVG
             renderYearlyTableAndSvg(principal, monthlyRate, monthlyPayment, years);
+        
+            // US PITI & PMI Integration (TILA / Homeowners Protection Act HPA)
+            // Estimated Property Taxes (~1.2% / yr) & Insurance (~0.5% / yr)
+            const estTaxes = (principal * 0.012) / 12;
+            const estInsurance = (principal * 0.005) / 12;
+            
+            // Automatic PMI Rule: If Home Price > Principal, LTV check; assume standard 10% down -> LTV 90% (PMI active)
+            const ltvEstimated = 90; // Default conventional loan LTV > 80%
+            let estPmi = 0;
+            if (ltvEstimated > 80) {
+                estPmi = (principal * 0.0075) / 12; // ~0.75% annual PMI
+            }
+            const fullPITI = monthlyPayment + estTaxes + estInsurance + estPmi;
+
+            // Update UI elements if present or append PITI breakdown
+            const pitiEl = document.getElementById('pitiBreakdownNotice');
+            if (!pitiEl) {
+                const resultsBox = document.getElementById('resMonthlyPayment') ? document.getElementById('resMonthlyPayment').closest('.bg-gradient-to-br, .card-box, div') : null;
+                if (resultsBox && !document.getElementById('pitiBreakdownBox')) {
+                    const notice = document.createElement('div');
+                    notice.id = 'pitiBreakdownBox';
+                    notice.className = 'mt-3 pt-3 border-t border-slate-200/80 text-[11px] text-slate-700 leading-snug';
+                    notice.innerHTML = `
+                        <div class="flex items-center justify-between font-bold text-slate-900">
+                            <span>US PITI Monthly Est. (Principal, Interest, Taxes, Ins.):</span>
+                            <span class="font-mono text-emerald-800 text-sm font-black">${formatMoneyExact(fullPITI)}</span>
+                        </div>
+                        <div class="mt-1 text-[10px] text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-2">
+                            <strong>⚠️ US PMI Notice (LTV > 80%):</strong> Private Mortgage Insurance (~${formatMoneyExact(estPmi)}/mo) is typically required by conventional lenders until equity reaches 20% (cancels automatically at 78% LTV per the Homeowners Protection Act).
+                        </div>
+                    `;
+                    resultsBox.appendChild(notice);
+                }
+            }
+
+            // Sync URL State
+            try {
+                if (window.OmniCore) {
+                    OmniCore.syncStateToUrl({ amount: principal, years: years, rate: annualRatePercent.toFixed(2), income: monthlyIncome });
+                }
+            } catch(e) {}
         }
 
         function renderYearlyTableAndSvg(principal, r, payment, years) {
@@ -3129,7 +3234,7 @@ Generato su: https://www.omnitoolslab.com/mutuo`;
             shareBtn: "Share Link",
             shareTitle: "Copy link with pre-filled parameters",
             copied: "Copied!",
-            disclaimer: "<strong>IMPORTANT LEGAL NOTICE (US COMPLIANCE DISCLAIMER):</strong> This online calculator is provided for preliminary estimating, planning, and educational reference only. Local building codes, financial regulations, tax laws, and industry standards vary by state and jurisdiction. This software does not constitute licensed legal, financial, engineering, or architectural advice. Always verify final figures, technical specifications, and calculations with a licensed professional (PE, CPA, or licensed contractor) prior to commercial execution or signing binding contracts. OmniTools Lab expressly disclaims all warranties, express or implied, and accepts no liability for errors, omissions, or financial/construction decisions resulting from the use of this software."
+            disclaimer: "<strong>IMPORNominal RateT LEGAL NOTICE (US COMPLIANCE DISCLAIMER):</strong> This online calculator is provided for preliminary estimating, planning, and educational reference only. Local building codes, financial regulations, tax laws, and industry standards vary by state and jurisdiction. This software does not constitute licensed legal, financial, engineering, or architectural advice. Always verify final figures, technical specifications, and calculations with a licensed professional (PE, CPA, or licensed contractor) prior to commercial execution or signing binding contracts. OmniTools Lab expressly disclaims all warranties, express or implied, and accepts no liability for errors, omissions, or financial/construction decisions resulting from the use of this software."
         },
         es: {
             shareBtn: "Enlace Cálculo",
@@ -3186,5 +3291,6 @@ Generato su: https://www.omnitoolslab.com/mutuo`;
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

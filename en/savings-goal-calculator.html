@@ -6,12 +6,15 @@
     <meta name="google-site-verification" content="MRdbDm9lLhokeD3I0FOpUSOhNaF_2WaveKvu52FxtG4">
     <title>Savings Goal & Sinking Fund Calculator | OmniFinance</title>
     <meta name="description" content="Calculate exact monthly or weekly savings required to reach a target financial goal by a deadline. Free sinking fund planner with inflation adjustment.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
     
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/savings-goal-calculator">
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/risparmio" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Savings Goal & Sinking Fund Calculator • OmniFinance">
@@ -27,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -177,6 +180,67 @@
 }
     </script>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -393,7 +457,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-emerald-500 selection:text-white">
+<body data-mirror-url="/risparmio" class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-emerald-500 selection:text-white">
 
     
     <style id="omniUniversalPrintStyles">
@@ -1058,7 +1122,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Cambia Tema Chiaro/Scuro">🌙</button>
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -3029,6 +3093,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             saveState();
             recalc();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ goal: document.getElementById("inputGoal") ? document.getElementById("inputGoal").value : "" }); } catch(e) {}
         }
 
         function fmtCurr(num) {
@@ -3048,6 +3113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('range' + field).value = val;
             saveState();
             recalc();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ goal: document.getElementById("inputGoal") ? document.getElementById("inputGoal").value : "" }); } catch(e) {}
         }
 
         function syncFromRange(field) {
@@ -3055,6 +3121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('input' + field).value = val;
             saveState();
             recalc();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ goal: document.getElementById("inputGoal") ? document.getElementById("inputGoal").value : "" }); } catch(e) {}
         }
 
         function setVal(field, val) {
@@ -3062,6 +3129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('range' + field).value = val;
             saveState();
             recalc();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ goal: document.getElementById("inputGoal") ? document.getElementById("inputGoal").value : "" }); } catch(e) {}
         }
 
         function resetDefaults() {
@@ -3227,6 +3295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.lang = lang;
             applyTranslations();
             recalc();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ goal: document.getElementById("inputGoal") ? document.getElementById("inputGoal").value : "" }); } catch(e) {}
         }
         window.changeLanguage = changeLanguage;
         window.switchLang = changeLanguage;
@@ -3238,6 +3307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sel) sel.value = currentLang;
             loadState();
             recalc();
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ goal: document.getElementById("inputGoal") ? document.getElementById("inputGoal").value : "" }); } catch(e) {}
             applyTranslations();
         });
     
@@ -3354,5 +3424,6 @@ Generato su: ${url}`).then(() => {
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>

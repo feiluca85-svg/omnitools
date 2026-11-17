@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Roof Pitch Calculator Online — Slope %, Degrees, Rafter Length & Area | OmniTools Lab</title>
     <meta name="description" content="Calculate roof pitch in percentage (%), degrees, and 1:X ratio from horizontal run and ridge rise. Find true rafter length including eaves overhang and total roof slope surface area.">
+
+    <!-- Canonical & SEO Meta Tags -->
+    <link rel="canonical" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
+    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto" />
+    <link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
+    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
+    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
     
     <!-- Canonical & SEO Meta Tags -->
-    <link rel="canonical" href="https://www.omnitoolslab.com/en/roof-pitch-calculator">
-    <link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto" />
-    <link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/tetto" />
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Roof Pitch, Rafter Length & Slope Area Calculator | OmniTools Lab">
@@ -112,10 +115,10 @@
     <meta name="theme-color" content="#f59e0b">
 
     <!-- Tailwind CSS (CDN) + Custom Font (Inter / Plus Jakarta Sans) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/omni.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         html, body { overflow-x: clip; }
@@ -152,6 +155,67 @@
         main label { font-size: 0.84375rem !important; }
     </style>
 <style id="omniDarkStyles">
+        /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Prevent iOS Safari Auto-Zoom and enforce Apple HIG / ADA 44px touch targets */
+        @media screen and (max-width: 768px) {
+            input[type="number"],
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            .svg-blueprint text {
+                font-size: clamp(10px, 3vw, 13px);
+            }
+        }
+
+        /* Seamless horizontal swipe with hidden scrollbars on mobile dock & tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent sticky hover states on touch screens */
+        @media (hover: none) {
+            .hover-desktop-only:hover {
+                transform: none !important;
+            }
+        }
+
+        /* --- TECHNICAL UI GLOBAL RULES (Task 1) --- */
+        input[type="number"], .font-mono, .result-val, [data-result] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark select option,
+        html.dark select option {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        .svg-blueprint path,
+        .svg-blueprint line,
+        .svg-blueprint rect,
+        .svg-blueprint circle {
+            vector-effect: non-scaling-stroke;
+        }
+
         /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
         html.omni-dark [class*="bg-amber-50"],
         html.omni-dark [class*="bg-amber-100"],
@@ -368,7 +432,7 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-amber-100 selection:text-amber-900">
+<body data-mirror-url="/tetto" class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-amber-100 selection:text-amber-900">
 
     
     <style id="omniUniversalPrintStyles">
@@ -1034,7 +1098,7 @@
                 <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer" title="Toggle Light/Dark Theme">🌙</button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Export takeoff schedule to CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Print</span></button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
+                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition">
                         <option value="en" selected>🇺🇸 English</option>
                         <option value="it">🇮🇹 Italiano</option>
                     </select>
@@ -2649,6 +2713,325 @@
     </script>
 
     <!-- OmniDesk Dock Suite Scripts -->
+    <script>
+        const TRANSLATIONS = {"it": {"title": "TettoFacile", "badge": "OmniBuilding", "hero_title": "Calcolo Pendenza Tetto, Falda & Superficie", "hero_desc": "Calcola l'inclinazione in gradi e percentuale, la quota del colmo, la lunghezza reale della trave e la superficie della falda.", "mode_direct": "📐 Da Base & Altezza Colmo", "mode_reverse": "📏 Da Pendenza & Base", "unit_label": "Unità di Misura", "unit_cm": "Centimetri (cm)", "unit_m": "Metri (m)", "base_label": "Larghezza Base in Pianta (L)", "height_label": "Altezza Colmo / Dislivello (H)", "slope_pct_label": "Pendenza Desiderata (%)", "overhang_label": "Sporto Gronda Grondaia (cm)", "roof_length_label": "Lunghezza Edificio / Falda (m)", "presets_title": "Preset standard di pendenza tetto:", "preset_1": "Tettoia / Pergola (8.7% • 5°)", "preset_1_sub": "Pendenza minima scolo acqua", "preset_2": "Tetto Tegole Standard (30% • 16.7°)", "preset_2_sub": "Coppi & Tegole Portoghesi", "preset_3": "Tetto Montano Neve (60% • 31°)", "preset_3_sub": "Zone climatiche fredde", "preset_4": "Tetto Alpino Ripido (100% • 45°)", "preset_4_sub": "Massimo scivolamento neve", "col_slope": "Pendenza", "col_angle": "Inclinazione", "col_rafter": "Lunghezza Trave / Falda", "col_area": "Superficie Reale Falda", "col_ridge": "Altezza Colmo (H)", "schema_title": "Schema Geometrico Sezione Falda", "schema_scale": "In scala vettoriale interattiva", "rule_tip": "💡 <strong>Regola Geometrica del Tetto:</strong> La pendenza percentuale esprime quanti centimetri si sale verticalmente ogni 100 cm di avanzamento orizzontale: <code>Pendenza % = (H / L) × 100</code>. L'angolo in gradi è dato dalla trigonometria: <code>Gradi = arctan(H / L)</code>. La lunghezza reale della trave segue il Teorema di Pitagora: <code>Ipotenusa = √(L² + H²) + Sporto</code>.", "legal_disclaimer": "<strong>Note di Calcolo Geometrico:</strong> I calcoli si basano su principi di trigonometria piana e geometria euclidea. Verificare sempre le schede tecniche del produttore del manto di copertura prescelto (guaina, lamiera grecata, tegole in cotto, tegole canadesi o coppi) per la pendenza minima di posa impermeabile.", "faq_title": "Domande Frequenti su Pendenza Tetto, Falde e Calcolo Geometria", "faq_1_q": "Qual è la formula per convertire la pendenza del tetto da percentuale a gradi?", "faq_1_a": "Per convertire la percentuale in gradi: <code>Gradi = arctan(Pendenza % / 100) × (180 / π)</code>. Ad esempio, una pendenza del 35% corrisponde a circa 19.3°.", "faq_2_q": "Qual è la pendenza minima consigliata per un tetto in tegole?", "faq_2_a": "Per tegole tradizionali (marsigliesi, portoghesi) la pendenza minima è solitamente compresa tra il <strong>30% e il 35%</strong> (circa 17°-19°). Per le lamiere grecate o pannelli coibentati si può scendere fino al <strong>7-10%</strong> con guaina idonea.", "faq_3_q": "Come si calcola la superficie effettiva di una falda?", "faq_3_a": "La superficie reale si calcola moltiplicando la <strong>lunghezza reale della trave inclinata</strong> (inclusi gli sporti di gronda) per la <strong>lunghezza del fabbricato lungo la linea di gronda</strong>.", "faq_4_q": "Cos'è lo sporto di gronda e come influisce sulla trave?", "faq_4_a": "Lo sporto di gronda è la porzione di tetto che sporge oltre il perimetro esterno dei muri per proteggere la facciata dall'acqua piovana. Va sommato alla lunghezza inclinata teorica della trave per determinare la lunghezza d'acquisto del legname.", "status_opt_title": "Pendenza Standard Ottimale", "status_opt_tag": "Ideale Tegole", "status_opt_desc": "Inclinazione ideale per il deflusso rapido delle acque meteoriche con tegole tradizionali e coppi senza ristagni.", "status_warn_title": "Pendenza Bassa / Tettoia", "status_warn_tag": "Pendenza Lieve", "status_warn_desc": "Inclinazione ridotta tipica di pergole, tettoie e coperture metalliche continue. Richiede guaina impermeabile continua.", "status_high_title": "Forte Pendenza / Zona Montana", "status_high_tag": "Tetto Alpino", "status_high_desc": "Inclinazione accentuata ideale per favorire lo scivolamento del carico neve e prevenire accumuli strutturali.", "print_btn": "Stampa Scheda", "install_btn": "Installa App"}, "en": {"title": "RoofSlope", "badge": "OmniBuilding", "hero_title": "Roof Pitch, Slope & Rafter Calculator", "hero_desc": "Calculate roof pitch in degrees and percentage, ridge rise height, rafter cut length, and total roof surface area instantly.", "mode_direct": "📐 From Run (Base) & Rise", "mode_reverse": "📏 From Pitch & Run", "unit_label": "Units", "unit_cm": "Centimeters (cm)", "unit_m": "Meters (m)", "base_label": "Horizontal Run / Base (L)", "height_label": "Ridge Height / Rise (H)", "slope_pct_label": "Target Slope (%)", "overhang_label": "Eaves Overhang (cm)", "roof_length_label": "Roof / Building Length (m)", "presets_title": "Standard pitch presets:", "preset_1": "Shed / Porch (8.7% • 5°)", "preset_1_sub": "Minimum water drainage", "preset_2": "Standard Tile Roof (30% • 16.7°)", "preset_2_sub": "Clay tiles & shingles", "preset_3": "Snow Region Pitch (60% • 31°)", "preset_3_sub": "Cold & alpine climates", "preset_4": "Alpine Steep Roof (100% • 45°)", "preset_4_sub": "Maximum snow shedding", "col_slope": "Roof Pitch", "col_angle": "Incline Angle", "col_rafter": "True Rafter Length", "col_area": "Roof Slope Area", "col_ridge": "Ridge Height (Rise)", "schema_title": "Roof Section Cross Diagram", "schema_scale": "Interactive vector scale", "rule_tip": "💡 <strong>Roof Geometry Rule:</strong> Pitch percentage is: <code>Slope % = (Rise / Run) × 100</code>. Angle in degrees: <code>Degrees = arctan(Rise / Run)</code>. True rafter length follows the Pythagorean theorem: <code>Length = √(Run² + Rise²) + Overhang</code>.", "legal_disclaimer": "<strong>Technical Prepress & Geometry Notes:</strong> Calculations are based on planar trigonometry. Always check manufacturer specifications for the chosen roofing material regarding minimum pitch requirements.", "faq_title": "Frequently Asked Questions about Roof Pitch, Rafter Length and Surface", "faq_1_q": "How to convert roof slope percentage to degrees?", "faq_1_a": "Formula: <code>Degrees = arctan(Slope% / 100) × (180 / π)</code>. For instance, a 35% slope equals approximately 19.3°.", "faq_2_q": "What is the minimum recommended pitch for roof tiles?", "faq_2_a": "Traditional clay or concrete tiles generally require a minimum pitch of <strong>30% to 35%</strong> (around 17°-19°). Standing seam metal sheets can go down to <strong>7-10%</strong>.", "faq_3_q": "How do you calculate the actual surface area of a roof pitch?", "faq_3_a": "Multiply the <strong>true rafter length</strong> (including overhangs) by the <strong>length of the building along the eaves line</strong>.", "faq_4_q": "What is an eave overhang?", "faq_4_a": "The eave overhang is the portion extending past exterior walls to protect the facade from rain runoff.", "status_opt_title": "Optimal Standard Pitch", "status_opt_tag": "Standard Tiles", "status_opt_desc": "Ideal pitch for rapid rain drainage with standard clay, concrete or slate tiles.", "status_warn_title": "Low Pitch / Lean-to Roof", "status_warn_tag": "Low Slope", "status_warn_desc": "Low slope typical of pergolas and metal sheets. Requires waterproof membrane underlayment.", "status_high_title": "Steep Alpine Pitch", "status_high_tag": "Alpine / Snow", "status_high_desc": "Steep slope designed for rapid snow shed and alpine structural protection.", "print_btn": "Print Spec Sheet", "install_btn": "Install App"}, "es": {"title": "TechoFacil", "badge": "OmniBuilding", "hero_title": "Cálculo de Pendiente de Tejado, Vertiente y Superficie", "hero_desc": "Calcula al instante la inclinación en grados y porcentaje, la altura de cumbrera, la longitud de viga y la superficie real de cubierta.", "mode_direct": "📐 Desde Base y Altura Cumbrera", "mode_reverse": "📏 Desde Pendiente y Base", "unit_label": "Unidades", "unit_cm": "Centímetros (cm)", "unit_m": "Metros (m)", "base_label": "Ancho en Planta / Base (L)", "height_label": "Altura Cumbrera (H)", "slope_pct_label": "Pendiente Deseada (%)", "overhang_label": "Alero / Saliente (cm)", "roof_length_label": "Longitud de Fachada (m)", "presets_title": "Preajustes habituales:", "preset_1": "Pérgola / Porche (8.7% • 5°)", "preset_1_sub": "Evacuación mínima de agua", "preset_2": "Tejado Estándar Tejas (30% • 16.7°)", "preset_2_sub": "Tejas cerámicas o de hormigón", "preset_3": "Tejado de Nieve (60% • 31°)", "preset_3_sub": "Zonas de montaña frías", "preset_4": "Tejado Alpino Empinado (100% • 45°)", "preset_4_sub": "Deslizamiento rápido de nieve", "col_slope": "Pendiente", "col_angle": "Inclinación", "col_rafter": "Longitud de Viga / Faldón", "col_area": "Superficie Real Vertiente", "col_ridge": "Altura Cumbrera", "schema_title": "Sección Transversal de la Cubierta", "schema_scale": "Escala vectorial dinámica", "rule_tip": "💡 <strong>Fórmula geométrica:</strong> <code>Pendiente % = (H / L) × 100</code>. Grados: <code>arctan(H / L)</code>. Longitud viga: <code>√(L² + H²) + Alero</code>.", "legal_disclaimer": "<strong>Aviso Técnico:</strong> Cálculos basados en geometría y trigonometría plana.", "faq_title": "Preguntas Frecuentes sobre Pendiente de Tejas y Cubiertas", "faq_1_q": "¿Cómo convertir la pendiente de porcentaje a grados?", "faq_1_a": "Fórmula: <code>Grados = arctan(Pendiente % / 100) × (180 / π)</code>.", "faq_2_q": "¿Cuál es la pendiente mínima para teja cerámica?", "faq_2_a": "Las tejas suelen requerir un mínimo del <strong>30% al 35%</strong> (17°-19°).", "faq_3_q": "¿Cómo se calcula la superficie real de un faldón?", "faq_3_a": "Multiplicando la <strong>longitud inclinada de la viga</strong> por la <strong>longitud del edificio en el alero</strong>.", "faq_4_q": "¿Qué es el alero de cubierta?", "faq_4_a": "La parte del tejado que sobresale de la fachada exterior para desviar la lluvia.", "status_opt_title": "Inclinación Óptima Tejas", "status_opt_tag": "Teja Estándar", "status_opt_desc": "Inclinación ideal para el drenaje pluvial rápido con tejas curvas o mixtas.", "status_warn_title": "Pendiente Leve / Cobertizo", "status_warn_tag": "Baja Pendiente", "status_warn_desc": "Inclinación reducida para chapa o porche. Requiere lámina impermeable.", "status_high_title": "Fuerte Pendiente Alpina", "status_high_tag": "Zona Nieve", "status_high_desc": "Pendiente acentuada que evita la acumulación de nieve sobre la estructura.", "print_btn": "Imprimir Ficha", "install_btn": "Instalar App"}, "fr": {"title": "ToitFacile", "badge": "OmniBuilding", "hero_title": "Calcul Pente de Toit, Rampant & Surface", "hero_desc": "Calculez immédiatement la pente en pourcentage et degrés, la hauteur au faîtage, la longueur du chevron et la surface du versant.", "mode_direct": "📐 Par Base & Hauteur Faîtage", "mode_reverse": "📏 Par Pente & Base", "unit_label": "Unités", "unit_cm": "Centimètres (cm)", "unit_m": "Mètres (m)", "base_label": "Largeur en Plan / Base (L)", "height_label": "Hauteur du Faîtage (H)", "slope_pct_label": "Pente Ciblée (%)", "overhang_label": "Débord de Toit (cm)", "roof_length_label": "Longueur du Bâtiment (m)", "presets_title": "Préréglages courants :", "preset_1": "Appentis / Auvent (8.7% • 5°)", "preset_1_sub": "Écoulement minimal d'eau", "preset_2": "Toit Tuiles Standard (30% • 16.7°)", "preset_2_sub": "Tuiles mécaniques & terre cuite", "preset_3": "Toit de Montagne Neige (60% • 31°)", "preset_3_sub": "Régions froides", "preset_4": "Toit Alpin Très Raide (100% • 45°)", "preset_4_sub": "Glissement optimal de la neige", "col_slope": "Pente", "col_angle": "Inclinaison", "col_rafter": "Longueur Réelle Chevron", "col_area": "Surface Réelle du Rampant", "col_ridge": "Hauteur au Faîtage", "schema_title": "Coupe Transversale du Toit", "schema_scale": "Échelle vectorielle interactive", "rule_tip": "💡 <strong>Règle de trigonométrie :</strong> <code>Pente % = (H / L) × 100</code>. Degrés : <code>arctan(H / L)</code>. Longueur chevron : <code>√(L² + H²) + Débord</code>.", "legal_disclaimer": "<strong>Mentions Techniques :</strong> Calculs purement géométriques conformes aux règles de charpente.", "faq_title": "Foire Aux Questions sur la Pente de Toiture et Charpente", "faq_1_q": "Comment convertir le pourcentage de pente en degrés ?", "faq_1_a": "Formule : <code>Degrés = arctan(Pente% / 100) × (180 / π)</code>.", "faq_2_q": "Quelle pente minimale pour les tuiles ?", "faq_2_a": "La pente minimale pour des tuiles traditionnelles est d'environ <strong>30% à 35%</strong> (17°-19°).", "faq_3_q": "Comment calculer la surface du rampant ?", "faq_3_a": "Multipliez la <strong>longueur réelle du chevron</strong> par la <strong>longueur du bâtiment à l'égout</strong>.", "faq_4_q": "Qu'est-ce que le débord de toit ?", "faq_4_a": "La partie du chevron qui dépasse des murs extérieurs pour rejeter les eaux de pluie.", "status_opt_title": "Pente Optimale Standard", "status_opt_tag": "Tuiles Standard", "status_opt_desc": "Pente idéale pour l'évacuation rapide des eaux de pluie sans risque d'infiltration.", "status_warn_title": "Faible Pente / Abri", "status_warn_tag": "Pente Douce", "status_warn_desc": "Pente légère adaptée aux bacs acier ou bardeaux bitumineux.", "status_high_title": "Forte Pente de Montagne", "status_high_tag": "Région Neige", "status_high_desc": "Pente raide indispensable pour éviter l'accumulation lourde de neige.", "print_btn": "Imprimer Fiche", "install_btn": "Installer App"}, "de": {"title": "DachNeigung", "badge": "OmniBuilding", "hero_title": "Dachneigung, Sparrenlänge & Dachfläche Berechnen", "hero_desc": "Berechnen Sie Dachneigung in Grad und Prozent, Firsthöhe, tatsächliche Sparrenlänge und Dachfläche sofort.", "mode_direct": "📐 Aus Grundmaß (L) & Firsthöhe (H)", "mode_reverse": "📏 Aus Neigung & Grundmaß", "unit_label": "Einheiten", "unit_cm": "Zentimeter (cm)", "unit_m": "Meter (m)", "base_label": "Horizontales Grundmaß / Basis (L)", "height_label": "Firsthöhe / Höhenunterschied (H)", "slope_pct_label": "Ziel-Neigung (%)", "overhang_label": "Dachüberstand / Traufe (cm)", "roof_length_label": "Gebäudelänge / Trauflänge (m)", "presets_title": "Typische Dachneigungen:", "preset_1": "Pultdach / Vordach (8.7% • 5°)", "preset_1_sub": "Mindestgefälle Wasserablauf", "preset_2": "Standard Ziegeldach (30% • 16.7°)", "preset_2_sub": "Tondachziegel & Pfannen", "preset_3": "Schneereiches Dach (60% • 31°)", "preset_3_sub": "Mittelgebirge & Schneelasten", "preset_4": "Alpines Steildach (100% • 45°)", "preset_4_sub": "Maximales Schneegleiten", "col_slope": "Dachneigung", "col_angle": "Winkel in Grad", "col_rafter": "Echte Sparrenlänge", "col_area": "Echte Dachfläche", "col_ridge": "Firsthöhe (H)", "schema_title": "Dachquerschnitt im Maßstab", "schema_scale": "Interaktive Vektorgrafik", "rule_tip": "💡 <strong>Dach-Geometrie:</strong> <code>Neigung % = (H / L) × 100</code>. Grad: <code>arctan(H / L)</code>. Sparrenlänge: <code>√(L² + H²) + Überstand</code>.", "legal_disclaimer": "<strong>Technische Hinweise:</strong> Reine trigonometrische und euklidische Berechnungen.", "faq_title": "Häufige Fragen zu Dachneigung, Sparren und Dachfläche", "faq_1_q": "Wie rechnet man Dachneigung von Prozent in Grad um?", "faq_1_a": "Formel: <code>Grad = arctan(Prozent / 100) × (180 / π)</code>.", "faq_2_q": "Was ist die Regeldachneigung für Dachziegel?", "faq_2_a": "Die Regeldachneigung für klassische Falzziegel liegt meist bei <strong>30% bis 35%</strong> (ca. 17°-19°).", "faq_3_q": "Wie wird die Dachfläche genau berechnet?", "faq_3_a": "Multiplizieren Sie die <strong>tatsächliche Sparrenlänge</strong> mit der <strong>Trauflänge des Gebäudes</strong>.", "faq_4_q": "Was bedeutet der Dachüberstand?", "faq_4_a": "Das über die Außenwand hinausragende Sparrenende zum Fassadenschutz vor Schlagregen.", "status_opt_title": "Optimale Standardneigung", "status_opt_tag": "Standard Ziegel", "status_opt_desc": "Perfekte Neigung für zügigen Regenabfluss bei Ton- und Betondachsteinen.", "status_warn_title": "Geringe Neigung / Vordach", "status_warn_tag": "Flach geneigt", "status_warn_desc": "Geringes Gefälle für Trapezbleche. Benötigt wasserdichtes Unterdach.", "status_high_title": "Steiles Alpendach", "status_high_tag": "Schnee-Sicherheit", "status_high_desc": "Starke Neigung verhindert statisch gefährliche Schneeanhäufungen.", "print_btn": "Datenblatt Drucken", "install_btn": "App Installieren"}, "pt": {"title": "TelhadoFacil", "badge": "OmniBuilding", "hero_title": "Cálculo de Inclinação de Telhado, Água e Superfície", "hero_desc": "Calcule imediatamente a inclinação em graus e porcentagem, a altura da cumeeira, o comprimento da viga e a área real da cobertura.", "mode_direct": "📐 Por Base (Vão) e Cumeeira", "mode_reverse": "📏 Por Inclinação e Base", "unit_label": "Unidades", "unit_cm": "Centímetros (cm)", "unit_m": "Metros (m)", "base_label": "Largura da Base em Planta (L)", "height_label": "Altura da Cumeeira (H)", "slope_pct_label": "Inclinação Desejada (%)", "overhang_label": "Beiral do Telhado (cm)", "roof_length_label": "Comprimento do Telhado (m)", "presets_title": "Predefinições padrão de telhado:", "preset_1": "Alpendre / Cobertura (8.7% • 5°)", "preset_1_sub": "Escoamento mínimo de chuva", "preset_2": "Telhado Padrão Telhas (30% • 16.7°)", "preset_2_sub": "Telhas cerâmicas e coloniais", "preset_3": "Telhado de Montanha (60% • 31°)", "preset_3_sub": "Regiões frias ou chuvosas", "preset_4": "Telhado Alpino Íngreme (100% • 45°)", "preset_4_sub": "Máximo deslizamento de neve", "col_slope": "Inclinação", "col_angle": "Ângulo em Graus", "col_rafter": "Comprimento do Caibro", "col_area": "Área Real da Cobertura", "col_ridge": "Altura Cumeeira", "schema_title": "Corte Transversal em Escala", "schema_scale": "Escala vetorial interativa", "rule_tip": "💡 <strong>Regra Trigonométrica:</strong> <code>Inclinação % = (H / L) × 100</code>. Ângulo em graus: <code>arctan(H / L)</code>. Comprimento do caibro: <code>√(L² + H²) + Beiral</code>.", "legal_disclaimer": "<strong>Aviso Técnico:</strong> Cálculos puramente geométricos e de trigonometria plana.", "faq_title": "Perguntas Frequentes sobre Inclinação de Telhados e Caibros", "faq_1_q": "Como converter a inclinação de porcentagem para graus?", "faq_1_a": "Fórmula: <code>Graus = arctan(Porcentagem / 100) × (180 / π)</code>.", "faq_2_q": "Qual a inclinação mínima para telhas cerâmicas?", "faq_2_a": "Telhas cerâmicas exigem geralmente um mínimo de <strong>30% a 35%</strong> (cerca de 17°-19°).", "faq_3_q": "Como calcular a área real de uma água de telhado?", "faq_3_a": "Multiplicando o <strong>comprimento real do caibro</strong> pelo <strong>comprimento da cumeeira/beiral</strong>.", "faq_4_q": "O que é o beiral?", "faq_4_a": "A projeção do telhado para além das paredes externas para proteção da fachada contra água de chuva.", "status_opt_title": "Inclinação Ideal Telhas", "status_opt_tag": "Telha Cerâmica", "status_opt_desc": "Inclinação excelente para escoamento rápido de águas pluviais sem estagnação.", "status_warn_title": "Inclinação Baixa / Alpendre", "status_warn_tag": "Baixa Inclinação", "status_warn_desc": "Inclinação suave típica de telhas metálicas ou policarbonato.", "status_high_title": "Telhado Alpino Muito Íngreme", "status_high_tag": "Alta Inclinação", "status_high_desc": "Inclinação forte para deslizamento rápido de neve e intempéries.", "print_btn": "Imprimir Ficha", "install_btn": "Instalar App"}};
+        let currentLang = 'it';
+        let currentMode = 'direct'; // 'direct' (Base + Height) or 'reverse' (Slope% + Base)
+        let currentUnit = 'cm'; // 'cm' or 'm'
+
+        function setUnit(u) {
+            if (currentUnit === u) return;
+            const b = parseFloat(document.getElementById('inputBase').value) || 0;
+            const h = parseFloat(document.getElementById('inputHeight').value) || 0;
+            
+            if (u === 'm') {
+                document.getElementById('inputBase').value = (b / 100).toFixed(2);
+                document.getElementById('inputHeight').value = (h / 100).toFixed(2);
+                document.getElementById('baseUnitTag').textContent = 'm';
+                document.getElementById('heightUnitTag').textContent = 'm';
+            } else {
+                document.getElementById('inputBase').value = Math.round(b * 100);
+                document.getElementById('inputHeight').value = Math.round(h * 100);
+                document.getElementById('baseUnitTag').textContent = 'cm';
+                document.getElementById('heightUnitTag').textContent = 'cm';
+            }
+
+            currentUnit = u;
+            document.getElementById('unitBtnCm').className = (u === 'cm') 
+                ? 'px-2.5 py-1 rounded-lg bg-white shadow-2xs text-amber-700 transition' 
+                : 'px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+            document.getElementById('unitBtnM').className = (u === 'm') 
+                ? 'px-2.5 py-1 rounded-lg bg-white shadow-2xs text-amber-700 transition' 
+                : 'px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+
+            calculateRoof();
+        }
+
+        function switchMode(mode) {
+            currentMode = mode;
+            const dirBtn = document.getElementById('modeDirectBtn');
+            const revBtn = document.getElementById('modeReverseBtn');
+            const dirGrp = document.getElementById('modeDirectGroup');
+            const revGrp = document.getElementById('modeReverseGroup');
+
+            if (mode === 'direct') {
+                dirBtn.className = 'flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-amber-700 shadow-sm transition active:scale-95 text-center';
+                revBtn.className = 'flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center';
+                dirGrp.classList.remove('hidden');
+                revGrp.classList.add('hidden');
+            } else {
+                revBtn.className = 'flex-1 py-1.5 sm:py-2 rounded-xl bg-white text-amber-700 shadow-sm transition active:scale-95 text-center';
+                dirBtn.className = 'flex-1 py-1.5 sm:py-2 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center';
+                revGrp.classList.remove('hidden');
+                dirGrp.classList.add('hidden');
+            }
+            calculateRoof();
+        }
+
+        function syncSlider(field, val) {
+            if (field === 'base') {
+                document.getElementById('inputBase').value = (currentUnit === 'm') ? (val / 100).toFixed(2) : val;
+            } else if (field === 'height') {
+                document.getElementById('inputHeight').value = (currentUnit === 'm') ? (val / 100).toFixed(2) : val;
+            } else if (field === 'slopePct') {
+                document.getElementById('inputSlopePct').value = val;
+            }
+            calculateRoof();
+        }
+
+        function applyPreset(targetSlopePct) {
+            if (currentMode !== 'reverse') {
+                switchMode('reverse');
+            }
+            document.getElementById('inputSlopePct').value = targetSlopePct;
+            document.getElementById('sliderSlopePct').value = Math.min(120, targetSlopePct);
+            calculateRoof();
+        }
+
+        function calculateRoof() {
+            // US NRCA & IRC Chapter 9 Additions
+            const baseVal = parseFloat(baseInput ? baseInput.value : 400) || 400;
+            const hVal = parseFloat(heightInput ? heightInput.value : 120) || 120;
+            const slopePct = (currentMode === 'direct') ? ((hVal / baseVal) * 100) : (parseFloat(slopePctInput ? slopePctInput.value : 30) || 30);
+            
+            // X:12 Pitch ratio calculation (X = (slopePct / 100) * 12)
+            const pitchX = ((slopePct / 100) * 12).toFixed(1);
+            const pitchDisplay = `${pitchX}:12`;
+            
+            // Rafter Multiplier = sqrt(1 + (X/12)^2)
+            const rafterMultiplier = Math.sqrt(1 + Math.pow(slopePct / 100, 2)).toFixed(3);
+            
+            // Squares calculation (1 Square = 100 sq ft)
+            // Synchronize state
+            try { if (window.OmniCore) OmniCore.syncStateToUrl({ base: baseVal, h: hVal, slope: slopePct.toFixed(1), mode: currentMode, unit: currentUnit }); } catch(e) {}
+    
+            let baseInput = parseFloat(document.getElementById('inputBase').value) || 0;
+            // Convert to cm internally
+            let baseCm = (currentUnit === 'm') ? baseInput * 100 : baseInput;
+            if (baseCm <= 0) baseCm = 100;
+
+            let slopePct = 0;
+            let heightCm = 0;
+
+            if (currentMode === 'direct') {
+                let heightInput = parseFloat(document.getElementById('inputHeight').value) || 0;
+                heightCm = (currentUnit === 'm') ? heightInput * 100 : heightInput;
+                slopePct = (heightCm / baseCm) * 100;
+            } else {
+                slopePct = parseFloat(document.getElementById('inputSlopePct').value) || 0;
+                heightCm = (slopePct / 100) * baseCm;
+                // Update direct height input for consistency
+                document.getElementById('inputHeight').value = (currentUnit === 'm') ? (heightCm / 100).toFixed(2) : Math.round(heightCm);
+            }
+
+            const angleRad = Math.atan(heightCm / baseCm);
+            const angleDeg = angleRad * (180 / Math.PI);
+
+            // Overhang in cm
+            const overhangCm = parseFloat(document.getElementById('inputOverhang').value) || 0;
+            // Building length in meters
+            const roofLengthM = parseFloat(document.getElementById('inputRoofLength').value) || 10;
+
+            // Rafter (hypotenuse) length
+            const rafterTheoreticalCm = Math.sqrt((baseCm * baseCm) + (heightCm * heightCm));
+            const rafterTotalCm = rafterTheoreticalCm + overhangCm;
+            const rafterTotalM = rafterTotalCm / 100;
+
+            // Total slope surface in m2
+            const roofAreaM2 = rafterTotalM * roofLengthM;
+
+            // Update KPI DOM
+            document.getElementById('valSlopePct').textContent = slopePct.toFixed(1) + '%';
+            document.getElementById('valRatio').textContent = `${currentLang === 'en' ? 'Ratio' : 'Rapporto'} 1:${(100 / slopePct).toFixed(1)}`;
+            document.getElementById('valAngleDeg').textContent = angleDeg.toFixed(1) + '°';
+            document.getElementById('valRafterLength').textContent = (rafterTotalCm >= 1000) 
+                ? (rafterTotalCm / 100).toFixed(2) + ' m' 
+                : rafterTotalCm.toFixed(1) + ' cm';
+            document.getElementById('valOverhangNote').textContent = currentLang === 'en' ? `Incl. ${overhangCm} cm overhang` : `Incluso sporto ${overhangCm} cm`;
+            document.getElementById('valRoofArea').textContent = roofAreaM2.toFixed(1) + ' m²';
+            document.getElementById('valLengthNote').textContent = currentLang === 'en' ? `On ${roofLengthM.toFixed(1)} m eaves length` : `Su facciata ${roofLengthM.toFixed(1)} m`;
+
+            // Update Status Badge
+            updateRoofStatus(angleDeg, slopePct);
+
+            // Render Section SVG
+            renderRoofSvg(baseCm, heightCm, overhangCm, angleDeg, rafterTheoreticalCm);
+        }
+
+        function updateRoofStatus(deg, pct) {
+            const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
+            const banner = document.getElementById('statusBanner');
+            const title = document.getElementById('statusTitle');
+            const tag = document.getElementById('statusTag');
+            const desc = document.getElementById('statusDesc');
+
+            if (pct < 18) {
+                // Low pitch
+                banner.className = 'p-3 sm:p-4 rounded-2xl border transition-colors duration-200 flex items-start gap-3 bg-blue-50/80 border-blue-200 text-blue-900';
+                title.textContent = t.status_warn_title;
+                tag.textContent = t.status_warn_tag;
+                tag.className = 'text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-200/60 uppercase tracking-wide shrink-0';
+                desc.textContent = t.status_warn_desc;
+            } else if (pct > 50) {
+                // Steep alpine
+                banner.className = 'p-3 sm:p-4 rounded-2xl border transition-colors duration-200 flex items-start gap-3 bg-indigo-50/80 border-indigo-200 text-indigo-900';
+                title.textContent = t.status_high_title;
+                tag.textContent = t.status_high_tag;
+                tag.className = 'text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-200/60 uppercase tracking-wide shrink-0';
+                desc.textContent = t.status_high_desc;
+            } else {
+                // Optimal tile
+                banner.className = 'p-3 sm:p-4 rounded-2xl border transition-colors duration-200 flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900';
+                title.textContent = t.status_opt_title;
+                tag.textContent = t.status_opt_tag;
+                tag.className = 'text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-200/60 uppercase tracking-wide shrink-0';
+                desc.textContent = t.status_opt_desc;
+            }
+        }
+
+        function renderRoofSvg(baseCm, heightCm, overhangCm, angleDeg, rafterTheoreticalCm) {
+            const svg = document.getElementById('roofSvgCanvas');
+            if (!svg) return;
+
+            if (!rafterTheoreticalCm) {
+                rafterTheoreticalCm = Math.sqrt((baseCm * baseCm) + (heightCm * heightCm));
+            }
+
+            // Coordinate space: 500w x 240h
+            // Origin corner at bottom-left: x=60, y=190
+            const ox = 70;
+            const oy = 190;
+            const maxW = 340;
+            const maxH = 140;
+
+            const scale = Math.min(maxW / baseCm, maxH / Math.max(heightCm, baseCm * 0.15));
+            const drawBaseW = baseCm * scale;
+            const drawH = heightCm * scale;
+            const drawOverhang = overhangCm * scale;
+
+            const xEave = ox - (drawOverhang * Math.cos(angleDeg * Math.PI / 180));
+            const yEave = oy + (drawOverhang * Math.sin(angleDeg * Math.PI / 180));
+            const xWall = ox;
+            const yWall = oy;
+            const xRidge = ox + drawBaseW;
+            const yRidge = oy - drawH;
+
+            svg.innerHTML = `
+                <!-- Ground / Wall baseline -->
+                <line x1="30" y1="${oy}" x2="470" y2="${oy}" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3" />
+                
+                <!-- Shaded Roof Slope Wedge -->
+                <polygon points="${xWall},${yWall} ${xRidge},${yRidge} ${xRidge},${yWall}" fill="#fef3c7" fill-opacity="0.6" stroke="#f59e0b" stroke-width="1" />
+                
+                <!-- Main Rafter Timber (incl. Eave Overhang) -->
+                <line x1="${xEave}" y1="${yEave}" x2="${xRidge}" y2="${yRidge}" stroke="#d97706" stroke-width="6" stroke-linecap="round" />
+                
+                <!-- Vertical Ridge Pillar (Height H) -->
+                <line x1="${xRidge}" y1="${yRidge}" x2="${xRidge}" y2="${yWall}" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="${xRidge}" cy="${yRidge}" r="4" fill="#e11d48" />
+
+                <!-- Eave point marker -->
+                <circle cx="${xEave}" cy="${yEave}" r="3.5" fill="#d97706" />
+
+                <!-- Horizontal Base Dimension (Run L) -->
+                <line x1="${xWall}" y1="${oy + 18}" x2="${xRidge}" y2="${oy + 18}" stroke="#475569" stroke-width="1.5" />
+                <line x1="${xWall}" y1="${oy + 12}" x2="${xWall}" y2="${oy + 24}" stroke="#475569" stroke-width="1.5" />
+                <line x1="${xRidge}" y1="${oy + 12}" x2="${xRidge}" y2="${oy + 24}" stroke="#475569" stroke-width="1.5" />
+                <text x="${(xWall + xRidge) / 2}" y="${oy + 32}" fill="#334155" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace" text-anchor="middle">L: ${baseCm.toFixed(0)} cm</text>
+
+                <!-- Vertical Height Dimension (H) -->
+                <text x="${xRidge + 12}" y="${(yRidge + yWall) / 2 + 4}" fill="#e11d48" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace" text-anchor="start">H: ${heightCm.toFixed(0)} cm</text>
+
+                <!-- Slope Incline Label on Rafter -->
+                <text x="${(xWall + xRidge) / 2 - 10}" y="${(yRidge + yWall) / 2 - 12}" fill="#92400e" font-size="11" font-weight="900" font-family="'JetBrains Mono', monospace" text-anchor="middle" transform="rotate(${-angleDeg}, ${(xWall + xRidge) / 2}, ${(yRidge + yWall) / 2})">${currentLang === 'en' ? 'Rafter' : 'Trave'}: ${((rafterTheoreticalCm + overhangCm) >= 1000 ? ((rafterTheoreticalCm + overhangCm)/100).toFixed(2)+'m' : (rafterTheoreticalCm + overhangCm).toFixed(0)+'cm')} (${angleDeg.toFixed(1)}°)</text>
+
+                <!-- Angle Arc -->
+                <path d="M ${xWall + 32} ${yWall} A 32 32 0 0 0 ${xWall + 32 * Math.cos(angleDeg * Math.PI / 180)} ${yWall - 32 * Math.sin(angleDeg * Math.PI / 180)}" fill="none" stroke="#f59e0b" stroke-width="2" />
+            `;
+        }
+
+        
+        function copyResultsTetto() {
+            const base = document.getElementById('inputBase').value;
+            const height = (currentMode === 'direct' ? document.getElementById('inputHeight').value : (document.getElementById('inputSlopePct').value + '% pendenza'));
+            const slope = document.getElementById('valSlopePct').textContent;
+            const deg = document.getElementById('valAngleDeg').textContent;
+            const rafter = document.getElementById('valRafterLength').textContent;
+            const area = document.getElementById('valRoofArea').textContent;
+            const overhang = document.getElementById('inputOverhang').value;
+            const facade = document.getElementById('inputRoofLength').value;
+            const u = currentUnit;
+
+            const text = 'Tetto: Base ' + base + ' ' + u + ' | Colmo/Pendenza ' + height + ' | Inclinazione ' + deg + ' (' + slope + ') | Lunghezza Trave ' + rafter + ' (sporto ' + overhang + 'cm) | Superficie Falda ' + area + ' (facciata ' + facade + 'm) (OmniTools Lab TettoFacile)';
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('btnCopyTetto');
+                const orig = btn.textContent;
+                btn.textContent = '✓ Valori Copiati per Computo!';
+                setTimeout(() => { btn.textContent = orig; }, 2000);
+            }).catch(err => {
+                console.error("Errore copia appunti:", err);
+            });
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('omnitools_lang', lang);
+            try { window.dispatchEvent(new CustomEvent('omnitools_lang_changed', { detail: { lang: lang } })); } catch(e) {}
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = lang;
+            document.documentElement.lang = lang;
+            const t = TRANSLATIONS[lang] || TRANSLATIONS['it'];
+            if (!t) return;
+
+            document.getElementById('heroBadge').textContent = `OmniBuilding · ${t.badge || 'Geometria'}`;
+            document.getElementById('heroTitle').textContent = t.hero_title;
+            document.getElementById('heroDesc').textContent = t.hero_desc;
+            document.getElementById('modeDirectBtn').textContent = t.mode_direct;
+            document.getElementById('modeReverseBtn').textContent = t.mode_reverse;
+            document.getElementById('unitLabel').textContent = t.unit_label;
+            document.getElementById('baseLabel').querySelector('span:last-child').textContent = t.base_label;
+            document.getElementById('heightLabel').querySelector('span:last-child').textContent = t.height_label;
+            document.getElementById('slopePctLabel').querySelector('span:last-child').textContent = t.slope_pct_label;
+            document.getElementById('overhangLabel').textContent = t.overhang_label;
+            document.getElementById('roofLengthLabel').textContent = t.roof_length_label;
+            document.getElementById('presetsTitle').textContent = t.presets_title;
+
+            document.getElementById('colSlopeLabel').textContent = t.col_slope;
+            document.getElementById('colAngleLabel').textContent = t.col_angle;
+            document.getElementById('colRafterLabel').textContent = t.col_rafter;
+            document.getElementById('colAreaLabel').textContent = t.col_area;
+            document.getElementById('schemaTitle').textContent = t.schema_title;
+            document.getElementById('schemaScale').textContent = t.schema_scale;
+            document.getElementById('ruleTip').innerHTML = t.rule_tip;
+            if (document.getElementById('faqTitle')) document.getElementById('faqTitle').textContent = t.faq_title;
+
+            for (let i = 1; i <= 4; i++) {
+                const qEl = document.getElementById('faq' + i + 'Q');
+                const aEl = document.getElementById('faq' + i + 'A');
+                if (qEl && t['faq_' + i + '_q']) {
+                    const span = qEl.querySelector('span');
+                    if (span) span.textContent = t['faq_' + i + '_q'];
+                    else qEl.textContent = t['faq_' + i + '_q'];
+                }
+                if (aEl && t['faq_' + i + '_a']) aEl.innerHTML = t['faq_' + i + '_a'];
+            }
+
+            calculateRoof();
+        }
+        window.changeLanguage = changeLanguage;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('omnitools_lang') || 'it';
+            const sel = document.getElementById('langSelect');
+            if (sel) sel.value = savedLang;
+            if (savedLang !== 'it') {
+                changeLanguage(savedLang);
+            } else {
+                calculateRoof();
+            }
+        });
+    </script>
+
     <script src="/desk_dock.js" defer></script>
 
     <script>
@@ -2841,5 +3224,6 @@
 </script>
 <script>document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});</script>
 <script src="/omni_help_drawer.js"></script>
+<script type="module" src="../js/omni-core.js"></script>
 </body>
 </html>
