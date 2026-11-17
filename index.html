@@ -779,7 +779,7 @@
 
             <!-- Right Controls: Desk Widget Dropdown + Language Selector + App Install -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <div class="relative">
+                <div class="relative hidden md:block">
                     <button type="button" id="mainDeskBtn" onclick="const d=document.getElementById('mainDeskDropdown'); if(d) d.classList.toggle('hidden'); event.stopPropagation();" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] sm:text-xs font-extrabold transition shadow-2xs omni-header-btn omni-header-btn--wide" title="Utilità rapide: Memo, Calcolatrice e Orologio">
                         <span>⚡</span>
                         <span>DESK</span>
@@ -801,15 +801,16 @@
                     </div>
                 </div>
 
-                <div class="relative inline-block text-left">
-                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer omni-header-btn" title="Cambia Tema Chiaro/Scuro">🌙</button>
-                <select id="langSelect" class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition omni-header-btn omni-header-btn--wide">
-                    <option value="it" selected>🇮🇹 IT</option>
-                    <option value="en">🇺🇸 EN</option>
-                </select>
+                <div class="omni-control-capsule">
+                    <select id="langSelect" data-lang-switcher class="omni-capsule-btn" aria-label="Language Selector">
+                        <option value="it" selected>IT</option>
+                        <option value="en">EN</option>
+                    </select>
+                    <span class="omni-capsule-divider"></span>
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">🌙</button>
                 </div>
 
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer omni-header-btn" title="Installa App OmniTools">
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="hidden sm:inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer omni-header-btn" title="Installa App OmniTools">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg>
                     <span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span>
                 </button>

@@ -214,3 +214,121 @@ nav select.omni-header-btn--wide {
     transform-origin: left center;
   }
 }
+
+
+/* ==========================================================================
+   7. MINIMAL GLASS HEADER & UNIFIED CONTROL CAPSULE (LINEAR / VERCEL / HIG)
+   ========================================================================== */
+
+/* Topbar Glassmorphism pulita e compatta su Mobile */
+header {
+  min-height: 56px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Capsula unificata per i controlli di destra (Lingua + Tema) */
+.omni-control-capsule {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 2px;
+  border-radius: 9999px;
+  background-color: rgba(241, 245, 249, 0.85); /* slate-100/85 */
+  border: 1px solid rgba(226, 232, 240, 0.9);  /* slate-200 */
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  flex-shrink: 0;
+}
+
+html.omni-dark .omni-control-capsule,
+html.dark .omni-control-capsule {
+  background-color: rgba(15, 23, 42, 0.85);    /* slate-900/85 */
+  border-color: rgba(51, 65, 85, 0.8);         /* slate-700 */
+}
+
+/* Singoli tasti dentro la capsula (identici 32x32px, zero sproporzioni) */
+.omni-capsule-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  min-width: 34px !important;
+  padding: 0 8px !important;
+  border-radius: 9999px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em;
+  color: #334155;
+  transition: all 0.15s ease;
+  border: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+}
+
+select.omni-capsule-btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  text-align-last: center;
+  padding: 0 6px !important;
+}
+
+html.omni-dark .omni-capsule-btn,
+html.dark .omni-capsule-btn {
+  color: #e2e8f0;
+}
+
+.omni-capsule-btn:hover,
+.omni-capsule-btn:active {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+html.omni-dark .omni-capsule-btn:hover,
+html.omni-dark .omni-capsule-btn:active,
+html.dark .omni-capsule-btn:hover,
+html.dark .omni-capsule-btn:active {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+
+/* Divisore verticale sottile 1px tra Lingua e Tema dentro la capsula */
+.omni-capsule-divider {
+  width: 1px;
+  height: 16px;
+  background-color: rgba(203, 213, 225, 0.8);
+  margin: 0 1px;
+  flex-shrink: 0;
+}
+
+html.omni-dark .omni-capsule-divider,
+html.dark .omni-capsule-divider {
+  background-color: rgba(51, 65, 85, 0.9);
+}
+
+/* Tasto Desk (visibile SOLO su Desktop >= 768px, nascosto su Smartphone) */
+@media (max-width: 767px) {
+  .omni-desk-btn,
+  #mainDeskBtn,
+  #mainDeskDropdown,
+  header [data-desk-btn],
+  header a[href*="index.html"]:not(.omni-brand-logo):not(:first-child) {
+    display: none !important;
+  }
+}
+
+/* Regole Topbar Mobile per Suite Menu e Titolo Tool */
+@media (max-width: 767px) {
+  #suiteMenuBtn,
+  #suiteMenuDropdown,
+  .omni-suite-menu-wrap,
+  #headerHelpBtn,
+  #headerInstallBtn,
+  #omniMobileMenuWrap {
+    display: none !important;
+  }
+}

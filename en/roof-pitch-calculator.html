@@ -860,10 +860,10 @@
                     </div>
                 </a>
 
-                <span class="hidden sm:inline text-slate-300">/</span>
+                <span class="hidden md:inline text-slate-300">/</span>
 
                 <!-- Current Tool Dropdown Button -->
-                <div class="relative min-w-0 flex-1 sm:flex-none">
+                <div class="relative min-w-0 flex-1 sm:flex-none hidden md:block">
                     <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold transition max-w-full min-w-0 h-8">
                         <span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
                         <span id="suiteCurrentToolName" class="truncate min-w-0">RoofEasy</span>
@@ -1094,24 +1094,18 @@
 
             <!-- Right Actions -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer omni-header-btn" title="Install as App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Install</span></button>
-                <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="hidden sm:inline-flex no-print px-1.5 py-1 sm:px-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs transition cursor-pointer omni-header-btn" title="Toggle Light/Dark Theme">🌙</button>
+                <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print hidden sm:inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer omni-header-btn" title="Install as App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Install</span></button>
                 <button id="csvExportBtn" type="button" onclick="exportOmniCsv()" title="Export takeoff schedule to CSV/Excel" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-xs whitespace-nowrap"><span>📊</span><span class="hidden sm:inline">CSV</span></button>
                 <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Print</span></button>
-                <select id="langSelect" data-lang-switcher class="h-8 pl-1.5 pr-0.5 sm:px-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold focus:outline-none cursor-pointer transition omni-header-btn omni-header-btn--wide">
-                        <option value="en" selected>🇺🇸 English</option>
-                        <option value="it">🇮🇹 Italiano</option>
+                <div class="omni-control-capsule">
+                    <select id="langSelect" data-lang-switcher class="omni-capsule-btn" aria-label="Language Selector">
+                        <option value="en" selected>EN</option>
+                        <option value="it">IT</option>
                     </select>
-                <div class="relative sm:hidden" id="omniMobileMenuWrap">
-                    <button type="button" id="omniMobileMenuBtn" onclick="event.stopPropagation();document.getElementById('omniMobileMenuDropdown').classList.toggle('hidden')" class="h-8 w-8 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-base font-black leading-none omni-header-btn" aria-label="Menu">&#8942;</button>
-                    <div id="omniMobileMenuDropdown" class="hidden absolute right-0 top-full mt-2 w-52 rounded-2xl bg-white border border-slate-200 shadow-xl p-1.5 z-50 text-xs font-semibold text-slate-700">
-                        <button type="button" onclick="toggleDarkMode();document.getElementById('omniMobileMenuDropdown').classList.add('hidden')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2.5"><span>🌙</span><span>Light / Dark Theme</span></button>
-                        <button type="button" onclick="if(typeof triggerInstall==='function'){triggerInstall();}document.getElementById('omniMobileMenuDropdown').classList.add('hidden')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-100 flex items-center gap-2.5"><span>📲</span><span>Install App</span></button>
-                    </div>
+                    <span class="omni-capsule-divider"></span>
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">🌙</button>
                 </div>
-            </div>
-        </div>
-    </header>
+                </div></div></header>
     
 
     <!-- MAIN APP CONTAINER -->
