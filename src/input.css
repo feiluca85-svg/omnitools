@@ -332,3 +332,46 @@ html.dark .omni-capsule-divider {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   FDA NUTRITION FACTS LABEL (ALWAYS WHITE PAPER WITH BLACK TEXT)
+   ========================================================================== */
+.fda-label-box {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.fda-label-box * {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+html.omni-dark .fda-label-box,
+html.dark .fda-label-box {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html.omni-dark .fda-label-box *,
+html.dark .fda-label-box * {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+.fda-label-svg text,
+html.omni-dark .fda-label-svg text,
+html.dark .fda-label-svg text {
+  fill: #000000 !important;
+}
+
+.fda-label-svg line,
+.fda-label-svg rect,
+.fda-label-svg path,
+html.omni-dark .fda-label-svg line,
+html.omni-dark .fda-label-svg rect,
+html.omni-dark .fda-label-svg path,
+html.dark .fda-label-svg line,
+html.dark .fda-label-svg rect,
+html.dark .fda-label-svg path {
+  stroke: #000000 !important;
+}

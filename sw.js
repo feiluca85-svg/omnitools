@@ -1,4 +1,4 @@
-const CACHE_NAME = 'omnitools-suite-v6';
+const CACHE_NAME = 'omnitools-suite-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -17,7 +17,15 @@ const ASSETS = [
   './icon-graph-192.png',
   './icon-graph-512.png',
   './favicon.png',
-  './favicon.svg'
+  './favicon.svg',
+  './shelflife.html',
+  './nutriexport.html',
+  './impasti.html',
+  './idratazione.html',
+  './en/shelf-life-calculator.html',
+  './en/nutri-export-converter.html',
+  './en/batch-scaler-calculator.html',
+  './en/hydration-balance-calculator.html'
 ];
 
 self.addEventListener('install', (e) => {
