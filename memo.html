@@ -326,8 +326,16 @@
     <style id="omni-sharp-precision-grid-rules">
         /* Deterministic Top Tab Bar White */
         #omniChromeTabsBar {
+            position: sticky !important;
+            top: 0px !important;
+            z-index: 50 !important;
             background-color: #ffffff !important;
             border-bottom: 1px solid #e2e8f0 !important;
+        }
+        header.sticky {
+            position: sticky !important;
+            top: 42px !important;
+            z-index: 40 !important;
         }
         #omniTabHome {
             background-color: #ffffff !important;
