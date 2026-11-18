@@ -409,6 +409,69 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         .us-fin-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px; background: rgba(5, 150, 105, 0.1); color: #047857; }
         </style>
     <style id="omni-sharp-precision-grid-rules">
+        /* Deterministic Top Tab Bar White */
+        #omniChromeTabsBar {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+        #omniTabHome {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border-top: 2px solid #2563eb !important;
+            border-right: 1px solid #cbd5e1 !important;
+            border-radius: 0px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+        }
+        #omniTabHome svg {
+            color: #2563eb !important;
+            stroke: #2563eb !important;
+        }
+        #omniTabHome span {
+            color: #0f172a !important;
+        }
+        .omni-dyn-tab.active-tab {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border-top: 2px solid #2563eb !important;
+            border-right: 1px solid #cbd5e1 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+        }
+        .omni-dyn-tab.inactive-tab {
+            background-color: #f8fafc !important;
+            color: #475569 !important;
+            border-top: 2px solid transparent !important;
+            border-right: 1px solid #e2e8f0 !important;
+            font-weight: 500 !important;
+        }
+        .omni-dyn-tab.inactive-tab:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+        /* Top Bar DESK and Nuovo Tool Buttons */
+        #topDeskBtn {
+            background-color: #fffbeb !important;
+            color: #b45309 !important;
+            border: 1px solid #fcd34d !important;
+        }
+        #topNewToolBtn {
+            background-color: #f8fafc !important;
+            color: #334155 !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+        /* Language Globe & Theme SVGs deterministic constraint */
+        #langSelect + svg, #langSelect ~ svg, .relative:has(#langSelect) svg,
+        .omni-lang-box svg, select[data-lang-switcher] ~ svg, header .relative svg:first-child {
+            width: 15px !important;
+            height: 15px !important;
+            min-width: 15px !important;
+            max-width: 15px !important;
+            min-height: 15px !important;
+            max-height: 15px !important;
+            stroke-width: 1.75px !important;
+        }
+        
         /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
         *, *::before, *::after {
             border-radius: 0px !important;
@@ -540,7 +603,7 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
     </style>
     
     <!-- TOP CHROME-STYLE TABS STRIP (DESKTOP ONLY: sticky top-0, always visible) -->
-    <div id="omniChromeTabsBar" class="hidden md:flex bg-slate-950 px-3 pt-2 pb-0 items-center justify-between border-b border-slate-800 text-xs select-none sticky top-0 z-50 shadow-md">
+    <div id="omniChromeTabsBar" class="hidden md:flex bg-white px-3 pt-2 pb-0 items-center justify-between border-b border-slate-200 text-xs select-none sticky top-0 z-50 shadow-xs">
         
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
@@ -870,9 +933,13 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 
             <!-- Right Side: Sharp Unified Language & Theme Control Pill -->
             <div class="flex items-center gap-2 shrink-0">
+                <button type="button" id="headerHelpBtn" onclick="openHelpDrawer()" class="no-print inline-flex items-center justify-center gap-1.5 h-[36px] px-3 text-xs font-semibold text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-300 transition cursor-pointer shrink-0" style="border-radius: 0px;" title="Guida & Formule">
+                    <svg class="w-3.5 h-3.5 text-amber-800 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <span id="headerHelpText" class="text-[12px] font-semibold text-amber-950">Guida</span>
+                </button>
                 <div class="inline-flex items-center h-[36px] bg-[#F8FAFC] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800" style="border-radius: 0px;">
                     <div class="relative flex items-center px-2.5">
-                        <svg class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="15" height="15" style="width:15px;height:15px;min-width:15px;max-width:15px;" class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
                             <path d="M2 12h20"/>
@@ -2305,9 +2372,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const homeTab = document.getElementById('omniTabHome');
         const isHome = (!pathname || pathname === 'index');
         if (homeTab) {
-            homeTab.className = isHome 
-                ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#1E293B] text-white font-semibold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-700'
-                : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#0F172A] hover:bg-slate-800 text-[#CBD5E1] hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-800';
+            homeTab.className = isHome ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 shadow-xs' : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#F8FAFC] hover:bg-slate-100 text-[#475569] hover:text-[#0F172A] font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200';
             homeTab.style.borderRadius = '0px';
         }
 
@@ -2320,7 +2385,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#1E293B] text-white border-t-blue-500 border-r-slate-700 font-semibold' : 'bg-[#0F172A] hover:bg-slate-800 text-[#CBD5E1] hover:text-white border-t-transparent border-r-slate-800 font-medium'}`;
+            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] text-[#0F172A] border-t-blue-600 border-r-slate-300 font-bold shadow-xs' : 'bg-[#F8FAFC] hover:bg-slate-100 text-[#475569] hover:text-[#0F172A] border-t-transparent border-r-slate-200 font-medium'}`;
             tab.style.borderRadius = '0px';
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             

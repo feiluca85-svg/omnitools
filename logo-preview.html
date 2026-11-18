@@ -307,6 +307,69 @@
     </script>
 
     <style id="omni-sharp-precision-grid-rules">
+        /* Deterministic Top Tab Bar White */
+        #omniChromeTabsBar {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+        #omniTabHome {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border-top: 2px solid #2563eb !important;
+            border-right: 1px solid #cbd5e1 !important;
+            border-radius: 0px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+        }
+        #omniTabHome svg {
+            color: #2563eb !important;
+            stroke: #2563eb !important;
+        }
+        #omniTabHome span {
+            color: #0f172a !important;
+        }
+        .omni-dyn-tab.active-tab {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border-top: 2px solid #2563eb !important;
+            border-right: 1px solid #cbd5e1 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+        }
+        .omni-dyn-tab.inactive-tab {
+            background-color: #f8fafc !important;
+            color: #475569 !important;
+            border-top: 2px solid transparent !important;
+            border-right: 1px solid #e2e8f0 !important;
+            font-weight: 500 !important;
+        }
+        .omni-dyn-tab.inactive-tab:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+        /* Top Bar DESK and Nuovo Tool Buttons */
+        #topDeskBtn {
+            background-color: #fffbeb !important;
+            color: #b45309 !important;
+            border: 1px solid #fcd34d !important;
+        }
+        #topNewToolBtn {
+            background-color: #f8fafc !important;
+            color: #334155 !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+        /* Language Globe & Theme SVGs deterministic constraint */
+        #langSelect + svg, #langSelect ~ svg, .relative:has(#langSelect) svg,
+        .omni-lang-box svg, select[data-lang-switcher] ~ svg, header .relative svg:first-child {
+            width: 15px !important;
+            height: 15px !important;
+            min-width: 15px !important;
+            max-width: 15px !important;
+            min-height: 15px !important;
+            max-height: 15px !important;
+            stroke-width: 1.75px !important;
+        }
+        
         /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
         *, *::before, *::after {
             border-radius: 0px !important;
