@@ -1,4 +1,4 @@
-const CACHE_NAME = 'omnitools-suite-v7';
+const CACHE_NAME = 'omnitools-suite-v8';
 const ASSETS = [
   './',
   './index.html',
