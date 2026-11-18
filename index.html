@@ -175,6 +175,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
+        window.tailwind = window.tailwind || {};
         tailwind.config = {
             theme: {
                 extend: {
@@ -903,7 +904,7 @@
             <div class="w-full max-w-[640px] mx-auto">
                 <div class="flex items-center justify-between w-full h-[52px] px-4 bg-white dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-700 shadow-2xs transition" style="border-radius: 0px;">
                     <div class="flex items-center flex-1 h-full min-w-0">
-                        <svg class="w-[18px] h-[18px] text-[#64748B] dark:text-slate-400 shrink-0 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" class="w-[18px] h-[18px] text-[#64748B] dark:text-slate-400 shrink-0 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"/>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                         </svg>
@@ -2774,7 +2775,6 @@ document.addEventListener('click', (e) => {
             openTabs.push(pathname);
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
         }
-    }
     }
 
     let detachedWindows = {};
