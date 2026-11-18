@@ -3190,20 +3190,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function applyTranslations() {
             const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('btnCsvExport').textContent = t.csv_export_btn;
-            document.getElementById('btnPrint').textContent = t.print_btn;
-            document.getElementById('faqTitle').textContent = t.faq_title;
+            const setTxt = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.textContent = val; };
+            const setHtml = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.innerHTML = val; };            setTxt('heroTitle', t.hero_title);
+            setTxt('heroDesc', t.hero_desc);
+            setTxt('btnCsvExport', t.csv_export_btn);
+            setTxt('btnPrint', t.print_btn);
+            setTxt('faqTitle', t.faq_title);
 
-            document.getElementById('faq1Q').textContent = t.faq_1_q;
-            document.getElementById('faq1A').innerHTML = t.faq_1_a;
-            document.getElementById('faq2Q').textContent = t.faq_2_q;
-            document.getElementById('faq2A').innerHTML = t.faq_2_a;
-            document.getElementById('faq3Q').textContent = t.faq_3_q;
-            document.getElementById('faq3A').innerHTML = t.faq_3_a;
-            document.getElementById('faq4Q').textContent = t.faq_4_q;
-            document.getElementById('faq4A').innerHTML = t.faq_4_a;
+            setTxt('faq1Q', t.faq_1_q);
+            setHtml('faq1A', t.faq_1_a);
+            setTxt('faq2Q', t.faq_2_q);
+            setHtml('faq2A', t.faq_2_a);
+            setTxt('faq3Q', t.faq_3_q);
+            setHtml('faq3A', t.faq_3_a);
+            setTxt('faq4Q', t.faq_4_q);
+            setHtml('faq4A', t.faq_4_a);
         }
 
         function changeLanguage(lang) {

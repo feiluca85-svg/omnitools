@@ -2763,45 +2763,46 @@
 
         function applyTranslations(lang) {
             const t = I18N_DATA[lang] || I18N_DATA['it'];
-            document.documentElement.lang = lang;
+            const setTxt = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.textContent = val; };
+            const setHtml = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.innerHTML = val; };            document.documentElement.lang = lang;
 
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('privacyBadge').textContent = t.privacy_badge;
+            setTxt('heroTitle', t.hero_title);
+            setTxt('heroDesc', t.hero_desc);
+            setTxt('privacyBadge', t.privacy_badge);
 
-            document.getElementById('lblSheetFormat').textContent = t.sheet_format_label;
-            document.getElementById('lblCutFormat').textContent = t.cut_format_label;
-            document.getElementById('lblSheetW').innerHTML = `${t.sheet_w_label} (<span class="unitBadge">${currentUnit}</span>)`;
-            document.getElementById('lblSheetH').innerHTML = `${t.sheet_h_label} (<span class="unitBadge">${currentUnit}</span>)`;
-            document.getElementById('lblCutW').innerHTML = `${t.cut_w_label} (<span class="unitBadge">${currentUnit}</span>)`;
-            document.getElementById('lblCutH').innerHTML = `${t.cut_h_label} (<span class="unitBadge">${currentUnit}</span>)`;
-            document.getElementById('lblGripper').innerHTML = `${t.gripper_label} (<span class="unitBadge">${currentUnit}</span>)`;
-            document.getElementById('lblBleed').innerHTML = `${t.bleed_label} (<span class="unitBadge">${currentUnit}</span>)`;
-            document.getElementById('lblGrain').textContent = t.grain_label;
-            document.getElementById('lblCopiesTarget').textContent = t.copies_target_label;
-            document.getElementById('lblPaperWeight').textContent = t.paper_weight_label;
-            document.getElementById('lblWasteMargin').textContent = t.waste_margin_label;
+            setTxt('lblSheetFormat', t.sheet_format_label);
+            setTxt('lblCutFormat', t.cut_format_label);
+            setHtml('lblSheetW', `${t.sheet_w_label} (<span class="unitBadge">${currentUnit}</span>)`);
+            setHtml('lblSheetH', `${t.sheet_h_label} (<span class="unitBadge">${currentUnit}</span>)`);
+            setHtml('lblCutW', `${t.cut_w_label} (<span class="unitBadge">${currentUnit}</span>)`);
+            setHtml('lblCutH', `${t.cut_h_label} (<span class="unitBadge">${currentUnit}</span>)`);
+            setHtml('lblGripper', `${t.gripper_label} (<span class="unitBadge">${currentUnit}</span>)`);
+            setHtml('lblBleed', `${t.bleed_label} (<span class="unitBadge">${currentUnit}</span>)`);
+            setTxt('lblGrain', t.grain_label);
+            setTxt('lblCopiesTarget', t.copies_target_label);
+            setTxt('lblPaperWeight', t.paper_weight_label);
+            setTxt('lblWasteMargin', t.waste_margin_label);
 
-            document.getElementById('lblResBestYield').textContent = t.res_best_yield;
-            document.getElementById('resYieldUnit').textContent = t.res_pieces_per_sheet;
-            document.getElementById('lblResWastePct').textContent = t.res_waste_pct;
-            document.getElementById('lblResSheetsOrder').textContent = t.res_sheets_order;
+            setTxt('lblResBestYield', t.res_best_yield);
+            setTxt('resYieldUnit', t.res_pieces_per_sheet);
+            setTxt('lblResWastePct', t.res_waste_pct);
+            setTxt('lblResSheetsOrder', t.res_sheets_order);
 
-            document.getElementById('sheetPreviewTitle').textContent = t.sheet_preview_title;
-            document.getElementById('cutSheetNote').textContent = t.cut_sheet_note;
+            setTxt('sheetPreviewTitle', t.sheet_preview_title);
+            setTxt('cutSheetNote', t.cut_sheet_note);
 
-            document.getElementById('ruleTipText').innerHTML = t.rule_tip;
-            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            setHtml('ruleTipText', t.rule_tip);
+            setHtml('legalDisclaimerText', t.legal_disclaimer);
 
             document.getElementById('faqTitle').children[1].textContent = t.faq_title;
-            document.getElementById('faq1Q').textContent = t.faq_1_q;
-            document.getElementById('faq1A').textContent = t.faq_1_a;
-            document.getElementById('faq2Q').textContent = t.faq_2_q;
-            document.getElementById('faq2A').textContent = t.faq_2_a;
-            document.getElementById('faq3Q').textContent = t.faq_3_q;
-            document.getElementById('faq3A').textContent = t.faq_3_a;
-            document.getElementById('faq4Q').textContent = t.faq_4_q;
-            document.getElementById('faq4A').textContent = t.faq_4_a;
+            setTxt('faq1Q', t.faq_1_q);
+            setTxt('faq1A', t.faq_1_a);
+            setTxt('faq2Q', t.faq_2_q);
+            setTxt('faq2A', t.faq_2_a);
+            setTxt('faq3Q', t.faq_3_q);
+            setTxt('faq3A', t.faq_3_a);
+            setTxt('faq4Q', t.faq_4_q);
+            setTxt('faq4A', t.faq_4_a);
         }
 
         // PWA Install Prompt Handler

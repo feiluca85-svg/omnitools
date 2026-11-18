@@ -3258,36 +3258,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function applyTranslations() {
             const t = TRANSLATIONS[currentLang] || TRANSLATIONS['it'];
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('labelCurRate').textContent = t.col_cur_rate;
-            document.getElementById('labelCurInterest').textContent = t.col_interest_before;
+            const setTxt = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.textContent = val; };
+            const setHtml = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.innerHTML = val; };            setTxt('heroTitle', t.hero_title);
+            setTxt('heroDesc', t.hero_desc);
+            setTxt('labelCurRate', t.col_cur_rate);
+            setTxt('labelCurInterest', t.col_interest_before);
             
-            document.getElementById('optATitle').textContent = t.option_a_title;
-            document.getElementById('optASub').textContent = t.option_a_subtitle;
-            document.getElementById('optANewRateLabel').textContent = t.option_a_new_rate;
-            document.getElementById('optAMonthSaveLabel').textContent = t.option_a_month_saving;
-            document.getElementById('optATotSaveLabel').textContent = t.option_a_tot_saving;
+            setTxt('optATitle', t.option_a_title);
+            setTxt('optASub', t.option_a_subtitle);
+            setTxt('optANewRateLabel', t.option_a_new_rate);
+            setTxt('optAMonthSaveLabel', t.option_a_month_saving);
+            setTxt('optATotSaveLabel', t.option_a_tot_saving);
 
-            document.getElementById('optBTitle').textContent = t.option_b_title;
-            document.getElementById('optBSub').textContent = t.option_b_subtitle;
-            document.getElementById('optBTimeSavedLabel').textContent = t.option_b_time_saved;
-            document.getElementById('optBNewDurLabel').textContent = t.option_b_new_duration;
-            document.getElementById('optBTotSaveLabel').textContent = t.option_b_tot_saving;
+            setTxt('optBTitle', t.option_b_title);
+            setTxt('optBSub', t.option_b_subtitle);
+            setTxt('optBTimeSavedLabel', t.option_b_time_saved);
+            setTxt('optBNewDurLabel', t.option_b_new_duration);
+            setTxt('optBTotSaveLabel', t.option_b_tot_saving);
 
-            document.getElementById('verdictTitle').textContent = t.verdict_title;
-            document.getElementById('btnCsvExport').textContent = t.csv_export_btn;
-            document.getElementById('btnPrint').textContent = t.print_btn;
-            document.getElementById('faqTitle').textContent = t.faq_title;
+            setTxt('verdictTitle', t.verdict_title);
+            setTxt('btnCsvExport', t.csv_export_btn);
+            setTxt('btnPrint', t.print_btn);
+            setTxt('faqTitle', t.faq_title);
 
-            document.getElementById('faq1Q').textContent = t.faq_1_q;
-            document.getElementById('faq1A').innerHTML = t.faq_1_a;
-            document.getElementById('faq2Q').textContent = t.faq_2_q;
-            document.getElementById('faq2A').innerHTML = t.faq_2_a;
-            document.getElementById('faq3Q').textContent = t.faq_3_q;
-            document.getElementById('faq3A').innerHTML = t.faq_3_a;
-            document.getElementById('faq4Q').textContent = t.faq_4_q;
-            document.getElementById('faq4A').innerHTML = t.faq_4_a;
+            setTxt('faq1Q', t.faq_1_q);
+            setHtml('faq1A', t.faq_1_a);
+            setTxt('faq2Q', t.faq_2_q);
+            setHtml('faq2A', t.faq_2_a);
+            setTxt('faq3Q', t.faq_3_q);
+            setHtml('faq3A', t.faq_3_a);
+            setTxt('faq4Q', t.faq_4_q);
+            setHtml('faq4A', t.faq_4_a);
         }
 
         function changeLanguage(lang) {

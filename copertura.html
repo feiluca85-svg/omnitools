@@ -3648,68 +3648,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function applyTranslations(lang) {
             const t = I18N_DATA[lang] || I18N_DATA['it'];
-            document.documentElement.lang = lang;
+            const setTxt = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.textContent = val; };
+            const setHtml = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.innerHTML = val; };            document.documentElement.lang = lang;
 
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
-            document.getElementById('privacyBadge').textContent = t.privacy_badge;
+            setTxt('heroTitle', t.hero_title);
+            setTxt('heroDesc', t.hero_desc);
+            setTxt('privacyBadge', t.privacy_badge);
 
-            document.getElementById('dropTitle').textContent = t.dropzone_title;
-            document.getElementById('dropSub').textContent = t.dropzone_sub;
-            document.getElementById('presetLabel').textContent = t.sample_presets_label;
-            document.getElementById('btnSampleFlyer').textContent = t.sample_flyer;
-            document.getElementById('btnSampleBook').textContent = t.sample_book;
-            document.getElementById('btnSampleMinimal').textContent = t.sample_minimal;
+            setTxt('dropTitle', t.dropzone_title);
+            setTxt('dropSub', t.dropzone_sub);
+            setTxt('presetLabel', t.sample_presets_label);
+            setTxt('btnSampleFlyer', t.sample_flyer);
+            setTxt('btnSampleBook', t.sample_book);
+            setTxt('btnSampleMinimal', t.sample_minimal);
 
-            document.getElementById('heatmapToggleText').textContent = t.heatmap_toggle;
+            setTxt('heatmapToggleText', t.heatmap_toggle);
             document.getElementById('costSettingsTitle').children[1].textContent = t.cost_calculator_title;
 
-            document.getElementById('lblPaperFormat').textContent = t.paper_format_label;
-            document.getElementById('lblCopies').textContent = t.copies_label;
-            document.getElementById('lblTech').textContent = t.tech_label;
-            document.getElementById('lblInkPrice').textContent = t.ink_price_label;
+            setTxt('lblPaperFormat', t.paper_format_label);
+            setTxt('lblCopies', t.copies_label);
+            setTxt('lblTech', t.tech_label);
+            setTxt('lblInkPrice', t.ink_price_label);
 
             document.getElementById('analysisTitle').children[0].textContent = t.analysis_title;
-            document.getElementById('lblC').textContent = t.c_label;
-            document.getElementById('lblM').textContent = t.m_label;
-            document.getElementById('lblY').textContent = t.y_label;
-            document.getElementById('lblK').textContent = t.k_label;
-            document.getElementById('lblTacAvg').textContent = t.tac_avg_label;
-            document.getElementById('lblTacPeak').textContent = t.tac_peak_label;
+            setTxt('lblC', t.c_label);
+            setTxt('lblM', t.m_label);
+            setTxt('lblY', t.y_label);
+            setTxt('lblK', t.k_label);
+            setTxt('lblTacAvg', t.tac_avg_label);
+            setTxt('lblTacPeak', t.tac_peak_label);
 
             document.getElementById('resSummaryTitle').children[0].textContent = t.res_summary_title;
-            document.getElementById('lblCostPerCopy').textContent = t.res_cost_per_copy;
-            document.getElementById('lblTotalCost').textContent = t.res_total_cost;
-            document.getElementById('btnPrintText').textContent = t.print_btn;
+            setTxt('lblCostPerCopy', t.res_cost_per_copy);
+            setTxt('lblTotalCost', t.res_total_cost);
+            setTxt('btnPrintText', t.print_btn);
 
-            document.getElementById('ruleTipText').innerHTML = t.rule_tip;
-            document.getElementById('legalDisclaimerText').innerHTML = t.legal_disclaimer;
+            setHtml('ruleTipText', t.rule_tip);
+            setHtml('legalDisclaimerText', t.legal_disclaimer);
 
             document.getElementById('faqTitle').children[0].textContent = t.faq_title;
-            document.getElementById('faq1Q').textContent = t.faq_1_q;
-            document.getElementById('faq1A').textContent = t.faq_1_a;
-            document.getElementById('faq2Q').textContent = t.faq_2_q;
-            document.getElementById('faq2A').textContent = t.faq_2_a;
-            document.getElementById('faq3Q').textContent = t.faq_3_q;
-            document.getElementById('faq3A').textContent = t.faq_3_a;
-            document.getElementById('faq4Q').textContent = t.faq_4_q;
-            document.getElementById('faq4A').textContent = t.faq_4_a;
+            setTxt('faq1Q', t.faq_1_q);
+            setTxt('faq1A', t.faq_1_a);
+            setTxt('faq2Q', t.faq_2_q);
+            setTxt('faq2A', t.faq_2_a);
+            setTxt('faq3Q', t.faq_3_q);
+            setTxt('faq3A', t.faq_3_a);
+            setTxt('faq4Q', t.faq_4_q);
+            setTxt('faq4A', t.faq_4_a);
 
             // Footer, Share & Modals
-            if (t.share_title && document.getElementById('shareTitleText')) document.getElementById('shareTitleText').textContent = t.share_title;
-            if (t.share_sub && document.getElementById('shareSubText')) document.getElementById('shareSubText').textContent = t.share_sub;
-            if (t.share_copy && document.getElementById('shareCopyText')) document.getElementById('shareCopyText').textContent = t.share_copy;
-            if (t.suggest_banner && document.getElementById('suggestBannerText')) document.getElementById('suggestBannerText').textContent = t.suggest_banner;
-            if (t.suggest_btn && document.getElementById('suggestBtnText')) document.getElementById('suggestBtnText').textContent = t.suggest_btn;
-            if (t.suggest_modal_title && document.getElementById('modalSuggestTitle')) document.getElementById('modalSuggestTitle').textContent = t.suggest_modal_title;
-            if (t.suggest_modal_desc && document.getElementById('modalSuggestDesc')) document.getElementById('modalSuggestDesc').textContent = t.suggest_modal_desc;
+            if (t.share_title && document.getElementById('shareTitleText')) setTxt('shareTitleText', t.share_title);
+            if (t.share_sub && document.getElementById('shareSubText')) setTxt('shareSubText', t.share_sub);
+            if (t.share_copy && document.getElementById('shareCopyText')) setTxt('shareCopyText', t.share_copy);
+            if (t.suggest_banner && document.getElementById('suggestBannerText')) setTxt('suggestBannerText', t.suggest_banner);
+            if (t.suggest_btn && document.getElementById('suggestBtnText')) setTxt('suggestBtnText', t.suggest_btn);
+            if (t.suggest_modal_title && document.getElementById('modalSuggestTitle')) setTxt('modalSuggestTitle', t.suggest_modal_title);
+            if (t.suggest_modal_desc && document.getElementById('modalSuggestDesc')) setTxt('modalSuggestDesc', t.suggest_modal_desc);
             if (t.suggest_placeholder && document.getElementById('suggestMessage')) document.getElementById('suggestMessage').placeholder = t.suggest_placeholder;
-            if (t.suggest_privacy_note && document.getElementById('modalPrivacyNote')) document.getElementById('modalPrivacyNote').textContent = t.suggest_privacy_note;
-            if (t.suggest_close && document.getElementById('modalCloseBtn')) document.getElementById('modalCloseBtn').textContent = t.suggest_close;
-            if (t.suggest_send && document.getElementById('modalSubmitBtn')) document.getElementById('modalSubmitBtn').textContent = t.suggest_send;
-            if (t.suggest_thanks && document.getElementById('modalSuccessText')) document.getElementById('modalSuccessText').textContent = t.suggest_thanks;
-            if (t.install_banner_title && document.getElementById('installBannerTitle')) document.getElementById('installBannerTitle').textContent = t.install_banner_title;
-            if (t.install_banner_sub && document.getElementById('installBannerSub')) document.getElementById('installBannerSub').textContent = t.install_banner_sub;
+            if (t.suggest_privacy_note && document.getElementById('modalPrivacyNote')) setTxt('modalPrivacyNote', t.suggest_privacy_note);
+            if (t.suggest_close && document.getElementById('modalCloseBtn')) setTxt('modalCloseBtn', t.suggest_close);
+            if (t.suggest_send && document.getElementById('modalSubmitBtn')) setTxt('modalSubmitBtn', t.suggest_send);
+            if (t.suggest_thanks && document.getElementById('modalSuccessText')) setTxt('modalSuccessText', t.suggest_thanks);
+            if (t.install_banner_title && document.getElementById('installBannerTitle')) setTxt('installBannerTitle', t.install_banner_title);
+            if (t.install_banner_sub && document.getElementById('installBannerSub')) setTxt('installBannerSub', t.install_banner_sub);
         }
 
         // PWA Install Prompt Handler
