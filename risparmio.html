@@ -1138,19 +1138,19 @@
 </details>
                         <div class="space-y-1 pt-1.5 border-t border-slate-100">
                             <div class="px-2 text-[10px] font-extrabold uppercase text-indigo-700 flex items-center gap-1">
-                                <span>⚡</span> <span id="suiteDropDeskTitle">Strumenti da Scrivania</span>
+                                <span id="suiteDropDeskTitle">Strumenti da Scrivania</span>
                             </div>
                             <div class="grid grid-cols-3 gap-1 px-1">
                                 <button type="button" onclick="openDeskTool('memo'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-amber-900 border border-orange-200/80 text-[10px] font-bold transition">
-                                    <span>📝</span>
+                                    <svg class="w-3.5 h-3.5 text-amber-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                     <span>Memo</span>
                                 </button>
                                 <button type="button" onclick="openDeskTool('calc'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-amber-900 border border-orange-200/80 text-[10px] font-bold transition">
-                                    <span>🔢</span>
+                                    <svg class="w-3.5 h-3.5 text-blue-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
                                     <span>Calc</span>
                                 </button>
                                 <button type="button" onclick="openDeskTool('clock'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-200/80 text-[10px] font-bold transition">
-                                    <span>⏱️</span>
+                                    <svg class="w-3.5 h-3.5 text-teal-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                                     <span>Clock</span>
                                 </button>
                             </div>
@@ -1162,7 +1162,7 @@
             <!-- Right Actions -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print hidden sm:inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer omni-header-btn" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
-                <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><span>🖨️</span><span id="headerPrintText">Stampa</span></button>
+                <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> <span id="headerPrintText">Stampa</span></button>
                 <div class="omni-control-capsule">
                     <select id="langSelect" data-lang-switcher class="omni-capsule-btn" aria-label="Language Selector">
                         <option value="it" selected>IT</option>
@@ -1175,6 +1175,18 @@
     
 
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
+        <!-- Quick Section Anchor Bar (Calm UI & Progressive Disclosure) -->
+        <div class="no-print flex items-center justify-center gap-1.5 py-1 mb-2">
+            <div class="inline-flex items-center p-0.5 rounded-full bg-[#F1F5F9] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 text-[12px] font-medium text-[#64748B] dark:text-slate-400">
+                <a href="#calculatorArea" class="px-3 py-1 rounded-full bg-white dark:bg-slate-800 text-[#0F172A] dark:text-slate-200 shadow-2xs font-semibold">Calcolatore</a>
+                <span class="w-[1px] h-3 bg-[#CBD5E1] dark:bg-slate-700 mx-0.5"></span>
+                <a href="#normativeGuideArea" class="px-3 py-1 rounded-full hover:text-[#0F172A] dark:hover:text-slate-200 transition-colors flex items-center gap-1">
+                    <span>Guida & Formule</span>
+                    <span class="text-[10px]">↓</span>
+                </a>
+            </div>
+        </div>
+
         
         <!-- Hero Header & Currency Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 no-print pb-2 border-b border-slate-200">
@@ -1203,7 +1215,7 @@
         </div>
 
         <!-- Google Featured Snippet (Position 0) Callout Box -->
-        <section aria-label="Formula Calcolo Risparmio Mensile" class="no-print bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-3">
+        <section aria-label="Formula Calcolo Risparmio Mensile" class="no-print id="calculatorArea" bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-3">
             <div class="flex items-start gap-3">
                 <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
                 <div class="text-xs sm:text-sm space-y-1">
@@ -1353,7 +1365,7 @@
                 <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-3">
                     <div class="flex items-center justify-between text-xs font-bold text-slate-700">
                         <span class="flex items-center gap-1.5">
-                            <span>📊</span> Composizione del Tuo Traguardo
+                            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Composizione del Tuo Traguardo
                         </span>
                         <span id="progressBarLabel" class="text-emerald-700 font-mono font-black">100% Raggiunto</span>
                     </div>
@@ -1389,10 +1401,10 @@
                 <!-- Export & Print Actions -->
                 <div class="flex items-center justify-end gap-2 pt-1 no-print">
                     <button type="button" onclick="exportCsvPlan()" class="px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
-                        <span>📊</span> <span id="btnCsvExport">Esporta Piano CSV</span>
+                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span id="btnCsvExport">Esporta Piano CSV</span>
                     </button>
                     <button type="button" onclick="window.print()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition flex items-center gap-1.5 cursor-pointer">
-                        <span>🖨️</span> <span id="btnPrint">Stampa Scheda A4</span>
+                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> <span id="btnPrint">Stampa Scheda A4</span>
                     </button>
                 </div>
 
@@ -1401,10 +1413,10 @@
             <!-- Twin Action Buttons (OmniFinance Standard) -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2 no-print">
                 <button type="button" onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer shadow-sm">
-                    <span>🖨️</span> <span id="btnPrint">Stampa Prospetto Finanziario A4</span>
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> <span id="btnPrint">Stampa Prospetto Finanziario A4</span>
                 </button>
                 <button type="button" onclick="copyResults()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer">
-                    <span>📋</span> <span id="btnCopy">Copia Riepilogo Finanziario</span>
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> <span id="btnCopy">Copia Riepilogo Finanziario</span>
                 </button>
             </div>
         </div>
@@ -1515,7 +1527,7 @@
             <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
                     <div class="flex items-center gap-2">
-                        <span class="text-base">⚡</span>
+                        
                         <h3 id="footerRelTitle" class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
                     </div>
                     <span id="footerRelSub" class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
@@ -1533,7 +1545,7 @@
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
-                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
         <a href="/dorso" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-rose-500 hover:bg-rose-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
@@ -1547,7 +1559,7 @@
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
-                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
         <a href="/mutuo" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
@@ -1561,7 +1573,7 @@
             </div>
             <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
-                <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
                 </div>
@@ -1603,7 +1615,7 @@
             <!-- Suggestion Prompt Strip -->
             <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
                 <div class="flex items-center gap-2.5">
-                    <span class="text-xl">💡</span>
+                    <span class="text-xl"><svg class="w-4 h-4 shrink-0 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
                     <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
                         Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?
                     </span>
@@ -1637,42 +1649,42 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📐 Rampe</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza & DM 236</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/scale" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪜 Scale</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Gradini & Blondel</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/tubi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🚰 Scarichi</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza UNI EN</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/tetto" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏠 Tetto & Falda</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza, Gradi & Trave</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/taglio" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪚 Taglio 1D</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ottimizzatore Barre & Sfrido</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/piastrelle" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🧱 Piastrelle</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Sfrido, Colla & Fughe</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
                 </div>
@@ -1688,42 +1700,42 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📕 Dorso</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Spessore & KDP</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/dpi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖼️ DPI / Pixel</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/tinta" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Tinta & CMYK</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Calibrazione</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/barcode" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Barcode</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Vettoriale & GS1</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/copertura" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖨️ Copertura</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro & Costi</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/resa" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📑 Resa Carta</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Nesting & Taglio</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
                 </div>
@@ -1739,28 +1751,28 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏦 Rata Mutuo</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ammortamento & Sostenibilità</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/pac" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📈 Interesse PAC</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Crescita & Rendita 4%</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/margine" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Margine & Ricarico</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">COGS, Markup & IVA</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/estinzione" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">⚡ Estinzione Mutuo</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Rata vs Anni & Bersani</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <div class="p-2 sm:p-2.5 rounded-xl bg-emerald-600/25 border-emerald-500/60 border flex items-center justify-between transition shadow-xs">
                         <div class="min-w-0 pr-1">
@@ -1774,7 +1786,7 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🔥 FIRE & Rendita</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Libertà & Trinity 4%</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
                 </div>
@@ -1790,28 +1802,28 @@
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🥫 ShelfLife Export</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">TMC, FDA, CFIA & GCC</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/nutriexport" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📊 NutriExport</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Tabella UE a FDA USA</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/impasti" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🥖 BatchScaler Pro</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Baker's % & Scalatore Lotti</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/idratazione" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
                             <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">💧 HygroBalance</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Acqua Legata & T-Base</span>
                         </div>
-                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri ➔</span>
+                        <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
                 </div>
@@ -1879,7 +1891,7 @@
         <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div class="flex items-center gap-2">
-                    <span class="text-xl">💡</span>
+                    <span class="text-xl"><svg class="w-4 h-4 shrink-0 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
                     <h3 id="modalSuggestTitle" class="text-base font-extrabold text-slate-900">Suggerisci uno Strumento</h3>
                 </div>
                 <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
@@ -2583,7 +2595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "partner_text": "Diventa Partner Ufficiale o Sponsor della Suite OmniTools",
         "rights": "© 2026 OmniTools Network — Tutti i diritti riservati.",
         "pill_active": "Attivo",
-        "pill_open": "Apri ➔",
+        "pill_open": "Apri →",
         "install_title": "Installa OmniTools come App",
         "install_sub": "Utility di calcolo professionale sempre a portata di mano",
         "install_btn": "Installa",
@@ -2615,7 +2627,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "partner_text": "Become an Official Partner or Sponsor of OmniTools Suite",
         "rights": "© 2026 OmniTools Network — All rights reserved.",
         "pill_active": "Active",
-        "pill_open": "Open ➔",
+        "pill_open": "Open →",
         "install_title": "Install OmniTools as an App",
         "install_sub": "Professional calculation utilities always at your fingertips",
         "install_btn": "Install",
@@ -2647,7 +2659,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "partner_text": "Conviértete en Socio Oficial o Patrocinador de la Suite OmniTools",
         "rights": "© 2026 OmniTools Network — Todos los derechos reservados.",
         "pill_active": "Activo",
-        "pill_open": "Abrir ➔",
+        "pill_open": "Abrir →",
         "install_title": "Instala OmniTools como App",
         "install_sub": "Utilidades de cálculo profesional siempre a tu alcance",
         "install_btn": "Instalar",
@@ -2679,7 +2691,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "partner_text": "Devenez Partenaire Officiel ou Sponsor de la Suite OmniTools",
         "rights": "© 2026 OmniTools Network — Tous droits réservés.",
         "pill_active": "Actif",
-        "pill_open": "Ouvrir ➔",
+        "pill_open": "Ouvrir →",
         "install_title": "Installer OmniTools comme Application",
         "install_sub": "Utilitaires de calcul professionnel toujours à portée de main",
         "install_btn": "Installer",
@@ -2711,7 +2723,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "partner_text": "Werden Sie offizieller Partner oder Sponsor der OmniTools Suite",
         "rights": "© 2026 OmniTools Network — Alle Rechte vorbehalten.",
         "pill_active": "Aktiv",
-        "pill_open": "Öffnen ➔",
+        "pill_open": "Öffnen →",
         "install_title": "OmniTools als App Installieren",
         "install_sub": "Professionelle Rechenwerkzeuge immer griffbereit",
         "install_btn": "Installieren",
@@ -2743,7 +2755,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "partner_text": "Seja um Parceiro Oficial ou Patrocinador da Suite OmniTools",
         "rights": "© 2026 OmniTools Network — Todos os direitos reservados.",
         "pill_active": "Ativo",
-        "pill_open": "Abrir ➔",
+        "pill_open": "Abrir →",
         "install_title": "Instalar OmniTools como Aplicativo",
         "install_sub": "Utilitários profissionais de cálculo sempre à mão",
         "install_btn": "Instalar",
