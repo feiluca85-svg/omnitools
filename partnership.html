@@ -317,7 +317,7 @@
         function applyDark(on) {
             document.documentElement.classList.toggle('omni-dark', on);
             const btn = document.getElementById('darkModeBtn');
-            if (btn) btn.textContent = on ? '☀️' : '🌙';
+            if (btn) btn.innerHTML = on ? `<svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>` : `<svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
         }
         window.toggleDarkMode = function() {
             const next = !document.documentElement.classList.contains('omni-dark');
@@ -360,7 +360,7 @@
                         <option value="en">EN</option>
                     </select>
                     <span class="omni-capsule-divider"></span>
-                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">🌙</button>
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro"><svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
                 </div>
             </div>
         </div>

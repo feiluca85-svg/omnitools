@@ -20,6 +20,10 @@
     else if (pathname.includes('estinzione')) toolId = 'estinzione';
     else if (pathname.includes('risparmio')) toolId = 'risparmio';
     else if (pathname.includes('fire')) toolId = 'fire';
+    else if (pathname.includes('shelflife') || pathname.includes('shelf-life')) toolId = 'shelflife';
+    else if (pathname.includes('nutriexport') || pathname.includes('nutri-export')) toolId = 'nutriexport';
+    else if (pathname.includes('impasti') || pathname.includes('batch-scaler')) toolId = 'impasti';
+    else if (pathname.includes('idratazione') || pathname.includes('hydration')) toolId = 'idratazione';
     else if (pathname.includes('rampe')) toolId = 'rampe';
 
     const HELP_DATABASE = {
@@ -760,6 +764,239 @@
                             <strong>FIRE Portfolio = Annual Expenses × 25</strong>
                         </div>
                         <p>With a 4% Safe Withdrawal Rate (Trinity Study), a diversified portfolio has a 95%+ probability of lasting 30+ years without depletion.</p>
+                    </div>
+                `
+            }
+        },
+        shelflife: {
+            themeColor: 'orange',
+            it: {
+                btn: 'Guida',
+                title: 'Guida Rapida — ShelfLife Export',
+                subtitle: 'Calcolo Data di Scadenza & TMC B2B',
+                faqBtn: '↓ Vai alle FAQ complete',
+                closeBtn: 'Chiudi',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. Calcolo Scadenza e TMC (Reg. UE 1169/2011)</h3>
+                        <p class="text-xs text-slate-700">Determina con precisione chirurgica la data limite di consumo o il termine minimo di conservazione a partire dalla data di produzione o confezionamento.</p>
+                        <div class="font-mono text-[11px] p-2.5 rounded-xl bg-orange-50 border border-orange-200 text-orange-950 space-y-1">
+                            <div><strong>Data Scadenza / TMC</strong> = Data Produzione + Durata Giorni / Mesi</div>
+                            <div><strong>TMC Residuo Minimo B2B</strong> = Data Consegna + (Shelf Life Totale × % Richiesta GDO)</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">2. Specifiche per Export Internazionale</h3>
+                        <ul class="text-xs space-y-1.5 text-slate-700">
+                            <li><strong>GDO / B2B:</strong> Spesso la grande distribuzione richiede almeno il <strong>70% – 75%</strong> di vita residua all'accettazione a magazzino.</li>
+                            <li><strong>Formati Data:</strong> Formattazione automatica conforme ISO 8601 (YYYY-MM-DD), standard USA (MM/DD/YYYY) ed europeo (DD/MM/YYYY).</li>
+                        </ul>
+                    </div>
+                `
+            },
+            en: {
+                btn: 'Guide',
+                title: 'Quick Guide — ShelfLife Export',
+                subtitle: 'Expiry Date & B2B Remaining Shelf-Life',
+                faqBtn: '↓ Jump to Full FAQ',
+                closeBtn: 'Close',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. Expiry & Best Before Calculation</h3>
+                        <p class="text-xs text-slate-700">Calculate exact expiration or best-before dates from production date and shelf life duration (days, months, or years).</p>
+                        <div class="font-mono text-[11px] p-2.5 rounded-xl bg-orange-50 border border-orange-200 text-orange-950 space-y-1">
+                            <div><strong>Expiration Date</strong> = Production Date + Shelf Life Duration</div>
+                            <div><strong>B2B Remaining Shelf-Life</strong> = Delivery Date + (Total Shelf-Life × Retailer % Threshold)</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">2. Export & Distribution Standards</h3>
+                        <ul class="text-xs space-y-1.5 text-slate-700">
+                            <li><strong>Retail Acceptance:</strong> Major distributors require <strong>70% – 75%</strong> remaining shelf-life upon warehouse intake.</li>
+                            <li><strong>Global Formats:</strong> Seamless ISO 8601, US (MM/DD/YYYY), and International (DD/MM/YYYY) label compliance.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        },
+        nutriexport: {
+            themeColor: 'orange',
+            it: {
+                btn: 'Guida',
+                title: 'Guida Rapida — NutriExport Converter',
+                subtitle: 'Conversione UE 1169/2011 ↔ USA FDA 21 CFR 101.9',
+                faqBtn: '↓ Vai alle FAQ complete',
+                closeBtn: 'Chiudi',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. Standard UE (100g) vs USA FDA (Porzione RACC)</h3>
+                        <p class="text-xs text-slate-700">In Europa la tabella nutrizionale obbligatoria è riferita a <strong>100 g / 100 ml</strong> di prodotto. Negli Stati Uniti la FDA impone l'etichettatura per <strong>singola porzione</strong> (Serving Size) conforme alle tabelle ufficiali RACC (<em>Reference Amounts Customarily Consumed</em> - 21 CFR 101.12).</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 border border-orange-200 space-y-1.5 font-mono text-[11px] text-orange-950">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-900">2. Formule & Conversioni Obbligatorie</h3>
+                        <div><strong>Valore per Porzione</strong> = (Valore per 100g × Grammi Porzione RACC) / 100</div>
+                        <div><strong>Sodio (mg)</strong> = Sale (g) × 400 (FDA prescrive Sodio in mg, non Sale!)</div>
+                        <div><strong>Sale Equivalente (g)</strong> = Sodio (mg) / 400 = Sodio (mg) × 0.0025</div>
+                        <div><strong>% Daily Value (% DV)</strong> = (Valore Porzione / Valore Giornaliero di Riferimento FDA) × 100</div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Regole di Arrotondamento Ufficiali FDA (21 CFR 101.9)</h3>
+                        <ul class="text-xs space-y-1 text-slate-700">
+                            <li><strong>Calorie:</strong> &lt; 5 kcal → 0; da 5 a 50 kcal → arrotonda ai 5 kcal più vicini; &gt; 50 kcal → arrotonda ai 10 kcal più vicini.</li>
+                            <li><strong>Grassi Totali:</strong> &lt; 0.5 g → 0 g; &lt; 5 g → arrotonda a 0.5 g; ≥ 5 g → arrotonda a 1 g.</li>
+                            <li><strong>Sodio:</strong> &lt; 5 mg → 0 mg; 5–140 mg → arrotonda a 5 mg; &gt; 140 mg → arrotonda a 10 mg.</li>
+                            <li><strong>Carboidrati, Zuccheri, Proteine:</strong> &lt; 0.5 g → 0 g; &lt; 1 g → "Contains less than 1g"; ≥ 1 g → arrotonda a 1 g.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            en: {
+                btn: 'Guide',
+                title: 'Quick Guide — NutriExport Converter',
+                subtitle: 'EU Reg 1169/2011 to US FDA 21 CFR 101.9 Conversion',
+                faqBtn: '↓ Jump to Full FAQ',
+                closeBtn: 'Close',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. EU (100g) vs US FDA (Serving Size)</h3>
+                        <p class="text-xs text-slate-700">European nutrition labeling is strictly standardized per <strong>100g / 100ml</strong>. US FDA regulations require labeling per <strong>household serving size</strong> based on official RACC categories (21 CFR 101.12).</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 border border-orange-200 space-y-1.5 font-mono text-[11px] text-orange-950">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-900">2. Mandatory Equations</h3>
+                        <div><strong>Serving Value</strong> = (Value per 100g × Serving Grams) / 100</div>
+                        <div><strong>Sodium (mg)</strong> = Salt (g) × 400 (FDA requires elemental Sodium, not Salt)</div>
+                        <div><strong>Salt Equivalent (g)</strong> = Sodium (mg) × 0.0025</div>
+                        <div><strong>% Daily Value (% DV)</strong> = (Serving Value / FDA Reference Daily Intake) × 100</div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. FDA Rounding Rules (21 CFR 101.9(c))</h3>
+                        <ul class="text-xs space-y-1 text-slate-700">
+                            <li><strong>Calories:</strong> &lt; 5 kcal → 0; 5 to 50 kcal → round to nearest 5 kcal; &gt; 50 kcal → round to nearest 10 kcal.</li>
+                            <li><strong>Total Fat:</strong> &lt; 0.5 g → 0 g; &lt; 5 g → nearest 0.5 g; ≥ 5 g → nearest 1 g.</li>
+                            <li><strong>Sodium:</strong> &lt; 5 mg → 0 mg; 5–140 mg → nearest 5 mg; &gt; 140 mg → nearest 10 mg.</li>
+                            <li><strong>Carbs, Sugars, Protein:</strong> &lt; 0.5 g → 0 g; &lt; 1 g → "less than 1g"; ≥ 1 g → nearest 1 g.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        },
+        impasti: {
+            themeColor: 'orange',
+            it: {
+                btn: 'Guida',
+                title: 'Guida Rapida — BatchScaler Pro',
+                subtitle: 'Percentuale del Panificatore & Scalatura Lotti',
+                faqBtn: '↓ Vai alle FAQ complete',
+                closeBtn: 'Chiudi',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. La Percentuale del Panificatore (Baker's %)</h3>
+                        <p class="text-xs text-slate-700">Nel metodo professionale di panificazione e pasticceria, la <strong>farina totale rappresenta sempre il 100%</strong> di riferimento. Tutti gli altri ingredienti (acqua, lievito, sale, zuccheri, grassi) sono espressi come percentuale relativa rispetto alla farina.</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 border border-orange-200 space-y-1.5 font-mono text-[11px] text-orange-950">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-900">2. Formule di Calcolo del Lotto</h3>
+                        <div><strong>Percentuale Totale Formula</strong> = 100% (Farina) + ∑(% Ingredienti Aggiunti)</div>
+                        <div><strong>Impasto Lordo Necessario</strong> = Impasto Netto Desiderato × (1 + Sfrido% / 100)</div>
+                        <div><strong>Peso Farina Base</strong> = Impasto Lordo / (Percentuale Totale / 100)</div>
+                        <div><strong>Peso Singolo Ingrediente</strong> = Peso Farina Base × (Ingrediente% / 100)</div>
+                        <div><strong>Pezzi Prodotti</strong> = Impasto Netto / Peso Singolo Pezzo Spezzato</div>
+                        <div><strong>Peso Cotto Stimato</strong> = Peso Spezzato × (1 - Calo Cottura% / 100)</div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Sfrido di Banco & Calo Peso in Cottura</h3>
+                        <p class="text-xs text-slate-700">Lo <strong>sfrido di banco</strong> (residui nell'impastatrice, polveri e spezzatura: 1% – 3%) garantisce di non trovarsi a corto di impasto. Il <strong>calo peso in cottura</strong> (evaporazione acquea: tipicamente 10% – 18% per pane, 8% – 12% per pizza) determina la grammatura corretta del pezzo crudo per raggiungere il peso dichiarato in etichetta a fine raffreddamento.</p>
+                    </div>
+                `
+            },
+            en: {
+                btn: 'Guide',
+                title: 'Quick Guide — BatchScaler Pro',
+                subtitle: "Baker's Percentage & Production Batch Scaler",
+                faqBtn: '↓ Jump to Full FAQ',
+                closeBtn: 'Close',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. Understanding Baker's Percentage</h3>
+                        <p class="text-xs text-slate-700">In professional baking and formulation, <strong>total flour is always the 100% baseline</strong>. Every other ingredient (hydration, yeast, salt, enrichment) is expressed strictly as a percentage of total flour weight.</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 border border-orange-200 space-y-1.5 font-mono text-[11px] text-orange-950">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-900">2. Mathematical Scaling Engine</h3>
+                        <div><strong>Total Formula %</strong> = 100% (Flour) + ∑(Ingredient % values)</div>
+                        <div><strong>Gross Dough Required</strong> = Target Dough × (1 + Waste % / 100)</div>
+                        <div><strong>Base Flour Weight</strong> = Gross Dough / (Total Formula % / 100)</div>
+                        <div><strong>Individual Ingredient</strong> = Base Flour × (Ingredient % / 100)</div>
+                        <div><strong>Finished Baked Weight</strong> = Scaled Dough Piece × (1 - Bake Loss % / 100)</div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Waste Margin & Bake Loss</h3>
+                        <p class="text-xs text-slate-700">Formulating with a 1%–3% processing waste allowance prevents shortage on the dividing bench. Bake loss (evaporation loss, usually 10%–18% on bread, 8%–12% on pizza) dictates the exact raw scaling weight needed to hit net legal package weight.</p>
+                    </div>
+                `
+            }
+        },
+        idratazione: {
+            themeColor: 'orange',
+            it: {
+                btn: 'Guida',
+                title: 'Guida Rapida — HygroBalance Lab',
+                subtitle: 'Idratazione Reale, Solidi Totali & Temperatura Acqua T-Base',
+                faqBtn: '↓ Vai alle FAQ complete',
+                closeBtn: 'Chiudi',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. Idratazione Apparente vs Idratazione Reale</h3>
+                        <p class="text-xs text-slate-700">L'idratazione apparente considera solo l'acqua aggiunta pura. L'<strong>Idratazione Reale</strong> calcola l'acqua biologica e libera presente in tutti gli ingredienti della ricetta:</p>
+                        <ul class="text-xs space-y-1 text-slate-700 pl-4 list-disc">
+                            <li><strong>Uova intere:</strong> ~75% acqua / 25% solidi</li>
+                            <li><strong>Albume:</strong> ~88% acqua | <strong>Tuorlo:</strong> ~50% acqua</li>
+                            <li><strong>Burro tradizionale:</strong> ~16% acqua / 82% grassi</li>
+                            <li><strong>Latte intero:</strong> ~87.5% acqua / 12.5% solidi</li>
+                            <li><strong>Lievito Madre liquido (licoli 100%):</strong> 50% acqua / 50% farina aggiunta</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 border border-orange-200 space-y-1.5 font-mono text-[11px] text-orange-950">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-900">2. Regola della Temperatura Base (T-Base)</h3>
+                        <div><strong>Formula T-Base (3 Fattori)</strong>: T_Acqua = (3 × T_Impasto_Finale) - T_Ambiente - T_Farina - Riscaldamento_Impastatrice</div>
+                        <div class="pt-1 text-[10px] text-orange-800">Riscaldamento medio impastatrice: Spirale (+9°C a +12°C), Braccia Tuffanti (+3°C a +6°C), Forcella (+2°C a +4°C), Planetaria (+8°C a +11°C), A Mano (+1°C).</div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Calcolo Ghiaccio in Scaglie (Calore Latente di Fusione)</h3>
+                        <p class="text-xs text-slate-700">Se la temperatura calcolata dell'acqua risulta <strong>negativa (&lt; 0°C)</strong>, è fisicamente necessario sostituire una parte di acqua con <strong>ghiaccio in scaglie</strong> sfruttando il calore latente di fusione (<strong>80 kcal/kg</strong>):</p>
+                        <div class="font-mono text-[11px] p-2.5 rounded-xl bg-slate-900 text-amber-300">
+                            <strong>Ghiaccio (g) = Acqua_Totale × (T_Rubinetto - T_Calcolata) / (80 + T_Rubinetto)</strong>
+                        </div>
+                    </div>
+                `
+            },
+            en: {
+                btn: 'Guide',
+                title: 'Quick Guide — HygroBalance Lab',
+                subtitle: 'Real Hydration, Total Solids & Water T-Base Rules',
+                faqBtn: '↓ Jump to Full FAQ',
+                closeBtn: 'Close',
+                html: `
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-700">1. Apparent vs Real Hydration</h3>
+                        <p class="text-xs text-slate-700">Apparent hydration only tracks added liquid water. <strong>Real Hydration</strong> accounts for water naturally bound inside every ingredient:</p>
+                        <ul class="text-xs space-y-1 text-slate-700 pl-4 list-disc">
+                            <li><strong>Whole Eggs:</strong> ~75% water / 25% solids</li>
+                            <li><strong>Egg Whites:</strong> ~88% water | <strong>Egg Yolks:</strong> ~50% water</li>
+                            <li><strong>Butter (82% fat):</strong> ~16% water / 84% solids & fat</li>
+                            <li><strong>Whole Milk:</strong> ~87.5% water / 12.5% solids</li>
+                            <li><strong>Liquid Sourdough Starter (100% hyd.):</strong> 50% water / 50% flour adjustment</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 border border-orange-200 space-y-1.5 font-mono text-[11px] text-orange-950">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-orange-900">2. Base Temperature Rule (T-Base)</h3>
+                        <div><strong>T-Base Equation (3 Factors)</strong>: T_Water = (3 × Target_Dough_Temp) - Room_Temp - Flour_Temp - Mixer_Friction</div>
+                        <div class="pt-1 text-[10px] text-orange-800">Friction allowances: Spiral mixer (+9°C to +12°C), Diving arms (+3°C to +6°C), Fork (+2°C to +4°C), Planetary (+8°C to +11°C), Hand mixing (+1°C).</div>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">3. Flake Ice Latent Heat of Fusion</h3>
+                        <p class="text-xs text-slate-700">When calculated water temperature falls below <strong>0°C (freezing)</strong>, you must replace part of your liquid with <strong>flake ice</strong> utilizing the latent heat of fusion (<strong>80 kcal/kg</strong>):</p>
+                        <div class="font-mono text-[11px] p-2.5 rounded-xl bg-slate-900 text-amber-300">
+                            <strong>Ice (g) = Total_Water × (Tap_Temp - Target_Water_Temp) / (80 + Tap_Temp)</strong>
+                        </div>
                     </div>
                 `
             }

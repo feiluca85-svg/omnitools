@@ -395,7 +395,7 @@
         function applyDark(on) {
             document.documentElement.classList.toggle('omni-dark', on);
             const btn = document.getElementById('darkModeBtn');
-            if (btn) btn.textContent = on ? '☀️' : '🌙';
+            if (btn) btn.innerHTML = on ? `<svg class="w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>` : `<svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
         }
         window.toggleDarkMode = function() {
             const next = !document.documentElement.classList.contains('omni-dark');
@@ -1118,7 +1118,7 @@
                         <option value="it">IT</option>
                     </select>
                     <span class="omni-capsule-divider"></span>
-                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme">🌙</button>
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme"><svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
                 </div>
                 </div></div></header>
     
@@ -1940,25 +1940,54 @@
         'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
     };
 
-    const TOOLS_MAP = {
-        'rampe': { name: 'RampaFacile', url: '/rampe', color: 'bg-amber-500' },
-        'scale': { name: 'ScalaFacile', url: '/scale', color: 'bg-amber-500' },
-        'tubi': { name: 'TubiFacili', url: '/tubi', color: 'bg-amber-500' },
-        'tetto': { name: 'TettoFacile', url: '/tetto', color: 'bg-amber-500' },
-        'taglio': { name: 'TaglioOttimo', url: '/taglio', color: 'bg-amber-500' },
-        'piastrelle': { name: 'PiastrellaFacile', url: '/piastrelle', color: 'bg-amber-500' },
-        'dorso': { name: 'DorsoFacile', url: '/dorso', color: 'bg-rose-700' },
-        'dpi': { name: 'Risoluzione', url: '/dpi', color: 'bg-rose-700' },
-        'tinta': { name: 'TintaPerfetta', url: '/tinta', color: 'bg-rose-700' },
-        'barcode': { name: 'OmniBarcode', url: '/barcode', color: 'bg-rose-700' },
-        'copertura': { name: 'Copertura', url: '/copertura', color: 'bg-rose-700' },
-        'resa': { name: 'ResaCarta', url: '/resa', color: 'bg-rose-700' },
-        'mutuo': { name: 'MutuoFacile', url: '/mutuo', color: 'bg-emerald-600' },
-        'pac': { name: 'Interesse', url: '/pac', color: 'bg-emerald-600' },
-        'margine': { name: 'MargineFacile', url: '/margine', color: 'bg-emerald-600' },
-        'estinzione': { name: 'Estinzione', url: '/estinzione', color: 'bg-emerald-600' },
-        'risparmio': { name: 'Risparmio', url: '/risparmio', color: 'bg-emerald-600' },
-        'fire': { name: 'FIRE & Rendita', url: '/fire', color: 'bg-emerald-600' }
+        const TOOLS_MAP = {
+        'rampe': { name: 'RampaFacile', url: '/rampe', url_en: '/en/ramp-slope-calculator', color: 'bg-amber-500' },
+        'scale': { name: 'ScalaFacile', url: '/scale', url_en: '/en/stair-calculator', color: 'bg-amber-500' },
+        'tubi': { name: 'TubiFacili', url: '/tubi', url_en: '/en/pipe-slope-calculator', color: 'bg-amber-500' },
+        'tetto': { name: 'TettoFacile', url: '/tetto', url_en: '/en/roof-pitch-calculator', color: 'bg-amber-500' },
+        'taglio': { name: 'TaglioOttimo', url: '/taglio', url_en: '/en/cut-list-optimizer', color: 'bg-amber-500' },
+        'piastrelle': { name: 'PiastrellaFacile', url: '/piastrelle', url_en: '/en/tile-grout-calculator', color: 'bg-amber-500' },
+        'dorso': { name: 'DorsoFacile', url: '/dorso', url_en: '/en/book-spine-calculator', color: 'bg-rose-700' },
+        'dpi': { name: 'Risoluzione', url: '/dpi', url_en: '/en/print-resolution-calculator', color: 'bg-rose-700' },
+        'tinta': { name: 'TintaPerfetta', url: '/tinta', url_en: '/en/pantone-ink-mixing-calculator', color: 'bg-rose-700' },
+        'barcode': { name: 'OmniBarcode', url: '/barcode', url_en: '/en/barcode-generator', color: 'bg-rose-700' },
+        'copertura': { name: 'Copertura', url: '/copertura', url_en: '/en/cmyk-ink-coverage-calculator', color: 'bg-rose-700' },
+        'resa': { name: 'ResaCarta', url: '/resa', url_en: '/en/paper-cutting-yield-calculator', color: 'bg-rose-700' },
+        'mutuo': { name: 'MutuoFacile', url: '/mutuo', url_en: '/en/mortgage-loan-amortization-calculator', color: 'bg-emerald-600' },
+        'pac': { name: 'Interesse', url: '/pac', url_en: '/en/compound-interest-calculator', color: 'bg-emerald-600' },
+        'margine': { name: 'MargineFacile', url: '/margine', url_en: '/en/margin-markup-calculator', color: 'bg-emerald-600' },
+        'estinzione': { name: 'Estinzione', url: '/estinzione', url_en: '/en/early-mortgage-payoff-calculator', color: 'bg-emerald-600' },
+        'risparmio': { name: 'Risparmio', url: '/risparmio', url_en: '/en/savings-goal-calculator', color: 'bg-emerald-600' },
+        'fire': { name: 'FIRE & Rendita', url: '/fire', url_en: '/en/fire-financial-independence-calculator', color: 'bg-emerald-600' },
+        'shelflife': { name: 'ShelfLife Export', url: '/shelflife', url_en: '/en/shelf-life-calculator', color: 'bg-orange-600' },
+        'nutriexport': { name: 'NutriExport Converter', url: '/nutriexport', url_en: '/en/nutri-export-converter', color: 'bg-orange-600' },
+        'impasti': { name: 'BatchScaler Pro', url: '/impasti', url_en: '/en/batch-scaler-calculator', color: 'bg-orange-600' },
+        'idratazione': { name: 'HygroBalance Lab', url: '/idratazione', url_en: '/en/hydration-balance-calculator', color: 'bg-orange-600' }
+    };
+
+    const PATH_TO_TOOL_ID = {
+        'rampe': 'rampe', 'ramp-slope-calculator': 'rampe',
+        'scale': 'scale', 'stair-calculator': 'scale',
+        'tubi': 'tubi', 'pipe-slope-calculator': 'tubi',
+        'tetto': 'tetto', 'roof-pitch-calculator': 'tetto',
+        'taglio': 'taglio', 'cut-list-optimizer': 'taglio',
+        'piastrelle': 'piastrelle', 'tile-grout-calculator': 'piastrelle',
+        'dorso': 'dorso', 'book-spine-calculator': 'dorso',
+        'dpi': 'dpi', 'print-resolution-calculator': 'dpi',
+        'tinta': 'tinta', 'pantone-ink-mixing-calculator': 'tinta',
+        'barcode': 'barcode', 'barcode-generator': 'barcode',
+        'copertura': 'copertura', 'cmyk-ink-coverage-calculator': 'copertura',
+        'resa': 'resa', 'paper-cutting-yield-calculator': 'resa',
+        'mutuo': 'mutuo', 'mortgage-loan-amortization-calculator': 'mutuo',
+        'pac': 'pac', 'compound-interest-calculator': 'pac',
+        'margine': 'margine', 'margin-markup-calculator': 'margine',
+        'estinzione': 'estinzione', 'early-mortgage-payoff-calculator': 'estinzione',
+        'risparmio': 'risparmio', 'savings-goal-calculator': 'risparmio',
+        'fire': 'fire', 'fire-financial-independence-calculator': 'fire',
+        'shelflife': 'shelflife', 'shelf-life-calculator': 'shelflife',
+        'nutriexport': 'nutriexport', 'nutri-export-converter': 'nutriexport',
+        'impasti': 'impasti', 'batch-scaler-calculator': 'impasti',
+        'idratazione': 'idratazione', 'hydration-balance-calculator': 'idratazione'
     };
 
     const TABS_KEY = 'omni_open_tabs_v1';
@@ -1967,12 +1996,15 @@
         openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
     } catch(e) {}
 
-    const pathname = window.location.pathname.replace('.html', '').replace('/', '');
+    const rawPath = window.location.pathname.replace('.html', '').replace(/^\/+/, '').replace(/^en\//, '');
+    const currentToolId = PATH_TO_TOOL_ID[rawPath] || (TOOLS_MAP[rawPath] ? rawPath : '');
+    const pathname = currentToolId;
     if (pathname && TOOLS_MAP[pathname]) {
         if (!openTabs.includes(pathname)) {
             openTabs.push(pathname);
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
         }
+    }
     }
 
     let detachedWindows = {};
@@ -2151,7 +2183,7 @@
             
             const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
             tab.innerHTML = `
-                <a href="${tool.url}" class="flex items-center gap-2 text-inherit no-underline">
+                <a href="${(window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url}" class="flex items-center gap-2 text-inherit no-underline">
                     ${iconMarkup}
                     <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${localizedName}</span>
                 </a>
