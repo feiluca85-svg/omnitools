@@ -70,7 +70,7 @@ async function runAudit() {
   console.log(`[XML] /sitemap.xml`);
   console.log(`      HTTP Status:      ${sitemapRes.status} OK`);
   console.log(`      Content-Type:     ${sitemapRes.headers['content-type']}`);
-  console.log(`      Total URLs:       ${sitemapUrls} / 41 ${sitemapUrls === 41 ? '✓ PASS' : '✗ FAIL'}`);
+  console.log(`      Total URLs:       ${sitemapUrls} / 47 ${sitemapUrls === 47 ? '✓ PASS' : '✗ FAIL'}`);
   console.log(`      xhtml Namespace:  ${sitemapRes.body.includes('xmlns:xhtml') ? '✓ PASS' : '✗ FAIL'}`);
   console.log(`      hreflang="en-US": ${sitemapRes.body.includes('hreflang="en-US"') ? '✓ PASS' : '✗ FAIL'}`);
 
