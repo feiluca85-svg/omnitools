@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 const TOOLS = [
-  // OmniBuilding
+  // OmniBuilding (6)
   { cat: 'OmniBuilding', itFile: 'rampe.html', enFile: 'en/ramp-slope-calculator.html', itUrl: '/rampe', enUrl: '/en/ramp-slope-calculator', name: 'RampaFacile / RampEasy' },
   { cat: 'OmniBuilding', itFile: 'scale.html', enFile: 'en/stair-calculator.html', itUrl: '/scale', enUrl: '/en/stair-calculator', name: 'ScalaFacile / StairEasy' },
   { cat: 'OmniBuilding', itFile: 'tubi.html', enFile: 'en/pipe-slope-calculator.html', itUrl: '/tubi', enUrl: '/en/pipe-slope-calculator', name: 'ScaricoFacile / PipesEasy' },
@@ -15,7 +15,7 @@ const TOOLS = [
   { cat: 'OmniBuilding', itFile: 'taglio.html', enFile: 'en/cut-list-optimizer.html', itUrl: '/taglio', enUrl: '/en/cut-list-optimizer', name: 'TaglioOttimo / OptiCut 1D' },
   { cat: 'OmniBuilding', itFile: 'piastrelle.html', enFile: 'en/tile-grout-calculator.html', itUrl: '/piastrelle', enUrl: '/en/tile-grout-calculator', name: 'PiastrellaFacile / TileEasy' },
 
-  // OmniGraph
+  // OmniGraph (6)
   { cat: 'OmniGraph', itFile: 'dorso.html', enFile: 'en/book-spine-calculator.html', itUrl: '/dorso', enUrl: '/en/book-spine-calculator', name: 'DorsoFacile / Book Spine' },
   { cat: 'OmniGraph', itFile: 'dpi.html', enFile: 'en/print-resolution-calculator.html', itUrl: '/dpi', enUrl: '/en/print-resolution-calculator', name: 'RisoluzioneFacile / Print DPI' },
   { cat: 'OmniGraph', itFile: 'tinta.html', enFile: 'en/pantone-ink-mixing-calculator.html', itUrl: '/tinta', enUrl: '/en/pantone-ink-mixing-calculator', name: 'TintaPerfetta / Pantone Ink Mixing' },
@@ -23,7 +23,7 @@ const TOOLS = [
   { cat: 'OmniGraph', itFile: 'copertura.html', enFile: 'en/cmyk-ink-coverage-calculator.html', itUrl: '/copertura', enUrl: '/en/cmyk-ink-coverage-calculator', name: 'CoperturaFacile / CMYK Ink Coverage' },
   { cat: 'OmniGraph', itFile: 'resa.html', enFile: 'en/paper-cutting-yield-calculator.html', itUrl: '/resa', enUrl: '/en/paper-cutting-yield-calculator', name: 'ResaCarta / Paper Cutting Yield' },
 
-  // OmniFinance
+  // OmniFinance (6)
   { cat: 'OmniFinance', itFile: 'mutuo.html', enFile: 'en/mortgage-loan-amortization-calculator.html', itUrl: '/mutuo', enUrl: '/en/mortgage-loan-amortization-calculator', name: 'MutuoFacile / Mortgage Amortization' },
   { cat: 'OmniFinance', itFile: 'pac.html', enFile: 'en/compound-interest-calculator.html', itUrl: '/pac', enUrl: '/en/compound-interest-calculator', name: 'InteresseComposto / Compound Interest' },
   { cat: 'OmniFinance', itFile: 'margine.html', enFile: 'en/margin-markup-calculator.html', itUrl: '/margine', enUrl: '/en/margin-markup-calculator', name: 'MargineFacile / Margin & Markup' },
@@ -31,15 +31,18 @@ const TOOLS = [
   { cat: 'OmniFinance', itFile: 'risparmio.html', enFile: 'en/savings-goal-calculator.html', itUrl: '/risparmio', enUrl: '/en/savings-goal-calculator', name: 'ObiettivoRisparmio / Savings Goal' },
   { cat: 'OmniFinance', itFile: 'fire.html', enFile: 'en/fire-financial-independence-calculator.html', itUrl: '/fire', enUrl: '/en/fire-financial-independence-calculator', name: 'FIRE & Rendita / FIRE Calculator' },
 
-  // OmniFood
-  { cat: 'OmniFood', itFile: 'shelflife.html', enFile: 'en/shelf-life-calculator.html', itUrl: '/shelflife', enUrl: '/en/shelf-life-calculator', name: 'ShelfLife Export / Shelf Life Calculator' }
+  // OmniFood (4)
+  { cat: 'OmniFood', itFile: 'shelflife.html', enFile: 'en/shelf-life-calculator.html', itUrl: '/shelflife', enUrl: '/en/shelf-life-calculator', name: 'ShelfLife Export / Shelf Life Calculator' },
+  { cat: 'OmniFood', itFile: 'nutriexport.html', enFile: 'en/nutri-export-converter.html', itUrl: '/nutriexport', enUrl: '/en/nutri-export-converter', name: 'NutriExport / NutriExport Converter' },
+  { cat: 'OmniFood', itFile: 'impasti.html', enFile: 'en/batch-scaler-calculator.html', itUrl: '/impasti', enUrl: '/en/batch-scaler-calculator', name: 'BatchScaler Pro / Batch Scaler' },
+  { cat: 'OmniFood', itFile: 'idratazione.html', enFile: 'en/hydration-balance-calculator.html', itUrl: '/idratazione', enUrl: '/en/hydration-balance-calculator', name: 'HygroBalance / Hydration Balance' }
 ];
 
 const IT_SLUGS = TOOLS.map(t => t.itUrl);
 const EN_SLUGS = TOOLS.map(t => t.enUrl);
 
 console.log('='.repeat(70));
-console.log('🔍 RUNNING COMPREHENSIVE BILINGUAL ROUTING AUDIT');
+console.log('🔍 RUNNING COMPREHENSIVE BILINGUAL ROUTING AUDIT (22 TOOL PAIRS)');
 console.log('Target directory:', rootDir);
 console.log('='.repeat(70));
 
@@ -63,14 +66,11 @@ for (const file of itFiles) {
   }
 
   // Check <a> links: no navigation link to tools should point to /en/
-  // Match <a href="..."
   const hrefMatches = content.matchAll(/<a\s+[^>]*href=["']([^"']+)["'][^>]*>/gi);
   for (const m of hrefMatches) {
     const href = m[1];
-    // Ignore external, hash, or mailto
     if (href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) continue;
     
-    // Check if it's an en tool link
     for (const enSlug of EN_SLUGS) {
       if (href === enSlug || href.startsWith(enSlug)) {
         issues.push(`[CROSS_LINK_LEAK in IT] ${file} has link to EN tool: "${href}"`);
@@ -97,7 +97,6 @@ for (const file of enFiles) {
   for (const m of hrefMatches) {
     const href = m[1];
     if (href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) continue;
-    // Check if it matches an IT slug exactly (or .html)
     for (const itSlug of IT_SLUGS) {
       if (href === itSlug || href === itSlug + '.html' || href === itSlug + '/') {
         issues.push(`[CROSS_LINK_LEAK in EN] en/${file} has link to IT tool: "${href}"`);
@@ -106,7 +105,7 @@ for (const file of enFiles) {
   }
 }
 
-// 3. Audit all 19 Tool Pairs: Bidirectional symmetry (data-mirror-url and target existence)
+// 3. Audit all 22 Tool Pairs: Bidirectional symmetry (data-mirror-url and target existence)
 const tableResults = [];
 
 for (const tool of TOOLS) {
@@ -134,10 +133,7 @@ for (const tool of TOOLS) {
   const enMirror = enMirrorMatch ? enMirrorMatch[1] : '';
   const enToItValid = (enMirror === tool.itUrl || enMirror === tool.itUrl + '.html');
 
-  // Check links in desktop suiteMenuDropdown & mobile dock in IT file
   const itHasCorrectLinks = !itContent.includes(`href="${tool.enUrl}"`) && !itContent.includes(`href="${tool.enUrl}.html"`);
-  
-  // Check links in EN file
   const enHasCorrectLinks = !enContent.includes(`href="${tool.itUrl}"`) && !enContent.includes(`href="${tool.itUrl}.html"`);
 
   const passed = itToEnValid && enToItValid && itHasCorrectLinks && enHasCorrectLinks;
@@ -158,13 +154,13 @@ for (const tool of TOOLS) {
 // 4. Output results
 console.log('\n--- AUDIT ISSUES DETECTED ---');
 if (issues.length === 0) {
-  console.log('✅ ZERO ISSUES DETECTED! All files passed inspection.');
+  console.log('✅ ZERO ISSUES DETECTED! All 22 pairs passed inspection.');
 } else {
   console.log(`❌ Found ${issues.length} issues:`);
   issues.forEach(i => console.log('  -', i));
 }
 
-console.log('\n--- 19 TOOLS BILINGUAL ROUTING MATRIX ---');
+console.log('\n--- 22 TOOLS BILINGUAL ROUTING MATRIX ---');
 console.table(tableResults.map(r => ({
   Division: r.division,
   'Tool (IT / EN)': r.name,

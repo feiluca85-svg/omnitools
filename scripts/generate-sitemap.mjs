@@ -3,9 +3,9 @@ import fs from 'fs';
 import path from 'path';
 
 const BASE_URL = 'https://www.omnitoolslab.com';
-const TODAY = new Date().toISOString().split('T')[0]; // e.g. 2026-11-17
+const TODAY = new Date().toISOString().split('T')[0]; // e.g. 2026-11-18
 
-// 19 Pairs of Technical Calculators (IT Clean Slug <-> EN Clean Slug)
+// 22 Pairs of Technical Calculators (IT Clean Slug <-> EN Clean Slug)
 const TOOL_PAIRS = [
   // OmniBuilding (6)
   { it: '/rampe', en: '/en/ramp-slope-calculator', priority: '0.9', changefreq: 'weekly', cat: 'OmniBuilding' },
@@ -31,8 +31,11 @@ const TOOL_PAIRS = [
   { it: '/risparmio', en: '/en/savings-goal-calculator', priority: '0.85', changefreq: 'weekly', cat: 'OmniFinance' },
   { it: '/fire', en: '/en/fire-financial-independence-calculator', priority: '0.9', changefreq: 'weekly', cat: 'OmniFinance' },
 
-  // OmniFood (1)
-  { it: '/shelflife', en: '/en/shelf-life-calculator', priority: '0.95', changefreq: 'weekly', cat: 'OmniFood' }
+  // OmniFood (4)
+  { it: '/shelflife', en: '/en/shelf-life-calculator', priority: '0.95', changefreq: 'weekly', cat: 'OmniFood' },
+  { it: '/nutriexport', en: '/en/nutri-export-converter', priority: '0.95', changefreq: 'weekly', cat: 'OmniFood' },
+  { it: '/impasti', en: '/en/batch-scaler-calculator', priority: '0.9', changefreq: 'weekly', cat: 'OmniFood' },
+  { it: '/idratazione', en: '/en/hydration-balance-calculator', priority: '0.9', changefreq: 'weekly', cat: 'OmniFood' }
 ];
 
 function generateSitemapXml() {
@@ -82,17 +85,17 @@ function generateSitemapXml() {
 `;
   }
 
-  // 19 Pairs of Calculators: Both IT and EN URLs with full cross-referencing
+  // 22 Pairs of Calculators: Both IT and EN URLs with full cross-referencing
   xml += `
   <!-- ========================================== -->
-  <!-- 3. TECHNICAL CALCULATORS (19 BILINGUAL PAIRS) -->
+  <!-- 3. TECHNICAL CALCULATORS (22 BILINGUAL PAIRS) -->
   <!-- ========================================== -->`;
 
   let currentCat = '';
   for (const pair of TOOL_PAIRS) {
     if (pair.cat !== currentCat) {
       currentCat = pair.cat;
-      xml += `\n  <!-- --- DIVISION: ${currentCat.toUpperCase()} --- -->`;
+      xml += `\n  <!-- DIVISION: ${currentCat.toUpperCase()} -->`;
     }
 
     // A. Italian Entry
@@ -134,8 +137,9 @@ const prodPath = path.resolve('Calcolatore_Pendenza/sitemap.xml');
 const stagingPath = path.resolve('OmniTools_Lab_Test/sitemap.xml');
 
 fs.writeFileSync(prodPath, sitemapContent, 'utf-8');
-fs.writeFileSync(stagingPath, sitemapContent, 'utf-8');
+if (fs.existsSync('OmniTools_Lab_Test')) {
+  fs.writeFileSync(stagingPath, sitemapContent, 'utf-8');
+}
 
 console.log(`[SUCCESS] sitemap.xml generated with ${TOOL_PAIRS.length * 2 + 3} URLs.`);
 console.log(`- Production: ${prodPath} (${fs.statSync(prodPath).size} bytes)`);
-console.log(`- Staging:    ${stagingPath} (${fs.statSync(stagingPath).size} bytes)`);

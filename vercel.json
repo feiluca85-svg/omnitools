@@ -271,6 +271,42 @@
     {
       "source": "/date-export",
       "destination": "/shelflife"
+    },
+    {
+      "source": "/nutri-export",
+      "destination": "/nutriexport"
+    },
+    {
+      "source": "/fda-nutrition",
+      "destination": "/nutriexport"
+    },
+    {
+      "source": "/nutrition-facts",
+      "destination": "/nutriexport"
+    },
+    {
+      "source": "/bakers-percentage",
+      "destination": "/impasti"
+    },
+    {
+      "source": "/batch-scaler",
+      "destination": "/impasti"
+    },
+    {
+      "source": "/impasto",
+      "destination": "/impasti"
+    },
+    {
+      "source": "/idratazione-impasto",
+      "destination": "/idratazione"
+    },
+    {
+      "source": "/calcolo-ghiaccio",
+      "destination": "/idratazione"
+    },
+    {
+      "source": "/temperatura-acqua-impasto",
+      "destination": "/idratazione"
     }
   ]
 }
