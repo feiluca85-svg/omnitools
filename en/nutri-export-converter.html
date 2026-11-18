@@ -510,6 +510,18 @@
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
 
+
+    <style id="omni-sharp-precision-grid-rules">
+        /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
+        *, *::before, *::after {
+            border-radius: 0px !important;
+        }
+        /* Specific exceptions: status dots or radial indicators */
+        .status-dot, .online-dot, input[type="radio"], circle {
+            border-radius: 9999px !important;
+        }
+    </style>
+
 </head>
 <body data-mirror-url="/nutriexport" class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
@@ -940,294 +952,53 @@
             </div></div>
     </div>
     <!-- MAIN NAVBAR & LOGO HEADER (Mobile clean, desktop sits under tabs) -->
-    <header class="no-print bg-white border-b border-slate-200 sticky top-0 md:top-[38px] z-40 shadow-2xs backdrop-blur-md bg-white/95" style="padding-top: max(env(safe-area-inset-top), 8px); padding-bottom: 8px;">
-        <div class="max-w-5xl mx-auto px-2.5 sm:px-6 flex items-center justify-between gap-1 sm:gap-2">
+    <header class="no-print bg-white dark:bg-slate-900 border-b border-[#E2E8F0] dark:border-slate-800 sticky top-0 md:top-[38px] z-40 h-[64px] flex items-center" style="border-radius: 0px;">
+        <div class="max-w-5xl mx-auto px-3 sm:px-6 w-full flex items-center justify-between gap-2">
             
-            <!-- Logo & Suite Switcher -->
-            <div class="flex items-center gap-1.5 sm:gap-3 min-w-0 flex-1">
-                <a href="/" class="flex items-center gap-2 group shrink-0 omni-brand-logo">
-                    <div class="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
-                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
-                            <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                            <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="font-jakarta font-black text-sm sm:text-base tracking-tight text-slate-900">OmniTools</span>
-                            <span class="hidden sm:inline text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-orange-200/80">Lab</span>
-                        </div>
-                    </div>
+            <!-- Left Side: Home Hub Link + Divider + Branch Icon + Tool Title + Badge -->
+            <div class="flex items-center gap-2.5 min-w-0">
+                <a href="/en/" class="text-[13px] font-medium text-[#475569] hover:text-[#0F172A] dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 flex items-center gap-1">
+                    ← All Tools
                 </a>
 
-                <span class="hidden md:inline text-slate-300">/</span>
+                <span class="w-[1px] h-4 bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
 
-                <!-- Current Tool Dropdown Button -->
-                <div class="relative min-w-0 flex-1 sm:flex-none hidden md:block">
-                    <button id="suiteMenuBtn" onclick="toggleSuiteMenu(event)" class="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] sm:text-xs font-bold transition max-w-full min-w-0 h-8">
-                        <span class="w-4 h-4 rounded-md bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
-                        <span id="suiteCurrentToolName" class="truncate min-w-0">NutriExport Converter</span>
-                        <svg id="suiteMenuChevron" class="w-3.5 h-3.5 text-slate-500 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
+                <div class="w-8 h-8 bg-orange-600 flex items-center justify-center text-white shrink-0 p-1.5 shadow-2xs" style="border-radius: 0px;">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
 
-                    <!-- Dropdown Menu Panel -->
-                    <div id="suiteMenuDropdown" class="hidden fixed inset-x-3 top-14 sm:inset-x-auto sm:top-auto sm:absolute sm:left-0 sm:mt-2 w-auto sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 max-h-[82vh] overflow-y-auto">
-                        <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
-                            <span id="suiteDropChooseCalc">Scegli Calcolatore</span>
-                            <span id="suiteDropToolCount">22 Strumenti</span>
-                        </div>
+                <span class="text-[16px] font-bold text-[#0F172A] dark:text-slate-100 truncate tracking-tight">NutriExport FDA</span>
 
-                        <details class="group/cat" data-cat="building">
-    <summary class="px-2 text-[10px] font-extrabold uppercase text-amber-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
-        <span class="flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-orange-500"></span> <span id="suiteDropBuildingTitle">OmniBuilding (6)</span>
-                            </span>
-        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div class="space-y-0.5 pt-1">
-<a href="/en/ramp-slope-calculator" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
-                    <span class="nav-tool-name font-bold">RampaFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ADA / IRC</span>
-            </a>
-            
-            <a href="/en/stair-calculator" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
-                    <span class="nav-tool-name font-bold">ScalaFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
-            </a>
-            
-            <a href="/en/pipe-slope-calculator" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
-                    <span class="nav-tool-name font-bold">TubiFacili</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Scarichi</span>
-            </a>
-            
-            <a href="/en/roof-pitch-calculator" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
-                    <span class="nav-tool-name font-bold">TettoFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pendenza & Falda</span>
-            </a>
-            
-            <a href="/en/cut-list-optimizer" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
-                    <span class="nav-tool-name font-bold">TaglioOttimo</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
-            </a>
-            
-            <a href="/en/tile-grout-calculator" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
-                    <span class="nav-tool-name font-bold">PiastrellaFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Superfici & Posa</span>
-            </a>
-    </div>
-</details>
+                <span class="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-0.5 border bg-orange-50 text-orange-700 border-orange-200 shrink-0" style="border-radius: 0px;">FDA 21 CFR • RACC</span>
+            </div>
 
-                        <details class="group/cat" data-cat="graph">
-    <summary class="px-2 text-[10px] font-extrabold uppercase text-rose-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
-        <span class="flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-rose-700"></span> <span id="suiteDropGraphTitle">OmniGraph (6)</span>
-                            </span>
-        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div class="space-y-0.5 pt-1">
-<a href="/en/book-spine-calculator" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
-                    <span class="nav-tool-name font-bold">DorsoFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Brossura</span>
-            </a>
-            
-            <a href="/en/print-resolution-calculator" data-nav-tool-id="dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
-                    <span class="nav-tool-name font-bold">RisoluzioneFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
-            </a>
-            
-            <a href="/en/pantone-ink-mixing-calculator" data-nav-tool-id="tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
-                    <span class="nav-tool-name font-bold">TintaPerfetta</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
-            </a>
-            
-            <a href="/en/barcode-generator" data-nav-tool-id="barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
-                    <span class="nav-tool-name font-bold">OmniBarcode</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
-            </a>
-            
-            <a href="/en/cmyk-ink-coverage-calculator" data-nav-tool-id="copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
-                    <span class="nav-tool-name font-bold">CoperturaFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
-            </a>
-            
-            <a href="/en/paper-cutting-yield-calculator" data-nav-tool-id="resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
-                    <span class="nav-tool-name font-bold">ResaCarta</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Fogli Macchina</span>
-            </a>
-    </div>
-</details>
-
-                        <details class="group/cat" data-cat="finance">
-    <summary class="px-2 text-[10px] font-extrabold uppercase text-emerald-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
-        <span class="flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> <span id="suiteDropFinanceTitle">OmniFinance (6)</span>
-                            </span>
-        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div class="space-y-0.5 pt-1">
-<a href="/en/mortgage-loan-amortization-calculator" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
-                    <span class="nav-tool-name font-bold">MutuoFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Finanziario</span>
-            </a>
-            
-            <a href="/en/compound-interest-calculator" data-nav-tool-id="pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
-                    <span class="nav-tool-name font-bold">InteresseComposto</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Piano Accumulo</span>
-            </a>
-            
-            <a href="/en/margin-markup-calculator" data-nav-tool-id="margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
-                    <span class="nav-tool-name font-bold">MargineFacile</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / IVA</span>
-            </a>
-            
-            <a href="/en/early-mortgage-payoff-calculator" data-nav-tool-id="estinzione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-                    <span class="nav-tool-name font-bold">EstinzioneMutuo</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bersani</span>
-            </a>
-            
-            <a href="/en/savings-goal-calculator" data-nav-tool-id="risparmio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
-                    <span class="nav-tool-name font-bold">ObiettivoRisparmio</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Sinking Fund</span>
-            </a>
-            
-            <a href="/en/fire-financial-independence-calculator" data-nav-tool-id="fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
-                    <span class="nav-tool-name font-bold">FIRE & Rendita</span>
-                </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
-            </a>
-    </div>
-</details>
-
-
-                        <details class="group/cat" data-cat="food" open>
-    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
-        <span class="flex items-center gap-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span> <span>OmniFood (4)</span>
-                        </span>
-        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-    </summary>
-    <div class="space-y-0.5 pt-1">
-<a href="/en/shelf-life-calculator" data-nav-tool-id="shelflife" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                            <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
-                                <span class="nav-tool-name font-bold">ShelfLife Export</span>
-                            </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">EU • FDA • CFIA</span>
-                        </a>
-<a href="/en/nutri-export-converter" data-nav-tool-id="nutriexport" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-orange-600 text-white font-bold">
-                            <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
-                                <span class="nav-tool-name font-bold">NutriExport Converter</span>
-                            </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">FDA 21 CFR</span>
-                        </a>
-<a href="/en/batch-scaler-calculator" data-nav-tool-id="impasti" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                            <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 18h12l3-18H3zm6 0v18m6-18v18"/></svg></span>
-                                <span class="nav-tool-name font-bold">BatchScaler Pro</span>
-                            </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Baker's %</span>
-                        </a>
-<a href="/en/hydration-balance-calculator" data-nav-tool-id="idratazione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
-                            <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>
-                                <span class="nav-tool-name font-bold">HygroBalance Lab</span>
-                            </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">T-Base &amp; Ice</span>
-                        </a>
-    </div>
-</details>
-                        <div class="space-y-1 pt-1.5 border-t border-slate-100">
-                            <div class="px-2 text-[10px] font-extrabold uppercase text-indigo-700 flex items-center gap-1">
-                                <span id="suiteDropDeskTitle">Strumenti da Scrivania</span>
-                            </div>
-                            <div class="grid grid-cols-3 gap-1 px-1">
-                                <button type="button" onclick="openDeskTool('memo'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-amber-900 border border-orange-200/80 text-[10px] font-bold transition">
-                                    <svg class="w-3.5 h-3.5 text-amber-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                    <span>Memo</span>
-                                </button>
-                                <button type="button" onclick="openDeskTool('calc'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-amber-900 border border-orange-200/80 text-[10px] font-bold transition">
-                                    <svg class="w-3.5 h-3.5 text-blue-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
-                                    <span>Calc</span>
-                                </button>
-                                <button type="button" onclick="openDeskTool('clock'); toggleSuiteMenu(event);" class="flex flex-col items-center justify-center gap-0.5 p-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-200/80 text-[10px] font-bold transition">
-                                    <svg class="w-3.5 h-3.5 text-teal-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                    <span>Clock</span>
-                                </button>
-                            </div>
-                        </div>
+            <!-- Right Side: Sharp Unified Language & Theme Control Pill -->
+            <div class="flex items-center gap-2 shrink-0">
+                <div class="inline-flex items-center h-[36px] bg-[#F8FAFC] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800" style="border-radius: 0px;">
+                    <div class="relative flex items-center px-2.5">
+                        <svg class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                        <select id="langSelect" data-lang-switcher class="appearance-none bg-transparent pl-1.5 pr-1 py-1 text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 focus:outline-none cursor-pointer" aria-label="Language Selector">
+                            <option value="en" selected>EN</option>
+                            <option value="it">IT</option>
+                        </select>
                     </div>
+
+                    <span class="w-[1px] h-[18px] bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
+
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="w-[34px] h-[34px] flex items-center justify-center hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-colors cursor-pointer text-[#475569] dark:text-slate-300" style="border-radius: 0px;" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">
+                        <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
 
-            <!-- Right Actions -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <button onclick="if(typeof triggerInstall==='function'){triggerInstall();}else{alert('OmniTools è già installato o pronto nel browser.');}" id="headerInstallBtn" class="no-print hidden sm:inline-flex items-center justify-center gap-1.5 h-8 w-8 sm:w-auto px-1.5 sm:px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 active:scale-95 rounded-xl border border-slate-200 transition shadow-2xs cursor-pointer omni-header-btn" title="Installa come App"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path><path d="M12 7v6"></path><path d="M9 10l3 3 3-3"></path></svg><span id="headerInstallText" class="hidden sm:inline text-[11px]">Installa</span></button>
-                
-                <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1 h-8 px-2.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition"><svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> <span id="headerPrintText">Stampa</span></button>
-                <div class="omni-control-capsule">
-                    <select id="langSelect" data-lang-switcher class="omni-capsule-btn" aria-label="Language Selector">
-                        <option value="en" selected>EN</option>
-                        <option value="it">IT</option>
-                    </select>
-                    <span class="omni-capsule-divider"></span>
-                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="omni-capsule-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Light/Dark Theme"><svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
-                </div>
-                </div></div></header>
+        </div>
+    </header>
     
 
     <!-- Main Container -->
@@ -2763,6 +2534,19 @@ document.addEventListener('DOMContentLoaded', () => {
         'idratazione': 'idratazione', 'hydration-balance-calculator': 'idratazione'
     };
 
+        window.openToolInTab = function(toolId, targetUrl) {
+        try {
+            let tabs = JSON.parse(sessionStorage.getItem('omni_open_tabs_v1')) || [];
+            if (toolId && !tabs.includes(toolId)) {
+                tabs.push(toolId);
+                sessionStorage.setItem('omni_open_tabs_v1', JSON.stringify(tabs));
+            }
+        } catch(e) {}
+        if (targetUrl) {
+            window.location.href = targetUrl;
+        }
+    };
+
     const TABS_KEY = 'omni_open_tabs_v1';
     let openTabs = [];
     try {
@@ -2929,7 +2713,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderChromeTabs() {
+        function renderChromeTabs() {
         const track = document.getElementById('omniChromeTabsTrack');
         if (!track) return;
 
@@ -2937,8 +2721,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const isHome = (!pathname || pathname === 'index');
         if (homeTab) {
             homeTab.className = isHome 
-                ? 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-white text-slate-900 font-extrabold border-t-2 border-blue-600 transition shrink-0 text-[11px] shadow-xs'
-                : 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]';
+                ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-semibold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-[#334155]'
+                : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#1E293B] hover:bg-slate-800 text-[#94A3B8] hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-[#334155]';
+            homeTab.style.borderRadius = '0px';
         }
 
         track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
@@ -2947,28 +2732,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const tool = TOOLS_MAP[id];
             if (!tool) return;
             const isActive = (id === pathname);
-            const curL = localStorage.getItem("omnitools_lang") || "it";
-            const localizedName = (NAV_TOOL_NAMES_I18N[id] && NAV_TOOL_NAMES_I18N[id][curL]) || tool.name;
+            const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
-            tab.title = 'Trascina in basso o clicca ↗ for staccare in finestra';
+            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r border-[#334155] transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] text-[#0F172A] border-t-blue-600 font-semibold' : 'bg-[#1E293B] hover:bg-slate-800 text-[#94A3B8] hover:text-white border-t-transparent'}`;
+            tab.style.borderRadius = '0px';
+            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
-            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
+            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
             tab.innerHTML = `
-                <a href="${(window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url}" class="flex items-center gap-2 text-inherit no-underline">
+                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline">
                     ${iconMarkup}
-                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${localizedName}</span>
+                    <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
                 </a>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 p-0.5 text-slate-400 font-mono text-[10px]">
                     ↗
                 </button>
-                <span class="close-tab hover:text-rose-500 hover:bg-black/10 rounded px-1.5 py-0.5 transition text-slate-400 font-bold" title="Chiudi scheda">✕</span>
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab hover:text-rose-400 hover:bg-black/20 p-0.5 transition text-slate-400" style="border-radius: 0px;" title="Chiudi scheda">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
             `;
 
             let tabDragY = 0;
             tab.addEventListener('mousedown', (e) => {
-                if (e.target.closest('button, span.close-tab')) return;
+                if (e.target.closest('button, .close-tab')) return;
                 tabDragY = e.clientY;
                 function checkDetach(evt) {
                     if (evt.clientY - tabDragY > 40) {
@@ -2984,22 +2771,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.addEventListener('mouseup', stopCheck);
             });
 
-            tab.querySelector('.close-tab').addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                openTabs = openTabs.filter(x => x !== id);
-                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
-                if (isActive) {
-                    const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
-                    window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
-                } else {
-                    renderChromeTabs();
-                }
-            });
-
             track.appendChild(tab);
         });
     }
+
+    window.closeToolTab = function(id) {
+        openTabs = openTabs.filter(x => x !== id);
+        try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
+        if (id === pathname) {
+            const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
+            window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
+        } else {
+            renderChromeTabs();
+        }
+    };
 
     document.addEventListener('DOMContentLoaded', renderChromeTabs);
 })();

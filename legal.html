@@ -309,6 +309,18 @@
         if (localStorage.getItem('omnitools_dark') === '1') applyDark(true);
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
+
+    <style id="omni-sharp-precision-grid-rules">
+        /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
+        *, *::before, *::after {
+            border-radius: 0px !important;
+        }
+        /* Specific exceptions: status dots or radial indicators */
+        .status-dot, .online-dot, input[type="radio"], circle {
+            border-radius: 9999px !important;
+        }
+    </style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 

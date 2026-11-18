@@ -520,6 +520,18 @@
         if (localStorage.getItem('omnitools_dark') === '1') applyDark(true);
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
     </script>
+
+    <style id="omni-sharp-precision-grid-rules">
+        /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
+        *, *::before, *::after {
+            border-radius: 0px !important;
+        }
+        /* Specific exceptions: status dots or radial indicators */
+        .status-dot, .online-dot, input[type="radio"], circle {
+            border-radius: 9999px !important;
+        }
+    </style>
+
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
@@ -531,11 +543,9 @@
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
             <!-- Fixed Home Hub Tab -->
-            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Torna alla Home Hub">
-                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
-                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                </span>
-                <span>Home Hub</span>
+            <a href="/" id="omniTabHome" class="flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-medium border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-[#334155]" style="border-radius: 0px;" title="Torna alla Home Hub">
+                <svg class="w-3.5 h-3.5 text-[#0F172A] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span class="font-medium">Home Hub</span>
             </a>
         </div>
 
@@ -544,36 +554,36 @@
             
             <!-- DESK Dropdown Trigger Button -->
             <div class="relative">
-                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
-                    <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black p-0.5"><svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-3 h-[28px] bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 hover:text-white text-xs font-semibold transition border border-amber-500/30 flex items-center gap-1.5 cursor-pointer" style="border-radius: 0px;" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
+                    <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M9 21V9"/></svg>
                     <span class="tracking-wider">DESK</span>
-                    <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
 
                 <!-- DESK Menu Dropdown in Top Bar -->
-                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
-                    <div class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-1 w-56 bg-slate-900 border border-slate-700 shadow-2xl p-1.5 z-50 space-y-1 text-xs" style="border-radius: 0px;">
+                    <div class="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400 border-b border-slate-800">
                         Strumenti da Scrivania
                     </div>
-                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 text-amber-200 hover:bg-slate-800 transition font-medium text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                         <span>OmniMemo (Post-it)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        
-                        <span>OmniCalc (Calcolatrice)</span>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 text-blue-300 hover:bg-slate-800 transition font-medium text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+                        <span>Calcolatrice da Banco</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
-                        <span>OmniClock (Orologio)</span>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 text-teal-300 hover:bg-slate-800 transition font-medium text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span>Orologio & Timer Pomodoro</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
+            <!-- Nuovo Tool Trigger Button (Command Palette / Quick Launcher) -->
             <div class="relative">
-                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
-                    <span>➕</span>
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-3 h-[28px] bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-medium transition flex items-center gap-1.5 border border-slate-700 cursor-pointer" style="border-radius: 0px;" title="Cerca e apri un nuovo tool (⌘K)">
+                    <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     <span class="hidden lg:inline">Nuovo Tool</span>
                 </button>
 
@@ -828,40 +838,40 @@
 
             <!-- Right Controls: Unified Action Bar (Segmented Control Pill + Ghost Pill Install Button) -->
             <div class="flex items-center gap-2.5 shrink-0">
-                <!-- Segmented Control Pill (Lingua + Tema) -->
-                <div class="inline-flex items-center h-[36px] px-1.5 rounded-full bg-[#F8FAFC] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 shadow-2xs">
-                    <!-- Selettore Lingua con Icona Globe 16px monocromatica -->
-                    <div class="relative flex items-center pl-1.5 pr-0.5">
-                        <svg class="w-4 h-4 text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Selettore Unificato Lingua | Tema a spigoli vivi -->
+                <div class="inline-flex items-center h-[36px] bg-[#F8FAFC] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800" style="border-radius: 0px;">
+                    <!-- Lato sinistro: Lingua -->
+                    <div class="relative flex items-center px-3">
+                        <svg class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
                             <path d="M2 12h20"/>
                         </svg>
-                        <select id="langSelect" data-lang-switcher class="appearance-none bg-transparent pl-1 pr-2 py-1 text-[13px] font-medium text-[#334155] dark:text-slate-200 focus:outline-none cursor-pointer" aria-label="Language Selector">
+                        <select id="langSelect" data-lang-switcher class="appearance-none bg-transparent pl-1.5 pr-1 py-1 text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 focus:outline-none cursor-pointer" aria-label="Language Selector">
                             <option value="it" selected class="dark:bg-slate-900 text-slate-800 dark:text-slate-200">IT</option>
                             <option value="en" class="dark:bg-slate-900 text-slate-800 dark:text-slate-200">EN</option>
                         </select>
                     </div>
 
-                    <!-- Divisore verticale sottile -->
-                    <span class="w-[1px] h-[16px] bg-[#E2E8F0] dark:bg-slate-800 mx-0.5 shrink-0"></span>
+                    <!-- Divisore verticale netto -->
+                    <span class="w-[1px] h-[20px] bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
 
-                    <!-- Toggle Dark Mode: Icona vettoriale monocromatica Moon / Sun -->
-                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="w-7 h-7 rounded-full flex items-center justify-center hover:bg-[#E2E8F0]/70 dark:hover:bg-slate-800 transition-colors ml-0.5 cursor-pointer text-[#475569] dark:text-slate-300" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Lato destro: Dark Mode -->
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="w-[36px] h-[34px] flex items-center justify-center hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-colors cursor-pointer text-[#475569] dark:text-slate-300" style="border-radius: 0px;" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">
+                        <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
                         </svg>
                     </button>
                 </div>
 
-                <!-- Bottone Installa App (PWA) Ghost Pill Button -->
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 h-[36px] text-[13px] font-medium text-[#0F172A] dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-[#F1F5F9] dark:hover:bg-slate-800 border border-[#CBD5E1] dark:border-slate-700 hover:border-slate-400 rounded-full transition-all duration-150 shadow-2xs active:scale-95 cursor-pointer" title="Installa OmniTools Lab">
-                    <svg class="w-[15px] h-[15px] text-[#475569] dark:text-slate-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 17V3"/>
-                        <path d="m6 11 6 6 6-6"/>
-                        <path d="M19 21H5"/>
+                <!-- Tasto Installa Squadrato Netto -->
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-2 px-3.5 h-[36px] text-[13px] font-medium text-[#0F172A] dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-[#F1F5F9] dark:hover:bg-slate-800 border border-[#0F172A] dark:border-slate-400 transition-all duration-150 active:scale-95 cursor-pointer whitespace-nowrap" style="border-radius: 0px;" title="Installa OmniTools Lab">
+                    <svg class="w-[14px] h-[14px] text-[#475569] dark:text-slate-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    <span id="headerInstallText" class="tracking-tight">Installa App</span>
+                    <span id="headerInstallText" class="tracking-tight">Installa</span>
                 </button>
             </div>
         </div>
@@ -873,130 +883,89 @@
         <!-- Hero Section: High Impact, Direct & Child-Proof -->
         <section class="max-w-5xl mx-auto px-4 text-center space-y-3.5">
             
-            <!-- Trust Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] text-[12px] font-medium text-[#475569] shadow-2xs">
-                <svg class="w-3.5 h-3.5 text-[#2563EB] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <!-- Trust Badge Squadrato Netto -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#EFF6FF] border border-[#BFDBFE] text-[12px] font-medium text-[#1E3A8A]" style="border-radius: 0px;">
+                <svg class="w-3.5 h-3.5 text-[#1D4ED8] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                 <span id="heroBadge">Gratuito • Zero Registrazione • 100% Offline</span>
             </div>
 
-            <!-- Big Magnetic Question -->
-            <h1 id="heroTitle" class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight max-w-2xl mx-auto">
-                Cosa vuoi calcolare oggi?
+            <!-- Big Magnetic Question / H1 Opzione B -->
+            <h1 id="heroTitle" class="text-[32px] sm:text-[38px] font-bold text-[#0F172A] dark:text-slate-100 tracking-[-0.025em] leading-tight max-w-3xl mx-auto my-4">
+                Calcoli e verifiche tecniche in tempo reale.
             </h1>
 
-            <!-- Subtitle -->
-            <p id="heroSubtitle" class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-                Strumenti tecnici di precisione. Scegli la categoria o cerca una formula.
+            <!-- Subtitle Opzione B -->
+            <p id="heroSubtitle" class="text-[15px] sm:text-[16px] text-[#475569] dark:text-slate-400 max-w-[620px] mx-auto leading-relaxed mb-7">
+                Una suite professionale di utility offline con formule certificate e riferimenti normativi sempre a portata di mano.
             </p>
 
-            <!-- Spotlight Search Bar -->
-            <div class="pt-1 max-w-[600px] mx-auto">
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <!-- Spotlight Search Bar (Sharp Precision Grid) -->
+            <div class="w-full max-w-[640px] mx-auto">
+                <div class="flex items-center justify-between w-full h-[52px] px-4 bg-white dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-700 shadow-2xs transition" style="border-radius: 0px;">
+                    <div class="flex items-center flex-1 h-full min-w-0">
+                        <svg class="w-[18px] h-[18px] text-[#64748B] dark:text-slate-400 shrink-0 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                         </svg>
+                        <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca formula, norma o tool (es. rampa, blondel, cmyk, mutuo...)" class="flex-1 h-full border-0 outline-none bg-transparent text-[15px] text-[#0F172A] dark:text-slate-100 placeholder-[#94A3B8] p-0" autocomplete="off">
                     </div>
-                    <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca: rampa, gradini, tubi, dorso libro, cmyk, mutuo, pac, margine..." class="w-full bg-white hover:bg-slate-50/70 focus:bg-white border border-[#CBD5E1] dark:border-slate-700 focus:border-blue-600 focus:ring-4 focus:ring-blue-100/60 rounded-2xl pl-11 pr-20 h-[52px] text-base sm:text-[14px] text-[#0F172A] dark:text-slate-100 placeholder-slate-400 outline-none shadow-[0_4px_12px_rgba(15,23,42,0.04)] transition">
-                    <kbd id="searchKbdHint" class="hidden sm:inline-flex items-center gap-0.5 absolute right-10 top-1/2 -translate-y-1/2 px-2 py-0.5 text-[10px] font-bold text-slate-400 bg-slate-100 border border-slate-200 rounded-lg pointer-events-none font-mono">⌘K</kbd>
-                    <button type="button" id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 text-sm font-bold">
-                        ✕
-                    </button>
+                    <div class="flex items-center gap-2 shrink-0 ml-2">
+                        <button type="button" id="clearSearchBtn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-slate-700 text-sm font-bold px-1 cursor-pointer">
+                            ✕
+                        </button>
+                        <kbd id="searchKbdHint" class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-mono font-medium text-[#64748B] bg-[#F1F5F9] dark:bg-slate-800 border border-[#E2E8F0] dark:border-slate-700" style="border-radius: 0px;">⌘K</kbd>
+                    </div>
                 </div>
 
-                <!-- Usati di Recente (Quick Chips Minimali Sotto la Searchbar) -->
-                <div id="recentToolsBar" class="hidden mt-2.5 flex flex-wrap items-center justify-center gap-1.5 text-xs transition-opacity duration-200">
-                    <div class="flex items-center gap-1 text-[#64748B] text-[12px] font-medium mr-0.5">
-                        <svg class="w-3.5 h-3.5 text-[#94A3B8] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                <!-- Usati di Recente (Minimal & Senza Box, 14px sotto searchbar) -->
+                <div id="recentToolsBar" class="hidden mt-3.5 flex flex-wrap items-center justify-center gap-2 text-xs">
+                    <div class="flex items-center gap-1.5 text-[#94A3B8] text-[12px] font-medium">
+                        <svg class="w-[13px] h-[13px] text-[#94A3B8] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <span>Recenti:</span>
                     </div>
-                    <div id="recentToolsList" class="flex flex-wrap items-center justify-center gap-1.5"></div>
+                    <div id="recentToolsList" class="flex flex-wrap items-center justify-center gap-1 text-[12px] text-[#475569] dark:text-slate-400"></div>
                 </div>
             </div>
 
             <!-- DIVISION SEGMENTED PICKER: Tabbed Hub (OmniTools 12-Tool Standard) -->
-            <div class="pt-2 sm:pt-3 max-w-4xl sm:max-w-5xl mx-auto w-full">
-                <div class="grid grid-cols-2 sm:grid-cols-5 gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-slate-200/70 rounded-2xl sm:rounded-3xl backdrop-blur-xs border border-slate-200">
+            <div class="pt-6 max-w-4xl sm:max-w-5xl mx-auto w-full">
+                <!-- Single-row compact category tabs (Sharp Precision Grid) -->
+                <div class="flex items-center justify-center gap-2 flex-wrap">
                     
                     <!-- Tab 1: Tutti i Tool -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/25 border border-blue-600 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-white/30">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
-                                <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-                                <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
-                            </svg>
-                        </div>
-                        <div class="text-left leading-tight min-w-0">
-                            <span id="filterAllText" class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">Tutti i Tool</span>
-                            <span id="filterAllSubtext" class="subtext text-[10px] sm:text-[11px] text-blue-100 font-semibold block truncate">22 Strumenti</span>
-                        </div>
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="h-[40px] px-4 bg-[#0F172A] text-white text-[13px] font-medium flex items-center gap-2 border border-[#0F172A] transition cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        <span id="filterAllText">Tutti i Tool</span>
+                        <span class="text-[11px] opacity-75 font-mono">(22)</span>
                     </button>
 
                     <!-- Tab 2: OmniBuilding -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-amber-300/40">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3" />
-                                <path d="M 9.5 8.5 V 23.5 H 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-                                <line x1="9.5" y1="23.5" x2="22.5" y2="10.5" stroke="#ffffff" stroke-width="2" stroke-dasharray="2.5 2" />
-                                <circle cx="9.5" cy="23.5" r="2.2" fill="#fde047" />
-                            </svg>
-                        </div>
-                        <div class="text-left leading-tight min-w-0">
-                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniBuilding</span>
-                            <span id="filterBuildingSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Cantiere & Fabbricazione</span>
-                        </div>
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="h-[40px] px-4 bg-white dark:bg-slate-900 text-[#334155] dark:text-slate-300 border border-[#E2E8F0] dark:border-slate-800 hover:border-slate-400 text-[13px] font-medium flex items-center gap-2 transition cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-amber-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M17 2H7l-5 5v15h20V7l-5-5z"/><path d="M14 2v20"/><path d="M10 7v15"/></svg>
+                        <span>OmniEdilizia</span>
+                        <span class="text-[11px] text-slate-400 font-mono">(6)</span>
                     </button>
 
                     <!-- Tab 3: OmniFinance -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-emerald-300/40">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
-                                <polygon points="16,6.5 24.5,13.5 16,25.5 7.5,13.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linejoin="round" />
-                                <line x1="7.5" y1="13.5" x2="24.5" y2="13.5" stroke="#ffffff" stroke-width="1.8" />
-                                <circle cx="16" cy="13.5" r="2.2" fill="#34d399" />
-                            </svg>
-                        </div>
-                        <div class="text-left leading-tight min-w-0">
-                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniFinance</span>
-                            <span id="filterFinanceSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Finanza & Business</span>
-                        </div>
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="h-[40px] px-4 bg-white dark:bg-slate-900 text-[#334155] dark:text-slate-300 border border-[#E2E8F0] dark:border-slate-800 hover:border-slate-400 text-[13px] font-medium flex items-center gap-2 transition cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span>OmniFinanza</span>
+                        <span class="text-[11px] text-slate-400 font-mono">(6)</span>
                     </button>
 
                     <!-- Tab 4: OmniGraph -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-rose-300/40">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
-                                <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
-                                <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                                <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                                <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                            </svg>
-                        </div>
-                        <div class="text-left leading-tight min-w-0">
-                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniGraph</span>
-                            <span id="filterGraphSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">6 Grafica & Stampa</span>
-                        </div>
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="h-[40px] px-4 bg-white dark:bg-slate-900 text-[#334155] dark:text-slate-300 border border-[#E2E8F0] dark:border-slate-800 hover:border-slate-400 text-[13px] font-medium flex items-center gap-2 transition cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-rose-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/></svg>
+                        <span>OmniGrafica</span>
+                        <span class="text-[11px] text-slate-400 font-mono">(6)</span>
                     </button>
 
                     <!-- Tab 5: OmniFood -->
-                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="col-span-2 sm:col-span-1 flex flex-row items-center justify-start gap-2 sm:gap-2.5 py-2 sm:py-2.5 px-2.5 sm:px-3 rounded-xl sm:rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/80 font-bold transition-all duration-200 active:scale-95 cursor-pointer">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center text-white shrink-0 p-1 shadow-xs border border-orange-300/40">
-                            <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.6" />
-                                <path d="M11 9.5H21M13.5 9.5V14.5L9.5 21.5C9 22.4 9.6 23.5 10.7 23.5H21.3C22.4 23.5 23 22.4 22.5 21.5L18.5 14.5V9.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                <circle cx="16" cy="19" r="2" fill="#fed7aa" />
-                            </svg>
-                        </div>
-                        <div class="text-left leading-tight min-w-0">
-                            <span class="block text-xs sm:text-[14px] font-black tracking-tight leading-tight truncate">OmniFood</span>
-                            <span id="filterFoodSubtext" class="subtext text-[10px] sm:text-[11px] text-slate-500 font-semibold block truncate">4 FoodTech &amp; Export</span>
-                        </div>
+                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="h-[40px] px-4 bg-white dark:bg-slate-900 text-[#334155] dark:text-slate-300 border border-[#E2E8F0] dark:border-slate-800 hover:border-slate-400 text-[13px] font-medium flex items-center gap-2 transition cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-orange-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v20M18 2v20M12 2v20M3 7h18M3 17h18"/></svg>
+                        <span>OmniFood</span>
+                        <span class="text-[11px] text-slate-400 font-mono">(4)</span>
                     </button>
-
                 </div>
             </div>
 
@@ -1033,23 +1002,23 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     
                     <!-- TOOL 1: RampaFacile -->
-                    <a href="/piastrelle" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="piastrelle pavimenti rivestimenti piastrellista posa colla stucco fughe sfrido sacchi colla leroy merlin brico cantiere mattonelle">
+                    <a href="/piastrelle" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('piastrelle');" style="border-radius: 0px;" data-tags="piastrelle pavimenti rivestimenti piastrellista posa colla stucco fughe sfrido sacchi colla leroy merlin brico cantiere mattonelle">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-amber-50 text-amber-700 border-amber-200">Superfici & Posa</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-amber-50 text-amber-700 border-amber-200" style="border-radius: 0px;">Superfici & Posa</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolPiastrelleTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">PiastrellaFacile</h3>
+                                <h3 id="toolPiastrelleTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">PiastrellaFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolPiastrelleDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolPiastrelleDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcolatore di pavimenti e rivestimenti: sfrido per tagli, numero scatole, sacchi di colla (kg) e stucco per fughe con distinta d'acquisto.
                             </p>
 
@@ -1058,16 +1027,16 @@
                         </div>
 
                         <!-- CTA Bar -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/rampe" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="rampa rampe pendenza gradi disabili dm 236 autorimesse garage dislivello pendenza disabili lunghezza a terra">
+<a href="/rampe" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('rampe');" style="border-radius: 0px;" data-tags="rampa rampe pendenza gradi disabili dm 236 autorimesse garage dislivello pendenza disabili lunghezza a terra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
                                     <!-- Blueprint Ramp SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M 4 24 H 28 L 4 10 Z" fill="rgba(255,255,255,0.2)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round" />
@@ -1075,16 +1044,16 @@
                                         <path d="M 9 20 A 4 4 0 0 1 15 20" stroke="#ffffff" stroke-width="2" />
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] bg-[#FEF3C7] text-[#B45309] border border-[#FDE68A]">DM 236/89</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 bg-[#FEF3C7] text-[#B45309] border border-[#FDE68A]" style="border-radius: 0px;">DM 236/89</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolRampeTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">RampaFacile</h3>
+                                <h3 id="toolRampeTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">RampaFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolRampeDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolRampeDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcola pendenza %, gradi e lunghezza a terra per disabili (DM 236/89) e garage in 1 secondo.
                             </p>
 
@@ -1093,16 +1062,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/scale" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
+<a href="/scale" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('scale');" style="border-radius: 0px;" data-tags="scala scale gradini gradino alzata pedata blondel dislivello scale interne din 18065 numero gradini">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
                                     <!-- Blueprint Stairs SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M 5 25 H 12 V 18 H 19 V 11 H 27" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -1110,16 +1079,16 @@
                                         <line x1="19" y1="18" x2="19" y2="11" stroke="#fde047" stroke-width="2" stroke-dasharray="1.5 1.5" />
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-amber-50 text-amber-700 border-amber-200">Blondel</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-amber-50 text-amber-700 border-amber-200" style="border-radius: 0px;">Blondel</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolScaleTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">ScalaFacile</h3>
+                                <h3 id="toolScaleTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">ScalaFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolScaleDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolScaleDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Trova numero di gradini, alzata e pedata perfetti con la formula ergonomica di Blondel.
                             </p>
 
@@ -1128,28 +1097,28 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/tetto" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="tetto falda pendenza trave colmo puntone gradi percentuale superficie copertura tettoia calcolo cantiere">
+<a href="/tetto" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('tetto');" style="border-radius: 0px;" data-tags="tetto falda pendenza trave colmo puntone gradi percentuale superficie copertura tettoia calcolo cantiere">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-amber-50 text-amber-700 border-amber-200">Falda & Gradi</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-amber-50 text-amber-700 border-amber-200" style="border-radius: 0px;">Falda & Gradi</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolTettoTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">TettoFacile</h3>
+                                <h3 id="toolTettoTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">TettoFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolTettoDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolTettoDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcolo pendenza falda tetto in gradi e %, quota colmo, lunghezza reale della trave e superficie.
                             </p>
 
@@ -1158,16 +1127,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/tubi" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
+<a href="/tubi" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('tubi');" style="border-radius: 0px;" data-tags="scarico scarichi tubi pendenza tubazioni fognatura acque nere grigie caduta en 12056 pendenza scarico autopulizia">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-md shadow-amber-500/25 p-2">
                                     <!-- Blueprint Pipe Flow SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <line x1="5" y1="11" x2="27" y2="21" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" />
@@ -1175,16 +1144,16 @@
                                         <circle cx="21" cy="22" r="2" fill="#fde047" />
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-amber-50 text-amber-700 border-amber-200">UNI EN 12056</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-amber-50 text-amber-700 border-amber-200" style="border-radius: 0px;">UNI EN 12056</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolTubiTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">ScaricoFacile</h3>
+                                <h3 id="toolTubiTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">ScaricoFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolTubiDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolTubiDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Pendenza corretta, dislivello al metro e verifica autopulizia per tubazioni di scarico (UNI EN 12056).
                             </p>
 
@@ -1193,28 +1162,28 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/taglio" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="taglio barre travi legno metallo sfrido kerf lama sega ottimizzatore 1d profilati tubi bin packing cantiere falegnameria">
+<a href="/taglio" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('taglio');" style="border-radius: 0px;" data-tags="taglio barre travi legno metallo sfrido kerf lama sega ottimizzatore 1d profilati tubi bin packing cantiere falegnameria">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shadow-md shadow-amber-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-amber-50 text-amber-700 border-amber-200">Taglio 1D & Sfrido</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-amber-50 text-amber-700 border-amber-200" style="border-radius: 0px;">Taglio 1D & Sfrido</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolTaglioTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">TaglioOttimo</h3>
+                                <h3 id="toolTaglioTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">TaglioOttimo</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolTaglioDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolTaglioDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Ottimizzatore di taglio 1D per travi, barre e tubi. Riduci lo sfrido con algoritmo bin-packing e spessore lama.
                             </p>
 
@@ -1223,9 +1192,9 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                 </div>
@@ -1259,11 +1228,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     
                     <!-- TOOL 10: MutuoFacile -->
-                    <a href="/mutuo" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
+                    <a href="/mutuo" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('mutuo');" style="border-radius: 0px;" data-tags="mutuo rata ammortamento francese banca finanziamento debito tasso tan taeg prestito sostenibilita reddito 33%">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M4 12 L16 4 L28 12 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
                                         <rect x="7" y="13" width="3" height="11" rx="0.5" fill="#34d399"/>
@@ -1273,16 +1242,16 @@
                                         <rect x="4" y="24" width="24" height="4" rx="1" fill="#065f46" stroke="#34d399" stroke-width="1.5"/>
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMutuoBadge">Ammortamento Francese</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolMutuoTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">MutuoFacile</h3>
+                                <h3 id="toolMutuoTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">MutuoFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolMutuoDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolMutuoDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcola la rata mensile costante, il totale interessi bancari, il piano di ammortamento e la sostenibilità con la regola bancaria del 33%.
                             </p>
 
@@ -1291,28 +1260,28 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/estinzione" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
+<a href="/estinzione" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('estinzione');" style="border-radius: 0px;" data-tags="estinzione anticipata mutuo parziale totale rata anni durata decreto bersani risparmio interessi ammortamento">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolEstinzioneBadge">Legge Bersani</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolEstinzioneTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">EstinzioneFacile</h3>
+                                <h3 id="toolEstinzioneTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">EstinzioneFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolEstinzioneDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolEstinzioneDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Simula l'estinzione anticipata parziale del mutuo. Confronta il taglio della rata mensile con la riduzione degli anni e calcola il risparmio netto di interessi (zero penali).
                             </p>
 
@@ -1321,16 +1290,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/margine" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
+<a href="/margine" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('margine');" style="border-radius: 0px;" data-tags="margine profitto ricarico markup cogs prezzo vendita utile commercio pricing iva imposta gross margin retail ecommerce">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M6 14 L14 6 H26 V18 L18 26 Z" fill="#047857" stroke="#34d399" stroke-width="1.5" stroke-linejoin="round"/>
                                         <circle cx="21" cy="11" r="2" fill="#ffffff"/>
@@ -1339,16 +1308,16 @@
                                         <circle cx="17" cy="17" r="1" fill="#ffffff"/>
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolMargineBadge">Markup & Gross Margin</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolMargineTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">MargineFacile</h3>
+                                <h3 id="toolMargineTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">MargineFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolMargineDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolMargineDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Risolvi la confusione tra margine di profitto e markup. Calcola il prezzo di vendita da costo unitario (COGS) e scorpora le aliquote IVA.
                             </p>
 
@@ -1357,16 +1326,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/pac" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
+<a href="/pac" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('pac');" style="border-radius: 0px;" data-tags="interesse composto pac piano accumulo risparmio rendita 4% s&p500 investimento dividendi montante ricchezza fire">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M5 25 L11 20 L17 17 L22 11 L27 6" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M5 25 L11 20 L17 17 L22 11 L27 6 L27 25 Z" fill="rgba(52, 211, 153, 0.25)"/>
@@ -1374,16 +1343,16 @@
                                         <line x1="5" y1="25" x2="27" y2="25" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolPacBadge">PAC & Rendita 4%</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolPacTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">InteresseComposto</h3>
+                                <h3 id="toolPacTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">InteresseComposto</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolPacDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolPacDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Simula il potere dell'interesse composto con versamenti periodici. Calcola il montante futuro e la rendita passiva mensile sostenibile (Regola del 4% FIRE).
                             </p>
 
@@ -1392,28 +1361,28 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/risparmio" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
+<a href="/risparmio" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('risparmio');" style="border-radius: 0px;" data-tags="risparmio sinking fund fondo emergenza obiettivo quota mensile piano spesa accumulo rendimento">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolRisparmioBadge">Sinking Fund</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolRisparmioBadge">Sinking Fund</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolRisparmioTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">ObiettivoRisparmio</h3>
+                                <h3 id="toolRisparmioTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">ObiettivoRisparmio</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolRisparmioDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolRisparmioDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcola la quota di accantonamento mensile per anticipo casa, auto, fondo emergenza o viaggi, con o senza rendimento composto.
                             </p>
 
@@ -1422,32 +1391,32 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/fire" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
+<a href="/fire" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('fire');" style="border-radius: 0px;" data-tags="fire libertafinanziaria rendita passiva trinity study 4% swr pensione anticipata patrimonio montante indipendenza finanziaria">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white flex items-center justify-center shadow-md shadow-emerald-700/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <path d="M16 4 C11 10, 8 15, 8 20 A8 8 0 0 0 24 20 C24 15, 21 10, 16 4 Z" fill="#047857" stroke="#34d399" stroke-width="1.8" stroke-linejoin="round"/>
                                         <path d="M16 13 C13.5 16, 12 19, 12 22 A4 4 0 0 0 20 22 C20 19, 18.5 16, 16 13 Z" fill="#34d399" opacity="0.9"/>
                                         <circle cx="16" cy="22" r="2" fill="#ffffff"/>
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolFireBadge">Trinity Study 4%</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-emerald-50 text-emerald-800 border border-emerald-200" id="toolFireBadge">Trinity Study 4%</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolFireTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">FIRE & Rendita Passiva</h3>
+                                <h3 id="toolFireTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">FIRE & Rendita Passiva</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolFireDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolFireDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcola il tuo FIRE Number secondo lo Studio Trinity (regola del 4% / 25x spese annue), gli anni alla libertà finanziaria e la traiettoria di accumulo.
                             </p>
 
@@ -1456,9 +1425,9 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                 </div>
@@ -1490,11 +1459,11 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     
                     <!-- TOOL 4: DorsoFacile -->
-                    <a href="/barcode" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
+                    <a href="/barcode" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('barcode');" style="border-radius: 0px;" data-tags="barcode codice a barre ean 13 ean13 upc code 128 code 39 tessera sanitaria codice fiscale gs1 laser 670 nm vettoriale svg contrasto scanner cassa">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <rect x="4" y="6" width="24" height="20" rx="4" fill="#4c0519" />
                                         <line x1="8" y1="10" x2="8" y2="22" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
@@ -1506,16 +1475,16 @@
                                         <line x1="5" y1="16" x2="27" y2="16" stroke="#fda4af" stroke-width="1.6" stroke-linecap="round" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-rose-50 text-rose-800 border border-rose-200" id="toolBarcodeBadge">GS1 & Vettoriale</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolBarcodeTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">OmniBarcode</h3>
+                                <h3 id="toolBarcodeTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">OmniBarcode</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolBarcodeDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolBarcodeDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Genera codici a barre SVG vettoriali puri (EAN-13, Tessera Sanitaria Code 39, Code 128) con verifica contrasto laser 670 nm GS1.
                             </p>
 
@@ -1524,16 +1493,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/dpi" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
+<a href="/dpi" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('dpi');" style="border-radius: 0px;" data-tags="dpi ppi pixel pixelatura risoluzione stampa formato grande formato poster manifesto offset distanza occhio photoshop acuità visiva">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <!-- Blueprint DPI Grid SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <circle cx="14" cy="14" r="9" stroke="#ffffff" stroke-width="2.5" />
@@ -1544,16 +1513,16 @@
                                         <rect x="15" y="15" width="3" height="3" fill="#fda4af" />
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-rose-50 text-rose-800 border-rose-200">Pixel & Acuità</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-rose-50 text-rose-800 border-rose-200" style="border-radius: 0px;">Pixel & Acuità</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolDpiTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">RisoluzioneFacile</h3>
+                                <h3 id="toolDpiTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">RisoluzioneFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolDpiDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolDpiDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Converti Pixel in Centimetri e verifica i DPI ideali in base alla distanza di visione dell'occhio.
                             </p>
 
@@ -1562,16 +1531,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/dorso" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
+<a href="/dorso" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('dorso');" style="border-radius: 0px;" data-tags="dorso libro brossura copertina refili indesign kdp amazon pagine grammatura mano carta fustella spessore dorso">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <!-- Blueprint Book Spine SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <rect x="7" y="5" width="18" height="22" rx="2" stroke="#ffffff" stroke-width="2.5" />
@@ -1581,16 +1550,16 @@
                                         <line x1="20" y1="12" x2="22" y2="12" stroke="#ffffff" stroke-width="1.8" />
                                     </svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-rose-50 text-rose-800 border-rose-200">Editoria & KDP</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-rose-50 text-rose-800 border-rose-200" style="border-radius: 0px;">Editoria & KDP</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolDorsoTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">DorsoFacile</h3>
+                                <h3 id="toolDorsoTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">DorsoFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolDorsoDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolDorsoDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcola lo spessore esatto del dorso per la copertina in base a pagine, grammatura e carta.
                             </p>
 
@@ -1599,16 +1568,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/copertura" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="copertura inchiostro cmyk tac total area coverage costo copia stampa preventivo quadricromia densitometria rip">
+<a href="/copertura" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('copertura');" style="border-radius: 0px;" data-tags="copertura inchiostro cmyk tac total area coverage costo copia stampa preventivo quadricromia densitometria rip">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <rect x="4" y="6" width="24" height="20" rx="4" fill="#881337" />
                                         <circle cx="11" cy="13" r="3" fill="#22d3ee" />
@@ -1616,16 +1585,16 @@
                                         <circle cx="16" cy="20" r="3" fill="#facc15" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolCoperturaBadge">CMYK & Costo Copia</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-rose-50 text-rose-800 border border-rose-200" id="toolCoperturaBadge">CMYK & Costo Copia</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolCoperturaTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">CoperturaFacile</h3>
+                                <h3 id="toolCoperturaTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">CoperturaFacile</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolCoperturaDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolCoperturaDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Analisi densitometrica CMYK e TAC (Total Area Coverage) in tempo reale. Calcola il consumo in grammi e il costo copia con privacy totale.
                             </p>
 
@@ -1634,16 +1603,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/tinta" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
+<a href="/tinta" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('tinta');" style="border-radius: 0px;" data-tags="tinta colore pantone cmyk rgb hex calibrazione prova stampa bobina rotativa bobina offset digitale scarto bracketing fogra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <!-- Blueprint Swatch Matrix SVG -->
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <rect x="4" y="4" width="7" height="7" rx="1.5" fill="#f43f5e" stroke="none" />
@@ -1659,16 +1628,16 @@
                                         <rect x="21" y="21" width="7" height="7" rx="1.5" fill="#4c0519" stroke="none" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolTintaBadge">CMYK & Rotativa</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-rose-50 text-rose-800 border border-rose-200" id="toolTintaBadge">CMYK & Rotativa</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolTintaTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">TintaPerfetta</h3>
+                                <h3 id="toolTintaTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">TintaPerfetta</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolTintaDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolTintaDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Genera matrici cromatiche di scarto per azzeccare la tinta al primo colpo su macchine offset, rotative e stampanti digitali.
                             </p>
 
@@ -1677,16 +1646,16 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
-<a href="/resa" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
+<a href="/resa" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('resa');" style="border-radius: 0px;" data-tags="resa carta foglio macchina taglio ghigliottina 70x100 64x88 sra3 sfrido pose impaginazione nesting fibra">
                         <div class="space-y-3">
                             <!-- Visual Header & Micro Blueprint -->
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-rose-800 to-rose-950 text-white flex items-center justify-center shadow-md shadow-rose-900/25 p-2">
                                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                                         <rect x="4" y="4" width="24" height="24" rx="3" fill="#4c0519" stroke="#fda4af" stroke-width="1.5" />
                                         <rect x="7" y="7" width="8" height="6" rx="1" fill="#f43f5e" />
@@ -1695,16 +1664,16 @@
                                         <rect x="17" y="15" width="8" height="6" rx="1" fill="#f43f5e" />
                                     </svg>
                                 </div>
-                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200" id="toolResaBadge">Nesting & Taglio</span>
+                                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5  bg-rose-50 text-rose-800 border border-rose-200" id="toolResaBadge">Nesting & Taglio</span>
                             </div>
 
                             <!-- Title & Direct Question Hook -->
                             <div>
-                                <h3 id="toolResaTitle" class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">ResaCarta</h3>
+                                <h3 id="toolResaTitle" class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">ResaCarta</h3>
                             </div>
 
                             <!-- Plain Description -->
-                            <p id="toolResaDesc" class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p id="toolResaDesc" class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Ottimizzazione taglio da 70x100, 64x88 e SRA3. Calcolo pose con rotazione, sfrido %, peso commessa e verifica senso fibra per la piega.
                             </p>
 
@@ -1713,9 +1682,9 @@
                         </div>
 
                         <!-- Big Action CTA Button -->
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                 </div>
@@ -1749,91 +1718,91 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
                     <!-- Tool 1: ShelfLife & Export Date -->
-                    <a href="/shelflife" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="scadenza tmc lotto export usa fda canada cfia medio oriente gcc date">
+                    <a href="/shelflife" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('shelflife');" style="border-radius: 0px;" data-tags="scadenza tmc lotto export usa fda canada cfia medio oriente gcc date">
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-orange-50 text-orange-700 border-orange-200">UE • USA • CA • GCC</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-orange-50 text-orange-700 border-orange-200" style="border-radius: 0px;">UE • USA • CA • GCC</span>
                             </div>
                             <div>
-                                <h3 class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">ShelfLife &amp; Export Date</h3>
+                                <h3 class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">ShelfLife &amp; Export Date</h3>
                             </div>
-                            <p class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcola TMC/Scadenza e converte simultaneamente il formato lotto per UE (gg/mm/aaaa), USA (mm/dd/yyyy), Canada CFIA (YYYY AL MM DD) e Medio Oriente.
                             </p>
                             <div class="pt-3 text-[12px] font-medium text-[#94A3B8] dark:text-slate-500 tracking-tight flex items-center gap-1.5">Formato UE / USA  •  Canada CFIA  •  GCC / MENA</div>
                         </div>
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                     <!-- Tool 2: NutriExport Converter -->
-                    <a href="/nutriexport" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="nutrizione fda 100g 21 cfr 101.9 tabella nutrizionale racc sodio sale calorie etichette export usa canada cfia">
+                    <a href="/nutriexport" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('nutriexport');" style="border-radius: 0px;" data-tags="nutrizione fda 100g 21 cfr 101.9 tabella nutrizionale racc sodio sale calorie etichette export usa canada cfia">
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-orange-50 text-orange-700 border-orange-200">FDA 21 CFR • RACC</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-orange-50 text-orange-700 border-orange-200" style="border-radius: 0px;">FDA 21 CFR • RACC</span>
                             </div>
                             <div>
-                                <h3 class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">NutriExport Converter</h3>
+                                <h3 class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">NutriExport Converter</h3>
                             </div>
-                            <p class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Da tabella nutrizionale UE (100g) a Nutrition Facts FDA ufficiale per porzione con porzioni RACC, conversione sale/sodio e arrotondamenti legali.
                             </p>
                             <div class="pt-3 text-[12px] font-medium text-[#94A3B8] dark:text-slate-500 tracking-tight flex items-center gap-1.5">Reg. 1169/2011 → FDA  •  Sale → Sodio mg  •  % Daily Value</div>
                         </div>
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                     <!-- Tool 3: BatchScaler Pro -->
-                    <a href="/impasti" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="impasti pane pizza panificazione baker percentage sfrido calo cottura lotti laboratorio pasticceria farina idratazione">
+                    <a href="/impasti" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('impasti');" style="border-radius: 0px;" data-tags="impasti pane pizza panificazione baker percentage sfrido calo cottura lotti laboratorio pasticceria farina idratazione">
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 18h12l3-18H3zm6 0v18m6-18v18"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-orange-50 text-orange-700 border-orange-200">Baker's % • Lotti Banco</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-orange-50 text-orange-700 border-orange-200" style="border-radius: 0px;">Baker's % • Lotti Banco</span>
                             </div>
                             <div>
-                                <h3 class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">BatchScaler Pro</h3>
+                                <h3 class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">BatchScaler Pro</h3>
                             </div>
-                            <p class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Scalatore professionale per panificazione e pasticceria: ricalcolo per massa totale, numero pezzi o ingrediente limitante con sfrido e calo peso cottura.
                             </p>
                             <div class="pt-3 text-[12px] font-medium text-[#94A3B8] dark:text-slate-500 tracking-tight flex items-center gap-1.5">Farina Base 100%  •  Sfrido Macchina %  •  Calo Cottura</div>
                         </div>
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                     <!-- Tool 4: HygroBalance Lab -->
-                    <a href="/idratazione" class="tool-card group relative bg-white dark:bg-slate-900 rounded-2xl p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_3px_rgba(15,23,42,0.03)] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-tags="idratazione acqua impasto t-base ghiaccio termodinamica lievito madre uova latte burro temperatura farina temperatura ambiente spirale">
+                    <a href="/idratazione" class="tool-card group relative bg-white dark:bg-slate-900 p-6 border border-[#E2E8F0] dark:border-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] hover:border-slate-900 dark:hover:border-slate-400 transition-all duration-150 flex flex-col justify-between" onclick="if(window.openToolInTab) window.openToolInTab('idratazione');" style="border-radius: 0px;" data-tags="idratazione acqua impasto t-base ghiaccio termodinamica lievito madre uova latte burro temperatura farina temperatura ambiente spirale">
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
+                                <div class="w-10 h-10 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;" bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white shadow-md shadow-orange-500/25 p-2">
                                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold tracking-[0.03em] px-2 py-0.5 rounded-[6px] border bg-orange-50 text-orange-700 border-orange-200">T-Base &amp; Ghiaccio Termodinamico</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-orange-50 text-orange-700 border-orange-200" style="border-radius: 0px;">T-Base &amp; Ghiaccio Termodinamico</span>
                             </div>
                             <div>
-                                <h3 class="text-[18px] font-semibold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight">HygroBalance Lab</h3>
+                                <h3 class="text-[18px] font-bold text-[#0F172A] dark:text-slate-100 group-hover:text-blue-600 transition tracking-tight mt-[18px]">HygroBalance Lab</h3>
                             </div>
-                            <p class="text-[14px] text-[#64748B] dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
+                            <p class="text-[14px] text-[#475569] dark:text-slate-400 leading-[1.55] mt-2 line-clamp-3">
                                 Calcolo idratazione reale vs apparente (acqua legata in uova, burro, latte), regola termodinamica della T-Base e grammi di ghiaccio da sostituire all'acqua.
                             </p>
                             <div class="pt-3 text-[12px] font-medium text-[#94A3B8] dark:text-slate-500 tracking-tight flex items-center gap-1.5">Acqua Libera &amp; Legata  •  Regola T-Base  •  Ghiaccio (80 kcal/kg)</div>
                         </div>
-                        <div class="pt-3 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
-                            <span class="text-[12px] font-medium text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
-                            <span class="text-[#64748B] group-hover:text-blue-600 dark:text-slate-400 dark:group-hover:text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-sm">→</span>
+                        <div class="pt-3.5 border-t border-[#F1F5F9] dark:border-slate-800 flex items-center justify-between mt-4">
+                            <span class="text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Apri calcolatore</span>
+                            <svg class="w-3.5 h-3.5 text-[#0F172A] dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </div></a>
 
                 </div>
@@ -1842,7 +1811,7 @@
             <!-- NATIVE TECHNICAL SPONSOR / PARTNER SHOWCASE BANNER (3 Divisions Exclusivity) -->
             <div id="hubSponsorBanner" class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-5 sm:p-6 border border-indigo-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
                 <div class="flex items-start gap-4 text-left">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-2xl shrink-0">
+                    <div class="w-10 h-10" style="border-radius: 0px;" bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-2xl shrink-0">
                         🤝
                     </div>
                     <div class="space-y-1.5">
@@ -2778,6 +2747,19 @@ document.addEventListener('click', (e) => {
         'idratazione': 'idratazione', 'hydration-balance-calculator': 'idratazione'
     };
 
+        window.openToolInTab = function(toolId, targetUrl) {
+        try {
+            let tabs = JSON.parse(sessionStorage.getItem('omni_open_tabs_v1')) || [];
+            if (toolId && !tabs.includes(toolId)) {
+                tabs.push(toolId);
+                sessionStorage.setItem('omni_open_tabs_v1', JSON.stringify(tabs));
+            }
+        } catch(e) {}
+        if (targetUrl) {
+            window.location.href = targetUrl;
+        }
+    };
+
     const TABS_KEY = 'omni_open_tabs_v1';
     let openTabs = [];
     try {
@@ -2944,7 +2926,7 @@ document.addEventListener('click', (e) => {
         }
     }
 
-    function renderChromeTabs() {
+        function renderChromeTabs() {
         const track = document.getElementById('omniChromeTabsTrack');
         if (!track) return;
 
@@ -2952,8 +2934,9 @@ document.addEventListener('click', (e) => {
         const isHome = (!pathname || pathname === 'index');
         if (homeTab) {
             homeTab.className = isHome 
-                ? 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-white text-slate-900 font-extrabold border-t-2 border-blue-600 transition shrink-0 text-[11px] shadow-xs'
-                : 'flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]';
+                ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-semibold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-[#334155]'
+                : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#1E293B] hover:bg-slate-800 text-[#94A3B8] hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-[#334155]';
+            homeTab.style.borderRadius = '0px';
         }
 
         track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
@@ -2962,26 +2945,30 @@ document.addEventListener('click', (e) => {
             const tool = TOOLS_MAP[id];
             if (!tool) return;
             const isActive = (id === pathname);
+            const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-1.5 px-3 py-1.5 rounded-t-xl text-[11px] font-bold border-t-2 transition shrink-0 cursor-pointer ${isActive ? 'bg-white text-slate-900 border-blue-600 shadow-xs' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent'}`;
+            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r border-[#334155] transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] text-[#0F172A] border-t-blue-600 font-semibold' : 'bg-[#1E293B] hover:bg-slate-800 text-[#94A3B8] hover:text-white border-t-transparent'}`;
+            tab.style.borderRadius = '0px';
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
-            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`;
+            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
             tab.innerHTML = `
-                <a href="${(window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url}" class="flex items-center gap-2 text-inherit no-underline">
+                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline">
                     ${iconMarkup}
-                    <span class="truncate max-w-[95px] sm:max-w-[130px] font-bold">${tool.name}</span>
+                    <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
                 </a>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 px-1 py-0.5 rounded hover:bg-black/10 text-slate-400 font-mono text-[11px] font-bold">
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 p-0.5 text-slate-400 font-mono text-[10px]">
                     ↗
                 </button>
-                <span class="close-tab hover:text-rose-500 hover:bg-black/10 rounded px-1.5 py-0.5 transition text-slate-400 font-bold" title="Chiudi scheda">✕</span>
+                <button onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab hover:text-rose-400 hover:bg-black/20 p-0.5 transition text-slate-400" style="border-radius: 0px;" title="Chiudi scheda">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
             `;
 
             let tabDragY = 0;
             tab.addEventListener('mousedown', (e) => {
-                if (e.target.closest('button, span.close-tab')) return;
+                if (e.target.closest('button, .close-tab')) return;
                 tabDragY = e.clientY;
                 function checkDetach(evt) {
                     if (evt.clientY - tabDragY > 40) {
@@ -2997,22 +2984,20 @@ document.addEventListener('click', (e) => {
                 document.addEventListener('mouseup', stopCheck);
             });
 
-            tab.querySelector('.close-tab').addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                openTabs = openTabs.filter(x => x !== id);
-                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
-                if (isActive) {
-                    const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
-                    window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
-                } else {
-                    renderChromeTabs();
-                }
-            });
-
             track.appendChild(tab);
         });
     }
+
+    window.closeToolTab = function(id) {
+        openTabs = openTabs.filter(x => x !== id);
+        try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
+        if (id === pathname) {
+            const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
+            window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
+        } else {
+            renderChromeTabs();
+        }
+    };
 
     document.addEventListener('DOMContentLoaded', renderChromeTabs);
 })();
@@ -3068,9 +3053,9 @@ document.addEventListener('click', (e) => {
                     };
                     const defaultStyle = { hover: 'hover:border-blue-500 hover:text-blue-600', svg: '<svg class="w-3 h-3 text-[#64748B] group-hover:text-blue-500 shrink-0 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg>' };
 
-                    list.innerHTML = rec.map(t => {
-                        const conf = BRANCH_STYLES[t.id] || defaultStyle;
-                        return `<a href="${t.url}" class="group inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F8FAFC] dark:bg-slate-800/80 border border-[#E2E8F0] dark:border-slate-700/80 text-[12px] font-medium text-[#475569] dark:text-slate-300 ${conf.hover} transition-all duration-150 shadow-2xs">${conf.svg}<span>${t.name}</span></a>`;
+                    list.innerHTML = rec.map((t, idx) => {
+                        const dot = idx < rec.length - 1 ? '<span class="mx-1.5 text-slate-300 dark:text-slate-600 font-normal">•</span>' : '';
+                        return `<a href="${t.url}" onclick="if(window.openToolInTab) window.openToolInTab('${t.id}');" class="text-[12px] font-medium text-[#475569] dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:underline transition-colors">${t.name}</a>${dot}`;
                     }).join('');
                     bar.classList.remove('hidden');
                 }
