@@ -89,7 +89,7 @@
     const parent = node.parentElement;
     if (!parent) return;
     if (SKIP_TAGS.has(parent.tagName)) return;
-    if (parent.closest && parent.closest('#langSelect, [data-no-i18n]')) return;
+    if (parent.closest && parent.closest('#langSelect, [data-no-i18n], [translate="no"], .notranslate')) return;
 
     const currentVal = node.nodeValue;
     if (!currentVal || !currentVal.trim()) return;

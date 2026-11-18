@@ -509,8 +509,8 @@
             const btn = document.getElementById('darkModeBtn');
             if (btn) {
                 btn.innerHTML = on 
-                    ? '<svg class="w-4 h-4 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>'
-                    : '<svg class="w-4 h-4 text-[#475569]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+                    ? '<svg width="15" height="15" class="text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>'
+                    : '<svg width="15" height="15" class="text-[#475569]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
             }
         }
         window.toggleDarkMode = function() {
@@ -530,6 +530,284 @@
         /* Specific exceptions: status dots or radial indicators */
         .status-dot, .online-dot, input[type="radio"], circle {
             border-radius: 9999px !important;
+        }
+
+        /* --- DETERMINISTIC SHARP PRECISION GRID RULES (IMMUNE TO CSS PURGE) --- */
+        #omniChromeTabsBar {
+            background-color: #020617 !important;
+            border-bottom: 1px solid #1e293b !important;
+        }
+        #omniTabHome {
+            background-color: #1e293b !important;
+            color: #ffffff !important;
+            border-top: 2px solid #2563eb !important;
+            border-right: 1px solid #334155 !important;
+            border-radius: 0px !important;
+        }
+        #omniTabHome svg, #omniTabHome span {
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+        }
+        .omni-dyn-tab {
+            height: 34px !important;
+            border-radius: 0px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+        }
+        .omni-dyn-tab.active-tab {
+            background-color: #1e293b !important;
+            color: #ffffff !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #334155 !important;
+            font-weight: 600 !important;
+        }
+        .omni-dyn-tab.inactive-tab {
+            background-color: #0f172a !important;
+            color: #cbd5e1 !important;
+            border-top: 2px solid transparent !important;
+            border-right: 1px solid #1e293b !important;
+            font-weight: 500 !important;
+        }
+        .omni-dyn-tab a {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+        .omni-dyn-tab .close-tab {
+            color: #94a3b8 !important;
+        }
+        .omni-dyn-tab .close-tab:hover {
+            color: #ffffff !important;
+            background-color: #e11d48 !important;
+        }
+
+        /* Top Bar Action Buttons */
+        #topDeskBtn, #topNewToolBtn {
+            height: 28px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            border-radius: 0px !important;
+        }
+
+        /* Hero Title */
+        #heroTitle {
+            font-size: clamp(30px, 4.5vw, 42px) !important;
+            line-height: 1.15 !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            letter-spacing: -0.025em !important;
+            margin-top: 12px !important;
+            margin-bottom: 14px !important;
+            display: block !important;
+        }
+        html.omni-dark #heroTitle {
+            color: #ffffff !important;
+        }
+
+        /* Hero Subtitle */
+        #heroSubtitle {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+            font-weight: 400 !important;
+            color: #475569 !important;
+            max-width: 560px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin-bottom: 28px !important;
+            text-wrap: balance !important;
+        }
+        html.omni-dark #heroSubtitle {
+            color: #94a3b8 !important;
+        }
+
+        /* Search Bar Container */
+        .omni-search-wrapper {
+            max-width: 540px !important;
+            width: 100% !important;
+            height: 48px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 0 14px !important;
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+            border-radius: 0px !important;
+        }
+        html.omni-dark .omni-search-wrapper {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+        }
+        #searchInput {
+            height: 100% !important;
+            font-size: 14px !important;
+            color: #0f172a !important;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            padding: 0 !important;
+        }
+        html.omni-dark #searchInput {
+            color: #f1f5f9 !important;
+        }
+
+        /* 5 Branch Filter Buttons (Segmented Picker) */
+        .omni-filter-btn {
+            height: 44px !important;
+            border-radius: 0px !important;
+            padding: 0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            overflow: hidden !important;
+            transition: all 150ms ease !important;
+            cursor: pointer !important;
+            user-select: none !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+        html.omni-dark .omni-filter-btn {
+            background-color: #0f172a !important;
+            border-color: #1e293b !important;
+            color: #f8fafc !important;
+        }
+        .omni-filter-btn .icon-square {
+            width: 44px !important;
+            height: 44px !important;
+            min-width: 44px !important;
+            min-height: 44px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            border-radius: 0px !important;
+        }
+        .omni-filter-btn .icon-square svg {
+            width: 18px !important;
+            height: 18px !important;
+            stroke: #ffffff !important;
+            color: #ffffff !important;
+        }
+        .omni-filter-btn .btn-label {
+            padding: 0 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            white-space: nowrap !important;
+        }
+        .omni-filter-btn .btn-count {
+            font-size: 12px !important;
+            color: #64748b !important;
+            font-weight: 400 !important;
+        }
+
+        /* Specific Colors for Branch Button Icon Squares */
+        #filterAllBtn .icon-square { background-color: #2563eb !important; }
+        #filterBuildingBtn .icon-square { background-color: #d97706 !important; }
+        #filterFinanceBtn .icon-square { background-color: #059669 !important; }
+        #filterGraphBtn .icon-square { background-color: #e11d48 !important; }
+        #filterFoodBtn .icon-square { background-color: #0284c7 !important; }
+
+        /* Active Filter Button Border & Tint */
+        .omni-filter-btn.active-all {
+            border: 1.5px solid #2563eb !important;
+            background-color: #eff6ff !important;
+        }
+        .omni-filter-btn.active-building {
+            border: 1.5px solid #d97706 !important;
+            background-color: #fffbeb !important;
+        }
+        .omni-filter-btn.active-finance {
+            border: 1.5px solid #059669 !important;
+            background-color: #ecfdf5 !important;
+        }
+        .omni-filter-btn.active-graph {
+            border: 1.5px solid #e11d48 !important;
+            background-color: #fff1f2 !important;
+        }
+        .omni-filter-btn.active-food {
+            border: 1.5px solid #0284c7 !important;
+            background-color: #f0f9ff !important;
+        }
+
+        html.omni-dark .omni-filter-btn.active-all { background-color: rgba(30, 58, 138, 0.3) !important; }
+        html.omni-dark .omni-filter-btn.active-building { background-color: rgba(120, 53, 15, 0.3) !important; }
+        html.omni-dark .omni-filter-btn.active-finance { background-color: rgba(6, 78, 59, 0.3) !important; }
+        html.omni-dark .omni-filter-btn.active-graph { background-color: rgba(136, 19, 55, 0.3) !important; }
+        html.omni-dark .omni-filter-btn.active-food { background-color: rgba(12, 74, 110, 0.3) !important; }
+
+        /* Unified Language & Theme Control Pill */
+        .omni-lang-theme-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            height: 36px !important;
+            border-radius: 0px !important;
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+        html.omni-dark .omni-lang-theme-pill {
+            background-color: #0f172a !important;
+            border-color: #1e293b !important;
+        }
+        .omni-lang-box {
+            position: relative !important;
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 10px !important;
+            gap: 6px !important;
+        }
+        .omni-lang-box svg {
+            width: 15px !important;
+            height: 15px !important;
+            min-width: 15px !important;
+            max-width: 15px !important;
+            min-height: 15px !important;
+            max-height: 15px !important;
+            stroke-width: 1.75px !important;
+            color: #64748b !important;
+        }
+        html.omni-dark .omni-lang-box svg {
+            color: #94a3b8 !important;
+        }
+        #langSelect {
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #0f172a !important;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            cursor: pointer !important;
+            padding: 0 !important;
+        }
+        html.omni-dark #langSelect {
+            color: #f1f5f9 !important;
+        }
+        #darkModeBtn {
+            width: 36px !important;
+            height: 34px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 0px !important;
+            cursor: pointer !important;
+            background: transparent !important;
+            border: none !important;
+            color: #475569 !important;
+        }
+        #darkModeBtn svg {
+            width: 15px !important;
+            height: 15px !important;
+            min-width: 15px !important;
+            max-width: 15px !important;
+            min-height: 15px !important;
+            max-height: 15px !important;
+            stroke-width: 1.75px !important;
+        }
+        html.omni-dark #darkModeBtn svg {
+            color: #cbd5e1 !important;
         }
     </style>
 
@@ -840,15 +1118,15 @@
             <!-- Right Controls: Unified Action Bar (Segmented Control Pill + Ghost Pill Install Button) -->
             <div class="flex items-center gap-2.5 shrink-0">
                 <!-- Selettore Unificato Lingua | Tema a spigoli vivi -->
-                <div class="inline-flex items-center h-[36px] bg-[#F8FAFC] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800" style="border-radius: 0px;">
+                <div class="omni-lang-theme-pill inline-flex items-center h-[36px]" style="border-radius: 0px;">
                     <!-- Lato sinistro: Lingua -->
-                    <div class="relative flex items-center px-3">
-                        <svg class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="omni-lang-box relative flex items-center">
+                        <svg width="15" height="15" class="text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
                             <path d="M2 12h20"/>
                         </svg>
-                        <select id="langSelect" data-lang-switcher class="appearance-none bg-transparent pl-1.5 pr-1 py-1 text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 focus:outline-none cursor-pointer" aria-label="Language Selector">
+                        <select id="langSelect" data-lang-switcher class="appearance-none bg-transparent text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 focus:outline-none cursor-pointer" aria-label="Language Selector">
                             <option value="it" selected class="dark:bg-slate-900 text-slate-800 dark:text-slate-200">IT</option>
                             <option value="en" class="dark:bg-slate-900 text-slate-800 dark:text-slate-200">EN</option>
                         </select>
@@ -859,7 +1137,7 @@
 
                     <!-- Lato destro: Dark Mode -->
                     <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="w-[36px] h-[34px] flex items-center justify-center hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-colors cursor-pointer text-[#475569] dark:text-slate-300" style="border-radius: 0px;" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">
-                        <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
                         </svg>
                     </button>
@@ -899,15 +1177,15 @@
                 Calcolatori tecnici di precisione per cantiere, impianti, grafica e finanza. Formule di riferimento, zero registrazioni, subito pronti offline.
             </p>
 
-            <!-- Spotlight Search Bar: max-width 540px, height 46px -->
+            <!-- Spotlight Search Bar: max-width 540px, height 48px -->
             <div class="w-full max-w-[540px] mx-auto">
-                <div class="flex items-center justify-between w-full h-[46px] px-3.5 bg-white dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-700 shadow-2xs transition" style="border-radius: 0px;">
+                <div class="omni-search-wrapper">
                     <div class="flex items-center flex-1 h-full min-w-0">
-                        <svg width="16" height="16" class="w-4 h-4 text-[#64748B] dark:text-slate-400 shrink-0 mr-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="18" height="18" class="w-[18px] h-[18px] text-[#64748B] dark:text-slate-400 shrink-0 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"/>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
                         </svg>
-                        <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca formula, norma o tool (es. rampa, blondel, cmyk, mutuo...)" class="flex-1 h-full border-0 outline-none bg-transparent text-[14px] text-[#0F172A] dark:text-slate-100 placeholder-[#94A3B8] p-0" autocomplete="off">
+                        <input type="text" id="searchInput" oninput="filterTools()" placeholder="Cerca formula, norma o tool (es. rampa, blondel, cmyk, mutuo...)" class="flex-1 w-full" autocomplete="off">
                     </div>
                     <div class="flex items-center gap-2 shrink-0 ml-2">
                         <button type="button" id="clearSearchBtn" onclick="clearSearch()" class="hidden text-slate-400 hover:text-slate-700 text-sm font-bold px-1 cursor-pointer">
@@ -929,8 +1207,8 @@
                 <div class="flex items-center justify-center gap-2.5 flex-wrap">
                     
                     <!-- Tab 1: Tutti i Tool (#2563EB) -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="h-[44px] bg-white dark:bg-slate-900 border border-[#2563EB] text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none" style="border-radius: 0px;">
-                        <span class="w-[44px] h-[44px] bg-[#2563EB] flex items-center justify-center text-white shrink-0">
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="omni-filter-btn active-all" style="border-radius: 0px;">
+                        <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"/>
                                 <rect x="14" y="3" width="7" height="7"/>
@@ -938,15 +1216,15 @@
                                 <rect x="3" y="14" width="7" height="7"/>
                             </svg>
                         </span>
-                        <span class="px-3.5 flex items-center gap-1.5 filter-btn-label">
+                        <span class="btn-label">
                             <span id="filterAllText" class="text-[14px] font-semibold text-[#0F172A] dark:text-slate-100">Tutti i Tool</span>
-                            <span class="text-[12px] text-[#64748B] dark:text-slate-400 font-normal filter-count">(22)</span>
+                            <span class="btn-count filter-count">(22)</span>
                         </span>
                     </button>
 
                     <!-- Tab 2: OmniBuilding (#D97706) -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-amber-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none" style="border-radius: 0px;">
-                        <span class="w-[44px] h-[44px] bg-[#D97706] flex items-center justify-center text-white shrink-0">
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                        <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21.3 8.7 8.7 21.3c-.4.4-1 .4-1.4 0l-4.6-4.6c-.4-.4-.4-1 0-1.4L15.3 2.7c.4-.4 1-.4 1.4 0l4.6 4.6c.4.4.4 1 0 1.4Z"/>
                                 <path d="m14.5 3.5 2 2"/>
@@ -955,29 +1233,29 @@
                                 <path d="m5.5 12.5 2 2"/>
                             </svg>
                         </span>
-                        <span class="px-3.5 flex items-center gap-1.5 filter-btn-label">
+                        <span class="btn-label">
                             <span class="text-[14px] font-semibold text-[#0F172A] dark:text-slate-100">OmniBuilding</span>
-                            <span class="text-[12px] text-[#64748B] dark:text-slate-400 font-normal filter-count">(6)</span>
+                            <span class="btn-count filter-count">(6)</span>
                         </span>
                     </button>
 
                     <!-- Tab 3: OmniFinance (#059669) -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-emerald-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none" style="border-radius: 0px;">
-                        <span class="w-[44px] h-[44px] bg-[#059669] flex items-center justify-center text-white shrink-0">
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                        <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
                                 <polyline points="16 7 22 7 22 13"/>
                             </svg>
                         </span>
-                        <span class="px-3.5 flex items-center gap-1.5 filter-btn-label">
+                        <span class="btn-label">
                             <span class="text-[14px] font-semibold text-[#0F172A] dark:text-slate-100">OmniFinance</span>
-                            <span class="text-[12px] text-[#64748B] dark:text-slate-400 font-normal filter-count">(6)</span>
+                            <span class="btn-count filter-count">(6)</span>
                         </span>
                     </button>
 
                     <!-- Tab 4: OmniGraph (#E11D48) -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-rose-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none" style="border-radius: 0px;">
-                        <span class="w-[44px] h-[44px] bg-[#E11D48] flex items-center justify-center text-white shrink-0">
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                        <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="5" height="5"/>
                                 <rect x="16" y="3" width="5" height="5"/>
@@ -986,15 +1264,15 @@
                                 <path d="M8 5.5h8"/>
                             </svg>
                         </span>
-                        <span class="px-3.5 flex items-center gap-1.5 filter-btn-label">
+                        <span class="btn-label">
                             <span class="text-[14px] font-semibold text-[#0F172A] dark:text-slate-100">OmniGraph</span>
-                            <span class="text-[12px] text-[#64748B] dark:text-slate-400 font-normal filter-count">(6)</span>
+                            <span class="btn-count filter-count">(6)</span>
                         </span>
                     </button>
 
                     <!-- Tab 5: OmniFood (#0284C7) -->
-                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-sky-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none" style="border-radius: 0px;">
-                        <span class="w-[44px] h-[44px] bg-[#0284C7] flex items-center justify-center text-white shrink-0">
+                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                        <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
                                 <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
@@ -1003,9 +1281,9 @@
                                 <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
                             </svg>
                         </span>
-                        <span class="px-3.5 flex items-center gap-1.5 filter-btn-label">
+                        <span class="btn-label">
                             <span class="text-[14px] font-semibold text-[#0F172A] dark:text-slate-100">OmniFood</span>
-                            <span class="text-[12px] text-[#64748B] dark:text-slate-400 font-normal filter-count">(4)</span>
+                            <span class="btn-count filter-count">(4)</span>
                         </span>
                     </button>
                 </div>
@@ -1034,7 +1312,7 @@
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h2 id="divBuildingTitle" class="text-base sm:text-lg font-black text-amber-900 tracking-tight font-jakarta leading-none">Omni<span class="text-amber-600">Building</span></h2>
+                            <h2 id="divBuildingTitle" translate="no" class="notranslate text-base sm:text-lg font-black text-amber-900 tracking-tight font-jakarta leading-none">Omni<span class="text-amber-600">Building</span></h2>
                             <span id="badgeCountBuilding" class="text-[10px] sm:text-[11px] font-bold text-amber-800 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">6 Tool</span>
                         </div>
                         <p id="divBuildingDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Calcolatori geometrici e normativi per cantieri, architettura, coperture e taglio</p>
@@ -1249,7 +1527,7 @@
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h2 id="divFinanceTitle" class="text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
+                            <h2 id="divFinanceTitle" translate="no" class="notranslate text-base sm:text-lg font-black text-emerald-950 tracking-tight font-jakarta leading-none">Omni<span class="text-emerald-700">Finance</span></h2>
                             <span id="badgeCountFinance" class="text-[10px] sm:text-[11px] font-bold text-emerald-800 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">6 Tool</span>
                         </div>
                         <p id="divFinanceDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Calcolatori quantitativi e formule matematiche per mutui, investimenti e pricing commerciale</p>
@@ -1464,7 +1742,7 @@
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h2 id="divGraphTitle" class="text-base sm:text-lg font-black text-rose-950 tracking-tight font-jakarta leading-none">Omni<span class="text-rose-700">Graph</span></h2>
+                            <h2 id="divGraphTitle" translate="no" class="notranslate text-base sm:text-lg font-black text-rose-950 tracking-tight font-jakarta leading-none">Omni<span class="text-rose-700">Graph</span></h2>
                             <span id="badgeCountGraph" class="text-[10px] sm:text-[11px] font-bold text-rose-900 bg-rose-500/10 px-2 py-0.5 rounded-md border border-rose-500/20">6 Tool</span>
                         </div>
                         <p id="divGraphDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Strumenti di precisione tipografica per grafici, editori e prestampa</p>
@@ -1683,7 +1961,7 @@
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h2 id="divFoodTitle" class="text-base sm:text-lg font-black text-orange-950 tracking-tight font-jakarta leading-none">Omni<span class="text-orange-600">Food</span></h2>
+                            <h2 id="divFoodTitle" translate="no" class="notranslate text-base sm:text-lg font-black text-orange-950 tracking-tight font-jakarta leading-none">Omni<span class="text-orange-600">Food</span></h2>
                             <span id="badgeCountFood" class="text-[10px] sm:text-[11px] font-bold text-orange-800 bg-orange-500/10 px-2 py-0.5 rounded-md border border-orange-500/20">4 Tool</span>
                         </div>
                         <p id="divFoodDesc" class="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal truncate">Etichettatura internazionale, date di scadenza multiformato e ingegneria di laboratorio</p>
@@ -2204,37 +2482,16 @@
             const btnFinance = document.getElementById('filterFinanceBtn');
             const btnFood = document.getElementById('filterFoodBtn');
 
-            const baseInactive = "h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none";
+            [btnAll, btnBuilding, btnGraph, btnFinance, btnFood].forEach(b => {
+                if (!b) return;
+                b.classList.remove('active-all', 'active-building', 'active-finance', 'active-graph', 'active-food');
+            });
 
-            if (btnAll) {
-                btnAll.className = filter === 'all'
-                    ? "h-[44px] bg-[#EFF6FF] dark:bg-blue-950/40 border-[1.5px] border-[#2563EB] text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none shadow-2xs"
-                    : "h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-blue-400 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none";
-            }
-
-            if (btnBuilding) {
-                btnBuilding.className = filter === 'building'
-                    ? "h-[44px] bg-[#FFFBEB] dark:bg-amber-950/40 border-[1.5px] border-[#D97706] text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none shadow-2xs"
-                    : "h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-amber-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none";
-            }
-
-            if (btnFinance) {
-                btnFinance.className = filter === 'finance'
-                    ? "h-[44px] bg-[#ECFDF5] dark:bg-emerald-950/40 border-[1.5px] border-[#059669] text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none shadow-2xs"
-                    : "h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-emerald-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none";
-            }
-
-            if (btnGraph) {
-                btnGraph.className = filter === 'graph'
-                    ? "h-[44px] bg-[#FFF1F2] dark:bg-rose-950/40 border-[1.5px] border-[#E11D48] text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none shadow-2xs"
-                    : "h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-rose-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none";
-            }
-
-            if (btnFood) {
-                btnFood.className = filter === 'food'
-                    ? "h-[44px] bg-[#F0F9FF] dark:bg-sky-950/40 border-[1.5px] border-[#0284C7] text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none shadow-2xs"
-                    : "h-[44px] bg-white dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 hover:border-sky-500 text-[#0F172A] dark:text-white p-0 inline-flex items-center overflow-hidden transition cursor-pointer select-none";
-            }
+            if (filter === 'all' && btnAll) btnAll.classList.add('active-all');
+            if (filter === 'building' && btnBuilding) btnBuilding.classList.add('active-building');
+            if (filter === 'finance' && btnFinance) btnFinance.classList.add('active-finance');
+            if (filter === 'graph' && btnGraph) btnGraph.classList.add('active-graph');
+            if (filter === 'food' && btnFood) btnFood.classList.add('active-food');
 
             filterTools();
         }
@@ -2938,8 +3195,12 @@ document.addEventListener('click', (e) => {
         const isHome = (!pathname || pathname === 'index');
         if (homeTab) {
             homeTab.className = isHome 
-                ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#1E293B] text-white font-semibold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-700'
-                : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#0F172A] hover:bg-slate-800 text-[#CBD5E1] hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-800';
+                ? 'flex items-center gap-2 px-3.5 h-[34px] shrink-0 text-[12px] cursor-pointer'
+                : 'flex items-center gap-2 px-3.5 h-[34px] shrink-0 text-[12px] opacity-80 hover:opacity-100 transition cursor-pointer';
+            homeTab.style.backgroundColor = isHome ? '#1e293b' : '#0f172a';
+            homeTab.style.color = isHome ? '#ffffff' : '#cbd5e1';
+            homeTab.style.borderTop = isHome ? '2px solid #2563eb' : '2px solid transparent';
+            homeTab.style.borderRight = isHome ? '1px solid #334155' : '1px solid #1e293b';
             homeTab.style.borderRadius = '0px';
         }
 
@@ -2952,7 +3213,7 @@ document.addEventListener('click', (e) => {
             const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#1E293B] text-white border-t-blue-500 border-r-slate-700 font-semibold' : 'bg-[#0F172A] hover:bg-slate-800 text-[#CBD5E1] hover:text-white border-t-transparent border-r-slate-800 font-medium'}`;
+            tab.className = `omni-dyn-tab ${isActive ? 'active-tab' : 'inactive-tab'} group px-3 transition shrink-0 cursor-pointer`;
             tab.style.borderRadius = '0px';
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
