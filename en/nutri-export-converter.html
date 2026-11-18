@@ -1678,8 +1678,7 @@
                 ['Iron', document.getElementById('valIron').textContent, document.getElementById('dvIron').textContent, document.getElementById('inpIron100').value + 'mg'],
                 ['Potassium', document.getElementById('valPotassium').textContent, document.getElementById('dvPotassium').textContent, document.getElementById('inpPotassium100').value + 'mg']
             ];
-            const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('
-');
+            const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
@@ -2562,7 +2561,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openTabs.push(pathname);
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
         }
-    }
     }
 
     let detachedWindows = {};

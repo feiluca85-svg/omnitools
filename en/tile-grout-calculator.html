@@ -446,72 +446,76 @@
             const t = TRANSLATIONS[lang] || TRANSLATIONS['it'];
             if (!t) return;
 
-            document.getElementById('heroBadge').textContent = `OmniBuilding · ${t.badge || 'Cantiere'}`;
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
+            const setTxt = (id, val) => {
+                const el = document.getElementById(id);
+                if (el && val !== undefined && val !== null) el.textContent = val;
+            };
 
-            document.getElementById('secRoomTitle').textContent = t.sec_room_title;
-            document.getElementById('secRoomDesc').textContent = t.sec_room_desc;
-            document.getElementById('btnModeDims').textContent = t.mode_dimensions;
-            document.getElementById('btnModeDirect').textContent = t.mode_direct_sqm;
-            document.getElementById('lblLength').textContent = t.label_length;
-            document.getElementById('lblWidth').textContent = t.label_width;
-            document.getElementById('lblNetSqm').textContent = t.label_net_sqm;
-            document.getElementById('lblOpenings').textContent = t.label_openings_deduct;
+            setTxt('heroBadge', `OmniBuilding · ${t.badge || 'Cantiere'}`);
+            setTxt('heroTitle', t.hero_title);
+            setTxt('heroDesc', t.hero_desc);
 
-            document.getElementById('secTileTitle').textContent = t.sec_tile_title;
-            document.getElementById('secTileDesc').textContent = t.sec_tile_desc;
-            document.getElementById('lblTilePreset').textContent = t.label_tile_preset;
-            if (document.getElementById('btnPresetWood') && t.preset_wood) {
-                document.getElementById('btnPresetWood').textContent = t.preset_wood;
-            }
-            document.getElementById('lblTileW').textContent = t.label_tile_w;
-            document.getElementById('lblTileH').textContent = t.label_tile_h;
-            document.getElementById('lblTileThick').textContent = t.label_tile_thick;
-            document.getElementById('lblPattern').textContent = t.label_pattern;
+            setTxt('secRoomTitle', t.sec_room_title);
+            setTxt('secRoomDesc', t.sec_room_desc);
+            setTxt('btnModeDims', t.mode_dimensions);
+            setTxt('btnModeDirect', t.mode_direct_sqm);
+            setTxt('lblLength', t.label_length);
+            setTxt('lblWidth', t.label_width);
+            setTxt('lblNetSqm', t.label_net_sqm);
+            setTxt('lblOpenings', t.label_openings_deduct);
 
-            document.getElementById('optStraight').textContent = t.pattern_straight;
-            document.getElementById('optOffset').textContent = t.pattern_offset;
-            document.getElementById('optDiagonal').textContent = t.pattern_diagonal;
-            document.getElementById('optHerringbone').textContent = t.pattern_herringbone;
-            document.getElementById('optCustom').textContent = t.pattern_custom;
-            document.getElementById('lblCustomWaste').textContent = t.label_custom_waste || t.pattern_custom;
+            setTxt('secTileTitle', t.sec_tile_title);
+            setTxt('secTileDesc', t.sec_tile_desc);
+            setTxt('lblTilePreset', t.label_tile_preset);
+            if (t.preset_wood) setTxt('btnPresetWood', t.preset_wood);
+            setTxt('lblTileW', t.label_tile_w);
+            setTxt('lblTileH', t.label_tile_h);
+            setTxt('lblTileThick', t.label_tile_thick);
+            setTxt('lblPattern', t.label_pattern);
 
-            document.getElementById('lblBoxCoverage').textContent = t.label_box_coverage;
-            document.getElementById('lblBoxPieces').textContent = t.label_box_pieces;
+            setTxt('optStraight', t.pattern_straight);
+            setTxt('optOffset', t.pattern_offset);
+            setTxt('optDiagonal', t.pattern_diagonal);
+            setTxt('optHerringbone', t.pattern_herringbone);
+            setTxt('optCustom', t.pattern_custom);
+            setTxt('lblCustomWaste', t.label_custom_waste || t.pattern_custom);
 
-            document.getElementById('secMaterialsTitle').textContent = t.sec_materials_title;
-            document.getElementById('secMaterialsDesc').textContent = t.sec_materials_desc;
-            document.getElementById('lblGroutWidth').textContent = t.label_grout_width;
-            document.getElementById('lblBagWeight').textContent = t.label_bag_weight;
-            document.getElementById('lblAdhesiveNotch').textContent = t.label_adhesive_notch;
+            setTxt('lblBoxCoverage', t.label_box_coverage);
+            setTxt('lblBoxPieces', t.label_box_pieces);
 
-            document.getElementById('notchSmall').textContent = t.notch_small;
-            document.getElementById('notchMedium').textContent = t.notch_medium;
-            document.getElementById('notchLarge').textContent = t.notch_large;
+            setTxt('secMaterialsTitle', t.sec_materials_title);
+            setTxt('secMaterialsDesc', t.sec_materials_desc);
+            setTxt('lblGroutWidth', t.label_grout_width);
+            setTxt('lblBagWeight', t.label_bag_weight);
+            setTxt('lblAdhesiveNotch', t.label_adhesive_notch);
 
-            document.getElementById('badgeBom').textContent = t.badge_bom || 'Distinta Materiali';
-            document.getElementById('summaryTitle').textContent = t.summary_title;
-            document.getElementById('resNetAreaLabel').textContent = t.res_net_area;
-            document.getElementById('resGrossAreaLabel').textContent = t.res_gross_area;
-            document.getElementById('resBoxesLabel').textContent = t.res_boxes;
-            document.getElementById('resAdhesiveBagsLabel').textContent = t.res_adhesive_bags;
-            document.getElementById('resGroutKgLabel').textContent = t.res_grout_kg;
-            document.getElementById('resWasteWarning').textContent = t.res_waste_warning;
+            setTxt('notchSmall', t.notch_small);
+            setTxt('notchMedium', t.notch_medium);
+            setTxt('notchLarge', t.notch_large);
 
-            document.getElementById('btnCopyList').textContent = (lang === 'it' ? 'Copia Dati per Computo Metrico' : t.btn_copy_list);
-            document.getElementById('btnPrint').textContent = (lang === 'it' ? 'Stampa Scheda Cantiere A4' : t.btn_print);
-            document.getElementById('previewTitle').textContent = t.preview_title;
+            setTxt('badgeBom', t.badge_bom || 'Distinta Materiali');
+            setTxt('summaryTitle', t.summary_title);
+            setTxt('resNetAreaLabel', t.res_net_area);
+            setTxt('resGrossAreaLabel', t.res_gross_area);
+            setTxt('resBoxesLabel', t.res_boxes);
+            setTxt('resAdhesiveBagsLabel', t.res_adhesive_bags);
+            setTxt('resGroutKgLabel', t.res_grout_kg);
+            setTxt('resWasteWarning', t.res_waste_warning);
 
-            if (document.getElementById('faqTitle') && t.faq_main_title) {
-                document.getElementById('faqTitle').textContent = t.faq_main_title;
-            }
+            setTxt('btnCopyList', (lang === 'it' ? 'Copia Dati per Computo Metrico' : t.btn_copy_list));
+            setTxt('btnPrint', (lang === 'it' ? 'Stampa Scheda Cantiere A4' : t.btn_print));
+            setTxt('previewTitle', t.preview_title);
+
+            if (t.faq_main_title) setTxt('faqTitle', t.faq_main_title);
 
             // FAQs
             for (let i = 1; i <= 5; i++) {
                 const qEl = document.getElementById(`faq${i}Q`);
                 const aEl = document.getElementById(`faq${i}A`);
-                if (qEl && t[`faq${i}_q`]) qEl.firstElementChild.textContent = t[`faq${i}_q`];
+                if (qEl && t[`faq${i}_q`]) {
+                    if (qEl.firstElementChild) qEl.firstElementChild.textContent = t[`faq${i}_q`];
+                    else qEl.textContent = t[`faq${i}_q`];
+                }
                 if (aEl && t[`faq${i}_a`]) aEl.textContent = t[`faq${i}_a`];
             }
 
@@ -2209,330 +2213,8 @@
 
     <!-- CORE LOGIC & I18N SCRIPT -->
     <script>
-        const TRANSLATIONS = {"it": {"badge": "Cantiere & Fai-da-te", "hero_title": "Calcolo Piastrelle, Sfrido, Colla & Fughe", "hero_desc": "Calcolatore professionale per pavimenti e rivestimenti. Calcola metri quadri da acquistare con sfrido per tagli, numero di scatole, sacchi di colla (kg) e stucco per fughe con distinta materiali immediata.", "sec_room_title": "1. Misure Superficie da Piastrellare", "sec_room_desc": "Inserisci le dimensioni dell'ambiente o direttamente i metri quadri netti.", "mode_dimensions": "Dimensioni Stanza", "mode_direct_sqm": "Metri Quadri Netti", "label_unit_system": "Unità di Misura", "unit_metric": "Metrico (m / cm / mm)", "unit_imperial": "Imperiale (ft / in)", "label_length": "Lunghezza Stanza", "label_width": "Larghezza Stanza", "label_net_sqm": "Superficie Netta", "label_openings_deduct": "Detrazione Porte / Aperture (opzionale)", "sec_tile_title": "2. Formato Piastrella & Schema di Posa", "sec_tile_desc": "Scegli la dimensione delle piastrelle e il tipo di posa per calcolare lo sfrido reale.", "label_tile_preset": "Formati Standard", "preset_wood": "20 × 120 (Listoni Legno)", "label_tile_w": "Larghezza Piastrella", "label_tile_h": "Altezza Piastrella", "label_tile_thick": "Spessore Piastrella", "label_pattern": "Schema di Posa & Sfrido", "pattern_straight": "Posa Dritta Standard (+10% sfrido)", "pattern_offset": "Posa Sfalsata / A Correre (+12% sfrido)", "pattern_diagonal": "Posa in Diagonale (+15% sfrido)", "pattern_herringbone": "Posa a Spina di Pesce (+20% sfrido)", "pattern_custom": "Sfrido Personalizzato (%)", "label_custom_waste": "Percentuale Sfrido (%)", "label_box_coverage": "Copertura per Scatola", "label_box_pieces": "Pezzi per Scatola (opzionale)", "sec_materials_title": "3. Colla (Adesivo) & Stucco per Fughe", "sec_materials_desc": "Stima precisa dei consumi di cantiere in base al sottofondo e alla fuga.", "label_grout_width": "Larghezza Fuga", "label_adhesive_notch": "Tipo Spatola / Applicazione Colla", "notch_small": "Dente 6 mm (Piccoli formati, ~3.0 kg/m²)", "notch_medium": "Dente 8-10 mm (Standard 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Doppia Spalmatura (Grandi Lastre / Esterni, ~6.0 kg/m²)", "label_bag_weight": "Peso Sacco Colla (kg)", "badge_bom": "Distinta Materiali", "summary_title": "Computo per l'Acquisto", "res_net_area": "Superficie Netta", "res_gross_area": "Totale da Ordinare (con sfrido)", "res_boxes": "Scatole da Acquistare", "res_total_coverage": "Copertura effettiva scatole", "res_total_tiles": "Pezzi Singoli Totali", "res_adhesive_bags": "Sacchi di Colla", "res_adhesive_total": "Totale Colla Stimata", "res_grout_kg": "Stucco Fughe Necessario", "res_grout_details": "Fuga {grout} · Spessore {thick}", "res_waste_warning": "Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.", "btn_print": "Stampa Scheda A4", "btn_copy_list": "Copia Lista Spesa", "copied_msg": "✓ Distinta copiata negli appunti!", "preview_title": "Anteprima Grafica Schema di Posa", "preview_badge_straight": "Dritta (+10%)", "preview_badge_offset": "Sfalsata (+12%)", "preview_badge_diagonal": "Diagonale (+15%)", "preview_badge_herringbone": "Spina di Pesce (+20%)", "preview_badge_custom": "Personalizzata", "faq_main_title": "Frequently Asked Questions</span>`,
-        'scale': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
-        'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
-        'tetto': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
-        'taglio': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>`,
-        'piastrelle': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>`,
-        'dorso': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
-        'dpi': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
-        'tinta': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
-        'barcode': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>`,
-        'copertura': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>`,
-        'resa': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
-        'mutuo': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
-        'pac': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
-        'margine': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
-        'estinzione': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>`,
-        'risparmio': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>`,
-        'fire': `<span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`
-    };
-
-        const TOOLS_MAP = {
-        'rampe': { name: 'RampaFacile', url: '/rampe', url_en: '/en/ramp-slope-calculator', color: 'bg-amber-500' },
-        'scale': { name: 'ScalaFacile', url: '/scale', url_en: '/en/stair-calculator', color: 'bg-amber-500' },
-        'tubi': { name: 'TubiFacili', url: '/tubi', url_en: '/en/pipe-slope-calculator', color: 'bg-amber-500' },
-        'tetto': { name: 'TettoFacile', url: '/tetto', url_en: '/en/roof-pitch-calculator', color: 'bg-amber-500' },
-        'taglio': { name: 'TaglioOttimo', url: '/taglio', url_en: '/en/cut-list-optimizer', color: 'bg-amber-500' },
-        'piastrelle': { name: 'PiastrellaFacile', url: '/piastrelle', url_en: '/en/tile-grout-calculator', color: 'bg-amber-500' },
-        'dorso': { name: 'DorsoFacile', url: '/dorso', url_en: '/en/book-spine-calculator', color: 'bg-rose-700' },
-        'dpi': { name: 'Risoluzione', url: '/dpi', url_en: '/en/print-resolution-calculator', color: 'bg-rose-700' },
-        'tinta': { name: 'TintaPerfetta', url: '/tinta', url_en: '/en/pantone-ink-mixing-calculator', color: 'bg-rose-700' },
-        'barcode': { name: 'OmniBarcode', url: '/barcode', url_en: '/en/barcode-generator', color: 'bg-rose-700' },
-        'copertura': { name: 'Copertura', url: '/copertura', url_en: '/en/cmyk-ink-coverage-calculator', color: 'bg-rose-700' },
-        'resa': { name: 'ResaCarta', url: '/resa', url_en: '/en/paper-cutting-yield-calculator', color: 'bg-rose-700' },
-        'mutuo': { name: 'MutuoFacile', url: '/mutuo', url_en: '/en/mortgage-loan-amortization-calculator', color: 'bg-emerald-600' },
-        'pac': { name: 'Interesse', url: '/pac', url_en: '/en/compound-interest-calculator', color: 'bg-emerald-600' },
-        'margine': { name: 'MargineFacile', url: '/margine', url_en: '/en/margin-markup-calculator', color: 'bg-emerald-600' },
-        'estinzione': { name: 'Estinzione', url: '/estinzione', url_en: '/en/early-mortgage-payoff-calculator', color: 'bg-emerald-600' },
-        'risparmio': { name: 'Risparmio', url: '/risparmio', url_en: '/en/savings-goal-calculator', color: 'bg-emerald-600' },
-        'fire': { name: 'FIRE & Rendita', url: '/fire', url_en: '/en/fire-financial-independence-calculator', color: 'bg-emerald-600' },
-        'shelflife': { name: 'ShelfLife Export', url: '/shelflife', url_en: '/en/shelf-life-calculator', color: 'bg-orange-600' },
-        'nutriexport': { name: 'NutriExport Converter', url: '/nutriexport', url_en: '/en/nutri-export-converter', color: 'bg-orange-600' },
-        'impasti': { name: 'BatchScaler Pro', url: '/impasti', url_en: '/en/batch-scaler-calculator', color: 'bg-orange-600' },
-        'idratazione': { name: 'HygroBalance Lab', url: '/idratazione', url_en: '/en/hydration-balance-calculator', color: 'bg-orange-600' }
-    };
-
-    const PATH_TO_TOOL_ID = {
-        'rampe': 'rampe', 'ramp-slope-calculator': 'rampe',
-        'scale': 'scale', 'stair-calculator': 'scale',
-        'tubi': 'tubi', 'pipe-slope-calculator': 'tubi',
-        'tetto': 'tetto', 'roof-pitch-calculator': 'tetto',
-        'taglio': 'taglio', 'cut-list-optimizer': 'taglio',
-        'piastrelle': 'piastrelle', 'tile-grout-calculator': 'piastrelle',
-        'dorso': 'dorso', 'book-spine-calculator': 'dorso',
-        'dpi': 'dpi', 'print-resolution-calculator': 'dpi',
-        'tinta': 'tinta', 'pantone-ink-mixing-calculator': 'tinta',
-        'barcode': 'barcode', 'barcode-generator': 'barcode',
-        'copertura': 'copertura', 'cmyk-ink-coverage-calculator': 'copertura',
-        'resa': 'resa', 'paper-cutting-yield-calculator': 'resa',
-        'mutuo': 'mutuo', 'mortgage-loan-amortization-calculator': 'mutuo',
-        'pac': 'pac', 'compound-interest-calculator': 'pac',
-        'margine': 'margine', 'margin-markup-calculator': 'margine',
-        'estinzione': 'estinzione', 'early-mortgage-payoff-calculator': 'estinzione',
-        'risparmio': 'risparmio', 'savings-goal-calculator': 'risparmio',
-        'fire': 'fire', 'fire-financial-independence-calculator': 'fire',
-        'shelflife': 'shelflife', 'shelf-life-calculator': 'shelflife',
-        'nutriexport': 'nutriexport', 'nutri-export-converter': 'nutriexport',
-        'impasti': 'impasti', 'batch-scaler-calculator': 'impasti',
-        'idratazione': 'idratazione', 'hydration-balance-calculator': 'idratazione'
-    };
-
-        window.openToolInTab = function(toolId, targetUrl) {
-        try {
-            let tabs = JSON.parse(sessionStorage.getItem('omni_open_tabs_v1')) || [];
-            if (toolId && !tabs.includes(toolId)) {
-                tabs.push(toolId);
-                sessionStorage.setItem('omni_open_tabs_v1', JSON.stringify(tabs));
-            }
-        } catch(e) {}
-        if (targetUrl) {
-            window.location.href = targetUrl;
-        }
-    };
-
-    const TABS_KEY = 'omni_open_tabs_v1';
-    let openTabs = [];
-    try {
-        openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
-    } catch(e) {}
-
-    const rawPath = window.location.pathname.replace('.html', '').replace(/^\/+/, '').replace(/^en\//, '');
-    const currentToolId = PATH_TO_TOOL_ID[rawPath] || (TOOLS_MAP[rawPath] ? rawPath : '');
-    const pathname = currentToolId;
-    if (pathname && TOOLS_MAP[pathname]) {
-        if (!openTabs.includes(pathname)) {
-            openTabs.push(pathname);
-            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-        }
-    }
-    }
-
-    let detachedWindows = {};
-
-    window.OmniMultiWindow = {
-        detachTool(id) {
-            const tool = TOOLS_MAP[id];
-            if (!tool) return;
-            if (detachedWindows[id]) return;
-
-            const win = document.createElement('div');
-            win.id = `detached-win-${id}`;
-            win.className = 'fixed z-[9992] bg-white rounded-2xl shadow-2xl border-2 border-slate-700/80 overflow-hidden flex flex-col';
-            win.style.width = 'min(760px, 92vw)';
-            win.style.height = 'min(580px, 82vh)';
-            win.style.minWidth = '360px';
-            win.style.minHeight = '260px';
-            win.style.resize = 'both';
-            win.style.minHeight = '300px';
-            win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
-            win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
-
-            win.innerHTML = `
-                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800">
-                    <div class="flex items-center gap-2">
-                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`}
-                        <span class="text-xs font-bold tracking-tight">${tool.name}</span>
-                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 rounded text-white font-bold">Finestra Staccata</span>
-                    </div>
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1">
-                            <span>⤶</span>
-                            <span>Riancora</span>
-                        </button>
-                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
-                            ✕
-                        </button>
-                    </div>
-                </div>
-                <div class="flex-1 w-full bg-slate-50 relative overflow-hidden flex flex-col">
-                    <iframe src="${tool.url}" class="w-full flex-1 border-0"></iframe>
-                    <!-- Resize grip bar at bottom -->
-                    <div class="h-4 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between px-2 text-[10px] text-slate-400 select-none">
-                        <span class="font-mono">Ridimensiona finestra trascinando i bordi</span>
-                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-blue-600 transition" title="Trascina per ridimensionare larghezza e altezza">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 19H5m14-6H11m8-6H17"/></svg>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(win);
-            detachedWindows[id] = win;
-
-            makeWindowDraggable(win, win.querySelector('.window-header'));
-            makeWindowResizable(win, win.querySelector('.window-resize-grip'));
-
-            openTabs = openTabs.filter(x => x !== id);
-            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-            if (typeof renderChromeTabs === 'function') renderChromeTabs();
-        },
-
-        dockBack(id) {
-            const win = detachedWindows[id];
-            if (win) {
-                win.remove();
-                delete detachedWindows[id];
-            }
-            if (!openTabs.includes(id)) {
-                openTabs.push(id);
-                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-            }
-            if (typeof renderChromeTabs === 'function') renderChromeTabs();
-        },
-
-        closeDetached(id) {
-            const win = detachedWindows[id];
-            if (win) {
-                win.remove();
-                delete detachedWindows[id];
-            }
-        }
-    };
-
-    function makeWindowDraggable(el, handle) {
-        let isDrag = false, startX, startY, initL, initT;
-        function onStart(e) {
-            if (e.target.closest('button, select, input, a')) return;
-            isDrag = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            const r = el.getBoundingClientRect();
-            initL = r.left;
-            initT = r.top;
-            // Prevent iframe swallowing mouse events while dragging
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'none';
-            document.addEventListener('mousemove', onMove);
-            document.addEventListener('mouseup', onEnd);
-        }
-        function onMove(e) {
-            if (!isDrag) return;
-            el.style.left = Math.max(10, Math.min(window.innerWidth - el.offsetWidth - 10, initL + (e.clientX - startX))) + 'px';
-            el.style.top = Math.max(10, Math.min(window.innerHeight - el.offsetHeight - 10, initT + (e.clientY - startY))) + 'px';
-        }
-        function onEnd() {
-            isDrag = false;
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'auto';
-            document.removeEventListener('mousemove', onMove);
-            document.removeEventListener('mouseup', onEnd);
-        }
-        handle.addEventListener('mousedown', onStart);
-    }
-
-    function makeWindowResizable(el, handle) {
-        let isResizing = false, startX, startY, startW, startH;
-        function onResizeStart(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            isResizing = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            startW = el.offsetWidth;
-            startH = el.offsetHeight;
-            // Temporarily disable iframe pointer events so smooth mousemove works over iframe
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'none';
-            document.body.style.cursor = 'se-resize';
-            document.addEventListener('mousemove', onResizeMove);
-            document.addEventListener('mouseup', onResizeEnd);
-        }
-        function onResizeMove(e) {
-            if (!isResizing) return;
-            const newW = Math.max(380, Math.min(window.innerWidth - el.offsetLeft - 10, startW + (e.clientX - startX)));
-            const newH = Math.max(280, Math.min(window.innerHeight - el.offsetTop - 10, startH + (e.clientY - startY)));
-            el.style.width = newW + 'px';
-            el.style.height = newH + 'px';
-        }
-        function onResizeEnd() {
-            isResizing = false;
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'auto';
-            document.body.style.cursor = 'default';
-            document.removeEventListener('mousemove', onResizeMove);
-            document.removeEventListener('mouseup', onResizeEnd);
-        }
-        if (handle) {
-            handle.addEventListener('mousedown', onResizeStart);
-        }
-    }
-
-        function renderChromeTabs() {
-        const track = document.getElementById('omniChromeTabsTrack');
-        if (!track) return;
-
-        const homeTab = document.getElementById('omniTabHome');
-        const isHome = (!pathname || pathname === 'index');
-        if (homeTab) {
-            homeTab.className = isHome 
-                ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-semibold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-[#334155]'
-                : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#1E293B] hover:bg-slate-800 text-[#94A3B8] hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-[#334155]';
-            homeTab.style.borderRadius = '0px';
-        }
-
-        track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
-
-        openTabs.forEach(id => {
-            const tool = TOOLS_MAP[id];
-            if (!tool) return;
-            const isActive = (id === pathname);
-            const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
-
-            const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r border-[#334155] transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] text-[#0F172A] border-t-blue-600 font-semibold' : 'bg-[#1E293B] hover:bg-slate-800 text-[#94A3B8] hover:text-white border-t-transparent'}`;
-            tab.style.borderRadius = '0px';
-            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
-            
-            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
-            tab.innerHTML = `
-                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline">
-                    ${iconMarkup}
-                    <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
-                </a>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-400 p-0.5 text-slate-400 font-mono text-[10px]">
-                    ↗
-                </button>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab hover:text-rose-400 hover:bg-black/20 p-0.5 transition text-slate-400" style="border-radius: 0px;" title="Chiudi scheda">
-                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-            `;
-
-            let tabDragY = 0;
-            tab.addEventListener('mousedown', (e) => {
-                if (e.target.closest('button, .close-tab')) return;
-                tabDragY = e.clientY;
-                function checkDetach(evt) {
-                    if (evt.clientY - tabDragY > 40) {
-                        document.removeEventListener('mousemove', checkDetach);
-                        window.OmniMultiWindow.detachTool(id);
-                    }
-                }
-                function stopCheck() {
-                    document.removeEventListener('mousemove', checkDetach);
-                    document.removeEventListener('mouseup', stopCheck);
-                }
-                document.addEventListener('mousemove', checkDetach);
-                document.addEventListener('mouseup', stopCheck);
-            });
-
-            track.appendChild(tab);
-        });
-    }
-
-    window.closeToolTab = function(id) {
-        openTabs = openTabs.filter(x => x !== id);
-        try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
-        if (id === pathname) {
-            const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
-            window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
-        } else {
-            renderChromeTabs();
-        }
-    };
-
-    document.addEventListener('DOMContentLoaded', renderChromeTabs);
-})();
+        const TRANSLATIONS = {"it": {"badge": "Cantiere & Fai-da-te", "hero_title": "Calcolo Piastrelle, Sfrido, Colla & Fughe", "hero_desc": "Calcolatore professionale per pavimenti e rivestimenti. Calcola metri quadri da acquistare con sfrido per tagli, numero di scatole, sacchi di colla (kg) e stucco per fughe con distinta materiali immediata.", "sec_room_title": "1. Misure Superficie da Piastrellare", "sec_room_desc": "Inserisci le dimensioni dell'ambiente o direttamente i metri quadri netti.", "mode_dimensions": "Dimensioni Stanza", "mode_direct_sqm": "Metri Quadri Netti", "label_unit_system": "Unità di Misura", "unit_metric": "Metrico (m / cm / mm)", "unit_imperial": "Imperiale (ft / in)", "label_length": "Lunghezza Stanza", "label_width": "Larghezza Stanza", "label_net_sqm": "Superficie Netta", "label_openings_deduct": "Detrazione Porte / Aperture (opzionale)", "sec_tile_title": "2. Formato Piastrella & Schema di Posa", "sec_tile_desc": "Scegli la dimensione delle piastrelle e il tipo di posa per calcolare lo sfrido reale.", "label_tile_preset": "Formati Standard", "preset_wood": "20 × 120 (Listoni Legno)", "label_tile_w": "Larghezza Piastrella", "label_tile_h": "Altezza Piastrella", "label_tile_thick": "Spessore Piastrella", "label_pattern": "Schema di Posa & Sfrido", "pattern_straight": "Posa Dritta Standard (+10% sfrido)", "pattern_offset": "Posa Sfalsata / A Correre (+12% sfrido)", "pattern_diagonal": "Posa in Diagonale (+15% sfrido)", "pattern_herringbone": "Posa a Spina di Pesce (+20% sfrido)", "pattern_custom": "Sfrido Personalizzato (%)", "label_custom_waste": "Percentuale Sfrido (%)", "label_box_coverage": "Copertura per Scatola", "label_box_pieces": "Pezzi per Scatola (opzionale)", "sec_materials_title": "3. Colla (Adesivo) & Stucco per Fughe", "sec_materials_desc": "Stima precisa dei consumi di cantiere in base al sottofondo e alla fuga.", "label_grout_width": "Larghezza Fuga", "label_adhesive_notch": "Tipo Spatola / Applicazione Colla", "notch_small": "Dente 6 mm (Piccoli formati, ~3.0 kg/m²)", "notch_medium": "Dente 8-10 mm (Standard 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Doppia Spalmatura (Grandi Lastre / Esterni, ~6.0 kg/m²)", "label_bag_weight": "Peso Sacco Colla (kg)", "badge_bom": "Distinta Materiali", "summary_title": "Computo per l'Acquisto", "res_net_area": "Superficie Netta", "res_gross_area": "Totale da Ordinare (con sfrido)", "res_boxes": "Scatole da Acquistare", "res_total_coverage": "Copertura effettiva scatole", "res_total_tiles": "Pezzi Singoli Totali", "res_adhesive_bags": "Sacchi di Colla", "res_adhesive_total": "Totale Colla Stimata", "res_grout_kg": "Stucco Fughe Necessario", "res_grout_details": "Fuga {grout} · Spessore {thick}", "res_waste_warning": "Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.", "btn_print": "Stampa Scheda A4", "btn_copy_list": "Copia Lista Spesa", "copied_msg": "✓ Distinta copiata negli appunti!", "preview_title": "Anteprima Grafica Schema di Posa", "preview_badge_straight": "Dritta (+10%)", "preview_badge_offset": "Sfalsata (+12%)", "preview_badge_diagonal": "Diagonale (+15%)", "preview_badge_herringbone": "Spina di Pesce (+20%)", "preview_badge_custom": "Personalizzata", "faq_main_title": "Domande Frequenti su Calcolo Piastrelle, Scarti e Materiali", "disclaimer_text": "I consumi di colla e stucco sono calcolati secondo formule tecniche orientative (ISO/UNI). Verificare sempre le schede tecniche dei produttori dei collanti e la planarità del massetto prima dell'acquisto.", "faq1_q": "Perché è indispensabile aggiungere lo sfrido (10-20%) al calcolo delle piastrelle?", "faq1_a": "Durante la posa, ogni piastrella che tocca una parete o un pilastro deve essere tagliata. La parte rimanente del taglio spesso non è riutilizzabile altrove. In più, conviene conservare almeno una scatola integra di riserva: in caso di future riparazioni idrauliche, crepe o rotture, reperire la stessa identica piastrella dello stesso bagno di colore (tono/calibro) è quasi impossibile dopo pochi mesi.", "faq2_q": "Quanti sacchi di colla servono per metro quadro?", "faq2_a": "Il consumo varia in base alla dimensione della piastrella e alla dentatura della spatola. Per piastrelle fino a 30x30 cm con spatola da 6 mm si consumano circa 2.5-3 kg/m²; per formati medi come 60x60 cm con spatola da 8-10 mm servono circa 4-5 kg/m²; per grandi formati oltre 80 cm o pavimentazioni esterne è obbligatoria la doppia spalmatura (sul fondo e sul retro della piastrella), con consumi di circa 5.5-7 kg/m². Un sacco standard da 25 kg copre indicativamente tra i 4 e i 6 m².", "faq3_q": "Come si calcola la quantità di stucco per le fughe?", "faq3_a": "La quantità si calcola con la formula standard internazionale: [(A + B) / (A × B)] × C × D × 1.6, dove A e B sono lunghezza e larghezza della piastrella in cm, C è lo spessore in mm, D è la larghezza della fuga in mm e 1.6 è il coefficiente medio di densità dello stucco. Piastrelle grandi con fughe sottili (2 mm) richiedono pochissimo stucco (circa 200-300 g/m²), mentre formati piccoli come mosaici o piastrelle rustiche con fughe larghe (5 mm) richiedono oltre 1-1.5 kg/m².", "faq4_q": "Come calcolo i metri quadri se la stanza ha una forma a L o irregolare?", "faq4_a": "È sufficiente dividere mentalmente la stanza in due o più rettangoli regolari (ad esempio rettangolo A 3x4m = 12m² e rettangolo B 2x2.5m = 5m²), sommarli (12 + 5 = 17m²) e inserire il valore nella modalità \"Metri Quadri Netti Noti\". In presenza di nicchie o pareti fuori squadro, consigliamo di selezionare una percentuale di sfrido leggermente superiore (+15%).", "faq5_q": "Cosa significa rettificato e che fuga richiede?", "faq5_a": "Le piastrelle rettificate presentano bordi tagliati perfettamente a 90° dopo la cottura, consentendo di realizzare fughe minime di 1.5 - 2 mm per un effetto continuo moderno. Le piastrelle tradizionali con bordo naturale/stondato richiedono invece fughe di almeno 3 - 4 mm."}, "en": {"badge": "Construction & DIY", "hero_title": "Tile, Waste, Adhesive & Grout Calculator", "hero_desc": "Professional flooring & wall tile calculator. Calculate square meters or square feet to order including cutting waste margin, box quantities, adhesive mortar bags (kg/lbs), and joint grout with an instant materials bill of materials.", "sec_room_title": "1. Surface Dimensions to Tile", "sec_room_desc": "Enter room dimensions or directly enter known net surface area.", "mode_dimensions": "Room Dimensions", "mode_direct_sqm": "Known Net Area", "label_unit_system": "Measurement Units", "unit_metric": "Metric (m / cm / mm)", "unit_imperial": "Imperial (ft / in)", "label_length": "Room Length", "label_width": "Room Width", "label_net_sqm": "Net Surface Area", "label_openings_deduct": "Deduct Doors / Openings (optional)", "sec_tile_title": "2. Tile Size & Layout Pattern", "sec_tile_desc": "Select tile size and installation pattern to estimate realistic cutting waste.", "label_tile_preset": "Standard Presets", "preset_wood": "20 × 120 (Wood Planks)", "label_tile_w": "Tile Width", "label_tile_h": "Tile Height", "label_tile_thick": "Tile Thickness", "label_pattern": "Layout Pattern & Waste Margin", "pattern_straight": "Straight Grid (+10% waste)", "pattern_offset": "Staggered / Running Bond (+12% waste)", "pattern_diagonal": "Diagonal Pattern (+15% waste)", "pattern_herringbone": "Herringbone Pattern (+20% waste)", "pattern_custom": "Custom Waste (%)", "label_custom_waste": "Custom Waste (%)", "label_box_coverage": "Coverage per Box", "label_box_pieces": "Pieces per Box (optional)", "sec_materials_title": "3. Tile Adhesive & Joint Grout", "sec_materials_desc": "Accurate jobsite consumption estimates based on trowel size and grout joint width.", "label_grout_width": "Grout Joint Width", "label_adhesive_notch": "Trowel Notch / Adhesive Application", "notch_small": "6 mm Notch (Small tiles, ~3.0 kg/m²)", "notch_medium": "8-10 mm Notch (Standard 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Back-Buttering / Large Format (~6.0 kg/m²)", "label_bag_weight": "Adhesive Bag Weight (kg)", "badge_bom": "Bill of Materials", "summary_title": "Purchase Calculation & Materials", "res_net_area": "Net Surface Area", "res_gross_area": "Total to Order (with waste)", "res_boxes": "Boxes to Purchase", "res_total_coverage": "Effective Box Coverage", "res_total_tiles": "Total Individual Tiles", "res_adhesive_bags": "Adhesive Bags", "res_adhesive_total": "Estimated Total Adhesive", "res_grout_kg": "Joint Grout Needed", "res_grout_details": "Joint {grout} · Thickness {thick}", "res_waste_warning": "Includes contingency for perimeter cuts, offcuts and spare tiles. Always keep at least 1 unopened box for future repairs.", "btn_print": "Print A4 Sheet", "btn_copy_list": "Copy Materials List", "copied_msg": "✓ Materials list copied to clipboard!", "preview_title": "Layout Pattern Visual Preview", "preview_badge_straight": "Straight (+10%)", "preview_badge_offset": "Staggered (+12%)", "preview_badge_diagonal": "Diagonal (+15%)", "preview_badge_herringbone": "Herringbone (+20%)", "preview_badge_custom": "Custom", "faq_main_title": "Frequently Asked Questions on Tile Calculation & Materials", "disclaimer_text": "Adhesive and grout consumptions are calculated using standard technical formulas (ISO/UNI). Always verify manufacturer technical datasheets and substrate flatness before ordering.", "faq1_q": "Why is adding a 10-20% waste margin essential when buying tiles?", "faq1_a": "During installation, every tile abutting a wall or fixture must be cut. The offcut piece is rarely reusable. Furthermore, keeping at least one unopened box as attic stock is critical: in case of plumbing repairs or tile breakage, sourcing the exact same dye lot and caliber months later is nearly impossible.", "faq2_q": "How many adhesive bags do I need per square meter?", "faq2_a": "Consumption depends on tile dimensions and trowel notch depth. Small tiles up to 30x30 cm using a 6 mm trowel require approx. 2.5-3 kg/m²; medium 60x60 cm tiles with 8-10 mm trowel require 4-5 kg/m²; large format tiles or outdoor paving require double-spreading (back-buttering) taking 5.5-7 kg/m². A standard 25 kg bag covers roughly 4 to 6 m².", "faq3_q": "How is joint grout coverage calculated?", "faq3_a": "Grout consumption uses the international formula: [(A + B) / (A × B)] × C × D × 1.6, where A and B are tile length and width in cm, C is thickness in mm, D is joint width in mm, and 1.6 is the grout density coefficient. Large tiles with tight 2 mm joints require very little grout (~200-300 g/m²), while mosaics or rustic tiles with 5 mm joints require over 1 kg/m².", "faq4_q": "How do I calculate square meters for an L-shaped or irregular room?", "faq4_a": "Simply split the room into two or more regular rectangles (e.g. area A 3x4m = 12m² and area B 2x2.5m = 5m²), add them up (12 + 5 = 17m²), and enter that value in \"Known Net Area\". For out-of-square walls or multiple niches, we advise choosing a slightly higher waste margin (+15%).", "faq5_q": "What does rectified tile mean and what grout joint is required?", "faq5_a": "Rectified tiles have edges mechanically cut at precise 90° angles after firing, allowing ultra-thin grout joints of 1.5 - 2 mm for a sleek, contemporary look. Non-rectified traditional tiles require joints of at least 3 - 4 mm to absorb dimensional variations."}, "es": {"badge": "Obra & Bricolaje", "hero_title": "Cálculo de Azulejos, Desperdicio, Cemento Cola y Juntas", "hero_desc": "Calculadora profesional para suelos y revestimientos. Calcula metros cuadrados o pies cuadrados a pedir con merma por cortes, cajas necesarias, sacos de cemento cola (kg) y borada para juntas.", "sec_room_title": "1. Medidas de la Superficie a Ensolar", "sec_room_desc": "Introduce las dimensiones de la habitación o directamente la superficie neta.", "mode_dimensions": "Dimensiones Habitación", "mode_direct_sqm": "Metros Cuadrados Netos", "label_unit_system": "Unidades de Medida", "unit_metric": "Métrico (m / cm / mm)", "unit_imperial": "Imperial (ft / in)", "label_length": "Longitud Habitación", "label_width": "Anchura Habitación", "label_net_sqm": "Superficie Neta", "label_openings_deduct": "Deducción Puertas / Huecos (opcional)", "sec_tile_title": "2. Formato de Azulejo & Patrón de Colocación", "sec_tile_desc": "Elige el tamaño de baldosa y el tipo de colocación para calcular el desperdicio real.", "label_tile_preset": "Formatos Estándar", "preset_wood": "20 × 120 (Lamas Madera)", "label_tile_w": "Anchura Azulejo", "label_tile_h": "Altura Azulejo", "label_tile_thick": "Espesor Azulejo", "label_pattern": "Patrón de Colocación & Merma", "pattern_straight": "Colocación Recta Estándar (+10% merma)", "pattern_offset": "Colocación Trabada / A Matajunta (+12% merma)", "pattern_diagonal": "Colocación en Diagonal (+15% merma)", "pattern_herringbone": "Colocación en Espiga (+20% merma)", "pattern_custom": "Merma Personalizada (%)", "label_custom_waste": "Porcentaje Merma (%)", "label_box_coverage": "Rendimiento por Caja", "label_box_pieces": "Piezas por Caja (opcional)", "sec_materials_title": "3. Cemento Cola (Adhesivo) & Borada de Juntas", "sec_materials_desc": "Estimación rigurosa de consumos en obra según llana dentada y ancho de junta.", "label_grout_width": "Anchura de la Junta", "label_adhesive_notch": "Tipo de Llana / Aplicación de Cola", "notch_small": "Diente 6 mm (Formatos pequeños, ~3.0 kg/m²)", "notch_medium": "Diente 8-10 mm (Estándar 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Doble Encolado (Grandes Formatos / Exterior, ~6.0 kg/m²)", "label_bag_weight": "Peso Saco de Cola (kg)", "badge_bom": "Cómputo de Materiales", "summary_title": "Presupuesto para la Compra", "res_net_area": "Superficie Neta", "res_gross_area": "Total a Pedir (con merma)", "res_boxes": "Cajas a Comprar", "res_total_coverage": "Cobertura efectiva cajas", "res_total_tiles": "Piezas Sueltas Totales", "res_adhesive_bags": "Sacos de Cola", "res_adhesive_total": "Total Adhesivo Estimado", "res_grout_kg": "Borada para Juntas Necesaria", "res_grout_details": "Junta {grout} · Espesor {thick}", "res_waste_warning": "Incluye reserva para cortes perimetrales, recortes y baldosas de repuesto. Conserve siempre al menos 1 caja completa.", "btn_print": "Imprimir Ficha A4", "btn_copy_list": "Copiar Lista de Materiales", "copied_msg": "✓ ¡Lista de compra copiada al portapapeles!", "preview_title": "Vista Previa del Patrón de Colocación", "preview_badge_straight": "Recta (+10%)", "preview_badge_offset": "Trabada (+12%)", "preview_badge_diagonal": "Diagonal (+15%)", "preview_badge_herringbone": "Espiga (+20%)", "preview_badge_custom": "Personalizada", "faq_main_title": "Preguntas Frecuentes sobre Azulejos, Desperdicio y Materiales", "disclaimer_text": "Los consumos de adhesivo y borada se calculan mediante fórmulas técnicas orientativas (ISO/UNE). Compruebe siempre la ficha técnica del fabricante.", "faq1_q": "¿Por qué es indispensable añadir un 10-20% de merma al comprar azulejos?", "faq1_a": "Durante la colocación, cada pieza contra una pared debe cortarse y el sobrante rara vez puede reutilizarse. Además, es imprescindible guardar al menos una caja completa de reserva para futuras reparaciones.", "faq2_q": "¿Cuántos sacos de cemento cola se necesitan por metro cuadrado?", "faq2_a": "Depende del tamaño de la baldosa y la llana dentada: de 2.5 a 3 kg/m² para formatos pequeños con llana de 6 mm; 4 a 5 kg/m² para formatos estándar de 60x60 cm; y de 5.5 a 7 kg/m² con doble encolado para gran formato. Un saco de 25 kg suele rendir para 4 a 6 m².", "faq3_q": "¿Cómo se calcula el material de rejuntado (borada)?", "faq3_a": "Mediante la fórmula estandarizada: [(A + B) / (A × B)] × C × D × 1.6, donde A y B son lados en cm, C es espesor en mm, D es anchura de junta en mm y 1.6 es el peso volumétrico medio.", "faq4_q": "¿Cómo calculo los metros cuadrados de una estancia irregular o en L?", "faq4_a": "Divida el espacio en dos rectángulos simples, sume sus áreas e introduzca el valor total en la casilla de metros cuadrados netos conocidos, aplicando un 15% de merma.", "faq5_q": "¿Qué significa gres rectificado y qué junta precisa?", "faq5_a": "Las piezas rectificadas tienen aristas cortadas a 90° exactos tras la cocción, lo que permite juntas mínimas de 1.5 a 2 mm para un aspecto estético uniforme."}, "fr": {"badge": "Chantier & Bricolage", "hero_title": "Calculateur Carrelage, Chutes, Colle & Joints", "hero_desc": "Calculateur professionnel pour sols et faïences murales. Calculez les mètres carrés ou pieds carrés à commander avec marge de découpe, cartons, sacs de colle et joints.", "sec_room_title": "1. Mesures de la Surface à Carreler", "sec_room_desc": "Indiquez les dimensions de la pièce ou directement la surface nette.", "mode_dimensions": "Dimensions Pièce", "mode_direct_sqm": "Surface Nette Connue", "label_unit_system": "Unités de Mesure", "unit_metric": "Métrique (m / cm / mm)", "unit_imperial": "Impérial (ft / in)", "label_length": "Longueur Pièce", "label_width": "Largeur Pièce", "label_net_sqm": "Surface Nette", "label_openings_deduct": "Déduction Portes / Ouvertures (facultatif)", "sec_tile_title": "2. Format de Carreau & Schéma de Pose", "sec_tile_desc": "Sélectionnez les dimensions du carreau et le style de pose pour calculer le pourcentage de chutes.", "label_tile_preset": "Formats Standards", "preset_wood": "20 × 120 (Lames Bois)", "label_tile_w": "Largeur Carreau", "label_tile_h": "Hauteur Carreau", "label_tile_thick": "Épaisseur Carreau", "label_pattern": "Schéma de Pose & Chutes", "pattern_straight": "Pose Droite Standard (+10% de chutes)", "pattern_offset": "Pose Décalée / À Joints Croisés (+12% de chutes)", "pattern_diagonal": "Pose en Diagonale (+15% de chutes)", "pattern_herringbone": "Pose à Bâtons Rompus (+20% de chutes)", "pattern_custom": "Marge Personnalisée (%)", "label_custom_waste": "Pourcentage de Chutes (%)", "label_box_coverage": "Surface par Carton", "label_box_pieces": "Pièces par Carton (facultatif)", "sec_materials_title": "3. Mortier Colle & Pâte à Joint", "sec_materials_desc": "Estimation précise des consommations selon la taille du peigne cranté et la largeur de joint.", "label_grout_width": "Largeur de Joint", "label_adhesive_notch": "Type de Peigne / Application Colle", "notch_small": "Peigne 6 mm (Petits carreaux, ~3.0 kg/m²)", "notch_medium": "Peigne 8-10 mm (Standard 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Double Encollage (Grands Formats / Extérieur, ~6.0 kg/m²)", "label_bag_weight": "Poids du Sac de Colle (kg)", "badge_bom": "Quantitatif Matériaux", "summary_title": "Calcul pour l'Achat", "res_net_area": "Surface Nette", "res_gross_area": "Total à Commander (avec chutes)", "res_boxes": "Cartons à Acheter", "res_total_coverage": "Couverture réelle cartons", "res_total_tiles": "Nombre Total de Carreaux", "res_adhesive_bags": "Sacs de Mortier Colle", "res_adhesive_total": "Total Colle Estimé", "res_grout_kg": "Joint Nécessaire", "res_grout_details": "Joint {grout} · Épaisseur {thick}", "res_waste_warning": "Comprend la marge pour découpes murales, chutes et carreaux de réserve. Gardez au moins 1 carton intact.", "btn_print": "Imprimer Fiche A4", "btn_copy_list": "Copier Liste Matériaux", "copied_msg": "✓ Liste de matériaux copiée dans le presse-papier !", "preview_title": "Aperçu Graphique du Schéma de Pose", "preview_badge_straight": "Droite (+10%)", "preview_badge_offset": "Décalée (+12%)", "preview_badge_diagonal": "Diagonale (+15%)", "preview_badge_herringbone": "Bâtons Rompus (+20%)", "preview_badge_custom": "Personnalisée", "faq_main_title": "Foire Aux Questions sur le Carrelage, Chutes et Matériaux", "disclaimer_text": "Les estimations de colle et de joint sont basées sur les formules techniques usuelles (ISO/DTU). Vérifiez toujours les fiches techniques des fabricants.", "faq1_q": "Pourquoi est-il indispensable d'ajouter 10 à 20% de marge pour les chutes ?", "faq1_a": "Lors de la pose, chaque carreau en périphérie doit être découpé et la chute est rarement réutilisable. De plus, conserver au moins un carton plein de réserve est indispensable pour parer aux futures réparations.", "faq2_q": "Combien de sacs de colle faut-il par mètre carré ?", "faq2_a": "La consommation dépend du carreau et de la denture du peigne : environ 2.5 à 3 kg/m² pour du petit format avec peigne de 6 mm ; 4 à 5 kg/m² pour du 60x60 cm ; et 5.5 à 7 kg/m² en double encollage pour les grands formats. Un sac de 25 kg couvre généralement entre 4 et 6 m².", "faq3_q": "Comment se calcule la quantité de pâte à joint ?", "faq3_a": "Selon la formule standard : [(A + B) / (A × B)] × C × D × 1.6, où A et B sont les côtés en cm, C l'épaisseur en mm, D la largeur de joint en mm et 1.6 la densité moyenne du joint.", "faq4_q": "Comment calculer la surface d'une pièce en L ou irrégulière ?", "faq4_a": "Décomposez la pièce en deux rectangles simples, additionnez les deux surfaces et saisissez le total dans la section surface nette connue en prévoyant une marge de 15%.", "faq5_q": "Qu'est-ce qu'un carrelage rectifié et quel joint requiert-il ?", "faq5_a": "Les carreaux rectifiés ont des bords sciés à 90° précis après cuisson, permettant des joints fins de 1.5 à 2 mm pour un rendu moderne et régulier."}, "de": {"badge": "Baustelle & Heimwerker", "hero_title": "Fliesen-, Verschnitt-, Kleber- & Fugenrechner", "hero_desc": "Professioneller Rechner für Boden- und Wandfliesen. Berechnen Sie zu bestellende Quadratmeter inklusive Schnittverschnitt, Paketmengen, Fliesenkleber-Säcke (kg) und Fugenmörtel.", "sec_room_title": "1. Maße der zu fliesenden Fläche", "sec_room_desc": "Geben Sie Raummaße oder direkt die bekannte Nettofläche ein.", "mode_dimensions": "Raummaße", "mode_direct_sqm": "Bekannte Nettofläche", "label_unit_system": "Maßeinheiten", "unit_metric": "Metrisch (m / cm / mm)", "unit_imperial": "Imperial (ft / in)", "label_length": "Raumlänge", "label_width": "Raumbreite", "label_net_sqm": "Nettofläche", "label_openings_deduct": "Abzug Türen / Aussparungen (optional)", "sec_tile_title": "2. Fliesenformat & Verlegemuster", "sec_tile_desc": "Wählen Sie das Fliesenmaß und Verlegemuster zur Ermittlung des Verschnitts.", "label_tile_preset": "Standardformate", "preset_wood": "20 × 120 (Holzoptik-Dielen)", "label_tile_w": "Fliesenbreite", "label_tile_h": "Fliesenhöhe", "label_tile_thick": "Fliesenstärke", "label_pattern": "Verlegemuster & Verschnitt", "pattern_straight": "Kreuzfuge / Gerade Verlegung (+10% Verschnitt)", "pattern_offset": "Halbverband / Versetzte Verlegung (+12% Verschnitt)", "pattern_diagonal": "Diagonalverlegung (+15% Verschnitt)", "pattern_herringbone": "Fischgrätmuster (+20% Verschnitt)", "pattern_custom": "Individueller Verschnitt (%)", "label_custom_waste": "Verschnittquote (%)", "label_box_coverage": "Deckfläche pro Paket", "label_box_pieces": "Fliesen pro Paket (optional)", "sec_materials_title": "3. Fliesenkleber & Fugenmörtel", "sec_materials_desc": "Präzise Baustellenverbrauchs-Schätzung nach Zahnkellen-Größe und Fugenbreite.", "label_grout_width": "Fugenbreite", "label_adhesive_notch": "Zahnleiste / Kleberauftrag", "notch_small": "6 mm Zahnung (Kleinformat, ~3.0 kg/m²)", "notch_medium": "8-10 mm Zahnung (Standard 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Buttering-Floating / Großformat (~6.0 kg/m²)", "label_bag_weight": "Gewicht Klebersack (kg)", "badge_bom": "Materialaufstellung", "summary_title": "Einkaufs- & Mengenberechnung", "res_net_area": "Nettofläche", "res_gross_area": "Gesamtbestellmenge (mit Verschnitt)", "res_boxes": "Zu kaufende Pakete", "res_total_coverage": "Tatsächliche Paketdeckung", "res_total_tiles": "Gesamtzahl Einzelfliesen", "res_adhesive_bags": "Säcke Fliesenkleber", "res_adhesive_total": "Geschätzter Kleber Gesamt", "res_grout_kg": "Benötigter Fugenmörtel", "res_grout_details": "Fuge {grout} · Stärke {thick}", "res_waste_warning": "Enthält Reserve für Randschnitte, Zuschnitte und Ersatzfliesen. Mindestens 1 ungeöffnetes Paket einlagern.", "btn_print": "A4 Blatt Drucken", "btn_copy_list": "Materialliste Kopieren", "copied_msg": "✓ Materialliste in Zwischenablage kopiert!", "preview_title": "Grafische Verlegemuster-Vorschau", "preview_badge_straight": "Kreuzfuge (+10%)", "preview_badge_offset": "Halbverband (+12%)", "preview_badge_diagonal": "Diagonal (+15%)", "preview_badge_herringbone": "Fischgrät (+20%)", "preview_badge_custom": "Individuell", "faq_main_title": "Häufig gestellte Fragen zu Fliesen, Verschnitt und Mörtel", "disclaimer_text": "Verbrauchswerte für Kleber und Fuge basieren auf technischen Richtformeln (DIN/ISO). Bitte vor Bestellung stets die technischen Datenblätter des Herstellers prüfen.", "faq1_q": "Warum ist ein Verschnittzuschlag von 10-20% unverzichtbar?", "faq1_a": "Bei jeder Verlegung müssen Randfliesen zugeschnitten werden; Reststücke sind selten wiederverwendbar. Zudem sollte mindestens ein unangebrochenes Paket als Reserve eingelagert werden, da spätere Nachkäufe oft Farbton- und Kaliberabweichungen aufweisen.", "faq2_q": "Wie viele Säcke Fliesenkleber werden pro m² benötigt?", "faq2_a": "Der Verbrauch richtet sich nach Kellen-Zahnung: ca. 2.5-3 kg/m² bei 6 mm Kelle; 4-5 kg/m² bei 8-10 mm Zahnung (z.B. 60x60 cm); und 5.5-7 kg/m² im Buttering-Floating-Verfahren bei Großformaten. Ein 25-kg-Sack reicht für etwa 4 bis 6 m².", "faq3_q": "Wie berechnet man den Fugenmörtelbedarf?", "faq3_a": "Nach der Standardformel: [(A + B) / (A × B)] × C × D × 1.6, wobei A und B die Kantenlängen in cm, C die Stärke in mm, D die Fugenbreite in mm und 1.6 der Dichtefaktor sind.", "faq4_q": "Wie berechne ich L-förmige oder unregelmäßige Räume?", "faq4_a": "Teilen Sie den Grundriss in einfache Teilrechtecke auf, addieren Sie deren Flächen und tragen Sie die Gesamtsumme bei der bekannten Nettofläche ein (mit 15% Verschnittreserve).", "faq5_q": "Was bedeutet kalibriert/rektifiziert und welche Fugenbreite ist nötig?", "faq5_a": "Rektifizierte Fliesen besitzen exakt rechtwinklig geschliffene Kanten, was schmale Fugen von 1.5 bis 2 mm für eine moderne Optik ermöglicht."}, "pt": {"badge": "Construção & Bricolage", "hero_title": "Calculadora de Azulejos, Desperdício, Cola e Juntas", "hero_desc": "Calculadora profissional para pisos e revestimentos cerâmicos. Calcule metros quadrados ou pés quadrados para encomenda com margem de cortes, caixas necessárias, sacos de cimento-cola e argamassa de juntas.", "sec_room_title": "1. Medidas da Superfície a Revestir", "sec_room_desc": "Introduza as dimensões do compartimento ou diretamente a área líquida.", "mode_dimensions": "Dimensões Compartimento", "mode_direct_sqm": "Área Líquida Conhecida", "label_unit_system": "Unidades de Medida", "unit_metric": "Métrico (m / cm / mm)", "unit_imperial": "Imperial (ft / in)", "label_length": "Comprimento", "label_width": "Largura", "label_net_sqm": "Área Líquida", "label_openings_deduct": "Dedução Portas / Vãos (opcional)", "sec_tile_title": "2. Formato da Peça & Padrão de Assentamento", "sec_tile_desc": "Selecione o tamanho do azulejo e o tipo de assentamento para calcular o desperdício real.", "label_tile_preset": "Formatos Padrão", "preset_wood": "20 × 120 (Réguas Amadeiradas)", "label_tile_w": "Largura Azulejo", "label_tile_h": "Altura Azulejo", "label_tile_thick": "Espessura Azulejo", "label_pattern": "Padrão de Assentamento & Margem", "pattern_straight": "Assentamento Reto Padrão (+10% quebra)", "pattern_offset": "Assentamento Desencontrado / Travado (+12% quebra)", "pattern_diagonal": "Assentamento em Diagonal (+15% quebra)", "pattern_herringbone": "Espinha de Peixe (+20% quebra)", "pattern_custom": "Margem Personalizada (%)", "label_custom_waste": "Porcentagem de Quebra (%)", "label_box_coverage": "Rendimento por Caixa", "label_box_pieces": "Peças por Caixa (opcional)", "sec_materials_title": "3. Cimento-Cola & Argamassa de Juntas", "sec_materials_desc": "Estimativa rigorosa de consumo em obra com base na talocha dentada e largura da junta.", "label_grout_width": "Largura da Junta", "label_adhesive_notch": "Tipo de Talocha / Aplicação de Cola", "notch_small": "Dente 6 mm (Formatos pequenos, ~3.0 kg/m²)", "notch_medium": "Dente 8-10 mm (Padrão 30x60 / 60x60, ~4.5 kg/m²)", "notch_large": "Colagem Dupla (Grandes Formatos / Exterior, ~6.0 kg/m²)", "label_bag_weight": "Peso do Saco de Cola (kg)", "badge_bom": "Mapa de Quantidades", "summary_title": "Cálculo para a Compra", "res_net_area": "Área Líquida", "res_gross_area": "Total a Encomendar (com quebra)", "res_boxes": "Caixas a Comprar", "res_total_coverage": "Cobertura efetiva caixas", "res_total_tiles": "Total de Peças Individuais", "res_adhesive_bags": "Sacos de Cimento-Cola", "res_adhesive_total": "Total Cimento-Cola Estimado", "res_grout_kg": "Argamassa de Juntas Necessária", "res_grout_details": "Junta {grout} · Espessura {thick}", "res_waste_warning": "Inclui margem para cortes perimétricos, quebras e peças de reserva. Guarde sempre pelo menos 1 caixa lacrada.", "btn_print": "Imprimir Folha A4", "btn_copy_list": "Copiar Lista de Materiais", "copied_msg": "✓ Lista de materiais copiada para a área de transferência!", "preview_title": "Pré-visualização do Padrão de Assentamento", "preview_badge_straight": "Reto (+10%)", "preview_badge_offset": "Desencontrado (+12%)", "preview_badge_diagonal": "Diagonal (+15%)", "preview_badge_herringbone": "Espinha de Peixe (+20%)", "preview_badge_custom": "Personalizado", "faq_main_title": "Perguntas Frequentes sobre Azulejos, Quebras e Materiais", "disclaimer_text": "Os consumos de cimento-cola e argamassa de juntas são calculados com base em fórmulas técnicas orientativas (ISO/NP). Confirme sempre a ficha técnica do fabricante.", "faq1_q": "Por que é fundamental acrescentar 10-20% de margem ao comprar cerâmica?", "faq1_a": "Durante a instalação, todas as peças encostadas a paredes devem ser cortadas e o retalho raramente é reaproveitável. Além disso, guardar pelo menos uma caixa intacta de reserva é essencial para reparações futuras.", "faq2_q": "Quantos sacos de cimento-cola são necessários por metro quadrado?", "faq2_a": "O consumo varia com o tamanho da cerâmica e a denteação da talocha: 2.5 a 3 kg/m² para peças pequenas com talocha de 6 mm; 4 a 5 kg/m² para 60x60 cm; e 5.5 a 7 kg/m² com colagem dupla para grandes formatos. Um saco de 25 kg cobre entre 4 e 6 m².", "faq3_q": "Como se calcula o consumo de argamassa de juntas?", "faq3_a": "Através da fórmula internacional: [(A + B) / (A × B)] × C × D × 1.6, onde A e B são os lados em cm, C a espessura em mm, D a largura da junta em mm e 1.6 a densidade média.", "faq4_q": "Como calcular a área de um compartimento em L ou irregular?", "faq4_a": "Divida o espaço em retângulos simples, some as suas áreas e insira o valor na área líquida conhecida, aplicando 15% de margem de segurança.", "faq5_q": "O que significa cerâmica retificada e qual a junta recomendada?", "faq5_a": "Peças retificadas têm bordas cortadas exatamente a 90° após a cozedura, permitindo juntas mínimas de 1.5 a 2 mm para um efeito contínuo."}};
+        
 
         
 

@@ -2096,72 +2096,76 @@
             const t = TRANSLATIONS[lang] || TRANSLATIONS['it'];
             if (!t) return;
 
-            document.getElementById('heroBadge').textContent = `OmniBuilding · ${t.badge || 'Cantiere'}`;
-            document.getElementById('heroTitle').textContent = t.hero_title;
-            document.getElementById('heroDesc').textContent = t.hero_desc;
+            const setTxt = (id, val) => {
+                const el = document.getElementById(id);
+                if (el && val !== undefined && val !== null) el.textContent = val;
+            };
 
-            document.getElementById('secRoomTitle').textContent = t.sec_room_title;
-            document.getElementById('secRoomDesc').textContent = t.sec_room_desc;
-            document.getElementById('btnModeDims').textContent = t.mode_dimensions;
-            document.getElementById('btnModeDirect').textContent = t.mode_direct_sqm;
-            document.getElementById('lblLength').textContent = t.label_length;
-            document.getElementById('lblWidth').textContent = t.label_width;
-            document.getElementById('lblNetSqm').textContent = t.label_net_sqm;
-            document.getElementById('lblOpenings').textContent = t.label_openings_deduct;
+            setTxt('heroBadge', `OmniBuilding · ${t.badge || 'Cantiere'}`);
+            setTxt('heroTitle', t.hero_title);
+            setTxt('heroDesc', t.hero_desc);
 
-            document.getElementById('secTileTitle').textContent = t.sec_tile_title;
-            document.getElementById('secTileDesc').textContent = t.sec_tile_desc;
-            document.getElementById('lblTilePreset').textContent = t.label_tile_preset;
-            if (document.getElementById('btnPresetWood') && t.preset_wood) {
-                document.getElementById('btnPresetWood').textContent = t.preset_wood;
-            }
-            document.getElementById('lblTileW').textContent = t.label_tile_w;
-            document.getElementById('lblTileH').textContent = t.label_tile_h;
-            document.getElementById('lblTileThick').textContent = t.label_tile_thick;
-            document.getElementById('lblPattern').textContent = t.label_pattern;
+            setTxt('secRoomTitle', t.sec_room_title);
+            setTxt('secRoomDesc', t.sec_room_desc);
+            setTxt('btnModeDims', t.mode_dimensions);
+            setTxt('btnModeDirect', t.mode_direct_sqm);
+            setTxt('lblLength', t.label_length);
+            setTxt('lblWidth', t.label_width);
+            setTxt('lblNetSqm', t.label_net_sqm);
+            setTxt('lblOpenings', t.label_openings_deduct);
 
-            document.getElementById('optStraight').textContent = t.pattern_straight;
-            document.getElementById('optOffset').textContent = t.pattern_offset;
-            document.getElementById('optDiagonal').textContent = t.pattern_diagonal;
-            document.getElementById('optHerringbone').textContent = t.pattern_herringbone;
-            document.getElementById('optCustom').textContent = t.pattern_custom;
-            document.getElementById('lblCustomWaste').textContent = t.label_custom_waste || t.pattern_custom;
+            setTxt('secTileTitle', t.sec_tile_title);
+            setTxt('secTileDesc', t.sec_tile_desc);
+            setTxt('lblTilePreset', t.label_tile_preset);
+            if (t.preset_wood) setTxt('btnPresetWood', t.preset_wood);
+            setTxt('lblTileW', t.label_tile_w);
+            setTxt('lblTileH', t.label_tile_h);
+            setTxt('lblTileThick', t.label_tile_thick);
+            setTxt('lblPattern', t.label_pattern);
 
-            document.getElementById('lblBoxCoverage').textContent = t.label_box_coverage;
-            document.getElementById('lblBoxPieces').textContent = t.label_box_pieces;
+            setTxt('optStraight', t.pattern_straight);
+            setTxt('optOffset', t.pattern_offset);
+            setTxt('optDiagonal', t.pattern_diagonal);
+            setTxt('optHerringbone', t.pattern_herringbone);
+            setTxt('optCustom', t.pattern_custom);
+            setTxt('lblCustomWaste', t.label_custom_waste || t.pattern_custom);
 
-            document.getElementById('secMaterialsTitle').textContent = t.sec_materials_title;
-            document.getElementById('secMaterialsDesc').textContent = t.sec_materials_desc;
-            document.getElementById('lblGroutWidth').textContent = t.label_grout_width;
-            document.getElementById('lblBagWeight').textContent = t.label_bag_weight;
-            document.getElementById('lblAdhesiveNotch').textContent = t.label_adhesive_notch;
+            setTxt('lblBoxCoverage', t.label_box_coverage);
+            setTxt('lblBoxPieces', t.label_box_pieces);
 
-            document.getElementById('notchSmall').textContent = t.notch_small;
-            document.getElementById('notchMedium').textContent = t.notch_medium;
-            document.getElementById('notchLarge').textContent = t.notch_large;
+            setTxt('secMaterialsTitle', t.sec_materials_title);
+            setTxt('secMaterialsDesc', t.sec_materials_desc);
+            setTxt('lblGroutWidth', t.label_grout_width);
+            setTxt('lblBagWeight', t.label_bag_weight);
+            setTxt('lblAdhesiveNotch', t.label_adhesive_notch);
 
-            document.getElementById('badgeBom').textContent = t.badge_bom || 'Distinta Materiali';
-            document.getElementById('summaryTitle').textContent = t.summary_title;
-            document.getElementById('resNetAreaLabel').textContent = t.res_net_area;
-            document.getElementById('resGrossAreaLabel').textContent = t.res_gross_area;
-            document.getElementById('resBoxesLabel').textContent = t.res_boxes;
-            document.getElementById('resAdhesiveBagsLabel').textContent = t.res_adhesive_bags;
-            document.getElementById('resGroutKgLabel').textContent = t.res_grout_kg;
-            document.getElementById('resWasteWarning').textContent = t.res_waste_warning;
+            setTxt('notchSmall', t.notch_small);
+            setTxt('notchMedium', t.notch_medium);
+            setTxt('notchLarge', t.notch_large);
 
-            document.getElementById('btnCopyList').textContent = (lang === 'it' ? 'Copia Dati per Computo Metrico' : t.btn_copy_list);
-            document.getElementById('btnPrint').textContent = (lang === 'it' ? 'Stampa Scheda Cantiere A4' : t.btn_print);
-            document.getElementById('previewTitle').textContent = t.preview_title;
+            setTxt('badgeBom', t.badge_bom || 'Distinta Materiali');
+            setTxt('summaryTitle', t.summary_title);
+            setTxt('resNetAreaLabel', t.res_net_area);
+            setTxt('resGrossAreaLabel', t.res_gross_area);
+            setTxt('resBoxesLabel', t.res_boxes);
+            setTxt('resAdhesiveBagsLabel', t.res_adhesive_bags);
+            setTxt('resGroutKgLabel', t.res_grout_kg);
+            setTxt('resWasteWarning', t.res_waste_warning);
 
-            if (document.getElementById('faqTitle') && t.faq_main_title) {
-                document.getElementById('faqTitle').textContent = t.faq_main_title;
-            }
+            setTxt('btnCopyList', (lang === 'it' ? 'Copia Dati per Computo Metrico' : t.btn_copy_list));
+            setTxt('btnPrint', (lang === 'it' ? 'Stampa Scheda Cantiere A4' : t.btn_print));
+            setTxt('previewTitle', t.preview_title);
+
+            if (t.faq_main_title) setTxt('faqTitle', t.faq_main_title);
 
             // FAQs
             for (let i = 1; i <= 5; i++) {
                 const qEl = document.getElementById(`faq${i}Q`);
                 const aEl = document.getElementById(`faq${i}A`);
-                if (qEl && t[`faq${i}_q`]) qEl.firstElementChild.textContent = t[`faq${i}_q`];
+                if (qEl && t[`faq${i}_q`]) {
+                    if (qEl.firstElementChild) qEl.firstElementChild.textContent = t[`faq${i}_q`];
+                    else qEl.textContent = t[`faq${i}_q`];
+                }
                 if (aEl && t[`faq${i}_a`]) aEl.textContent = t[`faq${i}_a`];
             }
 
@@ -2609,7 +2613,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openTabs.push(pathname);
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
         }
-    }
     }
 
     let detachedWindows = {};

@@ -2320,7 +2320,6 @@ document.addEventListener('DOMContentLoaded', () => {
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
         }
     }
-    }
 
     let detachedWindows = {};
 
@@ -3628,7 +3627,6 @@ document.addEventListener('DOMContentLoaded', () => {
         function initLanguage() {
             const urlLang = (new URLSearchParams(window.location.search)).get('lang');
             currentLang = (urlLang === 'en') ? 'en' : 'it';
-            }
             const selectEl = document.getElementById('langSelect');
             if (selectEl) selectEl.value = currentLang;
             applyTranslations(currentLang);
