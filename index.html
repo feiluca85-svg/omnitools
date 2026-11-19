@@ -589,37 +589,220 @@
         }
 
 
-        /* --- DESKTOP SCHEDARIO APERTO & CARTOLINA TECNICA (>= 1024px) --- */
-        @media (min-width: 1024px) {
-            #omniBranchTabsWrapper {
-                padding-bottom: 0px !important;
-                position: relative !important;
-                z-index: 20 !important;
-            }
+        /* --- RESPONSIVE SCHEDARIO & CARTOLINA TECNICA --- */
+        /* Common base for all viewports */
+        #toolsShowcaseSection {
+            border-top: none !important;
+            padding-top: 0px !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        #toolsShowcaseSection > * + * {
+            margin-top: 0px !important;
+        }
+        #omniBranchTabsWrapper {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            position: relative !important;
+            z-index: 20 !important;
+        }
+        #omniBranchTabsBar {
+            margin-bottom: 0px !important;
+        }
+        #omniBranchLine {
+            display: block !important;
+            width: 100% !important;
+            height: 2px !important;
+            position: relative !important;
+            z-index: 10 !important;
+            background-color: var(--active-branch-color, #2563EB) !important;
+        }
+        #unifiedOmniToolsGrid,
+        #sectionBuilding,
+        #sectionFinance,
+        #sectionGraph,
+        #sectionFood {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+        #sectionBuilding > .grid,
+        #sectionFinance > .grid,
+        #sectionGraph > .grid,
+        #sectionFood > .grid {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+        .omni-department-header {
+            display: none !important;
+        }
+
+        /* --- MOBILE LAYOUT (< 768px): GRIGLIA 1 + 2x2 --- */
+        @media (max-width: 767px) {
             #omniBranchTabsBar {
                 display: grid !important;
-                grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
                 gap: 8px !important;
-                align-items: end !important;
+            }
+            #omniBranchTabsBar #filterAllBtn {
+                grid-column: span 2 / span 2 !important;
+            }
+            #omniBranchTabsBar #filterBuildingBtn,
+            #omniBranchTabsBar #filterFinanceBtn,
+            #omniBranchTabsBar #filterGraphBtn,
+            #omniBranchTabsBar #filterFoodBtn {
+                grid-column: span 1 / span 1 !important;
             }
             .omni-filter-btn {
                 width: 100% !important;
                 height: 44px !important;
                 margin: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                overflow: hidden !important;
+                border-radius: 0px !important;
+                user-select: none !important;
                 transition: all 150ms ease !important;
+            }
+            .omni-filter-btn .icon-square {
+                width: 38px !important;
+                height: 44px !important;
+                min-width: 38px !important;
+                max-width: 38px !important;
+            }
+            .omni-filter-btn .btn-label {
+                padding: 0 6px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 4px !important;
+                font-size: 12.5px !important;
+                font-weight: 600 !important;
+                white-space: nowrap !important;
+                flex: 1 1 0% !important;
+                min-width: 0 !important;
+            }
+            .omni-filter-btn .btn-label > span {
+                white-space: nowrap !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+            }
+
+            /* Mobile Inactive Tabs */
+            .omni-filter-btn:not(.active-all):not(.active-building):not(.active-finance):not(.active-graph):not(.active-food) {
+                background-color: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                color: #0f172a !important;
+            }
+            html.omni-dark .omni-filter-btn:not(.active-all):not(.active-building):not(.active-finance):not(.active-graph):not(.active-food) {
+                background-color: #161b26 !important;
+                border: 1px solid #2a3241 !important;
+                color: #f8fafc !important;
+            }
+
+            /* Mobile Active Tabs: Solid fill, solid border, white text and icons */
+            .omni-filter-btn.active-all,
+            .omni-filter-btn.active-building,
+            .omni-filter-btn.active-finance,
+            .omni-filter-btn.active-graph,
+            .omni-filter-btn.active-food {
+                color: #ffffff !important;
+                border-width: 1px !important;
+                border-style: solid !important;
+            }
+            .omni-filter-btn.active-all {
+                background-color: #2563eb !important;
+                border-color: #2563eb !important;
+            }
+            .omni-filter-btn.active-building {
+                background-color: #d97706 !important;
+                border-color: #d97706 !important;
+            }
+            .omni-filter-btn.active-finance {
+                background-color: #059669 !important;
+                border-color: #059669 !important;
+            }
+            .omni-filter-btn.active-graph {
+                background-color: #e11d48 !important;
+                border-color: #e11d48 !important;
+            }
+            .omni-filter-btn.active-food {
+                background-color: #ea580c !important;
+                border-color: #ea580c !important;
+            }
+
+            /* In active state on mobile, make label text explicitly white */
+            .omni-filter-btn.active-all .btn-label,
+            .omni-filter-btn.active-building .btn-label,
+            .omni-filter-btn.active-finance .btn-label,
+            .omni-filter-btn.active-graph .btn-label,
+            .omni-filter-btn.active-food .btn-label,
+            .omni-filter-btn.active-all .btn-label span,
+            .omni-filter-btn.active-building .btn-label span,
+            .omni-filter-btn.active-finance .btn-label span,
+            .omni-filter-btn.active-graph .btn-label span,
+            .omni-filter-btn.active-food .btn-label span {
+                color: #ffffff !important;
+            }
+
+            /* Dark overlay on icon square in active state on mobile for crisp geometric separation */
+            .omni-filter-btn.active-all .icon-square,
+            .omni-filter-btn.active-building .icon-square,
+            .omni-filter-btn.active-finance .icon-square,
+            .omni-filter-btn.active-graph .icon-square,
+            .omni-filter-btn.active-food .icon-square {
+                box-shadow: inset 0 0 0 999px rgba(0, 0, 0, 0.12) !important;
+                border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+            }
+
+            /* Mobile Line Spacing: 12px margin-top, 16px margin-bottom */
+            #omniBranchLine {
+                margin-top: 12px !important;
+                margin-bottom: 16px !important;
+            }
+        }
+
+        /* --- DESKTOP LAYOUT (>= 768px): 5 COLUMNS SCHEDARIO APERTO --- */
+        @media (min-width: 768px) {
+            #omniBranchTabsBar {
+                display: grid !important;
+                grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+                align-items: stretch !important;
+            }
+            #omniBranchTabsBar #filterAllBtn,
+            #omniBranchTabsBar #filterBuildingBtn,
+            #omniBranchTabsBar #filterFinanceBtn,
+            #omniBranchTabsBar #filterGraphBtn,
+            #omniBranchTabsBar #filterFoodBtn {
+                grid-column: span 1 / span 1 !important;
+            }
+            .omni-filter-btn {
+                width: 100% !important;
+                height: 44px !important;
+                margin: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                overflow: visible !important;
+                border-radius: 0px !important;
+                transition: all 150ms ease !important;
+                position: relative !important;
             }
             .omni-filter-btn .btn-label {
                 padding: 0 8px !important;
                 justify-content: center !important;
                 width: 100% !important;
+                font-size: 14px !important;
+                font-weight: 600 !important;
             }
 
-            /* Unselected Tabs on Desktop: 1px border, 4px lift above line */
+            /* Unselected Tabs on Desktop: 1px border on all 4 sides, sits directly flush on line */
             .omni-filter-btn:not(.active-all):not(.active-building):not(.active-finance):not(.active-graph):not(.active-food) {
                 background-color: #ffffff !important;
                 border: 1px solid #e2e8f0 !important;
                 color: #475569 !important;
-                margin-bottom: 4px !important;
+                margin: 0 !important;
                 position: relative !important;
                 z-index: 5 !important;
             }
@@ -637,54 +820,12 @@
                 color: #f8fafc !important;
             }
 
-            /* Continuous Connecting Line (2px) & Compact Spacing */
-            #toolsShowcaseSection {
-                border-top: none !important;
-                padding-top: 0px !important;
-                position: relative !important;
-                z-index: 10 !important;
-            }
-            #toolsShowcaseSection > * + * {
-                margin-top: 0px !important;
-            }
-            #omniBranchTabsWrapper {
-                margin-top: 0px !important;
-                margin-bottom: 0px !important;
-                padding-top: 0px !important;
-                padding-bottom: 0px !important;
-                position: relative !important;
-                z-index: 20 !important;
-            }
-            #omniBranchTabsBar {
-                margin-bottom: 0px !important;
-            }
             #omniBranchLine {
-                display: block !important;
-                width: 100% !important;
-                height: 2px !important;
                 margin-top: 0px !important;
-                margin-bottom: 16px !important; /* Spazio netto e compatto di 16px prima delle card */
-                position: relative !important;
-                z-index: 10 !important;
-                background-color: var(--active-branch-color, #2563EB) !important;
-            }
-            #unifiedOmniToolsGrid,
-            #sectionBuilding,
-            #sectionFinance,
-            #sectionGraph,
-            #sectionFood {
-                margin-top: 0px !important;
-                padding-top: 0px !important;
-            }
-            #sectionBuilding > .grid,
-            #sectionFinance > .grid,
-            #sectionGraph > .grid,
-            #sectionFood > .grid {
-                margin-top: 0px !important;
-                padding-top: 0px !important;
+                margin-bottom: 16px !important;
             }
 
-            /* Active Tab on Desktop: Fuses with connecting line (T rovesciata) */
+            /* Active Tab on Desktop: Same height (44px), aligned on top and bottom, 2px borders, cut-through on bottom */
             .omni-filter-btn.active-all,
             .omni-filter-btn.active-building,
             .omni-filter-btn.active-finance,
@@ -692,13 +833,13 @@
             .omni-filter-btn.active-food {
                 position: relative !important;
                 z-index: 25 !important;
-                margin-bottom: -2px !important;
+                margin: 0 !important;
                 border-bottom: 0 none transparent !important;
                 border-left-width: 2px !important;
                 border-top-width: 2px !important;
                 border-right-width: 2px !important;
                 border-style: solid !important;
-                background-color: #f8fafc !important; /* Matches Light Mode body bg */
+                background-color: #f8fafc !important;
                 color: #0f172a !important;
             }
             html.omni-dark .omni-filter-btn.active-all,
@@ -706,27 +847,38 @@
             html.omni-dark .omni-filter-btn.active-finance,
             html.omni-dark .omni-filter-btn.active-graph,
             html.omni-dark .omni-filter-btn.active-food {
-                background-color: #0f172a !important; /* Matches Dark Mode body bg */
+                background-color: #0f172a !important;
                 color: #ffffff !important;
             }
 
-            .omni-filter-btn.active-all { border-color: #2563EB !important; border-bottom: 0 !important; }
-            .omni-filter-btn.active-building { border-color: #D97706 !important; border-bottom: 0 !important; }
+            /* Specific Active Border Colors for Desktop */
+            .omni-filter-btn.active-all { border-color: #2563eb !important; border-bottom: 0 !important; }
+            .omni-filter-btn.active-building { border-color: #d97706 !important; border-bottom: 0 !important; }
             .omni-filter-btn.active-finance { border-color: #059669 !important; border-bottom: 0 !important; }
-            .omni-filter-btn.active-graph { border-color: #E11D48 !important; border-bottom: 0 !important; }
-            .omni-filter-btn.active-food { border-color: #EA580C !important; border-bottom: 0 !important; }
+            .omni-filter-btn.active-graph { border-color: #e11d48 !important; border-bottom: 0 !important; }
+            .omni-filter-btn.active-food { border-color: #ea580c !important; border-bottom: 0 !important; }
 
-            /* Desktop division headers removed (Tab is the title) */
-            #sectionBuilding, #sectionFinance, #sectionGraph, #sectionFood {
-                padding-top: 0 !important;
-                padding-bottom: 0 !important;
+            /* Seamless cut-through on desktop: ::after mask spans bottom border over the 2px line */
+            .omni-filter-btn.active-all::after,
+            .omni-filter-btn.active-building::after,
+            .omni-filter-btn.active-finance::after,
+            .omni-filter-btn.active-graph::after,
+            .omni-filter-btn.active-food::after {
+                content: '' !important;
+                position: absolute !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: -2px !important;
+                height: 3px !important;
+                background-color: #f8fafc !important;
+                z-index: 30 !important;
             }
-            #sectionBuilding > div.flex.items-center.gap-3,
-            #sectionFinance > div.flex.items-center.gap-3,
-            #sectionGraph > div.flex.items-center.gap-3,
-            #sectionFood > div.flex.items-center.gap-3,
-            .omni-department-header {
-                display: none !important;
+            html.omni-dark .omni-filter-btn.active-all::after,
+            html.omni-dark .omni-filter-btn.active-building::after,
+            html.omni-dark .omni-filter-btn.active-finance::after,
+            html.omni-dark .omni-filter-btn.active-graph::after,
+            html.omni-dark .omni-filter-btn.active-food::after {
+                background-color: #0f172a !important;
             }
         }
 
@@ -924,30 +1076,11 @@
             color: #f1f5f9 !important;
         }
 
-        /* 5 Branch Filter Buttons (Segmented Picker) */
-        .omni-filter-btn {
-            height: 44px !important;
-            border-radius: 0px !important;
-            padding: 0 !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            overflow: hidden !important;
-            transition: all 150ms ease !important;
-            cursor: pointer !important;
-            user-select: none !important;
-            background-color: #ffffff !important;
-            border: 1px solid #e2e8f0 !important;
-            color: #0f172a !important;
-        }
-        html.omni-dark .omni-filter-btn {
-            background-color: #0f172a !important;
-            border-color: #1e293b !important;
-            color: #f8fafc !important;
-        }
+        /* Specific Colors for Branch Button Icon Squares */
         .omni-filter-btn .icon-square {
-            width: 44px !important;
+            width: 38px !important;
             height: 44px !important;
-            min-width: 44px !important;
+            min-width: 38px !important;
             min-height: 44px !important;
             display: flex !important;
             align-items: center !important;
@@ -955,61 +1088,23 @@
             flex-shrink: 0 !important;
             border-radius: 0px !important;
         }
+        @media (min-width: 768px) {
+            .omni-filter-btn .icon-square {
+                width: 44px !important;
+                min-width: 44px !important;
+            }
+        }
         .omni-filter-btn .icon-square svg {
             width: 18px !important;
             height: 18px !important;
             stroke: #ffffff !important;
             color: #ffffff !important;
         }
-        .omni-filter-btn .btn-label {
-            padding: 0 14px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            font-size: 14px !important;
-            font-weight: 600 !important;
-            white-space: nowrap !important;
-        }
-        .omni-filter-btn .btn-count {
-            font-size: 12px !important;
-            color: #64748b !important;
-            font-weight: 400 !important;
-        }
-
-        /* Specific Colors for Branch Button Icon Squares */
         #filterAllBtn .icon-square { background-color: #2563eb !important; }
         #filterBuildingBtn .icon-square { background-color: #d97706 !important; }
         #filterFinanceBtn .icon-square { background-color: #059669 !important; }
         #filterGraphBtn .icon-square { background-color: #e11d48 !important; }
         #filterFoodBtn .icon-square { background-color: #ea580c !important; }
-
-        /* Active Filter Button Border & Tint */
-        .omni-filter-btn.active-all {
-            border: 1.5px solid #2563eb !important;
-            background-color: #eff6ff !important;
-        }
-        .omni-filter-btn.active-building {
-            border: 1.5px solid #d97706 !important;
-            background-color: #fffbeb !important;
-        }
-        .omni-filter-btn.active-finance {
-            border: 1.5px solid #059669 !important;
-            background-color: #ecfdf5 !important;
-        }
-        .omni-filter-btn.active-graph {
-            border: 1.5px solid #e11d48 !important;
-            background-color: #fff1f2 !important;
-        }
-        .omni-filter-btn.active-food {
-            border: 1.5px solid #ea580c !important;
-            background-color: #fff7ed !important;
-        }
-
-        html.omni-dark .omni-filter-btn.active-all { background-color: rgba(30, 58, 138, 0.3) !important; }
-        html.omni-dark .omni-filter-btn.active-building { background-color: rgba(120, 53, 15, 0.3) !important; }
-        html.omni-dark .omni-filter-btn.active-finance { background-color: rgba(6, 78, 59, 0.3) !important; }
-        html.omni-dark .omni-filter-btn.active-graph { background-color: rgba(136, 19, 55, 0.3) !important; }
-        html.omni-dark .omni-filter-btn.active-food { background-color: rgba(194, 65, 12, 0.3) !important; }
 
         /* Unified Language & Theme Control Pill */
         .omni-lang-theme-pill {
@@ -1467,10 +1562,10 @@
                     </div>
                 </div>
 
-                <!-- Usati di Recente (12px sotto searchbar, font-size 12px, #64748B) -->
-                <div id="recentToolsBar" class="hidden mt-3 flex items-center justify-center gap-2 text-[12px] leading-none overflow-x-auto no-scrollbar max-w-full" style="border-radius: 0px;">
+                <!-- Usati di Recente (12px sotto searchbar, font-size 12px, #64748B, single row on mobile with horizontal scroll) -->
+                <div id="recentToolsBar" class="hidden mt-3 flex items-center justify-start sm:justify-center gap-2 text-[12px] leading-none overflow-x-auto whitespace-nowrap no-scrollbar max-w-full px-2" style="border-radius: 0px;">
                     <span class="text-[12px] font-normal text-[#64748B] dark:text-slate-400 shrink-0">Recenti:</span>
-                    <div id="recentToolsList" class="inline-flex items-center gap-1.5 flex-wrap justify-center"></div>
+                    <div id="recentToolsList" class="flex flex-nowrap items-center gap-1.5 whitespace-nowrap text-xs"></div>
                 </div>
             </div>
         </section>
@@ -1479,10 +1574,10 @@
         <section id="toolsShowcaseSection" class="max-w-5xl mx-auto px-4 space-y-8 lg:space-y-0 active-branch-all" style="--active-branch-color: #2563EB;">
             <!-- DIVISION SEGMENTED PICKER: 5 Caselle Categorie / Schedario Aperto (44px) -->
             <div id="omniBranchTabsWrapper" class="w-full">
-                <div id="omniBranchTabsBar" class="flex items-center justify-center gap-2.5 flex-wrap lg:grid lg:grid-cols-5 lg:gap-2 w-full">
+                <div id="omniBranchTabsBar" class="grid grid-cols-2 md:grid-cols-5 gap-2 w-full">
                     
                     <!-- Tab 1: OmniTools (#2563EB) -->
-                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="omni-filter-btn active-all" style="border-radius: 0px;">
+                    <button type="button" onclick="setFilter('all')" id="filterAllBtn" class="omni-filter-btn active-all col-span-2 md:col-span-1" style="border-radius: 0px;">
                         <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"/>
@@ -1497,7 +1592,7 @@
                     </button>
 
                     <!-- Tab 2: OmniBuilding (#D97706) -->
-                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                    <button type="button" onclick="setFilter('building')" id="filterBuildingBtn" class="omni-filter-btn col-span-1" style="border-radius: 0px;">
                         <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21.3 8.7 8.7 21.3c-.4.4-1 .4-1.4 0l-4.6-4.6c-.4-.4-.4-1 0-1.4L15.3 2.7c.4-.4 1-.4 1.4 0l4.6 4.6c.4.4.4 1 0 1.4Z"/>
@@ -1513,7 +1608,7 @@
                     </button>
 
                     <!-- Tab 3: OmniFinance (#059669) -->
-                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                    <button type="button" onclick="setFilter('finance')" id="filterFinanceBtn" class="omni-filter-btn col-span-1" style="border-radius: 0px;">
                         <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
@@ -1526,7 +1621,7 @@
                     </button>
 
                     <!-- Tab 4: OmniGraph (#E11D48) -->
-                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                    <button type="button" onclick="setFilter('graph')" id="filterGraphBtn" class="omni-filter-btn col-span-1" style="border-radius: 0px;">
                         <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="5" height="5"/>
@@ -1542,7 +1637,7 @@
                     </button>
 
                     <!-- Tab 5: OmniFood (#0284C7) -->
-                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="omni-filter-btn" style="border-radius: 0px;">
+                    <button type="button" onclick="setFilter('food')" id="filterFoodBtn" class="omni-filter-btn col-span-1" style="border-radius: 0px;">
                         <span class="icon-square">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
@@ -1559,16 +1654,16 @@
                 </div>
             </div>
             <!-- Schedario Aperto Divider Line (2px) -->
-            <div id="omniBranchLine" class="hidden lg:block w-full h-[2px]" style="background-color: var(--active-branch-color, #2563EB);"></div>
+            <div id="omniBranchLine" class="block w-full h-[2px]" style="background-color: var(--active-branch-color, #2563EB);"></div>
 
             
             <!-- ========================================== -->
             <!-- DIVISION 1: OmniBuilding (Edilizia & Tubi) -->
             <!-- ========================================== -->
-            <div id="sectionBuilding" class="space-y-4 pt-4 pb-4">
+            <div id="sectionBuilding" class="space-y-4 pt-0 pb-4">
                 
                 <!-- Division Department Header -->
-                <div class="omni-department-header lg:hidden flex items-center gap-3 pb-2.5 border-b border-amber-500/25">
+                <div class="omni-department-header hidden flex items-center gap-3 pb-2.5 border-b border-amber-500/25">
                     <div class="w-9 h-9 sm:w-10 sm:h-10 bg-amber-500 flex items-center justify-center text-white shadow-2xs shrink-0 p-2" style="border-radius: 0px;">
                         <svg class="w-full h-full" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21.3 8.7 8.7 21.3c-.4.4-1 .4-1.4 0l-4.6-4.6c-.4-.4-.4-1 0-1.4L15.3 2.7c.4-.4 1-.4 1.4 0l4.6 4.6c.4.4.4 1 0 1.4Z"/>
@@ -1783,10 +1878,10 @@
             <!-- ========================================== -->
             <!-- DIVISION 2: OmniGraph (Grafica & Stampa) -->
             <!-- ========================================== -->
-            <div id="sectionFinance" class="space-y-4 pt-4 pb-4">
+            <div id="sectionFinance" class="space-y-4 pt-0 pb-4">
                 
                 <!-- Division Department Header -->
-                <div class="omni-department-header lg:hidden flex items-center gap-3 pb-2.5 border-b border-emerald-500/25">
+                <div class="omni-department-header hidden flex items-center gap-3 pb-2.5 border-b border-emerald-500/25">
                     <div class="w-9 h-9 sm:w-10 sm:h-10 bg-emerald-600 flex items-center justify-center text-white shadow-2xs shrink-0 p-2" style="border-radius: 0px;">
                         <svg class="w-full h-full" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
@@ -1995,10 +2090,10 @@
                 </div>
             </div>
 
-            <div id="sectionGraph" class="space-y-4 pt-4 pb-4">
+            <div id="sectionGraph" class="space-y-4 pt-0 pb-4">
                 
                 <!-- Division Department Header -->
-                <div class="omni-department-header lg:hidden flex items-center gap-3 pb-2.5 border-b border-rose-900/25">
+                <div class="omni-department-header hidden flex items-center gap-3 pb-2.5 border-b border-rose-900/25">
                     <div class="w-9 h-9 sm:w-10 sm:h-10 bg-rose-600 flex items-center justify-center text-white shadow-2xs shrink-0 p-2" style="border-radius: 0px;">
                         <svg class="w-full h-full" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="5" height="5"/>
@@ -2214,10 +2309,10 @@
             <!-- DIVISION 3: OmniFinance (Finanza & Business) -->
             <!-- ========================================== -->
             <!-- DIVISIONE 4: OMNIFOOD (FOODTECH & EXPORT) -->
-            <div id="sectionFood" class="space-y-4 pt-4 pb-4">
+            <div id="sectionFood" class="space-y-4 pt-0 pb-4">
                 
                 <!-- Division Department Header -->
-                <div class="omni-department-header lg:hidden flex items-center gap-3 pb-2.5 border-b border-orange-500/25">
+                <div class="omni-department-header hidden flex items-center gap-3 pb-2.5 border-b border-orange-500/25">
                     <div class="w-9 h-9 sm:w-10 sm:h-10 bg-orange-600 flex items-center justify-center text-white shadow-2xs shrink-0 p-2" style="border-radius: 0px;">
                         <svg class="w-full h-full" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
