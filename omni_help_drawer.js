@@ -1254,7 +1254,7 @@
 
     window.triggerUniversalCopy = function(btn) {
         const isEn = (document.documentElement.lang === 'en' || window.location.pathname.includes('/en/'));
-        const successMsg = isEn ? '✓ Copied!' : '✓ Valori Copiati!';
+        const successMsg = isEn ? '✓ Copied' : '✓ Copiato';
 
         function showSuccess() {
             if (btn) {
