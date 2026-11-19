@@ -1180,6 +1180,9 @@
             }
             /* White Top Tab Bar */
             #omniChromeTabsBar {
+                position: sticky !important;
+                top: 0px !important;
+                z-index: 50 !important;
                 background-color: #FFFFFF !important;
                 border-bottom: 1px solid #E2E8F0 !important;
             }
@@ -1189,6 +1192,105 @@
             .omni-dyn-tab {
                 border-radius: 0px !important;
             }
+            html, body {
+                overflow-x: clip !important;
+            }
+            @media (min-width: 768px) {
+                header, header.sticky {
+                    position: sticky !important;
+                    top: 42px !important;
+                    z-index: 40 !important;
+                }
+            }
+            @media (max-width: 767px) {
+                header, header.sticky {
+                    position: sticky !important;
+                    top: 0px !important;
+                    z-index: 40 !important;
+                }
+            }
         `;
         document.head.appendChild(style);
     })();
+
+
+    /* OmniTools Lab Universal Tool Actions: Export CSV, Print, Copy */
+    window.triggerUniversalExport = function(btn) {
+        if (typeof exportOmniCsv === 'function') { exportOmniCsv(); return; }
+        if (typeof exportDatesCsv === 'function') { exportDatesCsv(); return; }
+        if (typeof exportNutriCsv === 'function') { exportNutriCsv(); return; }
+        if (typeof exportBatchCsv === 'function') { exportBatchCsv(); return; }
+        if (typeof exportHygroCsv === 'function') { exportHygroCsv(); return; }
+        if (typeof exportMortgageCsv === 'function') { exportMortgageCsv(); return; }
+        if (typeof exportSvg === 'function') { exportSvg(); return; }
+        if (typeof exportCsvPlan === 'function') { exportCsvPlan(); return; }
+        if (typeof exportCsvComparison === 'function') { exportCsvComparison(); return; }
+        
+        // Fallback: extract table or input values to CSV
+        const rows = [['Parametro', 'Valore']];
+        const root = document.querySelector('main') || document.body;
+        root.querySelectorAll('input[id], select[id]').forEach(el => {
+            const t = (el.type || '').toLowerCase();
+            if (t === 'file' || t === 'hidden' || t === 'button' || t === 'submit') return;
+            const lbl = root.querySelector('label[for="' + el.id + '"]');
+            const name = (lbl && lbl.textContent.trim()) || el.id;
+            const val = (t === 'checkbox' || t === 'radio') ? (el.checked ? 'Si' : 'No') : el.value;
+            if (val !== '') rows.push([name, val]);
+        });
+        root.querySelectorAll('[id^="val"], [id^="res"]').forEach(el => {
+            if (el.tagName === 'INPUT' || el.tagName === 'SELECT') return;
+            const txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
+            if (txt && txt.length < 120) rows.push([el.id, txt]);
+        });
+        const csv = '\uFEFF' + rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(';')).join('\r\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const a = document.createElement('a');
+        const slug = window.location.pathname.split('/').pop().replace('.html', '') || 'distinta';
+        a.href = URL.createObjectURL(blob);
+        a.download = 'omnitools-' + slug + '-distinta.csv';
+        a.click();
+        URL.revokeObjectURL(a.href);
+    };
+
+    window.triggerUniversalCopy = function(btn) {
+        const isEn = (document.documentElement.lang === 'en' || window.location.pathname.includes('/en/'));
+        const successMsg = isEn ? '✓ Copied!' : '✓ Valori Copiati!';
+
+        function showSuccess() {
+            if (btn) {
+                const span = btn.querySelector('span');
+                if (span) {
+                    const orig = span.textContent;
+                    span.textContent = successMsg;
+                    setTimeout(() => { span.textContent = orig; }, 2000);
+                }
+            }
+        }
+
+        if (typeof copyResultsRampa === 'function') { copyResultsRampa(); showSuccess(); return; }
+        if (typeof copyResults === 'function') { copyResults(); showSuccess(); return; }
+        if (typeof copyNutritionSpecs === 'function') { copyNutritionSpecs(); showSuccess(); return; }
+        if (typeof copyBatchSpec === 'function') { copyBatchSpec(); showSuccess(); return; }
+        if (typeof copyHygroSpec === 'function') { copyHygroSpec(); showSuccess(); return; }
+        if (typeof copyExportDates === 'function') { copyExportDates(); showSuccess(); return; }
+        if (typeof copySpecs === 'function') { copySpecs(); showSuccess(); return; }
+        if (typeof copyInDesignSpecs === 'function') { copyInDesignSpecs(); showSuccess(); return; }
+        if (typeof copySvgCode === 'function') { copySvgCode(); showSuccess(); return; }
+        if (typeof copyShareLink === 'function') { copyShareLink(); showSuccess(); return; }
+
+        // Fallback: extract summary text from results box
+        const resBox = document.querySelector('[id*="res"], [id*="result"], .result-box, #calcResults');
+        let textToCopy = '';
+        if (resBox) {
+            textToCopy = resBox.innerText.replace(/\n+/g, ' | ').trim();
+        } else {
+            textToCopy = document.title + ' - ' + window.location.href;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(textToCopy).then(showSuccess).catch(() => {
+                prompt(isEn ? 'Copy text:' : 'Copia testo:', textToCopy);
+            });
+        } else {
+            prompt(isEn ? 'Copy text:' : 'Copia testo:', textToCopy);
+        }
+    };

@@ -48,7 +48,7 @@
 <style id="omniDarkStyles">
         /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
         html, body {
-            overflow-x: hidden !important;
+            overflow-x: clip !important;
             max-width: 100vw !important;
             -webkit-text-size-adjust: 100%;
         }
@@ -332,10 +332,29 @@
             background-color: #ffffff !important;
             border-bottom: 1px solid #e2e8f0 !important;
         }
-        header.sticky {
+        html, body {
+            overflow-x: clip !important;
+        }
+        #omniChromeTabsBar {
             position: sticky !important;
-            top: 42px !important;
-            z-index: 40 !important;
+            top: 0px !important;
+            z-index: 50 !important;
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+        @media (min-width: 768px) {
+            header, header.sticky {
+                position: sticky !important;
+                top: 42px !important;
+                z-index: 40 !important;
+            }
+        }
+        @media (max-width: 767px) {
+            header, header.sticky {
+                position: sticky !important;
+                top: 0px !important;
+                z-index: 40 !important;
+            }
         }
         #omniTabHome {
             background-color: #ffffff !important;
