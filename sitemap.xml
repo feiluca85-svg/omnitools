@@ -1,513 +1,472 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- ========================================== -->
-  <!-- 1. HOMEPAGE & HUBS                         -->
-  <!-- ========================================== -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.omnitoolslab.com/</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- ========================================== -->
-  <!-- 2. INSTITUTIONAL PAGES                     -->
-  <!-- ========================================== -->
-  <!-- Legal Notice & Privacy -->
   <url>
     <loc>https://www.omnitoolslab.com/legal</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/legal" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/legal?lang=en" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/legal?lang=en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/legal" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/legal?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/legal?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/legal"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-
-  <!-- B2B Technical Sponsorship -->
   <url>
     <loc>https://www.omnitoolslab.com/partnership</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/partnership" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/partnership?lang=en" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/partnership?lang=en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/partnership" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/partnership"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/partnership?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/partnership?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/partnership"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
-  <!-- ========================================== -->
-  <!-- 3. TECHNICAL CALCULATORS (22 BILINGUAL PAIRS) -->
-  <!-- ========================================== -->
-  <!-- DIVISION: OMNIBUILDING -->
   <url>
     <loc>https://www.omnitoolslab.com/rampe</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/ramp-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/ramp-slope-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/ramp-slope-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/ramp-slope-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/rampe"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/ramp-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/ramp-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/ramp-slope-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/scale</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/stair-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/stair-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/stair-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/stair-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/scale"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/stair-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/stair-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/stair-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/tubi</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pipe-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pipe-slope-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/pipe-slope-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pipe-slope-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tubi"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pipe-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pipe-slope-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pipe-slope-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/tetto</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/roof-pitch-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/roof-pitch-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/roof-pitch-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/roof-pitch-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tetto"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/roof-pitch-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/roof-pitch-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/roof-pitch-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/taglio</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cut-list-optimizer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cut-list-optimizer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cut-list-optimizer"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/cut-list-optimizer</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cut-list-optimizer" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/taglio"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cut-list-optimizer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cut-list-optimizer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cut-list-optimizer"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/piastrelle</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/piastrelle" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/tile-grout-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/tile-grout-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/tile-grout-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/piastrelle"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/tile-grout-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/tile-grout-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/tile-grout-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/tile-grout-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/piastrelle" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/tile-grout-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/tile-grout-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/tile-grout-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/piastrelle"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/tile-grout-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/tile-grout-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/tile-grout-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- DIVISION: OMNIGRAPH -->
   <url>
     <loc>https://www.omnitoolslab.com/dorso</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dorso" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/book-spine-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/book-spine-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/book-spine-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dorso"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/book-spine-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/book-spine-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/book-spine-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/book-spine-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dorso" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/book-spine-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/book-spine-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/book-spine-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dorso"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/book-spine-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/book-spine-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/book-spine-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/dpi</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dpi" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/print-resolution-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/print-resolution-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/print-resolution-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dpi"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/print-resolution-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/print-resolution-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/print-resolution-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/print-resolution-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dpi" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/print-resolution-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/print-resolution-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/print-resolution-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/dpi"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/print-resolution-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/print-resolution-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/print-resolution-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/tinta</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tinta" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tinta"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tinta" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/tinta"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/pantone-ink-mixing-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/barcode</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/barcode-generator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/barcode-generator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/barcode-generator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/barcode-generator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/barcode"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/barcode-generator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/barcode-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/barcode-generator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/copertura</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/copertura" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/copertura"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/copertura" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/copertura"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/cmyk-ink-coverage-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/resa</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/paper-cutting-yield-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/resa"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/paper-cutting-yield-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
-  <!-- DIVISION: OMNIFINANCE -->
   <url>
     <loc>https://www.omnitoolslab.com/mutuo</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/mutuo"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/mortgage-loan-amortization-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/pac</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/pac" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/pac"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/compound-interest-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/compound-interest-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/compound-interest-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/compound-interest-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/pac" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/compound-interest-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/pac"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/compound-interest-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/compound-interest-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/compound-interest-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/margine</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/margin-markup-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/margin-markup-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/margin-markup-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/margin-markup-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/margin-markup-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/margine"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/margin-markup-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/margin-markup-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/margin-markup-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/estinzione</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/estinzione"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/early-mortgage-payoff-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/risparmio</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/savings-goal-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/savings-goal-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/savings-goal-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/savings-goal-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/risparmio"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/savings-goal-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/savings-goal-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/savings-goal-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/fire</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/fire-financial-independence-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/fire"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/fire-financial-independence-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- DIVISION: OMNIFOOD -->
   <url>
     <loc>https://www.omnitoolslab.com/shelflife</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/shelf-life-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/shelf-life-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/shelf-life-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/shelf-life-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/shelflife"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/shelf-life-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/shelf-life-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/shelf-life-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/nutriexport</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/nutriexport" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/nutri-export-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/nutri-export-converter" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/nutri-export-converter" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/nutriexport"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/nutri-export-converter"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/nutri-export-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/nutri-export-converter"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/nutri-export-converter</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/nutriexport" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/nutri-export-converter" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/nutri-export-converter" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/nutri-export-converter" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/nutriexport"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/nutri-export-converter"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/nutri-export-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/nutri-export-converter"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/impasti</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/impasti" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/batch-scaler-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/batch-scaler-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/batch-scaler-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/impasti"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/batch-scaler-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/batch-scaler-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/batch-scaler-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/batch-scaler-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/impasti" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/batch-scaler-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/batch-scaler-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/batch-scaler-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/impasti"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/batch-scaler-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/batch-scaler-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/batch-scaler-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://www.omnitoolslab.com/idratazione</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/idratazione" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/hydration-balance-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/hydration-balance-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/hydration-balance-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/idratazione"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/hydration-balance-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/hydration-balance-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/hydration-balance-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.omnitoolslab.com/en/hydration-balance-calculator</loc>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/idratazione" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/hydration-balance-calculator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/hydration-balance-calculator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/hydration-balance-calculator" />
-    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.omnitoolslab.com/idratazione"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.omnitoolslab.com/en/hydration-balance-calculator"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.omnitoolslab.com/en/hydration-balance-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.omnitoolslab.com/en/hydration-balance-calculator"/>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

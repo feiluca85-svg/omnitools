@@ -503,7 +503,48 @@
             color: #94a3b8 !important;
         }
     
+        
+        #headerInstallBtn {
+            height: 36px !important;
+            padding: 0 12px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            border-radius: 0px !important;
+            border: 1px solid #0f172a !important;
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            box-sizing: border-box !important;
+        }
+        html.omni-dark #headerInstallBtn {
+            border-color: #475569 !important;
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        #headerInstallBtn svg {
+            width: 14px !important;
+            height: 14px !important;
+            min-width: 14px !important;
+            max-width: 14px !important;
+            min-height: 14px !important;
+            max-height: 14px !important;
+            stroke-width: 1.75px !important;
+            flex-shrink: 0 !important;
+        }
+        #installBanner {
+            pointer-events: auto !important;
+        }
+
         /* --- DEDICATED HYBRID FOOTER STYLES (IMMUNE TO PURGE) --- */
+        footer {
+            padding-bottom: 120px !important;
+        }
+        .omni-footer-legal-container {
+            padding-bottom: 30px !important;
+        }
+
         .omni-hybrid-footer-desktop {
             display: none !important;
         }
@@ -1547,8 +1588,8 @@
                 </div>
 
                 <!-- Tasto Installa Squadrato Netto -->
-                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-2 px-3.5 h-[36px] text-[13px] font-medium text-[#0F172A] dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-[#F1F5F9] dark:hover:bg-slate-800 border border-[#0F172A] dark:border-slate-400 transition-all duration-150 active:scale-95 cursor-pointer whitespace-nowrap" style="border-radius: 0px;" title="Installa OmniTools Lab">
-                    <svg class="w-[14px] h-[14px] text-[#475569] dark:text-slate-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <button onclick="triggerInstall()" id="headerInstallBtn" class="inline-flex items-center gap-1.5 px-3 h-[36px] text-xs font-semibold text-[#0F172A] dark:text-slate-200 bg-white dark:bg-slate-900 hover:bg-[#F1F5F9] dark:hover:bg-slate-800 border border-[#0F172A] dark:border-slate-400 transition-all duration-150 active:scale-95 cursor-pointer whitespace-nowrap" style="border-radius: 0px;" title="Installa OmniTools Lab">
+                    <svg width="14" height="14" class="w-3.5 h-3.5 text-[#475569] dark:text-slate-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                         <polyline points="7 10 12 15 17 10"/>
                         <line x1="12" y1="15" x2="12" y2="3"/>
@@ -2617,7 +2658,7 @@
                             <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 select-none">OmniDesk:</span>
                             <div class="inline-flex items-center gap-1.5">
                                 <!-- OmniMemo -->
-                                <a href="/memo" onclick="if(window.openToolInTab) { window.openToolInTab('memo'); return false; }" class="inline-flex items-center gap-1 h-7 px-2.5 text-xs font-medium rounded-none border border-amber-500/40 hover:border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 hover:bg-amber-100/60 transition">
+                                <a href="/memo" onclick="if(window.openToolInTab) window.openToolInTab('memo');" class="inline-flex items-center gap-1 h-7 px-2.5 text-xs font-medium rounded-none border border-amber-500/40 hover:border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 hover:bg-amber-100/60 transition">
                                     <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/>
                                         <path d="M15 3v6h6"/>
@@ -2625,7 +2666,7 @@
                                     <span>OmniMemo</span>
                                 </a>
                                 <!-- OmniCalc -->
-                                <a href="/calcolatrice" onclick="if(window.openToolInTab) { window.openToolInTab('calcolatrice'); return false; }" class="inline-flex items-center gap-1 h-7 px-2.5 text-xs font-medium rounded-none border border-blue-500/40 hover:border-blue-500 bg-blue-50/50 dark:bg-blue-950/20 text-blue-800 dark:text-blue-300 hover:bg-blue-100/60 transition">
+                                <a href="/calcolatrice" onclick="if(window.openToolInTab) window.openToolInTab('calcolatrice');" class="inline-flex items-center gap-1 h-7 px-2.5 text-xs font-medium rounded-none border border-blue-500/40 hover:border-blue-500 bg-blue-50/50 dark:bg-blue-950/20 text-blue-800 dark:text-blue-300 hover:bg-blue-100/60 transition">
                                     <svg class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                         <rect width="16" height="20" x="4" y="2" rx="0"/>
                                         <line x1="8" x2="16" y1="6" y2="6"/>
@@ -2636,7 +2677,7 @@
                                     <span>OmniCalc</span>
                                 </a>
                                 <!-- OmniClock -->
-                                <a href="/orologio" onclick="if(window.openToolInTab) { window.openToolInTab('orologio'); return false; }" class="inline-flex items-center gap-1 h-7 px-2.5 text-xs font-medium rounded-none border border-emerald-500/40 hover:border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/60 transition">
+                                <a href="/orologio" onclick="if(window.openToolInTab) window.openToolInTab('orologio');" class="inline-flex items-center gap-1 h-7 px-2.5 text-xs font-medium rounded-none border border-emerald-500/40 hover:border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100/60 transition">
                                     <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"/>
                                         <polyline points="12 6 12 12 16 14"/>
@@ -2662,12 +2703,12 @@
                             <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">Cantiere &amp; Impianti</p>
                         </div>
                         <ul class="space-y-1.5 pt-1">
-                            <li><a href="/rampe" onclick="if(window.openToolInTab) { window.openToolInTab('rampe'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>RampaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/scale" onclick="if(window.openToolInTab) { window.openToolInTab('scale'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>ScalaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/tubi" onclick="if(window.openToolInTab) { window.openToolInTab('tubi'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>ScaricoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/tetto" onclick="if(window.openToolInTab) { window.openToolInTab('tetto'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>TettoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/taglio" onclick="if(window.openToolInTab) { window.openToolInTab('taglio'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>TaglioOttimo</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/piastrelle" onclick="if(window.openToolInTab) { window.openToolInTab('piastrelle'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>PiastrellaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/rampe" onclick="if(window.openToolInTab) window.openToolInTab('rampe');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>RampaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/scale" onclick="if(window.openToolInTab) window.openToolInTab('scale');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>ScalaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/tubi" onclick="if(window.openToolInTab) window.openToolInTab('tubi');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>ScaricoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/tetto" onclick="if(window.openToolInTab) window.openToolInTab('tetto');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>TettoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/taglio" onclick="if(window.openToolInTab) window.openToolInTab('taglio');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>TaglioOttimo</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/piastrelle" onclick="if(window.openToolInTab) window.openToolInTab('piastrelle');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] dark:hover:text-[#F59E0B] transition-colors py-0.5"><span>PiastrellaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
                         </ul>
                     </div>
 
@@ -2682,12 +2723,12 @@
                             <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">Grafica &amp; Stampa</p>
                         </div>
                         <ul class="space-y-1.5 pt-1">
-                            <li><a href="/dorso" onclick="if(window.openToolInTab) { window.openToolInTab('dorso'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>DorsoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/dpi" onclick="if(window.openToolInTab) { window.openToolInTab('dpi'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>RisoluzioneFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/tinta" onclick="if(window.openToolInTab) { window.openToolInTab('tinta'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>TintaPerfetta</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/barcode" onclick="if(window.openToolInTab) { window.openToolInTab('barcode'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>OmniBarcode</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/copertura" onclick="if(window.openToolInTab) { window.openToolInTab('copertura'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>CoperturaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/resa" onclick="if(window.openToolInTab) { window.openToolInTab('resa'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>ResaCarta</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/dorso" onclick="if(window.openToolInTab) window.openToolInTab('dorso');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>DorsoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/dpi" onclick="if(window.openToolInTab) window.openToolInTab('dpi');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>RisoluzioneFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/tinta" onclick="if(window.openToolInTab) window.openToolInTab('tinta');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>TintaPerfetta</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/barcode" onclick="if(window.openToolInTab) window.openToolInTab('barcode');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>OmniBarcode</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/copertura" onclick="if(window.openToolInTab) window.openToolInTab('copertura');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>CoperturaFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/resa" onclick="if(window.openToolInTab) window.openToolInTab('resa');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] dark:hover:text-[#FB7185] transition-colors py-0.5"><span>ResaCarta</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
                         </ul>
                     </div>
 
@@ -2702,12 +2743,12 @@
                             <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">Finanza &amp; Business</p>
                         </div>
                         <ul class="space-y-1.5 pt-1">
-                            <li><a href="/mutuo" onclick="if(window.openToolInTab) { window.openToolInTab('mutuo'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>MutuoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/pac" onclick="if(window.openToolInTab) { window.openToolInTab('pac'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>InteresseComposto</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/margine" onclick="if(window.openToolInTab) { window.openToolInTab('margine'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>MargineFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/estinzione" onclick="if(window.openToolInTab) { window.openToolInTab('estinzione'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>EstinzioneMutuo</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/risparmio" onclick="if(window.openToolInTab) { window.openToolInTab('risparmio'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>ObiettivoRisparmio</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/fire" onclick="if(window.openToolInTab) { window.openToolInTab('fire'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>FIRE &amp; Rendita</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/mutuo" onclick="if(window.openToolInTab) window.openToolInTab('mutuo');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>MutuoFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/pac" onclick="if(window.openToolInTab) window.openToolInTab('pac');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>InteresseComposto</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/margine" onclick="if(window.openToolInTab) window.openToolInTab('margine');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>MargineFacile</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/estinzione" onclick="if(window.openToolInTab) window.openToolInTab('estinzione');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>EstinzioneMutuo</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/risparmio" onclick="if(window.openToolInTab) window.openToolInTab('risparmio');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>ObiettivoRisparmio</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/fire" onclick="if(window.openToolInTab) window.openToolInTab('fire');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#059669] dark:hover:text-[#34D399] transition-colors py-0.5"><span>FIRE &amp; Rendita</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
                         </ul>
                     </div>
 
@@ -2722,10 +2763,10 @@
                             <p class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">FoodTech &amp; Export</p>
                         </div>
                         <ul class="space-y-1.5 pt-1">
-                            <li><a href="/shelflife" onclick="if(window.openToolInTab) { window.openToolInTab('shelflife'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>ShelfLife &amp; Export Date</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/nutriexport" onclick="if(window.openToolInTab) { window.openToolInTab('nutriexport'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>NutriExport Converter</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/impasti" onclick="if(window.openToolInTab) { window.openToolInTab('impasti'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>BatchScaler Pro</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
-                            <li><a href="/idratazione" onclick="if(window.openToolInTab) { window.openToolInTab('idratazione'); return false; }" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>HygroBalance Lab</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/shelflife" onclick="if(window.openToolInTab) window.openToolInTab('shelflife');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>ShelfLife &amp; Export Date</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/nutriexport" onclick="if(window.openToolInTab) window.openToolInTab('nutriexport');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>NutriExport Converter</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/impasti" onclick="if(window.openToolInTab) window.openToolInTab('impasti');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>BatchScaler Pro</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
+                            <li><a href="/idratazione" onclick="if(window.openToolInTab) window.openToolInTab('idratazione');" class="group flex items-center justify-between text-[13px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] dark:hover:text-[#FB923C] transition-colors py-0.5"><span>HygroBalance Lab</span><span class="opacity-0 group-hover:opacity-100 transition-opacity text-[11px]">→</span></a></li>
                         </ul>
                     </div>
 
@@ -2758,14 +2799,14 @@
                         <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">OmniDesk Rapide:</span>
                     </div>
                     <div class="grid grid-cols-3 gap-1.5">
-                        <a href="/memo" onclick="if(window.openToolInTab) { window.openToolInTab('memo'); return false; }" class="flex items-center justify-center gap-1 h-8 text-[11.5px] font-medium rounded-none border border-amber-500/40 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300">
+                        <a href="/memo" onclick="if(window.openToolInTab) window.openToolInTab('memo');" class="flex items-center justify-center gap-1 h-8 text-[11.5px] font-medium rounded-none border border-amber-500/40 bg-amber-50/50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300">
                             <svg class="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/>
                                 <path d="M15 3v6h6"/>
                             </svg>
                             <span>OmniMemo</span>
                         </a>
-                        <a href="/calcolatrice" onclick="if(window.openToolInTab) { window.openToolInTab('calcolatrice'); return false; }" class="flex items-center justify-center gap-1 h-8 text-[11.5px] font-medium rounded-none border border-blue-500/40 bg-blue-50/50 dark:bg-blue-950/20 text-blue-800 dark:text-blue-300">
+                        <a href="/calcolatrice" onclick="if(window.openToolInTab) window.openToolInTab('calcolatrice');" class="flex items-center justify-center gap-1 h-8 text-[11.5px] font-medium rounded-none border border-blue-500/40 bg-blue-50/50 dark:bg-blue-950/20 text-blue-800 dark:text-blue-300">
                             <svg class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="16" height="20" x="4" y="2" rx="0"/>
                                 <line x1="8" x2="16" y1="6" y2="6"/>
@@ -2775,7 +2816,7 @@
                             </svg>
                             <span>OmniCalc</span>
                         </a>
-                        <a href="/orologio" onclick="if(window.openToolInTab) { window.openToolInTab('orologio'); return false; }" class="flex items-center justify-center gap-1 h-8 text-[11.5px] font-medium rounded-none border border-emerald-500/40 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300">
+                        <a href="/orologio" onclick="if(window.openToolInTab) window.openToolInTab('orologio');" class="flex items-center justify-center gap-1 h-8 text-[11.5px] font-medium rounded-none border border-emerald-500/40 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-300">
                             <svg class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"/>
                                 <polyline points="12 6 12 12 16 14"/>
@@ -2814,12 +2855,12 @@
                                 <p class="text-[10px] text-slate-400">Cantiere &amp; Impianti</p>
                             </div>
                             <ul class="space-y-1.5 pt-0.5">
-                                <li><a href="/rampe" onclick="if(window.openToolInTab) { window.openToolInTab('rampe'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">RampaFacile</a></li>
-                                <li><a href="/scale" onclick="if(window.openToolInTab) { window.openToolInTab('scale'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">ScalaFacile</a></li>
-                                <li><a href="/tubi" onclick="if(window.openToolInTab) { window.openToolInTab('tubi'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">ScaricoFacile</a></li>
-                                <li><a href="/tetto" onclick="if(window.openToolInTab) { window.openToolInTab('tetto'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">TettoFacile</a></li>
-                                <li><a href="/taglio" onclick="if(window.openToolInTab) { window.openToolInTab('taglio'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">TaglioOttimo</a></li>
-                                <li><a href="/piastrelle" onclick="if(window.openToolInTab) { window.openToolInTab('piastrelle'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">PiastrellaFacile</a></li>
+                                <li><a href="/rampe" onclick="if(window.openToolInTab) window.openToolInTab('rampe');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">RampaFacile</a></li>
+                                <li><a href="/scale" onclick="if(window.openToolInTab) window.openToolInTab('scale');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">ScalaFacile</a></li>
+                                <li><a href="/tubi" onclick="if(window.openToolInTab) window.openToolInTab('tubi');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">ScaricoFacile</a></li>
+                                <li><a href="/tetto" onclick="if(window.openToolInTab) window.openToolInTab('tetto');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">TettoFacile</a></li>
+                                <li><a href="/taglio" onclick="if(window.openToolInTab) window.openToolInTab('taglio');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">TaglioOttimo</a></li>
+                                <li><a href="/piastrelle" onclick="if(window.openToolInTab) window.openToolInTab('piastrelle');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#D97706] block py-0.5">PiastrellaFacile</a></li>
                             </ul>
                         </div>
 
@@ -2831,12 +2872,12 @@
                                 <p class="text-[10px] text-slate-400">Grafica &amp; Stampa</p>
                             </div>
                             <ul class="space-y-1.5 pt-0.5">
-                                <li><a href="/dorso" onclick="if(window.openToolInTab) { window.openToolInTab('dorso'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">DorsoFacile</a></li>
-                                <li><a href="/dpi" onclick="if(window.openToolInTab) { window.openToolInTab('dpi'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">RisoluzioneFacile</a></li>
-                                <li><a href="/tinta" onclick="if(window.openToolInTab) { window.openToolInTab('tinta'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">TintaPerfetta</a></li>
-                                <li><a href="/barcode" onclick="if(window.openToolInTab) { window.openToolInTab('barcode'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">OmniBarcode</a></li>
-                                <li><a href="/copertura" onclick="if(window.openToolInTab) { window.openToolInTab('copertura'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">CoperturaFacile</a></li>
-                                <li><a href="/resa" onclick="if(window.openToolInTab) { window.openToolInTab('resa'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">ResaCarta</a></li>
+                                <li><a href="/dorso" onclick="if(window.openToolInTab) window.openToolInTab('dorso');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">DorsoFacile</a></li>
+                                <li><a href="/dpi" onclick="if(window.openToolInTab) window.openToolInTab('dpi');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">RisoluzioneFacile</a></li>
+                                <li><a href="/tinta" onclick="if(window.openToolInTab) window.openToolInTab('tinta');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">TintaPerfetta</a></li>
+                                <li><a href="/barcode" onclick="if(window.openToolInTab) window.openToolInTab('barcode');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">OmniBarcode</a></li>
+                                <li><a href="/copertura" onclick="if(window.openToolInTab) window.openToolInTab('copertura');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">CoperturaFacile</a></li>
+                                <li><a href="/resa" onclick="if(window.openToolInTab) window.openToolInTab('resa');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] block py-0.5">ResaCarta</a></li>
                             </ul>
                         </div>
 
@@ -2848,12 +2889,12 @@
                                 <p class="text-[10px] text-slate-400">Finanza &amp; Business</p>
                             </div>
                             <ul class="space-y-1.5 pt-0.5">
-                                <li><a href="/mutuo" onclick="if(window.openToolInTab) { window.openToolInTab('mutuo'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">MutuoFacile</a></li>
-                                <li><a href="/pac" onclick="if(window.openToolInTab) { window.openToolInTab('pac'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">InteresseComposto</a></li>
-                                <li><a href="/margine" onclick="if(window.openToolInTab) { window.openToolInTab('margine'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">MargineFacile</a></li>
-                                <li><a href="/estinzione" onclick="if(window.openToolInTab) { window.openToolInTab('estinzione'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">EstinzioneMutuo</a></li>
-                                <li><a href="/risparmio" onclick="if(window.openToolInTab) { window.openToolInTab('risparmio'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">ObiettivoRisparmio</a></li>
-                                <li><a href="/fire" onclick="if(window.openToolInTab) { window.openToolInTab('fire'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">FIRE &amp; Rendita</a></li>
+                                <li><a href="/mutuo" onclick="if(window.openToolInTab) window.openToolInTab('mutuo');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">MutuoFacile</a></li>
+                                <li><a href="/pac" onclick="if(window.openToolInTab) window.openToolInTab('pac');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">InteresseComposto</a></li>
+                                <li><a href="/margine" onclick="if(window.openToolInTab) window.openToolInTab('margine');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">MargineFacile</a></li>
+                                <li><a href="/estinzione" onclick="if(window.openToolInTab) window.openToolInTab('estinzione');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">EstinzioneMutuo</a></li>
+                                <li><a href="/risparmio" onclick="if(window.openToolInTab) window.openToolInTab('risparmio');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">ObiettivoRisparmio</a></li>
+                                <li><a href="/fire" onclick="if(window.openToolInTab) window.openToolInTab('fire');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#059669] block py-0.5">FIRE &amp; Rendita</a></li>
                             </ul>
                         </div>
 
@@ -2865,10 +2906,10 @@
                                 <p class="text-[10px] text-slate-400">FoodTech &amp; Export</p>
                             </div>
                             <ul class="space-y-1.5 pt-0.5">
-                                <li><a href="/shelflife" onclick="if(window.openToolInTab) { window.openToolInTab('shelflife'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">ShelfLife &amp; Export</a></li>
-                                <li><a href="/nutriexport" onclick="if(window.openToolInTab) { window.openToolInTab('nutriexport'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">NutriExport</a></li>
-                                <li><a href="/impasti" onclick="if(window.openToolInTab) { window.openToolInTab('impasti'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">BatchScaler Pro</a></li>
-                                <li><a href="/idratazione" onclick="if(window.openToolInTab) { window.openToolInTab('idratazione'); return false; }" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">HygroBalance Lab</a></li>
+                                <li><a href="/shelflife" onclick="if(window.openToolInTab) window.openToolInTab('shelflife');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">ShelfLife &amp; Export</a></li>
+                                <li><a href="/nutriexport" onclick="if(window.openToolInTab) window.openToolInTab('nutriexport');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">NutriExport</a></li>
+                                <li><a href="/impasti" onclick="if(window.openToolInTab) window.openToolInTab('impasti');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">BatchScaler Pro</a></li>
+                                <li><a href="/idratazione" onclick="if(window.openToolInTab) window.openToolInTab('idratazione');" class="text-[12.5px] text-slate-600 dark:text-slate-400 hover:text-[#EA580C] block py-0.5">HygroBalance Lab</a></li>
                             </ul>
                         </div>
 
@@ -2879,13 +2920,13 @@
             <!-- ========================================================= -->
             <!-- 3. FASCIA LEGALE & COPYRIGHT (COMUNE DESKTOP & MOBILE)     -->
             <!-- ========================================================= -->
-            <div class="py-5 space-y-2">
+            <div class="pt-5 space-y-2 omni-footer-legal-container">
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                     <span id="rightsText">© 2026 OmniTools Network — Tutti i diritti riservati.</span>
                     <a href="/legal" class="text-blue-600 dark:text-blue-400 hover:underline transition">Termini, Copyright &amp; Proprietà Riservata (L. 633/1941)</a>
                 </div>
-                <p id="legalDisclaimerText" class="text-[10px] leading-relaxed text-slate-400 dark:text-slate-500 text-center sm:text-left pt-1">
-                    <strong class="text-slate-500 dark:text-slate-400">Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa, didattica e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il calcolo esecutivo, l'asseverazione di un tecnico abilitato né costituiscono consulenza finanziaria personalizzata (TUF / D.Lgs. 58/1998).
+                <p id="legalDisclaimerText" class="text-xs leading-relaxed text-[#475569] dark:text-[#94A3B8] text-center sm:text-left pt-1 max-w-3xl">
+                    <strong class="text-slate-700 dark:text-slate-300 font-semibold">Note Legali e Manleva:</strong> Gli strumenti della suite OmniTools Lab hanno finalità orientativa, didattica e di verifica preliminare. I calcoli tecnici (edilizia, grafica) e finanziari non sostituiscono il calcolo esecutivo, l'asseverazione di un tecnico abilitato né costituiscono consulenza finanziaria personalizzata (TUF / D.Lgs. 58/1998).
                 </p>
             </div>
 
