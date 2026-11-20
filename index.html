@@ -645,15 +645,17 @@
             height: 24px !important;
             min-height: 24px !important;
             max-height: 24px !important;
-            display: flex !important;
-            align-items: center !important;
+            display: block !important;
+            line-height: 24px !important;
             margin-top: auto !important;
-            padding-top: 8px !important;
+            padding-top: 4px !important;
             margin-bottom: 4px !important;
+            padding-right: 16px !important;
             white-space: nowrap !important;
             overflow: hidden !important;
             text-overflow: ellipsis !important;
             width: 100% !important;
+            box-sizing: border-box !important;
         }
         /* Action link bar strictly pinned at the bottom, perfectly aligned across cards */
         .tool-card > div:last-child {
@@ -663,6 +665,12 @@
         }
         html.omni-dark .tool-card > div:last-child {
             border-top-color: #1e293b !important;
+        }
+        /* OmniBuilding Card Badge styling in Dark Mode: amber background tint, subtle amber border and #fbbf24 amber text */
+        html.omni-dark .tool-card .badge-building {
+            background-color: rgba(245, 158, 11, 0.12) !important;
+            border-color: rgba(245, 158, 11, 0.35) !important;
+            color: #fbbf24 !important;
         }
 
 
@@ -976,15 +984,12 @@
             background-color: #ffffff !important;
             border-bottom: 1px solid #e2e8f0 !important;
         }
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
+        }
         html, body {
             overflow-x: clip !important;
-        }
-        #omniChromeTabsBar {
-            position: sticky !important;
-            top: 0px !important;
-            z-index: 50 !important;
-            background-color: #ffffff !important;
-            border-bottom: 1px solid #e2e8f0 !important;
         }
         @media (min-width: 768px) {
             header, header.sticky {
@@ -1009,6 +1014,15 @@
             font-weight: 700 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
         }
+        html.omni-dark #omniTabHome {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #1e293b !important;
+        }
+        html.omni-dark #omniTabHome span {
+            color: #ffffff !important;
+        }
         #omniTabHome svg {
             color: #2563eb !important;
             stroke: #2563eb !important;
@@ -1030,6 +1044,12 @@
             font-weight: 700 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
         }
+        html.omni-dark .omni-dyn-tab.active-tab {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #1e293b !important;
+        }
         .omni-dyn-tab.inactive-tab {
             background-color: #f8fafc !important;
             color: #475569 !important;
@@ -1037,9 +1057,19 @@
             border-right: 1px solid #e2e8f0 !important;
             font-weight: 500 !important;
         }
+        html.omni-dark .omni-dyn-tab.inactive-tab {
+            background-color: #0b1120 !important;
+            color: #94a3b8 !important;
+            border-top: 2px solid transparent !important;
+            border-right: 1px solid #1e293b !important;
+        }
         .omni-dyn-tab.inactive-tab:hover {
             background-color: #f1f5f9 !important;
             color: #0f172a !important;
+        }
+        html.omni-dark .omni-dyn-tab.inactive-tab:hover {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
         }
         .omni-dyn-tab a {
             color: inherit !important;
@@ -1059,18 +1089,36 @@
             color: #b45309 !important;
             border: 1px solid #fcd34d !important;
         }
+        html.omni-dark #topDeskBtn {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            color: #fde68a !important;
+            border: 1px solid rgba(245, 158, 11, 0.35) !important;
+        }
         #topDeskBtn:hover {
             background-color: #fef3c7 !important;
             color: #92400e !important;
+        }
+        html.omni-dark #topDeskBtn:hover {
+            background-color: rgba(245, 158, 11, 0.25) !important;
+            color: #ffffff !important;
         }
         #topNewToolBtn {
             background-color: #f8fafc !important;
             color: #334155 !important;
             border: 1px solid #cbd5e1 !important;
         }
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border: 1px solid #334155 !important;
+        }
         #topNewToolBtn:hover {
             background-color: #f1f5f9 !important;
             color: #0f172a !important;
+        }
+        html.omni-dark #topNewToolBtn:hover {
+            background-color: #334155 !important;
+            color: #ffffff !important;
         }
 
         /* Top Bar Action Buttons */
@@ -1265,10 +1313,19 @@
         
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
-            <!-- Fixed Home Hub Tab -->
-            <a href="/" id="omniTabHome" class="flex items-center gap-2 px-3.5 h-[34px] bg-white text-[#0F172A] font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-200 shadow-xs" style="border-radius: 0px;" title="Torna alla Home Hub">
-                <svg class="w-3.5 h-3.5 text-blue-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                <span class="font-medium">Home Hub</span>
+            <!-- Fixed Home Hub Logo Tab -->
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3 h-[34px] bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#0F172A] dark:text-slate-100 border-t-2 border-transparent transition shrink-0 border-r border-slate-200 dark:border-slate-800 select-none group" style="border-radius: 0px;" title="Torna alla Home Hub">
+                <div class="w-[20px] h-[20px] min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-2xs shrink-0 overflow-hidden transition-transform group-hover:scale-105" style="border-radius: 0px; width: 20px; height: 20px;">
+                    <svg width="18" height="18" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px; min-height: 18px; max-height: 18px;" class="block" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </div>
+                <div class="flex items-center gap-1 leading-none shrink-0">
+                    <span class="font-jakarta font-black text-[12px] text-slate-900 dark:text-white tracking-tight leading-none">Omni<span class="text-blue-600 dark:text-blue-400">Tools</span></span>
+                    <span class="text-[9px] font-jakarta font-extrabold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 px-1 py-0.2 border border-blue-200/80 dark:border-blue-800/80 leading-none" style="border-radius: 0px;">LAB</span>
+                </div>
             </a>
         </div>
 
@@ -1770,7 +1827,7 @@
                                 <div class="w-10 h-10 bg-amber-500 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]" style="border-radius: 0px;">SUPERFICI & POSA</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border badge-building bg-amber-50 text-amber-800 border-amber-200" style="border-radius: 0px;">SUPERFICI & POSA</span>
                             </div>
 
                             <!-- Title -->
@@ -1801,7 +1858,7 @@
                                 <div class="w-10 h-10 bg-amber-500 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L3 8v12z"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]" style="border-radius: 0px;">DM 236/89</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border badge-building bg-amber-50 text-amber-800 border-amber-200" style="border-radius: 0px;">DM 236/89</span>
                             </div>
 
                             <!-- Title -->
@@ -1832,7 +1889,7 @@
                                 <div class="w-10 h-10 bg-amber-500 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-4h4v-4h4v-4h4"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]" style="border-radius: 0px;">BLONDEL</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border badge-building bg-amber-50 text-amber-800 border-amber-200" style="border-radius: 0px;">BLONDEL</span>
                             </div>
 
                             <!-- Title -->
@@ -1863,7 +1920,7 @@
                                 <div class="w-10 h-10 bg-amber-500 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]" style="border-radius: 0px;">FALDA & GRADI</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border badge-building bg-amber-50 text-amber-800 border-amber-200" style="border-radius: 0px;">FALDA & GRADI</span>
                             </div>
 
                             <!-- Title -->
@@ -1894,7 +1951,7 @@
                                 <div class="w-10 h-10 bg-amber-500 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6a4 4 0 0 0 4-4V4"/><path d="M14 4h6"/><path d="M4 14v6"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]" style="border-radius: 0px;">UNI EN 12056</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border badge-building bg-amber-50 text-amber-800 border-amber-200" style="border-radius: 0px;">UNI EN 12056</span>
                             </div>
 
                             <!-- Title -->
@@ -1925,7 +1982,7 @@
                                 <div class="w-10 h-10 bg-amber-500 flex items-center justify-center text-white shrink-0 p-2 shadow-2xs" style="border-radius: 0px;">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m18 9-6 6"/></svg>
                                 </div>
-                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]" style="border-radius: 0px;">TAGLIO 1D & SFRIDO</span>
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-1 border badge-building bg-amber-50 text-amber-800 border-amber-200" style="border-radius: 0px;">TAGLIO 1D & SFRIDO</span>
                             </div>
 
                             <!-- Title -->
@@ -4115,14 +4172,15 @@ document.addEventListener('click', (e) => {
 
         const homeTab = document.getElementById('omniTabHome');
         const isHome = (!pathname || pathname === 'index');
+        const isDark = document.documentElement.classList.contains('omni-dark');
         if (homeTab) {
             homeTab.className = isHome 
-                ? 'flex items-center gap-2 px-3.5 h-[34px] shrink-0 text-[12px] cursor-pointer'
-                : 'flex items-center gap-2 px-3.5 h-[34px] shrink-0 text-[12px] opacity-80 hover:opacity-100 transition cursor-pointer';
-            homeTab.style.backgroundColor = isHome ? '#1e293b' : '#0f172a';
-            homeTab.style.color = isHome ? '#ffffff' : '#cbd5e1';
-            homeTab.style.borderTop = isHome ? '2px solid #2563eb' : '2px solid transparent';
-            homeTab.style.borderRight = isHome ? '1px solid #334155' : '1px solid #1e293b';
+                ? 'flex items-center gap-1.5 px-3 h-[34px] bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 dark:border-slate-800 shadow-xs cursor-pointer'
+                : 'flex items-center gap-1.5 px-3 h-[34px] bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200 dark:border-slate-800 cursor-pointer';
+            homeTab.style.backgroundColor = '';
+            homeTab.style.color = '';
+            homeTab.style.borderTop = '';
+            homeTab.style.borderRight = '';
             homeTab.style.borderRadius = '0px';
         }
 
@@ -4135,22 +4193,24 @@ document.addEventListener('click', (e) => {
             const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab ${isActive ? 'active-tab' : 'inactive-tab'} group px-3 transition shrink-0 cursor-pointer`;
+            tab.className = `omni-dyn-tab ${isActive ? 'active-tab' : 'inactive-tab'} group flex items-center gap-1.5 px-3 h-[34px] text-[12px] border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 border-t-blue-600 border-r-slate-300 dark:border-r-slate-800 font-bold shadow-xs' : 'bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white border-t-transparent border-r-slate-200 dark:border-r-slate-800 font-medium'}`;
             tab.style.borderRadius = '0px';
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
             const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
             tab.innerHTML = `
-                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline">
+                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline pr-1">
                     ${iconMarkup}
                     <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
                 </a>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-300 p-0.5 text-slate-300 hover:bg-slate-700/50 transition font-mono text-[10px]">
-                    ↗
-                </button>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab text-[#94A3B8] hover:text-white hover:bg-rose-600/80 p-0.5 transition" style="border-radius: 0px;" title="Chiudi scheda">
-                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
+                <div class="flex items-center gap-1 ml-1 pl-1 border-l border-slate-200 dark:border-slate-700">
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-amber-500 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition cursor-pointer font-bold text-[11px]" style="border-radius: 0px;">
+                        ↗
+                    </button>
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab w-5 h-5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-rose-600 transition cursor-pointer" style="border-radius: 0px;" title="Chiudi scheda">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
             `;
 
             let tabDragY = 0;

@@ -254,7 +254,6 @@
 
         /* Range Slider Track in Dark Mode */
         html.omni-dark input[type=range] {
-            background: #334155 !important;
             border: 1px solid #475569 !important;
         }
         html.omni-dark input[type=range]::-webkit-slider-thumb {
@@ -434,23 +433,20 @@
     </script>
 
     <style id="omni-sharp-precision-grid-rules">
-        /* Deterministic Top Tab Bar White */
+        /* Deterministic Top Tab Bar */
         #omniChromeTabsBar {
             position: sticky !important;
             top: 0px !important;
             z-index: 50 !important;
             background-color: #ffffff !important;
             border-bottom: 1px solid #e2e8f0 !important;
+        }
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
         }
         html, body {
             overflow-x: clip !important;
-        }
-        #omniChromeTabsBar {
-            position: sticky !important;
-            top: 0px !important;
-            z-index: 50 !important;
-            background-color: #ffffff !important;
-            border-bottom: 1px solid #e2e8f0 !important;
         }
         @media (min-width: 768px) {
             header, header.sticky {
@@ -475,6 +471,18 @@
             font-weight: 700 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
         }
+        html.omni-dark #omniTabHome {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #1e293b !important;
+        }
+        html.omni-dark #omniTabHome span.font-jakarta {
+            color: #ffffff !important;
+        }
+        html.omni-dark #omniTabHome span:not(.font-jakarta) {
+            color: #93c5fd !important;
+        }
         #omniTabHome svg {
             color: #2563eb !important;
             stroke: #2563eb !important;
@@ -490,6 +498,12 @@
             font-weight: 700 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
         }
+        html.omni-dark .omni-dyn-tab.active-tab {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #1e293b !important;
+        }
         .omni-dyn-tab.inactive-tab {
             background-color: #f8fafc !important;
             color: #475569 !important;
@@ -497,9 +511,19 @@
             border-right: 1px solid #e2e8f0 !important;
             font-weight: 500 !important;
         }
+        html.omni-dark .omni-dyn-tab.inactive-tab {
+            background-color: #0b1120 !important;
+            color: #94a3b8 !important;
+            border-top: 2px solid transparent !important;
+            border-right: 1px solid #1e293b !important;
+        }
         .omni-dyn-tab.inactive-tab:hover {
             background-color: #f1f5f9 !important;
             color: #0f172a !important;
+        }
+        html.omni-dark .omni-dyn-tab.inactive-tab:hover {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
         }
         /* Top Bar DESK and Nuovo Tool Buttons */
         #topDeskBtn {
@@ -507,10 +531,20 @@
             color: #b45309 !important;
             border: 1px solid #fcd34d !important;
         }
+        html.omni-dark #topDeskBtn {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            color: #fde68a !important;
+            border: 1px solid rgba(245, 158, 11, 0.35) !important;
+        }
         #topNewToolBtn {
             background-color: #f8fafc !important;
             color: #334155 !important;
             border: 1px solid #cbd5e1 !important;
+        }
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border: 1px solid #334155 !important;
         }
         /* Language Selector Arrow Elimination */
         #langSelect, select[data-lang-switcher] {
@@ -575,7 +609,7 @@
         }
         input[type=range]::-moz-range-progress {
             height: 6px;
-            background: #a7f3d0;
+            background: #6ee7b7;
             border-radius: 0px !important;
         }
         input[type=range]::-webkit-slider-thumb {
@@ -600,21 +634,20 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.25);
         }
         html.omni-dark input[type=range] {
-            background: #334155 !important;
-            border: 1px solid #475569 !important;
+            border: 1px solid #334155 !important;
         }
         html.omni-dark input[type=range]::-moz-range-progress {
-            background: #065f46 !important;
+            background: #34d399 !important;
         }
         html.omni-dark input[type=range]::-webkit-slider-thumb {
-            background: #10b981 !important;
-            border: 2px solid #0f172a !important;
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6) !important;
+            background: #059669 !important;
+            border: 2px solid #ffffff !important;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important;
         }
         html.omni-dark input[type=range]::-moz-range-thumb {
-            background: #10b981 !important;
-            border: 2px solid #0f172a !important;
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6) !important;
+            background: #059669 !important;
+            border: 2px solid #ffffff !important;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important;
         }
     </style>
 
@@ -1295,8 +1328,8 @@
                     <svg class="w-3.5 h-3.5 text-amber-800 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                     <span id="headerHelpText" class="text-[12px] font-semibold text-amber-950">Guida</span>
                 </button>
-                <div class="inline-flex items-center h-[34px] px-2 bg-[#F8FAFC] dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-800 gap-2" style="border-radius: 0px;">
-                    <div class="relative flex items-center pr-1 cursor-pointer">
+                <div class="inline-flex items-center h-[34px] px-3 bg-[#F8FAFC] dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-800 gap-2.5" style="border-radius: 0px;">
+                    <div class="relative flex items-center cursor-pointer">
                         <svg width="15" height="15" style="width:15px;height:15px;min-width:15px;max-width:15px;" class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
@@ -1709,59 +1742,59 @@
             </div>
 
             <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
-            <div class="bg-white p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5" style="border-radius: 0px;">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
+            <div class="bg-white dark:bg-slate-900 p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-xs space-y-3.5" style="border-radius: 0px;">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100 dark:border-slate-800">
                     <div class="flex items-center gap-2">
-                        <h3 id="footerRelTitle" class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
+                        <h3 id="footerRelTitle" class="text-xs sm:text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
                     </div>
                     <span id="footerRelSub" class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     
-        <a href="/pac" class="group p-3.5 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
-            <div class="flex items-center justify-between mb-2">
-                <span class="w-6 h-6 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-emerald-600 transition-colors">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                </span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-emerald-50 text-emerald-800 border-emerald-200 border" style="border-radius: 0px;">Investimenti</span>
+        <a href="/pac" class="group p-3.5 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/90 dark:border-slate-700/80 hover:border-emerald-500 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
+            <div class="flex items-center justify-between mb-2.5">
+                <div class="w-9 h-9 bg-emerald-600 flex items-center justify-center text-white shrink-0 p-1.5 shadow-2xs" style="border-radius: 0px;">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                </div>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/80" style="border-radius: 0px;">Investimenti</span>
             </div>
             <div>
-                <span class="font-extrabold text-slate-900 group-hover:text-emerald-700 text-xs block transition-colors">InteresseComposto</span>
-                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Simulatore PAC & Regola 4%</span>
+                <span class="font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 text-xs block transition-colors">InteresseComposto</span>
+                <span class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 block mt-0.5">Simulatore PAC & Regola 4%</span>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-emerald-700 transition">
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 dark:border-slate-700/60 flex items-center justify-between text-[10px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
-        <a href="/margine" class="group p-3.5 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
-            <div class="flex items-center justify-between mb-2">
-                <span class="w-6 h-6 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-emerald-600 transition-colors">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h.01M7 3h5a1.99 1.99 0 0 1 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A1.994 1.994 0 0 1 3 12V5a2 2 0 0 1 2-2z"/></svg>
-                </span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-emerald-50 text-emerald-800 border-emerald-200 border" style="border-radius: 0px;">Business</span>
+        <a href="/margine" class="group p-3.5 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/90 dark:border-slate-700/80 hover:border-emerald-500 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
+            <div class="flex items-center justify-between mb-2.5">
+                <div class="w-9 h-9 bg-emerald-600 flex items-center justify-center text-white shrink-0 p-1.5 shadow-2xs" style="border-radius: 0px;">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h.01M7 3h5a1.99 1.99 0 0 1 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A1.994 1.994 0 0 1 3 12V5a2 2 0 0 1 2-2z"/></svg>
+                </div>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/80" style="border-radius: 0px;">Business</span>
             </div>
             <div>
-                <span class="font-extrabold text-slate-900 group-hover:text-emerald-700 text-xs block transition-colors">MargineFacile</span>
-                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Margine profitto & ricarico</span>
+                <span class="font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 text-xs block transition-colors">MargineFacile</span>
+                <span class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 block mt-0.5">Margine profitto & ricarico</span>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-emerald-700 transition">
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 dark:border-slate-700/60 flex items-center justify-between text-[10px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
-        <a href="/rampe" class="group p-3.5 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
-            <div class="flex items-center justify-between mb-2">
-                <span class="w-6 h-6 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-amber-600 transition-colors">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L3 8v12z"/></svg>
-                </span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-amber-50 text-amber-800 border-amber-200 border" style="border-radius: 0px;">Edilizia</span>
+        <a href="/rampe" class="group p-3.5 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/90 dark:border-slate-700/80 hover:border-amber-500 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
+            <div class="flex items-center justify-between mb-2.5">
+                <div class="w-9 h-9 bg-amber-500 flex items-center justify-center text-white shrink-0 p-1.5 shadow-2xs" style="border-radius: 0px;">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L3 8v12z"/></svg>
+                </div>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60" style="border-radius: 0px;">Edilizia</span>
             </div>
             <div>
-                <span class="font-extrabold text-slate-900 group-hover:text-amber-700 text-xs block transition-colors">RampaFacile</span>
-                <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Calcolo pendenza cantiere</span>
+                <span class="font-extrabold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 text-xs block transition-colors">RampaFacile</span>
+                <span class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 block mt-0.5">Calcolo pendenza cantiere</span>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-amber-700 transition">
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 dark:border-slate-700/60 flex items-center justify-between text-[10px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
@@ -2837,7 +2870,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const homeTab = document.getElementById('omniTabHome');
         const isHome = (!pathname || pathname === 'index');
         if (homeTab) {
-            homeTab.className = isHome ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 shadow-xs' : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#F8FAFC] hover:bg-slate-100 text-[#475569] hover:text-[#0F172A] font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200';
+            homeTab.className = isHome ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 dark:border-slate-800 shadow-xs' : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200 dark:border-slate-800';
             homeTab.style.borderRadius = '0px';
         }
 
@@ -2850,7 +2883,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] text-[#0F172A] border-t-blue-600 border-r-slate-300 font-bold shadow-xs' : 'bg-[#F8FAFC] hover:bg-slate-100 text-[#475569] hover:text-[#0F172A] border-t-transparent border-r-slate-200 font-medium'}`;
+            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 border-t-blue-600 border-r-slate-300 dark:border-r-slate-800 font-bold shadow-xs active-tab' : 'bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white border-t-transparent border-r-slate-200 dark:border-r-slate-800 font-medium inactive-tab'}`;
             tab.style.borderRadius = '0px';
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
@@ -3641,7 +3674,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 'rangeRate', min: 0.5, max: 8.0 }
             ];
             const isDark = document.documentElement.classList.contains('omni-dark');
-            const fillColor = isDark ? '#065f46' : '#a7f3d0';
+            const fillColor = isDark ? '#34d399' : '#6ee7b7';
             const baseColor = isDark ? '#334155' : '#e2e8f0';
 
             sliders.forEach(s => {
@@ -3649,7 +3682,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!el) return;
                 const val = parseFloat(el.value);
                 const pct = Math.max(0, Math.min(100, ((val - s.min) / (s.max - s.min)) * 100));
-                el.style.background = `linear-gradient(to right, ${fillColor} 0%, ${fillColor} ${pct}%, ${baseColor} ${pct}%, ${baseColor} 100%)`;
+                el.style.setProperty('background', `linear-gradient(to right, ${fillColor} 0%, ${fillColor} ${pct}%, ${baseColor} ${pct}%, ${baseColor} 100%)`, 'important');
             });
         }
 
