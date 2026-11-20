@@ -26,6 +26,10 @@
     <meta property="og:url" content="https://www.omnitoolslab.com/mutuo">
     <meta property="og:site_name" content="OmniTools Lab">
     
+    <!-- Favicon (Dynamic via JS) -->
+    <link id="dynamicFavicon" rel="icon" type="image/svg+xml" href="/favicon.svg?v=6">
+    <link rel="alternate icon" type="image/png" href="/favicon.png?v=6">
+    
     <!-- Fonts & Styling -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,6 +133,20 @@
     }
     </script>
 <style id="omniDarkStyles">
+        /* When running inside a detached floating iframe, hide outer tabs and footer */
+        body.is-embedded #omniChromeTabsBar,
+        body.is-embedded header,
+        body.is-embedded footer {
+            display: none !important;
+        }
+
+        /* --- NUMERIC TYPOGRAPHY (TABULAR NUMS SANS-SERIF) --- */
+        .num-tabular, input[type="number"], .result-val {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+            font-variant-numeric: tabular-nums !important;
+            font-feature-settings: "tnum" 1, "lnum" 1 !important;
+        }
+
         /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
         html, body {
             overflow-x: clip !important;
@@ -392,6 +410,14 @@
         html.omni-dark #badgeCountFinance { background-color: rgba(4, 120, 87, 0.25) !important; color: #a7f3d0 !important; border-color: rgba(5, 150, 105, 0.5) !important; }
     </style>
     <script>
+        // Check if page is loaded inside an iframe (e.g. detached floating window)
+        if (window.self !== window.top) {
+            document.documentElement.classList.add('is-embedded');
+            document.addEventListener('DOMContentLoaded', () => {
+                if (document.body) document.body.classList.add('is-embedded');
+            });
+        }
+
         function applyDark(on) {
             document.documentElement.classList.toggle('omni-dark', on);
             const btn = document.getElementById('darkModeBtn');
@@ -401,6 +427,7 @@
             const next = !document.documentElement.classList.contains('omni-dark');
             localStorage.setItem('omnitools_dark', next ? '1' : '0');
             applyDark(next);
+            if (typeof updateRangeBackgrounds === 'function') updateRangeBackgrounds();
         };
         if (localStorage.getItem('omnitools_dark') === '1') applyDark(true);
         document.addEventListener('DOMContentLoaded', () => applyDark(localStorage.getItem('omnitools_dark') === '1'));
@@ -485,6 +512,17 @@
             color: #334155 !important;
             border: 1px solid #cbd5e1 !important;
         }
+        /* Language Selector Arrow Elimination */
+        #langSelect, select[data-lang-switcher] {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            background-image: none !important;
+        }
+        #langSelect::-ms-expand, select[data-lang-switcher]::-ms-expand {
+            display: none !important;
+        }
+
         /* Language Globe & Theme SVGs deterministic constraint */
         #langSelect + svg, #langSelect ~ svg, .relative:has(#langSelect) svg,
         .omni-lang-box svg, select[data-lang-switcher] ~ svg, header .relative svg:first-child {
@@ -504,6 +542,79 @@
         /* Specific exceptions: status dots or radial indicators */
         .status-dot, .online-dot, input[type="radio"], circle {
             border-radius: 9999px !important;
+        }
+
+        /* --- SQUARED 90-DEGREE RANGE SLIDERS & THUMBS WITH PROGRESSIVE TINT --- */
+        select#langSelect {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            background-image: none !important;
+            background-color: transparent !important;
+        }
+        select#langSelect::-ms-expand {
+            display: none !important;
+        }
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e2e8f0;
+            height: 6px;
+            border-radius: 0px !important;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 6px;
+            border-radius: 0px !important;
+            background: transparent;
+        }
+        input[type=range]::-moz-range-track {
+            height: 6px;
+            border-radius: 0px !important;
+            background: transparent;
+        }
+        input[type=range]::-moz-range-progress {
+            height: 6px;
+            background: #a7f3d0;
+            border-radius: 0px !important;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #059669;
+            border: 2px solid #ffffff;
+            border-radius: 0px !important;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+            margin-top: -5px;
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #059669;
+            border: 2px solid #ffffff;
+            border-radius: 0px !important;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+        }
+        html.omni-dark input[type=range] {
+            background: #334155 !important;
+            border: 1px solid #475569 !important;
+        }
+        html.omni-dark input[type=range]::-moz-range-progress {
+            background: #065f46 !important;
+        }
+        html.omni-dark input[type=range]::-webkit-slider-thumb {
+            background: #10b981 !important;
+            border: 2px solid #0f172a !important;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6) !important;
+        }
+        html.omni-dark input[type=range]::-moz-range-thumb {
+            background: #10b981 !important;
+            border: 2px solid #0f172a !important;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6) !important;
         }
     </style>
 
@@ -632,12 +743,19 @@
         
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
-            <!-- Fixed Home Hub Tab -->
-            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Torna alla Home Hub">
-                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
-                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                </span>
-                <span id="navTabHomeText">Home Hub</span>
+            <!-- Fixed Home Hub Logo Tab -->
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3 h-[34px] bg-[#F8FAFC] hover:bg-slate-100 text-[#0F172A] border-t-2 border-transparent transition shrink-0 border-r border-slate-200 select-none group" style="border-radius: 0px;" title="Torna alla Home Hub">
+                <div class="w-[20px] h-[20px] min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-2xs shrink-0 overflow-hidden transition-transform group-hover:scale-105" style="border-radius: 0px; width: 20px; height: 20px;">
+                    <svg width="18" height="18" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px; min-height: 18px; max-height: 18px;" class="block" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </div>
+                <div class="flex items-center gap-1 leading-none shrink-0">
+                    <span class="font-jakarta font-black text-[12px] text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
+                    <span class="text-[9px] font-jakarta font-extrabold uppercase tracking-wider bg-blue-100 text-blue-800 px-1 py-0.2 border border-blue-200/80 leading-none" style="border-radius: 0px;">LAB</span>
+                </div>
             </a>
         </div>
 
@@ -646,27 +764,27 @@
             
             <!-- DESK Dropdown Trigger Button -->
             <div class="relative">
-                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
-                    <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black text-[9px]">⚡</span>
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" style="border-radius: 0px;" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
+                    <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     <span class="tracking-wider">DESK</span>
                     <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
 
                 <!-- DESK Menu Dropdown in Top Bar -->
-                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 shadow-2xl p-2 z-50 space-y-1 text-xs" style="border-radius: 0px;">
                     <div id="navDeskTitle" class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
                         Strumenti da Scrivania
                     </div>
-                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                         <span id="navDeskMemo">OmniMemo (Post-it)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="0"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="16" y1="18" x2="16" y2="18"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/></svg>
                         <span id="navDeskCalc">OmniCalc (Calcolatrice)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <span id="navDeskClock">OmniClock (Orologio)</span>
                     </button>
                 </div>
@@ -674,8 +792,8 @@
 
             <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
             <div class="relative">
-                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
-                    <span>➕</span>
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold transition flex items-center gap-1.5 border border-slate-700 cursor-pointer" style="border-radius: 0px;" title="Apri un nuovo calcolatore in scheda">
+                    <svg class="w-3.5 h-3.5 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     <span id="topNewToolBtnText" class="hidden lg:inline">Nuovo Tool</span>
                 </button>
 
@@ -939,21 +1057,236 @@
     <header class="no-print bg-white dark:bg-slate-900 border-b border-[#E2E8F0] dark:border-slate-800 sticky top-0 md:top-[42px] z-40 h-[64px] flex items-center" style="border-radius: 0px;">
         <div class="max-w-5xl mx-auto px-3 sm:px-6 w-full flex items-center justify-between gap-2">
             
-            <!-- Left Side: Home Hub Link + Divider + Branch Icon + Tool Title + Badge -->
+            <!-- Left Side: Interactive Tool Selector Dropdown + Badge -->
             <div class="flex items-center gap-2.5 min-w-0">
-                <a href="/" class="text-[13px] font-medium text-[#475569] hover:text-[#0F172A] dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 flex items-center gap-1">
-                    ← Home Hub
-                </a>
+                <!-- Tool Switcher Dropdown Trigger Button -->
+                <div class="relative">
+                    <button type="button" id="headerToolMenuBtn" onclick="toggleHeaderToolMenu(event)" class="flex items-center gap-2 px-2 py-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer select-none border border-transparent hover:border-slate-300 dark:hover:border-slate-700" style="border-radius: 0px;" title="Cambia calcolatore suite">
+                        <div class="w-7 h-7 bg-emerald-600 flex items-center justify-center text-white shrink-0 p-1 shadow-2xs" style="border-radius: 0px;">
+                            <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                            </svg>
+                        </div>
+                        <span class="text-[16px] font-bold text-[#0F172A] dark:text-slate-100 truncate tracking-tight">MutuoFacile</span>
+                        <svg id="headerToolMenuChevron" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-150 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
 
-                <span class="w-[1px] h-4 bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
+                    <!-- Contextual Tool Dropdown (rounded-none, border, z-50) -->
+                    <div id="headerToolDropdown" class="hidden absolute left-0 mt-1 w-72 sm:w-80 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 shadow-2xl p-2 z-50 space-y-2 text-left max-h-[80vh] overflow-y-auto" style="border-radius: 0px;">
+                        <div class="px-2 pt-1 pb-1 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            <span id="headerDropTitle">Tutti i Calcolatori</span>
+                            <span class="text-blue-600 dark:text-blue-400 font-mono font-bold">22 Tool</span>
+                        </div>
 
-                <div class="w-8 h-8 bg-emerald-600 flex items-center justify-center text-white shrink-0 p-1.5 shadow-2xs" style="border-radius: 0px;">
-                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        <!-- 1. OmniFinance (Active Division - First) -->
+                        <details class="group/cat" data-cat="finance" open>
+                            <summary class="px-2 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center justify-between w-full hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden" style="border-radius: 0px;">
+                                <span class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                                    <span>OmniFinance (6)</span>
+                                </span>
+                                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="space-y-0.5 pt-1">
+                                <a href="/mutuo" class="flex items-center justify-between p-2 text-xs transition bg-blue-600 text-white font-bold" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-emerald-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                                        <span class="nav-tool-name">MutuoFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-white/20 font-mono font-bold" style="border-radius: 0px;">Attivo</span>
+                                </a>
+                                <a href="/pac" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                                        <span class="nav-tool-name font-bold">InteresseComposto</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">PAC</span>
+                                </a>
+                                <a href="/margine" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">MargineFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Markup</span>
+                                </a>
+                                <a href="/estinzione" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">EstinzioneMutuo</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Bersani</span>
+                                </a>
+                                <a href="/risparmio" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">ObiettivoRisparmio</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Goal</span>
+                                </a>
+                                <a href="/fire" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">FIRE & Rendita</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Trinity</span>
+                                </a>
+                            </div>
+                        </details>
+
+                        <!-- 2. OmniBuilding -->
+                        <details class="group/cat" data-cat="building">
+                            <summary class="px-2 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center justify-between w-full hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden" style="border-radius: 0px;">
+                                <span class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                    <span>OmniBuilding (6)</span>
+                                </span>
+                                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="space-y-0.5 pt-1">
+                                <a href="/rampe" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">RampaFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">DM 236</span>
+                                </a>
+                                <a href="/scale" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                                        <span class="nav-tool-name font-bold">ScalaFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Blondel</span>
+                                </a>
+                                <a href="/tubi" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                                        <span class="nav-tool-name font-bold">TubiFacili</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Scarichi</span>
+                                </a>
+                                <a href="/tetto" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                                        <span class="nav-tool-name font-bold">TettoFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Pendenza</span>
+                                </a>
+                                <a href="/taglio" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                                        <span class="nav-tool-name font-bold">TaglioOttimo</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">1D Cut</span>
+                                </a>
+                                <a href="/piastrelle" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                                        <span class="nav-tool-name font-bold">PiastrellaFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Posa</span>
+                                </a>
+                            </div>
+                        </details>
+
+                        <!-- 3. OmniGraph -->
+                        <details class="group/cat" data-cat="graph">
+                            <summary class="px-2 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center justify-between w-full hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden" style="border-radius: 0px;">
+                                <span class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span>
+                                    <span>OmniGraph (6)</span>
+                                </span>
+                                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="space-y-0.5 pt-1">
+                                <a href="/dorso" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                                        <span class="nav-tool-name font-bold">DorsoFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">KDP</span>
+                                </a>
+                                <a href="/dpi" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                                        <span class="nav-tool-name font-bold">RisoluzioneFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">DPI</span>
+                                </a>
+                                <a href="/tinta" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">TintaPerfetta</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Pantone</span>
+                                </a>
+                                <a href="/barcode" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                                        <span class="nav-tool-name font-bold">OmniBarcode</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">EAN</span>
+                                </a>
+                                <a href="/copertura" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                                        <span class="nav-tool-name font-bold">CoperturaFacile</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">CMYK</span>
+                                </a>
+                                <a href="/resa" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">ResaCarta</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Resa</span>
+                                </a>
+                            </div>
+                        </details>
+
+                        <!-- 4. OmniFood -->
+                        <details class="group/cat" data-cat="food">
+                            <summary class="px-2 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-700 dark:text-orange-400 flex items-center justify-between w-full hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden" style="border-radius: 0px;">
+                                <span class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                                    <span>OmniFood (4)</span>
+                                </span>
+                                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="space-y-0.5 pt-1">
+                                <a href="/shelflife" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">ShelfLife Export</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">TMC</span>
+                                </a>
+                                <a href="/nutriexport" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">NutriExport Converter</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">FDA</span>
+                                </a>
+                                <a href="/impasti" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 18h12l3-18H3zm6 0v18m6-18v18"/></svg></span>
+                                        <span class="nav-tool-name font-bold">BatchScaler Pro</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Baker's %</span>
+                                </a>
+                                <a href="/idratazione" class="flex items-center justify-between p-2 text-xs transition text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" style="border-radius: 0px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>
+                                        <span class="nav-tool-name font-bold">HygroBalance Lab</span>
+                                    </div>
+                                    <span class="text-[9px] uppercase px-1.5 py-0.2 bg-black/10 dark:bg-white/10 font-mono font-bold" style="border-radius: 0px;">Idratazione</span>
+                                </a>
+                            </div>
+                        </details>
+                    </div>
                 </div>
 
-                <span class="text-[16px] font-bold text-[#0F172A] dark:text-slate-100 truncate tracking-tight">MutuoFacile</span>
-
-                <span class="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-0.5 border bg-emerald-50 text-emerald-800 border-emerald-200 shrink-0" style="border-radius: 0px;">Ammortamento</span>
+                <span class="hidden sm:inline-block text-[11px] font-semibold uppercase tracking-[0.04em] px-2 py-0.5 border bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 shrink-0" style="border-radius: 0px;">Ammortamento</span>
             </div>
 
             <!-- Right Side: Sharp Unified Language & Theme Control Pill -->
@@ -962,22 +1295,23 @@
                     <svg class="w-3.5 h-3.5 text-amber-800 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                     <span id="headerHelpText" class="text-[12px] font-semibold text-amber-950">Guida</span>
                 </button>
-                <div class="inline-flex items-center h-[36px] bg-[#F8FAFC] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800" style="border-radius: 0px;">
-                    <div class="relative flex items-center px-2.5">
+                <div class="inline-flex items-center h-[34px] px-2 bg-[#F8FAFC] dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-800 gap-2" style="border-radius: 0px;">
+                    <div class="relative flex items-center pr-1 cursor-pointer">
                         <svg width="15" height="15" style="width:15px;height:15px;min-width:15px;max-width:15px;" class="w-[15px] h-[15px] text-[#64748B] dark:text-slate-400 pointer-events-none shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
                             <path d="M2 12h20"/>
                         </svg>
-                        <select id="langSelect" data-lang-switcher class="appearance-none bg-transparent pl-1.5 pr-1 py-1 text-[13px] font-semibold text-[#0F172A] dark:text-slate-200 focus:outline-none cursor-pointer" aria-label="Language Selector">
+                        <span id="langDisplayLabel" class="ml-1.5 text-[12px] font-bold text-[#0F172A] dark:text-slate-200 pointer-events-none tracking-wider select-none">IT</span>
+                        <select id="langSelect" data-lang-switcher class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" aria-label="Language Selector">
                             <option value="it" selected>IT</option>
                             <option value="en">EN</option>
                         </select>
                     </div>
 
-                    <span class="w-[1px] h-[18px] bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
+                    <span class="w-[1px] h-[16px] bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
 
-                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="w-[34px] h-[34px] flex items-center justify-center hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-colors cursor-pointer text-[#475569] dark:text-slate-300" style="border-radius: 0px;" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">
+                    <button type="button" id="darkModeBtn" onclick="toggleDarkMode()" class="w-[24px] h-[28px] flex items-center justify-center hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-colors cursor-pointer text-[#475569] dark:text-slate-300" style="border-radius: 0px;" title="Cambia Tema Chiaro/Scuro" aria-label="Cambia Tema Chiaro/Scuro">
                         <svg class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
                         </svg>
@@ -989,20 +1323,7 @@
     </header>
     
 
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
-        <!-- Quick Section Anchor Bar (Calm UI & Progressive Disclosure) -->
-        <div class="no-print flex items-center justify-center gap-1.5 py-1 mb-2">
-            <div class="inline-flex items-center p-0.5 rounded-full bg-[#F1F5F9] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 text-[12px] font-medium text-[#64748B] dark:text-slate-400">
-                <a href="#calculatorArea" class="px-3 py-1 rounded-full bg-white dark:bg-slate-800 text-[#0F172A] dark:text-slate-200 shadow-2xs font-semibold">Calcolatore</a>
-                <span class="w-[1px] h-3 bg-[#CBD5E1] dark:bg-slate-700 mx-0.5"></span>
-                <a href="#normativeGuideArea" class="px-3 py-1 rounded-full hover:text-[#0F172A] dark:hover:text-slate-200 transition-colors flex items-center gap-1">
-                    <span>Guida & Formule</span>
-                    <span class="text-[10px]">↓</span>
-                </a>
-            </div>
-        </div>
-
-
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8" id="calculatorArea">
         <!-- Print-only official header -->
         <div class="print-only mb-6 border-b-2 border-slate-900 pb-3">
             <div class="flex justify-between items-center">
@@ -1018,43 +1339,26 @@
         </div>
 
         <!-- Hero Title & Global Currency Bar -->
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4 no-print pb-2 border-b border-slate-200">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 no-print pt-1 pb-3 border-b border-slate-200 dark:border-slate-800">
             <div class="text-left space-y-1">
-                <div class="flex flex-wrap items-center gap-1.5">
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold border border-emerald-200">
-                        <span>🏦</span> <span id="heroBadge">SIMULATORE MUTUO & AMMORTAMENTO</span>
+                <div>
+                    <span id="heroBadge" class="text-[10px] font-black text-emerald-700 dark:text-emerald-400 tracking-wider uppercase select-none">
+                        AMMORTAMENTO ALLA FRANCESE · RATA COSTANTE
                     </span>
-                    <span class="text-xs font-bold text-slate-400">· Formula Francese Rata Costante</span>
                 </div>
-                <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Calcolo Rata Mutuo & Sostenibilità Bancaria</h1>
+                <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">Calcolo Rata Mutuo & Sostenibilità Bancaria</h1>
             </div>
 
             <!-- Universal Currency Switcher -->
-            <div class="flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-2xs text-xs font-bold shrink-0" id="currencySwitcher">
+            <div class="flex items-center gap-1 bg-white dark:bg-slate-900 p-1 border border-slate-200 dark:border-slate-800 shadow-2xs text-xs font-bold shrink-0 self-start md:self-end" id="currencySwitcher" style="border-radius: 0px;">
                 <span class="text-[10px] text-slate-400 font-bold uppercase px-2 hidden sm:inline">Valuta:</span>
-                <button type="button" onclick="setCurrency('EUR')" id="currEUR" class="curr-btn px-2.5 py-1 rounded-xl bg-emerald-700 text-white shadow-xs font-black transition">€ EUR</button>
-                <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">$ USD</button>
-                <button type="button" onclick="setCurrency('GBP')" id="currGBP" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">£ GBP</button>
-                <button type="button" onclick="setCurrency('CHF')" id="currCHF" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">CHF</button>
-                <button type="button" onclick="setCurrency('JPY')" id="currJPY" class="curr-btn px-2.5 py-1 rounded-xl text-slate-600 hover:text-slate-900 transition font-bold">¥ JPY</button>
+                <button type="button" onclick="setCurrency('EUR')" id="currEUR" class="curr-btn px-2.5 py-1 bg-emerald-700 text-white shadow-xs font-black transition cursor-pointer" style="border-radius: 0px;">€ EUR</button>
+                <button type="button" onclick="setCurrency('USD')" id="currUSD" class="curr-btn px-2.5 py-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 transition font-bold cursor-pointer" style="border-radius: 0px;">$ USD</button>
+                <button type="button" onclick="setCurrency('GBP')" id="currGBP" class="curr-btn px-2.5 py-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 transition font-bold cursor-pointer" style="border-radius: 0px;">£ GBP</button>
+                <button type="button" onclick="setCurrency('CHF')" id="currCHF" class="curr-btn px-2.5 py-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 transition font-bold cursor-pointer" style="border-radius: 0px;">CHF</button>
+                <button type="button" onclick="setCurrency('JPY')" id="currJPY" class="curr-btn px-2.5 py-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 transition font-bold cursor-pointer" style="border-radius: 0px;">¥ JPY</button>
             </div>
         </div>
-
-        
-        <!-- Google Featured Snippet (Position 0) Callout Box -->
-        <section aria-label="Formula Rata Mutuo Francese" class="no-print id="calculatorArea" bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs mb-2">
-            <div class="flex items-start gap-3">
-                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
-                <div class="text-xs sm:text-sm space-y-1">
-                    <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
-                        Formula Rata Costante (Ammortamento Francese): <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-emerald-200 text-emerald-800 font-mono font-black">Rata = C × [ i × (1+i)ⁿ ] / [ (1+i)ⁿ - 1 ]</code>
-                    </p>
-                    <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
-                        <strong>Esempio pratico & Sostenibilità:</strong> Su un mutuo di <code class="font-bold">180.000 €</code> a <code class="font-bold">25 anni (300 rate)</code> al TAN del <code class="font-bold">3,20%</code>, la rata mensile fissa è pari a <code class="font-mono text-emerald-800 font-bold">872,62 €</code>. Con reddito familiare netto di 2.800 €, l'incidenza è del <code class="font-bold">31,1%</code>, perfettamente entro il tetto bancario del 33%.
-                    </p>
-                </div>
-            </div>
-        </section>
 
         <!-- UNIFIED CALCULATOR CARD (OmniTools Lab Standard) -->
         <div class="bg-white rounded-3xl border border-slate-200 border-t-4 border-t-emerald-600 shadow-sm p-4 sm:p-7 space-y-6">
@@ -1062,73 +1366,83 @@
             <!-- Controls Column -->
             <div class="w-full bg-slate-50/70 rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-4 card-box">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-700 block pb-2 border-b border-slate-100 flex items-center justify-between">
-                    <span class="flex items-center gap-1.5"><span>⚙️</span> Parametri del Finanziamento</span>
-                    <div class="flex items-center gap-2">
-                        <button type="button" onclick="copyShareLink()" id="btnShare" title="Copia link con i parametri attuali" class="text-[11px] font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-2 py-0.5 rounded-lg border border-emerald-200 transition flex items-center gap-1 cursor-pointer">
-                            <span>🔗</span> <span id="btnShareText">Condividi</span>
-                        </button>
-                        <button type="button" onclick="resetDefaults()" class="text-[11px] font-semibold text-slate-500 hover:text-slate-800">Reimposta</button>
-                    </div>
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-slate-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        <span>Parametri del Finanziamento</span>
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Formula Francese</span>
                 </span>
 
-                <!-- Importo Mutuo -->
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label id="labelAmount" class="text-xs font-bold text-slate-700">Importo Richiesto (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeAmount" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">180.000 €</span>
+                <!-- 1. Capitale Richiesto -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label id="labelAmount" for="inputAmount" class="text-xs font-bold text-slate-800 dark:text-slate-200">Capitale richiesto (<span class="currencySymbol">€</span>)</label>
                     </div>
                     <div class="relative">
-                        <input type="number" id="inputAmount" value="180000" min="5000" max="20000000" step="5000" oninput="syncFromInput('Amount')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        <input type="number" id="inputAmount" value="180000" min="5000" max="20000000" step="5000" oninput="syncFromInput('Amount')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 num-tabular">
                     </div>
-                    <input type="range" id="rangeAmount" min="30000" max="600000" step="5000" value="180000" oninput="syncFromRange('Amount')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
-                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
-                        <button type="button" onclick="setAmount(100000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">100k</button>
-                        <button type="button" onclick="setAmount(180000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">180k</button>
-                        <button type="button" onclick="setAmount(250000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">250k</button>
-                        <button type="button" onclick="setAmount(350000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">350k</button>
-                    </div>
-                </div>
-
-                <!-- Durata Anni -->
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label id="labelYears" class="text-xs font-bold text-slate-700">Durata Mutuo (Anni)</label>
-                        <span id="badgeYears" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">25 anni (300 rate)</span>
-                    </div>
-                    <input type="number" id="inputYears" value="25" min="5" max="40" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                    <input type="range" id="rangeYears" min="5" max="40" step="1" value="25" oninput="syncFromRange('Years')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
-                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
-                        <button type="button" onclick="setYears(15)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">15a</button>
-                        <button type="button" onclick="setYears(20)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">20a</button>
-                        <button type="button" onclick="setYears(25)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">25a</button>
-                        <button type="button" onclick="setYears(30)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">30a</button>
+                    <input type="range" id="rangeAmount" min="30000" max="600000" step="5000" value="180000" oninput="syncFromRange('Amount')" class="w-full mt-1 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 pt-0.5 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setAmount(100000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">100k</button>
+                        <button type="button" onclick="setAmount(180000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">180k</button>
+                        <button type="button" onclick="setAmount(250000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">250k</button>
+                        <button type="button" onclick="setAmount(350000)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">350k</button>
                     </div>
                 </div>
 
-                <!-- Tasso di Interesse Annuo (TAN) -->
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label id="labelRate" class="text-xs font-bold text-slate-700">Tasso di Interesse Annuo (TAN %)</label>
-                        <span id="badgeRate" class="text-xs font-bold font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">3.20 %</span>
+                <!-- 2. Durata del Mutuo -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label id="labelYears" for="inputYears" class="text-xs font-bold text-slate-800 dark:text-slate-200">Durata del mutuo (anni)</label>
+                        <span id="badgeYears" class="text-[11px] font-bold text-slate-600 dark:text-slate-400 num-tabular">25 anni · 300 rate</span>
                     </div>
-                    <input type="number" id="inputRate" value="3.20" min="0.05" max="18.00" step="0.05" oninput="syncFromInput('Rate')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                    <input type="range" id="rangeRate" min="0.5" max="8.0" step="0.05" value="3.20" oninput="syncFromRange('Rate')" class="w-full mt-2 accent-emerald-600 cursor-pointer">
-                    <div class="grid grid-cols-4 gap-1 mt-1 text-[10px] font-bold no-print">
-                        <button type="button" onclick="setRate(2.5)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">2.5%</button>
-                        <button type="button" onclick="setRate(3.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">3.0%</button>
-                        <button type="button" onclick="setRate(3.5)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">3.5%</button>
-                        <button type="button" onclick="setRate(4.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition">4.0%</button>
+                    <input type="number" id="inputYears" value="25" min="5" max="40" step="1" oninput="syncFromInput('Years')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 num-tabular">
+                    <input type="range" id="rangeYears" min="5" max="40" step="1" value="25" oninput="syncFromRange('Years')" class="w-full mt-1 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 pt-0.5 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setYears(15)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">15a</button>
+                        <button type="button" onclick="setYears(20)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">20a</button>
+                        <button type="button" onclick="setYears(25)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">25a</button>
+                        <button type="button" onclick="setYears(30)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">30a</button>
                     </div>
                 </div>
 
-                <!-- Reddito Netto Mensile (Per Sostenibilità Rata/Reddito 33%) -->
-                <div class="pt-2 border-t border-slate-100">
-                    <div class="flex justify-between items-center mb-1">
-                        <label id="labelIncome" class="text-xs font-bold text-slate-700 flex items-center gap-1"><span>🛡️</span> <span>Reddito Netto Mensile</span> (<span class="currencySymbol">€</span>)</label>
-                        <span id="badgeIncome" class="text-xs font-bold font-mono text-slate-800 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">2.600 €</span>
+                <!-- 3. Tasso Annuo TAN -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label id="labelRate" for="inputRate" class="text-xs font-bold text-slate-800 dark:text-slate-200">Tasso annuo TAN (%)</label>
                     </div>
-                    <input type="number" id="inputIncome" value="2600" min="500" max="50000" step="50" oninput="calculateMortgage()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                    <p class="text-[10px] text-slate-500 mt-1">Utilizzato dalle banche per verificare il limite massimo del 33% di indebitamento.</p>
+                    <input type="number" id="inputRate" value="3.20" min="0.05" max="18.00" step="0.05" oninput="syncFromInput('Rate')" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 num-tabular">
+                    <input type="range" id="rangeRate" min="0.5" max="8.0" step="0.05" value="3.20" oninput="syncFromRange('Rate')" class="w-full mt-1 accent-emerald-600 cursor-pointer">
+                    <div class="grid grid-cols-4 gap-1 pt-0.5 text-[10px] font-bold no-print">
+                        <button type="button" onclick="setRate(2.5)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">2.5%</button>
+                        <button type="button" onclick="setRate(3.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">3.0%</button>
+                        <button type="button" onclick="setRate(3.5)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">3.5%</button>
+                        <button type="button" onclick="setRate(4.0)" class="py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 transition cursor-pointer" style="border-radius: 0px;">4.0%</button>
+                    </div>
+                </div>
+
+                <!-- 4. Reddito Netto Mensile (Per Sostenibilità Rata/Reddito 33%) -->
+                <div class="space-y-1 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <div class="flex justify-between items-center">
+                        <label id="labelIncome" for="inputIncome" class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-slate-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <span>Reddito netto mensile (<span class="currencySymbol">€</span>)</span>
+                        </label>
+                    </div>
+                    <input type="number" id="inputIncome" value="2600" min="500" max="50000" step="50" oninput="calculateMortgage()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 num-tabular">
+                    <p class="text-[10px] text-slate-500 mt-0.5">Parametro bancario per la verifica del limite del 33% di indebitamento.</p>
+                </div>
+
+                <!-- Module Bottom Action Strip (Condividi & Reimposta - Posizionati subito sotto i campi) -->
+                <div class="pt-2 flex items-center justify-end gap-2 no-print">
+                    <button type="button" onclick="copyShareLink()" id="btnShare" title="Copia link con i parametri attuali" class="h-[28px] px-2.5 text-[11px] font-bold text-emerald-800 dark:text-emerald-300 bg-white dark:bg-slate-900 hover:bg-emerald-50 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:border-emerald-500 transition flex items-center gap-1.5 cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        <span id="btnShareText">Condividi</span>
+                    </button>
+                    <button type="button" onclick="resetDefaults()" title="Reimposta parametri ai valori iniziali" class="h-[28px] px-2.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:border-slate-500 transition flex items-center gap-1.5 cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-3.5 h-3.5 text-slate-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        <span>Reimposta</span>
+                    </button>
                 </div>
             </div>
 
@@ -1140,14 +1454,14 @@
                     <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
                             <span id="labelMonthly" class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-200 block">Rata Mensile Costante</span>
-                            <div class="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1" id="resMonthlyPayment">
+                            <div class="text-3xl sm:text-4xl font-black num-tabular tracking-tight text-white mt-1" id="resMonthlyPayment">
                                 872,75 €
                             </div>
-                            <span class="text-xs text-emerald-100/90 mt-0.5 block">per <span id="resTotalInstallments" class="font-bold">300</span> mensilità</span>
+                            <span class="text-xs text-emerald-100/90 mt-0.5 block">per <span id="resTotalInstallments" class="font-bold num-tabular">300</span> mensilità</span>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xs p-3 rounded-xl border border-white/20 text-right sm:text-right shrink-0">
                             <span id="labelDti" class="text-[10px] uppercase font-bold text-emerald-200 block">Incidenza su Reddito</span>
-                            <div class="text-xl font-black font-mono text-white mt-0.5" id="resDebtToIncome">33.5%</div>
+                            <div class="text-xl font-black num-tabular text-white mt-0.5" id="resDebtToIncome">33.5%</div>
                             <span class="text-[10px] font-semibold text-emerald-100" id="resDebtToIncomeTag">In Linea (≤ 35%)</span>
                         </div>
                     </div>
@@ -1157,19 +1471,19 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelPrincipal" class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Capitale Richiesto</span>
-                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resPrincipal">180.000 €</div>
+                        <div class="text-lg font-black num-tabular text-slate-900 mt-1" id="resPrincipal">180.000 €</div>
                         <span class="text-[10px] text-slate-500">100% finanziato</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelInterest" class="text-[11px] font-bold text-rose-600 uppercase tracking-wider block">Totale Interessi</span>
-                        <div class="text-lg font-black font-mono text-rose-600 mt-1" id="resTotalInterest">81.826 €</div>
-                        <span class="text-[10px] text-slate-500" id="resInterestRatio">+45.5% sul prestito</span>
+                        <div class="text-lg font-black num-tabular text-rose-600 mt-1" id="resTotalInterest">81.826 €</div>
+                        <span class="text-[10px] text-slate-500 num-tabular" id="resInterestRatio">+45.5% sul prestito</span>
                     </div>
 
                     <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs card-box">
                         <span id="labelTotalCost" class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">Costo Totale Mutuo</span>
-                        <div class="text-lg font-black font-mono text-slate-900 mt-1" id="resTotalCost">261.826 €</div>
+                        <div class="text-lg font-black num-tabular text-slate-900 mt-1" id="resTotalCost">261.826 €</div>
                         <span class="text-[10px] text-slate-500">Capitale + Interessi</span>
                     </div>
                 </div>
@@ -1178,7 +1492,8 @@
                 <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-2xs space-y-2 card-box" id="affordabilityCard">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                            <span>🏛️</span> <span id="affordTitle">Valutazione Bancaria di Fattibilità (Regola del Terzo)</span>
+                            <svg class="w-3.5 h-3.5 text-slate-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 2L2 7h20L12 2z"/></svg>
+                            <span id="affordTitle">Valutazione Bancaria di Fattibilità (Regola del Terzo)</span>
                         </span>
                         <span id="affordTag" class="text-[10px] font-extrabold uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300">
                             Fattibile (33%)
@@ -1195,7 +1510,7 @@
                         <span class="font-bold flex items-center gap-1.5">
                             <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Decomposizione Rata Annuale (Interessi vs Capitale)
                         </span>
-                        <div class="flex items-center gap-3 text-[10px] font-mono">
+                        <div class="flex items-center gap-3 text-[10px]">
                             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-emerald-500 rounded-xs"></span> Capitale</span>
                             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-rose-500 rounded-xs"></span> Interessi</span>
                         </div>
@@ -1205,29 +1520,28 @@
                     <div class="w-full overflow-hidden">
                         <svg id="mortgageSvg" class="w-full h-44" viewBox="0 0 520 200" preserveAspectRatio="none"></svg>
                     </div>
-                    <p class="text-[10px] text-slate-400 text-center font-mono">
+                    <p class="text-[10px] text-slate-400 text-center">
                         Ammortamento alla Francese: le prime rate hanno una quota interessi elevata, mentre con il passare degli anni la quota capitale diventa prevalente.
                     </p>
                 </div>
 
                 <!-- Amortization Schedule Table Accordion -->
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden card-box">
-                    <div class="p-3.5 bg-slate-100/80 border-b border-slate-200 flex items-center justify-between flex-wrap gap-2">
-                        <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                            <span>📅</span> Prospetto di Ammortamento Sintetico (Anno per Anno)
+                    <div class="p-3 bg-slate-100/80 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between flex-wrap gap-2">
+                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                            <svg class="w-4 h-4 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="0"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <span>Prospetto di Ammortamento (Anno per Anno)</span>
                         </span>
-                        <div class="flex items-center gap-2 no-print">
-                            <button type="button" onclick="exportMortgageCsv()" class="text-xs text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer" title="Scarica piano di ammortamento in formato CSV/Excel">
-                                <span>📥</span> Esporta CSV
-                            </button>
-                            <button type="button" onclick="window.print()" class="text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1 transition shadow-2xs cursor-pointer">
-                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Stampa
+                        <div class="flex items-center gap-1.5 no-print">
+                            <!-- Toggle Vista Compatta / Tutti gli Anni -->
+                            <button type="button" id="btnToggleTableRows" onclick="toggleTableDisplayMode()" class="h-[30px] px-2.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-slate-800 text-slate-700 dark:text-slate-200 text-[11px] font-semibold flex items-center gap-1 transition cursor-pointer" style="border-radius: 0px;" title="Espandi o contrai tabella">
+                                <span id="toggleTableText">Mostra Tutti</span>
                             </button>
                         </div>
                     </div>
-                    <div class="max-h-60 overflow-y-auto">
+                    <div id="tableScrollContainer" class="max-h-60 overflow-y-auto">
                         <table class="w-full text-xs text-left">
-                            <thead class="bg-slate-50 text-[10px] font-bold text-slate-500 uppercase sticky top-0 border-b border-slate-200">
+                            <thead class="bg-slate-50 dark:bg-slate-800 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase sticky top-0 border-b border-slate-200 dark:border-slate-700">
                                 <tr>
                                     <th class="p-2 whitespace-nowrap">Anno</th>
                                     <th class="p-2 text-right whitespace-nowrap">Quota Capitale</th>
@@ -1235,41 +1549,42 @@
                                     <th class="p-2 text-right whitespace-nowrap">Debito Residuo</th>
                                 </tr>
                             </thead>
-                            <tbody id="tableBody" class="divide-y divide-slate-100 font-mono text-[11px]">
+                            <tbody id="tableBody" class="divide-y divide-slate-100 dark:divide-slate-800 text-[11px] num-tabular">
                                 <!-- Generato via JS -->
                             </tbody>
                         </table>
+                    </div>
+                    <!-- Action Bar Under Schedule Table (CSV, Print, Copy - Equal 3-Column Width & Unified Palette) -->
+                    <div class="p-2.5 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-700 grid grid-cols-3 gap-2 no-print">
+                        <!-- Esporta CSV -->
+                        <button type="button" onclick="exportMortgageCsv()" class="w-full h-[34px] px-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-slate-800 dark:hover:border-slate-500 text-slate-800 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer" style="border-radius: 0px;" title="Scarica piano in formato CSV">
+                            <svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>CSV</span>
+                        </button>
+                        <!-- Stampa -->
+                        <button type="button" onclick="window.print()" class="w-full h-[34px] px-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-slate-800 dark:hover:border-slate-500 text-slate-800 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer" style="border-radius: 0px;" title="Stampa o Salva PDF">
+                            <svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                            <span>Stampa</span>
+                        </button>
+                        <!-- Copia -->
+                        <button type="button" onclick="triggerUniversalCopy(this)" class="w-full h-[34px] px-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-slate-800 dark:hover:border-slate-500 text-slate-800 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer" style="border-radius: 0px;" title="Copia riepilogo calcoli">
+                            <svg class="w-3.5 h-3.5 text-slate-600 dark:text-slate-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="0"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span>Copia</span>
+                        </button>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Twin Action Buttons (OmniFinance Standard) -->
-            <!-- Action Buttons: Esporta CSV, Stampa, Copia (Sharp Precision Grid) -->
-            <div class="grid grid-cols-3 gap-1.5 sm:gap-2 pt-3 no-print w-full">
-                <button type="button" onclick="triggerUniversalExport(this)" class="h-[36px] px-1 sm:px-3 bg-white dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-700 hover:border-slate-900 text-[#0F172A] dark:text-slate-100 text-[11px] sm:text-[12px] font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition cursor-pointer truncate" style="border-radius: 0px;" title="Scarica dati in CSV">
-                    <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    <span class="truncate">Esporta CSV</span>
-                </button>
-                <button type="button" onclick="window.print()" class="h-[36px] px-1 sm:px-3 bg-white dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-700 hover:border-slate-900 text-[#0F172A] dark:text-slate-100 text-[11px] sm:text-[12px] font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition cursor-pointer truncate" style="border-radius: 0px;" title="Stampa o Salva PDF">
-                    <svg class="w-3.5 h-3.5 text-blue-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                    <span class="truncate">Stampa</span>
-                </button>
-                <button type="button" onclick="triggerUniversalCopy(this)" class="h-[36px] px-1 sm:px-3 bg-white dark:bg-slate-900 border border-[#CBD5E1] dark:border-slate-700 hover:border-slate-900 text-[#0F172A] dark:text-slate-100 text-[11px] sm:text-[12px] font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition cursor-pointer truncate" style="border-radius: 0px;" title="Copia riepilogo calcoli">
-                    <svg class="w-3.5 h-3.5 text-slate-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="0"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                    <span class="truncate">Copia</span>
-                </button>
-            </div>
-
         <!-- Technical Legal Disclaimer Box (TUF / D.Lgs. 58/1998) -->
-        <div class="no-print p-4 bg-slate-100 rounded-2xl border border-slate-200 text-[11px] leading-relaxed text-slate-600 space-y-1.5 card-box">
-            <div class="flex items-center gap-1.5 font-bold text-slate-800">
-                <span>⚖️</span>
+        <div class="no-print p-4 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 space-y-1.5 card-box">
+            <div class="flex items-center gap-1.5 font-bold text-slate-800 dark:text-slate-200">
+                <svg class="w-3.5 h-3.5 text-slate-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <span>Nota Tecnica & Disclaimer Legale (OmniFinance):</span>
             </div>
             <p>
                 Questo simulatore calcola la rata e il piano di ammortamento progressivo alla francese (rata costante con quota capitale crescente e quota interessi decrescente) mediante la formula matematica standard: 
-                <span class="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200">R = C × [r / (1 - (1 + r)^(-n))]</span>.
+                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-300 dark:border-slate-700 num-tabular inline-block font-semibold">R = C × [ r / (1 − (1 + r)<sup>−n</sup>) ]</span>.
             </p>
             <p>
                 I risultati hanno scopo puramente informativo ed educativo e <strong>non costituiscono proposta contrattuale, preventivo vincolante né sollecitazione al credito</strong>. Il calcolo non include spese accessorie quali: imposta sostitutiva di legge (0,25% prima casa, 2% seconda casa), costi di perizia tecnica e istruttoria bancaria, polizze incendio e scoppio obbligatorie o opzionali (CPI), commissioni di incasso rata o oscillazioni dei tassi variabili (Euribor). Rivolgersi sempre all'istituto di credito per il prospetto informativo europeo standardizzato (PIES).
@@ -1277,13 +1592,13 @@
         </div>
 
         <!-- FAQ Section -->
-        <section class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xs space-y-4 no-print card-box">
-            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <section class="bg-white dark:bg-slate-900 p-5 sm:p-7 border border-slate-200 dark:border-slate-800 shadow-xs space-y-4 no-print card-box">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
-                        ❓
+                    <div class="w-8 h-8 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 flex items-center justify-center font-bold text-sm" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-emerald-700 dark:text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </div>
-                    <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2">
+                    <h2 class="text-base sm:text-lg font-black text-slate-900 dark:text-white font-jakarta flex items-center gap-2">
                         <span id="faqTitle">Domande Frequenti su Rata Mutuo & Ammortamento</span>
                     </h2>
                 </div>
@@ -1362,14 +1677,14 @@
         <div class="max-w-5xl mx-auto px-3 sm:px-6 space-y-6">
             
             <!-- NATIVE TECHNICAL SPONSOR / PARTNER BANNER SLOT (Division-Contextualized) -->
-            <div id="omniSponsorBanner" data-sponsor-division="finance" class="bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/60 rounded-3xl p-4 sm:p-5 border-2 border-dashed border-emerald-200/90 hover:border-emerald-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4">
+            <div id="omniSponsorBanner" data-sponsor-division="finance" class="bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/60 p-4 sm:p-5 border-2 border-dashed border-emerald-200/90 hover:border-emerald-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4" style="border-radius: 0px;">
                 <div class="flex items-start gap-3.5 text-left">
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center text-2xl shrink-0">
-                        💼
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 bg-white border border-slate-200 shadow-xs flex items-center justify-center text-slate-700 shrink-0" style="border-radius: 0px;">
+                        <svg class="w-6 h-6 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="0"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
                     <div class="space-y-1">
                         <div class="flex flex-wrap items-center gap-2">
-                            <span id="sponsorBannerBadge" class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border bg-emerald-100 text-emerald-900 border-emerald-300">
+                            <span id="sponsorBannerBadge" class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 border bg-emerald-100 text-emerald-900 border-emerald-300" style="border-radius: 0px;">
                                 SLOT SPONSOR TECNICO • OMNIFINANCE
                             </span>
                             <span id="sponsorBannerAvail" class="text-[10px] font-bold text-slate-500 flex items-center gap-1">
@@ -1385,8 +1700,8 @@
                     </div>
                 </div>
                 <div class="shrink-0 w-full md:w-auto flex md:flex-col items-center justify-end gap-2">
-                    <a href="/partnership" class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20 font-extrabold text-xs shadow-md transition active:scale-95 text-center inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
-                        <span>🤝</span>
+                    <a href="/partnership" class="w-full md:w-auto px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-md transition active:scale-95 text-center inline-flex items-center justify-center gap-1.5 whitespace-nowrap" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-emerald-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         <span id="sponsorBannerCta">Candida la tua Azienda</span>
                         <span>→</span>
                     </a>
@@ -1394,54 +1709,59 @@
             </div>
 
             <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
-            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+            <div class="bg-white p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5" style="border-radius: 0px;">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
                     <div class="flex items-center gap-2">
-                        
                         <h3 id="footerRelTitle" class="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">Altri Calcolatori Tecnici Consigliati</h3>
                     </div>
                     <span id="footerRelSub" class="text-[10px] font-bold text-slate-400">Precision Utilities • 100% Gratuito</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     
-        <a href="/pac" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+        <a href="/pac" class="group p-3.5 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
             <div class="flex items-center justify-between mb-2">
-                <span class="text-xl group-hover:scale-110 transition-transform">📈</span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 border">Investimenti</span>
+                <span class="w-6 h-6 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-emerald-600 transition-colors">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                </span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-emerald-50 text-emerald-800 border-emerald-200 border" style="border-radius: 0px;">Investimenti</span>
             </div>
             <div>
-                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">InteresseComposto</span>
+                <span class="font-extrabold text-slate-900 group-hover:text-emerald-700 text-xs block transition-colors">InteresseComposto</span>
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Simulatore PAC & Regola 4%</span>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-emerald-700 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
-        <a href="/margine" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+        <a href="/margine" class="group p-3.5 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
             <div class="flex items-center justify-between mb-2">
-                <span class="text-xl group-hover:scale-110 transition-transform">🏷️</span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 border">Business</span>
+                <span class="w-6 h-6 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-emerald-600 transition-colors">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h.01M7 3h5a1.99 1.99 0 0 1 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A1.994 1.994 0 0 1 3 12V5a2 2 0 0 1 2-2z"/></svg>
+                </span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-emerald-50 text-emerald-800 border-emerald-200 border" style="border-radius: 0px;">Business</span>
             </div>
             <div>
-                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">MargineFacile</span>
+                <span class="font-extrabold text-slate-900 group-hover:text-emerald-700 text-xs block transition-colors">MargineFacile</span>
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Margine profitto & ricarico</span>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-emerald-700 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
-        <a href="/rampe" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+        <a href="/rampe" class="group p-3.5 bg-slate-50 hover:bg-white border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between" style="border-radius: 0px;">
             <div class="flex items-center justify-between mb-2">
-                <span class="text-xl group-hover:scale-110 transition-transform">📐</span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200 border">Edilizia</span>
+                <span class="w-6 h-6 flex items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-amber-600 transition-colors">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18L3 8v12z"/></svg>
+                </span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 bg-amber-50 text-amber-800 border-amber-200 border" style="border-radius: 0px;">Edilizia</span>
             </div>
             <div>
-                <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">RampaFacile</span>
+                <span class="font-extrabold text-slate-900 group-hover:text-amber-700 text-xs block transition-colors">RampaFacile</span>
                 <span class="text-[11px] text-slate-500 line-clamp-1 block mt-0.5">Calcolo pendenza cantiere</span>
             </div>
-            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-blue-600 transition">
+            <div class="mt-2.5 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-slate-600 group-hover:text-amber-700 transition">
                 <span class="footer-rel-open">Apri Calcolatore</span>
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
@@ -1452,7 +1772,9 @@
             <!-- Share & Viral Action Strip -->
             <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <div class="flex items-center gap-2.5">
-                    <span class="text-xl">📢</span>
+                    <span class="w-5 h-5 flex items-center justify-center text-blue-600">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </span>
                     <div>
                         <span id="shareTitleText" class="text-xs sm:text-sm font-bold text-slate-800 block">Ti è stato utile questo calcolatore?</span>
                         <span id="shareSubText" class="text-[11px] text-slate-500 block">Condividilo con colleghi, collaboratori o clienti</span>
@@ -1509,216 +1831,237 @@
                 </div>
                 
                 <!-- Division 1: OmniBuilding (6 Tools) -->
-                <div class="space-y-1.5">
-                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1">
-                        <span>🏗️</span> <span id="footerCatBuilding">OmniBuilding (6 Cantiere & Fabbricazione)</span>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                <details class="group/cat space-y-1.5">
+                    <summary class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center justify-between cursor-pointer list-none select-none hover:text-amber-300 transition [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M3 8l9-5 9 5v12"/></svg>
+                            <span id="footerCatBuilding">OmniBuilding (6 Cantiere & Fabbricazione)</span>
+                        </span>
+                        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 pt-1">
                     <a href="/rampe" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📐 Rampe</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">RampaFacile</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza & DM 236</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/scale" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪜 Scale</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">ScalaFacile</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Gradini & Blondel</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/tubi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🚰 Scarichi</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">TubiFacili</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza UNI EN</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/tetto" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏠 Tetto & Falda</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">TettoFacile</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Pendenza, Gradi & Trave</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/taglio" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🪚 Taglio 1D</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">TaglioOttimo</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Ottimizzatore Barre & Sfrido</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/piastrelle" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🧱 Piastrelle</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">PiastrellaFacile</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Sfrido, Colla & Fughe</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
-                </div>
+                </details>
 
                 <!-- Division 2: OmniGraph (6 Tools) -->
-                <div class="space-y-1.5 pt-1">
-                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1">
-                        <span>🎨</span> <span id="footerCatGraph">OmniGraph (6 Grafica & Stampa)</span>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                <details class="group/cat space-y-1.5 pt-1">
+                    <summary class="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center justify-between cursor-pointer list-none select-none hover:text-rose-300 transition [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                            <span id="footerCatGraph">OmniGraph (6 Grafica & Stampa)</span>
+                        </span>
+                        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 pt-1">
                     <a href="/dorso" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📕 Dorso</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">DorsoFacile</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Spessore & KDP</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/dpi" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖼️ DPI / Pixel</span>
-                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">RisoluzioneFacile</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Stampa & Acuità DPI</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/tinta" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Tinta & CMYK</span>
-                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Calibrazione</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">TintaPerfetta</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Scarto & Pantone</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/barcode" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Barcode</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">OmniBarcode</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Vettoriale & GS1</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/copertura" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🖨️ Copertura</span>
-                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro & Costi</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">CoperturaFacile</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Inchiostro CMYK & Costi</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/resa" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📑 Resa Carta</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">ResaCarta</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Nesting & Taglio</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
-                </div>
+                </details>
 
                 <!-- Division 3: OmniFinance (6 Tools) -->
-                <div class="space-y-1.5 pt-1">
-                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1">
-                        <span>💼</span> <span id="footerCatFinance">OmniFinance (6 Finanza & Libertà)</span>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                <details class="group/cat space-y-1.5 pt-1">
+                    <summary class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center justify-between cursor-pointer list-none select-none hover:text-emerald-300 transition [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <span id="footerCatFinance">OmniFinance (6 Finanza & Libertà)</span>
+                        </span>
+                        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 pt-1">
                     <div class="p-2 sm:p-2.5 rounded-xl bg-emerald-600/25 border-emerald-500/60 border flex items-center justify-between transition shadow-xs">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-white text-[11px] block truncate">🏦 Rata Mutuo</span>
+                            <span class="font-bold text-white text-[11px] block truncate">MutuoFacile</span>
                             <span class="text-[9px] text-emerald-200 block truncate">Ammortamento & Sostenibilità</span>
                         </div>
                         <span class="footer-pill-active text-[9px] px-1.5 py-0.5 bg-emerald-600 text-white font-extrabold rounded shrink-0">Attivo</span>
                     </div>
                     <a href="/pac" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📈 Interesse PAC</span>
-                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Crescita & Rendita 4%</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">InteresseComposto</span>
+                            <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Crescita & Rendita PAC</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/margine" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🏷️ Margine & Ricarico</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">MargineFacile</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">COGS, Markup & IVA</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/estinzione" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">⚡ Estinzione Mutuo</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">EstinzioneMutuo</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Rata vs Anni & Bersani</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/risparmio" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🎯 Obiettivo Risparmio</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">ObiettivoRisparmio</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Sinking Fund & Piano Mensile</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/fire" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🔥 FIRE & Rendita</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">FIRE & Rendita</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Libertà & Trinity 4%</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
-                </div>
+                </details>
 
-                <!-- Division 4: OmniFood (4 Tools) -->
-                <div class="space-y-1.5 pt-1">
-                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-orange-400 flex items-center gap-1">
-                        <span>🥫</span> <span id="footerCatFood">OmniFood (4 FoodTech & Export Compliance)</span>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                <!-- Division 4: OmniFood (4 Tools - Clean 3-col Grid like other categories) -->
+                <details class="group/cat space-y-1.5 pt-1">
+                    <summary class="text-[10px] font-extrabold uppercase tracking-wider text-orange-400 flex items-center justify-between cursor-pointer list-none select-none hover:text-orange-300 transition [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9 1.1 0 2-.9 2-2 0-.4-.15-.77-.4-1.06-.27-.3-.43-.7-.43-1.15 0-.99.8-1.79 1.79-1.79H17c2.76 0 5-2.24 5-5 0-4.97-4.03-9-10-9z"/><circle cx="8" cy="8.5" r="1.5"/><circle cx="12" cy="6.5" r="1.5"/><circle cx="16" cy="8.5" r="1.5"/></svg>
+                            <span id="footerCatFood">OmniFood (4 FoodTech & Export Compliance)</span>
+                        </span>
+                        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </summary>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 pt-1">
                     <a href="/shelflife" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🥫 ShelfLife Export</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">ShelfLife Export</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">TMC, FDA, CFIA & GCC</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/nutriexport" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">📊 NutriExport</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">NutriExport Converter</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Tabella UE a FDA USA</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/impasti" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">🥖 BatchScaler Pro</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">BatchScaler Pro</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Baker's % & Scalatore Lotti</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     <a href="/idratazione" class="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 flex items-center justify-between transition group">
                         <div class="min-w-0 pr-1">
-                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">💧 HygroBalance</span>
+                            <span class="font-bold text-slate-200 group-hover:text-white text-[11px] block truncate">HygroBalance Lab</span>
                             <span class="text-[9px] text-slate-400 group-hover:text-slate-300 block truncate">Acqua Legata & T-Base</span>
                         </div>
                         <span class="footer-pill-open text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-slate-300 group-hover:bg-slate-700 group-hover:text-white font-semibold rounded shrink-0">Apri →</span>
                     </a>
                     </div>
-                </div>
+                </details>
 
                 <!-- Division 5: OmniDesk Utilities (Quick Tools) -->
                 <div class="space-y-1.5 pt-1">
-                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1">
-                        <span>⚡</span> <span id="footerCatDesk">OmniDesk — Strumenti Rapidi da Scrivania</span>
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span id="footerCatDesk">OmniDesk — Strumenti Rapidi da Scrivania</span>
                     </div>
                     <div class="grid grid-cols-3 gap-2 text-[11px] text-center font-bold">
-                        <a href="/memo" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
-                            <span>📝</span> <span>Memo</span>
+                        <a href="/memo" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-amber-300 border border-slate-700/80 transition flex items-center justify-center gap-1.5" style="border-radius: 0px;">
+                            <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            <span>Memo</span>
                         </a>
-                        <a href="/calcolatrice" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-blue-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
-                            <span>🔢</span> <span>Calcolatrice</span>
+                        <a href="/calcolatrice" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-blue-300 border border-slate-700/80 transition flex items-center justify-center gap-1.5" style="border-radius: 0px;">
+                            <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="0"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="16" y1="18" x2="16" y2="18"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/></svg>
+                            <span>Calcolatrice</span>
                         </a>
-                        <a href="/orologio" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-teal-300 border border-slate-700/80 transition flex items-center justify-center gap-1">
-                            <span>⏱️</span> <span>Orologio</span>
+                        <a href="/orologio" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-teal-300 border border-slate-700/80 transition flex items-center justify-center gap-1.5" style="border-radius: 0px;">
+                            <svg class="w-3.5 h-3.5 text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>Orologio</span>
                         </a>
                     </div>
                 </div>
 
                 <div class="pt-2 text-center border-t border-slate-800/80">
                     <a href="/partnership" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
-                        <span>🤝</span> <span id="footerPartnerText">Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
+                        <svg class="w-4 h-4 text-indigo-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span id="footerPartnerText">Diventa Partner Ufficiale o Sponsor della Suite OmniTools</span>
                     </a>
                 </div>
             </div>
@@ -1806,7 +2149,7 @@
 
 
     <script>
-        const TRANSLATIONS = {"it": {"badge": "SIMULATORE MUTUO & AMMORTAMENTO", "hero_title": "Calcolo Rata Mutuo & Piano di Ammortamento", "hero_desc": "Formula di ammortamento progressivo alla francese (rata costante). Verifica la sostenibilità della rata rispetto al reddito netto con la regola del 33% e scarica il piano in CSV.", "input_amount": "Importo Mutuo Richiesto", "input_years": "Durata Rimborso", "input_rate": "Tasso di Interesse Annuo (TAN)", "input_income": "Reddito Netto Mensile Nucleo", "res_monthly": "Rata Mensile Costante", "res_installments": "Totale Rate", "res_dti": "Rapporto Rata / Reddito", "res_principal": "Capitale Erogato", "res_interest": "Totale Interessi Bancari", "res_ratio": "Rapporto Interessi/Capitale", "res_total_cost": "Costo Totale Complessivo", "afford_title": "Sostenibilità Reddituale (Regola del 33%)", "afford_tag_ok": "SOSTENIBILE: Sotto la soglia prudenziale del 33%", "afford_tag_warn": "ATTENZIONE: Rata vicina al limite (30%-35%)", "afford_tag_alert": "RISCHIO ELEVATO: Rata superiore al 35% del reddito", "tab_summary": "Riepilogo Piano", "tab_yearly": "Piano Annuale", "tab_monthly": "Piano Rata per Rata (Mensile)", "col_year": "Anno", "col_month": "Mese", "col_rate": "Rata", "col_capital": "Quota Capitale", "col_interest": "Quota Interessi", "col_remaining": "Debito Residuo", "csv_export": "Esporta Piano Completo (CSV)", "print_btn": "Stampa / Salva PDF", "faq_title": "Domande Frequenti sul Mutuo", "faq1_q": "Come funziona l'ammortamento alla francese?", "faq1_a": "Prevede una rata periodica costante. All'inizio la maggior parte della rata copre gli interessi sul debito; col passare del tempo la quota capitale cresce e gli interessi diminuiscono.", "faq2_q": "Cos'è la regola bancaria del 33%?", "faq2_a": "È il parametro prudenziale con cui le banche valutano la sostenibilità: la rata non deve superare un terzo (30-35%) del reddito netto mensile del nucleo familiare.", "faq3_q": "Qual è la differenza tra TAN e TAEG?", "faq3_a": "Il TAN è il tasso di interesse annuo puro. Il TAEG include tutti i costi obbligatori accessori: perizia, istruttoria, polizze obbligatorie e imposta sostitutiva.", "faq4_q": "Ci sono penali per l'estinzione anticipata?", "faq4_a": "No. Ai sensi del Decreto Bersani (Legge 40/2007), i mutui prima casa stipulati da persone fisiche non possono applicare alcuna penale per estinzione parziale o totale."}, "en": {"badge": "MORTGAGE & AMORTIZATION SIMULATOR", "hero_title": "Mortgage Payment & Amortization Schedule", "hero_desc": "French progressive amortization formula (fixed monthly payment). Verify debt-to-income affordability against the 33% rule and download your schedule as CSV.", "input_amount": "Mortgage Loan Amount", "input_years": "Repayment Term", "input_rate": "Annual Interest Rate (APR/TAN)", "input_income": "Monthly Net Household Income", "res_monthly": "Fixed Monthly Payment", "res_installments": "Total Payments", "res_dti": "Debt-to-Income Ratio", "res_principal": "Principal Borrowed", "res_interest": "Total Bank Interest", "res_ratio": "Interest-to-Principal Ratio", "res_total_cost": "Total Cost of Loan", "afford_title": "Income Affordability (33% Rule)", "afford_tag_ok": "AFFORDABLE: Well below the 33% prudent ceiling", "afford_tag_warn": "CAUTION: Payment near threshold (30%-35%)", "afford_tag_alert": "HIGH RISK: Monthly payment exceeds 35% of income", "tab_summary": "Loan Summary", "tab_yearly": "Yearly Breakdown", "tab_monthly": "Monthly Amortization Schedule", "col_year": "Year", "col_month": "Month", "col_rate": "Payment", "col_capital": "Principal", "col_interest": "Interest", "col_remaining": "Remaining Balance", "csv_export": "Export Full Schedule (CSV)", "print_btn": "Print / Save PDF", "faq_title": "Frequently Asked Mortgage Questions", "faq1_q": "How does French amortization work?", "faq1_a": "It features constant total installments. In the early years, interest dominates the payment; over time, the principal share grows while interest diminishes.", "faq2_q": "What is the 33% debt-to-income rule?", "faq2_a": "It is the standard lending benchmark: your monthly mortgage installment should not exceed one-third (30-35%) of your verified monthly net household income.", "faq3_q": "What is the difference between nominal rate and APR?", "faq3_a": "The nominal rate is the pure interest rate. The APR (TAEG) incorporates mandatory fees: appraisal, origination, mandatory insurance, and taxes.", "faq4_q": "Are there prepayment penalties?", "faq4_a": "In many jurisdictions (such as Italy under the Bersani Law), residential primary mortgages are strictly exempt from early prepayment or payoff penalties."}, "es": {"badge": "SIMULADOR DE HIPOTECA Y AMORTIZACIÓN", "hero_title": "Cálculo de Cuota Hipotecaria y Cuadro de Amortización", "hero_desc": "Fórmula de amortización progresiva francesa (cuota fija). Comprueba la sostenibilidad financiera frente a la regla del 33% y descarga tu tabla en CSV.", "input_amount": "Importe del Préstamo Hipotecario", "input_years": "Plazo de Devolución", "input_rate": "Tipo de Interés Anual (TIN)", "input_income": "Ingresos Netos Mensuales del Hogar", "res_monthly": "Cuota Mensual Fija", "res_installments": "Total de Cuotas", "res_dti": "Ratio Cuota / Ingresos", "res_principal": "Capital Prestado", "res_interest": "Total Intereses Bancarios", "res_ratio": "Ratio Intereses/Capital", "res_total_cost": "Coste Total del Préstamo", "afford_title": "Sostenibilidad de Ingresos (Regla del 33%)", "afford_tag_ok": "SOSTENIBLE: Por debajo del límite prudencial del 33%", "afford_tag_warn": "PRECAUCIÓN: Cuota cercana al límite (30%-35%)", "afford_tag_alert": "RIESGO ELEVADO: La cuota supera el 35% de los ingresos", "tab_summary": "Resumen Hipoteca", "tab_yearly": "Plan Anual", "tab_monthly": "Plan Detallado Mensual", "col_year": "Año", "col_month": "Mes", "col_rate": "Cuota", "col_capital": "Amortización Capital", "col_interest": "Intereses", "col_remaining": "Deuda Pendiente", "csv_export": "Exportar Tabla Completa (CSV)", "print_btn": "Imprimir / Guardar PDF", "faq_title": "Preguntas Frecuentes sobre Hipotecas", "faq1_q": "¿Cómo funciona el sistema de amortización francés?", "faq1_a": "Mantiene una cuota mensual constante. Al principio la cuota abona mayoritariamente intereses; con el tiempo la porción de capital aumenta y los intereses bajan.", "faq2_q": "¿Qué es la regla del 33% de endeudamiento?", "faq2_a": "Es el criterio de solvencia bancario: la cuota hipotecaria no debe superar un tercio (30-35%) de los ingresos netos familiares demostrables.", "faq3_q": "¿Cuál es la diferencia entre TIN y TAE?", "faq3_a": "El TIN es el interés puro. La TAE incluye los gastos asociados obligatorios: tasación, comisión de apertura, seguros obligatorios y aranceles.", "faq4_q": "¿Hay comisiones por amortización anticipada?", "faq4_a": "La normativa hipotecaria europea limita y en muchos casos anula las penalizaciones por amortización anticipada parcial o total."}, "fr": {"badge": "SIMULATEUR DE PRÊT IMMOBILIER & AMORTISSEMENT", "hero_title": "Calcul de Mensualité & Tableau d'Amortissement", "hero_desc": "Méthode d'amortissement progressif français (échéance constante). Vérifiez votre taux d'endettement selon la règle des 33% et téléchargez le tableau en CSV.", "input_amount": "Montant du Prêt Sollicité", "input_years": "Durée de Remboursement", "input_rate": "Taux d'Intérêt Annuel (Nominal)", "input_income": "Revenus Nets Mensuels du Foyer", "res_monthly": "Mensualité Fixe", "res_installments": "Nombre d'Échéances", "res_dti": "Taux d'Endettement", "res_principal": "Capital Emprunté", "res_interest": "Coût Total des Intérêts", "res_ratio": "Ratio Intérêts/Capital", "res_total_cost": "Coût Global du Crédit", "afford_title": "Capacité d'Emprunt (Règle des 33%)", "afford_tag_ok": "FINANCEMENT SEREIN: En dessous du seuil de 33%", "afford_tag_warn": "ATTENTION: Mensualité proche du plafond (30%-35%)", "afford_tag_alert": "RISQUE DE REFUS: La mensualité dépasse 35% des revenus", "tab_summary": "Synthèse du Prêt", "tab_yearly": "Échéancier Annuel", "tab_monthly": "Tableau Mensuel Détaillé", "col_year": "Année", "col_month": "Mois", "col_rate": "Mensualité", "col_capital": "Part Capital", "col_interest": "Part Intérêts", "col_remaining": "Capital Restant Dû", "csv_export": "Exporter l'Échéancier (CSV)", "print_btn": "Imprimer / Sauvegarder PDF", "faq_title": "Questions Fréquentes sur le Crédit Immobilier", "faq1_q": "Comment fonctionne l'amortissement français ?", "faq1_a": "Il repose sur des mensualités constantes. Les premières années couvrent surtout les intérêts; progressivement, la part de remboursement de capital devient prépondérante.", "faq2_q": "Qu'est-ce que la règle des 33% d'endettement ?", "faq2_a": "C'est le ratio de prudence bancaire (HCSF): les mensualités totales d'emprunt ne doivent pas dépasser un tiers (33%-35%) des revenus nets réguliers.", "faq3_q": "Quelle différence entre Taux Nominal et TAEG ?", "faq3_a": "Le taux nominal correspond aux seuls intérêts. Le TAEG intègre tous les frais obligatoires: assurance emprunteur, frais de dossier, caution et garanties.", "faq4_q": "Y a-t-il des indemnités de remboursement anticipé ?", "faq4_a": "Le remboursement anticipé est encadré légalement et souvent plafonné à 6 mois d'intérêts ou négociable sans frais avec votre banque."}, "de": {"badge": "BAUDARLEHEN & TILGUNGSRECHNER", "hero_title": "Monatsrate & Tilgungsplan Online Berechnen", "hero_desc": "Klassisches Annuitätendarlehen (konstante Monatsrate). Prüfen Sie Ihre Belastungsquote nach der 33%-Regel und laden Sie den vollständigen Tilgungsplan als CSV herunter.", "input_amount": "Darlehensbetrag (Kreditsumme)", "input_years": "Laufzeit in Jahren", "input_rate": "Sollzinssatz p.a. (Gebundener Sollzins)", "input_income": "Monatliches Netto-Haushaltseinkommen", "res_monthly": "Konstante Monatsrate (Annuität)", "res_installments": "Raten Gesamtzahl", "res_dti": "Haushalts-Belastungsquote", "res_principal": "Nettodarlehensbetrag", "res_interest": "Zinsaufwand Gesamt", "res_ratio": "Zins-zu-Tilgungs-Verhältnis", "res_total_cost": "Gesamtaufwand Darlehen", "afford_title": "Haushalts-Tragfähigkeit (33%-Regel)", "afford_tag_ok": "TRAGFÄHIG: Deutlich unter der 33%-Sicherheitsgrenze", "afford_tag_warn": "VORSICHT: Rate nahe am Limit (30%-35%)", "afford_tag_alert": "HOHE BELASTUNG: Rate übersteigt 35% des Nettoeinkommens", "tab_summary": "Darlehensübersicht", "tab_yearly": "Jährlicher Tilgungsplan", "tab_monthly": "Monatlicher Ratenplan", "col_year": "Jahr", "col_month": "Monat", "col_rate": "Annuität", "col_capital": "Tilgungsanteil", "col_interest": "Zinsanteil", "col_remaining": "Restschuld", "csv_export": "Tilgungsplan Exportieren (CSV)", "print_btn": "Drucken / PDF Speichern", "faq_title": "Häufig Gestellte Fragen zur Baufinanzierung", "faq1_q": "Wie funktioniert ein Annuitätendarlehen?", "faq1_a": "Die monatliche Rate bleibt über die Zinsbindung konstant. Zu Beginn überwiegt der Zinsanteil; mit jeder Tilgung sinkt die Restschuld und der Tilgungsanteil steigt automatisch.", "faq2_q": "Was besagt die 33%-Haushaltsregel?", "faq2_a": "Banken verlangen als Faustregel, dass die monatliche Kreditrate höchstens ein Drittel (30-35%) des bereinigten monatlichen Haushaltsnettoeinkommens ausmacht.", "faq3_q": "Was unterscheidet Sollzins und Effektivzins?", "faq3_a": "Der Sollzins ist der reine Zinssatz. Der effektive Jahreszins beziffert die tatsächlichen Gesamtkosten inklusive aller Nebenkosten und Zahlungsmodalitäten.", "faq4_q": "Sind Sondertilgungen jederzeit möglich?", "faq4_a": "Die meisten modernen Darlehensverträge erlauben jährliche kostenlose Sondertilgungen von 5% bis 10% der ursprünglichen Kreditsumme."}, "pt": {"badge": "SIMULADOR DE CRÉDITO HABITAÇÃO & AMORTIZAÇÃO", "hero_title": "Cálculo de Prestação e Tabela de Amortização", "hero_desc": "Fórmula de amortização francesa (prestação constante). Verifique a taxa de esforço face à regra dos 33% e descarregue o plano completo em formato CSV.", "input_amount": "Montante do Empréstimo", "input_years": "Prazo do Financiamento", "input_rate": "Taxa de Juro Anual (TAN)", "input_income": "Rendimento Mensal Líquido do Agregado", "res_monthly": "Prestação Mensal Fixa", "res_installments": "Total de Prestações", "res_dti": "Taxa de Esforço", "res_principal": "Capital Mutuado", "res_interest": "Total de Juros Pagos", "res_ratio": "Rácio Juros/Capital", "res_total_cost": "Custo Total do Crédito", "afford_title": "Sustentabilidade Financeira (Regra dos 33%)", "afford_tag_ok": "SUSTENTÁVEL: Confortavelmente abaixo dos 33%", "afford_tag_warn": "ATENÇÃO: Prestação próxima do limite (30%-35%)", "afford_tag_alert": "RISCO ELEVADO: Prestação excede 35% do rendimento", "tab_summary": "Resumo do Crédito", "tab_yearly": "Plano Anual", "tab_monthly": "Plano Mensal Detalhado", "col_year": "Ano", "col_month": "Mês", "col_rate": "Prestação", "col_capital": "Amortização Capital", "col_interest": "Juros", "col_remaining": "Capital em Dívida", "csv_export": "Exportar Tabela Completa (CSV)", "print_btn": "Imprimir / Guardar PDF", "faq_title": "Perguntas Frequentes sobre Crédito Habitação", "faq1_q": "Como funciona o sistema de amortização francês?", "faq1_a": "Mantém a prestação total constante. Inicialmente a maior parcela corresponde a juros; ao longo do tempo, amortiza-se mais capital e os juros diminuem.", "faq2_q": "O que é a taxa de esforço recomendada?", "faq2_a": "É o rácio entre a prestação e o rendimento líquido: o Banco de Portugal e as instituições recomendam que não ultrapasse um terço (30%-35%) do orçamento familiar.", "faq3_q": "Qual a diferença entre TAN e TAEG?", "faq3_a": "A TAN reflete apenas a taxa de juro nominal. A TAEG traduz o custo efetivo global, incluindo comissões bancárias, seguros obrigatórios e impostos.", "faq4_q": "Existem comissões de reembolso antecipado?", "faq4_a": "Por lei, a comissão de amortização antecipada está limitada a 0,5% em taxa variável e 2% em taxa fixa, com regimes temporários de isenção em habitação própria."}};
+        const TRANSLATIONS = {"it": {"badge": "AMMORTAMENTO ALLA FRANCESE · RATA COSTANTE", "hero_title": "Calcolo Rata Mutuo & Piano di Ammortamento", "hero_desc": "Formula di ammortamento progressivo alla francese (rata costante). Verifica la sostenibilità della rata rispetto al reddito netto con la regola del 33% e scarica il piano in CSV.", "input_amount": "Importo Mutuo Richiesto", "input_years": "Durata Rimborso", "input_rate": "Tasso di Interesse Annuo (TAN)", "input_income": "Reddito Netto Mensile Nucleo", "res_monthly": "Rata Mensile Costante", "res_installments": "Totale Rate", "res_dti": "Rapporto Rata / Reddito", "res_principal": "Capitale Erogato", "res_interest": "Totale Interessi Bancari", "res_ratio": "Rapporto Interessi/Capitale", "res_total_cost": "Costo Totale Complessivo", "afford_title": "Sostenibilità Reddituale (Regola del 33%)", "afford_tag_ok": "SOSTENIBILE: Sotto la soglia prudenziale del 33%", "afford_tag_warn": "ATTENZIONE: Rata vicina al limite (30%-35%)", "afford_tag_alert": "RISCHIO ELEVATO: Rata superiore al 35% del reddito", "tab_summary": "Riepilogo Piano", "tab_yearly": "Piano Annuale", "tab_monthly": "Piano Rata per Rata (Mensile)", "col_year": "Anno", "col_month": "Mese", "col_rate": "Rata", "col_capital": "Quota Capitale", "col_interest": "Quota Interessi", "col_remaining": "Debito Residuo", "csv_export": "Esporta Piano Completo (CSV)", "print_btn": "Stampa / Salva PDF", "faq_title": "Domande Frequenti sul Mutuo", "faq1_q": "Come funziona l'ammortamento alla francese?", "faq1_a": "Prevede una rata periodica costante. All'inizio la maggior parte della rata copre gli interessi sul debito; col passare del tempo la quota capitale cresce e gli interessi diminuiscono.", "faq2_q": "Cos'è la regola bancaria del 33%?", "faq2_a": "È il parametro prudenziale con cui le banche valutano la sostenibilità: la rata non deve superare un terzo (30-35%) del reddito netto mensile del nucleo familiare.", "faq3_q": "Qual è la differenza tra TAN e TAEG?", "faq3_a": "Il TAN è il tasso di interesse annuo puro. Il TAEG include tutti i costi obbligatori accessori: perizia, istruttoria, polizze obbligatorie e imposta sostitutiva.", "faq4_q": "Ci sono penali per l'estinzione anticipata?", "faq4_a": "No. Ai sensi del Decreto Bersani (Legge 40/2007), i mutui prima casa stipulati da persone fisiche non possono applicare alcuna penale per estinzione parziale o totale."}, "en": {"badge": "FRENCH AMORTIZATION · FIXED PAYMENT", "hero_title": "Mortgage Payment & Amortization Schedule", "hero_desc": "French progressive amortization formula (fixed monthly payment). Verify debt-to-income affordability against the 33% rule and download your schedule as CSV.", "input_amount": "Mortgage Loan Amount", "input_years": "Repayment Term", "input_rate": "Annual Interest Rate (APR/TAN)", "input_income": "Monthly Net Household Income", "res_monthly": "Fixed Monthly Payment", "res_installments": "Total Payments", "res_dti": "Debt-to-Income Ratio", "res_principal": "Principal Borrowed", "res_interest": "Total Bank Interest", "res_ratio": "Interest-to-Principal Ratio", "res_total_cost": "Total Cost of Loan", "afford_title": "Income Affordability (33% Rule)", "afford_tag_ok": "AFFORDABLE: Well below the 33% prudent ceiling", "afford_tag_warn": "CAUTION: Payment near threshold (30%-35%)", "afford_tag_alert": "HIGH RISK: Monthly payment exceeds 35% of income", "tab_summary": "Loan Summary", "tab_yearly": "Yearly Breakdown", "tab_monthly": "Monthly Amortization Schedule", "col_year": "Year", "col_month": "Month", "col_rate": "Payment", "col_capital": "Principal", "col_interest": "Interest", "col_remaining": "Remaining Balance", "csv_export": "Export Full Schedule (CSV)", "print_btn": "Print / Save PDF", "faq_title": "Frequently Asked Mortgage Questions", "faq1_q": "How does French amortization work?", "faq1_a": "It features constant total installments. In the early years, interest dominates the payment; over time, the principal share grows while interest diminishes.", "faq2_q": "What is the 33% debt-to-income rule?", "faq2_a": "It is the standard lending benchmark: your monthly mortgage installment should not exceed one-third (30-35%) of your verified monthly net household income.", "faq3_q": "What is the difference between nominal rate and APR?", "faq3_a": "The nominal rate is the pure interest rate. The APR (TAEG) incorporates mandatory fees: appraisal, origination, mandatory insurance, and taxes.", "faq4_q": "Are there prepayment penalties?", "faq4_a": "In many jurisdictions (such as Italy under the Bersani Law), residential primary mortgages are strictly exempt from early prepayment or payoff penalties."}, "es": {"badge": "SIMULADOR DE HIPOTECA Y AMORTIZACIÓN", "hero_title": "Cálculo de Cuota Hipotecaria y Cuadro de Amortización", "hero_desc": "Fórmula de amortización progresiva francesa (cuota fija). Comprueba la sostenibilidad financiera frente a la regla del 33% y descarga tu tabla en CSV.", "input_amount": "Importe del Préstamo Hipotecario", "input_years": "Plazo de Devolución", "input_rate": "Tipo de Interés Anual (TIN)", "input_income": "Ingresos Netos Mensuales del Hogar", "res_monthly": "Cuota Mensual Fija", "res_installments": "Total de Cuotas", "res_dti": "Ratio Cuota / Ingresos", "res_principal": "Capital Prestado", "res_interest": "Total Intereses Bancarios", "res_ratio": "Ratio Intereses/Capital", "res_total_cost": "Coste Total del Préstamo", "afford_title": "Sostenibilidad de Ingresos (Regla del 33%)", "afford_tag_ok": "SOSTENIBLE: Por debajo del límite prudencial del 33%", "afford_tag_warn": "PRECAUCIÓN: Cuota cercana al límite (30%-35%)", "afford_tag_alert": "RIESGO ELEVADO: La cuota supera el 35% de los ingresos", "tab_summary": "Resumen Hipoteca", "tab_yearly": "Plan Anual", "tab_monthly": "Plan Detallado Mensual", "col_year": "Año", "col_month": "Mes", "col_rate": "Cuota", "col_capital": "Amortización Capital", "col_interest": "Intereses", "col_remaining": "Deuda Pendiente", "csv_export": "Exportar Tabla Completa (CSV)", "print_btn": "Imprimir / Guardar PDF", "faq_title": "Preguntas Frecuentes sobre Hipotecas", "faq1_q": "¿Cómo funciona el sistema de amortización francés?", "faq1_a": "Mantiene una cuota mensual constante. Al principio la cuota abona mayoritariamente intereses; con el tiempo la porción de capital aumenta y los intereses bajan.", "faq2_q": "¿Qué es la regla del 33% de endeudamiento?", "faq2_a": "Es el criterio de solvencia bancario: la cuota hipotecaria no debe superar un tercio (30-35%) de los ingresos netos familiares demostrables.", "faq3_q": "¿Cuál es la diferencia entre TIN y TAE?", "faq3_a": "El TIN es el interés puro. La TAE incluye los gastos asociados obligatorios: tasación, comisión de apertura, seguros obligatorios y aranceles.", "faq4_q": "¿Hay comisiones por amortización anticipada?", "faq4_a": "La normativa hipotecaria europea limita y en muchos casos anula las penalizaciones por amortización anticipada parcial o total."}, "fr": {"badge": "SIMULATEUR DE PRÊT IMMOBILIER & AMORTISSEMENT", "hero_title": "Calcul de Mensualité & Tableau d'Amortissement", "hero_desc": "Méthode d'amortissement progressif français (échéance constante). Vérifiez votre taux d'endettement selon la règle des 33% et téléchargez le tableau en CSV.", "input_amount": "Montant du Prêt Sollicité", "input_years": "Durée de Remboursement", "input_rate": "Taux d'Intérêt Annuel (Nominal)", "input_income": "Revenus Nets Mensuels du Foyer", "res_monthly": "Mensualité Fixe", "res_installments": "Nombre d'Échéances", "res_dti": "Taux d'Endettement", "res_principal": "Capital Emprunté", "res_interest": "Coût Total des Intérêts", "res_ratio": "Ratio Intérêts/Capital", "res_total_cost": "Coût Global du Crédit", "afford_title": "Capacité d'Emprunt (Règle des 33%)", "afford_tag_ok": "FINANCEMENT SEREIN: En dessous du seuil de 33%", "afford_tag_warn": "ATTENTION: Mensualité proche du plafond (30%-35%)", "afford_tag_alert": "RISQUE DE REFUS: La mensualité dépasse 35% des revenus", "tab_summary": "Synthèse du Prêt", "tab_yearly": "Échéancier Annuel", "tab_monthly": "Tableau Mensuel Détaillé", "col_year": "Année", "col_month": "Mois", "col_rate": "Mensualité", "col_capital": "Part Capital", "col_interest": "Part Intérêts", "col_remaining": "Capital Restant Dû", "csv_export": "Exporter l'Échéancier (CSV)", "print_btn": "Imprimer / Sauvegarder PDF", "faq_title": "Questions Fréquentes sur le Crédit Immobilier", "faq1_q": "Comment fonctionne l'amortissement français ?", "faq1_a": "Il repose sur des mensualités constantes. Les premières années couvrent surtout les intérêts; progressivement, la part de remboursement de capital devient prépondérante.", "faq2_q": "Qu'est-ce que la règle des 33% d'endettement ?", "faq2_a": "C'est le ratio de prudence bancaire (HCSF): les mensualités totales d'emprunt ne doivent pas dépasser un tiers (33%-35%) des revenus nets réguliers.", "faq3_q": "Quelle différence entre Taux Nominal et TAEG ?", "faq3_a": "Le taux nominal correspond aux seuls intérêts. Le TAEG intègre tous les frais obligatoires: assurance emprunteur, frais de dossier, caution et garanties.", "faq4_q": "Y a-t-il des indemnités de remboursement anticipé ?", "faq4_a": "Le remboursement anticipé est encadré légalement et souvent plafonné à 6 mois d'intérêts ou négociable sans frais avec votre banque."}, "de": {"badge": "BAUDARLEHEN & TILGUNGSRECHNER", "hero_title": "Monatsrate & Tilgungsplan Online Berechnen", "hero_desc": "Klassisches Annuitätendarlehen (konstante Monatsrate). Prüfen Sie Ihre Belastungsquote nach der 33%-Regel und laden Sie den vollständigen Tilgungsplan als CSV herunter.", "input_amount": "Darlehensbetrag (Kreditsumme)", "input_years": "Laufzeit in Jahren", "input_rate": "Sollzinssatz p.a. (Gebundener Sollzins)", "input_income": "Monatliches Netto-Haushaltseinkommen", "res_monthly": "Konstante Monatsrate (Annuität)", "res_installments": "Raten Gesamtzahl", "res_dti": "Haushalts-Belastungsquote", "res_principal": "Nettodarlehensbetrag", "res_interest": "Zinsaufwand Gesamt", "res_ratio": "Zins-zu-Tilgungs-Verhältnis", "res_total_cost": "Gesamtaufwand Darlehen", "afford_title": "Haushalts-Tragfähigkeit (33%-Regel)", "afford_tag_ok": "TRAGFÄHIG: Deutlich unter der 33%-Sicherheitsgrenze", "afford_tag_warn": "VORSICHT: Rate nahe am Limit (30%-35%)", "afford_tag_alert": "HOHE BELASTUNG: Rate übersteigt 35% des Nettoeinkommens", "tab_summary": "Darlehensübersicht", "tab_yearly": "Jährlicher Tilgungsplan", "tab_monthly": "Monatlicher Ratenplan", "col_year": "Jahr", "col_month": "Monat", "col_rate": "Annuität", "col_capital": "Tilgungsanteil", "col_interest": "Zinsanteil", "col_remaining": "Restschuld", "csv_export": "Tilgungsplan Exportieren (CSV)", "print_btn": "Drucken / PDF Speichern", "faq_title": "Häufig Gestellte Fragen zur Baufinanzierung", "faq1_q": "Wie funktioniert ein Annuitätendarlehen?", "faq1_a": "Die monatliche Rate bleibt über die Zinsbindung konstant. Zu Beginn überwiegt der Zinsanteil; mit jeder Tilgung sinkt die Restschuld und der Tilgungsanteil steigt automatisch.", "faq2_q": "Was besagt die 33%-Haushaltsregel?", "faq2_a": "Banken verlangen als Faustregel, dass die monatliche Kreditrate höchstens ein Drittel (30-35%) des bereinigten monatlichen Haushaltsnettoeinkommens ausmacht.", "faq3_q": "Was unterscheidet Sollzins und Effektivzins?", "faq3_a": "Der Sollzins ist der reine Zinssatz. Der effektive Jahreszins beziffert die tatsächlichen Gesamtkosten inklusive aller Nebenkosten und Zahlungsmodalitäten.", "faq4_q": "Sind Sondertilgungen jederzeit möglich?", "faq4_a": "Die meisten modernen Darlehensverträge erlauben jährliche kostenlose Sondertilgungen von 5% bis 10% der ursprünglichen Kreditsumme."}, "pt": {"badge": "SIMULADOR DE CRÉDITO HABITAÇÃO & AMORTIZAÇÃO", "hero_title": "Cálculo de Prestação e Tabela de Amortização", "hero_desc": "Fórmula de amortização francesa (prestação constante). Verifique a taxa de esforço face à regra dos 33% e descarregue o plano completo em formato CSV.", "input_amount": "Montante do Empréstimo", "input_years": "Prazo do Financiamento", "input_rate": "Taxa de Juro Anual (TAN)", "input_income": "Rendimento Mensal Líquido do Agregado", "res_monthly": "Prestação Mensal Fixa", "res_installments": "Total de Prestações", "res_dti": "Taxa de Esforço", "res_principal": "Capital Mutuado", "res_interest": "Total de Juros Pagos", "res_ratio": "Rácio Juros/Capital", "res_total_cost": "Custo Total do Crédito", "afford_title": "Sustentabilidade Financeira (Regra dos 33%)", "afford_tag_ok": "SUSTENTÁVEL: Confortavelmente abaixo dos 33%", "afford_tag_warn": "ATENÇÃO: Prestação próxima do limite (30%-35%)", "afford_tag_alert": "RISCO ELEVADO: Prestação excede 35% do rendimento", "tab_summary": "Resumo do Crédito", "tab_yearly": "Plano Anual", "tab_monthly": "Plano Mensal Detalhado", "col_year": "Ano", "col_month": "Mês", "col_rate": "Prestação", "col_capital": "Amortização Capital", "col_interest": "Juros", "col_remaining": "Capital em Dívida", "csv_export": "Exportar Tabela Completa (CSV)", "print_btn": "Imprimir / Guardar PDF", "faq_title": "Perguntas Frequentes sobre Crédito Habitação", "faq1_q": "Como funciona o sistema de amortização francês?", "faq1_a": "Mantém a prestação total constante. Inicialmente a maior parcela corresponde a juros; ao longo do tempo, amortiza-se mais capital e os juros diminuem.", "faq2_q": "O que é a taxa de esforço recomendada?", "faq2_a": "É o rácio entre a prestação e o rendimento líquido: o Banco de Portugal e as instituições recomendam que não ultrapasse um terço (30%-35%) do orçamento familiar.", "faq3_q": "Qual a diferença entre TAN e TAEG?", "faq3_a": "A TAN reflete apenas a taxa de juro nominal. A TAEG traduz o custo efetivo global, incluindo comissões bancárias, seguros obrigatórios e impostos.", "faq4_q": "Existem comissões de reembolso antecipado?", "faq4_a": "Por lei, a comissão de amortização antecipada está limitada a 0,5% em taxa variável e 2% em taxa fixa, com regimes temporários de isenção em habitação própria."}};
         let currentLang = 'it';
 
         function changeLanguage(lang) {
@@ -1827,14 +2170,19 @@
             const el = (id) => document.getElementById(id);
             if (!t) return;
             
+            const langLbl = el('langDisplayLabel');
+            if (langLbl) langLbl.textContent = (currentLang === 'en' ? 'EN' : 'IT');
+            const langSel = el('langSelect');
+            if (langSel && langSel.value !== currentLang) langSel.value = currentLang;
+
             if (el('heroBadge')) el('heroBadge').textContent = t.badge || 'Simulatore Finanziario';
             if (el('heroTitle')) el('heroTitle').textContent = t.hero_title;
             if (el('heroDesc')) el('heroDesc').textContent = t.hero_desc;
             
-            if (el('labelAmount')) el('labelAmount').textContent = t.amount_label;
-            if (el('labelYears')) el('labelYears').textContent = t.years_label;
-            if (el('labelRate')) el('labelRate').textContent = t.rate_label;
-            if (el('labelSalary')) el('labelSalary').textContent = t.salary_label;
+            if (t.amount_label && el('labelAmount')) el('labelAmount').textContent = t.amount_label;
+            if (t.years_label && el('labelYears')) el('labelYears').textContent = t.years_label;
+            if (t.rate_label && el('labelRate')) el('labelRate').textContent = t.rate_label;
+            if (t.salary_label && el('labelSalary')) el('labelSalary').textContent = t.salary_label;
             
             if (el('presetsTitle')) el('presetsTitle').textContent = t.presets_title;
             
@@ -1894,6 +2242,26 @@ function openDeskTool(toolType) {
     }
 }
 
+// Header Tool Switcher Dropdown
+function toggleHeaderToolMenu(e) {
+    if (e) e.stopPropagation();
+    const menu = document.getElementById('headerToolDropdown');
+    const chevron = document.getElementById('headerToolMenuChevron');
+    const newToolDrop = document.getElementById('topNewToolDropdown');
+    const deskDrop = document.getElementById('topDeskDropdown');
+    if (newToolDrop) newToolDrop.classList.add('hidden');
+    if (deskDrop) deskDrop.classList.add('hidden');
+    if (!menu) return;
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+        menu.classList.remove('hidden');
+        if (chevron) chevron.classList.add('rotate-180');
+    } else {
+        menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+    }
+}
+
 // Suite Menu Dropdown (header)
 function toggleSuiteMenu(e) {
     if (e) e.stopPropagation();
@@ -1911,6 +2279,15 @@ function toggleSuiteMenu(e) {
 }
 
 document.addEventListener('click', (e) => {
+    const headDrop = document.getElementById('headerToolDropdown');
+    const headBtn = document.getElementById('headerToolMenuBtn');
+    if (headDrop && !headDrop.classList.contains('hidden')) {
+        if (!headDrop.contains(e.target) && (!headBtn || !headBtn.contains(e.target))) {
+            headDrop.classList.add('hidden');
+            const chevron = document.getElementById('headerToolMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+    }
     const menu = document.getElementById('suiteMenuDropdown');
     const btn = document.getElementById('suiteMenuBtn');
     if (menu && !menu.classList.contains('hidden')) {
@@ -1936,6 +2313,21 @@ document.addEventListener('click', (e) => {
     }
 });
 
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const headDrop = document.getElementById('headerToolDropdown');
+        if (headDrop && !headDrop.classList.contains('hidden')) {
+            headDrop.classList.add('hidden');
+            const chevron = document.getElementById('headerToolMenuChevron');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+        const newToolDrop = document.getElementById('topNewToolDropdown');
+        if (newToolDrop && !newToolDrop.classList.contains('hidden')) newToolDrop.classList.add('hidden');
+        const deskDrop = document.getElementById('topDeskDropdown');
+        if (deskDrop && !deskDrop.classList.contains('hidden')) deskDrop.classList.add('hidden');
+    }
+});
+
 
 // Global Navigation I18N Engine (2 Languages: IT & EN)
 const NAV_TRANSLATIONS = {
@@ -1947,8 +2339,8 @@ const NAV_TRANSLATIONS = {
         desk_clock: 'OmniClock (Orologio)',
         new_tool_btn: 'Nuovo Tool',
         choose_calc: 'Scegli Calcolatore',
-        tool_count: '19 Tool',
-        tool_count_long: '19 Strumenti',
+        tool_count: '22 Tool',
+        tool_count_long: '22 Strumenti',
         cat_building: 'OmniBuilding (6)',
         cat_graph: 'OmniGraph (6)',
         cat_finance: 'OmniFinance (6)',
@@ -1966,8 +2358,8 @@ const NAV_TRANSLATIONS = {
         desk_clock: 'OmniClock (Clock)',
         new_tool_btn: 'New Tool',
         choose_calc: 'Choose Calculator',
-        tool_count: '19 Tools',
-        tool_count_long: '19 Tools',
+        tool_count: '22 Tools',
+        tool_count_long: '22 Tools',
         cat_building: 'OmniBuilding (6)',
         cat_graph: 'OmniGraph (6)',
         cat_finance: 'OmniFinance (6)',
@@ -2023,8 +2415,8 @@ const NAV_TRANSLATIONS = {
         desk_clock: 'OmniClock (Uhr)',
         new_tool_btn: 'Neues Tool',
         choose_calc: 'Rechner Wählen',
-        tool_count: '19 Tools',
-        tool_count_long: '19 Tools',
+        tool_count: '22 Tools',
+        tool_count_long: '22 Tools',
         cat_building: 'OmniBuilding (6)',
         cat_graph: 'OmniGraph (6)',
         cat_finance: 'OmniFinance (6)',
@@ -2160,8 +2552,16 @@ function updateNavTranslations(lang) {
 
 // Global hook to language change
 window.addEventListener('omnitools_lang_changed', (e) => {
-    if (e.detail && e.detail.lang) updateNavTranslations(e.detail.lang);
-        renderChromeTabs();
+    const l = (e && e.detail && e.detail.lang) || 'it';
+    const langLbl = document.getElementById('langDisplayLabel');
+    if (langLbl) langLbl.textContent = (l === 'en' ? 'EN' : 'IT');
+    const sel = document.getElementById('langSelect');
+    if (sel && sel.value !== l) sel.value = l;
+    if (typeof updateNavTranslations === 'function') updateNavTranslations(l);
+    if (typeof renderChromeTabs === 'function') renderChromeTabs();
+    if (typeof changeLanguage === 'function' && typeof currentLang !== 'undefined' && currentLang !== l) {
+        changeLanguage(l);
+    }
 });
 
 // Auto-Sync Language Selector
@@ -2171,6 +2571,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sel) {
         sel.value = saved;
     }
+    const langLbl = document.getElementById('langDisplayLabel');
+    if (langLbl) langLbl.textContent = (saved === 'en' ? 'EN' : 'IT');
     updateNavTranslations(saved);
 });
 
@@ -2289,29 +2691,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const win = document.createElement('div');
             win.id = `detached-win-${id}`;
-            win.className = 'fixed z-[9992] bg-white rounded-2xl shadow-2xl border-2 border-slate-700/80 overflow-hidden flex flex-col';
+            win.className = 'fixed z-[9992] bg-white dark:bg-slate-900 shadow-2xl border border-slate-700 overflow-hidden flex flex-col';
+            win.style.borderRadius = '0px';
             win.style.width = 'min(760px, 92vw)';
             win.style.height = 'min(580px, 82vh)';
             win.style.minWidth = '360px';
             win.style.minHeight = '260px';
             win.style.resize = 'both';
-            win.style.minHeight = '300px';
             win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
             win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
 
             win.innerHTML = `
-                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800">
+                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800" style="border-radius: 0px;">
                     <div class="flex items-center gap-2">
-                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`}
+                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 ${tool.color} text-white flex items-center justify-center text-[10px] font-bold" style="border-radius: 0px;">●</span>`}
                         <span class="text-xs font-bold tracking-tight">${tool.name}</span>
-                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 rounded text-white font-bold">Finestra Staccata</span>
+                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 text-white font-bold" style="border-radius: 0px;">Finestra Staccata</span>
                     </div>
                     <div class="flex items-center gap-1.5">
-                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1">
+                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1 cursor-pointer border border-slate-700 hover:border-slate-600" style="border-radius: 0px;">
                             <span>⤶</span>
                             <span>Riancora</span>
                         </button>
-                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
+                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold cursor-pointer" style="border-radius: 0px;">
                             ✕
                         </button>
                     </div>
@@ -2453,17 +2855,23 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
             const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
+            const isEn = window.location.pathname.startsWith('/en/');
+            const detachTitle = isEn ? 'Detach tab into floating window' : 'Stacca scheda in finestra mobile';
+            const closeTitle = isEn ? 'Close tab' : 'Chiudi scheda';
+
             tab.innerHTML = `
-                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline">
+                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline pr-1">
                     ${iconMarkup}
                     <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
                 </a>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-300 p-0.5 text-slate-300 hover:bg-slate-700/50 transition font-mono text-[10px]">
-                    ↗
-                </button>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab text-[#94A3B8] hover:text-white hover:bg-rose-600/80 p-0.5 transition" style="border-radius: 0px;" title="Chiudi scheda">
-                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
+                <div class="flex items-center gap-1 ml-1 pl-1 border-l border-slate-200 dark:border-slate-700">
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="${detachTitle}" class="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-amber-500 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition cursor-pointer font-bold text-[11px]" style="border-radius: 0px;">
+                        ↗
+                    </button>
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab w-5 h-5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-rose-600 transition cursor-pointer" style="border-radius: 0px;" title="${closeTitle}">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
             `;
 
             let tabDragY = 0;
@@ -2499,7 +2907,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    document.addEventListener('DOMContentLoaded', renderChromeTabs);
+    const TOOL_ICONS_RAW_SVG = {
+        'mutuo': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#059669"/><path d="M5 14h22M10 20h2m5 0h2m-9 5h14a3 3 0 003-3V11a3 3 0 00-3-3H9a3 3 0 00-3 3v11a3 3 0 003 3z" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+        'default': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#2563eb"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#ffffff" stroke-width="3.4"/><path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="11.5" r="2.1" fill="#38bdf8"/></svg>`
+    };
+
+    function updateDynamicFavicon(toolId) {
+        const favEl = document.getElementById('dynamicFavicon');
+        if (!favEl) return;
+        const svgStr = TOOL_ICONS_RAW_SVG[toolId] || TOOL_ICONS_RAW_SVG['default'];
+        favEl.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgStr);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateDynamicFavicon(pathname || 'mutuo');
+        renderChromeTabs();
+    });
 })();
 
         
@@ -2517,8 +2940,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_btn": "Condividi",
         "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
         "suggest_btn": "Suggerisci",
-        "net_sub": "19 Strumenti Gratuiti • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Cantiere & Fabbricazione)",
+        "net_sub": "22 Strumenti Gratuiti • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (6 Cantiere & Fabbricazione)",
         "cat_graph": "OmniGraph (6 Grafica & Stampa)",
         "cat_finance": "OmniFinance (6 Finanza & Libertà)",
         "cat_desk": "OmniDesk — Strumenti Rapidi da Scrivania",
@@ -2549,8 +2972,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_btn": "Share",
         "suggest_banner": "Have an idea for a new construction, graphics, or finance calculator?",
         "suggest_btn": "Suggest",
-        "net_sub": "17 Free Tools • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Construction & Fabrication)",
+        "net_sub": "22 Free Tools • Precision Utilities Suite",
+        "cat_building": "OmniBuilding (6 Construction & Fabrication)",
         "cat_graph": "OmniGraph (6 Graphics & Prepress)",
         "cat_finance": "OmniFinance (6 Finance & Freedom)",
         "cat_desk": "OmniDesk — Fast Desktop Utilities",
@@ -2582,7 +3005,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "suggest_banner": "¿Tienes una idea para una nueva calculadora de obra, gráfica o finanzas?",
         "suggest_btn": "Sugerir",
         "net_sub": "17 Herramientas Gratuitas • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Construcción y Fabricación)",
+        "cat_building": "OmniBuilding (6 Construcción y Fabricación)",
         "cat_graph": "OmniGraph (6 Gráfica y Preimpresión)",
         "cat_finance": "OmniFinance (6 Finanzas y Libertad)",
         "cat_desk": "OmniDesk — Herramientas Rápidas de Escritorio",
@@ -2614,7 +3037,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "suggest_banner": "Une idée de nouveau calculateur pour le chantier, le graphisme ou la finance ?",
         "suggest_btn": "Suggérer",
         "net_sub": "17 Outils Gratuits • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Bâtiment & Fabrication)",
+        "cat_building": "OmniBuilding (6 Bâtiment & Fabrication)",
         "cat_graph": "OmniGraph (6 Graphisme & Prépresse)",
         "cat_finance": "OmniFinance (6 Finance & Liberté)",
         "cat_desk": "OmniDesk — Outils Rapides de Bureau",
@@ -2646,7 +3069,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "suggest_banner": "Haben Sie eine Idee für einen neuen Rechner für Bau, Grafik oder Finanzen?",
         "suggest_btn": "Vorschlagen",
         "net_sub": "17 Kostenlose Tools • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Bau & Fertigung)",
+        "cat_building": "OmniBuilding (6 Bau & Fertigung)",
         "cat_graph": "OmniGraph (6 Grafik & Druckvorstufe)",
         "cat_finance": "OmniFinance (6 Finanzen & Freiheit)",
         "cat_desk": "OmniDesk — Schnelle Schreibtisch-Tools",
@@ -2678,7 +3101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "suggest_banner": "Tem uma ideia para uma nova calculadora de obra, gráfica ou finanças?",
         "suggest_btn": "Sugerir",
         "net_sub": "17 Ferramentas Gratuitas • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Construção & Fabricação)",
+        "cat_building": "OmniBuilding (6 Construção & Fabricação)",
         "cat_graph": "OmniGraph (6 Design & Pré-impressão)",
         "cat_finance": "OmniFinance (6 Finanças & Liberdade)",
         "cat_desk": "OmniDesk — Ferramentas Rápidas de Secretária",
@@ -3211,6 +3634,25 @@ document.addEventListener('DOMContentLoaded', () => {
             calculateMortgage();
         }
 
+        function updateRangeBackgrounds() {
+            const sliders = [
+                { id: 'rangeAmount', min: 30000, max: 600000 },
+                { id: 'rangeYears', min: 5, max: 40 },
+                { id: 'rangeRate', min: 0.5, max: 8.0 }
+            ];
+            const isDark = document.documentElement.classList.contains('omni-dark');
+            const fillColor = isDark ? '#065f46' : '#a7f3d0';
+            const baseColor = isDark ? '#334155' : '#e2e8f0';
+
+            sliders.forEach(s => {
+                const el = document.getElementById(s.id);
+                if (!el) return;
+                const val = parseFloat(el.value);
+                const pct = Math.max(0, Math.min(100, ((val - s.min) / (s.max - s.min)) * 100));
+                el.style.background = `linear-gradient(to right, ${fillColor} 0%, ${fillColor} ${pct}%, ${baseColor} ${pct}%, ${baseColor} 100%)`;
+            });
+        }
+
         function calculateMortgage() {
             const principal = parseFloat(document.getElementById('inputAmount').value) || 0;
             const years = parseInt(document.getElementById('inputYears').value) || 1;
@@ -3220,11 +3662,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const n = years * 12; // Numero totale di rate mensili
             const monthlyRate = (annualRatePercent / 100) / 12; // Tasso mensile
 
-            // Update Badges
-            document.getElementById('badgeAmount').textContent = formatMoney(principal);
-            document.getElementById('badgeYears').textContent = `${years} anni (${n} rate)`;
-            document.getElementById('badgeRate').textContent = `${annualRatePercent.toFixed(2)} %`;
-            document.getElementById('badgeIncome').textContent = formatMoney(monthlyIncome);
+            // Update Badges / Sub-labels
+            const badgeYearsEl = document.getElementById('badgeYears');
+            if (badgeYearsEl) badgeYearsEl.textContent = `${years} anni · ${n} rate`;
+            const badgeAmountEl = document.getElementById('badgeAmount');
+            if (badgeAmountEl) badgeAmountEl.textContent = formatMoney(principal);
+            const badgeRateEl = document.getElementById('badgeRate');
+            if (badgeRateEl) badgeRateEl.textContent = `${annualRatePercent.toFixed(2)} %`;
+            const badgeIncomeEl = document.getElementById('badgeIncome');
+            if (badgeIncomeEl) badgeIncomeEl.textContent = formatMoney(monthlyIncome);
+
+            // Update progressive slider track gradient
+            updateRangeBackgrounds();
 
             // Formula Francese: Rata = C * [ r / (1 - (1+r)^-n) ]
             let monthlyPayment = 0;
@@ -3386,6 +3835,23 @@ document.addEventListener('DOMContentLoaded', () => {
             applyTranslations();
             calculateMortgage();
         });
+
+        function toggleTableDisplayMode() {
+            const container = document.getElementById('tableScrollContainer');
+            const txt = document.getElementById('toggleTableText');
+            if (!container) return;
+            const isCompact = container.classList.contains('max-h-60');
+            const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en/');
+            if (isCompact) {
+                container.classList.remove('max-h-60');
+                container.classList.add('max-h-none');
+                if (txt) txt.textContent = isEn ? 'Compact View' : 'Vista Compatta';
+            } else {
+                container.classList.remove('max-h-none');
+                container.classList.add('max-h-60');
+                if (txt) txt.textContent = isEn ? 'Show All' : 'Mostra Tutti';
+            }
+        }
 
         function exportMortgageCsv() {
             if (!lastCalculatedMortgageYears || lastCalculatedMortgageYears.length === 0) {
