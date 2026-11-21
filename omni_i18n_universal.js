@@ -342,6 +342,8 @@
     // Same page fallback
     const sel = document.getElementById('langSelect');
     if (sel && sel.value !== lang) sel.value = lang;
+    const selMobile = document.getElementById('langSelectMobile');
+    if (selMobile && selMobile.value !== lang) selMobile.value = lang;
     applyUniversalTranslations(lang);
   }
 
@@ -349,14 +351,18 @@
     window.changeLanguage = handleLanguageSwitch;
     window.changeLanguage.__omniWrapped = true;
 
-    // Attach native change listener directly to #langSelect
-    const sel = document.getElementById('langSelect');
-    if (sel && !sel.__omniBound) {
-      sel.__omniBound = true;
-      sel.addEventListener('change', function(e) {
-        handleLanguageSwitch(e.target.value);
+    // Attach native change listener directly to #langSelect and #langSelectMobile
+    const selectors = ['#langSelect', '#langSelectMobile', 'select[data-lang-switcher]'];
+    selectors.forEach(function(selector) {
+      document.querySelectorAll(selector).forEach(function(el) {
+        if (!el.__omniBound) {
+          el.__omniBound = true;
+          el.addEventListener('change', function(e) {
+            handleLanguageSwitch(e.target.value);
+          });
+        }
       });
-    }
+    });
   }
 
   window.addEventListener('omnitools_lang_changed', function (e) {
@@ -365,6 +371,11 @@
     try { localStorage.setItem('omnitools_lang', lang); } catch (err) {}
     const sel = document.getElementById('langSelect');
     if (sel) sel.dataset.userPicked = '1';
+    const selMobile = document.getElementById('langSelectMobile');
+    if (selMobile) {
+      selMobile.dataset.userPicked = '1';
+      if (selMobile.value !== lang) selMobile.value = lang;
+    }
     applyUniversalTranslations(lang);
     setTimeout(function () { applyUniversalTranslations(lang); }, 50);
   });
@@ -380,6 +391,8 @@
     const lang = getActiveLang();
     const selInit = document.getElementById('langSelect');
     if (selInit && selInit.value !== lang) selInit.value = lang;
+    const selInitMobile = document.getElementById('langSelectMobile');
+    if (selInitMobile && selInitMobile.value !== lang) selInitMobile.value = lang;
     if (typeof window.updateNavTranslations === 'function') {
       try { window.updateNavTranslations(lang); } catch (e) {}
     }
