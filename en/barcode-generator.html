@@ -945,7 +945,21 @@
                 display: none !important;
             }
         }
-    </style>
+    
+        /* Sticky Preview Docking on Desktop */
+        @media (min-width: 768px) {
+            #unifiedBarcodePreviewCard {
+                position: -webkit-sticky !important;
+                position: sticky !important;
+                top: 108px !important;
+                z-index: 30 !important;
+                background-color: #ffffff;
+            }
+            html.omni-dark #unifiedBarcodePreviewCard {
+                background-color: #0f172a !important;
+            }
+        }
+</style>
 <!-- TOP CHROME-STYLE TABS STRIP (DESKTOP ONLY: sticky top-0, always visible) -->
     <div id="omniChromeTabsBar" class="hidden md:flex bg-white px-3 pt-2 pb-0 items-center justify-between border-b border-slate-200 text-xs select-none sticky top-0 z-50 shadow-xs">
         
@@ -1868,7 +1882,6 @@
 
         <!-- Single Column Studio Layout (Clean Vertical Progression) -->
         <div class="bg-white dark:bg-slate-900 rounded-none border border-slate-200 dark:border-slate-800 border-t-4 border-t-rose-600 shadow-sm p-4 sm:p-6 space-y-5">
-
             <!-- 1. PARAMETRI, MISURE & SIMBOLOGIA -->
             <!-- Main Parameters Card -->
                     <div class="bg-white dark:bg-slate-900 rounded-none p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3.5">
@@ -1956,75 +1969,75 @@
                         </div>
                     </div>
 
-            <!-- 2. ANTEPRIMA VETTORIALE INTERATTIVA & SIMULATORE LASER GS1 -->
-            <div class="space-y-4">
-                <!-- Interactive Vector Barcode Preview Card -->
-                    <div class="bg-white dark:bg-slate-900 rounded-none p-4 sm:p-5 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wide flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                                <span>Anteprima Vettoriale Interattiva</span>
-                            </span>
-                            <span id="barcodeSpecsBadge" class="text-[10px] font-mono num-tabular font-bold px-2 py-0.5 rounded-none bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                                EAN-13 · Vettoriale
-                            </span>
+            <!-- 2. ANTEPRIMA VETTORIALE INTERATTIVA & VISORE LASER GS1 UNIFICATO -->
+            <div id="unifiedBarcodePreviewCard" class="bg-white dark:bg-slate-900 rounded-none p-3.5 sm:p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3 md:sticky md:top-20 z-20">
+                <!-- Header with Title & Compact Mode Switcher -->
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                        <svg class="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wide truncate">
+                            Vector Preview
+                        </span>
+                        <span id="barcodeSpecsBadge" class="text-[9px] font-mono num-tabular font-bold px-1.5 py-0.5 rounded-none bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shrink-0">
+                            EAN-13 · Vettoriale
+                        </span>
+                    </div>
+
+                    <!-- Mode Switch & PCS Badge -->
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <!-- Mode Tabs (Standard vs Laser) -->
+                        <div class="inline-flex p-0.5 bg-slate-100 dark:bg-slate-800 rounded-none border border-slate-200 dark:border-slate-700 text-[11px] font-bold">
+                            <button type="button" id="btnPreviewStandard" onclick="setPreviewViewMode('standard')" class="px-2.5 py-1 rounded-none bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 shadow-2xs font-extrabold transition cursor-pointer">
+                                Preview
+                            </button>
+                            <button type="button" id="btnPreviewLaser" onclick="setPreviewViewMode('laser')" class="px-2.5 py-1 rounded-none text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition cursor-pointer">
+                                670nm Laser View
+                            </button>
                         </div>
+                        <!-- Compact GS1 PCS Badge -->
+                        <span id="pcsBadge" class="text-[10px] font-mono num-tabular font-black px-2 py-1 rounded-none bg-emerald-950 text-emerald-300 border border-emerald-700">
+                            PCS: 100%
+                        </span>
+                    </div>
+                </div>
 
-                        <!-- Interactive Guide Pill above Preview -->
-                        <div id="previewInteractiveGuide" class="flex items-center justify-between px-3 py-1.5 rounded-none bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-800 dark:text-slate-200 transition-all">
-                            <div class="flex items-center gap-1.5 min-w-0">
-                                <svg class="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-                                <span id="interactiveGuideText" class="truncate">Modifica attiva: <strong>COLORE DELLE BARRE</strong></span>
-                            </div>
-                            <span id="interactiveCurrentTag" class="text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-rose-600 text-white font-extrabold shrink-0">BARRE ATTIVE</span>
+                <!-- Interactive Guide Pill above Preview -->
+                <div id="previewInteractiveGuide" class="flex items-center justify-between px-3 py-1.5 rounded-none bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-800 dark:text-slate-200 transition-all">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                        <svg class="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                        <span id="interactiveGuideText" class="truncate">Modifica attiva: <strong>COLORE DELLE BARRE</strong></span>
+                    </div>
+                    <span id="interactiveCurrentTag" class="text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-rose-600 text-white font-extrabold shrink-0">BARRE ATTIVE</span>
+                </div>
+
+                <!-- Compact Unified Canvas Viewport -->
+                <div class="relative w-full min-h-[140px] max-h-[175px] rounded-none border border-slate-200 dark:border-slate-700 flex items-center justify-center p-3 overflow-hidden transition-all bg-white dark:bg-slate-900">
+                    <!-- Standard Vector Preview Container -->
+                    <div id="barcodePreviewBox" onclick="onPreviewBoxClick(event)" class="w-full h-full min-h-[130px] flex items-center justify-center overflow-x-auto custom-scrollbar cursor-pointer group" style="background-color: #ffffff;" title="Click on background to select paper color">
+                        <div id="barcodeSvgWrapper" onclick="onBarcodeSvgClick(event)" class="p-1 rounded-none transition-all" title="Click directly on bars to select bar color">
+                            <svg id="barcodeSvg" class="max-w-full transition-transform group-hover:scale-[1.01]"></svg>
                         </div>
+                    </div>
 
-                        <!-- Interactive Canvas / SVG Box -->
-                        <div id="barcodePreviewBox" onclick="onPreviewBoxClick(event)" class="relative w-full min-h-[175px] rounded-none border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center p-4 overflow-x-auto custom-scrollbar transition-all cursor-pointer group" style="background-color: #ffffff;" title="Clicca qui sullo sfondo per selezionare il colore dello sfondo">
-                            <!-- SVG Barcode (Clicking here selects bars) -->
-                            <div id="barcodeSvgWrapper" onclick="onBarcodeSvgClick(event)" class="p-1 rounded-none transition-all" title="Clicca direttamente sulle barre per selezionare il colore delle barre">
-                                <svg id="barcodeSvg" class="max-w-full transition-transform group-hover:scale-[1.01]"></svg>
-                            </div>
+                    <!-- Laser 670nm Simulation Overlay Box (Hidden by default, shown via toggle) -->
+                    <div id="laserSimWrapper" class="hidden absolute inset-0 w-full h-full bg-slate-950 flex items-center justify-center overflow-hidden">
+                        <div class="laser-line"></div>
+                        <div id="laserSimBox" class="p-2 rounded-none flex items-center justify-center transition-all duration-300 w-full h-full overflow-x-auto custom-scrollbar" style="background-color: #ffffff;">
+                            <svg id="laserSimSvg" class="max-w-full opacity-95"></svg>
                         </div>
+                    </div>
+                </div>
 
-                        </div>
-
-                <!-- GS1 Laser Vision Simulator Card (670 nm) -->
-                    <div class="bg-slate-900 text-white rounded-none p-4 sm:p-5 border border-slate-800 shadow-lg space-y-3 relative overflow-hidden">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <svg class="w-4 h-4 text-rose-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                                <span id="laserSimTitle" class="text-xs font-black uppercase tracking-wider text-slate-100 num-tabular">
-                                    Visore Laser GS1 (670 nm)
-                                </span>
-                            </div>
-                            <span id="pcsBadge" class="text-[10px] font-mono num-tabular font-black px-2 py-0.5 rounded-none bg-slate-800 text-emerald-400 border border-slate-700">
-                                PCS: 100%
-                            </span>
-                        </div>
-
-                        <p class="text-[11px] text-slate-300 leading-tight">
-                            Simulazione ottica di come la fotocellula laser a raggio rosso (670 nm) percepisce il codice a barre:
-                        </p>
-
-                        <!-- Laser View Simulation Box -->
-                        <div class="relative bg-black rounded-none p-3 border border-slate-800 flex items-center justify-center overflow-hidden">
-                            <div class="laser-line"></div>
-                            <div id="laserSimBox" class="p-2 rounded-none flex items-center justify-center transition-all duration-300" style="background-color: #ffffff;">
-                                <svg id="laserSimSvg" class="max-w-full opacity-95"></svg>
-                            </div>
-                        </div>
-
-                        <!-- GS1 Verdict Banner -->
-                        <div id="gs1VerdictBox" class="p-3 rounded-none bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs space-y-1">
-                            <div class="font-extrabold text-emerald-300 flex items-center gap-1.5">
-                                <span id="gs1VerdictIcon" class="inline-flex shrink-0">
-                                    <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                </span>
-                                <span id="gs1VerdictTitle" class="num-tabular">CONFORME GS1 — PCS Ottimale (100%)</span>
-                            </div>
-                            <div id="gs1VerdictDesc" class="text-[11px] text-slate-300 leading-relaxed">
-                                Contrasto spettrale perfetto. Il raggio laser a 670 nm distingue nettamente le barre dallo sfondo. Lettura istantanea garantita a tutte le casse.
+                <!-- Compact GS1 Verdict Inline Strip -->
+                <div id="gs1VerdictBox" class="p-2 sm:p-2.5 rounded-none bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs flex items-center gap-2">
+                    <span id="gs1VerdictIcon" class="inline-flex shrink-0">
+                        <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <div class="min-w-0 flex-1">
+                        <span id="gs1VerdictTitle" class="font-extrabold text-emerald-300 num-tabular block sm:inline">CONFORME GS1 — PCS Ottimale (100%)</span>
+                        <span id="gs1VerdictDesc" class="text-[11px] text-slate-300 hidden sm:inline ml-1.5 border-l border-emerald-500/30 pl-2">Contrasto spettrale verificato a 670 nm.</span>
+                    </div>
+                </div>
             </div>
 
             <!-- 3. TIPOGRAFIA & GRAFICA DEL BARCODE -->
@@ -2139,7 +2152,7 @@
 
                             <div class="grid grid-cols-2 gap-2">
                                 <!-- Target Barre Button -->
-                                <button type="button" id="targetBarBtn" onclick="selectColorTarget('bar')" class="flex items-center justify-between p-2.5 rounded-none border-2 border-rose-600 bg-rose-50/40 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs transition shadow-xs cursor-pointer">
+                                <button type="button" id="targetBarBtn" onclick="selectColorTarget('bar')" class="flex items-center justify-between p-2.5 rounded-none border border-rose-600 ring-1 ring-rose-600/30 bg-rose-50/40 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs transition shadow-xs cursor-pointer">
                                     <div class="flex items-center gap-2">
                                         <span id="targetBarSwatch" class="w-5 h-5 rounded-none border border-slate-400 bg-black shrink-0 shadow-2xs"></span>
                                         <div class="text-left">
@@ -2861,7 +2874,7 @@
             const isEn = (document.documentElement.lang === 'en' || window.location.pathname.startsWith('/en/'));
 
             if (target === 'bar') {
-                barBtn.className = 'flex items-center justify-between p-2.5 rounded-none border-2 border-rose-600 bg-rose-50/40 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs transition shadow-xs cursor-pointer';
+                barBtn.className = 'flex items-center justify-between p-2.5 rounded-none border border-rose-600 ring-1 ring-rose-600/30 bg-rose-50/40 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs transition shadow-xs cursor-pointer';
                 bgBtn.className = 'flex items-center justify-between p-2.5 rounded-none border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-slate-400 transition cursor-pointer';
                 badgeBar.classList.remove('hidden');
                 badgeBg.classList.add('hidden');
@@ -2872,7 +2885,7 @@
                 hexInput.value = barColorCurrent;
 
                 svgWrapper.classList.add('bars-selected');
-                svgWrapper.style.outline = '2px dashed #e11d48';
+                svgWrapper.style.outline = '1px dashed #e11d48';
                 svgWrapper.style.outlineOffset = '4px';
                 previewBox.classList.remove('bg-selected-box');
 
@@ -2882,7 +2895,7 @@
                 currentTag.innerText = isEn ? 'ACTIVE BARS' : 'BARRE ATTIVE';
                 currentTag.className = 'text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-rose-600 text-white font-extrabold shrink-0';
             } else {
-                bgBtn.className = 'flex items-center justify-between p-2.5 rounded-none border-2 border-rose-600 bg-rose-50/40 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs transition shadow-xs cursor-pointer';
+                bgBtn.className = 'flex items-center justify-between p-2.5 rounded-none border border-rose-600 ring-1 ring-rose-600/30 bg-rose-50/40 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs transition shadow-xs cursor-pointer';
                 barBtn.className = 'flex items-center justify-between p-2.5 rounded-none border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-slate-400 transition cursor-pointer';
                 badgeBg.classList.remove('hidden');
                 badgeBar.classList.add('hidden');
@@ -3331,6 +3344,37 @@
             }
             updateBarcode();
         }
+
+        
+        let currentPreviewMode = 'standard';
+        function setPreviewViewMode(mode) {
+            currentPreviewMode = mode;
+            const btnStd = document.getElementById('btnPreviewStandard');
+            const btnLaser = document.getElementById('btnPreviewLaser');
+            const previewBox = document.getElementById('barcodePreviewBox');
+            const laserWrapper = document.getElementById('laserSimWrapper');
+
+            if (mode === 'laser') {
+                if (btnLaser) {
+                    btnLaser.className = 'px-2.5 py-1 rounded-none bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 shadow-2xs font-extrabold transition cursor-pointer';
+                }
+                if (btnStd) {
+                    btnStd.className = 'px-2.5 py-1 rounded-none text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+                }
+                if (laserWrapper) laserWrapper.classList.remove('hidden');
+                if (previewBox) previewBox.classList.add('opacity-0');
+            } else {
+                if (btnStd) {
+                    btnStd.className = 'px-2.5 py-1 rounded-none bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 shadow-2xs font-extrabold transition cursor-pointer';
+                }
+                if (btnLaser) {
+                    btnLaser.className = 'px-2.5 py-1 rounded-none text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition cursor-pointer';
+                }
+                if (laserWrapper) laserWrapper.classList.add('hidden');
+                if (previewBox) previewBox.classList.remove('opacity-0');
+            }
+        }
+        window.setPreviewViewMode = setPreviewViewMode;
 
         function renderLaserSimulation(barColor, bgColor, symb, value, barWidth, barHeight, quietZone, displayValue, chosenFont, fontOptions, fontSizeCustom, textMarginCustom) {
             const rgbBar = hexToRgb(barColor);
