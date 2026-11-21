@@ -1798,7 +1798,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 no-print pt-1 pb-3 border-b border-slate-200 dark:border-slate-800" id="calculatorArea">
             <div class="text-left space-y-1">
                 <div>
-                    <span id="heroBadge" class="text-xs font-semibold tracking-wider uppercase text-amber-600 dark:text-amber-400 select-none">
+                    <span id="heroBadge" class="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 select-none">
                         OMNIBUILDING · CANTIERE & FAI-DA-TE
                     </span>
                 </div>
@@ -1829,8 +1829,8 @@
                 <div class="space-y-3">
                     <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
                         <div class="flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-none bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">1</span>
-                            <span id="secRoomTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Misure Superficie da Piastrellare</span>
+                            <span class="w-5 h-5 rounded-none bg-slate-800 dark:bg-slate-700 text-white flex items-center justify-center font-bold text-[11px]">1</span>
+                            <span id="secRoomTitle" class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Misure Superficie da Piastrellare</span>
                         </div>
                         <!-- Unit Switcher -->
                         <div class="inline-flex p-0.5 bg-slate-100 rounded-none border border-slate-200/80 gap-1 text-[11px] font-bold">
@@ -1844,57 +1844,57 @@
                     <div id="dimsInputGroup" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1.5">
                             <div class="flex justify-between items-center">
-                                <label for="inputLength" id="lblLength" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <label for="inputLength" id="lblLength" class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                                     <span class="w-2 h-2 rounded-none bg-amber-500 inline-block"></span>
                                     Lunghezza Stanza
                                 </label>
-                                <span id="unitBadgeLen" class="text-xs font-mono font-bold text-slate-700">m</span>
+                                <span id="unitBadgeLen" class="text-xs font-mono font-bold text-slate-600 dark:text-slate-300">m</span>
                             </div>
                             <input type="number" id="inputLength" value="5.0" min="0.5" max="300" step="0.05" oninput="calculateAll()"
-                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                                class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none font-extrabold text-base sm:text-lg text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
                         <div class="space-y-1.5">
                             <div class="flex justify-between items-center">
-                                <label for="inputWidth" id="lblWidth" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                <label for="inputWidth" id="lblWidth" class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                                     <span class="w-2 h-2 rounded-none bg-amber-500 inline-block"></span>
                                     Larghezza Stanza
                                 </label>
-                                <span id="unitBadgeWid" class="text-xs font-mono font-bold text-slate-700">m</span>
+                                <span id="unitBadgeWid" class="text-xs font-mono font-bold text-slate-600 dark:text-slate-300">m</span>
                             </div>
                             <input type="number" id="inputWidth" value="4.0" min="0.5" max="300" step="0.05" oninput="calculateAll()"
-                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                                class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none font-extrabold text-base sm:text-lg text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
                     </div>
 
                     <!-- Direct Area Input Mode (Hidden initially) -->
                     <div id="directInputGroup" class="hidden space-y-1.5">
                         <div class="flex justify-between items-center">
-                            <label for="inputDirectSqm" id="lblNetSqm" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <label for="inputDirectSqm" id="lblNetSqm" class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-none bg-amber-500 inline-block"></span>
                                 Superficie Netta
                             </label>
-                            <span id="unitBadgeArea" class="text-xs font-mono font-bold text-slate-700">m²</span>
+                            <span id="unitBadgeArea" class="text-xs font-mono font-bold text-slate-600 dark:text-slate-300">m²</span>
                         </div>
                         <input type="number" id="inputDirectSqm" value="20.0" min="0.5" max="50000" step="0.1" oninput="calculateAll()"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none font-extrabold text-base sm:text-lg text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                     </div>
 
                     <!-- Openings Deduction (Doors / Windows / Pillars) -->
                     <div class="space-y-1.5 pt-1">
                         <div class="flex justify-between items-center">
-                            <label for="inputOpenings" id="lblOpenings" class="text-xs font-bold text-slate-600">Detrazione Porte / Aperture (opzionale)</label>
-                            <span id="unitBadgeDeduct" class="text-xs font-mono font-bold text-slate-500">m²</span>
+                            <label for="inputOpenings" id="lblOpenings" class="text-xs font-bold text-slate-700 dark:text-slate-300">Detrazione Porte / Aperture (opzionale)</label>
+                            <span id="unitBadgeDeduct" class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">m²</span>
                         </div>
                         <input type="number" id="inputOpenings" value="0" min="0" max="5000" step="0.1" oninput="calculateAll()"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none font-bold text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                     </div>
                 </div>
 
                 <!-- 2. Formato Piastrella & Schema di Posa -->
                 <div class="space-y-3 pt-4 border-t border-slate-100">
                     <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
-                        <span class="w-5 h-5 rounded-none bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">2</span>
-                        <span id="secTileTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Formato Piastrella & Schema di Posa</span>
+                        <span class="w-5 h-5 rounded-none bg-slate-800 dark:bg-slate-700 text-white flex items-center justify-center font-bold text-[11px]">2</span>
+                        <span id="secTileTitle" class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Formato Piastrella & Schema di Posa</span>
                     </div>
                     <p id="secTileDesc" class="text-xs text-slate-500 hidden">Scegli la dimensione delle piastrelle e il tipo di posa per calcolare lo sfrido reale.</p>
 
@@ -1902,35 +1902,35 @@
                     <div>
                         <span id="lblTilePreset" class="block text-xs font-bold text-slate-600 mb-2">Formati Standard:</span>
                         <div class="flex flex-wrap gap-1.5">
-                            <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">60 × 60 cm</button>
-                            <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">30 × 60 cm</button>
-                            <button type="button" onclick="setTilePreset(80, 80, 9.5)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">80 × 80 cm</button>
-                            <button type="button" onclick="setTilePreset(20, 120, 9.5)" id="btnPresetWood" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 120 (Listoni Legno)</button>
-                            <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 20 cm</button>
+                            <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-none bg-slate-50 dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 dark:hover:border-amber-500 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 transition active:scale-95">60 × 60 cm</button>
+                            <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-none bg-slate-50 dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 dark:hover:border-amber-500 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 transition active:scale-95">30 × 60 cm</button>
+                            <button type="button" onclick="setTilePreset(80, 80, 9.5)" class="px-2.5 py-1 rounded-none bg-slate-50 dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 dark:hover:border-amber-500 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 transition active:scale-95">80 × 80 cm</button>
+                            <button type="button" onclick="setTilePreset(20, 120, 9.5)" id="btnPresetWood" class="px-2.5 py-1 rounded-none bg-slate-50 dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 dark:hover:border-amber-500 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 transition active:scale-95">20 × 120 (Listoni Legno)</button>
+                            <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-none bg-slate-50 dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-800 hover:border-amber-300 dark:hover:border-amber-500 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 transition active:scale-95">20 × 20 cm</button>
                         </div>
                     </div>
 
                     <!-- Custom Tile Dimensions -->
                     <div class="grid grid-cols-3 gap-3">
                         <div>
-                            <label for="tileWidth" id="lblTileW" class="block text-[11px] font-bold text-slate-700 mb-1">Larghezza Piastrella</label>
+                            <label for="tileWidth" id="lblTileW" class="block text-[11px] font-bold text-slate-800 dark:text-slate-200 mb-1">Larghezza Piastrella</label>
                             <div class="relative">
-                                <input type="number" id="tileWidth" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span id="unitBadgeTileW" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">cm</span>
+                                <input type="number" id="tileWidth" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileW" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400 dark:text-slate-500">cm</span>
                             </div>
                         </div>
                         <div>
-                            <label for="tileHeight" id="lblTileH" class="block text-[11px] font-bold text-slate-700 mb-1">Altezza Piastrella</label>
+                            <label for="tileHeight" id="lblTileH" class="block text-[11px] font-bold text-slate-800 dark:text-slate-200 mb-1">Altezza Piastrella</label>
                             <div class="relative">
-                                <input type="number" id="tileHeight" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span id="unitBadgeTileH" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">cm</span>
+                                <input type="number" id="tileHeight" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileH" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400 dark:text-slate-500">cm</span>
                             </div>
                         </div>
                         <div>
-                            <label for="tileThick" id="lblTileThick" class="block text-[11px] font-bold text-slate-700 mb-1">Spessore</label>
+                            <label for="tileThick" id="lblTileThick" class="block text-[11px] font-bold text-slate-800 dark:text-slate-200 mb-1">Spessore</label>
                             <div class="relative">
-                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span id="unitBadgeTileThick" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">mm</span>
+                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span id="unitBadgeTileThick" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400 dark:text-slate-500">mm</span>
                             </div>
                         </div>
                     </div>
@@ -1938,8 +1938,8 @@
                     <!-- Layout Pattern & Packaging Info -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                         <div>
-                            <label for="selectPattern" id="lblPattern" class="block text-xs font-bold text-slate-700 mb-1">Schema di Posa & Sfrido</label>
-                            <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label for="selectPattern" id="lblPattern" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">Schema di Posa & Sfrido</label>
+                            <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-3 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                                 <option value="10" selected id="optStraight">Posa Dritta Standard (+10% sfrido)</option>
                                 <option value="12" id="optOffset">Posa Sfalsata / A Correre (+12% sfrido)</option>
                                 <option value="15" id="optDiagonal">Posa in Diagonale (+15% sfrido)</option>
@@ -1947,22 +1947,22 @@
                                 <option value="custom" id="optCustom">Sfrido Personalizzato (%)</option>
                             </select>
                             <div id="customWasteGroup" class="hidden mt-2">
-                                <label for="customWasteInput" id="lblCustomWaste" class="block text-[11px] font-bold text-slate-600 mb-1">Percentuale Sfrido (%)</label>
-                                <input type="number" id="customWasteInput" value="10" min="0" max="50" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-1.5 text-xs text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                                <label for="customWasteInput" id="lblCustomWaste" class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Percentuale Sfrido (%)</label>
+                                <input type="number" id="customWasteInput" value="10" min="0" max="50" step="1" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-2">
                             <div>
-                                <label for="boxCoverage" id="lblBoxCoverage" class="block text-xs font-bold text-slate-700 mb-1">Copertura Scatola</label>
+                                <label for="boxCoverage" id="lblBoxCoverage" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">Copertura Scatola</label>
                                 <div class="relative">
-                                    <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                    <span id="unitBadgeBoxCov" class="absolute right-2 top-2 text-xs font-bold text-slate-400">m²</span>
+                                    <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-3 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                    <span id="unitBadgeBoxCov" class="absolute right-2 top-2 text-xs font-bold text-slate-400 dark:text-slate-500">m²</span>
                                 </div>
                             </div>
                             <div>
-                                <label for="boxPieces" id="lblBoxPieces" class="block text-xs font-bold text-slate-700 mb-1">Pezzi / Scatola</label>
-                                <input type="number" id="boxPieces" value="4" min="1" max="100" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                                <label for="boxPieces" id="lblBoxPieces" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">Pezzi / Scatola</label>
+                                <input type="number" id="boxPieces" value="4" min="1" max="100" step="1" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-3 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                             </div>
                         </div>
                     </div>
@@ -1971,29 +1971,29 @@
                 <!-- 3. Adhesive & Grout Consumptions -->
                 <div class="space-y-3 pt-4 border-t border-slate-100">
                     <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
-                        <span class="w-5 h-5 rounded-none bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">3</span>
-                        <span id="secMaterialsTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Colla (Adesivo) & Stucco per Fughe</span>
+                        <span class="w-5 h-5 rounded-none bg-slate-800 dark:bg-slate-700 text-white flex items-center justify-center font-bold text-[11px]">3</span>
+                        <span id="secMaterialsTitle" class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Colla (Adesivo) & Stucco per Fughe</span>
                     </div>
                     <p id="secMaterialsDesc" class="text-xs text-slate-500 hidden">Stima precisa dei consumi di cantiere in base al sottofondo e alla fuga.</p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div>
-                            <label for="groutWidth" id="lblGroutWidth" class="block text-xs font-bold text-slate-700 mb-1">Larghezza Fuga</label>
+                            <label for="groutWidth" id="lblGroutWidth" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">Larghezza Fuga</label>
                             <div class="relative">
-                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-9">
-                                <span id="unitBadgeGroutW" class="absolute right-2 top-2 text-xs font-bold text-slate-400">mm</span>
+                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-3 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-9">
+                                <span id="unitBadgeGroutW" class="absolute right-2 top-2 text-xs font-bold text-slate-400 dark:text-slate-500">mm</span>
                             </div>
                         </div>
                         <div>
-                            <label for="bagWeight" id="lblBagWeight" class="block text-xs font-bold text-slate-700 mb-1">Peso Sacco Colla</label>
+                            <label for="bagWeight" id="lblBagWeight" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">Peso Sacco Colla</label>
                             <div class="relative">
-                                <input type="number" id="bagWeight" value="25" min="5" max="50" step="5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
-                                <span class="absolute right-2 top-2 text-xs font-bold text-slate-400">kg</span>
+                                <input type="number" id="bagWeight" value="25" min="5" max="50" step="5" oninput="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-3 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <span class="absolute right-2 top-2 text-xs font-bold text-slate-400 dark:text-slate-500">kg</span>
                             </div>
                         </div>
                         <div>
-                            <label for="selectAdhesive" id="lblAdhesiveNotch" class="block text-xs font-bold text-slate-700 mb-1">Tipo Spatola / Colla</label>
-                            <select id="selectAdhesive" onchange="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <label for="selectAdhesive" id="lblAdhesiveNotch" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">Tipo Spatola / Colla</label>
+                            <select id="selectAdhesive" onchange="calculateAll()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                                 <option value="3.0" id="notchSmall">Dente 6 mm (~3.0 kg/m²)</option>
                                 <option value="4.5" selected id="notchMedium">Dente 8-10 mm (~4.5 kg/m²)</option>
                                 <option value="6.0" id="notchLarge">Doppia Spalmatura (~6.0 kg/m²)</option>
@@ -2008,17 +2008,17 @@
             <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                 
                 <!-- Card 1: Scatole -->
-                <div class="bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 rounded-none p-3.5 text-center">
-                    <span class="text-[11px] font-bold text-amber-800 dark:text-amber-400 uppercase tracking-wider block" id="resBoxesLabel">Scatole da Ordinare</span>
-                    <span class="text-2xl sm:text-3xl font-black num-tabular text-amber-900 dark:text-amber-200 block mt-1" id="valBoxes">16 Scatole</span>
-                    <span class="text-[10px] text-amber-700 dark:text-amber-400/90 num-tabular block mt-0.5" id="valCoverageDetails">23.04 m² effettivi</span>
+                <div class="bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-800/60 rounded-none p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resBoxesLabel">Scatole da Ordinare</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-amber-700 dark:text-amber-400 block mt-1" id="valBoxes">16 Scatole</span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 num-tabular block mt-0.5" id="valCoverageDetails">23.04 m² effettivi</span>
                     <span class="hidden" id="valTilesDetails">~64 pezzi</span>
                 </div>
 
                 <!-- Card 2: Totale da Ordinare -->
                 <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resGrossAreaLabel">Totale con Sfrido</span>
-                    <span class="text-2xl sm:text-3xl font-black num-tabular text-slate-900 dark:text-slate-100 block mt-1" id="valGrossArea">22.00 m²</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-amber-700 dark:text-amber-400 block mt-1" id="valGrossArea">22.00 m²</span>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold num-tabular block mt-0.5">Netto: <span id="valNetArea">20.00 m²</span></span>
                     <span class="hidden" id="resNetAreaLabel">Superficie Netta</span>
                 </div>
@@ -2026,29 +2026,29 @@
                 <!-- Card 3: Sacchi di Colla -->
                 <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resAdhesiveBagsLabel">Sacchi di Colla</span>
-                    <span class="text-2xl sm:text-3xl font-black num-tabular text-slate-900 dark:text-slate-100 block mt-1" id="valAdhesiveBags">4 Sacchi</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-amber-700 dark:text-amber-400 block mt-1" id="valAdhesiveBags">4 Sacchi</span>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 num-tabular block mt-0.5" id="valAdhesiveKg">Totale stimato ~99 kg</span>
                 </div>
 
                 <!-- Card 4: Stucco Fughe -->
                 <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resGroutKgLabel">Stucco Fughe</span>
-                    <span class="text-2xl sm:text-3xl font-black num-tabular text-slate-900 dark:text-slate-100 block mt-1" id="valGroutKg">1.5 kg</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-amber-700 dark:text-amber-400 block mt-1" id="valGroutKg">1.5 kg</span>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 num-tabular block mt-0.5" id="valGroutDetails">Fuga 2mm · Spessore 9mm</span>
                 </div>
             </div>
 
             <!-- Status / Contingency Warning Banner -->
-            <div class="p-4 sm:p-5 rounded-none border transition-all flex items-start gap-3 bg-amber-50/80 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200">
+            <div class="p-4 sm:p-5 rounded-none border transition-all flex items-start gap-3 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200">
                 <div class="w-6 h-6 rounded-none bg-amber-500 flex items-center justify-center text-white shrink-0 mt-0.5">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 </div>
                 <div class="space-y-1 flex-1">
                     <div class="flex items-center gap-2 flex-wrap">
                         <h3 id="summaryTitle" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Computo per l'Acquisto & Riserva Tagli</h3>
-                        <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-amber-200/80 dark:bg-amber-900/40 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60">Distinta Materiali</span>
+                        <span id="badgeBom" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-none bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Distinta Materiali</span>
                     </div>
-                    <p id="resWasteWarning" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p id="resWasteWarning" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                         Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.
                     </p>
                 </div>
@@ -2090,16 +2090,16 @@
 
         
         <!-- Technical Legal Disclaimer & Engineering Note Box -->
-        <div class="no-print p-4 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 space-y-1.5 card-box" style="border-radius: 0px;">
+        <div class="no-print p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 space-y-1.5 card-box" style="border-radius: 0px;">
             <div class="flex items-center gap-1.5 font-bold text-slate-800 dark:text-slate-200">
-                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <svg class="w-3.5 h-3.5 text-amber-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 <span>Nota Tecnica di Cantiere & Formule di Calcolo (UNI 11493-1):</span>
             </div>
             <p>
                 Il fabbisogno effettivo di piastrelle e materiali di posa è determinato secondo gli standard professionali di cantiere:
-                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-300 dark:border-slate-700 num-tabular inline-block font-semibold">M<sup>2</sup> Ordinare = M<sup>2</sup> Netti × (1 + Sfrido % / 100)</span> · 
-                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-300 dark:border-slate-700 num-tabular inline-block font-semibold">Scatole = ⌈M<sup>2</sup> Ordinare / m<sup>2</sup> Scatola⌉</span> · 
-                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-300 dark:border-slate-700 num-tabular inline-block font-semibold">Stucco (kg) = [(A + B) / (A × B)] × C × D × 1.6</span>.
+                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-200 dark:border-slate-700 num-tabular inline-block font-semibold text-slate-800 dark:text-slate-200">M<sup>2</sup> Ordinare = M<sup>2</sup> Netti × (1 + Sfrido % / 100)</span> · 
+                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-200 dark:border-slate-700 num-tabular inline-block font-semibold text-slate-800 dark:text-slate-200">Scatole = ⌈M<sup>2</sup> Ordinare / m<sup>2</sup> Scatola⌉</span> · 
+                <span class="bg-white dark:bg-slate-800 px-2 py-0.5 border border-slate-200 dark:border-slate-700 num-tabular inline-block font-semibold text-slate-800 dark:text-slate-200">Stucco (kg) = [(A + B) / (A × B)] × C × D × 1.6</span>.
             </p>
             <p>
                 La percentuale di sfrido include lo scarto per tagli perimetrali, angoli e aperture, oltre a una riserva consigliata di almeno una scatola integra per future manutenzioni idrauliche o sostituzioni. I consumi di adesivo cementizio sono calcolati sulla base della spatola dentata raccomandata (spatola 6 mm ~3.0 kg/m<sup>2</sup>, spatola 8-10 mm ~4.5 kg/m<sup>2</sup>, doppia spalmatura ~6.0 kg/m<sup>2</sup>) secondo norma UNI 11493-1.
@@ -2108,58 +2108,58 @@
 
         <!-- FAQ ACCORDION SECTION (SEO & USER GUIDANCE) -->
         <div id="faqSection" class="mt-8 pt-6 border-t border-slate-200/80 space-y-3 no-print">
-            <h2 id="faqTitle" class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">
+            <h2 id="faqTitle" class="text-base sm:text-lg font-black text-slate-900 dark:text-white tracking-tight">
                 Domande Frequenti su Calcolo Piastrelle, Scarti e Materiali
             </h2>
             
             <div class="space-y-2 text-xs sm:text-sm">
                 
-                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
-                    <summary id="faq1Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                <details class="bg-white dark:bg-slate-900 rounded-none p-3.5 sm:p-4 border border-slate-200 dark:border-slate-800 group">
+                    <summary id="faq1Q" class="font-bold text-slate-800 dark:text-slate-200 cursor-pointer list-none flex items-center justify-between">
                         <span>Perché è indispensabile aggiungere lo sfrido (10-20%) al calcolo delle piastrelle?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p id="faq1A" class="mt-2 text-slate-600 leading-relaxed text-xs">
+                    <p id="faq1A" class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
                         Durante la posa, ogni piastrella che tocca una parete o un pilastro deve essere tagliata. La parte rimanente del taglio spesso non è riutilizzabile altrove. In più, conviene conservare almeno una scatola integra di riserva: in caso di future riparazioni idrauliche, crepe o rotture, reperire la stessa identica piastrella dello stesso bagno di colore (tono/calibro) è quasi impossibile dopo pochi mesi.
                     </p>
                 </details>
 
-                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
-                    <summary id="faq2Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                <details class="bg-white dark:bg-slate-900 rounded-none p-3.5 sm:p-4 border border-slate-200 dark:border-slate-800 group">
+                    <summary id="faq2Q" class="font-bold text-slate-800 dark:text-slate-200 cursor-pointer list-none flex items-center justify-between">
                         <span>Quanti sacchi di colla servono per metro quadro?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p id="faq2A" class="mt-2 text-slate-600 leading-relaxed text-xs">
+                    <p id="faq2A" class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
                         Il consumo varia in base alla dimensione della piastrella e alla dentatura della spatola. Per piastrelle fino a 30x30 cm con spatola da 6 mm si consumano circa 2.5-3 kg/m²; per formati medi come 60x60 cm con spatola da 8-10 mm servono circa 4-5 kg/m²; per grandi formati oltre 80 cm o pavimentazioni esterne è obbligatoria la doppia spalmatura (sul fondo e sul retro della piastrella), con consumi di circa 5.5-7 kg/m². Un sacco standard da 25 kg copre indicativamente tra i 4 e i 6 m².
                     </p>
                 </details>
 
-                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
-                    <summary id="faq3Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                <details class="bg-white dark:bg-slate-900 rounded-none p-3.5 sm:p-4 border border-slate-200 dark:border-slate-800 group">
+                    <summary id="faq3Q" class="font-bold text-slate-800 dark:text-slate-200 cursor-pointer list-none flex items-center justify-between">
                         <span>Come si calcola la quantità di stucco per le fughe?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p id="faq3A" class="mt-2 text-slate-600 leading-relaxed text-xs">
+                    <p id="faq3A" class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
                         La quantità si calcola con la formula standard internazionale: [(A + B) / (A × B)] × C × D × 1.6, dove A e B sono lunghezza e larghezza della piastrella in cm, C è lo spessore in mm, D è la larghezza della fuga in mm e 1.6 è il coefficiente medio di densità dello stucco. Piastrelle grandi con fughe sottili (2 mm) richiedono pochissimo stucco (circa 200-300 g/m²), mentre formati piccoli come mosaici o piastrelle rustiche con fughe larghe (5 mm) richiedono oltre 1-1.5 kg/m².
                     </p>
                 </details>
 
-                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
-                    <summary id="faq4Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                <details class="bg-white dark:bg-slate-900 rounded-none p-3.5 sm:p-4 border border-slate-200 dark:border-slate-800 group">
+                    <summary id="faq4Q" class="font-bold text-slate-800 dark:text-slate-200 cursor-pointer list-none flex items-center justify-between">
                         <span>Come calcolo i metri quadri se la stanza ha una forma a L o irregolare?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p id="faq4A" class="mt-2 text-slate-600 leading-relaxed text-xs">
+                    <p id="faq4A" class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
                         È sufficiente dividere mentalmente la stanza in due o più rettangoli regolari (ad esempio rettangolo A 3x4m = 12m² e rettangolo B 2x2.5m = 5m²), sommarli (12 + 5 = 17m²) e inserire il valore nella modalità "Metri Quadri Netti Noti". In presenza di nicchie o pareti fuori squadro, consigliamo di selezionare una percentuale di sfrido leggermente superiore (+15%).
                     </p>
                 </details>
 
-                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
-                    <summary id="faq5Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                <details class="bg-white dark:bg-slate-900 rounded-none p-3.5 sm:p-4 border border-slate-200 dark:border-slate-800 group">
+                    <summary id="faq5Q" class="font-bold text-slate-800 dark:text-slate-200 cursor-pointer list-none flex items-center justify-between">
                         <span>Cosa significa rettificato e che fuga richiede?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
                     </summary>
-                    <p id="faq5A" class="mt-2 text-slate-600 leading-relaxed text-xs">
+                    <p id="faq5A" class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed text-xs">
                         Le piastrelle rettificate presentano bordi tagliati perfettamente a 90° dopo la cottura, consentendo di realizzare fughe minime di 1.5 - 2 mm per un effetto continuo moderno. Le piastrelle tradizionali con bordo naturale/stondato richiedono invece fughe di almeno 3 - 4 mm.
                     </p>
                 </details>
@@ -3393,7 +3393,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'tubi': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
         'tetto': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
         'taglio': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>`,
-        'piastrelle': `<span class="w-4 h-4 rounded-md bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>`,
+        'piastrelle': `<span class="w-4 h-4 bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>`,
         'dorso': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
         'dpi': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
         'tinta': `<span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
@@ -3717,6 +3717,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const TOOL_ICONS_RAW_SVG = {
+        'piastrelle': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#f59e0b"/><rect x="5" y="5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><rect x="17.5" y="5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><rect x="5" y="17.5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><rect x="17.5" y="17.5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/></svg>`,
         'mutuo': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#059669"/><path d="M5 14h22M10 20h2m5 0h2m-9 5h14a3 3 0 003-3V11a3 3 0 00-3-3H9a3 3 0 00-3 3v11a3 3 0 003 3z" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
         'default': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#2563eb"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#ffffff" stroke-width="3.4"/><path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="11.5" r="2.1" fill="#38bdf8"/></svg>`
     };
