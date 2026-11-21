@@ -445,23 +445,20 @@
     </script>
 
     <style id="omni-sharp-precision-grid-rules">
-        /* Deterministic Top Tab Bar White */
+        /* Deterministic Top Tab Bar */
         #omniChromeTabsBar {
             position: sticky !important;
             top: 0px !important;
             z-index: 50 !important;
             background-color: #ffffff !important;
             border-bottom: 1px solid #e2e8f0 !important;
+        }
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
         }
         html, body {
             overflow-x: clip !important;
-        }
-        #omniChromeTabsBar {
-            position: sticky !important;
-            top: 0px !important;
-            z-index: 50 !important;
-            background-color: #ffffff !important;
-            border-bottom: 1px solid #e2e8f0 !important;
         }
         @media (min-width: 768px) {
             #omniMobileDualHeader {
@@ -588,7 +585,6 @@
                 border-bottom: 1px solid #1e293b !important;
             }
         }
-        
         #omniTabHome {
             background-color: #ffffff !important;
             color: #0f172a !important;
@@ -597,6 +593,18 @@
             border-radius: 0px !important;
             font-weight: 700 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+        }
+        html.omni-dark #omniTabHome {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #1e293b !important;
+        }
+        html.omni-dark #omniTabHome span.font-jakarta {
+            color: #ffffff !important;
+        }
+        html.omni-dark #omniTabHome span:not(.font-jakarta) {
+            color: #93c5fd !important;
         }
         #omniTabHome svg {
             color: #2563eb !important;
@@ -613,6 +621,12 @@
             font-weight: 700 !important;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
         }
+        html.omni-dark .omni-dyn-tab.active-tab {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-top: 2px solid #3b82f6 !important;
+            border-right: 1px solid #1e293b !important;
+        }
         .omni-dyn-tab.inactive-tab {
             background-color: #f8fafc !important;
             color: #475569 !important;
@@ -620,9 +634,19 @@
             border-right: 1px solid #e2e8f0 !important;
             font-weight: 500 !important;
         }
+        html.omni-dark .omni-dyn-tab.inactive-tab {
+            background-color: #0b1120 !important;
+            color: #94a3b8 !important;
+            border-top: 2px solid transparent !important;
+            border-right: 1px solid #1e293b !important;
+        }
         .omni-dyn-tab.inactive-tab:hover {
             background-color: #f1f5f9 !important;
             color: #0f172a !important;
+        }
+        html.omni-dark .omni-dyn-tab.inactive-tab:hover {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
         }
         /* Top Bar DESK and Nuovo Tool Buttons */
         #topDeskBtn {
@@ -630,29 +654,69 @@
             color: #b45309 !important;
             border: 1px solid #fcd34d !important;
         }
+        html.omni-dark #topDeskBtn {
+            background-color: rgba(245, 158, 11, 0.15) !important;
+            color: #fde68a !important;
+            border: 1px solid rgba(245, 158, 11, 0.35) !important;
+        }
         #topNewToolBtn {
             background-color: #f8fafc !important;
             color: #334155 !important;
             border: 1px solid #cbd5e1 !important;
         }
-        /* Language Globe & Theme SVGs deterministic constraint */
-        #langSelect + svg, #langSelect ~ svg, .relative:has(#langSelect) svg,
-        .omni-lang-box svg, select[data-lang-switcher] ~ svg, header .relative svg:first-child {
-            width: 15px !important;
-            height: 15px !important;
-            min-width: 15px !important;
-            max-width: 15px !important;
-            min-height: 15px !important;
-            max-height: 15px !important;
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border: 1px solid #334155 !important;
+        }
+        /* Language Selector Arrow Elimination */
+        #langSelect, select[data-lang-switcher] {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            background-image: none !important;
+        }
+        #langSelect::-ms-expand, select[data-lang-switcher]::-ms-expand {
+            display: none !important;
+        }
+
+        #headerInstallBtn {
+            height: 36px !important;
+            padding: 0 12px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            border-radius: 0px !important;
+            border: 1px solid #0f172a !important;
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            box-sizing: border-box !important;
+        }
+        html.omni-dark #headerInstallBtn {
+            border-color: #475569 !important;
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+        #headerInstallBtn svg {
+            width: 14px !important;
+            height: 14px !important;
+            min-width: 14px !important;
+            max-width: 14px !important;
+            min-height: 14px !important;
+            max-height: 14px !important;
             stroke-width: 1.75px !important;
+            flex-shrink: 0 !important;
         }
         
-        
-        /* --- NUMERIC TYPOGRAPHY (TABULAR NUMS SANS-SERIF) --- */
-        .num-tabular, input[type="number"], .result-val {
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
-            font-variant-numeric: tabular-nums !important;
-            font-feature-settings: "tnum" 1, "lnum" 1 !important;
+        /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
+        *, *::before, *::after {
+            border-radius: 0px !important;
+        }
+        /* Specific exceptions: status dots or radial indicators */
+        .status-dot, .online-dot, input[type="radio"], circle {
+            border-radius: 9999px !important;
         }
 
         /* --- SQUARED 90-DEGREE RANGE SLIDERS & THUMBS WITH PROGRESSIVE TINT (OMNIBUILDING AMBER) --- */
@@ -726,15 +790,6 @@
             background: #f59e0b !important;
             border: 2px solid #ffffff !important;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important;
-        }
-
-        /* Sharp Precision Grid Global Hard Rules (border-radius: 0px) */
-        *, *::before, *::after {
-            border-radius: 0px !important;
-        }
-        /* Specific exceptions: status dots or radial indicators */
-        .status-dot, .online-dot, input[type="radio"], circle {
-            border-radius: 9999px !important;
         }
     </style>
 
@@ -863,12 +918,19 @@
         
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
-            <!-- Fixed Home Hub Tab -->
-            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Torna alla Home Hub">
-                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
-                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                </span>
-                <span id="navTabHomeText">Home Hub</span>
+            <!-- Fixed Home Hub Logo Tab -->
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3 h-[34px] bg-[#F8FAFC] hover:bg-slate-100 text-[#0F172A] border-t-2 border-transparent transition shrink-0 border-r border-slate-200 select-none group" style="border-radius: 0px;" title="Torna alla Home">
+                <div class="w-[20px] h-[20px] min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-2xs shrink-0 overflow-hidden transition-transform group-hover:scale-105" style="border-radius: 0px; width: 20px; height: 20px;">
+                    <svg width="18" height="18" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px; min-height: 18px; max-height: 18px;" class="block" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </div>
+                <div class="flex items-center gap-1 leading-none shrink-0">
+                    <span class="font-jakarta font-black text-[12px] text-slate-900 tracking-tight leading-none">Omni<span class="text-blue-600">Tools</span></span>
+                    <span class="text-[9px] font-jakarta font-extrabold uppercase tracking-wider bg-blue-100 text-blue-800 px-1 py-0.2 border border-blue-200/80 leading-none" style="border-radius: 0px;">LAB</span>
+                </div>
             </a>
         </div>
 
@@ -877,27 +939,27 @@
             
             <!-- DESK Dropdown Trigger Button -->
             <div class="relative">
-                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
-                    <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black text-[9px]">⚡</span>
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" style="border-radius: 0px;" title="Apri strumenti da scrivania (Memo, Calc, Orologio)">
+                    <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     <span class="tracking-wider">DESK</span>
                     <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
 
                 <!-- DESK Menu Dropdown in Top Bar -->
-                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 shadow-2xl p-2 z-50 space-y-1 text-xs" style="border-radius: 0px;">
                     <div id="navDeskTitle" class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
                         Strumenti da Scrivania
                     </div>
-                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]">📝</span>
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                         <span id="navDeskMemo">OmniMemo (Post-it)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]">🔢</span>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="0"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="16" y1="18" x2="16" y2="18"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/></svg>
                         <span id="navDeskCalc">OmniCalc (Calcolatrice)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer" style="border-radius: 0px;">
+                        <svg class="w-4 h-4 text-teal-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <span id="navDeskClock">OmniClock (Orologio)</span>
                     </button>
                 </div>
@@ -905,8 +967,8 @@
 
             <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
             <div class="relative">
-                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Apri un nuovo calcolatore in scheda">
-                    <span>➕</span>
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold transition flex items-center gap-1.5 border border-slate-700 cursor-pointer" style="border-radius: 0px;" title="Apri un nuovo calcolatore in scheda">
+                    <svg class="w-3.5 h-3.5 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     <span id="topNewToolBtnText" class="hidden lg:inline">Nuovo Tool</span>
                 </button>
 
@@ -1232,7 +1294,7 @@
             <div class="relative flex items-center min-w-0">
                 <button type="button" id="mobileHeaderToolMenuBtn" onclick="toggleHeaderToolMenu(event)" class="flex items-center gap-2 px-1.5 py-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer select-none border border-transparent hover:border-slate-300 dark:hover:border-slate-700" style="border-radius: 0px;" title="Cambia calcolatore suite">
                     <div class="w-6 h-6 bg-amber-500 flex items-center justify-center text-white shrink-0 p-1 shadow-2xs" style="border-radius: 0px;">
-                        <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                     </div>
                     <span class="text-[14px] font-black text-slate-900 dark:text-slate-100 tracking-tight leading-none truncate">PiastrellaFacile</span>
                     <svg id="mobileHeaderToolMenuChevron" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-150 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -1733,28 +1795,30 @@
 
         
         <!-- Hero Header -->
-        <section class="text-center space-y-2 no-print id="calculatorArea"">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase mb-1">
-                <span id="heroBadge">OMNIBUILDING · CANTIERE & FAI-DA-TE</span>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 no-print pt-1 pb-3 border-b border-slate-200 dark:border-slate-800" id="calculatorArea">
+            <div class="text-left space-y-1">
+                <div>
+                    <span id="heroBadge" class="text-xs font-semibold tracking-wider uppercase text-amber-600 dark:text-amber-400 select-none">
+                        OMNIBUILDING · CANTIERE & FAI-DA-TE
+                    </span>
+                </div>
+                <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">Calcolo Piastrelle, Sfrido, Colla & Fughe</h1>
+                <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
+                    Calcolatore professionale per pavimenti e rivestimenti. Calcola metri quadri da acquistare con sfrido per tagli, numero di scatole, sacchi di colla (kg) e stucco per fughe con distinta materiali immediata.
+                </p>
             </div>
-            <h1 id="heroTitle" class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight font-jakarta">
-                Calcolo Piastrelle, Sfrido, Colla & Fughe
-            </h1>
-            <p id="heroDesc" class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                Calcolatore professionale per pavimenti e rivestimenti. Calcola metri quadri da acquistare con sfrido per tagli, numero di scatole, sacchi di colla (kg) e stucco per fughe con distinta materiali immediata.
-            </p>
-        </section>
+        </div>
 
         <!-- Main Unified Card (Single Card Container) -->
         <div class="bg-white rounded-none border border-slate-200 border-t-4 border-t-amber-500 shadow-sm p-4 sm:p-7 space-y-6">
 
             <!-- Mode Selector (Dimensions vs Direct Sqm) Tabs -->
-            <div id="modeSelectorBar" class="bg-slate-100 p-1.5 rounded-none flex border border-slate-200/80 mb-6 text-xs sm:text-sm font-bold no-print">
+            <div id="modeSelectorBar" class="bg-slate-100 dark:bg-slate-900 p-1.5 rounded-none flex border border-slate-200/80 dark:border-slate-800 mb-6 text-xs sm:text-sm font-bold no-print">
                 <button id="btnModeDims" type="button" onclick="setRoomMode('dims')" class="flex-1 py-2 sm:py-2.5 rounded-none bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold">
-                    📏 Dimensioni Stanza (L × W)
+                    Dimensioni Stanza (L × W)
                 </button>
                 <button id="btnModeDirect" type="button" onclick="setRoomMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">
-                    📐 Metri Quadri Netti
+                    Metri Quadri Netti
                 </button>
             </div>
 
@@ -1941,48 +2005,50 @@
             </div>
 
             <!-- Key Results Metric Cards (4 Colonne Identiche a Tubi, Rampe, Scale, Tetto) -->
-            <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
+            <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                 
                 <!-- Card 1: Scatole -->
-                <div class="bg-amber-50/70 border border-amber-200/80 rounded-none p-3.5 text-center">
-                    <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block" id="resBoxesLabel">Scatole da Ordinare</span>
-                    <span class="text-2xl sm:text-3xl font-black font-mono text-amber-900 block mt-1" id="valBoxes">16 Scatole</span>
-                    <span class="text-[10px] text-amber-700 font-mono block mt-0.5" id="valCoverageDetails">23.04 m² effettivi</span>
+                <div class="bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 rounded-none p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-amber-800 dark:text-amber-400 uppercase tracking-wider block" id="resBoxesLabel">Scatole da Ordinare</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-amber-900 dark:text-amber-200 block mt-1" id="valBoxes">16 Scatole</span>
+                    <span class="text-[10px] text-amber-700 dark:text-amber-400/90 num-tabular block mt-0.5" id="valCoverageDetails">23.04 m² effettivi</span>
                     <span class="hidden" id="valTilesDetails">~64 pezzi</span>
                 </div>
 
                 <!-- Card 2: Totale da Ordinare -->
-                <div class="bg-slate-50 border border-slate-200 rounded-none p-3.5 text-center">
-                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resGrossAreaLabel">Totale con Sfrido</span>
-                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valGrossArea">22.00 m²</span>
-                    <span class="text-[10px] text-slate-500 font-semibold block mt-0.5">Netto: <span id="valNetArea">20.00 m²</span></span>
+                <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resGrossAreaLabel">Totale con Sfrido</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-slate-900 dark:text-slate-100 block mt-1" id="valGrossArea">22.00 m²</span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold num-tabular block mt-0.5">Netto: <span id="valNetArea">20.00 m²</span></span>
                     <span class="hidden" id="resNetAreaLabel">Superficie Netta</span>
                 </div>
 
                 <!-- Card 3: Sacchi di Colla -->
-                <div class="bg-slate-50 border border-slate-200 rounded-none p-3.5 text-center">
-                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resAdhesiveBagsLabel">Sacchi di Colla</span>
-                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valAdhesiveBags">4 Sacchi</span>
-                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valAdhesiveKg">Totale stimato ~99 kg</span>
+                <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resAdhesiveBagsLabel">Sacchi di Colla</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-slate-900 dark:text-slate-100 block mt-1" id="valAdhesiveBags">4 Sacchi</span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 num-tabular block mt-0.5" id="valAdhesiveKg">Totale stimato ~99 kg</span>
                 </div>
 
                 <!-- Card 4: Stucco Fughe -->
-                <div class="bg-slate-50 border border-slate-200 rounded-none p-3.5 text-center">
-                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resGroutKgLabel">Stucco Fughe</span>
-                    <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valGroutKg">1.5 kg</span>
-                    <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valGroutDetails">Fuga 2mm · Spessore 9mm</span>
+                <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-none p-3.5 text-center">
+                    <span class="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block" id="resGroutKgLabel">Stucco Fughe</span>
+                    <span class="text-2xl sm:text-3xl font-black num-tabular text-slate-900 dark:text-slate-100 block mt-1" id="valGroutKg">1.5 kg</span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 num-tabular block mt-0.5" id="valGroutDetails">Fuga 2mm · Spessore 9mm</span>
                 </div>
             </div>
 
             <!-- Status / Contingency Warning Banner -->
-            <div class="p-4 sm:p-5 rounded-none border transition-all flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900">
-                <span class="text-2xl leading-none mt-0.5">⚠️</span>
+            <div class="p-4 sm:p-5 rounded-none border transition-all flex items-start gap-3 bg-amber-50/80 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200">
+                <div class="w-6 h-6 rounded-none bg-amber-500 flex items-center justify-center text-white shrink-0 mt-0.5">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
                 <div class="space-y-1 flex-1">
                     <div class="flex items-center gap-2 flex-wrap">
-                        <h3 id="summaryTitle" class="text-sm sm:text-base font-bold text-slate-900">Computo per l'Acquisto & Riserva Tagli</h3>
-                        <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-amber-200/80 text-amber-900 border border-amber-300">Distinta Materiali</span>
+                        <h3 id="summaryTitle" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Computo per l'Acquisto & Riserva Tagli</h3>
+                        <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-amber-200/80 dark:bg-amber-900/40 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60">Distinta Materiali</span>
                     </div>
-                    <p id="resWasteWarning" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <p id="resWasteWarning" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                         Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.
                     </p>
                 </div>
@@ -1992,11 +2058,11 @@
             <div class="space-y-2 no-print">
                 <div class="flex items-center justify-between">
                     <span id="previewTitle" class="text-xs font-bold text-slate-700 uppercase tracking-wider">Anteprima Grafica Schema di Posa</span>
-                    <span id="previewPatternBadge" class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-none border border-amber-200">Dritta (+10%)</span>
+                    <span id="previewPatternBadge" class="text-[10px] font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-none border border-amber-200 dark:border-amber-800/60">Dritta (+10%)</span>
                 </div>
 
                 <!-- SVG Grid Canvas -->
-                <div class="w-full h-40 sm:h-52 bg-slate-100 rounded-none border border-slate-200/90 overflow-hidden flex items-center justify-center relative p-2 shadow-inner">
+                <div class="w-full h-40 sm:h-52 bg-slate-100 dark:bg-slate-900 rounded-none border border-slate-200/90 dark:border-slate-800 overflow-hidden flex items-center justify-center relative p-2 shadow-inner">
                     <svg id="patternSvg" class="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
                         <!-- Injected dynamically via JS -->
                     </svg>
@@ -2593,8 +2659,8 @@
             const btnI = document.getElementById('btnUnitImperial');
 
             if (sys === 'metric') {
-                btnM.className = "px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
-                btnI.className = "px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnM.className = "px-2.5 py-1 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400 shadow-xs font-extrabold transition active:scale-95 text-center";
+                btnI.className = "px-2.5 py-1 rounded-none text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold";
                 
                 // Convert values from imperial to metric
                 const l = (parseFloat(document.getElementById('inputLength').value) || 0) * 0.3048;
@@ -2627,8 +2693,8 @@
                 document.getElementById('unitBadgeGroutW').textContent = 'mm';
                 document.getElementById('unitBadgeBoxCov').textContent = 'm²';
             } else {
-                btnI.className = "px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
-                btnM.className = "px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnI.className = "px-2.5 py-1 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400 shadow-xs font-extrabold transition active:scale-95 text-center";
+                btnM.className = "px-2.5 py-1 rounded-none text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold";
 
                 // Convert values from metric to imperial
                 const l = (parseFloat(document.getElementById('inputLength').value) || 0) / 0.3048;
@@ -2672,13 +2738,13 @@
             const directGroup = document.getElementById('directInputGroup');
 
             if (mode === 'dims') {
-                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
-                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm transition active:scale-95 text-center font-bold";
+                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold";
                 dimsGroup.classList.remove('hidden');
                 directGroup.classList.add('hidden');
             } else {
-                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
-                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm transition active:scale-95 text-center font-bold";
+                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold";
                 directGroup.classList.remove('hidden');
                 dimsGroup.classList.add('hidden');
             }
@@ -2825,6 +2891,12 @@
             const svg = document.getElementById('patternSvg');
             if (!svg) return;
 
+            const isDark = document.documentElement.classList.contains('omni-dark');
+            const tileFill = isDark ? '#1e293b' : '#ffffff';
+            const tileFillAlt = isDark ? '#334155' : '#fef3c7';
+            const tileStroke = isDark ? '#f59e0b' : '#d97706';
+            const tileStrokeAlt = isDark ? '#fbbf24' : '#b45309';
+
             let html = '';
             const isOffset = pattern === '12';
             const isDiagonal = pattern === '15';
@@ -2837,25 +2909,24 @@
                 html += '<g transform="rotate(45 200 100)">';
                 for (let x = -100; x < 500; x += 45) {
                     for (let y = -100; y < 300; y += 45) {
-                        html += `<rect x="${x}" y="${y}" width="40" height="40" fill="#ffffff" stroke="#d97706" stroke-width="1.5" rx="2" opacity="0.9"/>`;
+                        html += '<rect x="' + x + '" y="' + y + '" width="40" height="40" fill="' + tileFill + '" stroke="' + tileStroke + '" stroke-width="1.5" opacity="0.9" style="border-radius: 0px;"/>';
                     }
                 }
                 html += '</g>';
             } else if (isHerringbone) {
                 for (let x = 20; x < 380; x += 60) {
                     for (let y = 10; y < 190; y += 40) {
-                        html += `<rect x="${x}" y="${y}" width="45" height="15" fill="#ffffff" stroke="#d97706" stroke-width="1.5" rx="1.5"/>`;
-                        html += `<rect x="${x+15}" y="${y+15}" width="15" height="45" fill="#fef3c7" stroke="#b45309" stroke-width="1.5" rx="1.5"/>`;
+                        html += '<rect x="' + x + '" y="' + y + '" width="45" height="15" fill="' + tileFill + '" stroke="' + tileStroke + '" stroke-width="1.5" style="border-radius: 0px;"/>';
+                        html += '<rect x="' + (x+15) + '" y="' + (y+15) + '" width="15" height="45" fill="' + tileFillAlt + '" stroke="' + tileStrokeAlt + '" stroke-width="1.5" style="border-radius: 0px;"/>';
                     }
                 }
             } else {
-                // Grid or Offset
                 for (let row = 0; row < 6; row++) {
                     const xOffset = (isOffset && row % 2 !== 0) ? (w / 2) : 0;
                     for (let col = -1; col < 11; col++) {
                         const px = col * (w + 4) + xOffset + 10;
                         const py = row * (h + 4) + 10;
-                        html += `<rect x="${px}" y="${py}" width="${w}" height="${h}" fill="#ffffff" stroke="#d97706" stroke-width="1.5" rx="2" opacity="0.95"/>`;
+                        html += '<rect x="' + px + '" y="' + py + '" width="' + w + '" height="' + h + '" fill="' + tileFill + '" stroke="' + tileStroke + '" stroke-width="1.5" opacity="0.95" style="border-radius: 0px;"/>';
                     }
                 }
             }
@@ -3080,7 +3151,7 @@ document.addEventListener('click', (e) => {
 // Global Navigation I18N Engine (2 Languages: IT & EN)
 const NAV_TRANSLATIONS = {
     it: {
-        tab_home: 'Home Hub',
+        tab_home: 'OmniTools',
         desk_title: 'Strumenti da Scrivania',
         desk_memo: 'OmniMemo (Post-it)',
         desk_calc: 'OmniCalc (Calcolatrice)',
@@ -3099,7 +3170,7 @@ const NAV_TRANSLATIONS = {
         resize_hint: 'Ridimensiona finestra trascinando i bordi'
     },
     en: {
-        tab_home: 'Home Hub',
+        tab_home: 'OmniTools',
         desk_title: 'Desktop Utilities',
         desk_memo: 'OmniMemo (Post-it)',
         desk_calc: 'OmniCalc (Calculator)',
@@ -3118,7 +3189,7 @@ const NAV_TRANSLATIONS = {
         resize_hint: 'Resize window by dragging borders'
     },
     es: {
-        tab_home: 'Home Hub',
+        tab_home: 'OmniTools',
         desk_title: 'Herramientas de Escritorio',
         desk_memo: 'OmniMemo (Post-it)',
         desk_calc: 'OmniCalc (Calculadora)',
@@ -3137,7 +3208,7 @@ const NAV_TRANSLATIONS = {
         resize_hint: 'Cambiar tamaño arrastrando los bordes'
     },
     fr: {
-        tab_home: 'Home Hub',
+        tab_home: 'OmniTools',
         desk_title: 'Outils de Bureau',
         desk_memo: 'OmniMemo (Post-it)',
         desk_calc: 'OmniCalc (Calculatrice)',
@@ -3156,7 +3227,7 @@ const NAV_TRANSLATIONS = {
         resize_hint: 'Redimensionner la fenêtre en étirant les bords'
     },
     de: {
-        tab_home: 'Home Hub',
+        tab_home: 'OmniTools',
         desk_title: 'Schreibtisch-Tools',
         desk_memo: 'OmniMemo (Post-it)',
         desk_calc: 'OmniCalc (Rechner)',
@@ -3175,7 +3246,7 @@ const NAV_TRANSLATIONS = {
         resize_hint: 'Fenstergröße an den Kanten ziehen'
     },
     pt: {
-        tab_home: 'Home Hub',
+        tab_home: 'OmniTools',
         desk_title: 'Ferramentas de Secretária',
         desk_memo: 'OmniMemo (Post-it)',
         desk_calc: 'OmniCalc (Calculadora)',
@@ -3429,29 +3500,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const win = document.createElement('div');
             win.id = `detached-win-${id}`;
-            win.className = 'fixed z-[9992] bg-white rounded-2xl shadow-2xl border-2 border-slate-700/80 overflow-hidden flex flex-col';
+            win.className = 'fixed z-[9992] bg-white dark:bg-slate-900 shadow-2xl border border-slate-700 overflow-hidden flex flex-col';
+            win.style.borderRadius = '0px';
             win.style.width = 'min(760px, 92vw)';
             win.style.height = 'min(580px, 82vh)';
             win.style.minWidth = '360px';
             win.style.minHeight = '260px';
             win.style.resize = 'both';
-            win.style.minHeight = '300px';
             win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
             win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
 
             win.innerHTML = `
-                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800">
+                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800" style="border-radius: 0px;">
                     <div class="flex items-center gap-2">
-                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 rounded-md ${tool.color} text-white flex items-center justify-center text-[10px] font-bold">●</span>`}
+                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 ${tool.color} text-white flex items-center justify-center text-[10px] font-bold" style="border-radius: 0px;">●</span>`}
                         <span class="text-xs font-bold tracking-tight">${tool.name}</span>
-                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 rounded text-white font-bold">Finestra Staccata</span>
+                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 text-white font-bold" style="border-radius: 0px;">Finestra Staccata</span>
                     </div>
                     <div class="flex items-center gap-1.5">
-                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1">
+                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1 cursor-pointer border border-slate-700 hover:border-slate-600" style="border-radius: 0px;">
                             <span>⤶</span>
                             <span>Riancora</span>
                         </button>
-                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
+                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold cursor-pointer" style="border-radius: 0px;">
                             ✕
                         </button>
                     </div>
@@ -3475,7 +3546,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             openTabs = openTabs.filter(x => x !== id);
             try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-            if (typeof renderChromeTabs === 'function') renderChromeTabs();
+            renderChromeTabs();
         },
 
         dockBack(id) {
@@ -3488,7 +3559,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 openTabs.push(id);
                 try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
             }
-            if (typeof renderChromeTabs === 'function') renderChromeTabs();
+            renderChromeTabs();
         },
 
         closeDetached(id) {
@@ -3575,7 +3646,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const homeTab = document.getElementById('omniTabHome');
         const isHome = (!pathname || pathname === 'index');
         if (homeTab) {
-            homeTab.className = isHome ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] text-[#0F172A] font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 shadow-xs' : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#F8FAFC] hover:bg-slate-100 text-[#475569] hover:text-[#0F172A] font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200';
+            homeTab.className = isHome ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 dark:border-slate-800 shadow-xs' : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200 dark:border-slate-800';
             homeTab.style.borderRadius = '0px';
         }
 
@@ -3588,22 +3659,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
 
             const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] font-medium border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] text-[#0F172A] border-t-blue-600 border-r-slate-300 font-bold shadow-xs' : 'bg-[#F8FAFC] hover:bg-slate-100 text-[#475569] hover:text-[#0F172A] border-t-transparent border-r-slate-200 font-medium'}`;
+            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 border-t-blue-600 border-r-slate-300 dark:border-r-slate-800 font-bold shadow-xs active-tab' : 'bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white border-t-transparent border-r-slate-200 dark:border-r-slate-800 font-medium inactive-tab'}`;
             tab.style.borderRadius = '0px';
             tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
             
             const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
+            const isEn = window.location.pathname.startsWith('/en/');
+            const detachTitle = isEn ? 'Detach tab into floating window' : 'Stacca scheda in finestra mobile';
+            const closeTitle = isEn ? 'Close tab' : 'Chiudi scheda';
+
             tab.innerHTML = `
-                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline">
+                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline pr-1">
                     ${iconMarkup}
                     <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
                 </a>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="Stacca in finestra affiancata" class="hover:text-amber-300 p-0.5 text-slate-300 hover:bg-slate-700/50 transition font-mono text-[10px]">
-                    ↗
-                </button>
-                <button onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab text-[#94A3B8] hover:text-white hover:bg-rose-600/80 p-0.5 transition" style="border-radius: 0px;" title="Chiudi scheda">
-                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
+                <div class="flex items-center gap-1 ml-1 pl-1 border-l border-slate-200 dark:border-slate-700">
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="${detachTitle}" class="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-amber-500 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition cursor-pointer font-bold text-[11px]" style="border-radius: 0px;">
+                        ↗
+                    </button>
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab w-5 h-5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-rose-600 transition cursor-pointer" style="border-radius: 0px;" title="${closeTitle}">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
             `;
 
             let tabDragY = 0;
@@ -3639,7 +3716,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    document.addEventListener('DOMContentLoaded', renderChromeTabs);
+    const TOOL_ICONS_RAW_SVG = {
+        'mutuo': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#059669"/><path d="M5 14h22M10 20h2m5 0h2m-9 5h14a3 3 0 003-3V11a3 3 0 00-3-3H9a3 3 0 00-3 3v11a3 3 0 003 3z" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+        'default': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#2563eb"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#ffffff" stroke-width="3.4"/><path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="11.5" r="2.1" fill="#38bdf8"/></svg>`
+    };
+
+    function updateDynamicFavicon(toolId) {
+        const favEl = document.getElementById('dynamicFavicon');
+        if (!favEl) return;
+        const svgStr = TOOL_ICONS_RAW_SVG[toolId] || TOOL_ICONS_RAW_SVG['default'];
+        favEl.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgStr);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateDynamicFavicon(pathname || 'piastrelle');
+        renderChromeTabs();
+    });
 })();
 
         
