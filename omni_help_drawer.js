@@ -4,27 +4,27 @@
     const pathname = window.location.pathname.toLowerCase();
     let toolId = 'rampe';
     if (pathname.includes('scale') || pathname.includes('stair')) toolId = 'scale';
-    else if (pathname.includes('tubi')) toolId = 'tubi';
-    else if (pathname.includes('tetto')) toolId = 'tetto';
-    else if (pathname.includes('taglio')) toolId = 'taglio';
-    else if (pathname.includes('piastrelle')) toolId = 'piastrelle';
-    else if (pathname.includes('dorso')) toolId = 'dorso';
+    else if (pathname.includes('tubi') || pathname.includes('pipe')) toolId = 'tubi';
+    else if (pathname.includes('tetto') || pathname.includes('roof')) toolId = 'tetto';
+    else if (pathname.includes('taglio') || pathname.includes('cut-list')) toolId = 'taglio';
+    else if (pathname.includes('piastrelle') || pathname.includes('tile')) toolId = 'piastrelle';
+    else if (pathname.includes('dorso') || pathname.includes('book-spine')) toolId = 'dorso';
     else if (pathname.includes('dpi')) toolId = 'dpi';
-    else if (pathname.includes('tinta')) toolId = 'tinta';
+    else if (pathname.includes('tinta') || pathname.includes('paint')) toolId = 'tinta';
     else if (pathname.includes('barcode')) toolId = 'barcode';
-    else if (pathname.includes('copertura')) toolId = 'copertura';
-    else if (pathname.includes('resa')) toolId = 'resa';
-    else if (pathname.includes('mutuo')) toolId = 'mutuo';
+    else if (pathname.includes('copertura') || pathname.includes('ink-coverage')) toolId = 'copertura';
+    else if (pathname.includes('resa') || pathname.includes('sheet-yield')) toolId = 'resa';
+    else if (pathname.includes('mutuo') || pathname.includes('mortgage')) toolId = 'mutuo';
     else if (pathname.includes('pac') || pathname.includes('compound')) toolId = 'pac';
-    else if (pathname.includes('margine')) toolId = 'margine';
-    else if (pathname.includes('estinzione')) toolId = 'estinzione';
-    else if (pathname.includes('risparmio')) toolId = 'risparmio';
+    else if (pathname.includes('margine') || pathname.includes('margin')) toolId = 'margine';
+    else if (pathname.includes('estinzione') || pathname.includes('early-payoff')) toolId = 'estinzione';
+    else if (pathname.includes('risparmio') || pathname.includes('savings')) toolId = 'risparmio';
     else if (pathname.includes('fire')) toolId = 'fire';
     else if (pathname.includes('shelflife') || pathname.includes('shelf-life')) toolId = 'shelflife';
     else if (pathname.includes('nutriexport') || pathname.includes('nutri-export')) toolId = 'nutriexport';
     else if (pathname.includes('impasti') || pathname.includes('batch-scaler')) toolId = 'impasti';
     else if (pathname.includes('idratazione') || pathname.includes('hydration')) toolId = 'idratazione';
-    else if (pathname.includes('rampe')) toolId = 'rampe';
+    else if (pathname.includes('rampe') || pathname.includes('ramp')) toolId = 'rampe';
 
     const HELP_DATABASE = {
         rampe: {
@@ -1099,7 +1099,9 @@
 
     function getActiveHelpLang() {
         const sel = document.getElementById('langSelect');
-        const lang = (sel && sel.value) || localStorage.getItem('omnitools_lang') || 'it';
+        if (sel && sel.value) return sel.value === 'it' ? 'it' : 'en';
+        if (window.location.pathname.startsWith('/en/') || document.documentElement.lang === 'en') return 'en';
+        const lang = localStorage.getItem('omnitools_lang') || 'it';
         return lang === 'it' ? 'it' : 'en';
     }
 
@@ -1178,13 +1180,17 @@
                 max-height: 15px !important;
                 stroke-width: 1.75px !important;
             }
-            /* White Top Tab Bar */
+            /* Top Tab Bar Light & Dark */
             #omniChromeTabsBar {
                 position: sticky !important;
                 top: 0px !important;
                 z-index: 50 !important;
                 background-color: #FFFFFF !important;
                 border-bottom: 1px solid #E2E8F0 !important;
+            }
+            html.omni-dark #omniChromeTabsBar {
+                background-color: #0b1120 !important;
+                border-bottom: 1px solid #1e293b !important;
             }
             #omniTabHome {
                 border-radius: 0px !important;
