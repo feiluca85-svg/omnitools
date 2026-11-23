@@ -4097,8 +4097,9 @@
             const cellW = (gridW - (gap * (totalCols - 1))) / totalCols;
             const cellH = (gridH - (gap * (totalRows - 1))) / totalRows;
 
-            let svg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-            svg += `<svg xmlns="http://www.w3.org/2000/svg" width="${wMm}mm" height="${hMm}mm" viewBox="0 0 ${wMm} ${hMm}">\n`;
+            let svg = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+            svg += `<!-- Generator: OmniGraph Lab TintaPerfetta (Adobe Illustrator CMYK Native Compatible) -->\n`;
+            svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ai="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" width="${wMm}mm" height="${hMm}mm" viewBox="0 0 ${wMm} ${hMm}" xml:space="preserve">\n`;
             svg += `  <style>\n`;
             svg += `    .lbl { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: bold; }\n`;
             svg += `  </style>\n`;
@@ -4115,8 +4116,15 @@
                 const isDark = (cell.rgb.r * 0.299 + cell.rgb.g * 0.587 + cell.rgb.b * 0.114) < 140;
                 const txtColor = isDark ? "#ffffff" : "#0f172a";
 
-                svg += `  <g id="tile_${cell.coord}" data-c="${cell.c}" data-m="${cell.m}" data-y="${cell.y}" data-k="${cell.k}">\n`;
-                svg += `    <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" rx="1.5" ry="1.5" fill="${cell.hex}" stroke="${strokeColor}" stroke-width="${strokeW}"/>\n`;
+                const cVal = Number(cell.c);
+                const mVal = Number(cell.m);
+                const yVal = Number(cell.y);
+                const kVal = Number(cell.k);
+                // Adobe Illustrator native style: ai:color:cmyk(C,M,Y,K) ensures Illustrator opens it directly as pure CMYK
+                const aiCmykStyle = `fill:${cell.hex};i:colorRGB:${cell.hex};ai:color:cmyk(${cVal},${mVal},${yVal},${kVal});stroke:${strokeColor};stroke-width:${strokeW};`;
+
+                svg += `  <g id="tile_${cell.coord}" data-c="${cVal}" data-m="${mVal}" data-y="${yVal}" data-k="${kVal}">\n`;
+                svg += `    <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" rx="1.5" ry="1.5" fill="${cell.hex}" ai:color="cmyk(${cVal},${mVal},${yVal},${kVal})" style="${aiCmykStyle}"/>\n`;
                 svg += `    <text x="${x + 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5))}" class="lbl" font-size="${cellH > 35 ? 4 : 2.8}" fill="${txtColor}">${cell.coord}</text>\n`;
                 if (cell.isCenter) {
                     svg += `    <text x="${x + cellW - 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5))}" text-anchor="end" class="lbl" font-size="2.5" fill="${txtColor}">[★ BASE]</text>\n`;
