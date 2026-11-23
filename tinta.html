@@ -1846,8 +1846,13 @@
                         
                         <!-- Dual Action Buttons: Download PDF + Print -->
                         <div class="flex items-center gap-2">
-                            <button type="button" onclick="downloadVectorPdf()" class="px-3.5 py-2 bg-rose-900 hover:bg-rose-950 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-1.5 cursor-pointer">
-                                <span>📥</span> <span>Scarica PDF Vettoriale</span>
+                            <button type="button" onclick="downloadVectorPdf()" class="px-3.5 py-2 bg-rose-900 hover:bg-rose-950 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition inline-flex items-center gap-1.5 cursor-pointer" title="Genera PDF CMYK puro per Illustrator e RIP">
+                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                <span>PDF CMYK (Stampa)</span>
+                            </button>
+                            <button type="button" onclick="downloadCmykSvg()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 transition inline-flex items-center gap-1.5 cursor-pointer" title="Scarica file SVG vettoriale">
+                                <svg class="w-4 h-4 shrink-0 text-rose-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                <span>Scarica SVG</span>
                             </button>
                             <button type="button" onclick="window.print()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition inline-flex items-center gap-1.5 cursor-pointer" title="Stampa Diretta">
                                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> <span id="btnPrintMatrix">Stampa</span>
@@ -4587,7 +4592,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const contentH = hMm - (margin * 2);
 
             // 1. Draw Technical Crop Marks (Crocini di registro tipografici)
-            doc.setDrawColor(30, 41, 59);
+            doc.setDrawColor(0, 0, 0, 1);
             doc.setLineWidth(0.2);
             // Top-left
             doc.line(margin - 4, margin, margin + 4, margin);
@@ -4605,21 +4610,21 @@ document.addEventListener('DOMContentLoaded', () => {
             // 2. Draw Technical Header Banner
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(10);
-            doc.setTextColor(159, 18, 57); // Rose 800
+            doc.setTextColor(0, 0.89, 0.64, 0.38); // Deep Burgundy CMYK
             doc.text('OmniGraph Lab — TintaPerfetta', margin + 2, margin + 5);
 
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(7.5);
-            doc.setTextColor(71, 85, 105);
+            doc.setTextColor(0, 0, 0, 0.7); // 70% K
             doc.text(`COMMESSA: ${job}   |   MACCHINA: ${press}   |   SUPPORTO: ${paper}   |   DATA: ${dateStr}   |   PASSO: ±${currentStep}%`, margin + 2, margin + 9);
 
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(7);
-            doc.setTextColor(100, 116, 139);
+            doc.setTextColor(0, 0, 0, 0.6); // 60% K
             doc.text(`MISURA REALE: ${wMm / 10} × ${hMm / 10} cm  (FOGRA39 / ISO 12647-2)`, wMm - margin - 2, margin + 5, { align: 'right' });
 
             // Separator Line
-            doc.setDrawColor(226, 232, 240);
+            doc.setDrawColor(0, 0, 0, 0.15); // 15% K line
             doc.line(margin + 2, margin + 11, wMm - margin - 2, margin + 11);
 
             // 3. Grid Calculation
@@ -4648,24 +4653,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 const x = margin + 2 + (cell.col * (cellW + gap));
                 const y = gridStartY + (cell.row * (cellH + gap));
 
-                // Fill Color
-                doc.setFillColor(cell.rgb.r, cell.rgb.g, cell.rgb.b);
+                // Fill Color: PURE DeviceCMYK (0.0 to 1.0) for 100% exact match in Illustrator / RIP
+                const cVal = Math.max(0, Math.min(100, Number(cell.c))) / 100;
+                const mVal = Math.max(0, Math.min(100, Number(cell.m))) / 100;
+                const yVal = Math.max(0, Math.min(100, Number(cell.y))) / 100;
+                const kVal = Math.max(0, Math.min(100, Number(cell.k))) / 100;
+                doc.setFillColor(cVal, mVal, yVal, kVal);
                 doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'F');
 
-                // Border
+                // Border: PURE CMYK Stroke
                 if (cell.isCenter) {
-                    doc.setDrawColor(245, 158, 11); // Amber-500
+                    doc.setDrawColor(0, 0.38, 1, 0); // Amber/Gold in CMYK: C:0 M:38 Y:100 K:0
                     doc.setLineWidth(0.8);
                     doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'D');
                 } else {
-                    doc.setDrawColor(0, 0, 0, 0.2);
+                    doc.setDrawColor(0, 0, 0, 0.25); // 25% K subtle keyline border
                     doc.setLineWidth(0.15);
                     doc.roundedRect(x, y, cellW, cellH, 1.5, 1.5, 'D');
                 }
 
-                // Text Contrast
+                // Text Contrast: Pure CMYK (100% K for dark, 0% all for white knock-out)
                 const isDark = (cell.rgb.r * 0.299 + cell.rgb.g * 0.587 + cell.rgb.b * 0.114) < 140;
-                doc.setTextColor(isDark ? 255 : 15, isDark ? 255 : 23, isDark ? 255 : 42);
+                if (isDark) {
+                    doc.setTextColor(0, 0, 0, 0); // 0% all = White Knock-out in CMYK
+                } else {
+                    doc.setTextColor(0, 0, 0, 1); // 100% Black in CMYK
+                }
 
                 // Top coordinate label
                 doc.setFont('helvetica', 'bold');
@@ -4685,7 +4698,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 4. Operator Legend at Bottom
             doc.setFont('helvetica', 'italic');
             doc.setFontSize(6.5);
-            doc.setTextColor(148, 163, 184);
+            doc.setTextColor(0, 0, 0, 0.5); // 50% K
             doc.text('Istruzioni: 1) Stampa sul supporto effettivo; 2) Confronta con il campione alla luce neutra D50; 3) Riporta i valori del tassello nel RIP.', margin + 2, hMm - margin + 1);
 
             // Trigger Clean Download
@@ -4693,6 +4706,74 @@ document.addEventListener('DOMContentLoaded', () => {
             const fileName = `TintaPerfetta_${wMm / 10}x${hMm / 10}cm_${cleanJob}.pdf`;
             doc.save(fileName);
         }
+
+        function downloadCmykSvg() {
+            const wMm = currentWidthMm;
+            const hMm = currentHeightMm;
+            const job = document.getElementById("jobInput").value.trim() || "Commessa";
+            const press = document.getElementById("pressInput").value.trim() || "Macchina";
+            const paper = document.getElementById("paperInput").value.trim() || "Supporto";
+            const dateStr = new Date().toLocaleDateString("it-IT");
+
+            const margin = 10;
+            const contentW = wMm - (margin * 2);
+            const contentH = hMm - (margin * 2);
+            const gridStartY = margin + 14;
+            const gridH = hMm - gridStartY - margin - 4;
+            const gridW = contentW - 4;
+
+            let maxCol = 0, maxRow = 0;
+            currentGridCells.forEach(cell => {
+                if (cell.col > maxCol) maxCol = cell.col;
+                if (cell.row > maxRow) maxRow = cell.row;
+            });
+            const totalCols = maxCol + 1;
+            const totalRows = maxRow + 1;
+            const gap = 1.5;
+            const cellW = (gridW - (gap * (totalCols - 1))) / totalCols;
+            const cellH = (gridH - (gap * (totalRows - 1))) / totalRows;
+
+            let svg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+            svg += `<svg xmlns="http://www.w3.org/2000/svg" width="${wMm}mm" height="${hMm}mm" viewBox="0 0 ${wMm} ${hMm}">\n`;
+            svg += `  <style>\n`;
+            svg += `    .lbl { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: bold; }\n`;
+            svg += `  </style>\n`;
+            svg += `  <rect width="100%" height="100%" fill="#ffffff"/>\n`;
+            svg += `  <text x="${margin + 2}" y="${margin + 5}" class="lbl" font-size="3.5" fill="#9f1239">OmniGraph Lab — TintaPerfetta</text>\n`;
+            svg += `  <text x="${margin + 2}" y="${margin + 9}" class="lbl" font-size="2.4" font-weight="normal" fill="#475569">COMMESSA: ${job} | MACCHINA: ${press} | SUPPORTO: ${paper} | DATA: ${dateStr} | PASSO: ±${currentStep}%</text>\n`;
+            svg += `  <line x1="${margin + 2}" y1="${margin + 11}" x2="${wMm - margin - 2}" y2="${margin + 11}" stroke="#cbd5e1" stroke-width="0.3"/>\n`;
+
+            currentGridCells.forEach(cell => {
+                const x = margin + 2 + (cell.col * (cellW + gap));
+                const y = gridStartY + (cell.row * (cellH + gap));
+                const strokeColor = cell.isCenter ? "#f59e0b" : "rgba(0,0,0,0.25)";
+                const strokeW = cell.isCenter ? "0.8" : "0.15";
+                const isDark = (cell.rgb.r * 0.299 + cell.rgb.g * 0.587 + cell.rgb.b * 0.114) < 140;
+                const txtColor = isDark ? "#ffffff" : "#0f172a";
+
+                svg += `  <g id="tile_${cell.coord}" data-c="${cell.c}" data-m="${cell.m}" data-y="${cell.y}" data-k="${cell.k}">\n`;
+                svg += `    <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" rx="1.5" ry="1.5" fill="${cell.hex}" stroke="${strokeColor}" stroke-width="${strokeW}"/>\n`;
+                svg += `    <text x="${x + 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5))}" class="lbl" font-size="${cellH > 35 ? 4 : 2.8}" fill="${txtColor}">${cell.coord}</text>\n`;
+                if (cell.isCenter) {
+                    svg += `    <text x="${x + cellW - 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5))}" text-anchor="end" class="lbl" font-size="2.5" fill="${txtColor}">[★ BASE]</text>\n`;
+                }
+                svg += `    <text x="${x + 2.5}" y="${y + cellH - (cellH > 35 ? 3.5 : 2)}" class="lbl" font-size="${cellH > 35 ? 3.2 : 2.2}" fill="${txtColor}">C:${cell.c} M:${cell.m} Y:${cell.y} K:${cell.k}</text>\n`;
+                svg += `  </g>\n`;
+            });
+            svg += `</svg>`;
+
+            const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            const cleanJob = job.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+            a.href = url;
+            a.download = `TintaPerfetta_${wMm / 10}x${hMm / 10}cm_${cleanJob}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        window.downloadCmykSvg = downloadCmykSvg;
 
         // Viral Sharing
         function shareWhatsApp() {
