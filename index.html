@@ -609,6 +609,11 @@
             height: 100% !important;
             border-radius: 0px !important;
         }
+        .tool-card.hidden,
+        .tool-card[style*="display: none"],
+        .hidden {
+            display: none !important;
+        }
         .tool-card > .space-y-3 {
             display: flex !important;
             flex-direction: column !important;
@@ -627,7 +632,7 @@
             overflow: hidden !important;
         }
         /* Fixed-height description box (68px) with 3 lines clamp */
-        .tool-card p[id"Desc"],
+        .tool-card p[id$="Desc"],
         .tool-card p.line-clamp-3 {
             height: 68px !important;
             min-height: 68px !important;
@@ -1865,6 +1870,24 @@
             <!-- ========================================== -->
             <!-- DIVISION 1: OmniBuilding (Edilizia & Tubi) -->
             <!-- ========================================== -->
+            <!-- No Search Results Found Banner -->
+            <div id="omniSearchNoResults" class="hidden text-center py-12 px-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                <div class="w-12 h-12 mx-auto bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 flex items-center justify-center">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <h3 id="noResultsTitle" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Nessun calcolatore trovato</h3>
+                <p id="noResultsDesc" class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">Nessuno strumento corrisponde ai termini cercati. Prova a cercare parole chiave come rampa, mutuo, cmyk, scala, brossura o tmc.</p>
+                <div class="pt-2">
+                    <button type="button" onclick="clearSearch()" class="px-3.5 py-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer">
+                        Azzera ricerca
+                    </button>
+                </div>
+            </div>
+
             <div id="sectionBuilding" class="space-y-4 pt-0 pb-4">
                 
                 <!-- Division Department Header -->
@@ -3422,15 +3445,18 @@
         });
 
         function filterTools() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchEl = document.getElementById('searchInput');
+            const query = searchEl ? searchEl.value.toLowerCase().trim() : '';
             const clearBtn = document.getElementById('clearSearchBtn');
             const recentBar = document.getElementById('recentToolsBar');
+            const noResultsEl = document.getElementById('omniSearchNoResults');
+
             if (query.length > 0) {
-                clearBtn.classList.remove('hidden');
+                if (clearBtn) clearBtn.classList.remove('hidden');
                 if (recentBar) recentBar.classList.add('hidden');
             } else {
-                clearBtn.classList.add('hidden');
-                if (recentBar && document.getElementById('recentToolsList').children.length > 0) {
+                if (clearBtn) clearBtn.classList.add('hidden');
+                if (recentBar && document.getElementById('recentToolsList')?.children.length > 0) {
                     recentBar.classList.remove('hidden');
                 }
             }
@@ -3458,6 +3484,11 @@
                 return pA - pB;
             });
 
+            // When searching (query non-empty), search across ALL tools automatically
+            const isSearching = (query.length > 0);
+            const activeFilter = isSearching ? 'all' : currentFilter;
+
+            let totalVisible = 0;
             let visibleBuildingCards = 0;
             let visibleGraphCards = 0;
             let visibleFinanceCards = 0;
@@ -3465,30 +3496,31 @@
 
             cards.forEach(card => {
                 const division = card.getAttribute('data-division') || '';
-                let allowedByDivision = true;
-                if (currentFilter !== 'all' && currentFilter !== division) {
-                    allowedByDivision = false;
-                }
+                let allowedByDivision = (activeFilter === 'all' || activeFilter === division);
 
                 const text = card.textContent.toLowerCase();
                 const tags = (card.getAttribute('data-tags') || '').toLowerCase();
-                const matchQuery = query === '' || text.includes(query) || tags.includes(query);
+                const matchQuery = (query === '' || text.includes(query) || tags.includes(query));
 
                 if (allowedByDivision && matchQuery) {
                     card.classList.remove('hidden');
+                    card.style.display = 'flex';
+                    totalVisible++;
                     if (division === 'building') visibleBuildingCards++;
                     if (division === 'graph') visibleGraphCards++;
                     if (division === 'finance') visibleFinanceCards++;
                     if (division === 'food') visibleFoodCards++;
                 } else {
                     card.classList.add('hidden');
+                    card.style.display = 'none';
                 }
             });
 
-            if (currentFilter === 'all') {
+            if (activeFilter === 'all') {
                 // Unified continuous grid: attach all cards in priority order to unifiedContainer
                 if (unifiedContainer) {
                     unifiedContainer.classList.remove('hidden');
+                    unifiedContainer.style.display = 'grid';
                     cards.forEach(card => unifiedContainer.appendChild(card));
                 }
                 if (secBuilding) secBuilding.classList.add('hidden');
@@ -3497,7 +3529,10 @@
                 if (secFood) secFood.classList.add('hidden');
             } else {
                 // Single Branch View: restore cards to their respective original division grids
-                if (unifiedContainer) unifiedContainer.classList.add('hidden');
+                if (unifiedContainer) {
+                    unifiedContainer.classList.add('hidden');
+                    unifiedContainer.style.display = 'none';
+                }
 
                 const origGridBuilding = secBuilding ? secBuilding.querySelector('.grid') : null;
                 const origGridFinance = secFinance ? secFinance.querySelector('.grid') : null;
@@ -3513,27 +3548,47 @@
                 });
 
                 if (secBuilding) {
-                    if (visibleBuildingCards > 0 && currentFilter === 'building') secBuilding.classList.remove('hidden');
+                    if (visibleBuildingCards > 0 && activeFilter === 'building') secBuilding.classList.remove('hidden');
                     else secBuilding.classList.add('hidden');
                 }
                 if (secFinance) {
-                    if (visibleFinanceCards > 0 && currentFilter === 'finance') secFinance.classList.remove('hidden');
+                    if (visibleFinanceCards > 0 && activeFilter === 'finance') secFinance.classList.remove('hidden');
                     else secFinance.classList.add('hidden');
                 }
                 if (secGraph) {
-                    if (visibleGraphCards > 0 && currentFilter === 'graph') secGraph.classList.remove('hidden');
+                    if (visibleGraphCards > 0 && activeFilter === 'graph') secGraph.classList.remove('hidden');
                     else secGraph.classList.add('hidden');
                 }
                 if (secFood) {
-                    if (visibleFoodCards > 0 && currentFilter === 'food') secFood.classList.remove('hidden');
+                    if (visibleFoodCards > 0 && activeFilter === 'food') secFood.classList.remove('hidden');
                     else secFood.classList.add('hidden');
+                }
+            }
+
+            // Show or hide No Results box
+            if (noResultsEl) {
+                if (isSearching && totalVisible === 0) {
+                    noResultsEl.classList.remove('hidden');
+                    noResultsEl.style.display = 'block';
+                    if (unifiedContainer) {
+                        unifiedContainer.classList.add('hidden');
+                        unifiedContainer.style.display = 'none';
+                    }
+                } else {
+                    noResultsEl.classList.add('hidden');
+                    noResultsEl.style.display = 'none';
                 }
             }
         }
 
         function clearSearch() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('clearSearchBtn').classList.add('hidden');
+            const inp = document.getElementById('searchInput');
+            if (inp) {
+                inp.value = '';
+                inp.focus();
+            }
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) clearBtn.classList.add('hidden');
             filterTools();
         }
 
