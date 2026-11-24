@@ -1145,7 +1145,7 @@
                         <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-rose-700">Tools</span> Lab</span>
                         <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded-none border border-slate-300">SCHEDA TECNICA A4 • OMNIGRAPH</span>
                     </div>
-                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">DorsoFacile — Spessore Dorso & Copertina Stesa KDP</div>
+                    <div id="omniPrintHeaderTitle" class="text-xs font-bold text-slate-700 mt-1">TintaPerfetta — CMYK Calibration Matrix</div>
                 </div>
             </div>
             <div class="flex items-center gap-2.5">
@@ -1225,7 +1225,7 @@
                     <div class="w-6 h-6 bg-rose-600 flex items-center justify-center text-white shrink-0 p-1 shadow-2xs" style="border-radius: 0px;">
                         <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
-                    <span class="text-[14px] font-black text-slate-900 dark:text-slate-100 tracking-tight leading-none truncate">DorsoFacile</span>
+                    <span class="text-[14px] font-black text-slate-900 dark:text-slate-100 tracking-tight leading-none truncate">TintaPerfetta</span>
                     <svg id="mobileHeaderToolMenuChevron" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-150 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
 
@@ -1718,47 +1718,7 @@
 
     <!-- MAIN APP CONTAINER -->
     
-    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1 w-full space-y-4 sm:space-y-6">
-
-        <!-- UNIFIED A4/CUSTOM PRINT HEADER (Shown only when printing) -->
-        id="printHeader" class="hidden print:block mb-2 pb-2 border-b-2 border-slate-900">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-10 h-10 rounded-none-none bg-gradient-to-br from-rose-800 to-rose-950 flex items-center justify-center text-white shrink-0 p-1 shadow-sm" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
-                        <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="2.8" />
-                            <circle cx="16" cy="16" r="6" stroke="#ffffff" stroke-width="2" />
-                            <line x1="16" y1="4.5" x2="16" y2="27.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                            <line x1="4.5" y1="16" x2="27.5" y2="16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
-                            <circle cx="16" cy="16" r="2.2" fill="#fda4af" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-1.5 leading-none">
-                            <span class="text-base font-black tracking-tight text-slate-900 font-jakarta">Omni<span class="text-rose-800">Graph</span> Lab</span>
-                            <span class="text-[9px] font-extrabold uppercase bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded-none border border-slate-300">SCHEDA PROVA COLORE</span>
-                        </div>
-                        <h1 id="printSheetTitle" class="text-xs font-bold text-slate-700 mt-1">TintaPerfetta — Matrice di Calibrazione Cromatica & Compensazione Punto Macchina</h1>
-                    </div>
-                </div>
-                <div class="text-right text-[10px] text-slate-600 font-mono leading-tight">
-                    <div id="printReportDate" class="font-bold text-slate-900">Data: 04/11/2026</div>
-                    <div>ISO 12647-2 • FOGRA39 / FOGRA51</div>
-                    <div class="text-rose-800 font-bold">omnitoolslab.com/tinta</div>
-                </div>
-            </div>
-            
-            <!-- Metadata Strip for Press Operator -->
-            <div class="mt-2 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] font-mono flex-wrap gap-2">
-                <div><span class="font-bold text-slate-500">COMMESSA:</span> <span id="printJobName" class="font-extrabold text-slate-900">Lavoro Campione</span></div>
-                <div><span class="font-bold text-slate-500">MACCHINA:</span> <span id="printPressName" class="font-extrabold text-slate-900">Rotativa a Bobina</span></div>
-                <div><span class="font-bold text-slate-500">SUPPORTO:</span> <span id="printPaperName" class="font-extrabold text-slate-900">Patinata Lucida / Bobina</span></div>
-                <div><span class="font-bold text-slate-500">FORMATO:</span> <span id="printFormatName" class="font-extrabold text-rose-800">33 x 48 cm</span></div>
-                <div><span class="font-bold text-slate-500">PASSO:</span> <span id="printStepName" class="font-extrabold text-slate-900">±5% Standard</span></div>
-            </div>
-        </div>
-
-        
+        <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
 
         <!-- Left-Aligned Studio Header (No Center, No Pill Badge) -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 no-print pt-1 pb-3 border-b border-slate-200 dark:border-slate-800" id="calculatorArea">
@@ -2071,14 +2031,10 @@
 
                 </div>
 
-            
-            </div>
-
             <!-- BLOCCO 3: MATRICE DI CALIBRAZIONE GENERATA & ISPETTORE CMYK -->
             <div id="resultsColumn" class="w-full space-y-4">
+                <!-- Main Calibration Matrix Card -->
                 <div class="bg-white dark:bg-slate-900 p-3.5 sm:p-5 rounded-none border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3.5 print-card">
-                    <!-- Main Calibration Matrix Card -->
-                <div class="bg-white p-3.5 sm:p-5 rounded-none border border-slate-200/90 shadow-xs space-y-3.5 print-card">
                     <div class="flex items-center justify-between no-print flex-wrap gap-2 pb-3 border-b border-slate-100 dark:border-slate-800">
                     <div class="flex items-center gap-2.5">
                         <span class="w-6 h-6 bg-rose-600 text-white text-xs font-black flex items-center justify-center shrink-0 rounded-none num-tabular">3</span>
@@ -2171,8 +2127,6 @@
                     </div>
                 </div>
 
-            
-                </div>
             </div>
 
             <!-- Action Buttons: Export CSV, Print, Copy (Sharp Precision Grid) -->
@@ -2243,7 +2197,12 @@
 
     </main>
 
-    <div id="omniSponsorBanner" data-sponsor-division="graph" class="bg-slate-50 dark:bg-slate-900 p-4 sm:p-5 border-2 border-dashed border-rose-200/90 dark:border-rose-900/60 hover:border-rose-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4 rounded-none" style="border-radius: 0px;">
+    <!-- FOOTER WITH OMNITOOLS SUITE & LEGAL DISCLAIMER (Unified Standard) -->
+    <footer class="no-print bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-8 pb-10 mt-8 text-xs text-slate-500">
+        <div class="max-w-5xl mx-auto px-3 sm:px-6 space-y-6">
+            
+            <!-- NATIVE TECHNICAL SPONSOR / PARTNER BANNER SLOT (Division-Contextualized) -->
+            <div id="omniSponsorBanner" data-sponsor-division="graph" class="bg-slate-50 dark:bg-slate-900 p-4 sm:p-5 border-2 border-dashed border-rose-200/90 dark:border-rose-900/60 hover:border-rose-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4 rounded-none" style="border-radius: 0px;">
                 <div class="flex items-start gap-3.5 text-left">
                     <div class="w-11 h-11 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0" style="border-radius: 0px;">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
@@ -4671,22 +4630,33 @@ function switchInputMode(mode) {
                     let tileY = baseY;
                     let tileK = baseK;
 
-                    // Horizontal variation: Hue
+                    // Orthogonal Variation Model:
+                    // Horizontal axis (dCol): Pure Hue shift (Cyan vs Magenta/Yellow)
                     if (dCol > 0) {
                         tileM = clamp(tileM + dCol);
                         tileY = clamp(tileY + dCol);
+                        tileC = clamp(tileC - Math.round(dCol * 0.5));
                     } else if (dCol < 0) {
-                        tileC = clamp(tileC - dCol);
+                        tileC = clamp(tileC + Math.abs(dCol));
+                        tileM = clamp(tileM - Math.round(Math.abs(dCol) * 0.5));
+                        tileY = clamp(tileY - Math.round(Math.abs(dCol) * 0.5));
                     }
 
-                    // Vertical variation: Density / K
+                    // Vertical axis (dRow): Pure Density / Black (K) shift
                     if (dRow > 0) {
+                        // Increase density / Black
                         tileK = clamp(tileK + dRow);
-                        tileC = clamp(tileC + Math.round(dRow * 0.5));
                     } else if (dRow < 0) {
-                        tileK = clamp(tileK + dRow);
-                        tileM = clamp(tileM + Math.round(dRow * 0.5));
-                        tileY = clamp(tileY + Math.round(dRow * 0.5));
+                        // Decrease density / Lighten
+                        if (tileK > 0) {
+                            tileK = clamp(tileK + dRow); // dRow is negative
+                        } else {
+                            // If K is already 0, reduce CMY proportionally
+                            const factor = (100 + dRow) / 100;
+                            tileC = clamp(Math.round(tileC * factor));
+                            tileM = clamp(Math.round(tileM * factor));
+                            tileY = clamp(Math.round(tileY * factor));
+                        }
                     }
 
                     const tileTac = tileC + tileM + tileY + tileK;
@@ -4936,6 +4906,94 @@ function switchInputMode(mode) {
             doc.save(fileName);
         }
 
+        
+        // Vector EPS Exporter with Native DeviceCMYK for Adobe Illustrator
+        function downloadCmykEps() {
+            const wMm = currentWidthMm;
+            const hMm = currentHeightMm;
+            // 1 mm = 72 / 25.4 points ≈ 2.83464567 pt
+            const ptFactor = 72 / 25.4;
+            const wPt = Math.round(wMm * ptFactor);
+            const hPt = Math.round(hMm * ptFactor);
+
+            const job = document.getElementById("jobInput") ? document.getElementById("jobInput").value.trim() : "Job";
+            const press = document.getElementById("pressInput") ? document.getElementById("pressInput").value.trim() : "Press";
+            const paper = document.getElementById("paperInput") ? document.getElementById("paperInput").value.trim() : "Substrate";
+            const dateStr = new Date().toLocaleDateString("en-US");
+
+            const marginMm = 10;
+            const marginPt = marginMm * ptFactor;
+            const contentWPt = wPt - (marginPt * 2);
+            const contentHPt = hPt - (marginPt * 2);
+
+            let maxCol = 0, maxRow = 0;
+            currentGridCells.forEach(cell => {
+                if (cell.col > maxCol) maxCol = cell.col;
+                if (cell.row > maxRow) maxRow = cell.row;
+            });
+            const totalCols = maxCol + 1;
+            const totalRows = maxRow + 1;
+            const gapPt = 1.5 * ptFactor;
+            const gridStartYPt = (marginMm + 14) * ptFactor;
+            const gridWPt = contentWPt - (4 * ptFactor);
+            const gridHPt = hPt - gridStartYPt - marginPt - (4 * ptFactor);
+
+            const cellWPt = (gridWPt - (gapPt * (totalCols - 1))) / totalCols;
+            const cellHPt = (gridHPt - (gapPt * (totalRows - 1))) / totalRows;
+
+            let eps = "%!PS-Adobe-3.0 EPSF-3.0\n";
+            eps += `%%BoundingBox: 0 0 ${wPt} ${hPt}\n`;
+            eps += `%%HiResBoundingBox: 0 0 ${wPt} ${hPt}\n`;
+            eps += `%%Creator: OmniTools Lab TintaPerfetta (DeviceCMYK Pure)\n`;
+            eps += `%%Title: ${job} - CMYK Calibration Matrix\n`;
+            eps += `%%DocumentProcessColors: Cyan Magenta Yellow Black\n`;
+            eps += `%%EndComments\n\n`;
+
+            eps += `/box { % x y w h c m y k\n`;
+            eps += `  setcmykcolor\n`;
+            eps += `  newpath 4 2 roll moveto 1 index 0 rlineto 0 exch rlineto neg 0 rlineto closepath fill\n`;
+            eps += `} bind def\n\n`;
+
+            // Background white
+            eps += `0 0 0 0 setcmykcolor\n`;
+            eps += `0 0 ${wPt} ${hPt} rectfill\n\n`;
+
+            // Draw swatches
+            currentGridCells.forEach(cell => {
+                const c = (cell.c / 100).toFixed(4);
+                const m = (cell.m / 100).toFixed(4);
+                const y = (cell.y / 100).toFixed(4);
+                const k = (cell.k / 100).toFixed(4);
+
+                const xPt = marginPt + (2 * ptFactor) + (cell.col * (cellWPt + gapPt));
+                // PostScript origin is bottom-left
+                const topYPt = hPt - gridStartYPt - (cell.row * (cellHPt + gapPt));
+                const yPt = topYPt - cellHPt;
+
+                eps += `%% Swatch: ${cell.coord} C:${cell.c}% M:${cell.m}% Y:${cell.y}% K:${cell.k}%\n`;
+                eps += `${xPt.toFixed(2)} ${yPt.toFixed(2)} ${cellWPt.toFixed(2)} ${cellHPt.toFixed(2)} ${c} ${m} ${y} ${k} box\n`;
+
+                if (cell.isCenter) {
+                    // Gold highlight border for center base tile
+                    eps += `0 0.35 1 0 setcmykcolor 1.5 setlinewidth\n`;
+                    eps += `newpath ${xPt.toFixed(2)} ${yPt.toFixed(2)} ${cellWPt.toFixed(2)} ${cellHPt.toFixed(2)} rectstroke\n`;
+                }
+            });
+
+            eps += `\n%%EOF\n`;
+
+            const blob = new Blob([eps], { type: "application/postscript" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            const cleanJob = job.replace(/[^a-zA-Z0-9_-]/g, "_");
+            a.href = url;
+            a.download = `TintaPerfetta_${cleanJob}_${wMm}x${hMm}mm_CMYK_Illustrator.eps`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
         function downloadCmykSvg() {
             const wMm = currentWidthMm;
             const hMm = currentHeightMm;
@@ -4988,14 +5046,32 @@ function switchInputMode(mode) {
                 // Adobe Illustrator native style: ai:color:cmyk(C,M,Y,K) ensures Illustrator opens it directly as pure CMYK
                 const aiCmykStyle = `fill:${cell.hex};i:colorRGB:${cell.hex};ai:color:cmyk(${cVal},${mVal},${yVal},${kVal});stroke:${strokeColor};stroke-width:${strokeW};`;
 
-                svg += `  <g id="tile_${cell.coord}" data-c="${cVal}" data-m="${mVal}" data-y="${yVal}" data-k="${kVal}">\n`;
-                svg += `    <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" rx="1.5" ry="1.5" fill="${cell.hex}" ai:color="cmyk(${cVal},${mVal},${yVal},${kVal})" style="${aiCmykStyle}"/>\n`;
-                svg += `    <text x="${x + 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5))}" class="lbl" font-size="${cellH > 35 ? 4 : 2.8}" fill="${txtColor}">${cell.coord}</text>\n`;
+                const isNarrow = cellW < 42;
+                const fontSizeCoord = cellH > 35 ? 4.2 : (cellH > 22 ? 3.2 : 2.5);
+                const fontSizeCmyk = cellH > 35 ? (isNarrow ? 2.8 : 3.2) : (cellH > 22 ? 2.4 : 2.0);
+
+                svg += `  <g id="tile_${cell.coord}" data-c="${cVal}%" data-m="${mVal}%" data-y="${yVal}%" data-k="${kVal}%">
+`;
+                svg += `    <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" fill="${cell.hex}" ai:color="cmyk(${cVal},${mVal},${yVal},${kVal})" style="${aiCmykStyle}"/>
+`;
+                svg += `    <text x="${x + 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 22 ? 5.5 : 4))}" class="lbl" font-size="${fontSizeCoord}" fill="${txtColor}">${cell.coord}</text>
+`;
                 if (cell.isCenter) {
-                    svg += `    <text x="${x + cellW - 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 18 ? 5 : 3.5))}" text-anchor="end" class="lbl" font-size="2.5" fill="${txtColor}">[BASE]</text>\n`;
+                    svg += `    <text x="${x + cellW - 2.5}" y="${y + (cellH > 35 ? 7 : (cellH > 22 ? 5.5 : 4))}" text-anchor="end" class="lbl" font-size="${fontSizeCoord * 0.8}" fill="${txtColor}">[BASE]</text>
+`;
                 }
-                svg += `    <text x="${x + 2.5}" y="${y + cellH - (cellH > 35 ? 3.5 : 2)}" class="lbl" font-size="${cellH > 35 ? 3.2 : 2.2}" fill="${txtColor}">C:${cell.c} M:${cell.m} Y:${cell.y} K:${cell.k}</text>\n`;
-                svg += `  </g>\n`;
+                if (isNarrow && cellH > 26) {
+                    // Two-line layout to prevent text clipping on narrow columns
+                    svg += `    <text x="${x + 2.5}" y="${y + cellH - 5.5}" class="lbl" font-size="${fontSizeCmyk}" fill="${txtColor}">C:${cell.c}% M:${cell.m}%</text>
+`;
+                    svg += `    <text x="${x + 2.5}" y="${y + cellH - 2.2}" class="lbl" font-size="${fontSizeCmyk}" fill="${txtColor}">Y:${cell.y}% K:${cell.k}%</text>
+`;
+                } else {
+                    svg += `    <text x="${x + 2.5}" y="${y + cellH - 2.8}" class="lbl" font-size="${fontSizeCmyk}" fill="${txtColor}">C:${cell.c}% M:${cell.m}% Y:${cell.y}% K:${cell.k}%</text>
+`;
+                }
+                svg += `  </g>
+`;
             });
             svg += `</svg>`;
 
@@ -5339,1572 +5415,5 @@ function dismissInstallBanner() {
 }
 document.addEventListener('DOMContentLoaded', syncHeaderInstallBtn);
 </script>
-</body>
-</html>
-
-
-    <script>
-        
-        
-// Top DESK Dropdown
-function toggleTopDeskMenu(e) {
-    if (e) e.stopPropagation();
-    const drop = document.getElementById('topDeskDropdown');
-    const newToolDrop = document.getElementById('topNewToolDropdown');
-    if (newToolDrop) newToolDrop.classList.add('hidden');
-    if (drop) drop.classList.toggle('hidden');
-}
-
-// Top Nuovo Tool Dropdown (aligned right)
-function toggleTopNewToolMenu(e) {
-    if (e) e.stopPropagation();
-    const drop = document.getElementById('topNewToolDropdown');
-    const deskDrop = document.getElementById('topDeskDropdown');
-    if (deskDrop) deskDrop.classList.add('hidden');
-    if (drop) drop.classList.toggle('hidden');
-}
-
-function openDeskTool(toolType) {
-    const drop = document.getElementById('topDeskDropdown');
-    if (drop) drop.classList.add('hidden');
-    const trigger = () => {
-        if (window.OmniDesk) {
-            if (toolType === 'memo') window.OmniDesk.toggleMemo(true);
-            else if (toolType === 'calc') window.OmniDesk.toggleCalc(true);
-            else if (toolType === 'clock') window.OmniDesk.toggleClock(true);
-        }
-    };
-    if (window.OmniDesk) {
-        trigger();
-    } else {
-        const s = document.createElement('script');
-        s.src = '/desk_dock.js';
-        s.onload = trigger;
-        document.head.appendChild(s);
-    }
-}
-
-// Suite Menu Dropdown (header)
-function toggleSuiteMenu(e) {
-    if (e) e.stopPropagation();
-    const menu = document.getElementById('suiteMenuDropdown');
-    const chevron = document.getElementById('suiteMenuChevron');
-    if (!menu) return;
-    const isHidden = menu.classList.contains('hidden');
-    if (isHidden) {
-        menu.classList.remove('hidden');
-        if (chevron) chevron.classList.add('rotate-180');
-    } else {
-        menu.classList.add('hidden');
-        if (chevron) chevron.classList.remove('rotate-180');
-    }
-}
-
-document.addEventListener('click', (e) => {
-    const menu = document.getElementById('suiteMenuDropdown');
-    const btn = document.getElementById('suiteMenuBtn');
-    if (menu && !menu.classList.contains('hidden')) {
-        if (!menu.contains(e.target) && (!btn || !btn.contains(e.target))) {
-            menu.classList.add('hidden');
-            const chevron = document.getElementById('suiteMenuChevron');
-            if (chevron) chevron.classList.remove('rotate-180');
-        }
-    }
-    const deskDrop = document.getElementById('topDeskDropdown');
-    const topDeskBtn = document.getElementById('topDeskBtn');
-    if (deskDrop && !deskDrop.classList.contains('hidden')) {
-        if (!deskDrop.contains(e.target) && (!topDeskBtn || !topDeskBtn.contains(e.target))) {
-            deskDrop.classList.add('hidden');
-        }
-    }
-    const newToolDrop = document.getElementById('topNewToolDropdown');
-    const topNewToolBtn = document.getElementById('topNewToolBtn');
-    if (newToolDrop && !newToolDrop.classList.contains('hidden')) {
-        if (!newToolDrop.contains(e.target) && (!topNewToolBtn || !topNewToolBtn.contains(e.target))) {
-            newToolDrop.classList.add('hidden');
-        }
-    }
-});
-
-
-// Global Navigation I18N Engine (2 Languages: IT & EN)
-const NAV_TRANSLATIONS = {
-    it: {
-        tab_home: 'OmniTools',
-        desk_title: 'Strumenti da Scrivania',
-        desk_memo: 'OmniMemo (Post-it)',
-        desk_calc: 'OmniCalc (Calcolatrice)',
-        desk_clock: 'OmniClock (Orologio)',
-        new_tool_btn: 'Nuovo Tool',
-        choose_calc: 'Scegli Calcolatore',
-        tool_count: '19 Tool',
-        tool_count_long: '19 Strumenti',
-        cat_building: 'OmniBuilding (6)',
-        cat_graph: 'OmniGraph (6)',
-        cat_finance: 'OmniFinance (6)',
-        btn_print: 'Print',
-        btn_install: 'Installa',
-        dock_back: 'Riancora',
-        detached_tag: 'Finestra Staccata',
-        resize_hint: 'Ridimensiona finestra trascinando i bordi'
-    },
-    en: {
-        tab_home: 'OmniTools',
-        desk_title: 'Desktop Utilities',
-        desk_memo: 'OmniMemo (Post-it)',
-        desk_calc: 'OmniCalc (Calculator)',
-        desk_clock: 'OmniClock (Clock)',
-        new_tool_btn: 'New Tool',
-        choose_calc: 'Choose Calculator',
-        tool_count: '19 Tools',
-        tool_count_long: '19 Tools',
-        cat_building: 'OmniBuilding (6)',
-        cat_graph: 'OmniGraph (6)',
-        cat_finance: 'OmniFinance (6)',
-        btn_print: 'Print',
-        btn_install: 'Install',
-        dock_back: 'Dock back',
-        detached_tag: 'Detached Window',
-        resize_hint: 'Resize window by dragging borders'
-    },
-    es: {
-        tab_home: 'OmniTools',
-        desk_title: 'Herramientas de Escritorio',
-        desk_memo: 'OmniMemo (Post-it)',
-        desk_calc: 'OmniCalc (Calculadora)',
-        desk_clock: 'OmniClock (Reloj)',
-        new_tool_btn: 'Nueva Herramienta',
-        choose_calc: 'Elegir Calculadora',
-        tool_count: '17 Herramientas',
-        tool_count_long: '17 Herramientas',
-        cat_building: 'OmniBuilding (6)',
-        cat_graph: 'OmniGraph (6)',
-        cat_finance: 'OmniFinance (6)',
-        btn_print: 'Imprimir',
-        btn_install: 'Instalar',
-        dock_back: 'Reanclar',
-        detached_tag: 'Ventana Desacoplada',
-        resize_hint: 'Cambiar tamaño arrastrando los bordes'
-    },
-    fr: {
-        tab_home: 'OmniTools',
-        desk_title: 'Outils de Bureau',
-        desk_memo: 'OmniMemo (Post-it)',
-        desk_calc: 'OmniCalc (Calculatrice)',
-        desk_clock: 'OmniClock (Horloge)',
-        new_tool_btn: 'Nouvel Outil',
-        choose_calc: 'Choisir le Calculateur',
-        tool_count: '17 Outils',
-        tool_count_long: '17 Outils',
-        cat_building: 'OmniBuilding (6)',
-        cat_graph: 'OmniGraph (6)',
-        cat_finance: 'OmniFinance (6)',
-        btn_print: 'Imprimer',
-        btn_install: 'Installer',
-        dock_back: 'Réancrer',
-        detached_tag: 'Fenêtre Détachée',
-        resize_hint: 'Redimensionner la fenêtre en étirant les bords'
-    },
-    de: {
-        tab_home: 'OmniTools',
-        desk_title: 'Schreibtisch-Tools',
-        desk_memo: 'OmniMemo (Post-it)',
-        desk_calc: 'OmniCalc (Rechner)',
-        desk_clock: 'OmniClock (Uhr)',
-        new_tool_btn: 'Neues Tool',
-        choose_calc: 'Rechner Wählen',
-        tool_count: '19 Tools',
-        tool_count_long: '19 Tools',
-        cat_building: 'OmniBuilding (6)',
-        cat_graph: 'OmniGraph (6)',
-        cat_finance: 'OmniFinance (6)',
-        btn_print: 'Drucken',
-        btn_install: 'Installieren',
-        dock_back: 'Wieder andocken',
-        detached_tag: 'Abgetrenntes Fenster',
-        resize_hint: 'Fenstergröße an den Kanten ziehen'
-    },
-    pt: {
-        tab_home: 'OmniTools',
-        desk_title: 'Ferramentas de Secretária',
-        desk_memo: 'OmniMemo (Post-it)',
-        desk_calc: 'OmniCalc (Calculadora)',
-        desk_clock: 'OmniClock (Relógio)',
-        new_tool_btn: 'Nova Ferramenta',
-        choose_calc: 'Escolher Calculadora',
-        tool_count: '17 Ferramentas',
-        tool_count_long: '17 Ferramentas',
-        cat_building: 'OmniBuilding (6)',
-        cat_graph: 'OmniGraph (6)',
-        cat_finance: 'OmniFinance (6)',
-        btn_print: 'Imprimir',
-        btn_install: 'Instalar',
-        dock_back: 'Reancorar',
-        detached_tag: 'Janela Desacoplada',
-        resize_hint: 'Redimensione a janela arrastando as bordas'
-    }
-};
-
-const NAV_TOOL_NAMES_I18N = {
-    rampe: { it: 'RampaFacile', en: 'RampEasy', es: 'RampaFácil', fr: 'RampeFacile', de: 'RampeLeicht', pt: 'RampaFácil' },
-    scale: { it: 'ScalaFacile', en: 'StairsEasy', es: 'EscaleraFácil', fr: 'EscalierFacile', de: 'TreppenLeicht', pt: 'EscadaFácil' },
-    tubi: { it: 'TubiFacili', en: 'PipesEasy', es: 'TuberíasFácil', fr: 'TuyauxFaciles', de: 'RohreLeicht', pt: 'TubosFácil' },
-    tetto: { it: 'TettoFacile', en: 'RoofEasy', es: 'TejadoFácil', fr: 'ToitFacile', de: 'DachLeicht', pt: 'TelhadoFácil' },
-    taglio: { it: 'TaglioOttimo', en: 'OptiCut 1D', es: 'CorteÓptimo', fr: 'CoupeOptimale', de: 'OptiSchnitt 1D', pt: 'CorteÓtimo' },
-    piastrelle: { it: 'PiastrellaFacile', en: 'TileEasy', es: 'AzulejoFácil', fr: 'CarrelageFacile', de: 'FliesenLeicht', pt: 'AzulejoFácil' },
-    dorso: { it: 'DorsoFacile', en: 'SpineEasy', es: 'LomoFácil', fr: 'DosFacile', de: 'BuchrückenLeicht', pt: 'LombadaFácil' },
-    dpi: { it: 'RisoluzioneFacile', en: 'ResolutionEasy', es: 'ResoluciónFácil', fr: 'RésolutionFacile', de: 'AuflösungLeicht', pt: 'ResoluçãoFácil' },
-    tinta: { it: 'TintaPerfetta', en: 'ColorMatch Pro', es: 'TintaPerfecta', fr: 'CouleurParfaite', de: 'FarbTreffer', pt: 'TintaPerfeita' },
-    barcode: { it: 'OmniBarcode', en: 'OmniBarcode', es: 'OmniBarcode', fr: 'OmniBarcode', de: 'OmniBarcode', pt: 'OmniBarcode' },
-    copertura: { it: 'CoperturaFacile', en: 'CoverageEasy', es: 'CoberturaFácil', fr: 'CouvertureFacile', de: 'FarbdeckungLeicht', pt: 'CoberturaFácil' },
-    resa: { it: 'ResaCarta', en: 'PaperYield', es: 'RendimientoPapel', fr: 'RendementPapier', de: 'PapierAusbeute', pt: 'RendimentoPapel' },
-    mutuo: { it: 'MutuoFacile', en: 'MortgageEasy', es: 'HipotecaFácil', fr: 'PrêtImmoFacile', de: 'HypothekLeicht', pt: 'HipotecaFácil' },
-    pac: { it: 'InteresseComposto', en: 'CompoundInterest', es: 'InterésCompuesto', fr: 'IntérêtsComposés', de: 'ZinseszinsRechner', pt: 'JurosCompostos' },
-    margine: { it: 'MargineFacile', en: 'MarginEasy', es: 'MargenFácil', fr: 'MargeFacile', de: 'MargeLeicht', pt: 'MargemFácil' },
-    estinzione: { it: 'EstinzioneMutuo', en: 'MortgagePayoff', es: 'AmortizaciónHipoteca', fr: 'RemboursementAnticipé', de: 'SondertilgungRechner', pt: 'AmortizaçãoHipoteca' },
-    risparmio: { it: 'ObiettivoRisparmio', en: 'SavingsGoal', es: 'MetaAhorro', fr: 'ObjectifÉpargne', de: 'SparzielRechner', pt: 'MetaPoupança' },
-    fire: { it: 'FIRE & Rendita', en: 'FIRE & Passive Income', es: 'FIRE y Rentas', fr: 'FIRE & Rente', de: 'FIRE & Rente', pt: 'FIRE e Renda' }
-,
-    shelflife: { it: 'ShelfLife Export', en: 'Shelf-Life Calc', es: 'ShelfLife Export', fr: 'ShelfLife Export', de: 'ShelfLife Export', pt: 'ShelfLife Export' },
-    nutriexport: { it: 'NutriExport Converter', en: 'NutriExport FDA', es: 'NutriExport FDA', fr: 'NutriExport FDA', de: 'NutriExport FDA', pt: 'NutriExport FDA' },
-    impasti: { it: 'BatchScaler Pro', en: 'BatchScaler Pro', es: 'BatchScaler Pro', fr: 'BatchScaler Pro', de: 'BatchScaler Pro', pt: 'BatchScaler Pro' },
-    idratazione: { it: 'HygroBalance Lab', en: 'HygroBalance Lab', es: 'HygroBalance Lab', fr: 'HygroBalance Lab', de: 'HygroBalance Lab', pt: 'HygroBalance Lab' }
-};
-
-function updateNavTranslations(lang) {
-    const l = NAV_TRANSLATIONS[lang] ? lang : 'it';
-    const tr = NAV_TRANSLATIONS[l];
-
-    const tabHome = document.getElementById('navTabHomeText');
-    if (tabHome) tabHome.textContent = tr.tab_home;
-
-    const deskTitle = document.getElementById('navDeskTitle');
-    if (deskTitle) deskTitle.textContent = tr.desk_title;
-
-    const deskMemo = document.getElementById('navDeskMemo');
-    if (deskMemo) deskMemo.textContent = tr.desk_memo;
-
-    const deskCalc = document.getElementById('navDeskCalc');
-    if (deskCalc) deskCalc.textContent = tr.desk_calc;
-
-    const deskClock = document.getElementById('navDeskClock');
-    if (deskClock) deskClock.textContent = tr.desk_clock;
-
-    const newBtn = document.getElementById('topNewToolBtnText');
-    if (newBtn) newBtn.textContent = tr.new_tool_btn;
-
-    const topChoose = document.getElementById('topDropChooseCalc');
-    if (topChoose) topChoose.textContent = tr.choose_calc;
-
-    const topCount = document.getElementById('topDropToolCount');
-    if (topCount) topCount.textContent = tr.tool_count;
-
-    const topB = document.getElementById('topDropBuildingTitle');
-    if (topB) topB.textContent = tr.cat_building;
-
-    const topG = document.getElementById('topDropGraphTitle');
-    if (topG) topG.textContent = tr.cat_graph;
-
-    const topF = document.getElementById('topDropFinanceTitle');
-    if (topF) topF.textContent = tr.cat_finance;
-
-    const suiteChoose = document.getElementById('suiteDropChooseCalc');
-    if (suiteChoose) suiteChoose.textContent = tr.choose_calc;
-
-    const suiteCount = document.getElementById('suiteDropToolCount');
-    if (suiteCount) suiteCount.textContent = tr.tool_count_long;
-
-    const suiteB = document.getElementById('suiteDropBuildingTitle');
-    if (suiteB) suiteB.textContent = tr.cat_building;
-
-    const suiteG = document.getElementById('suiteDropGraphTitle');
-    if (suiteG) suiteG.textContent = tr.cat_graph;
-
-    const suiteF = document.getElementById('suiteDropFinanceTitle');
-    if (suiteF) suiteF.textContent = tr.cat_finance;
-
-    const printBtn = document.getElementById('headerPrintText');
-    if (printBtn) printBtn.textContent = tr.btn_print;
-
-    const installBtn = document.getElementById('headerInstallText');
-    if (installBtn) installBtn.textContent = tr.btn_install;
-
-    const suiteDesk = document.getElementById('suiteDropDeskTitle');
-    if (suiteDesk) suiteDesk.textContent = tr.desk_title;
-
-    const curPath = window.location.pathname.replace('.html', '').replace('/', '');
-    const curToolNameEl = document.getElementById('suiteCurrentToolName');
-    if (curToolNameEl && curPath && NAV_TOOL_NAMES_I18N[curPath] && NAV_TOOL_NAMES_I18N[curPath][l]) {
-        curToolNameEl.textContent = NAV_TOOL_NAMES_I18N[curPath][l];
-    }
-
-    // Update tool names inside dropdown links
-    document.querySelectorAll('[data-nav-tool-id]').forEach(link => {
-        const tid = link.getAttribute('data-nav-tool-id');
-        const nameEl = link.querySelector('.nav-tool-name');
-        if (tid && nameEl && NAV_TOOL_NAMES_I18N[tid] && NAV_TOOL_NAMES_I18N[tid][l]) {
-            nameEl.textContent = NAV_TOOL_NAMES_I18N[tid][l];
-        }
-    });
-}
-
-// Global hook to language change
-window.addEventListener('omnitools_lang_changed', (e) => {
-    if (e.detail && e.detail.lang) updateNavTranslations(e.detail.lang);
-        if (typeof renderChromeTabs === 'function') renderChromeTabs();
-});
-
-// Auto-Sync Language Selector
-document.addEventListener('DOMContentLoaded', () => {
-    const sel = document.getElementById('langSelect');
-    const saved = localStorage.getItem('omnitools_lang') || 'it';
-    if (sel) {
-        sel.value = saved;
-    }
-    updateNavTranslations(saved);
-});
-
-// Dynamic Chrome Tabs & Multi-Window Detach Engine
-(function() {
-    const TOOL_ICONS_JS = {
-        'rampe': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>`,
-        'scale': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>`,
-        'tubi': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>`,
-        'tetto': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>`,
-        'taglio': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>`,
-        'piastrelle': `<span class="w-4 h-4 bg-amber-500 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs" style="border-radius: 0px;"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>`,
-        'dorso': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>`,
-        'dpi': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`,
-        'tinta': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>`,
-        'barcode': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>`,
-        'copertura': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>`,
-        'resa': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
-        'mutuo': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>`,
-        'pac': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>`,
-        'margine': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>`,
-        'estinzione': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>`,
-        'risparmio': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>`,
-        'fire': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>`,
-        'nutriexport': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>`,
-        'impasti': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg></span>`,
-        'idratazione': `<span style="border-radius: 0px;" class="w-4 h-4 rounded-none bg-orange-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>`
-    };
-
-        const TOOLS_MAP = {
-        'rampe': { name: 'RampaFacile', url: '/rampe', url_en: '/en/ramp-slope-calculator', color: 'bg-amber-500' },
-        'scale': { name: 'ScalaFacile', url: '/scale', url_en: '/en/stair-calculator', color: 'bg-amber-500' },
-        'tubi': { name: 'TubiFacili', url: '/tubi', url_en: '/en/pipe-slope-calculator', color: 'bg-amber-500' },
-        'tetto': { name: 'TettoFacile', url: '/tetto', url_en: '/en/roof-pitch-calculator', color: 'bg-amber-500' },
-        'taglio': { name: 'TaglioOttimo', url: '/taglio', url_en: '/en/cut-list-optimizer', color: 'bg-amber-500' },
-        'piastrelle': { name: 'PiastrellaFacile', url: '/piastrelle', url_en: '/en/tile-grout-calculator', color: 'bg-amber-500' },
-        'dorso': { name: 'DorsoFacile', url: '/dorso', url_en: '/en/book-spine-calculator', color: 'bg-rose-700' },
-        'dpi': { name: 'Risoluzione', url: '/dpi', url_en: '/en/print-resolution-calculator', color: 'bg-rose-700' },
-        'tinta': { name: 'TintaPerfetta', url: '/tinta', url_en: '/en/pantone-ink-mixing-calculator', color: 'bg-rose-700' },
-        'barcode': { name: 'OmniBarcode', url: '/barcode', url_en: '/en/barcode-generator', color: 'bg-rose-700' },
-        'copertura': { name: 'Copertura', url: '/copertura', url_en: '/en/cmyk-ink-coverage-calculator', color: 'bg-rose-700' },
-        'resa': { name: 'ResaCarta', url: '/resa', url_en: '/en/paper-cutting-yield-calculator', color: 'bg-rose-700' },
-        'mutuo': { name: 'MutuoFacile', url: '/mutuo', url_en: '/en/mortgage-loan-amortization-calculator', color: 'bg-emerald-600' },
-        'pac': { name: 'Interesse', url: '/pac', url_en: '/en/compound-interest-calculator', color: 'bg-emerald-600' },
-        'margine': { name: 'MargineFacile', url: '/margine', url_en: '/en/margin-markup-calculator', color: 'bg-emerald-600' },
-        'estinzione': { name: 'Estinzione', url: '/estinzione', url_en: '/en/early-mortgage-payoff-calculator', color: 'bg-emerald-600' },
-        'risparmio': { name: 'Risparmio', url: '/risparmio', url_en: '/en/savings-goal-calculator', color: 'bg-emerald-600' },
-        'fire': { name: 'FIRE & Rendita', url: '/fire', url_en: '/en/fire-financial-independence-calculator', color: 'bg-emerald-600' },
-        'shelflife': { name: 'ShelfLife Export', url: '/shelflife', url_en: '/en/shelf-life-calculator', color: 'bg-orange-600' },
-        'nutriexport': { name: 'NutriExport Converter', url: '/nutriexport', url_en: '/en/nutri-export-converter', color: 'bg-orange-600' },
-        'impasti': { name: 'BatchScaler Pro', url: '/impasti', url_en: '/en/batch-scaler-calculator', color: 'bg-orange-600' },
-        'idratazione': { name: 'HygroBalance Lab', url: '/idratazione', url_en: '/en/hydration-balance-calculator', color: 'bg-orange-600' }
-    };
-
-    const PATH_TO_TOOL_ID = {
-        'rampe': 'rampe', 'ramp-slope-calculator': 'rampe',
-        'scale': 'scale', 'stair-calculator': 'scale',
-        'tubi': 'tubi', 'pipe-slope-calculator': 'tubi',
-        'tetto': 'tetto', 'roof-pitch-calculator': 'tetto',
-        'taglio': 'taglio', 'cut-list-optimizer': 'taglio',
-        'piastrelle': 'piastrelle', 'tile-grout-calculator': 'piastrelle',
-        'dorso': 'dorso', 'book-spine-calculator': 'dorso',
-        'dpi': 'dpi', 'print-resolution-calculator': 'dpi',
-        'tinta': 'tinta', 'pantone-ink-mixing-calculator': 'tinta',
-        'barcode': 'barcode', 'barcode-generator': 'barcode',
-        'copertura': 'copertura', 'cmyk-ink-coverage-calculator': 'copertura',
-        'resa': 'resa', 'paper-cutting-yield-calculator': 'resa',
-        'mutuo': 'mutuo', 'mortgage-loan-amortization-calculator': 'mutuo',
-        'pac': 'pac', 'compound-interest-calculator': 'pac',
-        'margine': 'margine', 'margin-markup-calculator': 'margine',
-        'estinzione': 'estinzione', 'early-mortgage-payoff-calculator': 'estinzione',
-        'risparmio': 'risparmio', 'savings-goal-calculator': 'risparmio',
-        'fire': 'fire', 'fire-financial-independence-calculator': 'fire',
-        'shelflife': 'shelflife', 'shelf-life-calculator': 'shelflife',
-        'nutriexport': 'nutriexport', 'nutri-export-converter': 'nutriexport',
-        'impasti': 'impasti', 'batch-scaler-calculator': 'impasti',
-        'idratazione': 'idratazione', 'hydration-balance-calculator': 'idratazione'
-    };
-
-        window.openToolInTab = function(toolId, targetUrl) {
-        try {
-            let tabs = JSON.parse(sessionStorage.getItem('omni_open_tabs_v1')) || [];
-            if (toolId && !tabs.includes(toolId)) {
-                tabs.push(toolId);
-                sessionStorage.setItem('omni_open_tabs_v1', JSON.stringify(tabs));
-            }
-        } catch(e) {}
-        if (targetUrl) {
-            window.location.href = targetUrl;
-        }
-    };
-
-    const TABS_KEY = 'omni_open_tabs_v1';
-    let openTabs = [];
-    try {
-        openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
-    } catch(e) {}
-
-    const rawPath = window.location.pathname.replace('.html', '').replace(/^\/+/, '').replace(/^en\//, '');
-    const currentToolId = PATH_TO_TOOL_ID[rawPath] || (TOOLS_MAP[rawPath] ? rawPath : '');
-    const pathname = currentToolId;
-    if (pathname && TOOLS_MAP[pathname]) {
-        if (!openTabs.includes(pathname)) {
-            openTabs.push(pathname);
-            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-        }
-    }
-
-    let detachedWindows = {};
-
-    window.OmniMultiWindow = {
-        detachTool(id) {
-            const tool = TOOLS_MAP[id];
-            if (!tool) return;
-            if (detachedWindows[id]) return;
-
-            const win = document.createElement('div');
-            win.id = `detached-win-${id}`;
-            win.className = 'fixed z-[9992] bg-white dark:bg-slate-900 shadow-2xl border border-slate-700 overflow-hidden flex flex-col';
-            win.style.borderRadius = '0px';
-            win.style.width = 'min(760px, 92vw)';
-            win.style.height = 'min(580px, 82vh)';
-            win.style.minWidth = '360px';
-            win.style.minHeight = '260px';
-            win.style.resize = 'both';
-            win.style.left = Math.max(20, Math.min(window.innerWidth - 780, 80 + Object.keys(detachedWindows).length * 40)) + 'px';
-            win.style.top = (100 + Object.keys(detachedWindows).length * 40) + 'px';
-
-            win.innerHTML = `
-                <div class="window-header bg-slate-900 text-white px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none border-b border-slate-800" style="border-radius: 0px;">
-                    <div class="flex items-center gap-2">
-                        ${TOOL_ICONS_JS[id] || `<span class="w-4 h-4 ${tool.color} text-white flex items-center justify-center text-[10px] font-bold" style="border-radius: 0px;">●</span>`}
-                        <span class="text-xs font-bold tracking-tight">${tool.name}</span>
-                        <span class="text-[9px] font-mono px-1.5 py-0.2 bg-blue-600 text-white font-bold" style="border-radius: 0px;">Finestra Staccata</span>
-                    </div>
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="window.OmniMultiWindow.dockBack('${id}')" title="Riancora nella barra delle schede in alto" class="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white text-[11px] font-bold transition flex items-center gap-1 cursor-pointer border border-slate-700 hover:border-slate-600" style="border-radius: 0px;">
-                            <span>⤶</span>
-                            <span>Riancora</span>
-                        </button>
-                        <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold cursor-pointer" style="border-radius: 0px;">
-                            </button>
-                    </div>
-                </div>
-                <div class="flex-1 w-full bg-slate-50 relative overflow-hidden flex flex-col">
-                    <iframe src="${(window.location.pathname.startsWith('/en/') && tool.url_en) ? ('/' + tool.url_en.replace(/^\/+/, '') + '.html') : ('/' + tool.url.replace(/^\/+/, '') + '.html')}" class="w-full flex-1 border-0"></iframe>
-                    <!-- Resize grip bar at bottom -->
-                    <div class="h-4 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between px-2 text-[10px] text-slate-400 select-none">
-                        <span class="font-mono">Ridimensiona finestra trascinando i bordi</span>
-                        <div class="window-resize-grip w-3.5 h-3.5 flex items-center justify-center cursor-se-resize text-slate-500 hover:text-slate-900 active:text-blue-600 transition" title="Trascina per ridimensionare larghezza e altezza">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 19H5m14-6H11m8-6H17"/></svg>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(win);
-            detachedWindows[id] = win;
-
-            makeWindowDraggable(win, win.querySelector('.window-header'));
-            makeWindowResizable(win, win.querySelector('.window-resize-grip'));
-
-            openTabs = openTabs.filter(x => x !== id);
-            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-            renderChromeTabs();
-        },
-
-        dockBack(id) {
-            const win = detachedWindows[id];
-            if (win) {
-                win.remove();
-                delete detachedWindows[id];
-            }
-            if (!openTabs.includes(id)) {
-                openTabs.push(id);
-                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
-            }
-            renderChromeTabs();
-        },
-
-        closeDetached(id) {
-            const win = detachedWindows[id];
-            if (win) {
-                win.remove();
-                delete detachedWindows[id];
-            }
-        }
-    };
-
-    function makeWindowDraggable(el, handle) {
-        let isDrag = false, startX, startY, initL, initT;
-        function onStart(e) {
-            if (e.target.closest('button, select, input, a')) return;
-            isDrag = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            const r = el.getBoundingClientRect();
-            initL = r.left;
-            initT = r.top;
-            // Prevent iframe swallowing mouse events while dragging
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'none';
-            document.addEventListener('mousemove', onMove);
-            document.addEventListener('mouseup', onEnd);
-        }
-        function onMove(e) {
-            if (!isDrag) return;
-            el.style.left = Math.max(10, Math.min(window.innerWidth - el.offsetWidth - 10, initL + (e.clientX - startX))) + 'px';
-            el.style.top = Math.max(10, Math.min(window.innerHeight - el.offsetHeight - 10, initT + (e.clientY - startY))) + 'px';
-        }
-        function onEnd() {
-            isDrag = false;
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'auto';
-            document.removeEventListener('mousemove', onMove);
-            document.removeEventListener('mouseup', onEnd);
-        }
-        handle.addEventListener('mousedown', onStart);
-    }
-
-    function makeWindowResizable(el, handle) {
-        let isResizing = false, startX, startY, startW, startH;
-        function onResizeStart(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            isResizing = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            startW = el.offsetWidth;
-            startH = el.offsetHeight;
-            // Temporarily disable iframe pointer events so smooth mousemove works over iframe
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'none';
-            document.body.style.cursor = 'se-resize';
-            document.addEventListener('mousemove', onResizeMove);
-            document.addEventListener('mouseup', onResizeEnd);
-        }
-        function onResizeMove(e) {
-            if (!isResizing) return;
-            const newW = Math.max(380, Math.min(window.innerWidth - el.offsetLeft - 10, startW + (e.clientX - startX)));
-            const newH = Math.max(280, Math.min(window.innerHeight - el.offsetTop - 10, startH + (e.clientY - startY)));
-            el.style.width = newW + 'px';
-            el.style.height = newH + 'px';
-        }
-        function onResizeEnd() {
-            isResizing = false;
-            const ifr = el.querySelector('iframe');
-            if (ifr) ifr.style.pointerEvents = 'auto';
-            document.body.style.cursor = 'default';
-            document.removeEventListener('mousemove', onResizeMove);
-            document.removeEventListener('mouseup', onResizeEnd);
-        }
-        if (handle) {
-            handle.addEventListener('mousedown', onResizeStart);
-        }
-    }
-
-        function renderChromeTabs() {
-        const track = document.getElementById('omniChromeTabsTrack');
-        if (!track) return;
-
-        const homeTab = document.getElementById('omniTabHome');
-        const isHome = (!pathname || pathname === 'index');
-        if (homeTab) {
-            homeTab.className = isHome ? 'flex items-center gap-2 px-3.5 h-[34px] bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 dark:border-slate-800 shadow-xs' : 'flex items-center gap-2 px-3.5 h-[34px] bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white font-medium border-t-2 border-transparent transition shrink-0 text-[12px] border-r border-slate-200 dark:border-slate-800';
-            homeTab.style.borderRadius = '0px';
-        }
-
-        track.querySelectorAll('.omni-dyn-tab').forEach(el => el.remove());
-
-        openTabs.forEach(id => {
-            const tool = TOOLS_MAP[id];
-            if (!tool) return;
-            const isActive = (id === pathname);
-            const targetUrl = (window.location.pathname.startsWith('/en/') && tool.url_en) ? tool.url_en : tool.url;
-
-            const tab = document.createElement('div');
-            tab.className = `omni-dyn-tab group flex items-center gap-2 px-3 h-[34px] text-[12px] border-t-2 border-r transition shrink-0 cursor-pointer ${isActive ? 'bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 border-t-blue-600 border-r-slate-300 dark:border-r-slate-800 font-bold shadow-xs active-tab' : 'bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#475569] dark:text-slate-300 hover:text-[#0F172A] dark:hover:text-white border-t-transparent border-r-slate-200 dark:border-r-slate-800 font-medium inactive-tab'}`;
-            tab.style.borderRadius = '0px';
-            tab.title = 'Trascina in basso o clicca ↗ per staccare in finestra';
-            
-            const iconMarkup = TOOL_ICONS_JS[id] || `<span class="w-3.5 h-3.5 ${tool.color} text-white flex items-center justify-center text-[9px] font-bold" style="border-radius: 0px;">●</span>`;
-            const isEn = window.location.pathname.startsWith('/en/');
-            const detachTitle = isEn ? 'Detach tab into floating window' : 'Stacca scheda in finestra mobile';
-            const closeTitle = isEn ? 'Close tab' : 'Chiudi scheda';
-
-            tab.innerHTML = `
-                <a href="${targetUrl}" class="flex items-center gap-1.5 text-inherit no-underline pr-1">
-                    ${iconMarkup}
-                    <span class="truncate max-w-[100px] sm:max-w-[140px]">${tool.name}</span>
-                </a>
-                <div class="flex items-center gap-1 ml-1 pl-1 border-l border-slate-200 dark:border-slate-700">
-                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.OmniMultiWindow.detachTool('${id}')" title="${detachTitle}" class="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-amber-500 hover:bg-slate-200/80 dark:hover:bg-slate-700/80 transition cursor-pointer font-bold text-[11px]" style="border-radius: 0px;">
-                        ↗
-                    </button>
-                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); window.closeToolTab('${id}')" class="close-tab w-5 h-5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-rose-600 transition cursor-pointer" style="border-radius: 0px;" title="${closeTitle}">
-                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    </button>
-                </div>
-            `;
-
-            let tabDragY = 0;
-            tab.addEventListener('mousedown', (e) => {
-                if (e.target.closest('button, .close-tab')) return;
-                tabDragY = e.clientY;
-                function checkDetach(evt) {
-                    if (evt.clientY - tabDragY > 40) {
-                        document.removeEventListener('mousemove', checkDetach);
-                        window.OmniMultiWindow.detachTool(id);
-                    }
-                }
-                function stopCheck() {
-                    document.removeEventListener('mousemove', checkDetach);
-                    document.removeEventListener('mouseup', stopCheck);
-                }
-                document.addEventListener('mousemove', checkDetach);
-                document.addEventListener('mouseup', stopCheck);
-            });
-
-            track.appendChild(tab);
-        });
-    }
-
-    window.closeToolTab = function(id) {
-        openTabs = openTabs.filter(x => x !== id);
-        try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
-        if (id === pathname) {
-            const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
-            window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
-        } else {
-            renderChromeTabs();
-        }
-    };
-
-    const TOOL_ICONS_RAW_SVG = {
-        'piastrelle': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#f59e0b"/><rect x="5" y="5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><rect x="17.5" y="5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><rect x="5" y="17.5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><rect x="17.5" y="17.5" width="9.5" height="9.5" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.2"/></svg>`,
-        'mutuo': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#059669"/><path d="M5 14h22M10 20h2m5 0h2m-9 5h14a3 3 0 003-3V11a3 3 0 00-3-3H9a3 3 0 00-3 3v11a3 3 0 003 3z" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-        'default': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#2563eb"/><circle cx="16" cy="16" r="13.2" fill="none" stroke="#ffffff" stroke-width="3.4"/><path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="11.5" r="2.1" fill="#38bdf8"/></svg>`
-    };
-
-    function updateDynamicFavicon(toolId) {
-        const favEl = document.getElementById('dynamicFavicon');
-        if (!favEl) return;
-        const svgStr = TOOL_ICONS_RAW_SVG['default'];
-        favEl.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgStr);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        updateDynamicFavicon(pathname || 'dorso');
-        renderChromeTabs();
-    });
-})();
-
-        
-
-        // Global Footer I18N Engine (2 Languages: IT & EN)
-        const FOOTER_TRANSLATIONS = {
-    "it": {
-        "rel_title": "Altri Calcolatori Tecnici Consigliati",
-        "rel_sub": "Precision Utilities • 100% Gratuito",
-        "rel_open": "Apri Calcolatore",
-        "share_title": "Ti è stato utile questo calcolatore?",
-        "share_sub": "Condividilo con colleghi, collaboratori o clienti",
-        "share_copy": "Copy Link",
-        "share_copied": "Copyto! ",
-        "share_btn": "Condividi",
-        "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
-        "suggest_btn": "Suggerisci",
-        "net_sub": "19 Strumenti Gratuiti • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Cantiere & Fabbricazione)",
-        "cat_graph": "OmniGraph (6 Grafica & Print)",
-        "cat_finance": "OmniFinance (6 Finanza & Libertà)",
-        "cat_desk": "OmniDesk — Strumenti Rapidi da Scrivania",
-        "partner_text": "Diventa Partner Ufficiale o Sponsor della Suite OmniTools",
-        "rights": "© 2026 OmniTools Network — Tutti i diritti riservati.",
-        "pill_active": "Attivo",
-        "pill_open": "Apri →",
-        "install_title": "Installa OmniTools come App",
-        "install_sub": "Utility di calcolo professionale sempre a portata di mano",
-        "install_btn": "Installa",
-        "suggest_modal_title": "Suggerisci uno Strumento",
-        "suggest_modal_desc": "Quale nuovo calcolatore, formula o funzione vorresti vedere su OmniTools?",
-        "suggest_modal_ph": "Scrivi qui la tua idea...",
-        "suggest_modal_anon": "Invio 100% anonimo. Non serve registrarsi.",
-        "suggest_modal_cancel": "Annulla",
-        "suggest_modal_send": "Invia",
-        "suggest_modal_success": "Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.",
-        "suggest_modal_done": "Fatto"
-    },
-    "en": {
-        "rel_title": "Other Recommended Technical Calculators",
-        "rel_sub": "Precision Utilities • 100% Free",
-        "rel_open": "Open Calculator",
-        "share_title": "Was this calculator useful to you?",
-        "share_sub": "Share it with colleagues, teammates, or clients",
-        "share_copy": "Copy Link",
-        "share_copied": "Copied! ",
-        "share_btn": "Share",
-        "suggest_banner": "Have an idea for a new construction, graphics, or finance calculator?",
-        "suggest_btn": "Suggest",
-        "net_sub": "17 Free Tools • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Construction & Fabrication)",
-        "cat_graph": "OmniGraph (6 Graphics & Prepress)",
-        "cat_finance": "OmniFinance (6 Finance & Freedom)",
-        "cat_desk": "OmniDesk — Fast Desktop Utilities",
-        "partner_text": "Become an Official Partner or Sponsor of OmniTools Suite",
-        "rights": "© 2026 OmniTools Network — All rights reserved.",
-        "pill_active": "Active",
-        "pill_open": "Open →",
-        "install_title": "Install OmniTools as an App",
-        "install_sub": "Professional calculation utilities always at your fingertips",
-        "install_btn": "Install",
-        "suggest_modal_title": "Suggest a Tool",
-        "suggest_modal_desc": "What new calculator, formula, or feature would you like to see on OmniTools?",
-        "suggest_modal_ph": "Write your idea here...",
-        "suggest_modal_anon": "100% anonymous submission. No sign-up required.",
-        "suggest_modal_cancel": "Cancel",
-        "suggest_modal_send": "Send",
-        "suggest_modal_success": "Thank you very much! Your suggestion has been saved and will shape upcoming OmniTools.",
-        "suggest_modal_done": "Done"
-    },
-    "es": {
-        "rel_title": "Otras Calculadoras Técnicas Recomendadas",
-        "rel_sub": "Utilidades de Precisión • 100% Gratis",
-        "rel_open": "Abrir Calculadora",
-        "share_title": "¿Te ha sido útil esta calculadora?",
-        "share_sub": "Compártela con colegas, colaboradores o clientes",
-        "share_copy": "Copyr Enlace",
-        "share_copied": "¡Copydo! ",
-        "share_btn": "Compartir",
-        "suggest_banner": "¿Tienes una idea para una nueva calculadora de obra, gráfica o finanzas?",
-        "suggest_btn": "Sugerir",
-        "net_sub": "17 Herramientas Gratuitas • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Construcción y Fabricación)",
-        "cat_graph": "OmniGraph (6 Gráfica y Preimpresión)",
-        "cat_finance": "OmniFinance (6 Finanzas y Libertad)",
-        "cat_desk": "OmniDesk — Herramientas Rápidas de Escritorio",
-        "partner_text": "Conviértete en Socio Oficial o Patrocinador de la Suite OmniTools",
-        "rights": "© 2026 OmniTools Network — Todos los derechos reservados.",
-        "pill_active": "Activo",
-        "pill_open": "Abrir →",
-        "install_title": "Instala OmniTools como App",
-        "install_sub": "Utilidades de cálculo profesional siempre a tu alcance",
-        "install_btn": "Instalar",
-        "suggest_modal_title": "Sugerir una Herramienta",
-        "suggest_modal_desc": "¿Qué nueva calculadora, fórmula o función te gustaría ver en OmniTools?",
-        "suggest_modal_ph": "Escribe tu idea aquí...",
-        "suggest_modal_anon": "Envío 100% anónimo. Sin registros.",
-        "suggest_modal_cancel": "Cancelar",
-        "suggest_modal_send": "Enviar",
-        "suggest_modal_success": "¡Muchas gracias! Tu idea ha sido registrada y guiará las próximas herramientas.",
-        "suggest_modal_done": "Hecho"
-    },
-    "fr": {
-        "rel_title": "Autres Calculateurs Techniques Recommandés",
-        "rel_sub": "Utilitaires de Précision • 100% Gratuit",
-        "rel_open": "Ouvrir le Calculateur",
-        "share_title": "Ce calculateur vous a-t-il été utile ?",
-        "share_sub": "Partagez-le avec vos collègues, collaborateurs ou clients",
-        "share_copy": "Copier le Lien",
-        "share_copied": "Copié ! ",
-        "share_btn": "Partager",
-        "suggest_banner": "Une idée de nouveau calculateur pour le chantier, le graphisme ou la finance ?",
-        "suggest_btn": "Suggérer",
-        "net_sub": "17 Outils Gratuits • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Bâtiment & Fabrication)",
-        "cat_graph": "OmniGraph (6 Graphisme & Prépresse)",
-        "cat_finance": "OmniFinance (6 Finance & Liberté)",
-        "cat_desk": "OmniDesk — Outils Rapides de Bureau",
-        "partner_text": "Devenez Partenaire Officiel ou Sponsor de la Suite OmniTools",
-        "rights": "© 2026 OmniTools Network — Tous droits réservés.",
-        "pill_active": "Actif",
-        "pill_open": "Ouvrir →",
-        "install_title": "Installer OmniTools comme Application",
-        "install_sub": "Utilitaires de calcul professionnel toujours à portée de main",
-        "install_btn": "Installer",
-        "suggest_modal_title": "Suggérer un Outil",
-        "suggest_modal_desc": "Quel calculateur, formule ou fonctionnalité aimeriez-vous voir sur OmniTools ?",
-        "suggest_modal_ph": "Écrivez votre idée ici...",
-        "suggest_modal_anon": "Envoi 100% anonyme. Aucune inscription requise.",
-        "suggest_modal_cancel": "Annuler",
-        "suggest_modal_send": "Envoyer",
-        "suggest_modal_success": "Merci beaucoup ! Votre idée a été enregistrée pour les prochains outils.",
-        "suggest_modal_done": "Terminé"
-    },
-    "de": {
-        "rel_title": "Weitere Empfohlene Technische Rechner",
-        "rel_sub": "Präzisions-Tools • 100% Kostenlos",
-        "rel_open": "Rechner Öffnen",
-        "share_title": "War dieser Rechner hilfreich für Sie?",
-        "share_sub": "Teilen Sie ihn mit Kollegen, Partnern oder Kunden",
-        "share_copy": "Link Kopieren",
-        "share_copied": "Kopiert! ",
-        "share_btn": "Teilen",
-        "suggest_banner": "Haben Sie eine Idee für einen neuen Rechner für Bau, Grafik oder Finanzen?",
-        "suggest_btn": "Vorschlagen",
-        "net_sub": "17 Kostenlose Tools • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Bau & Fertigung)",
-        "cat_graph": "OmniGraph (6 Grafik & Druckvorstufe)",
-        "cat_finance": "OmniFinance (6 Finanzen & Freiheit)",
-        "cat_desk": "OmniDesk — Schnelle Schreibtisch-Tools",
-        "partner_text": "Werden Sie offizieller Partner oder Sponsor der OmniTools Suite",
-        "rights": "© 2026 OmniTools Network — Alle Rechte vorbehalten.",
-        "pill_active": "Aktiv",
-        "pill_open": "Öffnen →",
-        "install_title": "OmniTools als App Installieren",
-        "install_sub": "Professionelle Rechenwerkzeuge immer griffbereit",
-        "install_btn": "Installieren",
-        "suggest_modal_title": "Ein Tool Vorschlagen",
-        "suggest_modal_desc": "Welchen neuen Rechner, welche Formel oder Funktion wünschen Sie sich bei OmniTools?",
-        "suggest_modal_ph": "Schreiben Sie Ihre Idee hier...",
-        "suggest_modal_anon": "100% anonyme Übermittlung. Keine Registrierung nötig.",
-        "suggest_modal_cancel": "Abbrechen",
-        "suggest_modal_send": "Senden",
-        "suggest_modal_success": "Vielen Dank! Ihre Idee wurde gespeichert und fließt in kommende Tools ein.",
-        "suggest_modal_done": "Fertig"
-    },
-    "pt": {
-        "rel_title": "Outras Calculadoras Técnicas Recomendadas",
-        "rel_sub": "Utilitários de Precisão • 100% Gratuito",
-        "rel_open": "Abrir Calculadora",
-        "share_title": "Esta calculadora foi útil para você?",
-        "share_sub": "Compartilhe com colegas, parceiros ou clientes",
-        "share_copy": "Copyr Link",
-        "share_copied": "Copydo! ",
-        "share_btn": "Compartilhar",
-        "suggest_banner": "Tem uma ideia para uma nova calculadora de obra, gráfica ou finanças?",
-        "suggest_btn": "Sugerir",
-        "net_sub": "17 Ferramentas Gratuitas • Precision Utilities Suite",
-        "cat_building": "OmniBuilding (5 Construção & Fabricação)",
-        "cat_graph": "OmniGraph (6 Design & Pré-impressão)",
-        "cat_finance": "OmniFinance (6 Finanças & Liberdade)",
-        "cat_desk": "OmniDesk — Ferramentas Rápidas de Secretária",
-        "partner_text": "Seja um Parceiro Oficial ou Patrocinador da Suite OmniTools",
-        "rights": "© 2026 OmniTools Network — Todos os direitos reservados.",
-        "pill_active": "Ativo",
-        "pill_open": "Abrir →",
-        "install_title": "Instalar OmniTools como Aplicativo",
-        "install_sub": "Utilitários profissionais de cálculo sempre à mão",
-        "install_btn": "Instalar",
-        "suggest_modal_title": "Sugerir uma Ferramenta",
-        "suggest_modal_desc": "Qual nova calculadora, fórmula ou recurso você gostaria de ver no OmniTools?",
-        "suggest_modal_ph": "Escreva sua ideia aqui...",
-        "suggest_modal_anon": "Envio 100% anônimo. Sem necessidade de cadastro.",
-        "suggest_modal_cancel": "Cancelar",
-        "suggest_modal_send": "Enviar",
-        "suggest_modal_success": "Muito obrigado! Sua ideia foi registrada e guiará as próximas ferramentas.",
-        "suggest_modal_done": "Concluído"
-    }
-};
-
-        function updateFooterTranslations(lang) {
-            const l = FOOTER_TRANSLATIONS[lang] ? lang : "it";
-            const tr = FOOTER_TRANSLATIONS[l];
-
-            // Update Division-Contextualized Native Sponsor Banner (2 Languages: IT & EN)
-            const SPONSOR_I18N = {
-                it: {
-                    avail: "Postazione Esclusiva Disponibile",
-                    cta: "Candida la tua Azienda",
-                    building: {
-                        badge: "SLOT SPONSOR TECNICO • OMNIBUILDING",
-                        title: "Produci sistemi per l'edilizia, tubazioni, serramenti o attrezzature da cantiere?",
-                        desc: "Posiziona il tuo brand e le tue schede tecniche qui e sulle stampe PDF A4 utilizzate ogni giorno da Geometri, Architetti, Ingegneri e Imprese Edili."
-                    },
-                    graph: {
-                        badge: "SLOT SPONSOR TECNICO • OMNIGRAPH",
-                        title: "Sei una Cartiera, un Service di Print Offset/Digitale o un Fornitore Packaging?",
-                        desc: "Mostra le tue carte, profili colore o servizi di stampa direttamente a Grafici, Tipografie, Case Editrici e Studi di Prestampa mentre preparano gli esecutivi."
-                    },
-                    finance: {
-                        badge: "SLOT SPONSOR TECNICO • OMNIFINANCE",
-                        title: "Sei un Broker Mutui, una Piattaforma Fintech o uno Studio di Consulenza Indipendente?",
-                        desc: "Raggiungi con esclusività di categoria utenti e famiglie ad altissima intenzione mentre calcolano rate mutuo, estinzioni anticipate, PAC e piani di risparmio."
-                    }
-                },
-                en: {
-                    avail: "Exclusive Slot Available",
-                    cta: "Apply as Official Partner",
-                    building: {
-                        badge: "TECHNICAL SPONSOR SLOT • OMNIBUILDING",
-                        title: "Do you manufacture building systems, piping, profiles, or construction equipment?",
-                        desc: "Place your brand and technical datasheets here and on A4 PDF printouts used daily by Architects, Civil Engineers, Surveyors, and Contractors."
-                    },
-                    graph: {
-                        badge: "TECHNICAL SPONSOR SLOT • OMNIGRAPH",
-                        title: "Are you a Paper Mill, Commercial Print Service, or Packaging Supplier?",
-                        desc: "Showcase your paper stocks, ICC profiles, or print services directly to Graphic Designers, Publishers, and Prepress Studios while they prepare press files."
-                    },
-                    finance: {
-                        badge: "TECHNICAL SPONSOR SLOT • OMNIFINANCE",
-                        title: "Are you a Mortgage Broker, Fintech Platform, or Independent Financial Advisor?",
-                        desc: "Reach high-intent users and families with category exclusivity right as they calculate mortgages, early payoffs, compound interest, and savings goals."
-                    }
-                },
-                es: {
-                    avail: "Posición Exclusiva Disponible",
-                    cta: "Postular mi Empresa",
-                    building: {
-                        badge: "ESPACIO PATROCINADOR TÉCNICO • OMNIBUILDING",
-                        title: "¿Fabricas sistemas de construcción, tuberías, carpintería o equipos de obra?",
-                        desc: "Posiciona tu marca y fichas técnicas aquí y en las hojas técnicas A4 utilizadas a diario por Arquitectos, Aparejadores, Ingenieros y Constructoras."
-                    },
-                    graph: {
-                        badge: "ESPACIO PATROCINADOR TÉCNICO • OMNIGRAPH",
-                        title: "¿Eres una Papelera, Imprenta Offset/Digital o Proveedor de Packaging?",
-                        desc: "Muestra tus papeles, perfiles de color o servicios de impresión directamente a Diseñadores Gráficos, Editoriales e Imprentas mientras calculan sus artes finales."
-                    },
-                    finance: {
-                        badge: "ESPACIO PATROCINADOR TÉCNICO • OMNIFINANCE",
-                        title: "¿Eres un Bróker Hipotecario, Plataforma Fintech o Asesor Financiero Independiente?",
-                        desc: "Llega con exclusividad de categoría a usuarios y familias de alta intención mientras simulan hipotecas, amortizaciones anticipadas y planes de ahorro."
-                    }
-                },
-                fr: {
-                    avail: "Emplacement Exclusif Disponible",
-                    cta: "Devenir Partenaire",
-                    building: {
-                        badge: "ESPACE SPONSOR TECHNIQUE • OMNIBUILDING",
-                        title: "Vous fabriquez des matériaux BTP, canalisations, profilés ou outillage de chantier ?",
-                        desc: "Affichez votre marque et vos fiches techniques ici et sur les rapports A4 imprimés chaque jour par les Architectes, Géomètres, Ingénieurs et Artisans."
-                    },
-                    graph: {
-                        badge: "ESPACE SPONSOR TECHNIQUE • OMNIGRAPH",
-                        title: "Vous êtes Papetier, Imprimeur Offset/Numérique ou Fournisseur Packaging ?",
-                        desc: "Présentez vos papiers, profils ICC ou services d'impression aux Graphistes, Éditeurs et Studios Prépresse au moment précis où ils préparent leurs fichiers."
-                    },
-                    finance: {
-                        badge: "ESPACE SPONSOR TECHNIQUE • OMNIFINANCE",
-                        title: "Vous êtes Courtier Immobilier, Fintech ou Conseiller en Gestion de Patrimoine ?",
-                        desc: "Touchez en exclusivité des utilisateurs à très forte intention lorsqu'ils calculent leurs mensualités de prêt, remboursements anticipés et plans d'épargne."
-                    }
-                },
-                de: {
-                    avail: "Exklusivplatz Verfügbar",
-                    cta: "Als Partner Bewerben",
-                    building: {
-                        badge: "TECHNISCHER SPONSORPLATZ • OMNIBUILDING",
-                        title: "Hersteller von Bausystemen, Rohren, Profilen oder Baustellentechnik?",
-                        desc: "Platzieren Sie Ihre Marke direkt im Arbeitsfluss und auf den A4-Datenblättern von Architekten, Bauingenieuren, Planern und Handwerksbetrieben."
-                    },
-                    graph: {
-                        badge: "TECHNISCHER SPONSORPLATZ • OMNIGRAPH",
-                        title: "Papierfabrik, Offset-/Digitaldruckerei oder Verpackungshersteller?",
-                        desc: "Präsentieren Sie Ihre Papiersorten und Druckservices direkt Grafikdesignern, Verlagen und Druckvorstufen-Profis bei der Produktionsplanung."
-                    },
-                    finance: {
-                        badge: "TECHNISCHER SPONSORPLATZ • OMNIFINANCE",
-                        title: "Hypothekenmakler, Fintech-Plattform oder Unabhängige Finanzberatung?",
-                        desc: "Erreichen Sie kaufbereite Nutzer mit Kategorie-Exklusivität genau dann, wenn sie Baufinanzierungen, Sondertilgungen und Sparpläne berechnen."
-                    }
-                },
-                pt: {
-                    avail: "Posição Exclusiva Disponível",
-                    cta: "Candidatar Empresa",
-                    building: {
-                        badge: "ESPAÇO PATROCINADOR TÉCNICO • OMNIBUILDING",
-                        title: "Fabrica materiais de construção, tubagens, perfis ou equipamentos de obra?",
-                        desc: "Posicione a sua marca aqui e nas fichas técnicas A4 impressas diariamente por Arquitetos, Engenheiros Civis, Projetistas e Empreiteiros."
-                    },
-                    graph: {
-                        badge: "ESPAÇO PATROCINADOR TÉCNICO • OMNIGRAPH",
-                        title: "É uma Fábrica de Papel, Gráfica Offset/Digital ou Fornecedor de Embalagens?",
-                        desc: "Mostre os seus papéis e serviços de impressão diretamente a Designers Gráficos, Editoras e Gráficas enquanto preparam os ficheiros de produção."
-                    },
-                    finance: {
-                        badge: "ESPAÇO PATROCINADOR TÉCNICO • OMNIFINANCE",
-                        title: "É Intermediário de Crédito, Plataforma Fintech ou Consultor Financeiro?",
-                        desc: "Alcance com exclusividade utilizadores e famílias de alta intenção enquanto simulam prestações de crédito habitação, amortizações e planos de poupança."
-                    }
-                }
-            };
-            const spBox = document.getElementById("omniSponsorBanner");
-            if (spBox) {
-                const divKey = spBox.getAttribute("data-sponsor-division") || "building";
-                const spLang = SPONSOR_I18N[l] || SPONSOR_I18N.it;
-                const spDiv = spLang[divKey] || spLang.building;
-                const bEl = document.getElementById("sponsorBannerBadge");
-                const aEl = document.getElementById("sponsorBannerAvail");
-                const tEl = document.getElementById("sponsorBannerTitle");
-                const dEl = document.getElementById("sponsorBannerDesc");
-                const cEl = document.getElementById("sponsorBannerCta");
-                if (bEl) bEl.textContent = spDiv.badge;
-                if (aEl) aEl.innerHTML = `<span class="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse"></span> ${spLang.avail}`;
-                if (tEl) tEl.textContent = spDiv.title;
-                if (dEl) dEl.textContent = spDiv.desc;
-                if (cEl) cEl.textContent = spLang.cta;
-            }
-
-            const relTitle = document.getElementById("footerRelTitle");
-            if (relTitle) relTitle.textContent = tr.rel_title;
-
-            const relSub = document.getElementById("footerRelSub");
-            if (relSub) relSub.textContent = tr.rel_sub;
-
-            document.querySelectorAll(".footer-rel-open").forEach(el => {
-                el.textContent = tr.rel_open;
-            });
-
-            const shareTitle = document.getElementById("shareTitleText");
-            if (shareTitle) shareTitle.textContent = tr.share_title;
-
-            const shareSub = document.getElementById("shareSubText");
-            if (shareSub) shareSub.textContent = tr.share_sub;
-
-            const shareCopy = document.getElementById("shareCopyText");
-            if (shareCopy) shareCopy.textContent = tr.share_copy;
-
-            const suggestBanner = document.getElementById("suggestBannerText");
-            if (suggestBanner) suggestBanner.textContent = tr.suggest_banner;
-
-            const suggestBtn = document.getElementById("suggestBtnText");
-            if (suggestBtn) suggestBtn.textContent = tr.suggest_btn;
-
-            const netSub = document.getElementById("footerNetSub");
-            if (netSub) netSub.textContent = tr.net_sub;
-
-            const catB = document.getElementById("footerCatBuilding");
-            if (catB) catB.textContent = tr.cat_building;
-
-            const catG = document.getElementById("footerCatGraph");
-            if (catG) catG.textContent = tr.cat_graph;
-
-            const catF = document.getElementById("footerCatFinance");
-            if (catF) catF.textContent = tr.cat_finance;
-
-            const catDesk = document.getElementById("footerCatDesk");
-            if (catDesk) catDesk.textContent = tr.cat_desk;
-
-            const partner = document.getElementById("footerPartnerText");
-            if (partner) partner.textContent = tr.partner_text;
-
-            const rights = document.getElementById("footerRights");
-            if (rights) rights.textContent = tr.rights;
-
-            document.querySelectorAll(".footer-pill-active").forEach(el => {
-                el.textContent = tr.pill_active;
-            });
-
-            document.querySelectorAll(".footer-pill-open").forEach(el => {
-                el.textContent = tr.pill_open;
-            });
-
-            const installT = document.getElementById("installBannerTitle");
-            if (installT) installT.textContent = tr.install_title;
-
-            const installS = document.getElementById("installBannerSub");
-            if (installS) installS.textContent = tr.install_sub;
-
-            const modalT = document.getElementById("modalSuggestTitle");
-            if (modalT) modalT.textContent = tr.suggest_modal_title;
-
-            const modalD = document.getElementById("modalSuggestDesc");
-            if (modalD) modalD.textContent = tr.suggest_modal_desc;
-
-            const modalMsg = document.getElementById("suggestMessage");
-            if (modalMsg) modalMsg.placeholder = tr.suggest_modal_ph;
-
-            const modalAnon = document.getElementById("modalPrivacyNote");
-            if (modalAnon) modalAnon.textContent = tr.suggest_modal_anon;
-
-            const modalClose = document.getElementById("modalCloseBtn");
-            if (modalClose) modalClose.textContent = tr.suggest_modal_cancel;
-
-            const modalSubmit = document.getElementById("modalSubmitBtn");
-            if (modalSubmit) modalSubmit.textContent = tr.suggest_modal_send;
-
-            const modalSucc = document.getElementById("modalSuccessText");
-            if (modalSucc) modalSucc.textContent = tr.suggest_modal_success;
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const saved = localStorage.getItem("omnitools_lang") || "it";
-            updateFooterTranslations(saved);
-        });
-
-        window.addEventListener("omnitools_lang_changed", (e) => {
-            if (e.detail && e.detail.lang) updateFooterTranslations(e.detail.lang);
-        });
-
-        // Viral Share Functions
-        function shareWhatsApp() {
-            const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent(document.title + " su OmniTools Lab: " + window.location.href);
-            window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
-        }
-
-        function shareLinkedIn() {
-            const url = encodeURIComponent(window.location.href);
-            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank');
-        }
-
-        function shareReddit() {
-            const url = encodeURIComponent(window.location.href);
-            const title = encodeURIComponent(document.title);
-            window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank');
-        }
-
-        function copyCurrentUrl() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                const el = document.getElementById('shareCopyText');
-                if (el) {
-                    const orig = el.textContent;
-                    const curL = localStorage.getItem('omnitools_lang') || 'it'; el.textContent = (FOOTER_TRANSLATIONS[curL] && FOOTER_TRANSLATIONS[curL].share_copied) || 'Copyto! ';
-                    setTimeout(() => { el.textContent = orig; }, 2000);
-                }
-            }).catch(() => {
-                alert('URL copiato: ' + window.location.href);
-            });
-        }
-
-        function nativeShare() {
-            if (navigator.share) {
-                navigator.share({
-                    title: document.title,
-                    text: document.title + ' su OmniTools Lab',
-                    url: window.location.href
-                }).catch(() => {});
-            } else {
-                copyCurrentUrl();
-            }
-        }
-
-        // Suggestion Modal Functions
-        function openSuggestModal() {
-            const modal = document.getElementById('suggestModal');
-            const formBox = document.getElementById('suggestFormContainer');
-            const successBox = document.getElementById('suggestSuccessContainer');
-            const msgEl = document.getElementById('suggestMessage');
-            if (formBox) formBox.classList.remove('hidden');
-            if (successBox) successBox.classList.add('hidden');
-            if (msgEl) msgEl.value = '';
-            if (modal) modal.classList.remove('hidden');
-        }
-
-        function closeSuggestModal() {
-            const modal = document.getElementById('suggestModal');
-            if (modal) modal.classList.add('hidden');
-        }
-
-        async function submitSuggestion() {
-            const msgEl = document.getElementById('suggestMessage');
-            const msg = msgEl ? msgEl.value.trim() : '';
-            if (!msg) {
-                alert('Inserisci la tua idea prima di inviare.');
-                return;
-            }
-            const submitBtn = document.getElementById('modalSubmitBtn');
-            const origText = submitBtn ? submitBtn.textContent : 'Invia';
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = '...';
-            }
-            const curLang = localStorage.getItem('omnitools_lang') || 'it';
-            const curTool = window.location.pathname.replace('.html', '').replace('/', '') || 'Hub';
-            try {
-                await fetch('/api/suggest', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: msg,
-                        idea: msg,
-                        tool: curTool,
-                        lang: curLang
-                    })
-                });
-            } catch (e) {
-                console.warn('Suggestion submission error:', e);
-            }
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = origText;
-            }
-            const formBox = document.getElementById('suggestFormContainer');
-            const successBox = document.getElementById('suggestSuccessContainer');
-            if (formBox) formBox.classList.add('hidden');
-            if (successBox) successBox.classList.remove('hidden');
-        }
-
-        // Universal A4 Print Header & Footer Coordinator (Ensures all 17 tools print with a unified header, date & footer)
-        function syncUniversalPrintSheet() {
-            const nowStr = new Date().toLocaleDateString(localStorage.getItem('omnitools_lang') || 'it-IT');
-            // 1. Update any existing date stamps across all tools
-            ['omniUniversalPrintDate', 'printReportDate', 'printDate', 'printDateStamp'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    if (id === 'omniUniversalPrintDate' || id === 'printReportDate') {
-                        el.textContent = 'Data: ' + nowStr;
-                    } else {
-                        el.textContent = nowStr;
-                    }
-                }
-            });
-
-            // 2. Standardize all 17 tools to use #omniUniversalPrintHeader (except TintaPerfetta which has its press-operator strip)
-            const curPath = window.location.pathname.replace('.html', '').replace('/', '');
-            if (curPath !== 'tinta') {
-                document.querySelectorAll('#printHeader, main > .print-only, body > .print-only').forEach(el => {
-                    el.classList.remove('print-only', 'print:block');
-                    el.classList.add('no-print', 'hidden');
-                });
-            }
-            const hasCustomHeader = (curPath === 'tinta') && Boolean(document.getElementById('printHeader'));
-            const univHeader = document.getElementById('omniUniversalPrintHeader');
-            if (univHeader) {
-                if (!hasCustomHeader) {
-                    univHeader.classList.add('active-universal-print');
-                    const mainEl = document.querySelector('main');
-                    if (mainEl && univHeader.parentElement !== mainEl) {
-                        mainEl.insertBefore(univHeader, mainEl.firstChild);
-                    }
-                } else {
-                    univHeader.classList.remove('active-universal-print');
-                }
-            }
-
-            // 3. Check if tool already has its own dedicated print footer
-            const hasCustomFooter = Boolean(
-                document.getElementById('printFooterBox') ||
-                document.getElementById('printFooter')
-            );
-            const univFooter = document.getElementById('omniUniversalPrintFooter');
-            if (univFooter) {
-                if (!hasCustomFooter) {
-                    univFooter.classList.add('active-universal-print');
-                    const mainEl = document.querySelector('main');
-                    if (mainEl && univFooter.parentElement !== mainEl) {
-                        mainEl.appendChild(univFooter);
-                    }
-                } else {
-                    univFooter.classList.remove('active-universal-print');
-                }
-            }
-        }
-        function updateUniversalPrintQr() {
-            try {
-                const qrImg = document.getElementById('omniPrintQrImg');
-                if (qrImg) {
-                    const u = encodeURIComponent(window.location.href);
-                    qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=120x120&margin=0&data=' + u;
-                }
-            } catch(e) {}
-        }
-        window.addEventListener('beforeprint', () => {
-            updateUniversalPrintQr();
-            syncUniversalPrintSheet();
-        });
-        document.addEventListener('DOMContentLoaded', updateUniversalPrintQr);
-        document.addEventListener('DOMContentLoaded', syncUniversalPrintSheet);
-
-        function dismissInstallBanner() {
-            const banner = document.getElementById('installBanner');
-            if (banner) banner.classList.add('hidden');
-        }
-
-        // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock) & Universal i18n
-        (function() {
-            if (!document.getElementById('omni-i18n-universal-script')) {
-                const u = document.createElement('script');
-                u.id = 'omni-i18n-universal-script';
-                u.src = '/omni_i18n_universal.js';
-                document.head.appendChild(u);
-            }
-            if (!document.getElementById('omnidesk-script')) {
-                const s = document.createElement('script');
-                s.id = 'omnidesk-script';
-                s.src = '/desk_dock.js';
-                s.defer = true;
-                document.body.appendChild(s);
-            }
-        })();
-
-    
-    </script>
-    <script>
-        try {
-            const rec = JSON.parse(localStorage.getItem('omnitools_recent_tools') || '[]').filter(x => x.id !== 'dorso');
-            rec.unshift({ id: 'dorso', name: 'DorsoFacile', url: '/dorso', icon: 'KDP' });
-            localStorage.setItem('omnitools_recent_tools', JSON.stringify(rec.slice(0, 3)));
-        } catch(e) {}
-    </script>
-    <script>
-        
-        // Instant hover prefetch for faster tab switching
-        (function() {
-            const prefetched = new Set();
-            document.addEventListener('mouseover', (e) => {
-                const a = e.target.closest && e.target.closest('a[href^="/"]');
-                if (!a) return;
-                const href = a.getAttribute('href');
-                if (!href || prefetched.has(href) || href === window.location.pathname) return;
-                prefetched.add(href);
-                const l = document.createElement('link');
-                l.rel = 'prefetch';
-                l.href = href;
-                document.head.appendChild(l);
-            }, { passive: true });
-        })();
-    
-    </script>
-    <script>
-        
-(function() {
-    const EXCLUDE_IDS = new Set(["langSelect", "omniQuickSearch", "darkModeBtn", "paramShareBtn"]);
-    window.getOmniShareUrl = function() {
-        const params = new URLSearchParams();
-        const root = document.querySelector("main") || document.body;
-        root.querySelectorAll("input[id], select[id], textarea[id]").forEach(el => {
-            if (EXCLUDE_IDS.has(el.id)) return;
-            const t = (el.type || "").toLowerCase();
-            if (t === "file" || t === "hidden" || t === "button" || t === "submit") return;
-            if (t === "checkbox" || t === "radio") {
-                params.set(el.id, el.checked ? "1" : "0");
-            } else if (el.value !== "") {
-                params.set(el.id, el.value);
-            }
-        });
-        const qs = params.toString();
-        return window.location.origin + window.location.pathname + (qs ? "?" + qs : "");
-    };
-    window.shareOmniWhatsApp = function() {
-        const url = window.getOmniShareUrl();
-        const title = (document.querySelector("h1") && document.querySelector("h1").textContent.trim()) || document.title;
-        const prefix = window._omniWaPrefix || "Ecco il calcolo pronto:";
-        const msg = prefix + " " + title + "\n" + url;
-        window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank", "noopener");
-    };
-    window.exportOmniCsv = function() {
-        const rows = [["Parametro", "Valore"]];
-        const root = document.querySelector("main") || document.body;
-        const exclude = new Set(["langSelect", "omniQuickSearch", "darkModeBtn", "paramShareBtn", "waShareBtn", "csvExportBtn"]);
-        root.querySelectorAll("input[id], select[id]").forEach(el => {
-            if (exclude.has(el.id)) return;
-            const t = (el.type || "").toLowerCase();
-            if (t === "file" || t === "hidden" || t === "button" || t === "submit") return;
-            const lbl = root.querySelector("label[for=\"" + el.id + "\"]");
-            const name = (lbl && lbl.textContent.trim()) || el.id;
-            const val = (t === "checkbox" || t === "radio") ? (el.checked ? "Si" : "No") : el.value;
-            if (val !== "") rows.push([name, val]);
-        });
-        root.querySelectorAll("[id^=\"val\"], [id^=\"res\"]").forEach(el => {
-            if (el.tagName === "INPUT" || el.tagName === "SELECT") return;
-            const txt = (el.textContent || "").replace(/\s+/g, " ").trim();
-            if (txt && txt.length < 120) rows.push([el.id, txt]);
-        });
-        const csv = "\uFEFF" + rows.map(r => r.map(c => "\"" + String(c).replace(/"/g, "\"\"") + "\"").join(";")).join("\r\n");
-        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-        const a = document.createElement("a");
-        const slug = window.location.pathname.split("/").pop().replace(".html", "") || "distinta";
-        a.href = URL.createObjectURL(blob);
-        a.download = "omnitools-" + slug + "-distinta.csv";
-        a.click();
-        URL.revokeObjectURL(a.href);
-    };
-    window.copyOmniParamLink = function() {
-        const url = window.getOmniShareUrl();
-        const label = document.getElementById("paramShareLabel");
-        const icon = document.getElementById("paramShareIcon");
-        const done = () => {
-            if (icon) icon.textContent = "";
-            if (label) label.textContent = window._omniCopiedText || "Copyto!";
-            setTimeout(() => {
-                if (icon) icon.textContent = "";
-                if (label) label.textContent = window._omniShareBtnText || "Link Calcolo";
-            }, 2000);
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(url).then(done).catch(() => { prompt("Copy il link:", url); });
-        } else {
-            prompt("Copy il link:", url);
-        }
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-        const params = new URLSearchParams(window.location.search);
-        if (![...params.keys()].length) return;
-        let applied = false;
-        params.forEach((val, key) => {
-            const el = document.getElementById(key);
-            if (!el) return;
-            const t = (el.type || "").toLowerCase();
-            if (t === "file" || t === "hidden" || t === "button" || t === "submit") return;
-            if (t === "checkbox" || t === "radio") {
-                el.checked = (val === "1" || val === "true");
-            } else {
-                el.value = val;
-            }
-            el.dispatchEvent(new Event("input", { bubbles: true }));
-            el.dispatchEvent(new Event("change", { bubbles: true }));
-            applied = true;
-        });
-    });
-})();
-
-    </script>
-    <script>
-        
-(function() {
-    const DICT = {
-        it: {
-            shareBtn: "Link Calcolo",
-            shareTitle: "Copy link con parametri precompilati",
-            copied: "Copyto!",
-            disclaimer: "<strong>AVVISO LEGALE / DISCLAIMER:</strong> Calcolo puramente indicativo a scopo informativo e di stima preliminare. Non costituisce progetto esecutivo, relazione tecnica, asseverazione né consulenza professionale (ingegneristica, architettonica o finanziaria). Prima di qualsiasi esecuzione in cantiere, stampa industriale o decisione vincolante è obbligatoria la verifica da parte di un tecnico o professionista abilitato secondo le normative vigenti. OmniTools Lab declina ogni responsabilità per uso improprio senza validazione tecnica."
-        },
-        en: {
-            shareBtn: "Share Link",
-            shareTitle: "Copy link with pre-filled parameters",
-            copied: "Copied!",
-            disclaimer: "<strong>LEGAL NOTICE / DISCLAIMER:</strong> Calculation for informational and preliminary estimation purposes only. It does not constitute an executive design, technical report, certification, or professional advice (engineering, architectural, or financial). Prior to any on-site execution, industrial printing, or binding decision, verification by a qualified and licensed professional in accordance with applicable regulations is mandatory. OmniTools Lab disclaims all liability for improper use without technical validation."
-        },
-        es: {
-            shareBtn: "Enlace Cálculo",
-            shareTitle: "Copyr enlace con parámetros prellenados",
-            copied: "¡Copydo!",
-            disclaimer: "<strong>AVISO LEGAL / DISCLAIMER:</strong> Cálculo puramente indicativo con fines informativos y de estimación preliminar. No constituye proyecto ejecutivo, informe técnico, certificación ni asesoramiento profesional (de ingeniería, arquitectura o financiero). Antes de cualquier ejecución en obra, impresión industrial o decisión vinculante, es obligatoria la verificación por parte de un técnico o profesional habilitado según la normativa vigente. OmniTools Lab declina toda responsabilidad por uso indebido sin validación técnica."
-        },
-        fr: {
-            shareBtn: "Lien Calcul",
-            shareTitle: "Copier le lien avec paramètres pré-remplis",
-            copied: "Copié !",
-            disclaimer: "<strong>MENTION LÉGALE / DISCLAIMER :</strong> Calcul purement indicatif à titre informatif et d'estimation préliminaire. Ne constitue pas un projet d'exécution, un rapport technique, une certification ni un conseil professionnel (ingénierie, architecture ou finance). Avant toute exécution sur chantier, impression industrielle ou décision contraignante, la vérification par un technicien ou professionnel habilité conformément aux réglementations en vigueur est obligatoire. OmniTools Lab décline toute responsabilité en cas d'utilisation inappropriée sans validation technique."
-        },
-        de: {
-            shareBtn: "Rechen-Link",
-            shareTitle: "Link mit vorausgefüllten Parametern kopieren",
-            copied: "Kopiert!",
-            disclaimer: "<strong>RECHTLICHER HINWEIS / DISCLAIMER:</strong> Berechnung dient ausschließlich zu Informations- und vorläufigen Schätzzwecken. Sie stellt keine Ausführungsplanung, keinen technischen Bericht, keine Zertifizierung und keine professionelle Beratung (Ingenieur-, Architektur- oder Finanzberatung) dar. Vor jeder Bauausführung, industriellen Druckproduktion oder verbindlichen Entscheidung ist eine Prüfung durch einen zugelassenen Fachmann gemäß den geltenden Vorschriften zwingend erforderlich. OmniTools Lab übernimmt keine Haftung für unsachgemäße Verwendung ohne technische Prüfung."
-        },
-        pt: {
-            shareBtn: "Link Cálculo",
-            shareTitle: "Copyr link com parâmetros preenchidos",
-            copied: "Copydo!",
-            disclaimer: "<strong>AVISO LEGAL / DISCLAIMER:</strong> Cálculo puramente indicativo para fins informativos e de estimativa preliminar. Não constitui projeto executivo, relatório técnico, certificação nem aconselhamento profissional (engenharia, arquitetura ou finanças). Antes de qualquer execução em obra, impressão industrial ou decisão vinculativa, é obrigatória a verificação por um técnico ou profissional habilitado segundo a legislação vigente. O OmniTools Lab declina qualquer responsabilidade por uso indevido sem validação técnica."
-        }
-    };
-    window.omniExtraLang = function(lang) {
-        const l = DICT[lang] ? lang : "it";
-        const t = DICT[l];
-        const lbl = document.getElementById("paramShareLabel");
-        const btn = document.getElementById("paramShareBtn");
-        const disc = document.getElementById("omniPrintDisclaimer");
-        if (lbl && lbl.textContent !== DICT.it.copied && !Object.values(DICT).some(d => d.copied === lbl.textContent)) {
-            lbl.textContent = t.shareBtn;
-        }
-        if (btn) btn.title = t.shareTitle;
-        if (disc) disc.innerHTML = t.disclaimer;
-        window._omniCopiedText = t.copied;
-        window._omniShareBtnText = t.shareBtn;
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-        const sel = document.getElementById("langSelect");
-        const cur = (sel && sel.value) || localStorage.getItem("omnitools_lang") || document.documentElement.lang || "it";
-        window.omniExtraLang(cur.slice(0, 2).toLowerCase());
-        if (sel) {
-            sel.addEventListener("change", (e) => window.omniExtraLang(e.target.value));
-        }
-        new MutationObserver(() => {
-            const l = (document.documentElement.lang || "").slice(0, 2).toLowerCase();
-            if (l) window.omniExtraLang(l);
-        }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
-    });
-})();
-
-    </script>
-    <script>
-        document.addEventListener('click',function(e){var w=document.getElementById('omniMobileMenuWrap'),d=document.getElementById('omniMobileMenuDropdown');if(w&&d&&!w.contains(e.target))d.classList.add('hidden');});
-    </script>
-    <script>
-        
-// Header Tool Switcher Dropdown (Supports Desktop and Mobile)
-function toggleHeaderToolMenu(e) {
-    if (e) e.stopPropagation();
-    const isMobile = window.innerWidth < 768;
-    const menu = isMobile ? (document.getElementById('mobileHeaderToolDropdown') || document.getElementById('headerToolDropdown')) : document.getElementById('headerToolDropdown');
-    const chevronDesktop = document.getElementById('headerToolMenuChevron');
-    const chevronMobile = document.getElementById('mobileHeaderToolMenuChevron');
-    const newToolDrop = document.getElementById('topNewToolDropdown');
-    const deskDrop = document.getElementById('topDeskDropdown');
-    if (newToolDrop) newToolDrop.classList.add('hidden');
-    if (deskDrop) deskDrop.classList.add('hidden');
-    if (!menu) return;
-    const isHidden = menu.classList.contains('hidden');
-    if (isHidden) {
-        menu.classList.remove('hidden');
-        if (chevronDesktop) chevronDesktop.classList.add('rotate-180');
-        if (chevronMobile) chevronMobile.classList.add('rotate-180');
-    } else {
-        menu.classList.add('hidden');
-        if (chevronDesktop) chevronDesktop.classList.remove('rotate-180');
-        if (chevronMobile) chevronMobile.classList.remove('rotate-180');
-    }
-}
-document.addEventListener('click', (e) => {
-    const mobDrop = document.getElementById('mobileHeaderToolDropdown');
-    const mobBtn = document.getElementById('mobileHeaderToolMenuBtn');
-    if (mobDrop && !mobDrop.classList.contains('hidden')) {
-        if (!mobDrop.contains(e.target) && (!mobBtn || !mobBtn.contains(e.target))) {
-            mobDrop.classList.add('hidden');
-            const mobChevron = document.getElementById('mobileHeaderToolMenuChevron');
-            if (mobChevron) mobChevron.classList.remove('rotate-180');
-        }
-    }
-});
-function syncHeaderInstallBtn() {
-    const banner = document.getElementById('installBanner');
-    const headerBtn = document.getElementById('headerInstallBtn');
-    const headerBtnMobile = document.getElementById('headerInstallBtnMobile');
-    const bannerVisible = banner && !banner.classList.contains('hidden');
-    if (headerBtn) headerBtn.style.display = bannerVisible ? 'none' : 'inline-flex';
-    if (headerBtnMobile) headerBtnMobile.style.display = bannerVisible ? 'none' : 'inline-flex';
-}
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    const banner = document.getElementById('installBanner');
-    if (banner && !sessionStorage.getItem('omnitools_install_dismissed')) {
-        banner.classList.remove('hidden');
-        syncHeaderInstallBtn();
-    }
-});
-function triggerInstall() {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-            deferredPrompt = null;
-            dismissInstallBanner();
-        });
-    } else {
-        const banner = document.getElementById('installBanner');
-        if (banner) {
-            banner.classList.remove('hidden');
-            syncHeaderInstallBtn();
-        }
-    }
-}
-function dismissInstallBanner() {
-    const banner = document.getElementById('installBanner');
-    if (banner) banner.classList.add('hidden');
-    sessionStorage.setItem('omnitools_install_dismissed', '1');
-    syncHeaderInstallBtn();
-}
-document.addEventListener('DOMContentLoaded', syncHeaderInstallBtn);
-
-    </script>
-    <script src="/omni_help_drawer.js" defer></script>
-    <script type="module" src="/js/omni-core.js"></script>
 </body>
 </html>
