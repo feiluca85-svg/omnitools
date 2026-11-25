@@ -1010,7 +1010,7 @@
         @media (min-width: 768px) {
             header.omni-home-header, header, header.sticky {
                 position: sticky !important;
-                top: 42px !important;
+                top: 42px;
                 z-index: 40 !important;
             }
         }
@@ -4307,9 +4307,34 @@ document.addEventListener('click', (e) => {
         const track = document.getElementById('omniChromeTabsTrack');
         if (!track) return;
 
+        const tabsBar = document.getElementById('omniChromeTabsBar');
+        const homeHeader = document.querySelector('header.omni-home-header');
         const homeTab = document.getElementById('omniTabHome');
         const isHome = (!pathname || pathname === 'index');
         const isDark = document.documentElement.classList.contains('omni-dark');
+
+        // Se siamo in Home e non ci sono schede tool aperte, nascondi la barra schede superiore
+        // e ancora l'header principale direttamente a top: 0px.
+        // Se ci sono schede aperte (o se siamo su un tool), mostra la barra schede a top: 0px e l'header a top: 42px.
+        if (isHome) {
+            if (openTabs.length === 0) {
+                if (tabsBar) tabsBar.style.display = 'none';
+                if (homeHeader) {
+                    homeHeader.style.top = '0px';
+                }
+            } else {
+                if (tabsBar) tabsBar.style.display = '';
+                if (homeHeader) {
+                    homeHeader.style.top = '';
+                }
+            }
+        } else {
+            if (tabsBar) tabsBar.style.display = '';
+            if (homeHeader) {
+                homeHeader.style.top = '';
+            }
+        }
+
         if (homeTab) {
             homeTab.className = isHome 
                 ? 'flex items-center gap-1.5 px-3 h-[34px] bg-[#FFFFFF] dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 font-bold border-t-2 border-blue-600 shrink-0 text-[12px] border-r border-slate-300 dark:border-slate-800 shadow-xs cursor-pointer'
