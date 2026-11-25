@@ -3223,6 +3223,12 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
 
         // Dynamically load OmniDesk Workspace Dock (Memo, Calc, Pop Swatch Clock) & Universal i18n
         (function() {
+            if (!document.getElementById('omni-analytics-script')) {
+                const a = document.createElement('script');
+                a.id = 'omni-analytics-script';
+                a.src = '/omni_analytics.js';
+                document.head.appendChild(a);
+            }
             if (!document.getElementById('omni-i18n-universal-script')) {
                 const u = document.createElement('script');
                 u.id = 'omni-i18n-universal-script';
