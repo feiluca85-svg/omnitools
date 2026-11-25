@@ -3748,12 +3748,31 @@ document.addEventListener('DOMContentLoaded', () => {
         'idratazione': 'idratazione', 'hydration-balance-calculator': 'idratazione'
     };
 
-        window.openToolInTab = function(toolId, targetUrl) {
+        const TABS_KEY = 'omni_open_tabs_v1';
+
+    function getStoredTabs() {
         try {
-            let tabs = JSON.parse(sessionStorage.getItem('omni_open_tabs_v1')) || [];
+            const raw = localStorage.getItem(TABS_KEY) || sessionStorage.getItem(TABS_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch(e) {
+            return [];
+        }
+    }
+
+    function saveStoredTabs(tabs) {
+        try {
+            const data = JSON.stringify(tabs);
+            localStorage.setItem(TABS_KEY, data);
+            sessionStorage.setItem(TABS_KEY, data);
+        } catch(e) {}
+    }
+
+    window.openToolInTab = function(toolId, targetUrl) {
+        try {
+            let tabs = getStoredTabs();
             if (toolId && !tabs.includes(toolId)) {
                 tabs.push(toolId);
-                sessionStorage.setItem('omni_open_tabs_v1', JSON.stringify(tabs));
+                saveStoredTabs(tabs);
             }
         } catch(e) {}
         if (targetUrl) {
@@ -3761,11 +3780,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const TABS_KEY = 'omni_open_tabs_v1';
-    let openTabs = [];
-    try {
-        openTabs = JSON.parse(sessionStorage.getItem(TABS_KEY)) || [];
-    } catch(e) {}
+    let openTabs = getStoredTabs();
 
     const rawPath = window.location.pathname.replace('.html', '').replace(/^\/+/, '').replace(/^en\//, '');
     const currentToolId = PATH_TO_TOOL_ID[rawPath] || (TOOLS_MAP[rawPath] ? rawPath : '');
@@ -3773,7 +3788,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pathname && TOOLS_MAP[pathname]) {
         if (!openTabs.includes(pathname)) {
             openTabs.push(pathname);
-            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            saveStoredTabs(openTabs);
         }
     }
 
@@ -3832,7 +3847,7 @@ document.addEventListener('DOMContentLoaded', () => {
             makeWindowResizable(win, win.querySelector('.window-resize-grip'));
 
             openTabs = openTabs.filter(x => x !== id);
-            try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+            saveStoredTabs(openTabs);
             renderChromeTabs();
         },
 
@@ -3844,7 +3859,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (!openTabs.includes(id)) {
                 openTabs.push(id);
-                try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(e) {}
+                saveStoredTabs(openTabs);
             }
             renderChromeTabs();
         },
@@ -3927,6 +3942,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
         function renderChromeTabs() {
+        openTabs = getStoredTabs();
         const track = document.getElementById('omniChromeTabsTrack');
         if (!track) return;
 
@@ -3988,7 +4004,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.closeToolTab = function(id) {
         openTabs = openTabs.filter(x => x !== id);
-        try { sessionStorage.setItem(TABS_KEY, JSON.stringify(openTabs)); } catch(err) {}
+        saveStoredTabs(openTabs);
         if (id === pathname) {
             const nextId = openTabs.length ? openTabs[openTabs.length - 1] : '';
             window.location.href = nextId ? TOOLS_MAP[nextId].url : '/';
@@ -3998,6 +4014,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.addEventListener('DOMContentLoaded', renderChromeTabs);
+    window.addEventListener('pageshow', renderChromeTabs);
 })();
 
 
