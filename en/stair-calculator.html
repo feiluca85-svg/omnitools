@@ -1812,12 +1812,15 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         <div class="bg-white dark:bg-slate-900 rounded-none border border-slate-200 dark:border-slate-800 border-t-4 border-t-amber-500 shadow-xs p-4 sm:p-7 space-y-6">
 
             <!-- Mode Selector Tabs (Rounded-none) -->
-            <div id="modeSelectorBar" class="bg-slate-100 dark:bg-slate-900 p-1.5 rounded-none flex border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm font-bold no-print">
-                <button id="modeDirectBtn" type="button" onclick="switchMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-300 shadow-2xs transition active:scale-95 text-center font-bold">
+            <div id="modeSelectorBar" class="bg-slate-100 dark:bg-slate-900 p-1.5 rounded-none grid grid-cols-3 gap-1 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm font-bold no-print">
+                <button id="modeDirectBtn" type="button" onclick="switchMode('direct')" class="py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-300 shadow-2xs transition active:scale-95 text-center font-bold">
                     From Available Run
                 </button>
-                <button id="modeReverseBtn" type="button" onclick="switchMode('reverse')" class="flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold">
+                <button id="modeReverseBtn" type="button" onclick="switchMode('reverse')" class="py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold">
                     From Target Riser
+                </button>
+                <button id="modeStepsBtn" type="button" onclick="switchMode('steps')" class="py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold">
+                    By Number of Risers
                 </button>
             </div>
 
@@ -1890,6 +1893,25 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                             <button type="button" id="targetBtn16" onclick="setTargetRiser(6.5)" class="py-1 px-1.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">6.5 in Easy</button>
                             <button type="button" id="targetBtn175" onclick="setTargetRiser(7.2)" class="py-1 px-1.5 bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">7.2 in Standard</button>
                             <button type="button" id="targetBtn19" onclick="setTargetRiser(7.75)" class="py-1 px-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">7.75 in Max IRC</button>
+                        </div>
+                    </div>
+
+                    <!-- FIELD C: Desired Number of Risers (By Number of Risers Mode) -->
+                    <div id="targetStepsContainer" class="space-y-1.5 hidden">
+                        <div class="flex justify-between items-center">
+                            <label for="targetStepsInput" id="targetStepsLabel" class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-none bg-amber-500 inline-block"></span>
+                                Desired number of risers (N)
+                            </label>
+                            <span id="targetStepsUnitBadge" class="text-xs font-bold text-amber-700 dark:text-amber-400 num-tabular">risers</span>
+                        </div>
+                        <input type="number" id="targetStepsInput" value="15" min="2" max="40" step="1"
+                            class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-none font-extrabold text-base sm:text-lg text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-amber-500 num-tabular transition">
+                        <div class="grid grid-cols-4 gap-1.5 pt-1">
+                            <button type="button" onclick="setTargetSteps(14)" class="py-1 px-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">14 risers</button>
+                            <button type="button" onclick="setTargetSteps(15)" class="py-1 px-1.5 bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">15 risers</button>
+                            <button type="button" onclick="setTargetSteps(16)" class="py-1 px-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">16 risers</button>
+                            <button type="button" onclick="setTargetSteps(17)" class="py-1 px-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-none text-[11px] font-bold active:scale-95 transition num-tabular">17 risers</button>
                         </div>
                     </div>
                 </div>
@@ -2843,6 +2865,9 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                     }
                 },
                 en: {
+        mode_steps: 'By Number of Risers',
+        target_steps_label: 'Desired number of risers (N)',
+        steps_badge: 'risers',
                     avail: "Exclusive Slot Available",
                     cta: "Apply as Official Partner",
                     building: {
@@ -3408,21 +3433,39 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
             currentMode = mode;
             const btnDirect = document.getElementById('modeDirectBtn');
             const btnReverse = document.getElementById('modeReverseBtn');
+            const btnSteps = document.getElementById('modeStepsBtn');
             const secLength = document.getElementById('lengthContainer');
             const secTargetRiser = document.getElementById('targetRiserContainer');
+            const secTargetSteps = document.getElementById('targetStepsContainer');
 
-            if (mode === 'direct') {
-                if (btnDirect) btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400 font-bold shadow-2xs transition active:scale-95 text-center";
-                if (btnReverse) btnReverse.className = "flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-bold transition active:scale-95 text-center";
-                if (secLength) { secLength.classList.remove('hidden'); secLength.style.display = 'block'; }
-                if (secTargetRiser) { secTargetRiser.classList.add('hidden'); secTargetRiser.style.display = 'none'; }
-            } else {
-                if (btnReverse) btnReverse.className = "flex-1 py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400 font-bold shadow-2xs transition active:scale-95 text-center";
-                if (btnDirect) btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-bold transition active:scale-95 text-center";
-                if (secLength) { secLength.classList.add('hidden'); secLength.style.display = 'none'; }
-                if (secTargetRiser) { secTargetRiser.classList.remove('hidden'); secTargetRiser.style.display = 'block'; }
+            const activeClass = "py-2 sm:py-2.5 rounded-none bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-300 shadow-2xs transition active:scale-95 text-center font-bold";
+            const inactiveClass = "py-2 sm:py-2.5 rounded-none text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition active:scale-95 text-center font-bold";
+
+            if (btnDirect) btnDirect.className = (mode === 'direct' ? activeClass : inactiveClass);
+            if (btnReverse) btnReverse.className = (mode === 'reverse' ? activeClass : inactiveClass);
+            if (btnSteps) btnSteps.className = (mode === 'steps' ? activeClass : inactiveClass);
+
+            if (secLength) {
+                if (mode === 'direct') { secLength.classList.remove('hidden'); secLength.style.display = 'block'; }
+                else { secLength.classList.add('hidden'); secLength.style.display = 'none'; }
+            }
+            if (secTargetRiser) {
+                if (mode === 'reverse') { secTargetRiser.classList.remove('hidden'); secTargetRiser.style.display = 'block'; }
+                else { secTargetRiser.classList.add('hidden'); secTargetRiser.style.display = 'none'; }
+            }
+            if (secTargetSteps) {
+                if (mode === 'steps') { secTargetSteps.classList.remove('hidden'); secTargetSteps.style.display = 'block'; }
+                else { secTargetSteps.classList.add('hidden'); secTargetSteps.style.display = 'none'; }
             }
             updateCalculations();
+        }
+
+        function setTargetSteps(n) {
+            const input = document.getElementById('targetStepsInput');
+            if (input) {
+                input.value = n;
+                updateCalculations();
+            }
         }
 
         function updateSliderTrack(slider) {
@@ -3519,9 +3562,12 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         lengthRange.addEventListener('input', () => { syncInputWithSlider(lengthInput, lengthRange); updateSliderTrack(lengthRange); updateCalculations(); });
         document.addEventListener('DOMContentLoaded', refreshAllSliderTracks);
         targetRiserInput.addEventListener('input', updateCalculations);
+        const targetStepsInput = document.getElementById('targetStepsInput');
+        if (targetStepsInput) targetStepsInput.addEventListener('input', updateCalculations);
+        if (targetStepsInput) targetStepsInput.addEventListener('input', updateCalculations);
 
         function applyPreset(hCm, lCm) {
-            if (currentMode === 'reverse') {
+            if (currentMode !== 'direct') {
                 switchMode('direct');
             }
             const factor = UNIT_FACTORS_CM[currentUnit] || 1.0;
@@ -3566,6 +3612,21 @@ main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
                 riser_cm = h_cm / numRisers;
                 numTreads = Math.max(numRisers - 1, 1);
                 tread_cm = l_cm / numTreads;
+                blondel_cm = (2 * riser_cm) + tread_cm;
+                angleDeg = Math.atan(h_cm / l_cm) * (180 / Math.PI);
+            } else if (currentMode === 'steps') {
+                const targetStepsElem = document.getElementById('targetStepsInput');
+                let nInput = parseInt(targetStepsElem ? targetStepsElem.value : 15, 10);
+                if (isNaN(nInput) || nInput < 1) nInput = 1;
+                numRisers = nInput;
+
+                riser_cm = h_cm / numRisers;
+                // Blondel rule: 2a + p = 63 cm => p = 63 - 2a
+                tread_cm = 63.0 - (2 * riser_cm);
+                if (tread_cm < 18.0) tread_cm = 18.0;
+
+                numTreads = Math.max(numRisers - 1, 1);
+                l_cm = tread_cm * numTreads;
                 blondel_cm = (2 * riser_cm) + tread_cm;
                 angleDeg = Math.atan(h_cm / l_cm) * (180 / Math.PI);
             } else {
