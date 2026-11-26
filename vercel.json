@@ -29,6 +29,22 @@
   ],
   "rewrites": [
     {
+      "source": "/en/mortgage-calculator",
+      "destination": "/en/mortgage-loan-amortization-calculator"
+    },
+    {
+      "source": "/en/tile-calculator",
+      "destination": "/en/tile-grout-calculator"
+    },
+    {
+      "source": "/en/",
+      "destination": "/index"
+    },
+    {
+      "source": "/en",
+      "destination": "/index"
+    },
+    {
       "source": "/rampa",
       "destination": "/rampe"
     },
