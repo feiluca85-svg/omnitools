@@ -137,25 +137,6 @@
         html, body { overflow-x: clip; }
         * { -webkit-tap-highlight-color: transparent; }
         input[type="number"] { font-size: 17px !important; }
-        input[type=range] {
-            -webkit-appearance: none;
-            height: 7px;
-            background: #e2e8f0;
-            border-radius: 9999px;
-            outline: none;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            background: #2563eb;
-            cursor: pointer;
-            box-shadow: 0 3px 8px rgba(37,99,235,0.45);
-            border: 2px solid #ffffff;
-            transition: transform 0.1s ease;
-        }
-        input[type=range]::-webkit-slider-thumb:active { transform: scale(1.15); }
         
         @page {
             size: A4 portrait;
@@ -491,6 +472,21 @@
         html.omni-dark #badgeCountBuilding { background-color: rgba(180, 83, 9, 0.25) !important; color: #fde68a !important; border-color: rgba(217, 119, 6, 0.5) !important; }
         html.omni-dark #badgeCountGraph { background-color: rgba(190, 18, 60, 0.25) !important; color: #fecdd3 !important; border-color: rgba(225, 29, 72, 0.5) !important; }
         html.omni-dark #badgeCountFinance { background-color: rgba(4, 120, 87, 0.25) !important; color: #a7f3d0 !important; border-color: rgba(5, 150, 105, 0.5) !important; }
+
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
+        }
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+        }
+        html.omni-dark #topNewToolDropdown {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
     </style>
     <script>
         function applyDark(on) {

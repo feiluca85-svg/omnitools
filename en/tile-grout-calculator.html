@@ -138,8 +138,8 @@
             const btnI = document.getElementById('btnUnitImperial');
 
             if (sys === 'metric') {
-                btnM.className = "px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
-                btnI.className = "px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnM.className = "px-2.5 py-1 rounded-none bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
+                btnI.className = "px-2.5 py-1 rounded-none text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                 
                 // Convert values from imperial to metric
                 const l = (parseFloat(document.getElementById('inputLength').value) || 0) * 0.3048;
@@ -172,8 +172,8 @@
                 document.getElementById('unitBadgeGroutW').textContent = 'mm';
                 document.getElementById('unitBadgeBoxCov').textContent = 'm²';
             } else {
-                btnI.className = "px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
-                btnM.className = "px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnI.className = "px-2.5 py-1 rounded-none bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center";
+                btnM.className = "px-2.5 py-1 rounded-none text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold";
 
                 // Convert values from metric to imperial
                 const l = (parseFloat(document.getElementById('inputLength').value) || 0) / 0.3048;
@@ -217,13 +217,13 @@
             const directGroup = document.getElementById('directInputGroup');
 
             if (mode === 'dims') {
-                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
-                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-none bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
+                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                 dimsGroup.classList.remove('hidden');
                 directGroup.classList.add('hidden');
             } else {
-                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
-                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
+                btnDirect.className = "flex-1 py-2 sm:py-2.5 rounded-none bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold";
+                btnDims.className = "flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold";
                 directGroup.classList.remove('hidden');
                 dimsGroup.classList.add('hidden');
             }
@@ -597,6 +597,21 @@
         main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
         main label { font-size: 0.84375rem !important; }
+
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
+        }
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+        }
+        html.omni-dark #topNewToolDropdown {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
     </style>
 <style id="omniDarkStyles">
         /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
@@ -790,8 +805,8 @@
             box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.15) !important;
         }
         /* Inner tool sub-cards / controls cards */
-        html.omni-dark .bg-white.rounded-2xl,
-        html.omni-dark .bg-white.rounded-xl {
+        html.omni-dark .bg-white.rounded-none,
+        html.omni-dark .bg-white.rounded-none {
             background-color: #1e293b !important;
             border-color: #334155 !important;
         }
@@ -1187,8 +1202,8 @@
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
             <!-- Fixed Home Hub Tab -->
-            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-t-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Back to Home Hub">
-                <span class="w-4 h-4 rounded-md bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Back to Home Hub">
+                <span class="w-4 h-4 rounded-none bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
                     <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                 </span>
                 <span id="navTabHomeText">Home Hub</span>
@@ -1200,27 +1215,27 @@
             
             <!-- DESK Dropdown Trigger Button -->
             <div class="relative">
-                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-lg text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Open desktop utilities (Memo, Calc, Clock)">
+                <button id="topDeskBtn" onclick="toggleTopDeskMenu(event)" class="px-2.5 py-1 bg-gradient-to-r from-amber-500/20 to-amber-600/20 hover:from-amber-500 hover:to-amber-600 text-amber-300 hover:text-white rounded-none text-xs font-black transition border border-amber-500/40 flex items-center gap-1.5 shadow-xs cursor-pointer" title="Open desktop utilities (Memo, Calc, Clock)">
                     <span class="w-3.5 h-3.5 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-black text-[9px]"></span>
                     <span class="tracking-wider">DESK</span>
                     <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
 
                 <!-- DESK Menu Dropdown in Top Bar -->
-                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 space-y-1 text-xs">
+                <div id="topDeskDropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-none shadow-2xl p-2 z-50 space-y-1 text-xs">
                     <div id="navDeskTitle" class="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-amber-400 border-b border-slate-800">
                         Desktop Utilities
                     </div>
-                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]"></span>
+                    <button type="button" onclick="openDeskTool('memo');" class="w-full flex items-center gap-2.5 p-2 rounded-none text-amber-200 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-none bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-[10px]"></span>
                         <span id="navDeskMemo">OmniMemo (Post-it)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]"></span>
+                    <button type="button" onclick="openDeskTool('calc');" class="w-full flex items-center gap-2.5 p-2 rounded-none text-blue-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-none bg-blue-500 text-white flex items-center justify-center font-bold text-[10px]"></span>
                         <span id="navDeskCalc">OmniCalc (Calculator)</span>
                     </button>
-                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-xl text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
-                        <span class="w-4 h-4 rounded-md bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
+                    <button type="button" onclick="openDeskTool('clock');" class="w-full flex items-center gap-2.5 p-2 rounded-none text-teal-300 hover:bg-slate-800 transition font-bold text-left cursor-pointer">
+                        <span class="w-4 h-4 rounded-none bg-teal-500 text-white flex items-center justify-center font-bold text-[10px]">⏱️</span>
                         <span id="navDeskClock">OmniClock (Clock)</span>
                     </button>
                 </div>
@@ -1228,13 +1243,13 @@
 
             <!-- Nuovo Tool (+) Button (Dropdown opens fully aligned to RIGHT edge!) -->
             <div class="relative">
-                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Open a new calculator tab">
+                <button id="topNewToolBtn" onclick="toggleTopNewToolMenu(event)" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-none text-xs font-bold transition flex items-center gap-1 border border-slate-700 cursor-pointer" title="Open a new calculator tab">
                     <span></span>
                     <span id="topNewToolBtnText" class="hidden lg:inline">New Tool</span>
                 </button>
 
                 <!-- Full Tool Catalog Dropdown Aligned to Right edge -->
-                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left max-h-[82vh] overflow-y-auto">
+                <div id="topNewToolDropdown" class="hidden absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-none shadow-2xl border border-slate-200 z-50 p-2 space-y-2 text-left max-h-[82vh] overflow-y-auto">
                     <div class="px-2 pt-1 pb-0.5 border-b border-slate-100 flex items-center justify-between text-[11px] font-extrabold text-slate-400 uppercase">
                         <span id="topDropChooseCalc">Choose Calculator</span>
                         <span id="topDropToolCount" class="text-blue-600 font-bold font-mono">22 Tools</span>
@@ -1242,216 +1257,216 @@
 
                     <!-- Category: OmniBuilding -->
                     <details class="group/cat" data-cat="building" open>
-    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-none hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
         <span class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> <span id="topDropBuildingTitle">OmniBuilding (6)</span>
                         </span>
         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
     </summary>
     <div class="space-y-0.5 pt-1">
-<a href="/en/ramp-slope-calculator" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/ramp-slope-calculator" data-nav-tool-id="rampe" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L3 8v12z"/></svg></span>
                     <span class="nav-tool-name font-bold">RampEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ADA / IRC</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">ADA / IRC</span>
             </a>
             
-            <a href="/en/stair-calculator" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/stair-calculator" data-nav-tool-id="scale" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h4v-4h4v-4h4v-4h4"/></svg></span>
                     <span class="nav-tool-name font-bold">StairsEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Blondel</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Blondel</span>
             </a>
             
-            <a href="/en/pipe-slope-calculator" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/pipe-slope-calculator" data-nav-tool-id="tubi" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14h6a4 4 0 004-4V4"/></svg></span>
                     <span class="nav-tool-name font-bold">PipesEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Drains</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Drains</span>
             </a>
             
-            <a href="/en/roof-pitch-calculator" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/roof-pitch-calculator" data-nav-tool-id="tetto" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3"/></svg></span>
                     <span class="nav-tool-name font-bold">RoofEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Pitch & Roof Slope</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Pitch & Roof Slope</span>
             </a>
             
-            <a href="/en/cut-list-optimizer" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/cut-list-optimizer" data-nav-tool-id="taglio" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879a3 3 0 11-4.242-4.242L10.758 10.758m0 0l2.879-2.879a3 3 0 10-4.242-4.242L6.515 6.515"/></svg></span>
                     <span class="nav-tool-name font-bold">OptiCut 1D</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Bin-Packing 1D</span>
             </a>
             
-            <a href="/en/tile-grout-calculator" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-xl text-xs transition bg-blue-600 text-white font-bold">
+            <a href="/en/tile-grout-calculator" data-nav-tool-id="piastrelle" class="flex items-center justify-between p-2 rounded-none text-xs transition bg-blue-600 text-white font-bold">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
                     <span class="nav-tool-name font-bold">TileEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Surfaces & Tiling</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Surfaces & Tiling</span>
             </a>
     </div>
 </details>
 
                     <!-- Category: OmniGraph -->
                     <details class="group/cat" data-cat="graph">
-    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-none hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
         <span class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-rose-700"></span> <span id="topDropGraphTitle">OmniGraph (6)</span>
                         </span>
         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
     </summary>
     <div class="space-y-0.5 pt-1">
-<a href="/en/book-spine-calculator" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/book-spine-calculator" data-nav-tool-id="dorso" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
                     <span class="nav-tool-name font-bold">SpineEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Paperback</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Paperback</span>
             </a>
             
-            <a href="/en/print-resolution-calculator" data-nav-tool-id="dpi" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/print-resolution-calculator" data-nav-tool-id="dpi" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
                     <span class="nav-tool-name font-bold">ResolutionEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">DPI / PPI</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">DPI / PPI</span>
             </a>
             
-            <a href="/en/pantone-ink-mixing-calculator" data-nav-tool-id="tinta" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/pantone-ink-mixing-calculator" data-nav-tool-id="tinta" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4c0-2.5 4-8 4-8s4 5.5 4 8a4 4 0 01-4 4z"/></svg></span>
                     <span class="nav-tool-name font-bold">ColorMatch Pro</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Color Match</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Color Match</span>
             </a>
             
-            <a href="/en/barcode-generator" data-nav-tool-id="barcode" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/barcode-generator" data-nav-tool-id="barcode" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6v12M8 6v12M12 6v12M15 6v12M19 6v12"/></svg></span>
                     <span class="nav-tool-name font-bold">OmniBarcode</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">ISO/IEC 15420</span>
             </a>
             
-            <a href="/en/cmyk-ink-coverage-calculator" data-nav-tool-id="copertura" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/cmyk-ink-coverage-calculator" data-nav-tool-id="copertura" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a7 7 0 01-7 7m7-7a7 7 0 00-7-7m0 14a7 7 0 01-7-7m7 7v4m0-18v4"/></svg></span>
                     <span class="nav-tool-name font-bold">CoverageEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">ISO 12647-2</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">ISO 12647-2</span>
             </a>
             
-            <a href="/en/paper-cutting-yield-calculator" data-nav-tool-id="resa" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/paper-cutting-yield-calculator" data-nav-tool-id="resa" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-rose-700 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
                     <span class="nav-tool-name font-bold">PaperYield</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Press Sheets</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Press Sheets</span>
             </a>
     </div>
 </details>
 
                     <!-- Category: OmniFinance -->
                     <details class="group/cat" data-cat="finance">
-    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-none hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
         <span class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> <span id="topDropFinanceTitle">OmniFinance (6)</span>
                         </span>
         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
     </summary>
     <div class="space-y-0.5 pt-1">
-<a href="/en/mortgage-loan-amortization-calculator" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/mortgage-loan-amortization-calculator" data-nav-tool-id="mutuo" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></span>
                     <span class="nav-tool-name font-bold">MortgageEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Financial</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Financial</span>
             </a>
             
-            <a href="/en/compound-interest-calculator" data-nav-tool-id="pac" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/compound-interest-calculator" data-nav-tool-id="pac" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></span>
                     <span class="nav-tool-name font-bold">CompoundInterest</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Savings Plan</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Savings Plan</span>
             </a>
             
-            <a href="/en/margin-markup-calculator" data-nav-tool-id="margine" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/margin-markup-calculator" data-nav-tool-id="margine" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5a1.99 1.99 0 011.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V5a2 2 0 012-2z"/></svg></span>
                     <span class="nav-tool-name font-bold">MarginEasy</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Markup / VAT</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Markup / VAT</span>
             </a>
             
-            <a href="/en/early-mortgage-payoff-calculator" data-nav-tool-id="estinzione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/early-mortgage-payoff-calculator" data-nav-tool-id="estinzione" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
                     <span class="nav-tool-name font-bold">MortgagePayoff</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Bersani</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Bersani</span>
             </a>
             
-            <a href="/en/savings-goal-calculator" data-nav-tool-id="risparmio" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/savings-goal-calculator" data-nav-tool-id="risparmio" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
                     <span class="nav-tool-name font-bold">SavingsGoal</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Sinking Fund</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Sinking Fund</span>
             </a>
             
-            <a href="/en/fire-financial-independence-calculator" data-nav-tool-id="fire" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+            <a href="/en/fire-financial-independence-calculator" data-nav-tool-id="fire" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
+                    <span class="w-4 h-4 rounded-none bg-emerald-600 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg></span>
                     <span class="nav-tool-name font-bold">FIRE & Passive Income</span>
                 </div>
-                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Trinity Study</span>
+                <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Trinity Study</span>
             </a>
     </div>
 </details>
                     <!-- Category: OmniFood -->
                     <details class="group/cat" data-cat="food">
-    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+    <summary class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-orange-700 flex items-center gap-1 justify-between w-full py-1.5 px-2 rounded-none hover:bg-slate-50 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
         <span class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span> <span>OmniFood (4)</span>
                         </span>
         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-150 group-open/cat:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
     </summary>
     <div class="space-y-0.5 pt-1">
-<a href="/en/shelf-life-calculator" data-nav-tool-id="shelflife" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/shelf-life-calculator" data-nav-tool-id="shelflife" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                             <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
+                                <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
                                 <span class="nav-tool-name font-bold">ShelfLife Export</span>
                             </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">EU • FDA • CFIA</span>
+                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">EU • FDA • CFIA</span>
                         </a>
-<a href="/en/nutri-export-converter" data-nav-tool-id="nutriexport" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/nutri-export-converter" data-nav-tool-id="nutriexport" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                             <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
+                                <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></span>
                                 <span class="nav-tool-name font-bold">NutriExport Converter</span>
                             </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">FDA 21 CFR</span>
+                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">FDA 21 CFR</span>
                         </a>
-<a href="/en/batch-scaler-calculator" data-nav-tool-id="impasti" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/batch-scaler-calculator" data-nav-tool-id="impasti" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                             <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 18h12l3-18H3zm6 0v18m6-18v18"/></svg></span>
+                                <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 18h12l3-18H3zm6 0v18m6-18v18"/></svg></span>
                                 <span class="nav-tool-name font-bold">BatchScaler Pro</span>
                             </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">Baker's %</span>
+                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">Baker's %</span>
                         </a>
-<a href="/en/hydration-balance-calculator" data-nav-tool-id="idratazione" class="flex items-center justify-between p-2 rounded-xl text-xs transition text-slate-700 hover:bg-slate-100">
+<a href="/en/hydration-balance-calculator" data-nav-tool-id="idratazione" class="flex items-center justify-between p-2 rounded-none text-xs transition text-slate-700 hover:bg-slate-100">
                             <div class="flex items-center gap-2">
-                                <span class="w-4 h-4 rounded-md bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>
+                                <span class="w-4 h-4 rounded-none bg-orange-500 text-white flex items-center justify-center p-0.5 shrink-0"><svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>
                                 <span class="nav-tool-name font-bold">HygroBalance Lab</span>
                             </div>
-                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-md bg-black/10 font-mono font-bold">T-Base &amp; Ice</span>
+                            <span class="nav-tool-badge text-[9px] uppercase px-1.5 py-0.5 rounded-none bg-black/10 font-mono font-bold">T-Base &amp; Ice</span>
                         </a>
     </div>
 </details>
@@ -1465,7 +1480,7 @@
     <div id="omniUniversalPrintHeader" class="hidden mb-3 pb-2.5 border-b-2 border-slate-900">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1.5 shadow-xs" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+                <div class="w-10 h-10 rounded-none bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center text-white shrink-0 p-1.5 shadow-xs" style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.2" />
                         <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -1787,11 +1802,6 @@
             
             <!-- Left Side: Home Hub Link + Divider + Branch Icon + Tool Title + Badge -->
             <div class="flex items-center gap-2.5 min-w-0">
-                <a href="/" class="text-[13px] font-medium text-[#475569] hover:text-[#0F172A] dark:text-slate-400 dark:hover:text-white transition-colors shrink-0 flex items-center gap-1">
-                    ← All Tools
-                </a>
-
-                <span class="w-[1px] h-4 bg-[#CBD5E1] dark:bg-slate-700 shrink-0"></span>
 
                 <div class="w-8 h-8 bg-amber-500 flex items-center justify-center text-white shrink-0 p-1.5 shadow-2xs" style="border-radius: 0px;">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
@@ -1837,22 +1847,12 @@
 
     <!-- MAIN APP CONTAINER -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-2.5 sm:py-5 flex-1 w-full space-y-6 sm:space-y-8">
-        <!-- Quick Section Anchor Bar (Calm UI & Progressive Disclosure) -->
-        <div class="no-print flex items-center justify-center gap-1.5 py-1 mb-2">
-            <div class="inline-flex items-center p-0.5 rounded-full bg-[#F1F5F9] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 text-[12px] font-medium text-[#64748B] dark:text-slate-400">
-                <a href="#calculatorArea" class="px-3 py-1 rounded-full bg-white dark:bg-slate-800 text-[#0F172A] dark:text-slate-200 shadow-2xs font-semibold">Calculator</a>
-                <span class="w-[1px] h-3 bg-[#CBD5E1] dark:bg-slate-700 mx-0.5"></span>
-                <a href="#normativeGuideArea" class="px-3 py-1 rounded-full hover:text-[#0F172A] dark:hover:text-slate-200 transition-colors flex items-center gap-1">
-                    <span>Formulas & Guide</span>
-                    <span class="text-[10px]">↓</span>
-                </a>
-            </div>
-        </div>
+        
 
         
         <!-- Hero Header -->
         <section class="text-center space-y-2 no-print id="calculatorArea"">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase mb-1">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none bg-amber-50 border border-amber-200/80 text-[11px] font-extrabold text-amber-800 tracking-wide uppercase mb-1">
                 <span></span>
                 <span id="heroBadge">OmniBuilding · Site & DIY</span>
             </div>
@@ -1864,30 +1864,17 @@
             </p>
         </section>
 
-        <!-- Google Featured Snippet (Position 0) Callout Box -->
-        <section aria-label="Formula Calcolo Piastrelle e Sfrido" class="no-print bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 sm:p-4 text-slate-800 shadow-xs">
-            <div class="flex items-start gap-3">
-                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 shadow-xs">fx</span>
-                <div class="text-xs sm:text-sm space-y-1">
-                    <p class="font-extrabold text-slate-900 tracking-tight text-xs sm:text-sm">
-                        Tile & Cutting Waste Formula: <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">M² da Ordinare = M² Netti × (1 + Sfrido % / 100)</code> · <code class="inline-block my-0.5 bg-white px-2 py-0.5 rounded-md border border-amber-200 text-amber-800 font-mono font-black">Boxes = ⌈Order Area / Box Coverage⌉</code>
-                    </p>
-                    <p class="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
-                        <strong>Practical example:</strong> For a <code class="font-bold">20,0 m²</code> room with straight lay (<code class="font-bold">+10% sfrido</code>), total area to order is: <code class="font-mono text-slate-800 font-bold">20 × 1,10 = 22,0 m²</code>. With boxes covering <code class="font-bold">1,44 m²</code> you need <code class="font-mono text-slate-800 font-bold">16 scatole (23,04 m² effettivi)</code>, plus <code class="font-bold">4 sacchi di colla (25 kg)</code> and <code class="font-bold">~1,5 kg di stucco</code> (fuga 2 mm).
-                    </p>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Main Unified Card (Single Card Container) -->
-        <div class="bg-white rounded-3xl border border-slate-200 border-t-4 border-t-amber-500 shadow-sm p-4 sm:p-7 space-y-6">
+        <div class="bg-white rounded-none border border-slate-200 border-t-4 border-t-amber-500 shadow-sm p-4 sm:p-7 space-y-6">
 
             <!-- Mode Selector (Dimensions vs Direct Sqm) Tabs -->
-            <div id="modeSelectorBar" class="bg-slate-100 p-1.5 rounded-2xl flex border border-slate-200/80 mb-6 text-xs sm:text-sm font-bold no-print">
-                <button id="btnModeDims" type="button" onclick="setRoomMode('dims')" class="flex-1 py-2 sm:py-2.5 rounded-xl bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold">
+            <div id="modeSelectorBar" class="bg-slate-100 p-1.5 rounded-none flex border border-slate-200/80 mb-6 text-xs sm:text-sm font-bold no-print">
+                <button id="btnModeDims" type="button" onclick="setRoomMode('dims')" class="flex-1 py-2 sm:py-2.5 rounded-none bg-white text-slate-900 shadow-sm transition active:scale-95 text-center font-bold">
                     Room Dimensions (L × W)
                 </button>
-                <button id="btnModeDirect" type="button" onclick="setRoomMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-xl text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">
+                <button id="btnModeDirect" type="button" onclick="setRoomMode('direct')" class="flex-1 py-2 sm:py-2.5 rounded-none text-slate-600 hover:text-slate-900 transition active:scale-95 text-center font-bold">
                     Net Area (m² / sq ft)
                 </button>
             </div>
@@ -1899,13 +1886,13 @@
                 <div class="space-y-3">
                     <div class="flex items-center justify-between pb-2.5 border-b border-slate-100">
                         <div class="flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">1</span>
+                            <span class="w-5 h-5 rounded-none bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">1</span>
                             <span id="secRoomTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Surface Area to Tile</span>
                         </div>
                         <!-- Unit Switcher -->
-                        <div class="inline-flex p-0.5 bg-slate-100 rounded-xl border border-slate-200/80 gap-1 text-[11px] font-bold">
-                            <button type="button" id="btnUnitMetric" onclick="setMeasurementUnit('metric')" class="px-2.5 py-1 rounded-lg bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">Metric (m)</button>
-                            <button type="button" id="btnUnitImperial" onclick="setMeasurementUnit('imperial')" class="px-2.5 py-1 rounded-lg text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">Imperial (ft)</button>
+                        <div class="inline-flex p-0.5 bg-slate-100 rounded-none border border-slate-200/80 gap-1 text-[11px] font-bold">
+                            <button type="button" id="btnUnitMetric" onclick="setMeasurementUnit('metric')" class="px-2.5 py-1 rounded-none bg-white text-amber-700 shadow-xs font-extrabold transition active:scale-95 text-center">Metric (m)</button>
+                            <button type="button" id="btnUnitImperial" onclick="setMeasurementUnit('imperial')" class="px-2.5 py-1 rounded-none text-slate-700 hover:text-slate-900 transition active:scale-95 text-center font-bold">Imperial (ft)</button>
                         </div>
                     </div>
                     <p id="secRoomDesc" class="text-xs text-slate-500 hidden">Enter room dimensions or directly enter known net surface area.</p>
@@ -1921,7 +1908,7 @@
                                 <span id="unitBadgeLen" class="text-xs font-mono font-bold text-slate-700">m</span>
                             </div>
                             <input type="number" id="inputLength" value="5.0" min="0.5" max="300" step="0.05" oninput="calculateAll()"
-                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
                         <div class="space-y-1.5">
                             <div class="flex justify-between items-center">
@@ -1932,7 +1919,7 @@
                                 <span id="unitBadgeWid" class="text-xs font-mono font-bold text-slate-700">m</span>
                             </div>
                             <input type="number" id="inputWidth" value="4.0" min="0.5" max="300" step="0.05" oninput="calculateAll()"
-                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                         </div>
                     </div>
 
@@ -1946,7 +1933,7 @@
                             <span id="unitBadgeArea" class="text-xs font-mono font-bold text-slate-700">m²</span>
                         </div>
                         <input type="number" id="inputDirectSqm" value="20.0" min="0.5" max="50000" step="0.1" oninput="calculateAll()"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-extrabold text-base sm:text-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                     </div>
 
                     <!-- Openings Deduction (Doors / Windows / Pillars) -->
@@ -1956,14 +1943,14 @@
                             <span id="unitBadgeDeduct" class="text-xs font-mono font-bold text-slate-500">m²</span>
                         </div>
                         <input type="number" id="inputOpenings" value="0" min="0" max="5000" step="0.1" oninput="calculateAll()"
-                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+                            class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-none font-bold text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
                     </div>
                 </div>
 
                 <!-- 2. Formato Piastrella & Schema di Posa -->
                 <div class="space-y-3 pt-4 border-t border-slate-100">
                     <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
-                        <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">2</span>
+                        <span class="w-5 h-5 rounded-none bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">2</span>
                         <span id="secTileTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Tile Size & Laying Pattern</span>
                     </div>
                     <p id="secTileDesc" class="text-xs text-slate-500 hidden">Select tile size and installation pattern to estimate realistic cutting waste.</p>
@@ -1972,11 +1959,11 @@
                     <div>
                         <span id="lblTilePreset" class="block text-xs font-bold text-slate-600 mb-2">Standard Tile Sizes:</span>
                         <div class="flex flex-wrap gap-1.5">
-                            <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">60 × 60 cm</button>
-                            <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">30 × 60 cm</button>
-                            <button type="button" onclick="setTilePreset(80, 80, 9.5)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">80 × 80 cm</button>
-                            <button type="button" onclick="setTilePreset(20, 120, 9.5)" id="btnPresetWood" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 120 (Listoni Legno)</button>
-                            <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 20 cm</button>
+                            <button type="button" onclick="setTilePreset(60, 60, 9)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">60 × 60 cm</button>
+                            <button type="button" onclick="setTilePreset(30, 60, 9)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">30 × 60 cm</button>
+                            <button type="button" onclick="setTilePreset(80, 80, 9.5)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">80 × 80 cm</button>
+                            <button type="button" onclick="setTilePreset(20, 120, 9.5)" id="btnPresetWood" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 120 (Listoni Legno)</button>
+                            <button type="button" onclick="setTilePreset(20, 20, 8)" class="px-2.5 py-1 rounded-none bg-slate-50 hover:bg-amber-50 hover:border-amber-300 text-xs font-semibold text-slate-700 border border-slate-200 transition active:scale-95">20 × 20 cm</button>
                         </div>
                     </div>
 
@@ -1985,21 +1972,21 @@
                         <div>
                             <label for="tileWidth" id="lblTileW" class="block text-[11px] font-bold text-slate-700 mb-1">Tile Width</label>
                             <div class="relative">
-                                <input type="number" id="tileWidth" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <input type="number" id="tileWidth" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
                                 <span id="unitBadgeTileW" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">cm</span>
                             </div>
                         </div>
                         <div>
                             <label for="tileHeight" id="lblTileH" class="block text-[11px] font-bold text-slate-700 mb-1">Tile Height</label>
                             <div class="relative">
-                                <input type="number" id="tileHeight" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <input type="number" id="tileHeight" value="60" min="5" max="400" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
                                 <span id="unitBadgeTileH" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">cm</span>
                             </div>
                         </div>
                         <div>
                             <label for="tileThick" id="lblTileThick" class="block text-[11px] font-bold text-slate-700 mb-1">Thickness</label>
                             <div class="relative">
-                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <input type="number" id="tileThick" value="9" min="3" max="30" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
                                 <span id="unitBadgeTileThick" class="absolute right-2 top-2 text-[11px] font-bold text-slate-400">mm</span>
                             </div>
                         </div>
@@ -2009,7 +1996,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                         <div>
                             <label for="selectPattern" id="lblPattern" class="block text-xs font-bold text-slate-700 mb-1">Layout Pattern & Waste Margin</label>
-                            <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <select id="selectPattern" onchange="onPatternChange()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                                 <option value="10" selected id="optStraight">Posa Dritta Standard (+10% sfrido)</option>
                                 <option value="12" id="optOffset">Posa Sfalsata / A Correre (+12% sfrido)</option>
                                 <option value="15" id="optDiagonal">Posa in Diagonale (+15% sfrido)</option>
@@ -2018,7 +2005,7 @@
                             </select>
                             <div id="customWasteGroup" class="hidden mt-2">
                                 <label for="customWasteInput" id="lblCustomWaste" class="block text-[11px] font-bold text-slate-600 mb-1">Custom Waste (%)</label>
-                                <input type="number" id="customWasteInput" value="10" min="0" max="50" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                                <input type="number" id="customWasteInput" value="10" min="0" max="50" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-1.5 text-xs text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                             </div>
                         </div>
 
@@ -2026,13 +2013,13 @@
                             <div>
                                 <label for="boxCoverage" id="lblBoxCoverage" class="block text-xs font-bold text-slate-700 mb-1">Box Coverage</label>
                                 <div class="relative">
-                                    <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                    <input type="number" id="boxCoverage" value="1.44" min="0.1" max="50" step="0.01" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
                                     <span id="unitBadgeBoxCov" class="absolute right-2 top-2 text-xs font-bold text-slate-400">m²</span>
                                 </div>
                             </div>
                             <div>
                                 <label for="boxPieces" id="lblBoxPieces" class="block text-xs font-bold text-slate-700 mb-1">Tiles / Box</label>
-                                <input type="number" id="boxPieces" value="4" min="1" max="100" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                                <input type="number" id="boxPieces" value="4" min="1" max="100" step="1" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                             </div>
                         </div>
                     </div>
@@ -2041,7 +2028,7 @@
                 <!-- 3. Adhesive & Grout Consumptions -->
                 <div class="space-y-3 pt-4 border-t border-slate-100">
                     <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
-                        <span class="w-5 h-5 rounded-md bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">3</span>
+                        <span class="w-5 h-5 rounded-none bg-amber-500 text-white flex items-center justify-center font-bold text-[11px]">3</span>
                         <span id="secMaterialsTitle" class="text-xs font-bold uppercase tracking-wider text-slate-700">Tile Adhesive & Joint Grout</span>
                     </div>
                     <p id="secMaterialsDesc" class="text-xs text-slate-500 hidden">Accurate jobsite consumption estimates based on trowel size and grout joint width.</p>
@@ -2050,20 +2037,20 @@
                         <div>
                             <label for="groutWidth" id="lblGroutWidth" class="block text-xs font-bold text-slate-700 mb-1">Grout Joint Width</label>
                             <div class="relative">
-                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-9">
+                                <input type="number" id="groutWidth" value="2.0" min="0.5" max="25" step="0.5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-9">
                                 <span id="unitBadgeGroutW" class="absolute right-2 top-2 text-xs font-bold text-slate-400">mm</span>
                             </div>
                         </div>
                         <div>
                             <label for="bagWeight" id="lblBagWeight" class="block text-xs font-bold text-slate-700 mb-1">Adhesive Bag Weight</label>
                             <div class="relative">
-                                <input type="number" id="bagWeight" value="25" min="5" max="50" step="5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
+                                <input type="number" id="bagWeight" value="25" min="5" max="50" step="5" oninput="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-3 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition pr-8">
                                 <span class="absolute right-2 top-2 text-xs font-bold text-slate-400">kg</span>
                             </div>
                         </div>
                         <div>
                             <label for="selectAdhesive" id="lblAdhesiveNotch" class="block text-xs font-bold text-slate-700 mb-1">Trowel Notch / Bed Depth</label>
-                            <select id="selectAdhesive" onchange="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+                            <select id="selectAdhesive" onchange="calculateAll()" class="w-full bg-slate-50 border border-slate-200 rounded-none px-2.5 py-2 text-xs font-bold text-slate-800 focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
                                 <option value="3.0" id="notchSmall">Dente 6 mm (~3.0 kg/m²)</option>
                                 <option value="4.5" selected id="notchMedium">Dente 8-10 mm (~4.5 kg/m²)</option>
                                 <option value="6.0" id="notchLarge">Doppia Spalmatura (~6.0 kg/m²)</option>
@@ -2078,7 +2065,7 @@
             <div id="metricsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-100">
                 
                 <!-- Card 1: Scatole -->
-                <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-3.5 text-center">
+                <div class="bg-amber-50/70 border border-amber-200/80 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider block" id="resBoxesLabel">Boxes to Order</span>
                     <span class="text-2xl sm:text-3xl font-black font-mono text-amber-900 block mt-1" id="valBoxes">16 Scatole</span>
                     <span class="text-[10px] text-amber-700 font-mono block mt-0.5" id="valCoverageDetails">23.04 m² effettivi</span>
@@ -2086,7 +2073,7 @@
                 </div>
 
                 <!-- Card 2: Totale da Ordinare -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                <div class="bg-slate-50 border border-slate-200 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resGrossAreaLabel">Total incl. Waste</span>
                     <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valGrossArea">22.00 m²</span>
                     <span class="text-[10px] text-slate-500 font-semibold block mt-0.5">Net: <span id="valNetArea">20.00 m²</span></span>
@@ -2094,14 +2081,14 @@
                 </div>
 
                 <!-- Card 3: Sacchi di Colla -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                <div class="bg-slate-50 border border-slate-200 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resAdhesiveBagsLabel">Adhesive Bags</span>
                     <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valAdhesiveBags">4 Sacchi</span>
                     <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valAdhesiveKg">Totale stimato ~99 kg</span>
                 </div>
 
                 <!-- Card 4: Stucco Fughe -->
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-center">
+                <div class="bg-slate-50 border border-slate-200 rounded-none p-3.5 text-center">
                     <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block" id="resGroutKgLabel">Joint Grout</span>
                     <span class="text-2xl sm:text-3xl font-black font-mono text-slate-900 block mt-1" id="valGroutKg">1.5 kg</span>
                     <span class="text-[10px] text-slate-500 font-mono block mt-0.5" id="valGroutDetails">Fuga 2mm · Spessore 9mm</span>
@@ -2109,12 +2096,12 @@
             </div>
 
             <!-- Status / Contingency Warning Banner -->
-            <div class="p-4 sm:p-5 rounded-2xl border transition-all flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900">
+            <div class="p-4 sm:p-5 rounded-none border transition-all flex items-start gap-3 bg-amber-50/80 border-amber-200 text-amber-900">
                 <span class="text-2xl leading-none mt-0.5">️</span>
                 <div class="space-y-1 flex-1">
                     <div class="flex items-center gap-2 flex-wrap">
                         <h3 id="summaryTitle" class="text-sm sm:text-base font-bold text-slate-900">Purchase Quantities & Cutting Waste Allowance</h3>
-                        <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-900 border border-amber-300">Bill of Materials</span>
+                        <span id="badgeBom" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-amber-200/80 text-amber-900 border border-amber-300">Bill of Materials</span>
                     </div>
                     <p id="resWasteWarning" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         Include riserva per tagli perimetrali e sfridi di cantiere. Conserva sempre almeno 1 scatola integra per future riparazioni.
@@ -2126,11 +2113,11 @@
             <div class="space-y-2 no-print">
                 <div class="flex items-center justify-between">
                     <span id="previewTitle" class="text-xs font-bold text-slate-700 uppercase tracking-wider">Layout Pattern Visual Preview</span>
-                    <span id="previewPatternBadge" class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Dritta (+10%)</span>
+                    <span id="previewPatternBadge" class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-none border border-amber-200">Dritta (+10%)</span>
                 </div>
 
                 <!-- SVG Grid Canvas -->
-                <div class="w-full h-40 sm:h-52 bg-slate-100 rounded-2xl border border-slate-200/90 overflow-hidden flex items-center justify-center relative p-2 shadow-inner">
+                <div class="w-full h-40 sm:h-52 bg-slate-100 rounded-none border border-slate-200/90 overflow-hidden flex items-center justify-center relative p-2 shadow-inner">
                     <svg id="patternSvg" class="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
                         <!-- Injected dynamically via JS -->
                     </svg>
@@ -2162,7 +2149,7 @@
             
             <div class="space-y-2 text-xs sm:text-sm">
                 
-                <details class="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200 group">
+                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
                     <summary id="faq1Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
                         <span>Perché è indispensabile aggiungere lo sfrido (10-20%) al calcolo delle piastrelle?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
@@ -2172,7 +2159,7 @@
                     </p>
                 </details>
 
-                <details class="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200 group">
+                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
                     <summary id="faq2Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
                         <span>How many bags of tile adhesive do you need per square meter?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
@@ -2182,7 +2169,7 @@
                     </p>
                 </details>
 
-                <details class="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200 group">
+                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
                     <summary id="faq3Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
                         <span>How is joint grout consumption calculated?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
@@ -2192,7 +2179,7 @@
                     </p>
                 </details>
 
-                <details class="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200 group">
+                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
                     <summary id="faq4Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
                         <span>How do I calculate square meters for an L-shaped or irregular room?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
@@ -2202,7 +2189,7 @@
                     </p>
                 </details>
 
-                <details class="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200 group">
+                <details class="bg-white rounded-none p-3.5 sm:p-4 border border-slate-200 group">
                     <summary id="faq5Q" class="font-bold text-slate-800 cursor-pointer list-none flex items-center justify-between">
                         <span>What are rectified tiles and what joint width do they need?</span>
                         <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
@@ -2224,14 +2211,14 @@
         <div class="max-w-5xl mx-auto px-3 sm:px-6 space-y-6">
             
             <!-- NATIVE TECHNICAL SPONSOR / PARTNER BANNER SLOT (Division-Contextualized) -->
-            <div id="omniSponsorBanner" data-sponsor-division="finance" class="bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/60 rounded-3xl p-4 sm:p-5 border-2 border-dashed border-emerald-200/90 hover:border-emerald-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4">
+            <div id="omniSponsorBanner" data-sponsor-division="finance" class="bg-gradient-to-r from-emerald-50/90 via-white to-teal-50/60 rounded-none p-4 sm:p-5 border-2 border-dashed border-emerald-200/90 hover:border-emerald-400 transition-all duration-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-start gap-3.5 text-left">
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center text-2xl shrink-0">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-none bg-white border border-slate-200 shadow-xs flex items-center justify-center text-2xl shrink-0">
                         
                     </div>
                     <div class="space-y-1">
                         <div class="flex flex-wrap items-center gap-2">
-                            <span id="sponsorBannerBadge" class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border bg-emerald-100 text-emerald-900 border-emerald-300">
+                            <span id="sponsorBannerBadge" class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-none border bg-emerald-100 text-emerald-900 border-emerald-300">
                                 TECHNICAL SPONSOR SLOT • OMNIFINANCE
                             </span>
                             <span id="sponsorBannerAvail" class="text-[10px] font-bold text-slate-500 flex items-center gap-1">
@@ -2247,7 +2234,7 @@
                     </div>
                 </div>
                 <div class="shrink-0 w-full md:w-auto flex md:flex-col items-center justify-end gap-2">
-                    <a href="/partnership" class="w-full md:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20 font-extrabold text-xs shadow-md transition active:scale-95 text-center inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
+                    <a href="/partnership" class="w-full md:w-auto px-4 py-2.5 rounded-none bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20 font-extrabold text-xs shadow-md transition active:scale-95 text-center inline-flex items-center justify-center gap-1.5 whitespace-nowrap">
                         <span></span>
                         <span id="sponsorBannerCta">Apply as a Partner</span>
                         <span>→</span>
@@ -2256,7 +2243,7 @@
             </div>
 
             <!-- SMART CROSS-LINKING: Related Tools (SEO Engine & Retention) -->
-            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
+            <div class="bg-white rounded-none p-5 sm:p-6 border border-slate-200 shadow-xs space-y-3.5">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-slate-100">
                     <div class="flex items-center gap-2">
                         
@@ -2266,10 +2253,10 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     
-        <a href="/en/ramp-slope-calculator" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+        <a href="/en/ramp-slope-calculator" class="group p-3.5 bg-slate-50 hover:bg-white rounded-none border border-slate-200/90 hover:border-amber-500 hover:bg-amber-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-xl group-hover:scale-110 transition-transform"></span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200 border">Construction</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-amber-50 text-amber-800 border-amber-200 border">Construction</span>
             </div>
             <div>
                 <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">RampEasy</span>
@@ -2280,10 +2267,10 @@
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
-        <a href="/en/book-spine-calculator" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-rose-500 hover:bg-rose-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+        <a href="/en/book-spine-calculator" class="group p-3.5 bg-slate-50 hover:bg-white rounded-none border border-slate-200/90 hover:border-rose-500 hover:bg-rose-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-xl group-hover:scale-110 transition-transform"></span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border-rose-200 border">Graphics</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-rose-50 text-rose-800 border-rose-200 border">Graphics</span>
             </div>
             <div>
                 <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">SpineEasy</span>
@@ -2294,10 +2281,10 @@
                 <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
         </a>
-        <a href="/en/mortgage-loan-amortization-calculator" class="group p-3.5 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
+        <a href="/en/mortgage-loan-amortization-calculator" class="group p-3.5 bg-slate-50 hover:bg-white rounded-none border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-xl group-hover:scale-110 transition-transform"></span>
-                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200 border">Finance</span>
+                <span class="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-none bg-emerald-50 text-emerald-800 border-emerald-200 border">Finance</span>
             </div>
             <div>
                 <span class="font-extrabold text-slate-900 group-hover:text-blue-600 text-xs block transition-colors">MortgageEasy</span>
@@ -2312,7 +2299,7 @@
             </div>
 
             <!-- Share & Viral Action Strip -->
-            <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div class="bg-white p-3.5 sm:p-4 rounded-none border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <div class="flex items-center gap-2.5">
                     <span class="text-xl"></span>
                     <div>
@@ -2321,23 +2308,23 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-1.5 flex-wrap justify-center shrink-0">
-                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Share on WhatsApp">
+                    <button type="button" onclick="shareWhatsApp()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold rounded-none transition shadow-xs" title="Share on WhatsApp">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                         <span>WhatsApp</span>
                     </button>
-                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Share on LinkedIn">
+                    <button type="button" onclick="shareLinkedIn()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0A66C2] hover:bg-[#004182] active:scale-95 text-white text-xs font-bold rounded-none transition shadow-xs" title="Share on LinkedIn">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         <span>LinkedIn</span>
                     </button>
-                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="Share on Reddit">
+                    <button type="button" onclick="shareReddit()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#FF4500] hover:bg-[#e03d00] active:scale-95 text-white text-xs font-bold rounded-none transition shadow-xs" title="Share on Reddit">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 8.99c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.56 12 8 12.56 8 13.25c0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm5.5 0c-.69 0-1.25.56-1.25 1.25 0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm-5.465 4.542a.335.335 0 0 0-.232.095.33.33 0 0 0 0 .464c.732.732 2.012.986 2.947.986.935 0 2.215-.254 2.947-.986a.33.33 0 0 0 0-.464.335.335 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.197-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
                         <span>Reddit</span>
                     </button>
-                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 transition" title="Copy Link">
+                    <button type="button" onclick="copyCurrentUrl()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs font-bold rounded-none border border-slate-200 transition" title="Copy Link">
                         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                         <span id="shareCopyText">Copy Link</span>
                     </button>
-                    <button type="button" onclick="nativeShare()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition shadow-xs" title="More sharing options">
+                    <button type="button" onclick="nativeShare()" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-none transition shadow-xs" title="More sharing options">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
                         <span>Share</span>
                     </button>
@@ -2345,14 +2332,14 @@
             </div>
 
             <!-- Suggestion Prompt Strip -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-200/80 rounded-none p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left transition shadow-xs">
                 <div class="flex items-center gap-2.5">
                     <span class="text-xl"><svg class="w-4 h-4 shrink-0 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
                     <span id="suggestBannerText" class="text-xs sm:text-sm font-bold text-slate-800">
                         Have an idea for a new construction, print, or finance calculator?
                     </span>
                 </div>
-                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition shrink-0 inline-flex items-center gap-1">
+                <button type="button" onclick="openSuggestModal()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold text-xs rounded-none shadow-xs transition shrink-0 inline-flex items-center gap-1">
                     <span id="suggestBtnText">Suggest</span>
                     <span>→</span>
                 </button>
@@ -2621,7 +2608,7 @@
     </footer>
 
     <!-- Floating PWA Install Banner -->
-    <div id="installBanner" class="no-print hidden fixed bottom-4 right-4 max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl shadow-xl border border-slate-700 z-50 flex items-center justify-between gap-3">
+    <div id="installBanner" class="no-print hidden fixed bottom-4 right-4 max-w-sm bg-slate-900 text-white p-3.5 rounded-none shadow-xl border border-slate-700 z-50 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5">
             <span class="text-2xl"></span>
             <div>
@@ -2630,10 +2617,10 @@
             </div>
         </div>
         <div class="flex items-center gap-1.5 shrink-0">
-            <button type="button" onclick="triggerInstall()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-xl transition">
+            <button type="button" onclick="triggerInstall()" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white text-xs font-bold rounded-none transition">
                 Install
             </button>
-            <button type="button" onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-lg transition" title="Close">
+            <button type="button" onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-none transition" title="Close">
                 
             </button>
         </div>
@@ -2641,13 +2628,13 @@
 
     <!-- Suggestion Modal Pop-up -->
     <div id="suggestModal" class="no-print hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
+        <div class="bg-white rounded-none max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-200 space-y-4">
             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div class="flex items-center gap-2">
                     <span class="text-xl"><svg class="w-4 h-4 shrink-0 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
                     <h3 id="modalSuggestTitle" class="text-base font-extrabold text-slate-900">Suggest a Tool</h3>
                 </div>
-                <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
+                <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-none bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
                     
                 </button>
             </div>
@@ -2657,30 +2644,30 @@
             </p>
 
             <div id="suggestFormContainer" class="space-y-3">
-                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Write your idea here..."></textarea>
+                <textarea id="suggestMessage" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-none text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none" placeholder="Write your idea here..."></textarea>
                 
                 <div class="flex items-center justify-between text-[10px] text-slate-500">
                     <span id="modalPrivacyNote">100% anonymous submission. No registration required.</span>
                 </div>
 
                 <div class="flex gap-2 pt-1">
-                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
+                    <button type="button" onclick="closeSuggestModal()" id="modalCloseBtn" class="flex-1 py-2 rounded-none border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95">
                         Cancel
                     </button>
-                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
+                    <button type="button" onclick="submitSuggestion()" id="modalSubmitBtn" class="flex-1 py-2 rounded-none bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 active:scale-95 transition">
                         Submit
                     </button>
                 </div>
             </div>
 
             <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
-                <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
+                <div class="w-12 h-12 mx-auto rounded-none bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
                    
                 </div>
                 <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
                     Thank you! Your idea has been logged and will help shape future OmniTools utilities.
                 </p>
-                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+                <button type="button" onclick="closeSuggestModal()" class="px-5 py-2 rounded-none bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
                     Done
                 </button>
             </div>
