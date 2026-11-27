@@ -185,6 +185,13 @@
             background-color: rgba(120, 53, 15, 0.28) !important;
             border-color: rgba(245, 158, 11, 0.45) !important;
         }
+        html.omni-dark #metricsRow > div:not(:first-child) span:nth-child(2) {
+            color: #f8fafc !important;
+        }
+        html.omni-dark #metricsRow > div:not(:first-child) span:first-child,
+        html.omni-dark #metricsRow > div:not(:first-child) span:last-child {
+            color: #94a3b8 !important;
+        }
         html.omni-dark #metricsRow > div:not(:first-child) {
             background-color: #0f172a !important;
             border-color: #334155 !important;
@@ -205,6 +212,12 @@
         html.omni-dark #faqSection details {
             background-color: #1e293b !important;
             border-color: #334155 !important;
+        }
+        html.omni-dark #heroTitle {
+            color: #f8fafc !important;
+        }
+        html.omni-dark #heroDesc {
+            color: #cbd5e1 !important;
         }
         html.omni-dark #faqSection summary {
             color: #f8fafc !important;
@@ -272,43 +285,35 @@
             vector-effect: non-scaling-stroke;
         }
 
-        /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
-        html.omni-dark [class*="bg-amber-50"],
-        html.omni-dark [class*="bg-amber-100"],
-        html.omni-dark [class*="bg-amber-200"],
-        html.omni-dark [class*="bg-yellow-50"],
-        html.omni-dark [class*="bg-yellow-100"],
-        html.omni-dark [class*="bg-orange-50"] {
-            background-color: rgba(120, 53, 15, 0.28) !important;
+        /* Dark Mode Amber Accent Preservation (keeps white/slate texts white, only amber accents stay amber) */
+        html.omni-dark .bg-amber-50, html.omni-dark .bg-amber-50\/70, html.omni-dark .bg-amber-50\/80,
+        html.omni-dark .bg-amber-100, html.omni-dark .bg-amber-200 {
+            background-color: rgba(120, 53, 15, 0.25) !important;
             border-color: rgba(217, 119, 6, 0.45) !important;
-            color: #fde68a !important;
         }
-        html.omni-dark [class*="bg-amber-50"] strong,
-        html.omni-dark [class*="bg-amber-50"] h3,
-        html.omni-dark [class*="bg-amber-50"] span,
-        html.omni-dark [class*="bg-amber-50"] p,
-        html.omni-dark [class*="bg-amber-50"] code,
-        html.omni-dark [class*="bg-amber-100"] strong,
-        html.omni-dark [class*="bg-amber-100"] h3,
-        html.omni-dark [class*="bg-amber-100"] span,
-        html.omni-dark [class*="bg-amber-100"] p,
-        html.omni-dark [class*="bg-amber-200"] strong,
-        html.omni-dark [class*="bg-amber-200"] h3,
-        html.omni-dark [class*="bg-amber-200"] span,
-        html.omni-dark [class*="bg-amber-200"] p {
-            color: #fde68a !important;
+        html.omni-dark #statusBanner {
+            background-color: rgba(120, 53, 15, 0.25) !important;
+            border-color: rgba(245, 158, 11, 0.4) !important;
         }
-        html.omni-dark [class*="bg-amber-50"] .text-slate-900,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-800,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-700,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-600,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-500 {
-            color: #fef08a !important;
+        html.omni-dark #statusBanner #statusTitle {
+            color: #f8fafc !important;
         }
-        html.omni-dark [class*="bg-amber-200"][class*="rounded-none"] {
-            background-color: rgba(245, 158, 11, 0.3) !important;
-            border-color: #f59e0b !important;
-            color: #fef08a !important;
+        html.omni-dark #statusBanner #statusDesc {
+            color: #cbd5e1 !important;
+        }
+        html.omni-dark #presetsSection button {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+        }
+        html.omni-dark #presetsSection button:hover {
+            background-color: #1e293b !important;
+            border-color: #d97706 !important;
+        }
+        html.omni-dark #presetsSection button > div:first-child {
+            color: #f8fafc !important;
+        }
+        html.omni-dark #presetsSection button > div:last-child {
+            color: #94a3b8 !important;
         }
         html.omni-dark [class*="bg-amber-500"]:not(.selection\:bg-amber-500),
         html.omni-dark [class*="bg-amber-600"] {
@@ -316,14 +321,75 @@
             color: #ffffff !important;
         }
 
-        /* Range Slider Track in Dark Mode */
+        /* OmniBuilding Amber Slider - Sharp 90° Square Thumb (Light & Dark Mode) */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 0px !important;
+            outline: none;
+            cursor: pointer;
+        }
         html.omni-dark input[type=range] {
             background: #334155 !important;
             border: 1px solid #475569 !important;
         }
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 6px;
+            border-radius: 0px !important;
+            background: transparent;
+        }
+        input[type=range]::-moz-range-track {
+            height: 6px;
+            border-radius: 0px !important;
+            background: #e2e8f0;
+        }
+        html.omni-dark input[type=range]::-moz-range-track {
+            background: #334155 !important;
+        }
+        input[type=range]::-moz-range-progress {
+            height: 6px;
+            background: #d97706;
+            border-radius: 0px !important;
+        }
+        html.omni-dark input[type=range]::-moz-range-progress {
+            background: #f59e0b !important;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 0px !important;
+            background: #d97706 !important;
+            cursor: pointer;
+            border: 2px solid #ffffff !important;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
+            margin-top: -6px;
+            transition: transform 0.1s ease, background 0.15s ease;
+        }
         html.omni-dark input[type=range]::-webkit-slider-thumb {
-            border-color: #1e293b !important;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6) !important;
+            background: #f59e0b !important;
+            border: 2px solid #0f172a !important;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.6) !important;
+        }
+        input[type=range]::-webkit-slider-thumb:active {
+            transform: scale(1.12);
+        }
+        input[type=range]::-moz-range-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 0px !important;
+            background: #d97706 !important;
+            cursor: pointer;
+            border: 2px solid #ffffff !important;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
+        }
+        html.omni-dark input[type=range]::-moz-range-thumb {
+            background: #f59e0b !important;
+            border: 2px solid #0f172a !important;
         }
 
         html.omni-dark body { background-color: #0f172a !important; color: #e2e8f0 !important; }
