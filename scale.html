@@ -323,43 +323,11 @@
             vector-effect: non-scaling-stroke;
         }
 
-        /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
-        html.omni-dark [class*="bg-amber-50"],
-        html.omni-dark [class*="bg-amber-100"],
-        html.omni-dark [class*="bg-amber-200"],
-        html.omni-dark [class*="bg-yellow-50"],
-        html.omni-dark [class*="bg-yellow-100"],
-        html.omni-dark [class*="bg-orange-50"] {
-            background-color: rgba(120, 53, 15, 0.28) !important;
+        /* Dark Mode Amber Accent Preservation (keeps white/slate texts white) */
+        html.omni-dark .bg-amber-50, html.omni-dark .bg-amber-50\/70, html.omni-dark .bg-amber-50\/80,
+        html.omni-dark .bg-amber-100, html.omni-dark .bg-amber-200 {
+            background-color: rgba(120, 53, 15, 0.25) !important;
             border-color: rgba(217, 119, 6, 0.45) !important;
-            color: #fde68a !important;
-        }
-        html.omni-dark [class*="bg-amber-50"] strong,
-        html.omni-dark [class*="bg-amber-50"] h3,
-        html.omni-dark [class*="bg-amber-50"] span,
-        html.omni-dark [class*="bg-amber-50"] p,
-        html.omni-dark [class*="bg-amber-50"] code,
-        html.omni-dark [class*="bg-amber-100"] strong,
-        html.omni-dark [class*="bg-amber-100"] h3,
-        html.omni-dark [class*="bg-amber-100"] span,
-        html.omni-dark [class*="bg-amber-100"] p,
-        html.omni-dark [class*="bg-amber-200"] strong,
-        html.omni-dark [class*="bg-amber-200"] h3,
-        html.omni-dark [class*="bg-amber-200"] span,
-        html.omni-dark [class*="bg-amber-200"] p {
-            color: #fde68a !important;
-        }
-        html.omni-dark [class*="bg-amber-50"] .text-slate-900,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-800,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-700,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-600,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-500 {
-            color: #fef08a !important;
-        }
-        html.omni-dark [class*="bg-amber-200"][class*="rounded-none-full"] {
-            background-color: rgba(245, 158, 11, 0.3) !important;
-            border-color: #f59e0b !important;
-            color: #fef08a !important;
         }
         html.omni-dark [class*="bg-amber-500"]:not(.selection\:bg-amber-500),
         html.omni-dark [class*="bg-amber-600"] {
@@ -1977,7 +1945,7 @@
                 <div id="complianceCard" class="p-4 sm:p-5 rounded-none border transition-all duration-200">
                     <div class="flex items-start gap-3">
                         <div id="statusIcon" class="w-9 h-9 rounded-none flex items-center justify-center shrink-0 text-base sm:text-lg font-bold bg-emerald-600 text-white shadow-2xs">
-                            ✓
+                           
                         </div>
                         <div class="space-y-1 flex-1">
                             <div class="flex items-center gap-2 flex-wrap">
@@ -2309,7 +2277,7 @@
             <div class="bg-slate-900 text-white rounded-none p-4 sm:p-5 shadow-lg border border-slate-800 space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800">
                     <div class="flex items-center gap-2">
-                        <div class="w-6 h-6 rounded-none bg-rose-600 flex items-center justify-center font-bold text-white text-xs">
+                        <div class="w-6 h-6 rounded-none bg-amber-500 flex items-center justify-center font-bold text-white text-xs">
                             ⌘
                         </div>
                         <span class="font-bold text-white text-xs sm:text-sm tracking-wide">OMNITOOLS NETWORK</span>
@@ -2581,7 +2549,7 @@
                 Installa
             </button>
             <button type="button" onclick="dismissInstallBanner()" class="p-1 text-slate-400 hover:text-white rounded-none transition" title="Chiudi">
-                ✕
+                
             </button>
         </div>
     </div>
@@ -2595,7 +2563,7 @@
                     <h3 id="modalSuggestTitle" class="text-base font-extrabold text-slate-900">Suggerisci uno Strumento</h3>
                 </div>
                 <button type="button" onclick="closeSuggestModal()" class="w-7 h-7 rounded-none bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition">
-                    ✕
+                    
                 </button>
             </div>
 
@@ -2622,7 +2590,7 @@
 
             <div id="suggestSuccessContainer" class="hidden text-center py-4 space-y-3">
                 <div class="w-12 h-12 mx-auto rounded-none bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold">
-                    ✓
+                   
                 </div>
                 <p id="modalSuccessText" class="text-xs sm:text-sm font-bold text-slate-800 leading-relaxed px-2">
                     Grazie mille! La tua idea è stata registrata e guiderà i prossimi strumenti di OmniTools.
@@ -3110,7 +3078,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span>Riancora</span>
                         </button>
                         <button onclick="window.OmniMultiWindow.closeDetached('${id}')" title="Chiudi finestra" class="p-1 rounded-none hover:bg-rose-600 text-slate-300 hover:text-white transition text-xs font-bold">
-                            ✕
+                            
                         </button>
                     </div>
                 </div>
@@ -3313,7 +3281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_title": "Ti è stato utile questo calcolatore?",
         "share_sub": "Condividilo con colleghi, collaboratori o clienti",
         "share_copy": "Copia Link",
-        "share_copied": "Copiato! ✓",
+        "share_copied": "Copiato!",
         "share_btn": "Condividi",
         "suggest_banner": "Hai un'idea per un nuovo calcolatore di cantiere, grafica o finanza?",
         "suggest_btn": "Suggerisci",
@@ -3345,7 +3313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_title": "Was this calculator useful to you?",
         "share_sub": "Share it with colleagues, teammates, or clients",
         "share_copy": "Copy Link",
-        "share_copied": "Copied! ✓",
+        "share_copied": "Copied!",
         "share_btn": "Share",
         "suggest_banner": "Have an idea for a new construction, graphics, or finance calculator?",
         "suggest_btn": "Suggest",
@@ -3377,7 +3345,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_title": "¿Te ha sido útil esta calculadora?",
         "share_sub": "Compártela con colegas, colaboradores o clientes",
         "share_copy": "Copiar Enlace",
-        "share_copied": "¡Copiado! ✓",
+        "share_copied": "¡Copiado!",
         "share_btn": "Compartir",
         "suggest_banner": "¿Tienes una idea para una nueva calculadora de obra, gráfica o finanzas?",
         "suggest_btn": "Sugerir",
@@ -3409,7 +3377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_title": "Ce calculateur vous a-t-il été utile ?",
         "share_sub": "Partagez-le avec vos collègues, collaborateurs ou clients",
         "share_copy": "Copier le Lien",
-        "share_copied": "Copié ! ✓",
+        "share_copied": "Copié !",
         "share_btn": "Partager",
         "suggest_banner": "Une idée de nouveau calculateur pour le chantier, le graphisme ou la finance ?",
         "suggest_btn": "Suggérer",
@@ -3441,7 +3409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_title": "War dieser Rechner hilfreich für Sie?",
         "share_sub": "Teilen Sie ihn mit Kollegen, Partnern oder Kunden",
         "share_copy": "Link Kopieren",
-        "share_copied": "Kopiert! ✓",
+        "share_copied": "Kopiert!",
         "share_btn": "Teilen",
         "suggest_banner": "Haben Sie eine Idee für einen neuen Rechner für Bau, Grafik oder Finanzen?",
         "suggest_btn": "Vorschlagen",
@@ -3473,7 +3441,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "share_title": "Esta calculadora foi útil para você?",
         "share_sub": "Compartilhe com colegas, parceiros ou clientes",
         "share_copy": "Copiar Link",
-        "share_copied": "Copiado! ✓",
+        "share_copied": "Copiado!",
         "share_btn": "Compartilhar",
         "suggest_banner": "Tem uma ideia para uma nova calculadora de obra, gráfica ou finanças?",
         "suggest_btn": "Sugerir",
@@ -3752,7 +3720,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const el = document.getElementById('shareCopyText');
                 if (el) {
                     const orig = el.textContent;
-                    const curL = localStorage.getItem('omnitools_lang') || 'it'; el.textContent = (FOOTER_TRANSLATIONS[curL] && FOOTER_TRANSLATIONS[curL].share_copied) || 'Copiato! ✓';
+                    const curL = localStorage.getItem('omnitools_lang') || 'it'; el.textContent = (FOOTER_TRANSLATIONS[curL] && FOOTER_TRANSLATIONS[curL].share_copied) || 'Copiato!';
                     setTimeout(() => { el.textContent = orig; }, 2000);
                 }
             }).catch(() => {
@@ -4345,7 +4313,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (blondel_cm >= 61.5 && blondel_cm <= 64.5 && riser_cm >= 15.5 && riser_cm <= 18.5 && tread_cm >= 26.0) {
                 complianceCard.classList.add('bg-emerald-50/90', 'border-emerald-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-none flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-emerald-600 text-white shadow-md shadow-emerald-600/20";
-                statusIcon.textContent = "✓";
+                statusIcon.textContent = "";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-emerald-950";
                 statusTitle.textContent = t.status_opt_title;
                 statusTag.classList.add('bg-emerald-100', 'text-emerald-800');
@@ -4365,7 +4333,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 complianceCard.classList.add('bg-rose-50/90', 'border-rose-200');
                 statusIcon.className = "w-8 h-8 sm:w-11 sm:h-11 rounded-none flex items-center justify-center shrink-0 text-base sm:text-xl font-bold bg-rose-600 text-white shadow-md shadow-rose-600/20";
-                statusIcon.textContent = "✕";
+                statusIcon.textContent = "";
                 statusTitle.className = "font-bold text-sm sm:text-base tracking-tight text-rose-950";
                 statusTitle.textContent = t.status_danger_title;
                 statusTag.classList.add('bg-rose-100', 'text-rose-800');
@@ -4443,7 +4411,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(text).then(() => {
                 const btn = document.getElementById('btnCopyScale');
                 const orig = btn.textContent;
-                btn.textContent = '✓ Valori Copiati per Computo!';
+                btn.textContent = 'Valori Copiati per Computo!';
                 setTimeout(() => { btn.textContent = orig; }, 2000);
             }).catch(err => {
                 console.error("Errore copia appunti:", err);
@@ -4530,7 +4498,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const el = document.getElementById('shareCopyText');
                 if (el) {
                     const orig = el.textContent;
-                    el.textContent = 'Copiato! ✓';
+                    el.textContent = 'Copiato!';
                     setTimeout(() => { el.textContent = orig; }, 2000);
                 }
             });
@@ -4642,10 +4610,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const label = document.getElementById("paramShareLabel");
         const icon = document.getElementById("paramShareIcon");
         const done = () => {
-            if (icon) icon.textContent = "✓";
+            if (icon) icon.textContent = "";
             if (label) label.textContent = window._omniCopiedText || "Copiato!";
             setTimeout(() => {
-                if (icon) icon.textContent = "✓";
+                if (icon) icon.textContent = "";
                 if (label) label.textContent = window._omniShareBtnText || "Link Calcolo";
             }, 2000);
         };
