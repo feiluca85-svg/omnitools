@@ -983,14 +983,41 @@
 
         /* --- DETERMINISTIC SHARP PRECISION GRID RULES (IMMUNE TO CSS PURGE) --- */
         #omniChromeTabsBar {
-            position: sticky !important;
-            top: 0px !important;
-            z-index: 50 !important;
-            background-color: #ffffff !important;
-            border-bottom: 1px solid #e2e8f0 !important;
-            box-sizing: border-box !important;
-            height: 42px !important;
-            max-height: 42px !important;
+            display: none !important;
+        }
+        @media (min-width: 768px) {
+            #omniChromeTabsBar {
+                display: flex !important;
+                position: sticky !important;
+                top: 0px !important;
+                z-index: 50 !important;
+                background-color: #ffffff !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+                box-sizing: border-box !important;
+                height: 42px !important;
+                max-height: 42px !important;
+            }
+            #omniChromeTabsBar.omni-tabs-hidden {
+                display: none !important;
+            }
+            header.omni-home-header, header, header.sticky {
+                position: sticky !important;
+                top: 42px !important;
+                z-index: 40 !important;
+            }
+            header.omni-home-header.omni-header-pinned-top {
+                top: 0px !important;
+            }
+        }
+        @media (max-width: 767px) {
+            #omniChromeTabsBar {
+                display: none !important;
+            }
+            header.omni-home-header, header, header.sticky {
+                position: sticky !important;
+                top: 0px !important;
+                z-index: 40 !important;
+            }
         }
         html.omni-dark #omniChromeTabsBar {
             background-color: #0b1120 !important;
@@ -1006,20 +1033,6 @@
         }
         html, body {
             overflow-x: clip !important;
-        }
-        @media (min-width: 768px) {
-            header.omni-home-header, header, header.sticky {
-                position: sticky !important;
-                top: 42px;
-                z-index: 40 !important;
-            }
-        }
-        @media (max-width: 767px) {
-            header.omni-home-header, header, header.sticky {
-                position: sticky !important;
-                top: 0px !important;
-                z-index: 40 !important;
-            }
         }
         #omniTabHome {
             background-color: #ffffff !important;
@@ -4329,25 +4342,50 @@ document.addEventListener('click', (e) => {
         const isHome = (!pathname || pathname === 'index');
         const isDark = document.documentElement.classList.contains('omni-dark');
 
-        // Se siamo in Home e non ci sono schede tool aperte, nascondi la barra schede superiore
-        // e ancora l'header principale direttamente a top: 0px.
-        // Se ci sono schede aperte (o se siamo su un tool), mostra la barra schede a top: 0px e l'header a top: 42px.
-        if (isHome) {
-            if (openTabs.length === 0) {
-                if (tabsBar) tabsBar.style.display = 'none';
-                if (homeHeader) {
-                    homeHeader.style.setProperty('top', '0px', 'important');
-                }
-            } else {
-                if (tabsBar) tabsBar.style.display = '';
-                if (homeHeader) {
-                    homeHeader.style.setProperty('top', '42px', 'important');
-                }
+        // Gestione schede superiore Desktop vs Mobile:
+        // Su Mobile (< 768px), le linguette non esistono mai: l'header è sempre a top: 0px.
+        // Su Desktop, se siamo in Home e non ci sono schede aperte, nascondi la barra schede e sposta l'header a top: 0px.
+        // Se ci sono schede aperte, mostra la barra schede e mantieni l'header a top: 42px.
+        const isMobileViewport = (window.innerWidth < 768);
+        if (isMobileViewport) {
+            if (tabsBar) {
+                tabsBar.classList.add('omni-tabs-hidden');
+                tabsBar.style.display = 'none';
+            }
+            if (homeHeader) {
+                homeHeader.classList.remove('omni-header-pinned-top');
+                homeHeader.style.top = '0px';
             }
         } else {
-            if (tabsBar) tabsBar.style.display = '';
-            if (homeHeader) {
-                homeHeader.style.removeProperty('top');
+            if (isHome) {
+                if (openTabs.length === 0) {
+                    if (tabsBar) {
+                        tabsBar.classList.add('omni-tabs-hidden');
+                        tabsBar.style.display = 'none';
+                    }
+                    if (homeHeader) {
+                        homeHeader.classList.add('omni-header-pinned-top');
+                        homeHeader.style.top = '0px';
+                    }
+                } else {
+                    if (tabsBar) {
+                        tabsBar.classList.remove('omni-tabs-hidden');
+                        tabsBar.style.display = '';
+                    }
+                    if (homeHeader) {
+                        homeHeader.classList.remove('omni-header-pinned-top');
+                        homeHeader.style.top = '42px';
+                    }
+                }
+            } else {
+                if (tabsBar) {
+                    tabsBar.classList.remove('omni-tabs-hidden');
+                    tabsBar.style.display = '';
+                }
+                if (homeHeader) {
+                    homeHeader.classList.remove('omni-header-pinned-top');
+                    homeHeader.style.top = '42px';
+                }
             }
         }
 
@@ -4426,6 +4464,7 @@ document.addEventListener('click', (e) => {
 
     document.addEventListener('DOMContentLoaded', renderChromeTabs);
     window.addEventListener('pageshow', renderChromeTabs);
+    window.addEventListener('resize', renderChromeTabs);
 })();
 
 </script>
