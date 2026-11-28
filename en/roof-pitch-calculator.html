@@ -897,11 +897,18 @@
         <!-- Track of Tabs (Home Tab + Dynamic Opened Tabs) -->
         <div id="omniChromeTabsTrack" class="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[calc(100%-250px)]">
             <!-- Fixed Home Hub Tab -->
-            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-none bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border-t-2 border-transparent transition shrink-0 text-[11px]" title="Back to Home Hub">
-                <span class="w-4 h-4 rounded-none bg-blue-600 text-white flex items-center justify-center p-0.5 shrink-0 shadow-2xs">
-                    <svg class="w-full h-full" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                </span>
-                <span id="navTabHomeText">Home Hub</span>
+            <a href="/" id="omniTabHome" class="flex items-center gap-1.5 px-3 h-[34px] bg-[#F8FAFC] dark:bg-[#0B1120] hover:bg-slate-100 dark:hover:bg-slate-800 text-[#0F172A] dark:text-slate-100 border-t-2 border-transparent transition shrink-0 border-r border-slate-200 dark:border-slate-800 select-none group" style="border-radius: 0px;" title="OmniTools">
+                <div class="w-[20px] h-[20px] min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-2xs shrink-0 overflow-hidden transition-transform group-hover:scale-105" style="border-radius: 0px; width: 20px; height: 20px;">
+                    <svg width="18" height="18" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px; min-height: 18px; max-height: 18px;" class="block" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
+                        <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="16" cy="11.5" r="2.1" fill="#38bdf8" />
+                    </svg>
+                </div>
+                <div class="flex items-center gap-1 leading-none shrink-0">
+                    <span class="font-jakarta font-black text-[12px] text-slate-900 dark:text-white tracking-tight leading-none">Omni<span class="text-blue-600 dark:text-blue-400">Tools</span></span>
+                    <span class="text-[9px] font-jakarta font-extrabold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 px-1 py-0.2 border border-blue-200/80 dark:border-blue-800/80 leading-none" style="border-radius: 0px;">LAB</span>
+                </div>
             </a>
         </div>
 
