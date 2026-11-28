@@ -1498,7 +1498,7 @@
                         <span class="px-2 py-0.5 bg-orange-600 text-white font-bold text-[10px] rounded uppercase tracking-wider">OmniTools Lab — SCHEDA TECNICA A4</span>
                         <span class="text-[11px] font-bold text-slate-600">OmniFood • Export Compliance</span>
                     </div>
-                    <h1 class="font-jakarta text-xl font-extrabold text-slate-900 leading-tight" id="printSheetTitle">Specifiche Etichettatura Nutrizionale USA FDA 21 CFR 101.9</h1>
+                    <div class="font-jakarta text-xl font-extrabold text-slate-900 leading-tight" id="printSheetTitle">Specifiche Etichettatura Nutrizionale USA FDA 21 CFR 101.9</div>
                     <p class="text-[10px] text-slate-500 mt-0.5">Riferimenti: FDA 21 CFR 101.9 • Reg. UE 1169/2011 • Canada CFIA (SFCR)</p>
                 </div>
                 <div class="text-right text-[10px] text-slate-600 shrink-0">
@@ -1510,14 +1510,16 @@
         </div>
 
         <!-- Hero Section -->
-        <section id="calculatorArea" class="text-center space-y-2 no-print ">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none bg-orange-100 text-orange-800 text-xs font-bold shadow-2xs">
-                <span>🇺🇸</span> <span>FDA 21 CFR 101.9</span> • <span>🇪🇺</span> <span>Reg. UE 1169/2011</span> • <span>🇨🇦</span> <span>CFIA RACC</span>
+        <section id="calculatorArea" class="text-left space-y-1 no-print pt-1 pb-3 border-b border-slate-200 dark:border-slate-800">
+            <div>
+                <span class="text-xs font-semibold text-orange-600 dark:text-orange-400 tracking-wider uppercase select-none">
+                    OMNIFOOD · FDA 21 CFR 101.9 · REG. UE 1169/2011 · CFIA RACC
+                </span>
             </div>
-            <h1 id="heroTitle" class="font-jakarta text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+            <h1 id="heroTitle" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
                 NutriExport Converter
             </h1>
-            <p id="heroSubtitle" class="text-slate-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+            <p id="heroSubtitle" class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm max-w-3xl leading-relaxed">
                 Convertitore conforme per l'export: trasforma la tabella nutrizionale europea per <strong>100g</strong> nel formato ufficiale <strong>Nutrition Facts FDA</strong> per porzione con arrotondamenti legali e calcolo % DV.
             </p>
         </section>
@@ -1533,9 +1535,9 @@
                     <!-- RACC Category & Serving Size -->
                     <div class="p-4 bg-slate-50/80 rounded-none border border-slate-200/80 space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                                <span></span> <span>Porzione Standard FDA (RACC)</span>
-                            </span>
+                            <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                Porzione Standard FDA (RACC)
+                            </h2>
                             <span class="text-[10px] font-mono font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-none">21 CFR 101.12</span>
                         </div>
 
@@ -1579,15 +1581,18 @@
                     </div>
 
                     <!-- EU 100g Values Form -->
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                         <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-                            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                                <span></span> <span>Valori Medi per 100g (Lab UE)</span>
-                            </span>
+                            <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                Valori Medi per 100g (Lab UE)
+                            </h2>
                             <span class="text-[10px] font-mono text-slate-500">Reg. 1169/2011</span>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-3">
+                        <!-- Group 1: Energy & Fats -->
+                        <div class="space-y-2.5">
+                            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">1. Energia &amp; Grassi</div>
+                            <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="text-[11px] font-bold text-slate-700 block">Energia (kcal / 100g)</label>
                                 <input type="number" id="inpKcal100" value="480" min="0" step="1" oninput="calculateNutriExport()" class="w-full mt-1 text-xs font-mono font-bold p-2 rounded-none border border-slate-200 bg-slate-50/50">
@@ -1614,6 +1619,11 @@
                             </div>
                         </div>
 
+                        </div>
+
+                        <!-- Group 2: Cholesterol, Sodium & Carbohydrates -->
+                        <div class="space-y-2.5 pt-2.5 border-t border-slate-100">
+                            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">2. Sodio &amp; Carboidrati</div>
                         <!-- Cholesterol & Sodium / Salt -->
                         <div class="grid grid-cols-3 gap-2">
                             <div>
@@ -1650,6 +1660,11 @@
                             </div>
                         </div>
 
+                        </div>
+
+                        <!-- Group 3: Protein & Mandatory Micronutrients -->
+                        <div class="space-y-2.5 pt-2.5 border-t border-slate-100">
+                            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">3. Proteine &amp; Micronutrienti Obbligatori</div>
                         <!-- Proteins & Mandatory Micronutrients -->
                         <div class="grid grid-cols-2 gap-3">
                             <div>
@@ -1676,6 +1691,7 @@
                                 <input type="number" id="inpPotassium100" value="180" min="0" step="1" oninput="calculateNutriExport()" class="w-full mt-1 text-xs font-mono font-bold p-2 rounded-none border border-slate-200">
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     <!-- Action Buttons: Esporta CSV, Stampa, Copia (Sharp Precision Grid) -->
@@ -1700,7 +1716,7 @@
                 <div class="lg:col-span-6 space-y-4">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                            <span>️</span> <span>Anteprima Ufficiale FDA Nutrition Facts</span>
+                            <span>Anteprima Ufficiale FDA Nutrition Facts</span>
                         </span>
                         <span class="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-none">2016/2026 Format</span>
                     </div>
@@ -1826,7 +1842,6 @@
         <!-- FAQ Section: 5 Technical Expandable Details -->
         <section id="faqSection" class="no-print bg-white rounded-none border border-slate-200/90 shadow-xs p-5 sm:p-7 space-y-4">
             <div class="flex items-center gap-2.5 mb-1">
-                <span class="text-xl"></span>
                 <h2 class="text-base sm:text-lg font-black text-slate-900 font-jakarta flex items-center gap-2" id="faqTitle">
                     <span>Domande Frequenti su NutriExport Converter &amp; FDA 21 CFR</span>
                 </h2>
@@ -1837,7 +1852,7 @@
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-none border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
                         <span>Qual è la differenza fondamentale tra la dichiarazione nutrizionale UE e l'etichetta USA FDA?</span>
-                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="mt-2 text-xs text-slate-600 leading-relaxed">
                         Nell'Unione Europea (Reg. UE 1169/2011) la dichiarazione nutrizionale è obbligatoriamente riferita a 100g o 100ml di prodotto. Negli Stati Uniti (FDA 21 CFR 101.9), la tabella Nutrition Facts deve essere espressa per singola porzione standard (Serving Size), determinata in base alla categoria RACC (Reference Amounts Customarily Consumed).
@@ -1847,7 +1862,7 @@
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-none border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
                         <span>Come si converte il Sale europeo (g) nel Sodio americano (mg)?</span>
-                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="mt-2 text-xs text-slate-600 leading-relaxed">
                         La formula ufficiale di stechiometria alimentare è: Sodio (mg) = Sale (g) × 400. Viceversa, per ricavare il sale dal sodio: Sale (g) = Sodio (mg) / 400 = Sodio (mg) × 0.0025.
@@ -1857,7 +1872,7 @@
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-none border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
                         <span>Quali sono le regole legali di arrotondamento FDA per calorie e macronutrienti?</span>
-                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="mt-2 text-xs text-slate-600 leading-relaxed">
                         L'FDA impone regole severe: le calorie sotto 5 kcal si arrotondano a 0, fino a 50 kcal a step di 5, e sopra 50 kcal a multipli di 10. I grassi sotto 0.5g diventano 0g, tra 0.5g e 5g si arrotondano allo 0.5g più vicino, e sopra 5g a numeri interi di 1g.
@@ -1867,7 +1882,7 @@
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-none border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
                         <span>Quali micronutrienti sono obbligatori nel nuovo formato FDA Nutrition Facts?</span>
-                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="mt-2 text-xs text-slate-600 leading-relaxed">
                         Dal 2016 (pienamente cogente) l'FDA ha reso obbligatoria la dichiarazione con quantità assoluta e % Daily Value per: Vitamina D (mcg), Calcio (mg), Ferro (mg) e Potassio (mg), mentre Vitamina A e Vitamina C sono divenute facoltative.
@@ -1877,7 +1892,7 @@
                 <details class="group bg-slate-50/80 hover:bg-slate-50 rounded-none border border-slate-200/80 p-4 transition duration-150">
                     <summary class="flex justify-between items-center font-bold text-xs sm:text-sm text-slate-900 cursor-pointer list-none select-none">
                         <span>Cosa indica il valore % Daily Value (% DV) sul pannello americano?</span>
-                        <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                        <svg class="w-4 h-4 text-slate-400 group-open:-rotate-180 transition-transform duration-200 shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
                     <p class="mt-2 text-xs text-slate-600 leading-relaxed">
                         Il % DV indica quanto un nutriente in una porzione di alimento contribuisce alla dieta giornaliera complessiva basata su 2.000 calorie al giorno. Come linea guida generale FDA: 5% DV o meno è considerato basso, mentre 20% DV o più è considerato alto.
@@ -1889,7 +1904,7 @@
         <!-- Legal Disclaimer & Safe Harbor -->
         <section id="legalDisclaimerBox" class="bg-amber-50/60 rounded-none border border-amber-200/90 shadow-xs p-5 sm:p-6 text-[11px] sm:text-xs text-slate-700 leading-relaxed space-y-2">
             <div class="font-extrabold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                <span>️</span> <span>Avvertenza Legale, Esclusione di Responsabilità &amp; Conformità FDA / CFIA</span>
+                <span>Avvertenza Legale, Esclusione di Responsabilità &amp; Conformità FDA / CFIA</span>
             </div>
             <p>
                 <strong>1. Natura informativa e di pre-impaginazione:</strong> Il presente calcolatore fornisce elaborazioni matematiche e arrotondamenti algoritmici basati sulle linee guida FDA 21 CFR 101.9 a puro scopo estimativo e preparatorio. Non costituisce parere legale, consulenza regolatoria né asseverazione analitica accreditata.

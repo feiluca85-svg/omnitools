@@ -1955,8 +1955,8 @@
                             Risultati Principali, Verifica Normativa DM 236/89 & Schema
                         </h2>
                     </div>
-                    <span id="resultsComplianceTag" class="text-[10px] font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/50 px-2 py-0.5 rounded-none border border-amber-200 dark:border-amber-800/60 font-mono uppercase">
-                        Norma: D.M. 236/89 & ADA
+                    <span id="resultsComplianceTag" class="text-[10px] font-mono font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                        D.M. 236/89 · ADA
                     </span>
                 </div>
 
@@ -2019,7 +2019,8 @@
                     </div>
 
                     <div class="bg-slate-50 dark:bg-slate-950 p-3 sm:p-6 border border-slate-200 dark:border-slate-800 flex items-center justify-center overflow-hidden rounded-none shadow-inner">
-                        <svg id="rampSvg" class="w-full h-40 sm:h-56 transition-all duration-200 svg-blueprint" viewBox="0 0 520 220">
+                        <svg id="rampSvg" role="img" aria-label="Schema tecnico della rampa: dislivello 30 cm, spazio a terra 500 cm, pendenza 6.0%" class="w-full h-40 sm:h-56 transition-all duration-200 svg-blueprint" viewBox="0 0 520 220">
+                            <title id="rampSvgTitle">Schema tecnico rampa: dislivello 30 cm, spazio a terra 500 cm, pendenza 6.0%</title>
                             <defs>
                                 <linearGradient id="rampGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                     <stop offset="0%" stop-color="#fde68a" stop-opacity="0.4" />
@@ -3122,6 +3123,13 @@
             hypotenuseText.setAttribute('y', hypMidY);
             hypotenuseText.setAttribute('transform', 'rotate(' + (-angleDeg) + ' ' + hypMidX + ' ' + hypMidY + ')');
             hypotenuseText.textContent = (currentLang === 'en' ? 'Ramp' : 'Rampa') + ': ' + hypFmt + ' ' + u + ' (' + slope.toFixed(1) + '%)';
+
+            const svgLabel = (currentLang === 'en')
+                ? `Ramp blueprint: rise ${hFmt} ${u}, run ${lFmt} ${u}, ramp ${hypFmt} ${u}, slope ${slope.toFixed(1)}%`
+                : `Schema tecnico rampa: dislivello ${hFmt} ${u}, spazio a terra ${lFmt} ${u}, rampa ${hypFmt} ${u}, pendenza ${slope.toFixed(1)}%`;
+            rampSvg.setAttribute('aria-label', svgLabel);
+            const svgTitleEl = document.getElementById('rampSvgTitle');
+            if (svgTitleEl) svgTitleEl.textContent = svgLabel;
         }
 
         function copyResultsRampa() {
