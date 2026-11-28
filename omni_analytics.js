@@ -6,6 +6,25 @@
 (function () {
   'use strict';
 
+  // Handle ?notrack=1 / ?notrack=0 opt-out for owner testing devices
+  try {
+    if (window.location && window.location.search) {
+      if (window.location.search.indexOf('notrack=1') !== -1) {
+        localStorage.setItem('omni_notrack', '1');
+      } else if (window.location.search.indexOf('notrack=0') !== -1) {
+        localStorage.removeItem('omni_notrack');
+      }
+    }
+  } catch (e) {}
+
+  function isNoTrackEnabled() {
+    try {
+      return localStorage.getItem('omni_notrack') === '1';
+    } catch (e) {
+      return false;
+    }
+  }
+
   // Normalize tool ID from URL pathname
   function detectToolId() {
     try {
@@ -27,6 +46,7 @@
    */
   window.trackToolEvent = function (options) {
     try {
+      if (isNoTrackEnabled()) return;
       if (!options || typeof options !== 'object') return;
       var action = String(options.action || 'interaction').trim();
       var category = String(options.category || 'tool_interaction').trim();
