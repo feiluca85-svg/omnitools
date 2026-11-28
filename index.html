@@ -3532,8 +3532,8 @@
                 }
             });
 
-            if (activeFilter === 'all') {
-                // Unified continuous grid: attach all cards in priority order to unifiedContainer
+            if (isSearching) {
+                // Search results: attach all matching cards in priority order to unifiedContainer
                 if (unifiedContainer) {
                     unifiedContainer.classList.remove('hidden');
                     unifiedContainer.style.display = 'grid';
@@ -3544,7 +3544,7 @@
                 if (secGraph) secGraph.classList.add('hidden');
                 if (secFood) secFood.classList.add('hidden');
             } else {
-                // Single Branch View: restore cards to their respective original division grids
+                // Grouped Division View ('all' or single branch): keep each card inside its division section
                 if (unifiedContainer) {
                     unifiedContainer.classList.add('hidden');
                     unifiedContainer.style.display = 'none';
@@ -3564,19 +3564,19 @@
                 });
 
                 if (secBuilding) {
-                    if (visibleBuildingCards > 0 && activeFilter === 'building') secBuilding.classList.remove('hidden');
+                    if (visibleBuildingCards > 0 && (activeFilter === 'all' || activeFilter === 'building')) secBuilding.classList.remove('hidden');
                     else secBuilding.classList.add('hidden');
                 }
                 if (secFinance) {
-                    if (visibleFinanceCards > 0 && activeFilter === 'finance') secFinance.classList.remove('hidden');
+                    if (visibleFinanceCards > 0 && (activeFilter === 'all' || activeFilter === 'finance')) secFinance.classList.remove('hidden');
                     else secFinance.classList.add('hidden');
                 }
                 if (secGraph) {
-                    if (visibleGraphCards > 0 && activeFilter === 'graph') secGraph.classList.remove('hidden');
+                    if (visibleGraphCards > 0 && (activeFilter === 'all' || activeFilter === 'graph')) secGraph.classList.remove('hidden');
                     else secGraph.classList.add('hidden');
                 }
                 if (secFood) {
-                    if (visibleFoodCards > 0 && activeFilter === 'food') secFood.classList.remove('hidden');
+                    if (visibleFoodCards > 0 && (activeFilter === 'all' || activeFilter === 'food')) secFood.classList.remove('hidden');
                     else secFood.classList.add('hidden');
                 }
             }
