@@ -41,6 +41,21 @@
         main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
         main label { font-size: 0.84375rem !important; }
+
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
+        }
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+        }
+        html.omni-dark #topNewToolDropdown {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
     </style>
 <style id="omniDarkStyles">
         /* --- MOBILE & DESKTOP PARITY RESPONSIVE RULES --- */
@@ -102,50 +117,6 @@
         .svg-blueprint rect,
         .svg-blueprint circle {
             vector-effect: non-scaling-stroke;
-        }
-
-        /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
-        html.omni-dark [class*="bg-amber-50"],
-        html.omni-dark [class*="bg-amber-100"],
-        html.omni-dark [class*="bg-amber-200"],
-        html.omni-dark [class*="bg-yellow-50"],
-        html.omni-dark [class*="bg-yellow-100"],
-        html.omni-dark [class*="bg-orange-50"] {
-            background-color: rgba(120, 53, 15, 0.28) !important;
-            border-color: rgba(217, 119, 6, 0.45) !important;
-            color: #fde68a !important;
-        }
-        html.omni-dark [class*="bg-amber-50"] strong,
-        html.omni-dark [class*="bg-amber-50"] h3,
-        html.omni-dark [class*="bg-amber-50"] span,
-        html.omni-dark [class*="bg-amber-50"] p,
-        html.omni-dark [class*="bg-amber-50"] code,
-        html.omni-dark [class*="bg-amber-100"] strong,
-        html.omni-dark [class*="bg-amber-100"] h3,
-        html.omni-dark [class*="bg-amber-100"] span,
-        html.omni-dark [class*="bg-amber-100"] p,
-        html.omni-dark [class*="bg-amber-200"] strong,
-        html.omni-dark [class*="bg-amber-200"] h3,
-        html.omni-dark [class*="bg-amber-200"] span,
-        html.omni-dark [class*="bg-amber-200"] p {
-            color: #fde68a !important;
-        }
-        html.omni-dark [class*="bg-amber-50"] .text-slate-900,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-800,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-700,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-600,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-500 {
-            color: #fef08a !important;
-        }
-        html.omni-dark [class*="bg-amber-200"][class*="rounded-full"] {
-            background-color: rgba(245, 158, 11, 0.3) !important;
-            border-color: #f59e0b !important;
-            color: #fef08a !important;
-        }
-        html.omni-dark [class*="bg-amber-500"]:not(.selection\:bg-amber-500),
-        html.omni-dark [class*="bg-amber-600"] {
-            background-color: #f59e0b !important;
-            color: #ffffff !important;
         }
 
         /* Range Slider Track in Dark Mode */
@@ -266,8 +237,8 @@
             box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.15) !important;
         }
         /* Inner tool sub-cards / controls cards */
-        html.omni-dark .bg-white.rounded-2xl,
-        html.omni-dark .bg-white.rounded-xl {
+        html.omni-dark .bg-white.rounded-none,
+        html.omni-dark .bg-white.rounded-none {
             background-color: #1e293b !important;
             border-color: #334155 !important;
         }
@@ -428,21 +399,21 @@
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs px-4 py-3">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
             <a href="/" class="flex items-center gap-2.5 group omni-brand-logo">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
-                    📝
+                <div class="w-9 h-9 rounded-none bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
+                    
                 </div>
                 <div>
                     <span class="text-base font-extrabold text-slate-900 tracking-tight">OmniMemo</span>
-                    <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 ml-1.5 font-bold">Sticker & Post-it</span>
+                    <span class="text-[10px] font-mono text-amber-700 bg-amber-50 px-2 py-0.5 rounded-none border border-amber-200 ml-1.5 font-bold">Sticker & Post-it</span>
                 </div>
             </a>
             <div class="flex items-center gap-2">
-                <button onclick="copyAllNotes()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 rounded-xl border border-slate-200 shadow-2xs transition active:scale-95 omni-header-btn omni-header-btn--wide">
+                <button onclick="copyAllNotes()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 rounded-none border border-slate-200 shadow-2xs transition active:scale-95 omni-header-btn omni-header-btn--wide">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     <span id="copyBtnText">Copia Testo</span>
                 </button>
-                <button onclick="triggerPwaInstall()" id="installBtn" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-amber-900 bg-amber-300 hover:bg-amber-400 rounded-xl shadow-xs transition active:scale-95 omni-header-btn omni-header-btn--wide">
-                    📲 Installa App Desktop
+                <button onclick="triggerPwaInstall()" id="installBtn" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-amber-900 bg-amber-300 hover:bg-amber-400 rounded-none shadow-xs transition active:scale-95 omni-header-btn omni-header-btn--wide">
+                     Installa App Desktop
                 </button>
                 <a href="/" class="text-xs font-bold text-slate-500 hover:text-slate-800 transition px-2 py-1 omni-header-btn omni-header-btn--wide">Torna all'Hub</a>
                 <div class="omni-control-capsule">
@@ -461,10 +432,10 @@
     <main class="max-w-5xl mx-auto w-full px-4 py-8 flex-1">
         <!-- Quick Section Anchor Bar (Calm UI & Progressive Disclosure) -->
         <div class="no-print flex items-center justify-center gap-1.5 py-1 mb-2">
-            <div class="inline-flex items-center p-0.5 rounded-full bg-[#F1F5F9] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 text-[12px] font-medium text-[#64748B] dark:text-slate-400">
-                <a href="#calculatorArea" class="px-3 py-1 rounded-full bg-white dark:bg-slate-800 text-[#0F172A] dark:text-slate-200 shadow-2xs font-semibold">Calcolatore</a>
+            <div class="inline-flex items-center p-0.5 rounded-none bg-[#F1F5F9] dark:bg-slate-900 border border-[#E2E8F0] dark:border-slate-800 text-[12px] font-medium text-[#64748B] dark:text-slate-400">
+                <a href="#calculatorArea" class="px-3 py-1 rounded-none bg-white dark:bg-slate-800 text-[#0F172A] dark:text-slate-200 shadow-2xs font-semibold">Calcolatore</a>
                 <span class="w-[1px] h-3 bg-[#CBD5E1] dark:bg-slate-700 mx-0.5"></span>
-                <a href="#normativeGuideArea" class="px-3 py-1 rounded-full hover:text-[#0F172A] dark:hover:text-slate-200 transition-colors flex items-center gap-1">
+                <a href="#normativeGuideArea" class="px-3 py-1 rounded-none hover:text-[#0F172A] dark:hover:text-slate-200 transition-colors flex items-center gap-1">
                     <span>Guida & Formule</span>
                     <span class="text-[10px]">↓</span>
                 </a>
@@ -477,20 +448,20 @@
                 <p class="text-xs sm:text-sm text-slate-500 mt-1">Nessuna registrazione, salvataggio istantaneo su questo browser. Puoi incollare misure, calcoli e checklist.</p>
             </div>
             <!-- Color Selector Palette -->
-            <div class="flex items-center gap-2 bg-white px-3 py-2 rounded-2xl border border-slate-200 shadow-xs">
+            <div class="flex items-center gap-2 bg-white px-3 py-2 rounded-none border border-slate-200 shadow-xs">
                 <span class="text-xs font-bold text-slate-400 mr-1">Colore:</span>
-                <button onclick="setColor('yellow')" class="w-6 h-6 rounded-full bg-amber-200 border-2 border-amber-400 hover:scale-110 transition shadow-xs" title="Giallo Post-it"></button>
-                <button onclick="setColor('cyan')" class="w-6 h-6 rounded-full bg-cyan-200 border-2 border-cyan-400 hover:scale-110 transition shadow-xs" title="Azzurro Ciano"></button>
-                <button onclick="setColor('pink')" class="w-6 h-6 rounded-full bg-rose-200 border-2 border-rose-400 hover:scale-110 transition shadow-xs" title="Rosa Pastello"></button>
-                <button onclick="setColor('mint')" class="w-6 h-6 rounded-full bg-emerald-200 border-2 border-emerald-400 hover:scale-110 transition shadow-xs" title="Verde Menta"></button>
-                <button onclick="setColor('lavender')" class="w-6 h-6 rounded-full bg-purple-200 border-2 border-purple-400 hover:scale-110 transition shadow-xs" title="Lavanda"></button>
+                <button onclick="setColor('yellow')" class="w-6 h-6 rounded-none bg-amber-200 border-2 border-amber-400 hover:scale-110 transition shadow-xs" title="Giallo Post-it"></button>
+                <button onclick="setColor('cyan')" class="w-6 h-6 rounded-none bg-cyan-200 border-2 border-cyan-400 hover:scale-110 transition shadow-xs" title="Azzurro Ciano"></button>
+                <button onclick="setColor('pink')" class="w-6 h-6 rounded-none bg-rose-200 border-2 border-rose-400 hover:scale-110 transition shadow-xs" title="Rosa Pastello"></button>
+                <button onclick="setColor('mint')" class="w-6 h-6 rounded-none bg-emerald-200 border-2 border-emerald-400 hover:scale-110 transition shadow-xs" title="Verde Menta"></button>
+                <button onclick="setColor('lavender')" class="w-6 h-6 rounded-none bg-purple-200 border-2 border-purple-400 hover:scale-110 transition shadow-xs" title="Lavanda"></button>
             </div>
         </div>
 
         <!-- Sticky Note Canvas Card -->
-        <div id="stickyPad" class="relative rounded-3xl bg-amber-100 border-2 border-amber-300 shadow-xl overflow-hidden p-6 sm:p-8 paper-grid transition-all duration-300">
+        <div id="stickyPad" class="relative rounded-none bg-amber-100 border-2 border-amber-300 shadow-xl overflow-hidden p-6 sm:p-8 paper-grid transition-all duration-300">
             <!-- Top Sticker Pin / Tape Accent -->
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-white/60 backdrop-blur-xs border border-black/10 rotate-1 shadow-xs rounded-sm"></div>
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-white/60 backdrop-blur-xs border border-black/10 rotate-1 shadow-xs rounded-none"></div>
 
             <textarea id="mainNotes" placeholder="Inizia a digitare qui... 
 Es:
@@ -499,7 +470,7 @@ Es:
 - Preventivo cliente Rossi: 1.450 € + IVA" rows="14" class="w-full bg-transparent border-0 outline-none resize-y text-base sm:text-lg leading-relaxed font-sans placeholder-black/30 font-medium"></textarea>
 
             <div class="mt-4 pt-4 border-t border-black/10 flex flex-col sm:flex-row sm:items-center justify-between text-xs opacity-75 font-mono gap-2">
-                <span id="saveStatus">Salvataggio automatico locale attivo ✓</span>
+                <span id="saveStatus">Salvataggio automatico locale attivo</span>
                 <div class="flex items-center gap-4">
                     <span id="wordCount">0 parole | 0 caratteri</span>
                     <button onclick="clearAll()" class="text-rose-700 hover:underline font-bold">Pulisci Pagina</button>
@@ -509,15 +480,15 @@ Es:
 
         <!-- Quick Tips Strip -->
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-500">
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
-                <span class="font-bold text-slate-800 block mb-1">💡 Sempre Flottante</span>
+            <div class="bg-white p-4 rounded-none border border-slate-200 shadow-2xs">
+                <span class="font-bold text-slate-800 block mb-1">Sempre Flottante</span>
                 <p>Mentre usi qualsiasi calcolatore del sito (rampe, dorso, mutui), clicca sull'icona delle note a destra per aprire il post-it flottante.</p>
             </div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
-                <span class="font-bold text-slate-800 block mb-1">🔒 100% Privacy</span>
+            <div class="bg-white p-4 rounded-none border border-slate-200 shadow-2xs">
+                <span class="font-bold text-slate-800 block mb-1"> 100% Privacy</span>
                 <p>Niente server, niente cookie di tracciamento. Tutto rimane salvato esclusivamente nel tuo browser.</p>
             </div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
+            <div class="bg-white p-4 rounded-none border border-slate-200 shadow-2xs">
                 <span class="font-bold text-slate-800 block mb-1"><svg class="w-5 h-5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Funziona Offline</span>
                 <p>Installalo sul telefono o PC per usarlo anche in cantiere o in aereo senza connessione internet.</p>
             </div>
@@ -559,7 +530,7 @@ Es:
 
         function setColor(c) {
             deskState.memo.color = c;
-            pad.className = `relative rounded-3xl ${COLOR_CLASSES[c] || COLOR_CLASSES.yellow} shadow-xl overflow-hidden p-6 sm:p-8 paper-grid transition-all duration-300 border-2`;
+            pad.className = `relative rounded-none ${COLOR_CLASSES[c] || COLOR_CLASSES.yellow} shadow-xl overflow-hidden p-6 sm:p-8 paper-grid transition-all duration-300 border-2`;
             save();
             if (window.OmniDesk) window.OmniDesk.setMemoColor(c);
         }
@@ -567,7 +538,7 @@ Es:
         function save() {
             try {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(deskState));
-                status.textContent = 'Salvataggio automatico locale attivo ✓';
+                status.textContent = 'Salvataggio automatico locale attivo';
             } catch(e) {}
         }
 
@@ -589,7 +560,7 @@ Es:
             navigator.clipboard.writeText(textarea.value).then(() => {
                 const btn = document.getElementById('copyBtnText');
                 const orig = btn.textContent;
-                btn.textContent = 'Copiato! ✓';
+                btn.textContent = 'Copiato!';
                 setTimeout(() => { btn.textContent = orig; }, 2000);
             });
         }

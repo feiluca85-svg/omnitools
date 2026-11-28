@@ -92,50 +92,6 @@
             vector-effect: non-scaling-stroke;
         }
 
-        /* Comprehensive Dark Mode contrast fixes for callout banners, formula boxes, and preset cards */
-        html.omni-dark [class*="bg-amber-50"],
-        html.omni-dark [class*="bg-amber-100"],
-        html.omni-dark [class*="bg-amber-200"],
-        html.omni-dark [class*="bg-yellow-50"],
-        html.omni-dark [class*="bg-yellow-100"],
-        html.omni-dark [class*="bg-orange-50"] {
-            background-color: rgba(120, 53, 15, 0.28) !important;
-            border-color: rgba(217, 119, 6, 0.45) !important;
-            color: #fde68a !important;
-        }
-        html.omni-dark [class*="bg-amber-50"] strong,
-        html.omni-dark [class*="bg-amber-50"] h3,
-        html.omni-dark [class*="bg-amber-50"] span,
-        html.omni-dark [class*="bg-amber-50"] p,
-        html.omni-dark [class*="bg-amber-50"] code,
-        html.omni-dark [class*="bg-amber-100"] strong,
-        html.omni-dark [class*="bg-amber-100"] h3,
-        html.omni-dark [class*="bg-amber-100"] span,
-        html.omni-dark [class*="bg-amber-100"] p,
-        html.omni-dark [class*="bg-amber-200"] strong,
-        html.omni-dark [class*="bg-amber-200"] h3,
-        html.omni-dark [class*="bg-amber-200"] span,
-        html.omni-dark [class*="bg-amber-200"] p {
-            color: #fde68a !important;
-        }
-        html.omni-dark [class*="bg-amber-50"] .text-slate-900,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-800,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-700,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-600,
-        html.omni-dark [class*="bg-amber-50"] .text-slate-500 {
-            color: #fef08a !important;
-        }
-        html.omni-dark [class*="bg-amber-200"][class*="rounded-full"] {
-            background-color: rgba(245, 158, 11, 0.3) !important;
-            border-color: #f59e0b !important;
-            color: #fef08a !important;
-        }
-        html.omni-dark [class*="bg-amber-500"]:not(.selection\:bg-amber-500),
-        html.omni-dark [class*="bg-amber-600"] {
-            background-color: #f59e0b !important;
-            color: #ffffff !important;
-        }
-
         /* Range Slider Track in Dark Mode */
         html.omni-dark input[type=range] {
             background: #334155 !important;
@@ -255,8 +211,8 @@
             box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.15) !important;
         }
         /* Inner tool sub-cards / controls cards */
-        html.omni-dark .bg-white.rounded-2xl,
-        html.omni-dark .bg-white.rounded-xl {
+        html.omni-dark .bg-white.rounded-none,
+        html.omni-dark .bg-white.rounded-none {
             background-color: #1e293b !important;
             border-color: #334155 !important;
         }
@@ -297,6 +253,21 @@
         main .text-xs { font-size: 0.84375rem !important; line-height: 1.5 !important; }
         main .text-sm { font-size: 0.9375rem !important; line-height: 1.55 !important; }
         main label { font-size: 0.84375rem !important; }
+
+        html.omni-dark #omniChromeTabsBar {
+            background-color: #0b1120 !important;
+            border-bottom: 1px solid #1e293b !important;
+        }
+        html.omni-dark #topNewToolBtn {
+            background-color: #1e293b !important;
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+        }
+        html.omni-dark #topNewToolDropdown {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
     </style>
     <script>
         function applyDark(on) {
@@ -421,7 +392,7 @@
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
         <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2.5 group omni-brand-logo">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
+                <div class="w-9 h-9 rounded-none bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0 p-1 transition group-hover:scale-105">
                     <svg class="w-full h-full" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="13.2" stroke="#ffffff" stroke-width="3.4" />
                         <path d="M 7.5 11.5 H 24.5 M 16 11.5 V 24.5" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
@@ -430,7 +401,7 @@
                 </div>
                 <div class="flex items-center gap-1.5">
                     <span class="font-jakarta font-black text-base text-slate-900 tracking-tight">Omni<span class="text-blue-600">Tools</span></span>
-                    <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full border border-blue-200/80">Legal</span>
+                    <span class="text-[9px] font-jakarta font-extrabold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-none border border-blue-200/80">Legal</span>
                 </div>
             </a>
             <div class="flex items-center gap-2">
@@ -453,7 +424,7 @@
     <main class="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-8">
         
         <div class="space-y-2 border-b border-slate-200 pb-5">
-            <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+            <span class="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-none bg-blue-50 text-blue-700 border border-blue-200">
                 Tutela Legale & Proprietà Intellettuale
             </span>
             <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -465,7 +436,7 @@
         </div>
 
         <!-- Section 1: Copyright -->
-        <section class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-3.5">
+        <section class="bg-white rounded-none p-6 border border-slate-200 shadow-xs space-y-3.5">
             <div class="flex items-center gap-2">
                 <span class="text-xl">©️</span>
                 <h2 class="text-base font-black text-slate-900">1. Diritto d'Autore e Titolarità del Software</h2>
@@ -473,15 +444,15 @@
             <p class="text-xs text-slate-600 leading-relaxed">
                 Tutti i contenuti presenti sul sito web <strong>OmniTools Lab</strong> (https://www.omnitoolslab.com) e sulle relative web application — inclusi a titolo esemplificativo e non esaustivo: codice sorgente (HTML, JavaScript, CSS, Python), algoritmi di calcolo matematico e ingegneristico, architettura software, motori vettoriali SVG, testi tecnici, tabelle comparative, layout grafico, icone e brand identity — sono di <strong>esclusiva titolarità e proprietà intellettuale di OmniTools Lab</strong> e sono protetti dalle leggi nazionali ed internazionali sul diritto d'autore (in particolare la <em>Legge italiana 22 aprile 1941 n. 633 e successive modifiche</em>, le <em>Direttive Europee 2001/29/CE e 2009/24/CE</em> e la normativa internazionale DMCA / WIPO).
             </p>
-            <div class="p-3 bg-rose-50 border border-rose-200 rounded-xl text-[11px] text-rose-900 leading-relaxed font-medium">
+            <div class="p-3 bg-rose-50 border border-rose-200 rounded-none text-[11px] text-rose-900 leading-relaxed font-medium">
                 <strong>Divieto Assoluto di Riproduzione & Mirroring:</strong> È fatto espresso divieto a terzi di copiare, clonare, riprodurre, ripubblicare, distribuire, commercializzare, decompilare o effettuare reverse engineering totale o parziale di qualsiasi software o codice sorgente della suite senza preventivo ed espresso consenso scritto della proprietà.
             </div>
         </section>
 
         <!-- Section 2: Anti-Cloning & Domain-Lock -->
-        <section class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-3.5">
+        <section class="bg-white rounded-none p-6 border border-slate-200 shadow-xs space-y-3.5">
             <div class="flex items-center gap-2">
-                <span class="text-xl">🛡️</span>
+                <span class="text-xl">️</span>
                 <h2 class="text-base font-black text-slate-900">2. Misure Tecnologiche di Protezione & Sigillo Digitale</h2>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
@@ -493,9 +464,9 @@
         </section>
 
         <!-- Section 3: Manleva Tecnica -->
-        <section class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-3.5">
+        <section class="bg-white rounded-none p-6 border border-slate-200 shadow-xs space-y-3.5">
             <div class="flex items-center gap-2">
-                <span class="text-xl">⚖️</span>
+                <span class="text-xl">️</span>
                 <h2 class="text-base font-black text-slate-900">3. Finalità di Utilizzo e Clausola di Manleva (Disclaimer)</h2>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
@@ -509,23 +480,23 @@
         </section>
 
         <!-- Section 4: Privacy & Cookie Policy (GDPR / ePrivacy Compliance) -->
-        <section class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-3.5">
+        <section class="bg-white rounded-none p-6 border border-slate-200 shadow-xs space-y-3.5">
             <div class="flex items-center gap-2">
-                <span class="text-xl">🔒</span>
+                <span class="text-xl"></span>
                 <h2 class="text-base font-black text-slate-900">4. Informativa Privacy & Zero-Cookie Policy (GDPR / ePrivacy)</h2>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
                 La suite <strong>OmniTools Lab</strong> adotta una rigorosa politica <em>Privacy by Design</em> nel pieno rispetto del <strong>Regolamento UE 2016/679 (GDPR)</strong> e della <strong>Direttiva ePrivacy (2002/58/CE)</strong>:
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
-                <div class="p-3.5 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs text-emerald-950 space-y-1">
-                    <span class="font-bold flex items-center gap-1.5 text-emerald-800">✅ Nessun Cookie di Profilazione o Terze Parti</span>
+                <div class="p-3.5 bg-emerald-50/70 border border-emerald-200 rounded-none text-xs text-emerald-950 space-y-1">
+                    <span class="font-bold flex items-center gap-1.5 text-emerald-800"> Nessun Cookie di Profilazione o Terze Parti</span>
                     <p class="text-[11px] leading-relaxed text-emerald-900/90">
                         Il sito non fa uso di tracker pubblicitari, pixel di tracciamento (Facebook Pixel, TikTok, ecc.) né cookie di profilazione comportamentale. Non viene pertanto richiesto alcun banner di consenso invasivo in conformità alle Linee Guida del Garante Privacy.
                     </p>
                 </div>
-                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 space-y-1">
-                    <span class="font-bold flex items-center gap-1.5 text-slate-900">⚡ Calcolo Locale 100% Client-Side</span>
+                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-none text-xs text-slate-800 space-y-1">
+                    <span class="font-bold flex items-center gap-1.5 text-slate-900">Calcolo Locale 100% Client-Side</span>
                     <p class="text-[11px] leading-relaxed text-slate-600">
                         I dati e le misure inserite nei calcolatori non vengono trasmessi a server esterni ma elaborati in locale sul dispositivo dell'utente. Le uniche informazioni memorizzate in locale (localStorage) riguardano preferenze strettamente tecniche (lingua e modalità notte).
                     </p>
@@ -537,10 +508,10 @@
         </section>
 
         <!-- Section 5: Contatti & Segnalazioni -->
-        <section class="bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-lg space-y-3">
+        <section class="bg-slate-900 text-white rounded-none p-6 border border-slate-800 shadow-lg space-y-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <span class="text-xl">🤝</span>
+                    <span class="text-xl"></span>
                     <h2 class="text-base font-bold text-white">5. Contatti per Licenze, Partnership o Segnalazioni</h2>
                 </div>
             </div>
@@ -548,7 +519,7 @@
                 Per richieste di licenza d'uso commerciale, integrazioni software autorizzate, accordi di sponsorizzazione o per segnalare utilizzi abusivi dei nostri strumenti, è possibile contattare il dipartimento dedicato tramite la pagina ufficiale:
             </p>
             <div class="pt-2">
-                <a href="/partnership" class="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-xl text-xs font-bold text-white transition shadow-xs">
+                <a href="/partnership" class="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-none text-xs font-bold text-white transition shadow-xs">
                     <span>Modulo Ufficiale Partnership & Legal</span>
                     <span>→</span>
                 </a>
