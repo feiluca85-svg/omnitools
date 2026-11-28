@@ -4769,10 +4769,21 @@ window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     const banner = document.getElementById('installBanner');
-    if (banner && !sessionStorage.getItem('omnitools_install_dismissed')) {
-        banner.classList.remove('hidden');
-        syncHeaderInstallBtn();
-    }
+    if (banner && !sessionStorage.getItem('omnitools_install_dismissed') && !localStorage.getItem('omnitools_install_dismissed')) {
+                const showBanner = () => {
+                    if (sessionStorage.getItem('omnitools_install_dismissed') || localStorage.getItem('omnitools_install_dismissed')) return;
+                    banner.classList.remove('hidden');
+                    syncHeaderInstallBtn();
+                };
+                const onFirstScroll = () => {
+                    if (window.scrollY > 240) {
+                        window.removeEventListener('scroll', onFirstScroll);
+                        showBanner();
+                    }
+                };
+                window.addEventListener('scroll', onFirstScroll, { passive: true });
+                setTimeout(showBanner, 18000);
+            }
 });
 function triggerInstall() {
     if (deferredPrompt) {
@@ -4792,7 +4803,7 @@ function triggerInstall() {
 function dismissInstallBanner() {
     const banner = document.getElementById('installBanner');
     if (banner) banner.classList.add('hidden');
-    sessionStorage.setItem('omnitools_install_dismissed', '1');
+    sessionStorage.setItem('omnitools_install_dismissed', '1'); try { localStorage.setItem('omnitools_install_dismissed', '1'); } catch(e) {}
     syncHeaderInstallBtn();
 }
 document.addEventListener('DOMContentLoaded', syncHeaderInstallBtn);

@@ -3101,7 +3101,7 @@
     </footer>
 
     <!-- Floating PWA Install Banner (Sharp Precision Grid, border-radius: 0px) -->
-    <div id="installBanner" class="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 shadow-2xl border border-slate-700 z-50 flex items-center justify-between gap-3 transition-all duration-300" style="border-radius: 0px;">
+    <div id="installBanner" class="hidden fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm bg-slate-900 text-white p-3.5 shadow-2xl border border-slate-700 z-50 flex items-center justify-between gap-3 transition-all duration-300" style="border-radius: 0px;">
         <div class="flex items-center gap-2.5 min-w-0">
             <div class="w-9 h-9 bg-blue-600 flex items-center justify-center text-white shrink-0 font-bold shadow-md" style="border-radius: 0px;">
                 <svg class="w-5 h-5 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
@@ -3810,9 +3810,20 @@
             e.preventDefault();
             deferredPrompt = e;
             const banner = document.getElementById('installBanner');
-            if (banner && !sessionStorage.getItem('omnitools_install_dismissed')) {
-                banner.classList.remove('hidden');
-                syncHeaderInstallBtn();
+            if (banner && !sessionStorage.getItem('omnitools_install_dismissed') && !localStorage.getItem('omnitools_install_dismissed')) {
+                const showBanner = () => {
+                    if (sessionStorage.getItem('omnitools_install_dismissed') || localStorage.getItem('omnitools_install_dismissed')) return;
+                    banner.classList.remove('hidden');
+                    syncHeaderInstallBtn();
+                };
+                const onFirstScroll = () => {
+                    if (window.scrollY > 240) {
+                        window.removeEventListener('scroll', onFirstScroll);
+                        showBanner();
+                    }
+                };
+                window.addEventListener('scroll', onFirstScroll, { passive: true });
+                setTimeout(showBanner, 18000);
             }
         });
         function triggerInstall() {
@@ -3827,7 +3838,7 @@
         function dismissInstallBanner() {
             const banner = document.getElementById('installBanner');
             if (banner) banner.classList.add('hidden');
-            sessionStorage.setItem('omnitools_install_dismissed', '1');
+            sessionStorage.setItem('omnitools_install_dismissed', '1'); try { localStorage.setItem('omnitools_install_dismissed', '1'); } catch(e) {}
             syncHeaderInstallBtn();
         }
         document.addEventListener('DOMContentLoaded', syncHeaderInstallBtn);
